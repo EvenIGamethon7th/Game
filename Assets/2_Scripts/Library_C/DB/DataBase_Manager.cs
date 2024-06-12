@@ -13,7 +13,6 @@ using Cargold.SDK.Purchase;
 public partial class DataBase_Manager
 {
     public override IDB_Inapp GetInapp_C { get; }
-    public override IDB_Localize GetLocalize_C { get; }
     public override IDB_Dialogue GetDialogue_C { get; }
 
     protected override void Init_Project_Func()

@@ -63,6 +63,8 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
 
     #region Library
     
+            public override Cargold.FrameWork.IDB_Localize GetLocalize_C => this.localize;
+            
     #endregion
 
     protected override Debug_C.PrintLogType GetPrintLogType => this.printLogType;

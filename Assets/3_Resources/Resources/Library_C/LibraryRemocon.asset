@@ -16,6 +16,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
+    - {fileID: 0}
     - {fileID: 11400000, guid: 381feeaf1a2665e42920d5a8f0ae0970, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -50,8 +51,8 @@ MonoBehaviour:
       Entry: 1
       Data: Assets/3_Resources/Library_C
     - Name: gameSystem_Manager
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 0
     - Name: isPlaceInScene
       Entry: 5
       Data: true
@@ -90,7 +91,7 @@ MonoBehaviour:
       Data: int
     - Name: wealthTypeName
       Entry: 1
-      Data: WealthType
+      Data: Gold
     - Name: wealthTypeArr
       Entry: 7
       Data: 5|System.String[], mscorlib
@@ -165,18 +166,17 @@ MonoBehaviour:
         _langType)\r\n            {\r\n                switch (_langType)\r\n               
         {\r\n                    default:\r\n                    case SystemLanguage.Korean:           
         return ko;\r\n\r\n                    case SystemLanguage.English:           
-        return en;\r\n                    case SystemLanguage.Korean:           
-        return ko;\r\n                    case SystemLanguage.Japanese:           
-        return ja;\r\n                    /*4*/\r\n                    /*5*/\r\n                   
-        /*6*/\r\n                    /*7*/\r\n                    /*8*/\r\n                   
-        /*9*/\r\n                    /*10*/\r\n                    /*11*/\r\n                   
-        /*12*/\r\n                    /*13*/\r\n                    /*14*/\r\n                   
-        /*15*/\r\n                    /*16*/\r\n                    /*17*/\r\n                   
-        /*18*/\r\n                    /*19*/\r\n                    /*20*/\r\n                   
-        /*21*/\r\n                    /*22*/\r\n                    /*23*/\r\n                   
-        /*24*/\r\n                    /*25*/\r\n                    /*26*/\r\n                   
-        /*27*/\r\n                    /*28*/\r\n                    /*29*/\r\n                   
-        /*30*/\r\n\r\n                    case SystemLanguage.Unknown:\r\n                       
+        return en;\r\n                    case SystemLanguage.Japanese:           
+        return ja;\r\n                    /*3*/\r\n                    /*4*/\r\n                   
+        /*5*/\r\n                    /*6*/\r\n                    /*7*/\r\n                   
+        /*8*/\r\n                    /*9*/\r\n                    /*10*/\r\n                   
+        /*11*/\r\n                    /*12*/\r\n                    /*13*/\r\n                   
+        /*14*/\r\n                    /*15*/\r\n                    /*16*/\r\n                   
+        /*17*/\r\n                    /*18*/\r\n                    /*19*/\r\n                   
+        /*20*/\r\n                    /*21*/\r\n                    /*22*/\r\n                   
+        /*23*/\r\n                    /*24*/\r\n                    /*25*/\r\n                   
+        /*26*/\r\n                    /*27*/\r\n                    /*28*/\r\n                   
+        /*29*/\r\n                    /*30*/\r\n\r\n                    case SystemLanguage.Unknown:\r\n                       
         Debug_C.Error_Func(\"\uB2E4\uC74C \uC5B8\uC5B4\uB294 \uC9C0\uC6D0\uD558\uC9C0
         \uC54A\uC2B5\uB2C8\uB2E4. : \" + _langType);\r\n                        return
         default;\r\n                }\r\n            }\r\n            "
@@ -199,7 +199,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 2
     - Name: 
       Entry: 7
       Data: 
@@ -209,18 +209,6 @@ MonoBehaviour:
     - Name: $v
       Entry: 1
       Data: en
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 23
-    - Name: $v
-      Entry: 1
-      Data: ko
     - Name: 
       Entry: 8
       Data: 
@@ -253,13 +241,10 @@ MonoBehaviour:
       Data: 11|UnityEngine.SystemLanguage[], UnityEngine.CoreModule
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 2
     - Name: 
       Entry: 3
       Data: 10
-    - Name: 
-      Entry: 3
-      Data: 23
     - Name: 
       Entry: 3
       Data: 22
@@ -368,7 +353,7 @@ MonoBehaviour:
       Data: Assets/2_Scripts/Library_C/DB
     - Name: dbmClass
       Entry: 10
-      Data: 0
+      Data: 1
     - Name: excelName
       Entry: 1
       Data: ImportedTable_C
@@ -526,7 +511,7 @@ MonoBehaviour:
       Data: System.DateTime, mscorlib
     - Name: 
       Entry: 3
-      Data: -8584834391388248795
+      Data: -8584834323608517561
     - Name: 
       Entry: 8
       Data: 
@@ -535,7 +520,7 @@ MonoBehaviour:
       Data: System.DateTime, mscorlib
     - Name: 
       Entry: 3
-      Data: -8584834391363400063
+      Data: -8584834323598265699
     - Name: 
       Entry: 8
       Data: 
@@ -1125,7 +1110,66 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 57|Cargold.LibraryRemocon+UtilityClassData+StringDropdownData+InitData,
+        Assembly-CSharp
+    - Name: typeNameStr
+      Entry: 1
+      Data: SfxType
+    - Name: initDataArr
+      Entry: 7
+      Data: 58|Cargold.SobjDropdown+DropdownData[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: Cargold.SobjDropdown+DropdownData, Assembly-CSharp
+    - Name: nameStr
+      Entry: 1
+      Data: UI_Normal
+    - Name: uid
+      Entry: 3
+      Data: 2000000000
+    - Name: stringDropdownClass
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 59|Cargold.LibraryRemocon+UtilityClassData+StringDropdownData+InitData,
+        Assembly-CSharp
+    - Name: typeNameStr
+      Entry: 1
+      Data: BgmType
+    - Name: initDataArr
+      Entry: 7
+      Data: 60|Cargold.SobjDropdown+DropdownData[], Assembly-CSharp
+    - Name: 
+      Entry: 12
       Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -1137,7 +1181,7 @@ MonoBehaviour:
       Data: 
     - Name: toastSystemData
       Entry: 7
-      Data: 57|Cargold.LibraryRemocon+UtilityClassData+ToastSystemData, Assembly-CSharp
+      Data: 61|Cargold.LibraryRemocon+UtilityClassData+ToastSystemData, Assembly-CSharp
     - Name: isEnable
       Entry: 5
       Data: false
@@ -1149,7 +1193,7 @@ MonoBehaviour:
       Data: 
     - Name: subFolderPathArr
       Entry: 7
-      Data: 58|System.String[], mscorlib
+      Data: 62|System.String[], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -1167,16 +1211,16 @@ MonoBehaviour:
       Data: 
     - Name: assetLibraryData
       Entry: 7
-      Data: 59|Cargold.LibraryRemocon+AssetLibraryData, Assembly-CSharp
+      Data: 63|Cargold.LibraryRemocon+AssetLibraryData, Assembly-CSharp
     - Name: advertiseData
       Entry: 7
-      Data: 60|Cargold.LibraryRemocon+AssetLibraryData+AdvertiseData, Assembly-CSharp
+      Data: 64|Cargold.LibraryRemocon+AssetLibraryData+AdvertiseData, Assembly-CSharp
     - Name: unresponseCancleTime
       Entry: 4
       Data: 10
     - Name: unityAdsData
       Entry: 7
-      Data: 61|Cargold.LibraryRemocon+AssetLibraryData+AdvertiseData+UnityAdsData,
+      Data: 65|Cargold.LibraryRemocon+AssetLibraryData+AdvertiseData+UnityAdsData,
         Assembly-CSharp
     - Name: isEnable
       Entry: 5
@@ -1189,7 +1233,7 @@ MonoBehaviour:
       Data: 
     - Name: subFolderPathArr
       Entry: 7
-      Data: 62|System.String[], mscorlib
+      Data: 66|System.String[], mscorlib
     - Name: 
       Entry: 12
       Data: 1
@@ -1228,13 +1272,13 @@ MonoBehaviour:
       Data: 
     - Name: inappPurchaseData
       Entry: 7
-      Data: 63|Cargold.LibraryRemocon+AssetLibraryData+InappPurchaseData, Assembly-CSharp
+      Data: 67|Cargold.LibraryRemocon+AssetLibraryData+InappPurchaseData, Assembly-CSharp
     - Name: unresponseCancleTime
       Entry: 4
       Data: 10
     - Name: unityPurhcaseData
       Entry: 7
-      Data: 64|Cargold.LibraryRemocon+AssetLibraryData+InappPurchaseData+UnityPurchaseData,
+      Data: 68|Cargold.LibraryRemocon+AssetLibraryData+InappPurchaseData+UnityPurchaseData,
         Assembly-CSharp
     - Name: isEnable
       Entry: 5
@@ -1247,7 +1291,7 @@ MonoBehaviour:
       Data: 
     - Name: subFolderPathArr
       Entry: 7
-      Data: 65|System.String[], mscorlib
+      Data: 69|System.String[], mscorlib
     - Name: 
       Entry: 12
       Data: 1
@@ -1262,7 +1306,7 @@ MonoBehaviour:
       Data: 
     - Name: libraryTableData
       Entry: 7
-      Data: 66|Cargold.LibraryRemocon+AssetLibraryData+InappPurchaseData+UnityPurchaseData+TableData,
+      Data: 70|Cargold.LibraryRemocon+AssetLibraryData+InappPurchaseData+UnityPurchaseData+TableData,
         Assembly-CSharp
     - Name: sheetName
       Entry: 1
@@ -1316,10 +1360,10 @@ MonoBehaviour:
       Data: 
     - Name: trackingLogData
       Entry: 7
-      Data: 67|Cargold.LibraryRemocon+AssetLibraryData+TrackingLogData, Assembly-CSharp
+      Data: 71|Cargold.LibraryRemocon+AssetLibraryData+TrackingLogData, Assembly-CSharp
     - Name: unityLogData
       Entry: 7
-      Data: 68|Cargold.LibraryRemocon+AssetLibraryData+TrackingLogData+UnityLogData,
+      Data: 72|Cargold.LibraryRemocon+AssetLibraryData+TrackingLogData+UnityLogData,
         Assembly-CSharp
     - Name: isEnable
       Entry: 5
@@ -1332,7 +1376,7 @@ MonoBehaviour:
       Data: 
     - Name: subFolderPathArr
       Entry: 7
-      Data: 69|System.String[], mscorlib
+      Data: 73|System.String[], mscorlib
     - Name: 
       Entry: 12
       Data: 1

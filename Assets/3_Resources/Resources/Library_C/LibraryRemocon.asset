@@ -15,7 +15,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 381feeaf1a2665e42920d5a8f0ae0970, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -113,7 +114,7 @@ MonoBehaviour:
       Data: 6|Cargold.LibraryRemocon+FrameWorkData+LocalizeSystemData, Assembly-CSharp
     - Name: isEnable
       Entry: 5
-      Data: false
+      Data: true
     - Name: className
       Entry: 1
       Data: LocalizeSystem_Manager
@@ -164,20 +165,21 @@ MonoBehaviour:
         _langType)\r\n            {\r\n                switch (_langType)\r\n               
         {\r\n                    default:\r\n                    case SystemLanguage.Korean:           
         return ko;\r\n\r\n                    case SystemLanguage.English:           
-        return en;\r\n                    /*2*/\r\n                    /*3*/\r\n                   
-        /*4*/\r\n                    /*5*/\r\n                    /*6*/\r\n                   
-        /*7*/\r\n                    /*8*/\r\n                    /*9*/\r\n                   
-        /*10*/\r\n                    /*11*/\r\n                    /*12*/\r\n                   
-        /*13*/\r\n                    /*14*/\r\n                    /*15*/\r\n                   
-        /*16*/\r\n                    /*17*/\r\n                    /*18*/\r\n                   
-        /*19*/\r\n                    /*20*/\r\n                    /*21*/\r\n                   
-        /*22*/\r\n                    /*23*/\r\n                    /*24*/\r\n                   
-        /*25*/\r\n                    /*26*/\r\n                    /*27*/\r\n                   
-        /*28*/\r\n                    /*29*/\r\n                    /*30*/\r\n\r\n                   
-        case SystemLanguage.Unknown:\r\n                        Debug_C.Error_Func(\"\uB2E4\uC74C
-        \uC5B8\uC5B4\uB294 \uC9C0\uC6D0\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4. : \"
-        + _langType);\r\n                        return default;\r\n               
-        }\r\n            }\r\n            "
+        return en;\r\n                    case SystemLanguage.Korean:           
+        return ko;\r\n                    case SystemLanguage.Japanese:           
+        return ja;\r\n                    /*4*/\r\n                    /*5*/\r\n                   
+        /*6*/\r\n                    /*7*/\r\n                    /*8*/\r\n                   
+        /*9*/\r\n                    /*10*/\r\n                    /*11*/\r\n                   
+        /*12*/\r\n                    /*13*/\r\n                    /*14*/\r\n                   
+        /*15*/\r\n                    /*16*/\r\n                    /*17*/\r\n                   
+        /*18*/\r\n                    /*19*/\r\n                    /*20*/\r\n                   
+        /*21*/\r\n                    /*22*/\r\n                    /*23*/\r\n                   
+        /*24*/\r\n                    /*25*/\r\n                    /*26*/\r\n                   
+        /*27*/\r\n                    /*28*/\r\n                    /*29*/\r\n                   
+        /*30*/\r\n\r\n                    case SystemLanguage.Unknown:\r\n                       
+        Debug_C.Error_Func(\"\uB2E4\uC74C \uC5B8\uC5B4\uB294 \uC9C0\uC6D0\uD558\uC9C0
+        \uC54A\uC2B5\uB2C8\uB2E4. : \" + _langType);\r\n                        return
+        default;\r\n                }\r\n            }\r\n            "
     - Name: langCodeDic
       Entry: 7
       Data: 9|System.Collections.Generic.Dictionary`2[[UnityEngine.SystemLanguage,
@@ -197,7 +199,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 3
     - Name: 
       Entry: 7
       Data: 
@@ -207,6 +209,30 @@ MonoBehaviour:
     - Name: $v
       Entry: 1
       Data: en
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 23
+    - Name: $v
+      Entry: 1
+      Data: ko
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 22
+    - Name: $v
+      Entry: 1
+      Data: ja
     - Name: 
       Entry: 8
       Data: 
@@ -227,10 +253,16 @@ MonoBehaviour:
       Data: 11|UnityEngine.SystemLanguage[], UnityEngine.CoreModule
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 3
     - Name: 
       Entry: 3
       Data: 10
+    - Name: 
+      Entry: 3
+      Data: 23
+    - Name: 
+      Entry: 3
+      Data: 22
     - Name: 
       Entry: 13
       Data: 
@@ -335,8 +367,8 @@ MonoBehaviour:
       Entry: 1
       Data: Assets/2_Scripts/Library_C/DB
     - Name: dbmClass
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 0
     - Name: excelName
       Entry: 1
       Data: ImportedTable_C
@@ -404,18 +436,75 @@ MonoBehaviour:
       Entry: 5
       Data: false
     - Name: enumGenerateListDic
-      Entry: 6
+      Entry: 7
+      Data: 20|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Collections.Generic.Dictionary`2[[System.String,
+        mscorlib],[System.Int32, mscorlib]], mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 21|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: TestTypeType
+    - Name: $v
+      Entry: 7
+      Data: 22|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int32,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 21
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Collectionn
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: nestedGenerateDic
       Entry: 6
       Data: 
     - Name: libraryTableDataList
       Entry: 7
-      Data: 20|System.Collections.Generic.List`1[[Cargold.LibraryRemocon+FrameWorkData+DatabaseData+TableImporterData+LibraryTableData,
+      Data: 23|System.Collections.Generic.List`1[[Cargold.LibraryRemocon+FrameWorkData+DatabaseData+TableImporterData+LibraryTableData,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 0
+      Data: 1
+    - Name: 
+      Entry: 9
+      Data: 8
     - Name: 
       Entry: 13
       Data: 
@@ -423,7 +512,11 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: iLibrary
-      Entry: 6
+      Entry: 7
+      Data: 24|Cargold.LibraryRemocon+FrameWorkData+DatabaseData+TableImporterData+LibraryClass,
+        Assembly-CSharp
+    - Name: 
+      Entry: 8
       Data: 
     - Name: exPoint
       Entry: 3
@@ -433,7 +526,7 @@ MonoBehaviour:
       Data: System.DateTime, mscorlib
     - Name: 
       Entry: 3
-      Data: 0
+      Data: -8584834391388248795
     - Name: 
       Entry: 8
       Data: 
@@ -442,12 +535,120 @@ MonoBehaviour:
       Data: System.DateTime, mscorlib
     - Name: 
       Entry: 3
-      Data: 0
+      Data: -8584834391363400063
     - Name: 
       Entry: 8
       Data: 
     - Name: remoconClassArr
-      Entry: 6
+      Entry: 7
+      Data: 25|Cargold.LibraryRemocon+FrameWorkData+DatabaseData+TableImporterData+TableImporterRemocon[],
+        Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 26|Cargold.LibraryRemocon+FrameWorkData+DatabaseData+TableImporterData+TableImporterRemocon,
+        Assembly-CSharp
+    - Name: remoconID
+      Entry: 3
+      Data: 0
+    - Name: tableNameStr
+      Entry: 1
+      Data: DataSheetBase
+    - Name: googleExcelUrl
+      Entry: 1
+      Data: https://docs.google.com/spreadsheets/d/1Xo4RZpGisS9UlR12tHoJCEr5tYci2ky6p3WVhDr05QU/edit?usp=sharing
+    - Name: port
+      Entry: 3
+      Data: 8000
+    - Name: excelID
+      Entry: 1
+      Data: 1Xo4RZpGisS9UlR12tHoJCEr5tYci2ky6p3WVhDr05QU
+    - Name: accessToken
+      Entry: 1
+      Data: ya29.a0AXooCgv8BBa0zgpY6r9ScGwCc3SsYNGdHynxzGiIrijfUK5mrNa-9Zv3lut5aPnvEpzqV-elJlURjdf1V7klYs9cHU1jcFGy2zlFog2WMkrw62RhoZ0DE6WhU0Fn6cQWXoVuUWzM5M4U3CKPkVgCWTGhKS9ft709QYP0aCgYKAXgSARASFQHGX2MioZBZpmmO-3PQT385b__AYA0171
+    - Name: sheetRemoconDic
+      Entry: 7
+      Data: 27|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[Cargold.LibraryRemocon+FrameWorkData+DatabaseData+TableImporterData+TableImporterRemocon+SheetRemocon,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 21
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Define
+    - Name: $v
+      Entry: 7
+      Data: 28|Cargold.LibraryRemocon+FrameWorkData+DatabaseData+TableImporterData+TableImporterRemocon+SheetRemocon,
+        Assembly-CSharp
+    - Name: isImport
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Localize
+    - Name: $v
+      Entry: 7
+      Data: 29|Cargold.LibraryRemocon+FrameWorkData+DatabaseData+TableImporterData+TableImporterRemocon+SheetRemocon,
+        Assembly-CSharp
+    - Name: isImport
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Item
+    - Name: $v
+      Entry: 7
+      Data: 30|Cargold.LibraryRemocon+FrameWorkData+DatabaseData+TableImporterData+TableImporterRemocon+SheetRemocon,
+        Assembly-CSharp
+    - Name: isImport
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: isDataGroupImport
       Entry: 5
@@ -466,10 +667,10 @@ MonoBehaviour:
       Data: 
     - Name: utilityClassData
       Entry: 7
-      Data: 21|Cargold.LibraryRemocon+UtilityClassData, Assembly-CSharp
+      Data: 31|Cargold.LibraryRemocon+UtilityClassData, Assembly-CSharp
     - Name: backKeyData
       Entry: 7
-      Data: 22|Cargold.LibraryRemocon+UtilityClassData+BackKeyData, Assembly-CSharp
+      Data: 32|Cargold.LibraryRemocon+UtilityClassData+BackKeyData, Assembly-CSharp
     - Name: isEnable
       Entry: 5
       Data: false
@@ -481,7 +682,7 @@ MonoBehaviour:
       Data: 
     - Name: subFolderPathArr
       Entry: 7
-      Data: 23|System.String[], mscorlib
+      Data: 33|System.String[], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -496,7 +697,7 @@ MonoBehaviour:
       Data: 
     - Name: cameraData
       Entry: 7
-      Data: 24|Cargold.LibraryRemocon+UtilityClassData+CameraData, Assembly-CSharp
+      Data: 34|Cargold.LibraryRemocon+UtilityClassData+CameraData, Assembly-CSharp
     - Name: isEnable
       Entry: 5
       Data: false
@@ -508,7 +709,7 @@ MonoBehaviour:
       Data: 
     - Name: subFolderPathArr
       Entry: 7
-      Data: 25|System.String[], mscorlib
+      Data: 35|System.String[], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -523,7 +724,7 @@ MonoBehaviour:
       Data: 
     - Name: dialogueData
       Entry: 7
-      Data: 26|Cargold.LibraryRemocon+UtilityClassData+DialogueData, Assembly-CSharp
+      Data: 36|Cargold.LibraryRemocon+UtilityClassData+DialogueData, Assembly-CSharp
     - Name: isEnable
       Entry: 5
       Data: false
@@ -535,7 +736,7 @@ MonoBehaviour:
       Data: 
     - Name: subFolderPathArr
       Entry: 7
-      Data: 27|System.String[], mscorlib
+      Data: 37|System.String[], mscorlib
     - Name: 
       Entry: 12
       Data: 1
@@ -550,7 +751,7 @@ MonoBehaviour:
       Data: 
     - Name: libraryTableData
       Entry: 7
-      Data: 28|Cargold.LibraryRemocon+UtilityClassData+DialogueData+TableData, Assembly-CSharp
+      Data: 38|Cargold.LibraryRemocon+UtilityClassData+DialogueData+TableData, Assembly-CSharp
     - Name: sheetName
       Entry: 1
       Data: Dialogue
@@ -657,7 +858,7 @@ MonoBehaviour:
       Data: 
     - Name: eventSystemData
       Entry: 7
-      Data: 29|Cargold.LibraryRemocon+UtilityClassData+EventSystemData, Assembly-CSharp
+      Data: 39|Cargold.LibraryRemocon+UtilityClassData+EventSystemData, Assembly-CSharp
     - Name: isEnable
       Entry: 5
       Data: false
@@ -669,7 +870,7 @@ MonoBehaviour:
       Data: 
     - Name: subFolderPathArr
       Entry: 7
-      Data: 30|System.String[], mscorlib
+      Data: 40|System.String[], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -681,7 +882,7 @@ MonoBehaviour:
       Data: 
     - Name: serializeData
       Entry: 7
-      Data: 31|Cargold.LibraryRemocon+UtilityClassData+EventSystemData+SerializeData,
+      Data: 41|Cargold.LibraryRemocon+UtilityClassData+EventSystemData+SerializeData,
         Assembly-CSharp
     - Name: isExcel
       Entry: 5
@@ -718,7 +919,7 @@ MonoBehaviour:
       Data: 5
     - Name: parseStrArr
       Entry: 7
-      Data: 32|System.String[], mscorlib
+      Data: 42|System.String[], mscorlib
     - Name: 
       Entry: 12
       Data: 5
@@ -748,15 +949,15 @@ MonoBehaviour:
       Data: 
     - Name: eventToolControl
       Entry: 7
-      Data: 33|Cargold.LibraryRemocon+UtilityClassData+EventSystemData+EventToolControl,
+      Data: 43|Cargold.LibraryRemocon+UtilityClassData+EventSystemData+EventToolControl,
         Assembly-CSharp
     - Name: beginTypeByDataDic
       Entry: 7
-      Data: 34|System.Collections.Generic.Dictionary`2[[BeginType, Assembly-CSharp],[Cargold.LibraryRemocon+UtilityClassData+EventSystemData+EventToolControl+Data,
+      Data: 44|System.Collections.Generic.Dictionary`2[[BeginType, Assembly-CSharp],[Cargold.LibraryRemocon+UtilityClassData+EventSystemData+EventToolControl+Data,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 35|System.Collections.Generic.ObjectEqualityComparer`1[[BeginType, Assembly-CSharp]],
+      Data: 45|System.Collections.Generic.ObjectEqualityComparer`1[[BeginType, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 8
@@ -772,11 +973,11 @@ MonoBehaviour:
       Data: 
     - Name: conditionTypeByDataDic
       Entry: 7
-      Data: 36|System.Collections.Generic.Dictionary`2[[ConditionType, Assembly-CSharp],[Cargold.LibraryRemocon+UtilityClassData+EventSystemData+EventToolControl+Data,
+      Data: 46|System.Collections.Generic.Dictionary`2[[ConditionType, Assembly-CSharp],[Cargold.LibraryRemocon+UtilityClassData+EventSystemData+EventToolControl+Data,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 37|System.Collections.Generic.ObjectEqualityComparer`1[[ConditionType,
+      Data: 47|System.Collections.Generic.ObjectEqualityComparer`1[[ConditionType,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 8
@@ -792,11 +993,11 @@ MonoBehaviour:
       Data: 
     - Name: actionTypeByDataDic
       Entry: 7
-      Data: 38|System.Collections.Generic.Dictionary`2[[ActionType, Assembly-CSharp],[Cargold.LibraryRemocon+UtilityClassData+EventSystemData+EventToolControl+Data,
+      Data: 48|System.Collections.Generic.Dictionary`2[[ActionType, Assembly-CSharp],[Cargold.LibraryRemocon+UtilityClassData+EventSystemData+EventToolControl+Data,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 39|System.Collections.Generic.ObjectEqualityComparer`1[[ActionType, Assembly-CSharp]],
+      Data: 49|System.Collections.Generic.ObjectEqualityComparer`1[[ActionType, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 8
@@ -827,7 +1028,7 @@ MonoBehaviour:
       Data: 
     - Name: focusSystemData
       Entry: 7
-      Data: 40|Cargold.LibraryRemocon+UtilityClassData+FocusSystemData, Assembly-CSharp
+      Data: 50|Cargold.LibraryRemocon+UtilityClassData+FocusSystemData, Assembly-CSharp
     - Name: isEnable
       Entry: 5
       Data: false
@@ -839,7 +1040,7 @@ MonoBehaviour:
       Data: 
     - Name: subFolderPathArr
       Entry: 7
-      Data: 41|System.String[], mscorlib
+      Data: 51|System.String[], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -854,7 +1055,7 @@ MonoBehaviour:
       Data: 
     - Name: joystickSystemData
       Entry: 7
-      Data: 42|Cargold.LibraryRemocon+UtilityClassData+JoystickSystemData, Assembly-CSharp
+      Data: 52|Cargold.LibraryRemocon+UtilityClassData+JoystickSystemData, Assembly-CSharp
     - Name: isEnable
       Entry: 5
       Data: false
@@ -866,7 +1067,7 @@ MonoBehaviour:
       Data: 
     - Name: subFolderPathArr
       Entry: 7
-      Data: 43|System.String[], mscorlib
+      Data: 53|System.String[], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -893,7 +1094,7 @@ MonoBehaviour:
       Data: 
     - Name: stringDropdownData
       Entry: 7
-      Data: 44|Cargold.LibraryRemocon+UtilityClassData+StringDropdownData, Assembly-CSharp
+      Data: 54|Cargold.LibraryRemocon+UtilityClassData+StringDropdownData, Assembly-CSharp
     - Name: isEnable
       Entry: 5
       Data: false
@@ -905,7 +1106,7 @@ MonoBehaviour:
       Data: 
     - Name: subFolderPathArr
       Entry: 7
-      Data: 45|System.String[], mscorlib
+      Data: 55|System.String[], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -920,7 +1121,7 @@ MonoBehaviour:
       Data: 
     - Name: initDataList
       Entry: 7
-      Data: 46|System.Collections.Generic.List`1[[Cargold.LibraryRemocon+UtilityClassData+StringDropdownData+InitData,
+      Data: 56|System.Collections.Generic.List`1[[Cargold.LibraryRemocon+UtilityClassData+StringDropdownData+InitData,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -936,7 +1137,7 @@ MonoBehaviour:
       Data: 
     - Name: toastSystemData
       Entry: 7
-      Data: 47|Cargold.LibraryRemocon+UtilityClassData+ToastSystemData, Assembly-CSharp
+      Data: 57|Cargold.LibraryRemocon+UtilityClassData+ToastSystemData, Assembly-CSharp
     - Name: isEnable
       Entry: 5
       Data: false
@@ -948,7 +1149,7 @@ MonoBehaviour:
       Data: 
     - Name: subFolderPathArr
       Entry: 7
-      Data: 48|System.String[], mscorlib
+      Data: 58|System.String[], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -966,16 +1167,16 @@ MonoBehaviour:
       Data: 
     - Name: assetLibraryData
       Entry: 7
-      Data: 49|Cargold.LibraryRemocon+AssetLibraryData, Assembly-CSharp
+      Data: 59|Cargold.LibraryRemocon+AssetLibraryData, Assembly-CSharp
     - Name: advertiseData
       Entry: 7
-      Data: 50|Cargold.LibraryRemocon+AssetLibraryData+AdvertiseData, Assembly-CSharp
+      Data: 60|Cargold.LibraryRemocon+AssetLibraryData+AdvertiseData, Assembly-CSharp
     - Name: unresponseCancleTime
       Entry: 4
       Data: 10
     - Name: unityAdsData
       Entry: 7
-      Data: 51|Cargold.LibraryRemocon+AssetLibraryData+AdvertiseData+UnityAdsData,
+      Data: 61|Cargold.LibraryRemocon+AssetLibraryData+AdvertiseData+UnityAdsData,
         Assembly-CSharp
     - Name: isEnable
       Entry: 5
@@ -988,7 +1189,7 @@ MonoBehaviour:
       Data: 
     - Name: subFolderPathArr
       Entry: 7
-      Data: 52|System.String[], mscorlib
+      Data: 62|System.String[], mscorlib
     - Name: 
       Entry: 12
       Data: 1
@@ -1027,13 +1228,13 @@ MonoBehaviour:
       Data: 
     - Name: inappPurchaseData
       Entry: 7
-      Data: 53|Cargold.LibraryRemocon+AssetLibraryData+InappPurchaseData, Assembly-CSharp
+      Data: 63|Cargold.LibraryRemocon+AssetLibraryData+InappPurchaseData, Assembly-CSharp
     - Name: unresponseCancleTime
       Entry: 4
       Data: 10
     - Name: unityPurhcaseData
       Entry: 7
-      Data: 54|Cargold.LibraryRemocon+AssetLibraryData+InappPurchaseData+UnityPurchaseData,
+      Data: 64|Cargold.LibraryRemocon+AssetLibraryData+InappPurchaseData+UnityPurchaseData,
         Assembly-CSharp
     - Name: isEnable
       Entry: 5
@@ -1046,7 +1247,7 @@ MonoBehaviour:
       Data: 
     - Name: subFolderPathArr
       Entry: 7
-      Data: 55|System.String[], mscorlib
+      Data: 65|System.String[], mscorlib
     - Name: 
       Entry: 12
       Data: 1
@@ -1061,7 +1262,7 @@ MonoBehaviour:
       Data: 
     - Name: libraryTableData
       Entry: 7
-      Data: 56|Cargold.LibraryRemocon+AssetLibraryData+InappPurchaseData+UnityPurchaseData+TableData,
+      Data: 66|Cargold.LibraryRemocon+AssetLibraryData+InappPurchaseData+UnityPurchaseData+TableData,
         Assembly-CSharp
     - Name: sheetName
       Entry: 1
@@ -1115,10 +1316,10 @@ MonoBehaviour:
       Data: 
     - Name: trackingLogData
       Entry: 7
-      Data: 57|Cargold.LibraryRemocon+AssetLibraryData+TrackingLogData, Assembly-CSharp
+      Data: 67|Cargold.LibraryRemocon+AssetLibraryData+TrackingLogData, Assembly-CSharp
     - Name: unityLogData
       Entry: 7
-      Data: 58|Cargold.LibraryRemocon+AssetLibraryData+TrackingLogData+UnityLogData,
+      Data: 68|Cargold.LibraryRemocon+AssetLibraryData+TrackingLogData+UnityLogData,
         Assembly-CSharp
     - Name: isEnable
       Entry: 5
@@ -1131,7 +1332,7 @@ MonoBehaviour:
       Data: 
     - Name: subFolderPathArr
       Entry: 7
-      Data: 59|System.String[], mscorlib
+      Data: 69|System.String[], mscorlib
     - Name: 
       Entry: 12
       Data: 1

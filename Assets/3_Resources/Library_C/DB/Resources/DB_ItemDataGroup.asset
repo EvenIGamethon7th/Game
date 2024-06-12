@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc9bf545260ea574ca2920d9607384fb, type: 3}
+  m_Name: DB_ItemDataGroup
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: dataDic
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemData,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Item_0
+    - Name: $v
+      Entry: 7
+      Data: 2|ItemData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Item_0
+    - Name: sortID
+      Entry: 3
+      Data: 18
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Test
+    - Name: descKey
+      Entry: 1
+      Data: Lo_Test
+    - Name: sprite
+      Entry: 6
+      Data: 
+    - Name: startItem
+      Entry: 5
+      Data: true
+    - Name: tier
+      Entry: 3
+      Data: 1
+    - Name: value
+      Entry: 3
+      Data: 500
+    - Name: skillKey1
+      Entry: 1
+      Data: 
+    - Name: skillKey2
+      Entry: 1
+      Data: 
+    - Name: testEnum
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  dataArr:
+  - Key: Item_0
+    sortID: 18
+    nameKey: Lo_Test
+    descKey: Lo_Test
+    sprite: {fileID: 0}
+    startItem: 1
+    tier: 1
+    value: 500
+    skillKey1: 
+    skillKey2: 
+    testEnum: 1
+  keyArr:
+  - Item_0

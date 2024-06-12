@@ -1014,6 +1014,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 634172807}
+--- !u!1 &752401284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 752401286}
+  - component: {fileID: 752401285}
+  m_Layer: 0
+  m_Name: LocalizeSystem_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &752401285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752401284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33171d1501cffc24e87a963195c6ad8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &752401286
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752401284}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1986887533}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &829414463
 GameObject:
   m_ObjectHideFlags: 0
@@ -2168,6 +2212,7 @@ MonoBehaviour:
     - {fileID: 48544636}
     - {fileID: 1054091189}
     - {fileID: 2129970547}
+    - {fileID: 752401285}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -2178,7 +2223,7 @@ MonoBehaviour:
       Data: 0|Cargold.FrameWork.GameSystem_Manager+InitializeData[], Assembly-CSharp
     - Name: 
       Entry: 12
-      Data: 4
+      Data: 5
     - Name: 
       Entry: 7
       Data: 1|Cargold.FrameWork.GameSystem_Manager+InitializeData, Assembly-CSharp
@@ -2228,6 +2273,18 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 5|Cargold.FrameWork.GameSystem_Manager+InitializeData, Assembly-CSharp
+    - Name: iInitializer
+      Entry: 10
+      Data: 4
+    - Name: typeNameStr
+      Entry: 1
+      Data: LocalizeSystem_Manager
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -2253,6 +2310,7 @@ Transform:
   - {fileID: 48544637}
   - {fileID: 1054091190}
   - {fileID: 2129970548}
+  - {fileID: 752401286}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2129970546

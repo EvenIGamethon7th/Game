@@ -1,0 +1,44 @@
+title: "[SystemDesign] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 💡시스템 기획
+        > Tip : ** 추상화된 아이디어 기획을 구체화 시킵니다. **
+  - type: input
+    id: link
+    attributes:
+      label: 아이디어 티켓
+      description: "아이디어 티켓 번호를 입력하세요"
+      placeholder: "#1"
+    validations:
+      required: true
+  - type: textarea
+    id: intro
+    attributes:
+      label: 소개
+      description: "어떤 기획 내용인지 구체적으로 명시합니다."
+    validations:
+      required: true
+  - type: textarea
+    id: testCase
+    attributes:
+      label: 테스트 케이스
+      description: "정상적으로 작동되었을 때 예상되는 테스트 케이스를 넣어주세요. "
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: textarea
+    id: wrongCase
+    attributes:
+      label: 실패 케이스
+      description: "실패하였을 때 예상되는 테스트 케이스와 예외처리를 넣어주세요. "
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true

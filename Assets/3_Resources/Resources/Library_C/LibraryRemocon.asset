@@ -16,7 +16,6 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 0}
     - {fileID: 11400000, guid: 381feeaf1a2665e42920d5a8f0ae0970, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -51,8 +50,8 @@ MonoBehaviour:
       Entry: 1
       Data: Assets/3_Resources/Library_C
     - Name: gameSystem_Manager
-      Entry: 10
-      Data: 0
+      Entry: 6
+      Data: 
     - Name: isPlaceInScene
       Entry: 5
       Data: true
@@ -353,7 +352,7 @@ MonoBehaviour:
       Data: Assets/2_Scripts/Library_C/DB
     - Name: dbmClass
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: excelName
       Entry: 1
       Data: ImportedTable_C

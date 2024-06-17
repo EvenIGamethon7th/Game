@@ -7,13 +7,13 @@ body:
         > <span style="color:green"> Tip : <span style="color:black"> **해당 아이디어 항목에서는 어떤 것을 기획할 것인지 추상적으로 적어둡니다.**
   - type: textarea
     id: reference
-    attribute:
+    attributes:
       label: 레퍼런스 설명 및 소개
       description: "레퍼런스가 되는 게임의 이미지를 첨부하고, 어떤 시스템의 어떤 기능을 레퍼런스로 하는지 설명해야 합니다."
       required: true
   - type: textarea
     id: difference
-    attribute:
+    attributes:
       label: 아이디어 정리
       description: "레퍼런스를 참고 또는 창작할 아이디어를 순차적으로 정리합니다."
       value: |
@@ -23,8 +23,15 @@ body:
       required: true
   - type: input
     id: link
-    attribute:
+    attributes:
       label: 연계되는 티켓
       description: "연계되는 다른 티켓이 있다면 넣어주세요"
-      placehold: "#1"
+      placeholder: "#1"
+      required: false
+  - type: input
+    id: question
+    attributes:
+      label: 질문
+      description: "해당 아이디어와 관련된 질문을 입력하세요."
+      placeholder: "질문을 입력하세요"
       required: false

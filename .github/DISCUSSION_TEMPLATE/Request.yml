@@ -1,0 +1,25 @@
+title: "[Reuqest] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 💡수정 요청
+        > Tip : ** 현재 작동되는 기능 및 시스템을 변경하고자 할 때 요청합니다. **
+  - type: textarea
+    id: intro
+    attributes:
+      label: 요청 내용
+      description: "어떤 시스템의 어떤 기능을 변경하고 싶은지 기술합니다."
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: 사유
+      description: "무엇을 위해 변경하는지 작성합니다. "
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true

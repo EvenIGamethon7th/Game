@@ -1,0 +1,25 @@
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ##💡버그 
+        > <span style="color:green"> Tip : <span style="color:black"> **해당 항목에선 발견된 버그를 작성합니다.**
+  - type: textarea
+    id: desc
+    attributes:
+      label: 버그 내용
+      description: "어떠한 버그인지 상세하게 작성합니다. "
+    validations:
+      required: true
+  - type: textarea
+    id: condition
+    attributes:
+      label: 버그 발생 조건
+      description: "어떠한 상황에서 버그가 발생하는지 작성합니다."
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true

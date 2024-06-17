@@ -1,8 +1,17 @@
-name: Feature Templete
-description: 기능 추가할 때 쓰는 템플릿
-title: "[Feature]: Feature Title"
+name: 신규개발 템플릿
+description: 개발자 전용 신규개발 이슈등록 템플릿
+title: "[신규]"
+labels: "\U0001F5A5신규개발"
 
 body:
+  - type: input
+    id: feature-ticket
+    attributes:
+      label: Feature 기획서 링크
+      description: 기획서 링크를 넣어주세요 ( Notion )
+      placeholder: ex. https://www.notion.so/98167ce8dce74c989b4b3d6839df6a7e?pvs=4
+    validations:
+      required: true
   - type: textarea
     id: feature-contents
     attributes:
@@ -17,13 +26,5 @@ body:
       label: Prepare Issue(Optional)
       description: 관련된 Prepare가 있다면 적어주세요.
       placeholder: "ex. #14"
-    validations:
-      required: false
-  - type: textarea
-    id: related-view
-    attributes:
-      label: Related View(Optional)
-      description: 작업하는 사항에 영향을 받는 View(화면)
-      placeholder: ex. HomeView
     validations:
       required: false

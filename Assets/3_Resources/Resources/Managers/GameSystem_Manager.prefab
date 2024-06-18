@@ -523,8 +523,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
-    SerializedBytes: 01010c000000690049006e006900740044006100740061004100720072002f00000000014600000043006100720067006f006c0064002e004600720061006d00650057006f0072006b002e00470061006d006500530079007300740065006d005f004d0061006e0061006700650072002b0049006e0069007400690061006c0069007a00650044006100740061005b005d002c00200041007300730065006d0062006c0079002d0043005300680061007200700000000000060600000000000000022f01000000014400000043006100720067006f006c0064002e004600720061006d00650057006f0072006b002e00470061006d006500530079007300740065006d005f004d0061006e0061006700650072002b0049006e0069007400690061006c0069007a00650044006100740061002c00200041007300730065006d0062006c0079002d00430053006800610072007000010000000b010c000000690049006e0069007400690061006c0069007a00650072000000000027010b00000074007900700065004e0061006d006500530074007200011500000050006f006f006c0069006e006700530079007300740065006d005f004d0061006e00610067006500720005023001000000020000000b010c000000690049006e0069007400690061006c0069007a00650072000100000027010b00000074007900700065004e0061006d00650053007400720001120000005300610076006500530079007300740065006d005f004d0061006e00610067006500720005023001000000030000000b010c000000690049006e0069007400690061006c0069007a00650072000200000027010b00000074007900700065004e0061006d00650053007400720001120000005500730065007200530079007300740065006d005f004d0061006e00610067006500720005023001000000040000000b010c000000690049006e0069007400690061006c0069007a00650072000300000027010b00000074007900700065004e0061006d006500530074007200011300000053006f0075006e006400530079007300740065006d005f004d0061006e00610067006500720005023001000000050000000b010c000000690049006e0069007400690061006c0069007a00650072000400000027010b00000074007900700065004e0061006d00650053007400720001160000004c006f00630061006c0069007a006500530079007300740065006d005f004d0061006e00610067006500720005023001000000060000000b010c000000690049006e0069007400690061006c0069007a00650072000500000027010b00000074007900700065004e0061006d006500530074007200010f0000005200650073006f0075007200630065004d0061006e006100670065007200050705
+    SerializedFormat: 2
+    SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 1505956353110326021}
     - {fileID: 5840209758653547715}
@@ -536,7 +536,91 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: iInitDataArr
+      Entry: 7
+      Data: 0|Cargold.FrameWork.GameSystem_Manager+InitializeData[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 6
+    - Name: 
+      Entry: 7
+      Data: 1|Cargold.FrameWork.GameSystem_Manager+InitializeData, Assembly-CSharp
+    - Name: iInitializer
+      Entry: 10
+      Data: 0
+    - Name: typeNameStr
+      Entry: 1
+      Data: PoolingSystem_Manager
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 2|Cargold.FrameWork.GameSystem_Manager+InitializeData, Assembly-CSharp
+    - Name: iInitializer
+      Entry: 10
+      Data: 1
+    - Name: typeNameStr
+      Entry: 1
+      Data: SaveSystem_Manager
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 3|Cargold.FrameWork.GameSystem_Manager+InitializeData, Assembly-CSharp
+    - Name: iInitializer
+      Entry: 10
+      Data: 2
+    - Name: typeNameStr
+      Entry: 1
+      Data: UserSystem_Manager
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 4|Cargold.FrameWork.GameSystem_Manager+InitializeData, Assembly-CSharp
+    - Name: iInitializer
+      Entry: 10
+      Data: 3
+    - Name: typeNameStr
+      Entry: 1
+      Data: SoundSystem_Manager
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 5|Cargold.FrameWork.GameSystem_Manager+InitializeData, Assembly-CSharp
+    - Name: iInitializer
+      Entry: 10
+      Data: 4
+    - Name: typeNameStr
+      Entry: 1
+      Data: LocalizeSystem_Manager
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 6|Cargold.FrameWork.GameSystem_Manager+InitializeData, Assembly-CSharp
+    - Name: iInitializer
+      Entry: 10
+      Data: 5
+    - Name: typeNameStr
+      Entry: 1
+      Data: ResourceManager
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   reporterClass: {fileID: 0}
   isAutoInit: 1
   isDontDestroy: 1
@@ -869,14 +953,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
-    SerializedBytes: 2d011200000069005500730065007200440061007400610043006f006e007400610069006e0065007200
+    SerializedFormat: 2
+    SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: iUserDataContainer
+      Entry: 6
+      Data: 
   userData:
     playtime: 0
     isBgmOn: 1
@@ -1357,7 +1444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
+    SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -1794,7 +1881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
+    SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -2145,7 +2232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
+    SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 

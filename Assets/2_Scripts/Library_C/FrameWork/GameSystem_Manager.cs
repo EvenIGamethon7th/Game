@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using Cargold.FrameWork;
 using UnityEngine;
-using Sirenix.OdinInspector;
-using Cargold;
+using Cargold.Infinite;
 
 public class GameSystem_Manager : Cargold.FrameWork.GameSystem_Manager
 {
@@ -12,4 +10,6 @@ public class GameSystem_Manager : Cargold.FrameWork.GameSystem_Manager
 
         // 프로젝트가 시작되면 가장 먼저 호출되는 곳입니다.
     }
+
+
 }

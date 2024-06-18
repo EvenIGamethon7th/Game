@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Cargold.PoolingSystem
 {
@@ -118,7 +119,7 @@ namespace Cargold.PoolingSystem
                 while (0 < this.poolQueue.Count)
                 {
                     PoolerComponent _pooler = poolQueue.Dequeue();
-                    Component.Destroy(_pooler);
+                    Object.Destroy(_pooler);
                 }
 
                 this.groupTrf = null;

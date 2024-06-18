@@ -4,20 +4,20 @@ title: "[신규]"
 labels: "\U0001F5A5신규개발"
 
 body:
-  - type: input
-    id: feature-ticket
-    attributes:
-      label: Feature 기획서 링크
-      description: 기획서 링크를 넣어주세요 ( Notion )
-      placeholder: ex. https://www.notion.so/98167ce8dce74c989b4b3d6839df6a7e?pvs=4
-    validations:
-      required: true
   - type: textarea
     id: feature-contents
     attributes:
       label: Feature 설명
       description: 작업할 Feature에 대한 설명을 적어주세요.
       placeholder: ex. 타이머 화면 그리기
+    validations:
+      required: true
+  - type: textarea
+    id: help-contents
+    attributes:
+      label: 리뷰요청 사항
+      description: 특별히 리뷰를 요청할 사항이 있다면 적어주세요
+      placeholder: ex. 해당 함수 이름을 추천
     validations:
       required: true
   - type: input

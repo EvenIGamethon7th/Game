@@ -11,7 +11,7 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
     private GameObject _root;
 
     private Canvas _canvas;
-
+    //test
     public GameObject Root
     {
         get

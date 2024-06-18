@@ -142,6 +142,51 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &877075542506545173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4468704111680489018}
+  - component: {fileID: 2091348755542159083}
+  m_Layer: 0
+  m_Name: ObjectPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4468704111680489018
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877075542506545173}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1443735505312591849}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2091348755542159083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877075542506545173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46717b67352144e6aa39a5787e6c67aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDontDestroy: 1
 --- !u!1 &1634974385331439801
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,6 +506,8 @@ Transform:
   - {fileID: 4974289373002779434}
   - {fileID: 2325544991489723490}
   - {fileID: 6946584651279942869}
+  - {fileID: 7740115642329547887}
+  - {fileID: 4468704111680489018}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2041881176852209620
@@ -476,91 +523,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
+    SerializedFormat: 0
+    SerializedBytes: 01010c000000690049006e006900740044006100740061004100720072002f00000000014600000043006100720067006f006c0064002e004600720061006d00650057006f0072006b002e00470061006d006500530079007300740065006d005f004d0061006e0061006700650072002b0049006e0069007400690061006c0069007a00650044006100740061005b005d002c00200041007300730065006d0062006c0079002d0043005300680061007200700000000000060600000000000000022f01000000014400000043006100720067006f006c0064002e004600720061006d00650057006f0072006b002e00470061006d006500530079007300740065006d005f004d0061006e0061006700650072002b0049006e0069007400690061006c0069007a00650044006100740061002c00200041007300730065006d0062006c0079002d00430053006800610072007000010000000b010c000000690049006e0069007400690061006c0069007a00650072000000000027010b00000074007900700065004e0061006d006500530074007200011500000050006f006f006c0069006e006700530079007300740065006d005f004d0061006e00610067006500720005023001000000020000000b010c000000690049006e0069007400690061006c0069007a00650072000100000027010b00000074007900700065004e0061006d00650053007400720001120000005300610076006500530079007300740065006d005f004d0061006e00610067006500720005023001000000030000000b010c000000690049006e0069007400690061006c0069007a00650072000200000027010b00000074007900700065004e0061006d00650053007400720001120000005500730065007200530079007300740065006d005f004d0061006e00610067006500720005023001000000040000000b010c000000690049006e0069007400690061006c0069007a00650072000300000027010b00000074007900700065004e0061006d006500530074007200011300000053006f0075006e006400530079007300740065006d005f004d0061006e00610067006500720005023001000000050000000b010c000000690049006e0069007400690061006c0069007a00650072000400000027010b00000074007900700065004e0061006d00650053007400720001160000004c006f00630061006c0069007a006500530079007300740065006d005f004d0061006e00610067006500720005023001000000060000000b010c000000690049006e0069007400690061006c0069007a00650072000500000027010b00000074007900700065004e0061006d006500530074007200010f0000005200650073006f0075007200630065004d0061006e006100670065007200050705
     ReferencedUnityObjects:
     - {fileID: 1505956353110326021}
     - {fileID: 5840209758653547715}
     - {fileID: 7456855956202164841}
     - {fileID: 3927486968737949816}
     - {fileID: 3713819977703297463}
+    - {fileID: 3492626475648249783}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: iInitDataArr
-      Entry: 7
-      Data: 0|Cargold.FrameWork.GameSystem_Manager+InitializeData[], Assembly-CSharp
-    - Name: 
-      Entry: 12
-      Data: 5
-    - Name: 
-      Entry: 7
-      Data: 1|Cargold.FrameWork.GameSystem_Manager+InitializeData, Assembly-CSharp
-    - Name: iInitializer
-      Entry: 10
-      Data: 0
-    - Name: typeNameStr
-      Entry: 1
-      Data: PoolingSystem_Manager
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 2|Cargold.FrameWork.GameSystem_Manager+InitializeData, Assembly-CSharp
-    - Name: iInitializer
-      Entry: 10
-      Data: 1
-    - Name: typeNameStr
-      Entry: 1
-      Data: SaveSystem_Manager
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 3|Cargold.FrameWork.GameSystem_Manager+InitializeData, Assembly-CSharp
-    - Name: iInitializer
-      Entry: 10
-      Data: 2
-    - Name: typeNameStr
-      Entry: 1
-      Data: UserSystem_Manager
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 4|Cargold.FrameWork.GameSystem_Manager+InitializeData, Assembly-CSharp
-    - Name: iInitializer
-      Entry: 10
-      Data: 3
-    - Name: typeNameStr
-      Entry: 1
-      Data: SoundSystem_Manager
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 5|Cargold.FrameWork.GameSystem_Manager+InitializeData, Assembly-CSharp
-    - Name: iInitializer
-      Entry: 10
-      Data: 4
-    - Name: typeNameStr
-      Entry: 1
-      Data: LocalizeSystem_Manager
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   reporterClass: {fileID: 0}
   isAutoInit: 1
   isDontDestroy: 1
@@ -893,17 +869,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
+    SerializedFormat: 0
+    SerializedBytes: 2d011200000069005500730065007200440061007400610043006f006e007400610069006e0065007200
     ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: iUserDataContainer
-      Entry: 6
-      Data: 
+    SerializationNodes: []
   userData:
     playtime: 0
     isBgmOn: 1
@@ -1339,6 +1312,59 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &6255035705072048841
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7740115642329547887}
+  - component: {fileID: 3492626475648249783}
+  m_Layer: 0
+  m_Name: ResourceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7740115642329547887
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6255035705072048841}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1443735505312591849}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3492626475648249783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6255035705072048841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71c10446f014107b7da11c037835adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 0
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
 --- !u!1 &6493207766492575327
 GameObject:
   m_ObjectHideFlags: 0
@@ -1768,7 +1794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -2119,7 +2145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 

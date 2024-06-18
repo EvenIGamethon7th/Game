@@ -119,7 +119,15 @@ namespace Cargold.PoolingSystem
                 while (0 < this.poolQueue.Count)
                 {
                     PoolerComponent _pooler = poolQueue.Dequeue();
-                    Object.Destroy(_pooler);
+                    try
+                    {
+                        Component.Destroy(_pooler);
+                    }
+                    catch(Exception e)
+                    {
+                        Debug_C.Warning_Func(e);
+                    }
+                    
                 }
 
                 this.groupTrf = null;

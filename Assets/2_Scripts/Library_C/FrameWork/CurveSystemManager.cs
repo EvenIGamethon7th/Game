@@ -24,8 +24,9 @@ namespace Cargold.FrameWork
         }
         public void OnCurveWealth(WealthType wealthType, Infinite.Infinite quantity, Vector2 startPos)
         {
-            base.OnCurve_Func(quantity,1,Vector2.zero, (eachQuantity) =>
+            base.OnCurve_Func(quantity,10,Vector2.zero, (eachQuantity) =>
             {
+                ObjectPoolManager.Instance.RegisterPoolingObject(AddressableTable.Demo_Coin, 10, true);
                 UI_CurveElement curved = ObjectPoolManager.Instance
                     .CreatePoolingObject(AddressableTable.Demo_Coin, 
                         startPos,true).GetComponent<UI_CurveElement>();

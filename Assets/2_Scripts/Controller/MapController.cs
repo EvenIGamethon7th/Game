@@ -25,15 +25,20 @@ namespace _2_Scripts.Controller
             MoveIndicatorGenerate();
         }
 
+
         private void MoveIndicatorGenerate()
         {
             BoundsInt bounds = mMap.cellBounds;
-            for (int x = bounds.xMin; x < bounds.xMax; x+= 2)
+            Vector3 tileSize = mMap.cellSize;
+            Vector3 indicatorOffset = new Vector3(tileSize.x, tileSize.y, 0); // 타일 크기의 반만큼 이동하여 중앙에 배치
+
+            for (int x = bounds.xMin; x < bounds.xMax; x += 2)
             {
-                for (int y = bounds.yMin; y < bounds.yMax; y++)
+                for (int y = bounds.yMin; y < bounds.yMax; y += 2)
                 {
                     Vector3Int cellPosition = new Vector3Int(x, y, 0);
-                    Vector3 worldPosition = mMap.CellToWorld(cellPosition);
+                    Vector3 worldPosition = mMap.CellToWorld(cellPosition) + indicatorOffset;
+                    // 인디케이터 배치
                     Instantiate(mIndicatorPrefab, worldPosition, Quaternion.identity);
                 }
             }

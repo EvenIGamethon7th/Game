@@ -2,8 +2,10 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using _2_Scripts.Utils;
     using Cargold;
     using Sirenix.OdinInspector;
+    using UniRx;
     using UnityEngine;
     using UnityEngine.AddressableAssets;
     using UnityEngine.ResourceManagement.AsyncOperations;
@@ -155,6 +157,7 @@ public class ResourceManager : SerializedMonoBehaviour,GameSystem_Manager.IIniti
             {
                 IsPreLoad = true;
                 Debug_C.Log_Func("Resource Load Completed");
+                MessageBroker.Default.Publish(new TaskMessage(ETaskList.ResourceLoad));
             }
         });
     }

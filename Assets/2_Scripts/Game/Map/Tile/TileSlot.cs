@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿using _2_Scripts.Game.Unit;
+using UnityEngine;
 
 namespace _2_Scripts.Game.Map.Tile
 {
     public class TileSlot : MonoBehaviour
     {
-        public GameObject OccupantUnit { get; private set; }
-        
+        public UnitGroup OccupantUnit { get; private set; }
+        public void SetOccupantUnit(UnitGroup unitGroup)
+        {
+            OccupantUnit = unitGroup;
+        }
     }
 }

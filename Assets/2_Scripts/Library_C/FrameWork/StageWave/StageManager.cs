@@ -1,17 +1,19 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using _2_Scripts.Game.Map;
 using _2_Scripts.Game.Monster;
 using _2_Scripts.Utils;
 using Cargold;
 using Cysharp.Threading.Tasks;
+using Rito.Attributes;
 using UniRx;
 using UnityEngine;
 
 public class StageManager : Singleton<StageManager>
 {
 
-    [SerializeField] private Vector2 mSpawnPoint;
+    [GetComponent] private WayPoint mWayPoint;
     
     private StageData mCurrentStageData;
     private Queue<WaveData> mWaveQueue = new Queue<WaveData>();
@@ -30,8 +32,8 @@ public class StageManager : Singleton<StageManager>
         MessageBroker.Default.Receive<TaskMessage>().Where(message => message.Task == ETaskList.ResourceLoad).Subscribe(
             _ =>
             {
+                ObjectPoolManager.Instance.RegisterPoolingObject("Monster", 100);
                 StageInit(TableDataKey_C.Stage_Stage_0);
-                
             });
     }
 
@@ -55,8 +57,8 @@ public class StageManager : Singleton<StageManager>
             int spawnCount = 0;
             while (spawnCount < mCurrentWaveData.spawnCount)
             {
-                Monster monster =  ObjectPoolManager.Instance.CreatePoolingObject("Monster",mSpawnPoint).GetComponent<Monster>();
-                monster.SpawnMonster(mCurrentWaveData.monsterKey);
+                Monster monster =  ObjectPoolManager.Instance.CreatePoolingObject("Monster",mWayPoint.GetWayPointPosition(0)).GetComponent<Monster>();
+                monster.SpawnMonster(mCurrentWaveData.monsterKey,mWayPoint);
                 spawnCount++;
                 await UniTask.WaitForSeconds(SPAWN_COOL_TIME);
             }

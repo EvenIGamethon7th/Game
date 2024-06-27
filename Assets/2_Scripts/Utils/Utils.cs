@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 public class Utils
@@ -25,5 +27,18 @@ public class Utils
             name = name.Substring(0, index);
         return name;
             
+    }
+
+    public static T DeepCopy<T>(T source) where T : new()
+    {
+        object result = null;
+        using (var ms = new MemoryStream())
+        {
+            var formatter = new BinaryFormatter();
+            formatter.Serialize(ms, source);
+            ms.Position = 0;
+            result = (T)formatter.Deserialize(ms);
+        }
+        return (T)result;
     }
 }

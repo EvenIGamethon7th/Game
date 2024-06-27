@@ -1,4 +1,5 @@
 ﻿using System;
+using _2_Scripts.Game.Map;
 using _2_Scripts.Game.Map.Tile;
 using _2_Scripts.Game.Unit;
 using Cargold;
@@ -14,12 +15,14 @@ namespace _2_Scripts.Game.Controller
     {
         private TileSlot mSelectTileSlot;
         private UnitGroup mSelectUnitGroup;
+        private Indicator mIndicator;
+        private GameObject mSelectCircle;
 
         private bool mHasLongTouch = false;
 
         private void Start()
         {
-            
+
             var mouseDownStream = this.UpdateAsObservable().Where(_ => Input.GetMouseButtonDown(0));
             var mouseUpStream = this.UpdateAsObservable().Where(_ => Input.GetMouseButtonUp(0));
 
@@ -28,7 +31,12 @@ namespace _2_Scripts.Game.Controller
                 .Where(_ => mHasLongTouch)
                 .Subscribe(_ =>
                 {
-                    //TODO: src, dst, 인디케이터 표시
+                    var dstSlot = MapManager.Instance.GetClickTileSlotDetailOrNull();
+                    if (dstSlot != null)
+                    {
+                        mIndicator.SetIndicator(mSelectTileSlot.transform.position, dstSlot.transform.position);
+                    }
+                    
                     Debug.Log($"Long touch : srcTile: {mSelectTileSlot?.transform.position}, dstTile: {MapManager.Instance.GetClickTileSlotDetailOrNull()?.transform.position}");
                 });
 
@@ -61,6 +69,11 @@ namespace _2_Scripts.Game.Controller
                 .SelectMany(_ => mouseUpStream.First())
                 .Subscribe(_ =>
                 {
+                    if (mIndicator == null)
+                    {
+                        mIndicator = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Indicator, Vector2.zero).GetComponent<Indicator>();
+                    }
+
                     if (mHasLongTouch)
                     {
                         //위치 이동 및 자리 변경
@@ -74,16 +87,31 @@ namespace _2_Scripts.Game.Controller
                             }
                             dstSlot.SetOccupantUnit(mSelectUnitGroup);
                         }
-
+                        mHasLongTouch = false;
+                        mIndicator?.SetActive(false);
                     }
 
                     else
                     {
                         mSelectTileSlot = MapManager.Instance.GetClickTileSlotDetailOrNull();
                         mSelectUnitGroup = mSelectTileSlot?.GetComponent<TileSlot>().OccupantUnit;
+                        if (mSelectCircle == null)
+                            mSelectCircle = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Select_Circle, Vector2.zero);
+                        if (mSelectUnitGroup != null)
+                        {
+                            //TODO: UI에 정보 올리기
+                            mSelectCircle.transform.parent = mSelectUnitGroup.transform;
+                            mSelectCircle.transform.position = mSelectUnitGroup.transform.position;
+                            mSelectCircle.SetActive(true);
+                        }
+
+                        else
+                        {
+                            mSelectCircle.transform.parent = null;
+                            mSelectCircle.SetActive(false);
+                        }
                     }
                     Debug.Log($"select Unit : {mSelectUnitGroup?.name}");
-                    mHasLongTouch = false;
                 });
             
         }

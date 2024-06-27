@@ -19,6 +19,7 @@ public class MapManager : Singleton<MapManager>
         _ =>
         {
             CreateInitialTileSlots();
+            CreateIndicator();
             TestUnitGroupCreate();
         });
     }
@@ -41,6 +42,11 @@ public class MapManager : Singleton<MapManager>
         RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero); 
         TileSlot tileSlot = hit.collider != null ? hit.transform.GetComponent<TileSlot>() : null;
         return tileSlot;
+    }
+
+    private void CreateIndicator()
+    {
+        ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Indicator, Vector2.zero);
     }
 
     private void CreateInitialTileSlots()

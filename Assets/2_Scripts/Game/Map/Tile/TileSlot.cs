@@ -9,6 +9,7 @@ namespace _2_Scripts.Game.Map.Tile
         public void SetOccupantUnit(UnitGroup unitGroup)
         {
             OccupantUnit = unitGroup;
+            OccupantUnit.MoveGroup(this);
         }
     }
 }

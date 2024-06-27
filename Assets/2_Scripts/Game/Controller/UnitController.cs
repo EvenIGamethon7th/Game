@@ -1,27 +1,89 @@
 ﻿using System;
 using _2_Scripts.Game.Map.Tile;
 using _2_Scripts.Game.Unit;
+using Cargold;
 using UniRx;
 using UniRx.Triggers;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace _2_Scripts.Game.Controller
 {
     public class UnitController : MonoBehaviour
     {
+        private TileSlot mSelectTileSlot;
         private UnitGroup mSelectUnitGroup;
+
+        private bool mHasLongTouch = false;
+
         private void Start()
         {
             
             var mouseDownStream = this.UpdateAsObservable().Where(_ => Input.GetMouseButtonDown(0));
             var mouseUpStream = this.UpdateAsObservable().Where(_ => Input.GetMouseButtonUp(0));
 
+            //롱 터치 시 목적지 위치를 프레임마다 받아옴
+            this.UpdateAsObservable()
+                .Where(_ => mHasLongTouch)
+                .Subscribe(_ =>
+                {
+                    //TODO: src, dst, 인디케이터 표시
+                    Debug.Log($"Long touch : srcTile: {mSelectTileSlot?.transform.position}, dstTile: {MapManager.Instance.GetClickTileSlotDetailOrNull()?.transform.position}");
+                });
+
+            //유닛을 선택했을 때 같은 타일을 선택했는지
+            mouseDownStream
+                .Subscribe(_ =>
+                {
+                    if (mSelectUnitGroup != null && mSelectTileSlot == MapManager.Instance.GetClickTileSlotDetailOrNull())
+                    {
+                        Debug.Log("Click Same Unit and Tile");
+                        //롱 터치 판별
+                        mouseUpStream
+                            .Buffer(TimeSpan.FromSeconds(1))
+                            .Take(1)
+                            .Where(x => x.Count == 0)
+                            .Subscribe(_ =>
+                            {
+                                mHasLongTouch = true;
+                            });
+                    }
+
+                    else
+                    {
+                        Debug.Log("Click Different Unit or Tile");
+                    }
+                    
+                });
+
             mouseDownStream
                 .SelectMany(_ => mouseUpStream.First())
                 .Subscribe(_ =>
                 {
-                    mSelectUnitGroup = MapManager.Instance.GetClickTileSlotDetailOrNull()?.GetComponent<TileSlot>().OccupantUnit;
+                    if (mHasLongTouch)
+                    {
+                        //위치 이동 및 자리 변경
+                        TileSlot dstSlot = MapManager.Instance.GetClickTileSlotDetailOrNull();
+                        if (dstSlot != null)
+                        {
+                            UnitGroup dstUnit = dstSlot.OccupantUnit;
+                            if (dstUnit != null)
+                            {
+                                mSelectTileSlot.SetOccupantUnit(dstUnit);
+                            }
+                            dstSlot.SetOccupantUnit(mSelectUnitGroup);
+                        }
+
+                    }
+
+                    else
+                    {
+                        mSelectTileSlot = MapManager.Instance.GetClickTileSlotDetailOrNull();
+                        mSelectUnitGroup = mSelectTileSlot?.GetComponent<TileSlot>().OccupantUnit;
+                    }
                     Debug.Log($"select Unit : {mSelectUnitGroup?.name}");
+                    mHasLongTouch = false;
                 });
             
         }

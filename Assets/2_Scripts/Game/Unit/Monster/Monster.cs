@@ -10,22 +10,33 @@ namespace _2_Scripts.Game.Monster
 {
     public class Monster : MonoBehaviour
     {
-        [GetComponent] private Animator mAnimator;
-        
+        private Animator mAnimator;
+        private MatController mMatController;
         private MonsterData mMonsterData;
 
         private WayPoint mWayPoint;
         private int mWayPointIndex = 0;
         private Vector3 mNextWayPoint;
-        
+
+        private void Awake()
+        {
+            mAnimator = GetComponent<Animator>();
+            mMatController = GetComponent<MatController>();
+        }
+
         public void SpawnMonster(string key,WayPoint waypoint)
         {
             var originData = DataBase_Manager.Instance.GetMonster.GetData_Func(key);
             mMonsterData = global::Utils.DeepCopy(originData);
             //TODO Sprite Change And Animation
-            mAnimator = ResourceManager.Instance.Load<Animator>(originData.addressableKey);
+            ResourceManager.Instance.Load<RuntimeAnimatorController>(originData.addressableKey,
+            (controller) =>
+            {
+                mAnimator.runtimeAnimatorController = controller;
+            });
             mWayPoint = waypoint;
             mWayPointIndex = 0;
+            mMatController.RunDissolve();
             NextWayPoint();
         }
         

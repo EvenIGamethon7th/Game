@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b316079e10a358b46830f00bc7672389, type: 3}
-  m_Name: DB_LocalizeDataGroup
+  m_Script: {fileID: 11500000, guid: c8a313ef052eda84e81d4bcf1277a0f1, type: 3}
+  m_Name: DB_StageDataGroup
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -23,7 +23,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: dataDic
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[LocalizeData,
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[StageData,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
@@ -34,55 +34,40 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 1
-      Data: Lo_Test
+      Data: Stage_0
     - Name: $v
       Entry: 7
-      Data: 2|LocalizeData, Assembly-CSharp
+      Data: 2|StageData, Assembly-CSharp
     - Name: Key
       Entry: 1
-      Data: Lo_Test
-    - Name: ko
+      Data: Stage_0
+    - Name: waveList
+      Entry: 7
+      Data: 3|System.String[], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
       Entry: 1
-      Data: "\uD14C\uC2A4\uD2B8"
-    - Name: en
+      Data: Wave_0
+    - Name: 
       Entry: 1
-      Data: test
-    - Name: ja
+      Data: Wave_1
+    - Name: 
       Entry: 1
-      Data: "\u30C6\u30B9\u30C8"
+      Data: Wave2
+    - Name: 
+      Entry: 13
+      Data: 
     - Name: 
       Entry: 8
       Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: Lo_Monster_0
-    - Name: $v
-      Entry: 7
-      Data: 3|LocalizeData, Assembly-CSharp
-    - Name: Key
-      Entry: 1
-      Data: Lo_Monster_0
-    - Name: ko
-      Entry: 1
-      Data: "\uCD88\uCD88\uC774"
-    - Name: en
-      Entry: 1
-      Data: Chome
-    - Name: ja
-      Entry: 1
-      Data: "\u30C1\u30E7\u30F3\u30C1\u30E7\u30EB"
     - Name: 
       Entry: 8
       Data: 
@@ -96,14 +81,10 @@ MonoBehaviour:
       Entry: 8
       Data: 
   dataArr:
-  - Key: Lo_Test
-    ko: "\uD14C\uC2A4\uD2B8"
-    en: test
-    ja: "\u30C6\u30B9\u30C8"
-  - Key: Lo_Monster_0
-    ko: "\uCD88\uCD88\uC774"
-    en: Chome
-    ja: "\u30C1\u30E7\u30F3\u30C1\u30E7\u30EB"
+  - Key: Stage_0
+    waveList:
+    - Wave_0
+    - Wave_1
+    - Wave2
   keyArr:
-  - Lo_Test
-  - Lo_Monster_0
+  - Stage_0

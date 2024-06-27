@@ -1156,7 +1156,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDontDestroy: 1
-  mSpawnPoint: {x: 0, y: 0}
 --- !u!4 &1073604311
 Transform:
   m_ObjectHideFlags: 0
@@ -1187,6 +1186,8 @@ MonoBehaviour:
   mPoints:
   - {x: -8.5, y: -9.8, z: 0}
   - {x: -8.5, y: 6.5, z: 0}
+  - {x: 8.5, y: 6.5, z: 0}
+  - {x: 8.5, y: -9.8, z: 0}
 --- !u!1 &1203793174
 GameObject:
   m_ObjectHideFlags: 0

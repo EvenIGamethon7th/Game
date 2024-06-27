@@ -49,24 +49,20 @@ public class StageManager : Singleton<StageManager>
 
     private async UniTaskVoid StartWave()
     {
-        while (true)
+        while (mWaveQueue.Count != 0)
         {
-            if(mWaveQueue.Count == 0)
-            {
-                await UniTask.CompletedTask;
-            }
             mCurrentWaveData = mWaveQueue.Dequeue();
             int spawnCount = 0;
             while (spawnCount < mCurrentWaveData.spawnCount)
             {
                 Monster monster =  ObjectPoolManager.Instance.CreatePoolingObject("Monster",mSpawnPoint).GetComponent<Monster>();
                 monster.SpawnMonster(mCurrentWaveData.monsterKey);
+                spawnCount++;
                 await UniTask.WaitForSeconds(SPAWN_COOL_TIME);
             }
             await UniTask.WaitForSeconds(NEXT_WAVE_TIME);
             Debug_C.Log_Func($"다음 Wave 시작 {mCurrentWaveData.Key}");
         }
-        // ReSharper disable once FunctionNeverReturns
     }
     
     

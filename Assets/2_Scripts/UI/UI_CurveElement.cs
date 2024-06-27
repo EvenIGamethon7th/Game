@@ -34,7 +34,7 @@ namespace _2_Scripts.UI
             // Obj Manager?
         }
 
-        public void Deactivate()
+        private void Deactivate()
         {
             this.gameObject.SetActive(false);
         }
@@ -43,6 +43,7 @@ namespace _2_Scripts.UI
         {
             UserSystem_Manager.Instance.wealth.TryGetWealthControl_Func(
                 Cargold.FrameWork.UserSystem_Manager.WealthControl.Earn, _wealthType, (int)_quantity);
+            Deactivate();
         }
 
     }

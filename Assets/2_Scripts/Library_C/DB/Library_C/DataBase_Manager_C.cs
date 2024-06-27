@@ -59,6 +59,39 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             return this.item;
         }
     }
+    [InlineEditor, LabelText("Monster"), SerializeField] private DB_MonsterDataGroup monster;
+    public DB_MonsterDataGroup GetMonster
+    {
+        get
+        {
+            if (this.monster == null)
+                this.monster = Resources.Load<DB_MonsterDataGroup>(base.dataGroupSobjPath + "DB_MonsterDataGroup");
+
+            return this.monster;
+        }
+    }
+    [InlineEditor, LabelText("Wave"), SerializeField] private DB_WaveDataGroup wave;
+    public DB_WaveDataGroup GetWave
+    {
+        get
+        {
+            if (this.wave == null)
+                this.wave = Resources.Load<DB_WaveDataGroup>(base.dataGroupSobjPath + "DB_WaveDataGroup");
+
+            return this.wave;
+        }
+    }
+    [InlineEditor, LabelText("Stage"), SerializeField] private DB_StageDataGroup stage;
+    public DB_StageDataGroup GetStage
+    {
+        get
+        {
+            if (this.stage == null)
+                this.stage = Resources.Load<DB_StageDataGroup>(base.dataGroupSobjPath + "DB_StageDataGroup");
+
+            return this.stage;
+        }
+    }
     #endregion
 
     #region Library
@@ -81,6 +114,9 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             this.define.Init_Func();
             this.localize.Init_Func();
             this.item.Init_Func();
+            this.monster.Init_Func();
+            this.wave.Init_Func();
+            this.stage.Init_Func();
         }
     }
 
@@ -90,6 +126,9 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
         this.GetDefine.CallEdit_OnDataImportDone_Func();
         this.GetLocalize.CallEdit_OnDataImportDone_Func();
         this.GetItem.CallEdit_OnDataImportDone_Func();
+        this.GetMonster.CallEdit_OnDataImportDone_Func();
+        this.GetWave.CallEdit_OnDataImportDone_Func();
+        this.GetStage.CallEdit_OnDataImportDone_Func();
         
         base.CallEdit_OnDataImport_Func();
     }

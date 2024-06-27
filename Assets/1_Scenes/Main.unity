@@ -1125,6 +1125,68 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1073604309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1073604311}
+  - component: {fileID: 1073604310}
+  - component: {fileID: 1073604312}
+  m_Layer: 0
+  m_Name: StageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1073604310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073604309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca5f902811aa41a195a012bb624ab728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDontDestroy: 1
+  mSpawnPoint: {x: 0, y: 0}
+--- !u!4 &1073604311
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073604309}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1073604312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073604309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46b5093ee904477ab055541550c2cdab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mPoints:
+  - {x: -8.5, y: -9.8, z: 0}
+  - {x: -8.5, y: 6.5, z: 0}
 --- !u!1 &1203793174
 GameObject:
   m_ObjectHideFlags: 0
@@ -14249,3 +14311,4 @@ SceneRoots:
   - {fileID: 491619743}
   - {fileID: 488995284}
   - {fileID: 1788143809}
+  - {fileID: 1073604311}

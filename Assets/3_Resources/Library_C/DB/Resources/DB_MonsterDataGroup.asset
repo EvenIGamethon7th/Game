@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b316079e10a358b46830f00bc7672389, type: 3}
-  m_Name: DB_LocalizeDataGroup
+  m_Script: {fileID: 11500000, guid: 776cacc3114a23b459e7fbaef849b2b3, type: 3}
+  m_Name: DB_MonsterDataGroup
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -23,7 +23,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: dataDic
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[LocalizeData,
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[MonsterData,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
@@ -34,55 +34,34 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 1
-      Data: Lo_Test
+      Data: Monster_0
     - Name: $v
       Entry: 7
-      Data: 2|LocalizeData, Assembly-CSharp
+      Data: 2|MonsterData, Assembly-CSharp
     - Name: Key
       Entry: 1
-      Data: Lo_Test
-    - Name: ko
-      Entry: 1
-      Data: "\uD14C\uC2A4\uD2B8"
-    - Name: en
-      Entry: 1
-      Data: test
-    - Name: ja
-      Entry: 1
-      Data: "\u30C6\u30B9\u30C8"
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
+      Data: Monster_0
+    - Name: nameKey
       Entry: 1
       Data: Lo_Monster_0
-    - Name: $v
-      Entry: 7
-      Data: 3|LocalizeData, Assembly-CSharp
-    - Name: Key
+    - Name: hp
+      Entry: 4
+      Data: 100
+    - Name: def
+      Entry: 4
+      Data: 2.5
+    - Name: speed
+      Entry: 4
+      Data: 3.8
+    - Name: addressableKey
       Entry: 1
-      Data: Lo_Monster_0
-    - Name: ko
-      Entry: 1
-      Data: "\uCD88\uCD88\uC774"
-    - Name: en
-      Entry: 1
-      Data: Chome
-    - Name: ja
-      Entry: 1
-      Data: "\u30C1\u30E7\u30F3\u30C1\u30E7\u30EB"
+      Data: Monster_0
     - Name: 
       Entry: 8
       Data: 
@@ -96,14 +75,11 @@ MonoBehaviour:
       Entry: 8
       Data: 
   dataArr:
-  - Key: Lo_Test
-    ko: "\uD14C\uC2A4\uD2B8"
-    en: test
-    ja: "\u30C6\u30B9\u30C8"
-  - Key: Lo_Monster_0
-    ko: "\uCD88\uCD88\uC774"
-    en: Chome
-    ja: "\u30C1\u30E7\u30F3\u30C1\u30E7\u30EB"
+  - Key: Monster_0
+    nameKey: Lo_Monster_0
+    hp: 100
+    def: 2.5
+    speed: 3.8
+    addressableKey: Monster_0
   keyArr:
-  - Lo_Test
-  - Lo_Monster_0
+  - Monster_0

@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b316079e10a358b46830f00bc7672389, type: 3}
-  m_Name: DB_LocalizeDataGroup
+  m_Script: {fileID: 11500000, guid: 8e3bbb34102570d4080e44061b621f13, type: 3}
+  m_Name: DB_WaveDataGroup
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -23,7 +23,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: dataDic
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[LocalizeData,
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[WaveData,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
@@ -34,28 +34,25 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 3
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 1
-      Data: Lo_Test
+      Data: Wave_0
     - Name: $v
       Entry: 7
-      Data: 2|LocalizeData, Assembly-CSharp
+      Data: 2|WaveData, Assembly-CSharp
     - Name: Key
       Entry: 1
-      Data: Lo_Test
-    - Name: ko
+      Data: Wave_0
+    - Name: monsterKey
       Entry: 1
-      Data: "\uD14C\uC2A4\uD2B8"
-    - Name: en
-      Entry: 1
-      Data: test
-    - Name: ja
-      Entry: 1
-      Data: "\u30C6\u30B9\u30C8"
+      Data: Monster_0
+    - Name: spawnCount
+      Entry: 3
+      Data: 5
     - Name: 
       Entry: 8
       Data: 
@@ -67,22 +64,43 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: Lo_Monster_0
+      Data: Wave_1
     - Name: $v
       Entry: 7
-      Data: 3|LocalizeData, Assembly-CSharp
+      Data: 3|WaveData, Assembly-CSharp
     - Name: Key
       Entry: 1
-      Data: Lo_Monster_0
-    - Name: ko
+      Data: Wave_1
+    - Name: monsterKey
       Entry: 1
-      Data: "\uCD88\uCD88\uC774"
-    - Name: en
+      Data: Monster_0
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
       Entry: 1
-      Data: Chome
-    - Name: ja
+      Data: Wave_2
+    - Name: $v
+      Entry: 7
+      Data: 4|WaveData, Assembly-CSharp
+    - Name: Key
       Entry: 1
-      Data: "\u30C1\u30E7\u30F3\u30C1\u30E7\u30EB"
+      Data: Wave_2
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_0
+    - Name: spawnCount
+      Entry: 3
+      Data: 15
     - Name: 
       Entry: 8
       Data: 
@@ -96,14 +114,16 @@ MonoBehaviour:
       Entry: 8
       Data: 
   dataArr:
-  - Key: Lo_Test
-    ko: "\uD14C\uC2A4\uD2B8"
-    en: test
-    ja: "\u30C6\u30B9\u30C8"
-  - Key: Lo_Monster_0
-    ko: "\uCD88\uCD88\uC774"
-    en: Chome
-    ja: "\u30C1\u30E7\u30F3\u30C1\u30E7\u30EB"
+  - Key: Wave_0
+    monsterKey: Monster_0
+    spawnCount: 5
+  - Key: Wave_1
+    monsterKey: Monster_0
+    spawnCount: 10
+  - Key: Wave_2
+    monsterKey: Monster_0
+    spawnCount: 15
   keyArr:
-  - Lo_Test
-  - Lo_Monster_0
+  - Wave_0
+  - Wave_1
+  - Wave_2

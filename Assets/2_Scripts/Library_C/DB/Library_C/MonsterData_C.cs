@@ -15,7 +15,6 @@ public partial class MonsterData : Data_C
      [LabelText("체력")] public float hp;
      [LabelText("방어력")] public float def;
      [LabelText("이동속도")] public float speed;
-     [LabelText("어드레서블이름")] public string addressableKey;
 
     
 
@@ -27,7 +26,6 @@ public partial class MonsterData : Data_C
         hp = _cellDataArr[2].ToFloat();
         def = _cellDataArr[3].ToFloat();
         speed = _cellDataArr[4].ToFloat();
-        addressableKey = _cellDataArr[5];
     }
 #endif
 }

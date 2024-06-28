@@ -2,7 +2,9 @@
 {
     public enum ETaskList
     {
-        ResourceLoad
+        ResourceLoad,
+        BossDeath,
+        GameOver,
     }
     
     public class TaskMessage

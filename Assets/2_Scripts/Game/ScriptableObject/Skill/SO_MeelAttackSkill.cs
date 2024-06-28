@@ -18,6 +18,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
         private CharacterData mOwnerData;
         private Monster mTargetMonster;
         [Title("데미지 증감 퍼센트")]
+        [SerializeField]
         public float PercentDamage { get; private set; }
         
         

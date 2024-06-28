@@ -29,7 +29,7 @@ namespace _2_Scripts.Game.Monster
             var originData = DataBase_Manager.Instance.GetMonster.GetData_Func(key);
             mMonsterData = global::Utils.DeepCopy(originData);
             //TODO Sprite Change And Animation
-            ResourceManager.Instance.Load<RuntimeAnimatorController>(originData.addressableKey,
+            ResourceManager.Instance.Load<RuntimeAnimatorController>(originData.nameKey,
             (controller) =>
             {
                 mAnimator.runtimeAnimatorController = controller;

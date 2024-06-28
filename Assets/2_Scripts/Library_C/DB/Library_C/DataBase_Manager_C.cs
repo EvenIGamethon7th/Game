@@ -70,6 +70,17 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             return this.monster;
         }
     }
+    [InlineEditor, LabelText("Character"), SerializeField] private DB_CharacterDataGroup character;
+    public DB_CharacterDataGroup GetCharacter
+    {
+        get
+        {
+            if (this.character == null)
+                this.character = Resources.Load<DB_CharacterDataGroup>(base.dataGroupSobjPath + "DB_CharacterDataGroup");
+
+            return this.character;
+        }
+    }
     [InlineEditor, LabelText("Wave"), SerializeField] private DB_WaveDataGroup wave;
     public DB_WaveDataGroup GetWave
     {
@@ -115,6 +126,7 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             this.localize.Init_Func();
             this.item.Init_Func();
             this.monster.Init_Func();
+            this.character.Init_Func();
             this.wave.Init_Func();
             this.stage.Init_Func();
         }
@@ -127,6 +139,7 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
         this.GetLocalize.CallEdit_OnDataImportDone_Func();
         this.GetItem.CallEdit_OnDataImportDone_Func();
         this.GetMonster.CallEdit_OnDataImportDone_Func();
+        this.GetCharacter.CallEdit_OnDataImportDone_Func();
         this.GetWave.CallEdit_OnDataImportDone_Func();
         this.GetStage.CallEdit_OnDataImportDone_Func();
         

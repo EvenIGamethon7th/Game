@@ -23,10 +23,20 @@ namespace _2_Scripts.Game.Monster
             var originData = DataBase_Manager.Instance.GetMonster.GetData_Func(key);
             mMonsterData = global::Utils.DeepCopy(originData);
             //TODO Sprite Change And Animation
-            mAnimator = ResourceManager.Instance.Load<Animator>(originData.addressableKey);
+            mAnimator = ResourceManager.Instance.Load<Animator>(originData.nameKey);
             mWayPoint = waypoint;
             mWayPointIndex = 0;
             NextWayPoint();
+        }
+        
+        public void TakeDamage(float damage)
+        {
+            mMonsterData.hp -= damage;
+            if (mMonsterData.hp <= 0)
+            {
+                //TODO Monster Die
+                gameObject.SetActive(false);
+            }
         }
         
         private void NextWayPoint()

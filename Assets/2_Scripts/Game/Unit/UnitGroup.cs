@@ -14,11 +14,11 @@ namespace _2_Scripts.Game.Unit
         private readonly int nMaxUnitCount = 3;
         private int mCurrentUnitCount = 0;
 
-        private CUnit[] units;
+        private CUnit[] mUnits;
 
         private void Awake()
         {
-            units = new CUnit[nMaxUnitCount];
+            mUnits = new CUnit[nMaxUnitCount];
         }
 
         public void MoveGroup(TileSlot destinationTileSlot)
@@ -43,14 +43,18 @@ namespace _2_Scripts.Game.Unit
 
         public bool CanAddUnit()
         {
+            if (mCurrentUnitCount == 1 && mUnits[0].CurrentUnitRank == EUnitRank.Unique)
+                return false;
+
             return mCurrentUnitCount < nMaxUnitCount;
         }
 
         public void AddUnit(CUnit NewUnit)
         {
-            if (mCurrentUnitCount >= nMaxUnitCount) return;
+            if (mCurrentUnitCount == 1 && mUnits[0].CurrentUnitRank == EUnitRank.Unique) return;
+                if (mCurrentUnitCount >= nMaxUnitCount) return;
 
-            units[mCurrentUnitCount] = NewUnit;
+            mUnits[mCurrentUnitCount] = NewUnit;
             ++mCurrentUnitCount;
         }
     }

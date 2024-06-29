@@ -11,14 +11,14 @@ public class UI_Manager : MonoBehaviour
     [HideInInspector]
     public Dropdown animation_dropdown;
     [HideInInspector]
-    public Dropdown emoji_dropdown;
-
-    [HideInInspector]
     public Button levelup_button;
     [HideInInspector]
     public Toggle loop_toggle;
     [HideInInspector]
     public Toggle wing_toggle;
+    [HideInInspector]
+    public Dropdown emoji_dropdown;
+
 
     [HideInInspector]
     public List<SkeletonAnimation> PIXEL_list = new List<SkeletonAnimation>();
@@ -43,17 +43,17 @@ public class UI_Manager : MonoBehaviour
     public enum weapon
     {
         None,
-        Angel_Archer_Weapon,
-        Devil_Archer_Weapon,
-        Fox_Hunter_Weapon,
-        Green_Archer_Weapon,
-        Holy_Archer_Weapon,
-        Indian_Archer_Weapon,
-        Oni_Archer_Weapon,
-        Poison_Archer_Weapon,
-        Royal_Archer_Weapon,
-        Steam_Punk_Archer_Weapon,
-
+        Clown_Magician_Weapon,
+        Mushroom_Witch_Weapon,
+        Maestro_Magician_Weapon,
+        Frozen_Witch_Weapon,
+        Flower_Pink_Magician_Weapon,
+        Flame_Magician_Weapon,
+        Fairy_Green_Magician_Weapon,
+        Science_Wizard_Weapon,
+        Royal_Magician_Weapon,
+        Star_Magician_Weapon,
+        Star_Magician_Weapon_2
     }
     public enum Animation
     {
@@ -69,7 +69,6 @@ public class UI_Manager : MonoBehaviour
         Attack_7,
         Attack_8,
         Attack_9,
-        Attack_10,
         Die_1,
         Die_2,
         Hit,
@@ -82,8 +81,16 @@ public class UI_Manager : MonoBehaviour
         Win_2,
         Jump,
         Jump_Landing,
-        Jump_Attack
-
+        Jump_Attack,
+        Charging_1,
+        Charging_1_End,
+        Charging_1_Loop,
+        Charging_2,
+        Charging_2_End,
+        Charging_2_Loop,
+        Charging_3,
+        Charging_3_End,
+        Charging_3_Loop
     }
 
     public enum Emoji
@@ -99,9 +106,7 @@ public class UI_Manager : MonoBehaviour
         Emoji_Star,
         Emoji_Smile,
         Emoji_Sad
-
     }
-
 
     [Space(10)]
     [Header("Change Enum")]
@@ -115,6 +120,7 @@ public class UI_Manager : MonoBehaviour
         waepon_dropdown_create();
         animation_dropdown_create();
         emoji_dropdown_create();
+
 
         for (int i = 0; i < PIXEL_list.Count; i++)
         {
@@ -138,33 +144,17 @@ public class UI_Manager : MonoBehaviour
     {
         if (!wing_toggle.isOn)
         {
-            for (int i = 10; i < PIXEL_list.Count; i++)
+            for (int i = 20; i < PIXEL_list.Count; i++)
             {
-                Debug.Log(i);
-                if (i != 18)
-                {
-                    PIXEL_list[i].Skeleton.SetAttachment("Back_2", null);
-                }
-                if (i == 20 || i == 27 || i == 29)
-                {
-                    PIXEL_list[i].Skeleton.SetAttachment("Back_3", null);
-                }
+                PIXEL_list[i].Skeleton.SetAttachment("Back_2", null);
             }
         }
 
         else
         {
-            for (int i = 10; i < PIXEL_list.Count; i++)
+            for (int i = 20; i < PIXEL_list.Count; i++)
             {
-                if (i != 18)
-                {
-                    PIXEL_list[i].Skeleton.SetAttachment("Back_2", "Back_2");
-                }
-
-                if (i == 20 || i == 27 || i == 29)
-                {
-                    PIXEL_list[i].Skeleton.SetAttachment("Back_3", "Back_3");
-                }
+                PIXEL_list[i].Skeleton.SetAttachment("Back_2", "Back_2");
             }
         }
     }
@@ -225,7 +215,6 @@ public class UI_Manager : MonoBehaviour
         animation_dropdown.value = UI_Index[level_count].ani_index;
     }
 
-
     private void emoji_dropdown_create()
     {
         emoji_dropdown.onValueChanged.AddListener(delegate { emoji_dropdownValueChangedHandler(emoji_dropdown); });
@@ -241,18 +230,16 @@ public class UI_Manager : MonoBehaviour
     {
         for (int i = 0; i < PIXEL_list.Count; i++)
         {
-            
+
             PIXEL_list[i].Skeleton.SetAttachment("Head_ETC", target.options[target.value].text);
-            
+
         }
 
         Set_Emoji = (Emoji)target.value;
 
-        //UI_Index[level_count].weapon_index = target.value;
+       // UI_Index[level_count].weapon_index = target.value;
 
     }
-
-
 
     private void waepon_dropdown_create()
     {

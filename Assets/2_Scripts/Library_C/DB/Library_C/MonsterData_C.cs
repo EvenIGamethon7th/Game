@@ -15,6 +15,7 @@ public partial class MonsterData : Data_C
      [LabelText("체력")] public float hp;
      [LabelText("방어력")] public float def;
      [LabelText("이동속도")] public float speed;
+     [LabelText("보스스테이지여부")] public bool isBoss;
 
     
 
@@ -26,6 +27,7 @@ public partial class MonsterData : Data_C
         hp = _cellDataArr[2].ToFloat();
         def = _cellDataArr[3].ToFloat();
         speed = _cellDataArr[4].ToFloat();
+        isBoss = _cellDataArr[5].ToBool();
     }
 #endif
 }

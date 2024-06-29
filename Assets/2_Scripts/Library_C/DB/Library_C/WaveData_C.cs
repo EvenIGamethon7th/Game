@@ -13,6 +13,8 @@ public partial class WaveData : Data_C
      public string Key;
      [LabelText("이름")] public string monsterKey;
      [LabelText("소환갯수")] public int spawnCount;
+     [LabelText("보스웨이브여부")] public bool isBoss;
+     [LabelText("제한시간")] public float limitTime;
 
     
 
@@ -22,6 +24,8 @@ public partial class WaveData : Data_C
         Key = _cellDataArr[0];
         monsterKey = _cellDataArr[1];
         spawnCount = _cellDataArr[2].ToInt();
+        isBoss = _cellDataArr[3].ToBool();
+        limitTime = _cellDataArr[4].ToFloat();
     }
 #endif
 }

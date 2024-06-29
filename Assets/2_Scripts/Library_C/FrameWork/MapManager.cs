@@ -7,10 +7,12 @@ using _2_Scripts.Utils;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.WSA;
 
 public class MapManager : Singleton<MapManager>
 {
     [SerializeField] private Tilemap mMap;
+
     private List<TileSlot> mTileDatas = new();
     private const string TILE_SLOT_NAME = AddressableTable.Default_TileSlot;
     private void Start()
@@ -19,21 +21,59 @@ public class MapManager : Singleton<MapManager>
         _ =>
         {
             CreateInitialTileSlots();
-            CreateIndicator();
-            TestUnitGroupCreate();
+            Test();
         });
     }
 
-    private void TestUnitGroupCreate()
+    public void Test()
     {
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < mTileDatas.Count; i++)
         {
-            var tileSlot = mTileDatas[i];
+            var tileSlot = mTileDatas.Where(x => x.OccupantUnit == null).FirstOrDefault();
             var unitGroup = ObjectPoolManager.Instance
                 .CreatePoolingObject(AddressableTable.Default_UnitGroup, tileSlot.transform.position)
                 .GetComponent<UnitGroup>();
             tileSlot.SetOccupantUnit(unitGroup);
         }
+    }
+
+    public bool UnitCreate(EUnitClass unitClass, EUnitRank unitRank)
+    {
+        Debug.Log($"{unitClass} 클래스 {unitRank} 등급 유닛 생성");
+        //먼저 같은 유닛 그룹과 그 그룹에 공간이 있는지 확인
+        var tileSlot = mTileDatas.Where(x => x.CurrentUnitClass == unitClass && x.CurrentUnitRank == unitRank && x.CanAddUnit()).FirstOrDefault();
+
+        //없다면 빈 타일 슬롯 확인
+        if (tileSlot == null)
+        {
+            tileSlot = mTileDatas.Where(x => x.OccupantUnit == null).FirstOrDefault();
+            //그것도 없으면 쩔수없지...
+            if (tileSlot == null)
+            {
+                Debug.Log("타일 꽉찼어요");
+                //TODO: 토스트 메시지 : 유닛 풀방
+                UI_Toast_Manager.Instance.Activate_WithContent_Func("모든 타일에 유닛이 배치되어 있습니다!");
+                return false;
+            }
+
+            else
+            {
+                Debug.Log("그룹 생성 후 유닛 그룹에 유닛 추가");
+                var unitGroup = ObjectPoolManager.Instance
+                .CreatePoolingObject(AddressableTable.Default_UnitGroup, tileSlot.transform.position)
+                .GetComponent<UnitGroup>();
+                //tileSlot.Init(unitGroup, );
+                tileSlot.SetOccupantUnit(unitGroup);
+            }
+        }
+
+        //해당 유닛 그룹이 있다면 유닛 생성해서 넣기
+        else
+        {
+            Debug.Log("그룹이 존재하여 유닛 추가");
+        }
+
+        return true;
     }
 
     public TileSlot GetClickTileSlotDetailOrNull()
@@ -42,11 +82,6 @@ public class MapManager : Singleton<MapManager>
         RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero); 
         TileSlot tileSlot = hit.collider != null ? hit.transform.GetComponent<TileSlot>() : null;
         return tileSlot;
-    }
-
-    private void CreateIndicator()
-    {
-        ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Indicator, Vector2.zero);
     }
 
     private void CreateInitialTileSlots()

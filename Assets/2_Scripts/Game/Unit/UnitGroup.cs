@@ -11,6 +11,16 @@ namespace _2_Scripts.Game.Unit
         private float mSpeed = 1.0f;
         private CancellationTokenSource mToken = new CancellationTokenSource();
 
+        private readonly int nMaxUnitCount = 3;
+        private int mCurrentUnitCount = 0;
+
+        private CUnit[] units;
+
+        private void Awake()
+        {
+            units = new CUnit[nMaxUnitCount];
+        }
+
         public void MoveGroup(TileSlot destinationTileSlot)
         {
             mToken.Cancel();
@@ -30,5 +40,18 @@ namespace _2_Scripts.Game.Unit
             }
             transform.position = dstPos;
         } 
+
+        public bool CanAddUnit()
+        {
+            return mCurrentUnitCount < nMaxUnitCount;
+        }
+
+        public void AddUnit(CUnit NewUnit)
+        {
+            if (mCurrentUnitCount >= nMaxUnitCount) return;
+
+            units[mCurrentUnitCount] = NewUnit;
+            ++mCurrentUnitCount;
+        }
     }
 }

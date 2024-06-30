@@ -53,7 +53,7 @@ namespace _2_Scripts.Game.Controller
                         //롱 터치 판별
                         
                         mTempSubscribe = mouseUpStream
-                            .Buffer(TimeSpan.FromMilliseconds(300))
+                            .Buffer(TimeSpan.FromMilliseconds(150))
                             .Take(1)
                             .Where(x => x.Count == 0)
                             .Subscribe(_ =>
@@ -78,7 +78,7 @@ namespace _2_Scripts.Game.Controller
                     {
                         //위치 이동 및 자리 변경
                         TileSlot dstSlot = MapManager.Instance.GetClickTileSlotDetailOrNull();
-                        if (dstSlot != null)
+                        if (dstSlot != null && dstSlot != mSelectTileSlot)
                         {
                             UnitGroup dstUnit = dstSlot.OccupantUnit;
                             if (dstUnit != null)

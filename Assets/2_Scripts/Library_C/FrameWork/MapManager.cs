@@ -21,23 +21,11 @@ public class MapManager : Singleton<MapManager>
         _ =>
         {
             CreateInitialTileSlots();
-            Test();
+            CreateUnitPool();
         });
     }
 
-    public void Test()
-    {
-        for (int i = 0; i < mTileDatas.Count; i++)
-        {
-            var tileSlot = mTileDatas.Where(x => x.OccupantUnit == null).FirstOrDefault();
-            var unitGroup = ObjectPoolManager.Instance
-                .CreatePoolingObject(AddressableTable.Default_UnitGroup, tileSlot.transform.position)
-                .GetComponent<UnitGroup>();
-            tileSlot.SetOccupantUnit(unitGroup);
-        }
-    }
-
-    public bool UnitCreate(EUnitClass unitClass, EUnitRank unitRank)
+    public bool CreateUnit(EUnitClass unitClass, EUnitRank unitRank)
     {
         Debug.Log($"{unitClass} 클래스 {unitRank} 등급 유닛 생성");
         //먼저 같은 유닛 그룹과 그 그룹에 공간이 있는지 확인
@@ -50,8 +38,6 @@ public class MapManager : Singleton<MapManager>
             //그것도 없으면 쩔수없지...
             if (tileSlot == null)
             {
-                Debug.Log("타일 꽉찼어요");
-                //TODO: 토스트 메시지 : 유닛 풀방
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("모든 타일에 유닛이 배치되어 있습니다!");
                 return false;
             }
@@ -62,14 +48,19 @@ public class MapManager : Singleton<MapManager>
                 var unitGroup = ObjectPoolManager.Instance
                 .CreatePoolingObject(AddressableTable.Default_UnitGroup, tileSlot.transform.position)
                 .GetComponent<UnitGroup>();
-                //tileSlot.Init(unitGroup, );
-                tileSlot.SetOccupantUnit(unitGroup);
+                var unit = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_Unit, tileSlot.transform.position).GetComponent<CUnit>();
+                unit.Init(unitClass, unitRank);
+                tileSlot.Init(unitGroup, unit);
             }
         }
 
         //해당 유닛 그룹이 있다면 유닛 생성해서 넣기
         else
         {
+            var unit = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_Unit, tileSlot.transform.position).GetComponent<CUnit>();
+            unit.Init(unitClass, unitRank);
+            tileSlot.OccupantUnit.AddUnit(unit);
+
             Debug.Log("그룹이 존재하여 유닛 추가");
         }
 
@@ -82,6 +73,11 @@ public class MapManager : Singleton<MapManager>
         RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero); 
         TileSlot tileSlot = hit.collider != null ? hit.transform.GetComponent<TileSlot>() : null;
         return tileSlot;
+    }
+
+    private void CreateUnitPool()
+    {
+        ObjectPoolManager.Instance.RegisterPoolingObject(AddressableTable.Default_Unit, 100);
     }
 
     private void CreateInitialTileSlots()

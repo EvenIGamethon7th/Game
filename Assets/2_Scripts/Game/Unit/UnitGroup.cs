@@ -32,6 +32,16 @@ namespace _2_Scripts.Game.Unit
         private async UniTask MoveGroupAsync(Vector3 dstPos, float time = 1f)
         {
             Vector3 originPos = transform.position;
+
+            int flip = dstPos.x > originPos.x ? 1 : -1;
+            for (int i = 0; i < mUnits.Length; ++i)
+            {
+                if (mUnits[i] == null)
+                    break;
+                mUnits[i].UpdateState(EUnitStates.Move);
+                mUnits[i].transform.localScale = new Vector3(Mathf.Abs(mUnits[i].transform.localScale.x) * flip, mUnits[i].transform.localScale.y, 1);
+            }
+            
             while (time >= 0)
             {
                 await UniTask.DelayFrame(1, cancellationToken: mToken.Token);
@@ -39,6 +49,8 @@ namespace _2_Scripts.Game.Unit
                 time -= Time.deltaTime;
             }
             transform.position = dstPos;
+            for (int i = 0; i < mUnits.Length; ++i)
+                mUnits[i]?.UpdateState(EUnitStates.Idle);
         } 
 
         public bool CanAddUnit()
@@ -49,12 +61,23 @@ namespace _2_Scripts.Game.Unit
             return mCurrentUnitCount < nMaxUnitCount;
         }
 
-        public void AddUnit(CUnit NewUnit)
+        public void AddUnit(CUnit newUnit)
         {
             if (mCurrentUnitCount == 1 && mUnits[0].CurrentUnitRank == EUnitRank.Unique) return;
                 if (mCurrentUnitCount >= nMaxUnitCount) return;
 
-            mUnits[mCurrentUnitCount] = NewUnit;
+            newUnit.transform.parent = transform;
+            mUnits[mCurrentUnitCount] = newUnit;
+            switch (mCurrentUnitCount)
+            {
+                case 1:
+                    newUnit.transform.position += new Vector3(0.5f, 0.5f, 0);
+                    break;
+
+                case 2:
+                    newUnit.transform.position -= new Vector3(0.5f, 0.5f, 0);
+                    break;
+            }
             ++mCurrentUnitCount;
         }
     }

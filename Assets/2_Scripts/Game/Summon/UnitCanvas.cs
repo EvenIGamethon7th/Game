@@ -8,11 +8,13 @@ using UnityEngine.UI;
 
 namespace _2_Scripts.Game.Summon
 {
-    public class UnitPannel : MonoBehaviour
+    public class UnitCanvas : MonoBehaviour
     {
+        [SerializeField]
+        private GameObject mPanel;
         private UnitButton[] mButtons;
         [SerializeField]
-        private Button mReroll;
+        private Button mResume;
 
         private int mRerollNum;
         private EUnitClass[] mUnitClasses;
@@ -23,7 +25,7 @@ namespace _2_Scripts.Game.Summon
 
         void Start()
         {
-            mButtons = GetComponentsInChildren<UnitButton>();
+            mButtons = mPanel.GetComponentsInChildren<UnitButton>();
 
             mRerollNum = mButtons.Length;
             mUnitClasses = new EUnitClass[mRerollNum];
@@ -36,25 +38,31 @@ namespace _2_Scripts.Game.Summon
                 int num = i;
                 mButtons[i].onClick.AddListener(() => Summon(num));
             }
-            mReroll.onClick.AddListener(Reroll);
-            Reroll();
+            mResume.onClick.AddListener(Resume);
+            mPanel.SetActive(false);
         }
 
-        private void Reroll()
+        private void Resume()
         {
+            mResume.gameObject.SetActive(false);
             for (int i = 0; i < mRerollNum; ++i)
             {
-                mButtons[i].gameObject.SetActive(true);
                 mUnitClasses[i] = (EUnitClass)UnityEngine.Random.Range(1, mUnitClassCount);
                 mUnitRanks[i] = (EUnitRank)UnityEngine.Random.Range(1, mUnitRankCount);
                 mButtons[i].Text.text = $"{mUnitClasses[i]} {mUnitRanks[i]}";
+                mButtons[i].UpdateGraphic(mUnitClasses[i], mUnitRanks[i]);
             }
+            mPanel.SetActive(true);
         }
 
         private void Summon(int num)
         {
-            MapManager.Instance.UnitCreate(mUnitClasses[num], mUnitRanks[num]);
-            mButtons[num].gameObject.SetActive(false);
+            bool bSummon = MapManager.Instance.CreateUnit(mUnitClasses[num], mUnitRanks[num]);
+            if (bSummon)
+            {
+                mPanel.SetActive(false);
+                mResume.gameObject.SetActive(true);
+            }
         }
 
         private void OnDestroy()
@@ -63,7 +71,7 @@ namespace _2_Scripts.Game.Summon
             {
                 mButtons[i].onClick.RemoveAllListeners();
             }
-            mReroll.onClick.RemoveAllListeners();
+            mResume.onClick.RemoveAllListeners();
         }
     }
 }

@@ -15,8 +15,8 @@ public enum ELabelNames
 {
     Default,
     Demo,
-    Materials,
-    SkeletonDatas
+    Material,
+    SkeletonData
 }
 
 public class ResourceManager : SerializedMonoBehaviour,GameSystem_Manager.IInitializer
@@ -121,12 +121,13 @@ public class ResourceManager : SerializedMonoBehaviour,GameSystem_Manager.IIniti
     public void LoadAllAsync<T>(string label, Action<string, int, int> callback) where T : UnityEngine.Object
     {
         var opHandle = Addressables.LoadResourceLocationsAsync(label, typeof(T));
+        
         opHandle.Completed += (op) =>
         {
-            
             int loadCount = 0;
 
             int totalCount = op.Result.Count;
+
             string[] spriteObjs = { ".sprite", ".multiplesprite", ".png", ".jpg" };
 
 
@@ -159,31 +160,22 @@ public class ResourceManager : SerializedMonoBehaviour,GameSystem_Manager.IIniti
         
         Instance = this;
         Debug_C.Log_Func("Resource Load Start");
-        //string[] labelNames = Enum.GetNames(typeof(ELabelNames));
-        LoadAllAsync<Object>("Default", (key, count, totalCount) =>
+        string[] labelNames = Enum.GetNames(typeof(ELabelNames));
+        for (int i = 0; i < labelNames.Length; ++i)
         {
-            if (count == totalCount)
+            string name = labelNames[i];
+            LoadAllAsync<Object>(name, (key, count, totalCount) =>
             {
-                IsPreLoad = true;
-                Debug_C.Log_Func($"Default Label Resource Load Completed");
-                Debug.Log($"Default Label Resource Load Completed");
-                MessageBroker.Default.Publish(new TaskMessage(ETaskList.DefaultResourceLoad));
-            }
-        });
-        //for (int i = 0; i < labelNames.Length; ++i)
-        //{
-        //    string name = labelNames[i];
-        //    LoadAllAsync<Object>(name, (key, count, totalCount) =>
-        //    {
-        //        if (count == totalCount)
-        //        {
-        //            IsPreLoad = true;
-        //            Debug_C.Log_Func($"{name} Label Resource Load Completed");
-        //            Debug.Log($"{name} Label Resource Load Completed");
-        //            TaskMessage message = new((ETaskList)i);
-        //            MessageBroker.Default.Publish(message);
-        //        }
-        //    });
-        //}
+                if (count == totalCount)
+                {
+                    IsPreLoad = true;
+                    Debug_C.Log_Func($"{name} Label Resource Load Completed");
+                    Debug.Log($"{name} Label Resource Load Completed");
+                    ETaskList e = (ETaskList)Array.IndexOf(labelNames, name);
+                    TaskMessage message = new(e);
+                    MessageBroker.Default.Publish(message);
+                }
+            });
+        }
     }
 }

@@ -22,7 +22,6 @@ namespace _2_Scripts.Game.Map.Tile
             OccupantUnit = unitGroup;
             if (OccupantUnit != null)
             {
-
                 OccupantUnit.MoveGroup(this);
             }
 

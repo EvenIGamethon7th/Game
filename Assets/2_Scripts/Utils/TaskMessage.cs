@@ -2,7 +2,10 @@
 {
     public enum ETaskList
     {
-        ResourceLoad
+        DefaultResourceLoad,
+        DemoResourceLoad,
+        MaterialResourceLoad,
+        SkeletonDatasResourceLoad
     }
     
     public class TaskMessage

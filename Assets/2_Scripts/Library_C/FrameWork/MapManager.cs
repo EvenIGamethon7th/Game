@@ -7,7 +7,7 @@ using _2_Scripts.Utils;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.WSA;
+
 
 public class MapManager : Singleton<MapManager>
 {
@@ -17,7 +17,7 @@ public class MapManager : Singleton<MapManager>
     private const string TILE_SLOT_NAME = AddressableTable.Default_TileSlot;
     private void Start()
     {
-        MessageBroker.Default.Receive<TaskMessage>().Where(message => message.Task == ETaskList.ResourceLoad).Subscribe(
+        MessageBroker.Default.Receive<TaskMessage>().Where(message => message.Task == ETaskList.DefaultResourceLoad).Subscribe(
         _ =>
         {
             CreateInitialTileSlots();

@@ -29,7 +29,7 @@ public class StageManager : Singleton<StageManager>
     /// <exception cref="NotImplementedException"></exception>
     public void Start()
     {
-        MessageBroker.Default.Receive<TaskMessage>().Where(message => message.Task == ETaskList.ResourceLoad).Subscribe(
+        MessageBroker.Default.Receive<TaskMessage>().Where(message => message.Task == ETaskList.DefaultResourceLoad).Subscribe(
             _ =>
             {
                 ObjectPoolManager.Instance.RegisterPoolingObject("Monster", 100);

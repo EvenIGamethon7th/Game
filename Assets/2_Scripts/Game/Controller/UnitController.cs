@@ -123,11 +123,11 @@ namespace _2_Scripts.Game.Controller
         private void WaitResourceLoad()
         {
             mTempSubscribe = MessageBroker.Default.Receive<TaskMessage>()
-                .Where(message => message.Task == ETaskList.ResourceLoad)
+                .Where(message => message.Task == ETaskList.DefaultResourceLoad)
                 .Subscribe(_ =>
                 {
-                    mIndicator = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Indicator, Vector2.zero).GetComponent<Indicator>();
-                    mSelectCircle = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Select_Circle, Vector2.zero);
+                    mIndicator = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_Indicator, Vector2.zero).GetComponent<Indicator>();
+                    mSelectCircle = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_SelectCircle, Vector2.zero);
                     mSelectCircle.SetActive(false);
                     mTempSubscribe.Dispose();
                 });

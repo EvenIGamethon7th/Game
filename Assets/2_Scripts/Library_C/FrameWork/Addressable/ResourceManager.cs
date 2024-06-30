@@ -11,6 +11,14 @@
     using UnityEngine.ResourceManagement.AsyncOperations;
     using Object = UnityEngine.Object;
 
+public enum ELabelNames
+{
+    Default,
+    Demo,
+    Materials,
+    SkeletonDatas
+}
+
 public class ResourceManager : SerializedMonoBehaviour,GameSystem_Manager.IInitializer
 {
     public static ResourceManager Instance;
@@ -151,14 +159,31 @@ public class ResourceManager : SerializedMonoBehaviour,GameSystem_Manager.IIniti
         
         Instance = this;
         Debug_C.Log_Func("Resource Load Start");
-        LoadAllAsync<Object>("default", (key,count,totalCount) =>
+        //string[] labelNames = Enum.GetNames(typeof(ELabelNames));
+        LoadAllAsync<Object>("Default", (key, count, totalCount) =>
         {
             if (count == totalCount)
             {
                 IsPreLoad = true;
-                Debug_C.Log_Func("Resource Load Completed");
-                MessageBroker.Default.Publish(new TaskMessage(ETaskList.ResourceLoad));
+                Debug_C.Log_Func($"Default Label Resource Load Completed");
+                Debug.Log($"Default Label Resource Load Completed");
+                MessageBroker.Default.Publish(new TaskMessage(ETaskList.DefaultResourceLoad));
             }
         });
+        //for (int i = 0; i < labelNames.Length; ++i)
+        //{
+        //    string name = labelNames[i];
+        //    LoadAllAsync<Object>(name, (key, count, totalCount) =>
+        //    {
+        //        if (count == totalCount)
+        //        {
+        //            IsPreLoad = true;
+        //            Debug_C.Log_Func($"{name} Label Resource Load Completed");
+        //            Debug.Log($"{name} Label Resource Load Completed");
+        //            TaskMessage message = new((ETaskList)i);
+        //            MessageBroker.Default.Publish(message);
+        //        }
+        //    });
+        //}
     }
 }

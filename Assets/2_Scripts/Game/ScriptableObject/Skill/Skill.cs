@@ -28,7 +28,9 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
         public GameObject HitEffect { get; private set; }
 
         // 아군 버프와 같은 효과가 있을 수 있기에 LayerMask를 통해 타겟 구분
-        public abstract void CastAttack(Transform ownerTransform, LayerMask targetLayer, CharacterData ownerData);
+        [Title("타겟 레이어")] 
+        [SerializeField] public LayerMask TargetLayer { get; private set; } 
+        public abstract void CastAttack(Transform ownerTransform, CharacterData ownerData);
         
         protected virtual void CastEffectPlay(Vector2 position)
         {

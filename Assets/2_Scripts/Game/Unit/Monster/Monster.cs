@@ -50,6 +50,7 @@ namespace _2_Scripts.Game.Monster
         
         public void TakeDamage(float damage)
         {
+            Debug.Log($"데미지 받음{damage}");
             mMonsterData.hp -= damage;
             if (mMonsterData.hp <= 0)
             {

@@ -49,7 +49,8 @@ public class MapManager : Singleton<MapManager>
                 .CreatePoolingObject(AddressableTable.Default_UnitGroup, tileSlot.transform.position)
                 .GetComponent<UnitGroup>();
                 var unit = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_Unit, tileSlot.transform.position).GetComponent<CUnit>();
-                unit.Init(unitClass, unitRank);
+                // 임시 Character Data 넣어주기
+                unit.Init(unitClass, unitRank,TableDataKey_C.Character_Character_0);
                 tileSlot.Init(unitGroup, unit);
             }
         }
@@ -58,7 +59,7 @@ public class MapManager : Singleton<MapManager>
         else
         {
             var unit = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_Unit, tileSlot.transform.position).GetComponent<CUnit>();
-            unit.Init(unitClass, unitRank);
+            unit.Init(unitClass, unitRank,TableDataKey_C.Character_Character_0);
             tileSlot.OccupantUnit.AddUnit(unit);
 
             Debug.Log("그룹이 존재하여 유닛 추가");

@@ -31,7 +31,11 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
         [Title("타겟 레이어")] 
         [SerializeField] public LayerMask TargetLayer { get; private set; } 
         public abstract void CastAttack(Transform ownerTransform, CharacterData ownerData);
-        
+        public virtual bool CanCastAttack(Transform ownerTransform,float range)
+        {
+            var detectingTargets = Physics2D.OverlapCircleAll(ownerTransform.position, range, TargetLayer);
+            return detectingTargets.Length > 0;
+        }
         protected virtual void CastEffectPlay(Vector2 position)
         {
             if (CastEffect == null)

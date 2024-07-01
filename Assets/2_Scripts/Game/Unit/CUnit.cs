@@ -52,15 +52,15 @@ namespace _2_Scripts.Game.Unit
         public CharacterData CharacterDatas { get; private set; }
         private MeshRenderer mMeshRenderer;
         private SkeletonAnimation mAnimation;
-
         
-        public Skill DefaultAttack { get; private set; }
+        private UnitDefaultAttackHandler mAttackHandler;
         public Queue<Skill> ReadySkillQueue { get; private set; } = new Queue<Skill>();
         private void Awake()
         {
             mAnimation = GetComponent<SkeletonAnimation>();
             mMeshRenderer = mAnimation.GetComponent<MeshRenderer>();
             mMeshRenderer.sortingOrder = 11;
+            mAttackHandler = GetComponent<UnitDefaultAttackHandler>();
         }
 
 
@@ -69,7 +69,8 @@ namespace _2_Scripts.Game.Unit
             var originData = DataBase_Manager.Instance.GetCharacter.GetData_Func(characterDataKey);
             CharacterDatas = global::Utils.DeepCopy(originData);
             CharacterDataInfo = ResourceManager.Instance.Load<CharacterInfo>(originData.characterPack);
-            DefaultAttack = CharacterDataInfo.DefaultAttack;
+            mAttackHandler.SetAttack(CharacterDataInfo.DefaultAttack,
+                CharacterDatas, () => UpdateState(EUnitStates.Attack));
             foreach (var skill in CharacterDataInfo.SkillList)
             {
                 CoolTimeSkill(skill).Forget();
@@ -99,27 +100,12 @@ namespace _2_Scripts.Game.Unit
             
             mAnimation.state.SetAnimation(0, "Idle_1", true);
             gameObject.name = mAnimation.initialSkinName;
-            RunAttack();
         }
         private async UniTaskVoid CoolTimeSkill(SkillInfo skill)
         {
             await UniTask.WaitForSeconds(skill.CoolTime);
             ReadySkillQueue.Enqueue(skill.Skill);
         }
-
-
-        // TODO 사거리에 안들어오면 실행 X 공격 Speed와 Skill Cool Time 따로 할 지 합칠 지 고민 중
-        private void RunAttack()
-        {
-            Observable.Interval(System.TimeSpan.FromSeconds(CharacterDatas.atkSpeed))
-                .Subscribe(_ =>
-                {
-                    DefaultAttack.CastAttack(this.transform,CharacterDatas);
-                    UpdateState(EUnitStates.Attack);
-                })
-                .AddTo(this);
-        }
-        
 
         public void UpdateState(EUnitStates state)
         {

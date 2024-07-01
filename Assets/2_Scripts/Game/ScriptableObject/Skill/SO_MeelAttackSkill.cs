@@ -20,15 +20,19 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
         [Title("데미지 증감 퍼센트")]
         [SerializeField]
         public float PercentDamage { get; private set; }
+        [Title("기본 사거리를 따른다")]
+        [SerializeField]
+        public bool FollowDefaultRange { get; private set; }
         
         
         public override void CastAttack(Transform ownerTransform, CharacterData ownerData)
         {
             //mOwnerData = ownerTransform.GetComponent<CharacterData>(); 매번 GetComponent 비용 발생하므로 CastAttack에 참조.
             mOwnerData = ownerData;
+            float range = FollowDefaultRange ? ownerData.range : this.Range;
             // 방어력 부분은 몬스터별로 공격력 감소 수식이 있을 수 있으므로 여기선 owner 데미지만 계산.
             float totalDamage = ownerData.atk * (PercentDamage * 0.01f);
-            var detectingTargets = Physics2D.OverlapCircleAll(ownerTransform.position, Range, TargetLayer);
+            var detectingTargets = Physics2D.OverlapCircleAll(ownerTransform.position, range, TargetLayer);
             if (detectingTargets.Length == 0)
             {
                 return;

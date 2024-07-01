@@ -28,10 +28,8 @@ public class MonsterCanvas : MonoBehaviour
         mHpSlider.value = maxHp;
         mMaxHp = maxHp;
         mHpColor.color = Color.green;
-        if (isBoss)
-            mHpText.text = $"{mMaxHp} / {mMaxHp}";
-        else
-            mHpText.gameObject.SetActive(false);
+        mHpText.gameObject.SetActive(isBoss);
+        mHpText.text = $"{mMaxHp} / {mMaxHp}";
     }
 
     public void SetHpSlider(float currentHp)

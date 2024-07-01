@@ -16,7 +16,9 @@ namespace _2_Scripts.Game.Monster
         private MonsterData mMonsterData;
 
         private WayPoint mWayPoint;
+        [SerializeField]
         private int mWayPointIndex = 0;
+        [SerializeField]
         private Vector3 mNextWayPoint;
 
         private const EGameMessage PLAYER_DAMAGE = EGameMessage.PlayerDamage;
@@ -35,6 +37,7 @@ namespace _2_Scripts.Game.Monster
             mHpCanvas = GetComponentInChildren<MonsterCanvas>();
             mTrigger = GetComponent<Collider2D>();
             mSpriteRenderer = GetComponent<SpriteRenderer>();
+            Enabled(false);
         }
 
         public void SpawnMonster(string key,WayPoint waypoint,bool isBoss)
@@ -42,8 +45,6 @@ namespace _2_Scripts.Game.Monster
             var originData = DataBase_Manager.Instance.GetMonster.GetData_Func(key);
             mMonsterData = global::Utils.DeepCopy(originData);
             mHpCanvas.InitHpSlider(mMonsterData.hp, isBoss);
-            mTrigger.enabled = true;
-            enabled = true;
             //TODO Sprite Change And Animation
             ResourceManager.Instance.Load<RuntimeAnimatorController>(originData.nameKey,
             (controller) =>
@@ -52,13 +53,14 @@ namespace _2_Scripts.Game.Monster
             });
             mWayPoint = waypoint;
             mWayPointIndex = 0;
-            mMatController.RunDissolve();
-            mbBoss = isBoss;
-            mDamageMessage = new GameMessage<float>(PLAYER_DAMAGE, mMonsterData.atk);
             NextWayPoint();
+            mMatController.RunDissolve(true, () => { 
+                mbBoss = isBoss;
+                mDamageMessage = new GameMessage<float>(PLAYER_DAMAGE, mMonsterData.atk);
+                Enabled(true);
+            });
         }
 
-        
         public void TakeDamage(float damage)
         {
             Debug.Log($"데미지 받음{damage}");
@@ -68,13 +70,12 @@ namespace _2_Scripts.Game.Monster
             if (mMonsterData.hp <= 0)
             {
                 //TODO Monster Die
-                mTrigger.enabled = false;
                 mMatController.RunDissolve(false, () => gameObject.SetActive(false));
                 if (mbBoss)
                 {
                     MessageBroker.Default.Publish(BOSS_DEATH);
                 }
-                enabled = false;
+                Enabled(false);
             }
         }
 
@@ -112,6 +113,13 @@ namespace _2_Scripts.Game.Monster
             //float scaleX = direction.x < 0 ? 1 : -1;
             mSpriteRenderer.flipX = direction.x > 0;
             //transform.localScale = new Vector3(scaleX, transform.localScale.y, transform.localScale.z);
+        }
+
+        private void Enabled(bool bEnable)
+        {
+            mTrigger.enabled = bEnable;
+            mHpCanvas.gameObject.SetActive(bEnable);
+            enabled = bEnable;
         }
     }
 }

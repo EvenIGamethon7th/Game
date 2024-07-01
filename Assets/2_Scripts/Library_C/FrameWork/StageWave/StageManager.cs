@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using _2_Scripts.Game.Map;
 using _2_Scripts.Game.Monster;
 using _2_Scripts.Utils;
@@ -23,6 +24,8 @@ public class StageManager : Singleton<StageManager>
     private const float NEXT_WAVE_TIME = 3.0f;
 
 
+    private CancellationTokenSource bossDefeatedCancellationTokenSource = new ();
+    private ETaskList mGameOverMessage = ETaskList.GameOver;
     /// <summary>
     ///  테스트용 스테이지 시작 코드
     /// </summary>
@@ -34,7 +37,7 @@ public class StageManager : Singleton<StageManager>
             {
                 switch (message.Task)
                 {
-                    case ETaskList.ResourceLoad:
+                    case ETaskList.DefaultResourceLoad:
                         ObjectPoolManager.Instance.RegisterPoolingObject("Monster", 100);
                         StageInit(TableDataKey_C.Stage_Stage_0);
                         break;

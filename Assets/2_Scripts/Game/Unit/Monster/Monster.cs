@@ -1,6 +1,7 @@
 ﻿using System;
 using _2_Scripts.Game.Map;
 using _2_Scripts.Game.Unit;
+using _2_Scripts.Utils;
 using Rito.Attributes;
 using UniRx;
 using UniRx.Triggers;
@@ -18,13 +19,17 @@ namespace _2_Scripts.Game.Monster
         private int mWayPointIndex = 0;
         private Vector3 mNextWayPoint;
 
+        private const EGameMessage PLAYER_DAMAGE = EGameMessage.PlayerDamage;
+        private const EGameMessage BOSS_DEATH = EGameMessage.BossDeath;
+        private GameMessage<float> mDamageMessage;
+        private bool mbBoss;
         private void Awake()
         {
             mAnimator = GetComponent<Animator>();
             mMatController = GetComponent<MatController>();
         }
 
-        public void SpawnMonster(string key,WayPoint waypoint)
+        public void SpawnMonster(string key,WayPoint waypoint,bool isBoss)
         {
             var originData = DataBase_Manager.Instance.GetMonster.GetData_Func(key);
             mMonsterData = global::Utils.DeepCopy(originData);
@@ -37,8 +42,11 @@ namespace _2_Scripts.Game.Monster
             mWayPoint = waypoint;
             mWayPointIndex = 0;
             mMatController.RunDissolve();
+            mbBoss = isBoss;
+            mDamageMessage = new GameMessage<float>(PLAYER_DAMAGE, mMonsterData.atk);
             NextWayPoint();
         }
+
         
         public void TakeDamage(float damage)
         {
@@ -46,6 +54,10 @@ namespace _2_Scripts.Game.Monster
             if (mMonsterData.hp <= 0)
             {
                 //TODO Monster Die
+                if (mbBoss)
+                {
+                    MessageBroker.Default.Publish(BOSS_DEATH);
+                }
                 gameObject.SetActive(false);
             }
         }
@@ -54,8 +66,7 @@ namespace _2_Scripts.Game.Monster
         {
             if(++mWayPointIndex == mWayPoint.GetWayPointCount())
             {
-                //TODO Monster Reach End Point Player Damage!
-                
+                MessageBroker.Default.Publish(mDamageMessage);
                 gameObject.SetActive(false);
                 return;
             }

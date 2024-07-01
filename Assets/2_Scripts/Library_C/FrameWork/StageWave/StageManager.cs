@@ -22,16 +22,15 @@ public class StageManager : Singleton<StageManager>
     
     private const float SPAWN_COOL_TIME = 1.5f;
     private const float NEXT_WAVE_TIME = 10.0f;
-
-
-    private CancellationTokenSource bossDefeatedCancellationTokenSource = new ();
-    private ETaskList mGameOverMessage = ETaskList.GameOver;
+    
+    private int mDeathBossCount = 0;
+    
     /// <summary>
     ///  테스트용 스테이지 시작 코드
     /// </summary>
     /// <exception cref="NotImplementedException"></exception>
     public void Start()
-    {
+    {      
         MessageBroker.Default.Receive<TaskMessage>()
             .Subscribe(message =>
             {
@@ -42,8 +41,15 @@ public class StageManager : Singleton<StageManager>
                         StageInit(TableDataKey_C.Stage_Stage_0);
                         break;
                     case ETaskList.BossDeath:
-                        bossDefeatedCancellationTokenSource.Cancel();
-                        StartWave().Forget();
+                        if(mDeathBossCount == mCurrentWaveData.spawnCount)
+                        {
+                            mDeathBossCount = 0;
+                            StartWave().Forget();
+                        }
+                        else
+                        {
+                            mDeathBossCount++;
+                        }
                         break;
                 }
             });
@@ -69,8 +75,7 @@ public class StageManager : Singleton<StageManager>
             await SpawnMonsters(mCurrentWaveData);
             if (mCurrentWaveData.isBoss)
             {
-                bossDefeatedCancellationTokenSource = new CancellationTokenSource();
-                await StartBossWave(mCurrentWaveData.limitTime);
+                return;
             }
             await UniTask.WaitForSeconds(NEXT_WAVE_TIME);
         }
@@ -81,20 +86,11 @@ public class StageManager : Singleton<StageManager>
         for (int spawnCount = 0; spawnCount < waveData.spawnCount; spawnCount++)
         {
             var monster = ObjectPoolManager.Instance.CreatePoolingObject("Monster", mWayPoint.GetWayPointPosition(0)).GetComponent<Monster>();
-            monster.SpawnMonster(waveData.monsterKey, mWayPoint);
+            monster.SpawnMonster(waveData.monsterKey, mWayPoint,waveData.isBoss);
             await UniTask.WaitForSeconds(SPAWN_COOL_TIME);
         }
     }
     
-    private async UniTask StartBossWave(float limitTime)
-    {
-        await UniTask.WaitForSeconds(limitTime, cancellationToken: bossDefeatedCancellationTokenSource.Token);
-        if (bossDefeatedCancellationTokenSource.IsCancellationRequested)
-        {
-            return;
-        }
-        MessageBroker.Default.Publish(mGameOverMessage);
-    }
     
     
 }

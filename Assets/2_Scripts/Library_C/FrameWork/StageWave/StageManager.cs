@@ -1,7 +1,6 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using _2_Scripts.Game.Map;
 using _2_Scripts.Game.Monster;
 using _2_Scripts.Utils;
@@ -22,9 +21,8 @@ public class StageManager : Singleton<StageManager>
     
     private const float SPAWN_COOL_TIME = 1.0f;
     private const float NEXT_WAVE_TIME = 3.0f;
-    private CancellationTokenSource bossDefeatedCancellationTokenSource = new CancellationTokenSource();
-    private readonly TaskMessage mGameOverMessage = new TaskMessage(ETaskList.GameOver);
-    
+
+
     /// <summary>
     ///  테스트용 스테이지 시작 코드
     /// </summary>
@@ -94,5 +92,6 @@ public class StageManager : Singleton<StageManager>
         }
         MessageBroker.Default.Publish(mGameOverMessage);
     }
+    
     
 }

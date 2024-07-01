@@ -35,19 +35,21 @@ public class MatController : SerializedMonoBehaviour
    }
 
 
-   public void RunDissolve()
+   public void RunDissolve(bool isApear = true, Action action = null)
    {
-      ChangeMat(EMat.DISSOLVE);
-      mPropertyBlock.SetTexture(MainTex,mSpriteRenderer.sprite.texture);
-      float dissolveAmount = 0;
-      mSpriteRenderer.SetPropertyBlock(mPropertyBlock);
-      DOTween.To(() => dissolveAmount, x =>
-      {
-         dissolveAmount = x;
-         mPropertyBlock.SetFloat(DissolveAmount,dissolveAmount);
-         mSpriteRenderer.SetPropertyBlock(mPropertyBlock);
-      },1f,1.5f);
-
+        ChangeMat(EMat.DISSOLVE);
+        mPropertyBlock.SetTexture(MainTex,mSpriteRenderer.sprite.texture);
+        float dissolveAmount = isApear ? 0 : 1;
+        
+        mSpriteRenderer.SetPropertyBlock(mPropertyBlock);
+            
+        DOTween.To(() => dissolveAmount, x =>
+            {
+                dissolveAmount = x;
+                mPropertyBlock.SetFloat(DissolveAmount, dissolveAmount);
+                mSpriteRenderer.SetPropertyBlock(mPropertyBlock);
+            }, 1f - dissolveAmount, 1.5f)
+            .OnComplete(() => action?.Invoke());
    }
    
    

@@ -23,16 +23,27 @@ namespace _2_Scripts.Game.Monster
         private const EGameMessage BOSS_DEATH = EGameMessage.BossDeath;
         private GameMessage<float> mDamageMessage;
         private bool mbBoss;
+
+        private MonsterCanvas mHpCanvas;
+        private Collider2D mTrigger;
+        private SpriteRenderer mSpriteRenderer;
+
         private void Awake()
         {
             mAnimator = GetComponent<Animator>();
             mMatController = GetComponent<MatController>();
+            mHpCanvas = GetComponentInChildren<MonsterCanvas>();
+            mTrigger = GetComponent<Collider2D>();
+            mSpriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         public void SpawnMonster(string key,WayPoint waypoint,bool isBoss)
         {
             var originData = DataBase_Manager.Instance.GetMonster.GetData_Func(key);
             mMonsterData = global::Utils.DeepCopy(originData);
+            mHpCanvas.InitHpSlider(mMonsterData.hp, isBoss);
+            mTrigger.enabled = true;
+            enabled = true;
             //TODO Sprite Change And Animation
             ResourceManager.Instance.Load<RuntimeAnimatorController>(originData.nameKey,
             (controller) =>
@@ -51,15 +62,19 @@ namespace _2_Scripts.Game.Monster
         public void TakeDamage(float damage)
         {
             Debug.Log($"데미지 받음{damage}");
+
             mMonsterData.hp -= damage;
+            mHpCanvas.SetHpSlider(mMonsterData.hp);
             if (mMonsterData.hp <= 0)
             {
                 //TODO Monster Die
+                mTrigger.enabled = false;
+                mMatController.RunDissolve(false, () => gameObject.SetActive(false));
                 if (mbBoss)
                 {
                     MessageBroker.Default.Publish(BOSS_DEATH);
                 }
-                gameObject.SetActive(false);
+                enabled = false;
             }
         }
 
@@ -94,8 +109,9 @@ namespace _2_Scripts.Game.Monster
         
         private void FlipSprite(Vector3 direction)
         {
-            float scaleX = direction.x < 0 ? 1 : -1;
-            transform.localScale = new Vector3(scaleX, transform.localScale.y, transform.localScale.z);
+            //float scaleX = direction.x < 0 ? 1 : -1;
+            mSpriteRenderer.flipX = direction.x > 0;
+            //transform.localScale = new Vector3(scaleX, transform.localScale.y, transform.localScale.z);
         }
     }
 }

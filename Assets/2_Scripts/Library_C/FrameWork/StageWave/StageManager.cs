@@ -20,8 +20,8 @@ public class StageManager : Singleton<StageManager>
     private Queue<WaveData> mWaveQueue = new Queue<WaveData>();
     private WaveData mCurrentWaveData;
     
-    private const float SPAWN_COOL_TIME = 1.0f;
-    private const float NEXT_WAVE_TIME = 3.0f;
+    private const float SPAWN_COOL_TIME = 1.5f;
+    private const float NEXT_WAVE_TIME = 10.0f;
 
 
     private CancellationTokenSource bossDefeatedCancellationTokenSource = new ();
@@ -66,7 +66,7 @@ public class StageManager : Singleton<StageManager>
         while (mWaveQueue.Count > 0)
         {
             mCurrentWaveData = mWaveQueue.Dequeue();
-            SpawnMonsters(mCurrentWaveData).Forget();
+            await SpawnMonsters(mCurrentWaveData);
             if (mCurrentWaveData.isBoss)
             {
                 bossDefeatedCancellationTokenSource = new CancellationTokenSource();
@@ -76,7 +76,7 @@ public class StageManager : Singleton<StageManager>
         }
     }
 
-    private async UniTaskVoid SpawnMonsters(WaveData waveData)
+    private async UniTask SpawnMonsters(WaveData waveData)
     {
         for (int spawnCount = 0; spawnCount < waveData.spawnCount; spawnCount++)
         {

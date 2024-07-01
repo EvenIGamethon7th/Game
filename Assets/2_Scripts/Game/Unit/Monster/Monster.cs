@@ -49,10 +49,17 @@ namespace _2_Scripts.Game.Monster
                 gameObject.SetActive(false);
             }
         }
-        
+
         private void NextWayPoint()
         {
-            mNextWayPoint = mWayPoint.GetWayPointPosition(++mWayPointIndex % 4 );
+            if(++mWayPointIndex == mWayPoint.GetWayPointCount())
+            {
+                //TODO Monster Reach End Point Player Damage!
+                
+                gameObject.SetActive(false);
+                return;
+            }
+            mNextWayPoint = mWayPoint.GetWayPointPosition(mWayPointIndex);
         }
 
         /// <summary>

@@ -9,6 +9,11 @@ namespace _2_Scripts.Game.Map
 
         private Vector3 mCurrenPoistion;
         
+        public int GetWayPointCount()
+        {
+            return mPoints.Length;
+        }
+        
         public Vector3 GetWayPointPosition(int index)
         {
             return mPoints[index] + mCurrenPoistion;
@@ -29,10 +34,6 @@ namespace _2_Scripts.Game.Map
                 {
                     Gizmos.color = Color.red;
                     Gizmos.DrawLine(mPoints[i] + mCurrenPoistion, mPoints[i + 1] + mCurrenPoistion);
-                }else if (i == mPoints.Length - 1)
-                {
-                    Gizmos.color = Color.red;
-                    Gizmos.DrawLine(mPoints[i] + mCurrenPoistion, mPoints[0] + mCurrenPoistion);
                 }
             }
         }

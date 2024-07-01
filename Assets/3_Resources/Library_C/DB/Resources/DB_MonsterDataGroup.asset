@@ -53,6 +53,9 @@ MonoBehaviour:
     - Name: hp
       Entry: 4
       Data: 100
+    - Name: atk
+      Entry: 4
+      Data: 10
     - Name: def
       Entry: 4
       Data: 2.5
@@ -78,6 +81,7 @@ MonoBehaviour:
   - Key: Monster_0
     nameKey: Lo_Monster_0
     hp: 100
+    atk: 10
     def: 2.5
     speed: 3.8
     isBoss: 0

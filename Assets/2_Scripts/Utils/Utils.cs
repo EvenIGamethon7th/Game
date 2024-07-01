@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using Newtonsoft.Json;
 using UnityEngine;
 
 public class Utils
@@ -29,16 +30,9 @@ public class Utils
             
     }
 
-    public static T DeepCopy<T>(T source) where T : new()
+    public static T DeepCopy<T>(T source)
     {
-        object result = null;
-        using (var ms = new MemoryStream())
-        {
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, source);
-            ms.Position = 0;
-            result = (T)formatter.Deserialize(ms);
-        }
-        return (T)result;
+        var serialized = JsonConvert.SerializeObject(source);
+        return JsonConvert.DeserializeObject<T>(serialized);
     }
 }

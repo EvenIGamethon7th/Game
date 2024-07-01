@@ -5,7 +5,9 @@
         DefaultResourceLoad,
         DemoResourceLoad,
         MaterialResourceLoad,
-        SkeletonDatasResourceLoad
+        SkeletonDatasResourceLoad,
+        BossDeath,
+        GameOver,
     }
     
     public class TaskMessage

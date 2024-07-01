@@ -14,20 +14,20 @@ namespace _2_Scripts.UI
         private Slider mSlider;
 
         [SerializeField] private TextMeshProUGUI mHpText;
-        private float mMaxHp;
+        private global::Utils.ReadonlyNumber<float> mMaxHp;
         public void Start()
         {
-            mMaxHp = GameManager.Instance.UserHp;
-            mHpText.text = $"{mMaxHp}/{mMaxHp}";
+            mMaxHp = new global::Utils.ReadonlyNumber<float>(GameManager.Instance.UserHp);
+            mHpText.text = $"{mMaxHp.Value}/{mMaxHp.Value}";
             mSlider.value = 1f;
             
             MessageBroker.Default.Receive<GameMessage<float>>()
                 .Where(message => message.Message == EGameMessage.PlayerDamage)
                 .Subscribe(message =>
                 {
-                    float damagePercentage = message.Value / mMaxHp;
+                    float damagePercentage = message.Value / mMaxHp.Value;
                     mSlider.value -= damagePercentage;
-                    mHpText.text = $"{Mathf.RoundToInt(mSlider.value * mMaxHp)}/{mMaxHp}";
+                    mHpText.text = $"{Mathf.RoundToInt(mSlider.value * mMaxHp.Value)}/{mMaxHp.Value}";
                 }).AddTo(this);
         }
     }

@@ -35,4 +35,16 @@ public class Utils
         var serialized = JsonConvert.SerializeObject(source);
         return JsonConvert.DeserializeObject<T>(serialized);
     }
+
+    public class ReadonlyNumber<T>
+    {
+        private readonly T _value;
+        public T Value => _value;
+
+        public ReadonlyNumber(T value)
+        {
+            _value = value;
+        }
+        
+    }
 }

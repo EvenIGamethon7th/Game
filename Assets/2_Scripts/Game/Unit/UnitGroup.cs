@@ -14,6 +14,8 @@ namespace _2_Scripts.Game.Unit
         private readonly int nMaxUnitCount = 3;
         private int mCurrentUnitCount = 0;
 
+        public float GroupRange;
+        
         private CUnit[] mUnits;
 
         private void Awake()
@@ -68,6 +70,7 @@ namespace _2_Scripts.Game.Unit
 
             newUnit.transform.parent = transform;
             mUnits[mCurrentUnitCount] = newUnit;
+            GroupRange = newUnit.CharacterDatas.range;
             switch (mCurrentUnitCount)
             {
                 case 1:

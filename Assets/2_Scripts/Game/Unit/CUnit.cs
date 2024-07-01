@@ -1,9 +1,16 @@
+using System;
 using Rito.Attributes;
 using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using _2_Scripts.Game.ScriptableObject.Character;
+using _2_Scripts.Game.ScriptableObject.Skill;
+using Cysharp.Threading.Tasks;
+using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
+using CharacterInfo = _2_Scripts.Game.ScriptableObject.Character.CharacterInfo;
 
 namespace _2_Scripts.Game.Unit
 {
@@ -41,19 +48,39 @@ namespace _2_Scripts.Game.Unit
     {
         public EUnitClass CurrentUnitClass { get; private set; } = EUnitClass.None;
         public EUnitRank CurrentUnitRank { get; private set; } = EUnitRank.None;
-
+        public CharacterInfo CharacterDataInfo { get; private set; }
+        public CharacterData CharacterDatas { get; private set; }
         private MeshRenderer mMeshRenderer;
         private SkeletonAnimation mAnimation;
-
+        
+        private UnitDefaultAttackHandler mAttackHandler;
+        public Queue<Skill> ReadySkillQueue { get; private set; } = new Queue<Skill>();
         private void Awake()
         {
             mAnimation = GetComponent<SkeletonAnimation>();
             mMeshRenderer = mAnimation.GetComponent<MeshRenderer>();
             mMeshRenderer.sortingOrder = 11;
+            mAttackHandler = GetComponent<UnitDefaultAttackHandler>();
         }
 
-        public void Init(EUnitClass unitClass, EUnitRank unitRank)
+
+        private void CharacterDataLoad(string characterDataKey)
         {
+            var originData = DataBase_Manager.Instance.GetCharacter.GetData_Func(characterDataKey);
+            CharacterDatas = global::Utils.DeepCopy(originData);
+            CharacterDataInfo = ResourceManager.Instance.Load<CharacterInfo>(originData.characterPack);
+            mAttackHandler.SetAttack(CharacterDataInfo.DefaultAttack,
+                CharacterDatas, () => UpdateState(EUnitStates.Attack));
+            foreach (var skill in CharacterDataInfo.SkillList)
+            {
+                CoolTimeSkill(skill).Forget();
+            }
+        }
+        
+        
+        public void Init(EUnitClass unitClass, EUnitRank unitRank,string characterDataKey)
+        {
+            CharacterDataLoad(characterDataKey);
             CurrentUnitClass = unitClass;
             CurrentUnitRank = unitRank;
             var mat = mMeshRenderer.materials;
@@ -74,6 +101,11 @@ namespace _2_Scripts.Game.Unit
             mAnimation.state.SetAnimation(0, "Idle_1", true);
             gameObject.name = mAnimation.initialSkinName;
         }
+        private async UniTaskVoid CoolTimeSkill(SkillInfo skill)
+        {
+            await UniTask.WaitForSeconds(skill.CoolTime);
+            ReadySkillQueue.Enqueue(skill.Skill);
+        }
 
         public void UpdateState(EUnitStates state)
         {
@@ -91,6 +123,12 @@ namespace _2_Scripts.Game.Unit
                     mAnimation.state.SetAnimation(0, "Attack_1", false);
                     break;
             }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, CharacterDatas.range);
         }
     }
 }

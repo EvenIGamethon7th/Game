@@ -38,5 +38,12 @@ namespace _2_Scripts.Game.Map.Tile
                 return true;
             return OccupantUnit.CanAddUnit();
         } 
+
+        public void Clear()
+        {
+            OccupantUnit.Clear();
+            OccupantUnit = null;
+            gameObject.SetActive(false);
+        }
     }
 }

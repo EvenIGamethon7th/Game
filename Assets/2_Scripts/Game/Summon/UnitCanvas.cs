@@ -15,6 +15,8 @@ namespace _2_Scripts.Game.Summon
         private UnitButton[] mButtons;
         [SerializeField]
         private Button mResume;
+        [SerializeField]
+        private Button mReroll;
 
         private int mRerollNum;
         private EUnitClass[] mUnitClasses;
@@ -38,13 +40,29 @@ namespace _2_Scripts.Game.Summon
                 int num = i;
                 mButtons[i].onClick.AddListener(() => Summon(num));
             }
+
             mResume.onClick.AddListener(Resume);
+            mReroll.onClick.AddListener(Reroll);
             mPanel.SetActive(false);
+            mReroll.gameObject.SetActive(false);
         }
 
         private void Resume()
         {
             mResume.gameObject.SetActive(false);
+            //for (int i = 0; i < mRerollNum; ++i)
+            //{
+            //    mUnitClasses[i] = (EUnitClass)UnityEngine.Random.Range(1, mUnitClassCount);
+            //    mUnitRanks[i] = (EUnitRank)UnityEngine.Random.Range(1, mUnitRankCount);
+            //    mButtons[i].Text.text = $"{mUnitClasses[i]} {mUnitRanks[i]}";
+            //    mButtons[i].UpdateGraphic(mUnitClasses[i], mUnitRanks[i]);
+            //}
+            mPanel.SetActive(true);
+            mReroll.gameObject.SetActive(true);
+        }
+
+        private void Reroll()
+        {
             for (int i = 0; i < mRerollNum; ++i)
             {
                 mUnitClasses[i] = (EUnitClass)UnityEngine.Random.Range(1, mUnitClassCount);
@@ -52,7 +70,6 @@ namespace _2_Scripts.Game.Summon
                 mButtons[i].Text.text = $"{mUnitClasses[i]} {mUnitRanks[i]}";
                 mButtons[i].UpdateGraphic(mUnitClasses[i], mUnitRanks[i]);
             }
-            mPanel.SetActive(true);
         }
 
         private void Summon(int num)
@@ -61,6 +78,7 @@ namespace _2_Scripts.Game.Summon
             if (bSummon)
             {
                 mPanel.SetActive(false);
+                mReroll.gameObject.SetActive(false);
                 mResume.gameObject.SetActive(true);
             }
         }

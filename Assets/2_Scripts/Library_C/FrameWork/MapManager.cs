@@ -6,6 +6,7 @@ using _2_Scripts.Game.Unit;
 using _2_Scripts.Utils;
 using UniRx;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 
@@ -17,6 +18,7 @@ public class MapManager : Singleton<MapManager>
     private const string TILE_SLOT_NAME = AddressableTable.Default_TileSlot;
     private void Start()
     {
+        //추후 수정해야함
         MessageBroker.Default.Receive<TaskMessage>().Where(message => message.Task == ETaskList.DefaultResourceLoad).Subscribe(
         _ =>
         {
@@ -74,6 +76,16 @@ public class MapManager : Singleton<MapManager>
         RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero); 
         TileSlot tileSlot = hit.collider != null ? hit.transform.GetComponent<TileSlot>() : null;
         return tileSlot;
+    }
+
+    protected override void ChangeSceneInit(Scene prev, Scene next)
+    {
+        for (int i = 0; i < mTileDatas.Count; ++i)
+        {
+            mTileDatas[i].Clear();
+        }
+
+        mTileDatas.Clear();
     }
 
     private void CreateUnitPool()

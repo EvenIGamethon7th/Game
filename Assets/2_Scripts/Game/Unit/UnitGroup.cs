@@ -83,5 +83,20 @@ namespace _2_Scripts.Game.Unit
             }
             ++mCurrentUnitCount;
         }
+
+        public void Clear()
+        {
+            mToken.Cancel();
+            mToken.Dispose();
+            mCurrentUnitCount = 0;
+            for (int i = 0; i < mUnits.Length; ++i)
+            {
+                mUnits[i].Clear();
+            }
+
+            mUnits.Initialize();
+
+            gameObject.SetActive(false);
+        }
     }
 }

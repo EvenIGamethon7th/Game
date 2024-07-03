@@ -23,6 +23,8 @@ namespace _2_Scripts.Game.Summon
         public void UpdateGraphic(EUnitClass unitClass, EUnitRank unitRank)
         {
             Graphic.skeletonDataAsset = ResourceManager.Instance.Load<SkeletonDataAsset>($"{unitClass}_{unitRank}_{ELabelNames.SkeletonData}");
+
+
             Graphic.material = ResourceManager.Instance.Load<Material>($"{unitClass}_{unitRank}_{ELabelNames.Material}");
             string skinName = Graphic.skeletonDataAsset.name;
             Graphic.initialSkinName = skinName.Substring(0, skinName.LastIndexOf('_'));

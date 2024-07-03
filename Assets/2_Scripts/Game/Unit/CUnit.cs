@@ -63,7 +63,6 @@ namespace _2_Scripts.Game.Unit
             mAttackHandler = GetComponent<UnitDefaultAttackHandler>();
         }
 
-
         private void CharacterDataLoad(string characterDataKey)
         {
             var originData = DataBase_Manager.Instance.GetCharacter.GetData_Func(characterDataKey);
@@ -76,7 +75,6 @@ namespace _2_Scripts.Game.Unit
                 CoolTimeSkill(skill).Forget();
             }
         }
-        
         
         public void Init(EUnitClass unitClass, EUnitRank unitRank,string characterDataKey)
         {
@@ -129,6 +127,11 @@ namespace _2_Scripts.Game.Unit
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, CharacterDatas.range);
+        }
+
+        public void Clear()
+        {
+            gameObject.SetActive(false);
         }
     }
 }

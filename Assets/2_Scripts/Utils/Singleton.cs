@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Singleton<T> : MonoBehaviour where T : Component
 {
@@ -43,11 +44,19 @@ public class Singleton<T> : MonoBehaviour where T : Component
             {
                 Destroy(gameObject);
             }
+
+            SceneManager.activeSceneChanged -= ChangeSceneInit;
+            SceneManager.activeSceneChanged += ChangeSceneInit;
         }
     }
     protected virtual void OnDestory()
     {
         instance = null;
         Destroy(this.gameObject);
+    }
+
+    protected virtual void ChangeSceneInit(Scene prev, Scene next)
+    {
+
     }
 }

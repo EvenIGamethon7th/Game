@@ -3,6 +3,8 @@ Shader "Unlit/Rhombus"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _ChangeTime ("ChangeTime", range(0, 3)) = 1
+        _CurrentTime ("CurrentTime", range(0, 3)) = 0
     }
     SubShader
     {
@@ -34,6 +36,9 @@ Shader "Unlit/Rhombus"
             sampler2D _MainTex;
             float4 _MainTex_ST;
 
+            float _ChangeTime;
+            float _CurrentTime;
+
             v2f vert (appdata v)
             {
                 v2f o;
@@ -44,8 +49,16 @@ Shader "Unlit/Rhombus"
 
             half4 frag (v2f i) : SV_Target
             {
-                half4 col = tex2D(_MainTex, i.uv);
-                //col.rgb = half3(1, 1, 1) - col.rgb;
+                half4 col = half4(0, 0, 0, 1);
+                if (i.uv.x > _CurrentTime * 16 / _ChangeTime){
+                    col = tex2D(_MainTex, i.uv);
+                    if (col.r >= _CurrentTime * 24 / i.uv.x){
+                        col.a = 0;
+                    }
+                    else
+                        col = half4(0, 0, 0, 1);
+                }
+                    
                 return col;
             }
             ENDHLSL

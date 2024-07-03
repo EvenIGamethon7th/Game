@@ -1,5 +1,6 @@
 ﻿using System;
 using _2_Scripts.Utils;
+using DG.Tweening;
 using Rito.Attributes;
 using TMPro;
 using UniRx;
@@ -20,15 +21,16 @@ namespace _2_Scripts.UI
             mMaxHp = new global::Utils.ReadonlyNumber<float>(GameManager.Instance.UserHp);
             mHpText.text = $"{mMaxHp.Value}/{mMaxHp.Value}";
             mSlider.value = 1f;
-            
-            MessageBroker.Default.Receive<GameMessage<float>>()
-                .Where(message => message.Message == EGameMessage.PlayerDamage)
-                .Subscribe(message =>
-                {
-                    float damagePercentage = message.Value / mMaxHp.Value;
-                    mSlider.value -= damagePercentage;
-                    mHpText.text = $"{Mathf.RoundToInt(mSlider.value * mMaxHp.Value)}/{mMaxHp.Value}";
-                }).AddTo(this);
+        }
+
+        public void OnHealthBarUpdate(float value)
+        {
+            float damagePercentage = value / mMaxHp.Value;
+            float newValue = mSlider.value - damagePercentage;
+            mSlider.DOValue(newValue, 1f).OnUpdate(() =>
+            { 
+                mHpText.text = $"{Mathf.RoundToInt(mSlider.value * mMaxHp.Value)}/{mMaxHp.Value}";
+            });
         }
     }
 }

@@ -1,8 +1,10 @@
 using _2_Scripts.Game.Unit;
+using _2_Scripts.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,20 +47,26 @@ namespace _2_Scripts.Game.Summon
             mReroll.onClick.AddListener(Reroll);
             mPanel.SetActive(false);
             mReroll.gameObject.SetActive(false);
+
+            MessageBroker.Default.Receive<TaskMessage>().Where(message => message.Task == ETaskList.DefaultResourceLoad).Subscribe(
+                _ =>
+                {
+                    for (int i = 0; i < mRerollNum; ++i)
+                    {
+                        mUnitClasses[i] = (EUnitClass)UnityEngine.Random.Range(1, mUnitClassCount);
+                        mUnitRanks[i] = (EUnitRank)UnityEngine.Random.Range(1, mUnitRankCount);
+                        mButtons[i].Text.text = $"{mUnitClasses[i]} {mUnitRanks[i]}";
+                        mButtons[i].UpdateGraphic(mUnitClasses[i], mUnitRanks[i]);
+                    }
+                });
         }
 
         private void Resume()
         {
-            mResume.gameObject.SetActive(false);
-            //for (int i = 0; i < mRerollNum; ++i)
-            //{
-            //    mUnitClasses[i] = (EUnitClass)UnityEngine.Random.Range(1, mUnitClassCount);
-            //    mUnitRanks[i] = (EUnitRank)UnityEngine.Random.Range(1, mUnitRankCount);
-            //    mButtons[i].Text.text = $"{mUnitClasses[i]} {mUnitRanks[i]}";
-            //    mButtons[i].UpdateGraphic(mUnitClasses[i], mUnitRanks[i]);
-            //}
-            mPanel.SetActive(true);
-            mReroll.gameObject.SetActive(true);
+            bool b = !mPanel.gameObject.activeSelf;
+            //mResume.gameObject.SetActive(false);
+            mPanel.SetActive(b);
+            mReroll.gameObject.SetActive(b);
         }
 
         private void Reroll()
@@ -69,6 +77,7 @@ namespace _2_Scripts.Game.Summon
                 mUnitRanks[i] = (EUnitRank)UnityEngine.Random.Range(1, mUnitRankCount);
                 mButtons[i].Text.text = $"{mUnitClasses[i]} {mUnitRanks[i]}";
                 mButtons[i].UpdateGraphic(mUnitClasses[i], mUnitRanks[i]);
+                mButtons[i].gameObject.SetActive(true);
             }
         }
 
@@ -77,9 +86,7 @@ namespace _2_Scripts.Game.Summon
             bool bSummon = MapManager.Instance.CreateUnit(mUnitClasses[num], mUnitRanks[num]);
             if (bSummon)
             {
-                mPanel.SetActive(false);
-                mReroll.gameObject.SetActive(false);
-                mResume.gameObject.SetActive(true);
+                mButtons[num].gameObject.SetActive(false);
             }
         }
 

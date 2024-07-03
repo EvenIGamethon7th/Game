@@ -23,7 +23,7 @@ public class MapManager : Singleton<MapManager>
         _ =>
         {
             CreateInitialTileSlots();
-            CreateUnitPool();
+            CreatePool();
         });
     }
 
@@ -88,9 +88,10 @@ public class MapManager : Singleton<MapManager>
         mTileDatas.Clear();
     }
 
-    private void CreateUnitPool()
+    private void CreatePool()
     {
         ObjectPoolManager.Instance.RegisterPoolingObject(AddressableTable.Default_Unit, 100);
+        ObjectPoolManager.Instance.RegisterPoolingObject(AddressableTable.Default_DamageCanvas, 100);
     }
 
     private void CreateInitialTileSlots()

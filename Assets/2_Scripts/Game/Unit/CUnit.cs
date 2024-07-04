@@ -91,25 +91,24 @@ namespace _2_Scripts.Game.Unit
             };
         }
         
-        private void CharacterDataLoad(string characterDataKey)
+        private void CharacterDataLoad(CharacterData characterData)
         {
-            var originData = DataBase_Manager.Instance.GetCharacter.GetData_Func(characterDataKey);
-            CharacterDatas = global::Utils.DeepCopy(originData);
+            CharacterDatas = global::Utils.DeepCopy(characterData);
             
             InitActionAnimation();
-            
-            CharacterDataInfo = ResourceManager.Instance.Load<CharacterInfo>(originData.characterPack);
-            
-            
-            foreach (var skill in CharacterDataInfo.SkillList)
-            {
-                CoolTimeSkill(skill).Forget();
-            }
+            // TODO 
+            // CharacterDataInfo = ResourceManager.Instance.Load<CharacterInfo>(originData.characterPack);
+            //
+            //
+            // foreach (var skill in CharacterDataInfo.SkillList)
+            // {
+            //     CoolTimeSkill(skill).Forget();
+            // }
         }
         
         public void Init(CharacterData characterData)
         {
-            CharacterDataLoad(characterData.Key);
+            CharacterDataLoad(characterData);
             var mat = mMeshRenderer.materials;
 
             mAnimation.skeletonDataAsset = ResourceManager.Instance.Load<SkeletonDataAsset>($"{characterData.characterPack}_{ELabelNames.SkeletonData}");

@@ -29,7 +29,7 @@ namespace _2_Scripts.UI
         [SerializeField]
         private Dictionary<ESummonButtonState,GameObject> mViewList = new();
 
-        private ESummonButtonState mCurrentSummonButtonState = ESummonButtonState.Disable;
+        private ESummonButtonState mCurrentSummonButtonState = ESummonButtonState.Selected;
 
 
         private CharacterData mCharacterData;
@@ -56,6 +56,8 @@ namespace _2_Scripts.UI
                 return;
             }
 
+            //TODO 돈 뺴는거 넣어야 함
+            
             mCurrentSummonButtonState = ESummonButtonState.Disable;
             ShowChange();
             MapManager.Instance.CreateUnit(mCharacterData);

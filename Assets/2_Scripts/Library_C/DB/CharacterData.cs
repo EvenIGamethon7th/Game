@@ -32,7 +32,6 @@ public partial class CharacterData
         newData.range = data1.range;
         newData.nameKey = data1.nameKey;
         newData.Key = data1.Key;
-        newData.unitClass = data1.unitClass;
         newData.isAlumni = data1.isAlumni;
 
         return newData;

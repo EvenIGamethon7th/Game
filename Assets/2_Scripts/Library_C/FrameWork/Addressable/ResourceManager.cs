@@ -16,14 +16,15 @@ public enum ELabelNames
     Default,
     Demo,
     Material,
-    SkeletonData
+    SkeletonData,
+    CharacterData
 }
 
 public class ResourceManager : SerializedMonoBehaviour,GameSystem_Manager.IInitializer
 {
     public static ResourceManager Instance;
-    
-    private Dictionary<string, Object> _resources = new();
+
+    public Dictionary<string, Object> _resources { get; private set; } = new();
     public bool IsPreLoad {get; private set; }
     
     public T Load<T>(string key ,Action<T> callback = null) where T : Object

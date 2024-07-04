@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: CharacterData
+  m_EditorClassIdentifier: 
+  m_GroupName: CharacterData
+  m_Data:
+    m_SerializedData: []
+  m_GUID: b6b5b7eece45d6e47b59ce9fee97be24
+  m_SerializeEntries:
+  - m_GUID: b084e1a090eb41947bfb784156e9b3d7
+    m_Address: Oni_Archer
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CharacterData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8b948e1dc81fad542963e123219d43d8
+    m_Address: Indian_Archer
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CharacterData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b5e46dc1bfc79724ca696db94dfc06a3
+    m_Address: Angel_Archer
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CharacterData
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 807a1aab8c1a69e479fb445aaa41535a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 2d53554845078844598086716a0f5ab8, type: 2}
+    - {fileID: 11400000, guid: b94de4036d4eab54c90d197a3ddd4aef, type: 2}

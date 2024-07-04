@@ -56,9 +56,6 @@ MonoBehaviour:
     - Name: isBoss
       Entry: 5
       Data: false
-    - Name: limitTime
-      Entry: 4
-      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -86,9 +83,6 @@ MonoBehaviour:
     - Name: isBoss
       Entry: 5
       Data: false
-    - Name: limitTime
-      Entry: 4
-      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -116,9 +110,6 @@ MonoBehaviour:
     - Name: isBoss
       Entry: 5
       Data: false
-    - Name: limitTime
-      Entry: 4
-      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -146,9 +137,6 @@ MonoBehaviour:
     - Name: isBoss
       Entry: 5
       Data: true
-    - Name: limitTime
-      Entry: 4
-      Data: 30
     - Name: 
       Entry: 8
       Data: 
@@ -166,22 +154,18 @@ MonoBehaviour:
     monsterKey: Monster_0
     spawnCount: 5
     isBoss: 0
-    limitTime: 0
   - Key: Wave_1
     monsterKey: Monster_0
     spawnCount: 10
     isBoss: 0
-    limitTime: 0
   - Key: Wave_2
     monsterKey: Monster_0
     spawnCount: 15
     isBoss: 0
-    limitTime: 0
   - Key: Wave_3
     monsterKey: Monster_0
     spawnCount: 1
     isBoss: 1
-    limitTime: 30
   keyArr:
   - Wave_0
   - Wave_1

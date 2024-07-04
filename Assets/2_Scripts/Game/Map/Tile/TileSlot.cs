@@ -6,15 +6,12 @@ namespace _2_Scripts.Game.Map.Tile
     public class TileSlot : MonoBehaviour
     {
         public UnitGroup OccupantUnit { get; private set; }
-        public EUnitClass CurrentUnitClass { get; private set; } = EUnitClass.None;
-        public EUnitRank CurrentUnitRank { get; private set; } = EUnitRank.None;
+        public CharacterData CurrentUnitClass { get; private set; } 
 
         public void Init(UnitGroup unitGroup, CUnit unit)
         {
             OccupantUnit = unitGroup;
             OccupantUnit.AddUnit(unit);
-            CurrentUnitClass = unit.CurrentUnitClass;
-            CurrentUnitRank = unit.CurrentUnitRank;
         }
 
         public void SetOccupantUnit(UnitGroup unitGroup)
@@ -27,8 +24,7 @@ namespace _2_Scripts.Game.Map.Tile
 
             else
             {
-                CurrentUnitClass = EUnitClass.None;
-                CurrentUnitRank = EUnitRank.None;
+                CurrentUnitClass = null;
             }
         }
 

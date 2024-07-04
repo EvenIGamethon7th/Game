@@ -6,6 +6,7 @@
         DemoResourceLoad,
         MaterialResourceLoad,
         SkeletonDatasResourceLoad,
+        CharacterDataResourceLoad,
         BossDeath,
         GameOver,
     }

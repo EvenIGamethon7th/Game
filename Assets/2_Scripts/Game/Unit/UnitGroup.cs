@@ -57,7 +57,7 @@ namespace _2_Scripts.Game.Unit
 
         public bool CanAddUnit()
         {
-            if (mCurrentUnitCount == 1 && mUnits[0].CurrentUnitRank == EUnitRank.Unique)
+            if (mCurrentUnitCount == 1 && mUnits[0].CharacterDatas.rank == (int)EUnitRank.Unique)
                 return false;
 
             return mCurrentUnitCount < nMaxUnitCount;
@@ -65,7 +65,7 @@ namespace _2_Scripts.Game.Unit
 
         public void AddUnit(CUnit newUnit)
         {
-            if (mCurrentUnitCount == 1 && mUnits[0].CurrentUnitRank == EUnitRank.Unique) return;
+            if (mCurrentUnitCount == 1 && mUnits[0].CharacterDatas.rank == (int)EUnitRank.Unique) return;
                 if (mCurrentUnitCount >= nMaxUnitCount) return;
 
             newUnit.transform.parent = transform;

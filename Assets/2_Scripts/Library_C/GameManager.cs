@@ -9,6 +9,8 @@
     {
         
         public float UserHp { get; private set; } = 100;
+        // 학년
+        public int UserLevel { get; private set; } = 1;
         private void Start()
         {
             MessageBroker.Default.Receive<GameMessage<float>>().Where(message => message.Message == EGameMessage.PlayerDamage)

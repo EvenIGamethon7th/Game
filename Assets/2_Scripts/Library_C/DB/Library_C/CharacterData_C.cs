@@ -19,9 +19,7 @@ public partial class CharacterData : Data_C
      [LabelText("랭크")] public int rank;
      [LabelText("캐릭터팩")] public string characterPack;
      [LabelText("공격사거리")] public float range;
-     [LabelText("아카데미 졸업 여부")] public bool isAlumni;
-     [LabelText("클래스")] public EUnitClass unitClass;
-
+     [LabelText("소환재화")] public int cost;
 
 
 #if UNITY_EDITOR
@@ -35,6 +33,7 @@ public partial class CharacterData : Data_C
         rank = _cellDataArr[5].ToInt();
         characterPack = _cellDataArr[6];
         range = _cellDataArr[7].ToFloat();
+        cost = _cellDataArr[8].ToInt();
     }
 #endif
 }

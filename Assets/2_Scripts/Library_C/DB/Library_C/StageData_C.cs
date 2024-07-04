@@ -12,6 +12,8 @@ public partial class StageData : Data_C
 {
      public string Key;
      [LabelText("이름")] public string[] waveList;
+     [LabelText("체력 가중치")] public float hpWeight;
+     [LabelText("방어력 가중치")] public float defWeight;
 
     
 
@@ -22,6 +24,8 @@ public partial class StageData : Data_C
         string[] _strArr1 = _cellDataArr[1].Split(',');
         waveList = new string[_strArr1.Length];
         waveList = _strArr1;
+        hpWeight = _cellDataArr[2].ToFloat();
+        defWeight = _cellDataArr[3].ToFloat();
     }
 #endif
 }

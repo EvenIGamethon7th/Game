@@ -26,8 +26,6 @@ namespace _2_Scripts.UI
             mSliders[0].value = data.CharacterDatas.atk;
             mSliders[1].value = data.CharacterDatas.atkSpeed;
             mSliders[2].value = data.CharacterDatas.matk;
-
-            UpdateGraphic(data.CurrentUnitClass, data.CurrentUnitRank);
         }
 
         private void UpdateGraphic(EUnitClass unitClass, EUnitRank unitRank)

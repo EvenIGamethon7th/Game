@@ -6,8 +6,7 @@ namespace _2_Scripts.Game.Map.Tile
     public class TileSlot : MonoBehaviour
     {
         public UnitGroup OccupantUnit { get; private set; }
-        public EUnitClass CurrentUnitClass { get; private set; } = EUnitClass.None;
-        public EUnitRank CurrentUnitRank { get; private set; } = EUnitRank.None;
+        public CharacterData CurrentUnitClass { get; private set; } 
 
         public bool IsNormalUnit {  get; private set; }
 
@@ -15,8 +14,6 @@ namespace _2_Scripts.Game.Map.Tile
         {
             OccupantUnit = unitGroup;
             OccupantUnit.AddUnit(unit);
-            CurrentUnitClass = unit.CurrentUnitClass;
-            CurrentUnitRank = unit.CurrentUnitRank;
             IsNormalUnit = isNormalUnit;
         }
 
@@ -30,8 +27,7 @@ namespace _2_Scripts.Game.Map.Tile
 
             else
             {
-                CurrentUnitClass = EUnitClass.None;
-                CurrentUnitRank = EUnitRank.None;
+                CurrentUnitClass = null;
             }
         }
 

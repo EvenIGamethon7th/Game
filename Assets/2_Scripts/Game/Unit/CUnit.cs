@@ -39,6 +39,7 @@ namespace _2_Scripts.Game.Unit
 
     public enum EUnitStates
     {
+        None,
         Idle,
         Move,
         Attack
@@ -46,45 +47,72 @@ namespace _2_Scripts.Game.Unit
 
     public class CUnit : MonoBehaviour
     {
-        public EUnitClass CurrentUnitClass { get; private set; } = EUnitClass.None;
-        public EUnitRank CurrentUnitRank { get; private set; } = EUnitRank.None;
         public CharacterInfo CharacterDataInfo { get; private set; }
         public CharacterData CharacterDatas { get; private set; }
         private MeshRenderer mMeshRenderer;
         private SkeletonAnimation mAnimation;
         
-        private UnitDefaultAttackHandler mAttackHandler;
+        public delegate void FSMAction();
+
+        private Dictionary<EUnitStates, FSMAction> mActions = new ();
+        public EUnitStates CurrentState { get; private set; } = EUnitStates.None;
         public Queue<Skill> ReadySkillQueue { get; private set; } = new Queue<Skill>();
         private void Awake()
         {
             mAnimation = GetComponent<SkeletonAnimation>();
             mMeshRenderer = mAnimation.GetComponent<MeshRenderer>();
             mMeshRenderer.sortingOrder = 11;
-            mAttackHandler = GetComponent<UnitDefaultAttackHandler>();
+            foreach (var state in Enum.GetValues(typeof(EUnitStates)))
+            {
+                mActions.Add((EUnitStates)state, () => { });
+            }
+
         }
 
-        private void CharacterDataLoad(string characterDataKey)
+        /// <summary>
+        ///  임시 mActions 초기화
+        /// </summary>
+        private void InitActionAnimation()
         {
-            var originData = DataBase_Manager.Instance.GetCharacter.GetData_Func(characterDataKey);
-            CharacterDatas = global::Utils.DeepCopy(originData);
-            CharacterDataInfo = ResourceManager.Instance.Load<CharacterInfo>(originData.characterPack);
-            mAttackHandler.SetAttack(CharacterDataInfo.DefaultAttack,
-                CharacterDatas, () => UpdateState(EUnitStates.Attack));
-            foreach (var skill in CharacterDataInfo.SkillList)
+            mActions[EUnitStates.Idle] = () =>
             {
-                CoolTimeSkill(skill).Forget();
-            }
+                CurrentState = EUnitStates.Idle;
+                mAnimation.state.SetAnimation(0, "Idle_1", true);
+            };
+            mActions[EUnitStates.Move] = () =>
+            {
+                CurrentState = EUnitStates.Move;
+                mAnimation.state.SetAnimation(0, "Run_Weapon", true);
+            };
+            mActions[EUnitStates.Attack] = () =>
+            {
+                CurrentState = EUnitStates.Attack;
+                mAnimation.state.SetAnimation(0, "Attack_1", false);
+            };
         }
         
-        public void Init(EUnitClass unitClass, EUnitRank unitRank,string characterDataKey)
+        private void CharacterDataLoad(CharacterData characterData)
         {
-            CharacterDataLoad(characterDataKey);
-            CurrentUnitClass = unitClass;
-            CurrentUnitRank = unitRank;
+            CharacterDatas = global::Utils.DeepCopy(characterData);
+            
+            InitActionAnimation();
+            // TODO 
+            // CharacterDataInfo = ResourceManager.Instance.Load<CharacterInfo>(originData.characterPack);
+            //
+            //
+            // foreach (var skill in CharacterDataInfo.SkillList)
+            // {
+            //     CoolTimeSkill(skill).Forget();
+            // }
+        }
+        
+        public void Init(CharacterData characterData)
+        {
+            CharacterDataLoad(characterData);
             var mat = mMeshRenderer.materials;
 
-            mAnimation.skeletonDataAsset = ResourceManager.Instance.Load<SkeletonDataAsset>($"{CurrentUnitClass}_{CurrentUnitRank}_{ELabelNames.SkeletonData}");
-            mat[0] = ResourceManager.Instance.Load<Material>($"{CurrentUnitClass}_{CurrentUnitRank}_{ELabelNames.Material}");
+            mAnimation.skeletonDataAsset = ResourceManager.Instance.Load<SkeletonDataAsset>($"{characterData.characterPack}_{ELabelNames.SkeletonData}");
+            mat[0] = ResourceManager.Instance.Load<Material>($"{characterData.characterPack}_{ELabelNames.Material}");
             mMeshRenderer.materials = mat;
             string skinName = mAnimation.skeletonDataAsset.name;
             mAnimation.initialSkinName = skinName.Substring(0, skinName.LastIndexOf('_'));
@@ -95,8 +123,8 @@ namespace _2_Scripts.Game.Unit
             mAnimation.Initialize(true);
 
             mAnimation.skeleton.SetSlotsToSetupPose();
-            
-            mAnimation.state.SetAnimation(0, "Idle_1", true);
+
+            UpdateState(EUnitStates.Idle);
             gameObject.name = mAnimation.initialSkinName;
             //mAnimation.AnimationState.End +=
             //mAnimation.state.SetAnimation(0, "Idle_1", true).TimeScale
@@ -109,20 +137,16 @@ namespace _2_Scripts.Game.Unit
 
         public void UpdateState(EUnitStates state)
         {
-            switch (state)
-            {
-                case EUnitStates.Idle:
-                    mAnimation.state.SetAnimation(0, "Idle_1", true);
-                    break;
+            mActions[state].Invoke();
+        }
 
-                case EUnitStates.Move:
-                    mAnimation.state.SetAnimation(0, "Run_Weapon", true);
-                    break;
-
-                case EUnitStates.Attack:
-                    mAnimation.state.SetAnimation(0, "Attack_1", false);
-                    break;
-            }
+        public void AddActionState(EUnitStates state, FSMAction action)
+        {
+            mActions[state] += action;
+        }
+        public void RemoveActionState(EUnitStates state, FSMAction action)
+        {
+            mActions[state] -= action;
         }
 
         private void OnDrawGizmos()

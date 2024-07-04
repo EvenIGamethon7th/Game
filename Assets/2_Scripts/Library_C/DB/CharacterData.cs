@@ -11,6 +11,8 @@ using Unity.VisualScripting;
 
 public partial class CharacterData
 {
+    [LabelText("아카데미 졸업 여부")] public bool isAlumni;
+
     protected override void Init_Project_Func()
     {
         base.Init_Project_Func();
@@ -32,7 +34,6 @@ public partial class CharacterData
         newData.range = data1.range;
         newData.nameKey = data1.nameKey;
         newData.Key = data1.Key;
-        newData.unitClass = data1.unitClass;
         newData.isAlumni = data1.isAlumni;
 
         return newData;

@@ -11,21 +11,26 @@ namespace _2_Scripts.Game.Unit
         private float mSpeed = 1.0f;
         private CancellationTokenSource mToken = new CancellationTokenSource();
 
-        private readonly int nMaxUnitCount = 3;
+        private readonly int mMaxUnitCount = 3;
         private int mCurrentUnitCount = 0;
 
         public float GroupRange;
         
         private CUnit[] mUnits;
 
+        private EUnitStates mCurrentState;
+        private int mFlip = 1;
+
         private void Awake()
         {
-            mUnits = new CUnit[nMaxUnitCount];
+            mUnits = new CUnit[mMaxUnitCount];
         }
 
-        public void Fusion()
+        public bool CanFusion()
         {
-
+            if (mCurrentUnitCount != mMaxUnitCount || mUnits[0].CharacterDatas.rank == (int)EUnitRank.Unique)
+                return false;
+            return true;
         }
 
         public void MoveGroup(TileSlot destinationTileSlot)
@@ -40,13 +45,16 @@ namespace _2_Scripts.Game.Unit
         {
             Vector3 originPos = transform.position;
 
-            int flip = dstPos.x > originPos.x ? 1 : -1;
+            mFlip = dstPos.x > originPos.x ? 1 : -1;
+            mCurrentState = EUnitStates.Move;
+
             for (int i = 0; i < mUnits.Length; ++i)
             {
                 if (mUnits[i] == null)
                     break;
-                mUnits[i].UpdateState(EUnitStates.Move);
-                mUnits[i].transform.localScale = new Vector3(Mathf.Abs(mUnits[i].transform.localScale.x) * flip, mUnits[i].transform.localScale.y, 1);
+                
+                mUnits[i].UpdateState(mCurrentState);
+                mUnits[i].transform.localScale = new Vector3(Mathf.Abs(mUnits[i].transform.localScale.x) * mFlip, mUnits[i].transform.localScale.y, mUnits[i].transform.localScale.z);
             }
             
             while (time >= 0)
@@ -56,26 +64,37 @@ namespace _2_Scripts.Game.Unit
                 time -= Time.deltaTime;
             }
             transform.position = dstPos;
+
+            mCurrentState = EUnitStates.Idle;
             for (int i = 0; i < mUnits.Length; ++i)
-                mUnits[i]?.UpdateState(EUnitStates.Idle);
+                mUnits[i]?.UpdateState(mCurrentState);
         } 
+
+        public CharacterData GetCharacterData()
+        {
+            return mUnits[0]?.CharacterDatas;
+        }
 
         public bool CanAddUnit()
         {
             if (mCurrentUnitCount == 1 && mUnits[0].CharacterDatas.rank == (int)EUnitRank.Unique)
                 return false;
 
-            return mCurrentUnitCount < nMaxUnitCount;
+            return mCurrentUnitCount < mMaxUnitCount;
         }
 
         public void AddUnit(CUnit newUnit)
         {
             if (mCurrentUnitCount == 1 && mUnits[0].CharacterDatas.rank == (int)EUnitRank.Unique) return;
-                if (mCurrentUnitCount >= nMaxUnitCount) return;
+            if (mCurrentUnitCount >= mMaxUnitCount) return;
 
             newUnit.transform.parent = transform;
+            newUnit.transform.position = transform.position;
+            newUnit.UpdateState(mCurrentState);
+
             mUnits[mCurrentUnitCount] = newUnit;
             GroupRange = newUnit.CharacterDatas.range;
+            newUnit.transform.localScale = new Vector3(Mathf.Abs(newUnit.transform.localScale.x) * mFlip, newUnit.transform.localScale.y, newUnit.transform.localScale.z);
             switch (mCurrentUnitCount)
             {
                 case 1:

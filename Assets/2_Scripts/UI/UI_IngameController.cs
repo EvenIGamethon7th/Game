@@ -9,6 +9,7 @@ namespace _2_Scripts.UI
     {
         [SerializeField]
         private GameObject mBottomGo;
+        [SerializeField] private GameObject mAcademy;
 
         private void Start()
         {

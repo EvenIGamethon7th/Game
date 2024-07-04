@@ -39,6 +39,8 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
             }
             var targetCount = MaxHitUnit == 0 ? detectingTargets.Length : MaxHitUnit;
             CastEffectPlay(ownerTransform.position);
+            int flip = detectingTargets[0].transform.position.x > ownerTransform.position.x ? 1 : -1;
+            ownerTransform.localScale = new Vector3(Mathf.Abs(ownerTransform.localScale.x) * flip, ownerTransform.localScale.y, ownerTransform.localScale.z);
             for (int i = 0; i < targetCount; i++)
             {
                 mTargetMonster = detectingTargets[i].GetComponent<Monster>();

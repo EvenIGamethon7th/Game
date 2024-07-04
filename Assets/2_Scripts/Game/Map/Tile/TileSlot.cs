@@ -6,9 +6,9 @@ namespace _2_Scripts.Game.Map.Tile
     public class TileSlot : MonoBehaviour
     {
         public UnitGroup OccupantUnit { get; private set; }
-        public CharacterData CurrentUnitData { get; private set; } 
+        public CharacterData CurrentUnitData { get; private set; }
 
-        public bool IsNormalUnit {  get; private set; }
+        public bool IsNormalUnit { get; private set; } = true;
 
         public void Init(UnitGroup unitGroup, CUnit unit, bool isNormalUnit = true)
         {
@@ -21,14 +21,10 @@ namespace _2_Scripts.Game.Map.Tile
         public void SetOccupantUnit(UnitGroup unitGroup)
         {
             OccupantUnit = unitGroup;
+            CurrentUnitData = OccupantUnit?.GetCharacterData();
             if (OccupantUnit != null)
             {
                 OccupantUnit.MoveGroup(this);
-            }
-
-            else
-            {
-                CurrentUnitData = null;
             }
         }
 

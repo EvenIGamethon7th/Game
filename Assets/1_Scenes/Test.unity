@@ -14760,6 +14760,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154405878}
   m_CullTransparentMesh: 1
+--- !u!1 &1190473286 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7453516752220918099, guid: 8c87aa2d5c1075c47a9befd890e1b4cf, type: 3}
+  m_PrefabInstance: {fileID: 1211045312}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1195885536
 GameObject:
   m_ObjectHideFlags: 0
@@ -15804,7 +15809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1026665120345448642, guid: 8c87aa2d5c1075c47a9befd890e1b4cf, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1164810992900734458, guid: 8c87aa2d5c1075c47a9befd890e1b4cf, type: 3}
       propertyPath: m_AnchorMax.y
@@ -15901,6 +15906,10 @@ PrefabInstance:
     - target: {fileID: 3967365820978557794, guid: 8c87aa2d5c1075c47a9befd890e1b4cf, type: 3}
       propertyPath: m_RenderMode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453516752220918099, guid: 8c87aa2d5c1075c47a9befd890e1b4cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8553857229114967490, guid: 8c87aa2d5c1075c47a9befd890e1b4cf, type: 3}
       propertyPath: m_AnchorMax.y
@@ -19312,6 +19321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mBottomGo: {fileID: 1419508100}
+  mAcademy: {fileID: 1190473286}
 --- !u!114 &1766518760
 MonoBehaviour:
   m_ObjectHideFlags: 0

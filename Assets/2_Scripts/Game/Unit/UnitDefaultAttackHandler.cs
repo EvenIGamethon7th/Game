@@ -15,13 +15,15 @@ namespace _2_Scripts.Game.Unit
         private CharacterData mCharacterData;
         private Action mAttackAction;
         private CancellationTokenSource mCancellationToken = new CancellationTokenSource();
-        public void SetAttack(Skill attack,CharacterData characterData,Action attackAction)
+        private EUnitStates mUnitStates;
+        public void SetAttack(Skill attack,CUnit character,Action attackAction)
         {
             mDefaultAttack = attack;
-            mCharacterData = characterData;
+            mCharacterData = character.CharacterDatas;
             mAttackAction = attackAction;
             CancelAndDisposeToken();
             TryAttack().Forget();
+            
         }
 
         private void OnDisable()

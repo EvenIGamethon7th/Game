@@ -23,6 +23,11 @@ namespace _2_Scripts.Game.Unit
             mUnits = new CUnit[nMaxUnitCount];
         }
 
+        public void Fusion()
+        {
+
+        }
+
         public void MoveGroup(TileSlot destinationTileSlot)
         {
             mToken.Cancel();

@@ -4,6 +4,7 @@ using UnityEngine;
 using Cargold;
 using Sirenix.OdinInspector;
 using Cargold.DB.TableImporter;
+using _2_Scripts.Game.Unit;
 
 // 카라리 테이블 임포터에 의해 생성된 스크립트입니다.
 
@@ -18,8 +19,10 @@ public partial class CharacterData : Data_C
      [LabelText("랭크")] public int rank;
      [LabelText("캐릭터팩")] public string characterPack;
      [LabelText("공격사거리")] public float range;
+     [LabelText("아카데미 졸업 여부")] public bool isAlumni;
+     [LabelText("클래스")] public EUnitClass unitClass;
 
-    
+
 
 #if UNITY_EDITOR
     public override void CallEdit_OnDataImport_Func(string[] _cellDataArr)

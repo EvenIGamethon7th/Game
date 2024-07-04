@@ -9,12 +9,15 @@ namespace _2_Scripts.Game.Map.Tile
         public EUnitClass CurrentUnitClass { get; private set; } = EUnitClass.None;
         public EUnitRank CurrentUnitRank { get; private set; } = EUnitRank.None;
 
-        public void Init(UnitGroup unitGroup, CUnit unit)
+        public bool IsNormalUnit {  get; private set; }
+
+        public void Init(UnitGroup unitGroup, CUnit unit, bool isNormalUnit = true)
         {
             OccupantUnit = unitGroup;
             OccupantUnit.AddUnit(unit);
             CurrentUnitClass = unit.CurrentUnitClass;
             CurrentUnitRank = unit.CurrentUnitRank;
+            IsNormalUnit = isNormalUnit;
         }
 
         public void SetOccupantUnit(UnitGroup unitGroup)

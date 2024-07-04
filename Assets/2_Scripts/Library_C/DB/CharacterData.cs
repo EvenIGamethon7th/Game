@@ -4,6 +4,8 @@ using UnityEngine;
 using Cargold;
 using Sirenix.OdinInspector;
 using Cargold.DB.TableImporter;
+using OfficeOpenXml.FormulaParsing.Excel.Operators;
+using Unity.VisualScripting;
 
 // 카라리 테이블 임포터에 의해 생성된 스크립트입니다.
 
@@ -17,6 +19,23 @@ public partial class CharacterData
          * 이 스크립트는 덮어쓰이지 않습니다.
          * 임의의 데이터 재가공을 원한다면 이 밑으로 코드를 작성하시면 됩니다.
          */
+    }
+
+    public static CharacterData operator +(CharacterData data1, CharacterData data2)
+    {
+        CharacterData newData = new();
+        newData.atk = data1.atk + data2.atk;
+        newData.matk = data1.matk + data2.matk;
+        newData.atkSpeed = data1.atkSpeed + data2.atkSpeed;
+        newData.rank = data1.rank;
+        newData.characterPack = data1.characterPack;
+        newData.range = data1.range;
+        newData.nameKey = data1.nameKey;
+        newData.Key = data1.Key;
+        newData.unitClass = data1.unitClass;
+        newData.isAlumni = data1.isAlumni;
+
+        return newData;
     }
 
 #if UNITY_EDITOR

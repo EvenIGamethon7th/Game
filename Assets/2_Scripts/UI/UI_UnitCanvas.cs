@@ -8,13 +8,13 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _2_Scripts.Game.Summon
+namespace _2_Scripts.UI
 {
-    public class UnitCanvas : MonoBehaviour
+    public class UI_UnitCanvas : MonoBehaviour
     {
         [SerializeField]
         private GameObject mPanel;
-        private UnitButton[] mButtons;
+        private UI_UnitButton[] mButtons;
         [SerializeField]
         private Button mResume;
         [SerializeField]
@@ -29,7 +29,7 @@ namespace _2_Scripts.Game.Summon
 
         void Start()
         {
-            mButtons = mPanel.GetComponentsInChildren<UnitButton>();
+            mButtons = mPanel.GetComponentsInChildren<UI_UnitButton>();
 
             mRerollNum = mButtons.Length;
             mUnitClasses = new EUnitClass[mRerollNum];
@@ -58,6 +58,7 @@ namespace _2_Scripts.Game.Summon
                         mButtons[i].Text.text = $"{mUnitClasses[i]} {mUnitRanks[i]}";
                         mButtons[i].UpdateGraphic(mUnitClasses[i], mUnitRanks[i]);
                     }
+                    gameObject.SetActive(false);
                 });
         }
 

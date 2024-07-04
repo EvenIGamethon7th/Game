@@ -1,6 +1,7 @@
 ﻿using System;
 using _2_Scripts.Game.Map;
 using _2_Scripts.Game.Unit;
+using _2_Scripts.UI;
 using _2_Scripts.Utils;
 using Rito.Attributes;
 using UniRx;
@@ -26,7 +27,7 @@ namespace _2_Scripts.Game.Monster
         private GameMessage<float> mDamageMessage;
         private bool mbBoss;
 
-        private MonsterCanvas mHpCanvas;
+        private UI_MonsterCanvas mHpCanvas;
         private Collider2D mTrigger;
         private SpriteRenderer mSpriteRenderer;
 
@@ -34,7 +35,7 @@ namespace _2_Scripts.Game.Monster
         {
             mAnimator = GetComponent<Animator>();
             mMatController = GetComponent<MatController>();
-            mHpCanvas = GetComponentInChildren<MonsterCanvas>();
+            mHpCanvas = GetComponentInChildren<UI_MonsterCanvas>();
             mTrigger = GetComponent<Collider2D>();
             mSpriteRenderer = GetComponent<SpriteRenderer>();
             Enabled(false);
@@ -64,7 +65,7 @@ namespace _2_Scripts.Game.Monster
         public void TakeDamage(float damage)
         {
             Debug.Log($"데미지 받음{damage}");
-            ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_DamageCanvas, transform.position + Vector3.up).GetComponent<DamageCanvas>().SetDamage(damage);
+            ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_DamageCanvas, transform.position + Vector3.up).GetComponent<UI_DamageCanvas>().SetDamage(damage);
 
             mMonsterData.hp -= damage;
             mHpCanvas.SetHpSlider(mMonsterData.hp);

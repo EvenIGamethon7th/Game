@@ -35,7 +35,7 @@ namespace _2_Scripts.Game.Controller
                 .Subscribe(_ =>
                 {
                     var dstSlot = MapManager.Instance.GetClickTileSlotDetailOrNull();
-                    if (dstSlot != null)
+                    if (dstSlot != null && dstSlot.IsNormalUnit)
                     {
                         mIndicator.SetIndicator(mSelectTileSlot.transform.position, dstSlot.transform.position);
                     }
@@ -47,7 +47,9 @@ namespace _2_Scripts.Game.Controller
             mouseDownStream
                 .Subscribe(_ =>
                 {
-                    if (mSelectUnitGroup != null && mSelectTileSlot == MapManager.Instance.GetClickTileSlotDetailOrNull())
+                    if (mSelectUnitGroup != null 
+                    && mSelectTileSlot == MapManager.Instance.GetClickTileSlotDetailOrNull()
+                    && mSelectTileSlot.IsNormalUnit)
                     {
                         Debug.Log("Click Same Unit and Tile");
                         //롱 터치 판별
@@ -78,7 +80,7 @@ namespace _2_Scripts.Game.Controller
                     {
                         //위치 이동 및 자리 변경
                         TileSlot dstSlot = MapManager.Instance.GetClickTileSlotDetailOrNull();
-                        if (dstSlot != null && dstSlot != mSelectTileSlot)
+                        if (dstSlot != null && dstSlot != mSelectTileSlot && dstSlot.IsNormalUnit)
                         {
                             UnitGroup dstUnit = dstSlot.OccupantUnit;
                             if (dstUnit != null)

@@ -98,6 +98,8 @@ namespace _2_Scripts.Game.Unit
             
             mAnimation.state.SetAnimation(0, "Idle_1", true);
             gameObject.name = mAnimation.initialSkinName;
+            //mAnimation.AnimationState.End +=
+            //mAnimation.state.SetAnimation(0, "Idle_1", true).TimeScale
         }
         private async UniTaskVoid CoolTimeSkill(SkillInfo skill)
         {

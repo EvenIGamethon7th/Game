@@ -39,6 +39,7 @@ namespace _2_Scripts.Game.Unit
 
     public enum EUnitStates
     {
+        None,
         Idle,
         Move,
         Attack
@@ -53,19 +54,16 @@ namespace _2_Scripts.Game.Unit
         private MeshRenderer mMeshRenderer;
         private SkeletonAnimation mAnimation;
         
-        private UnitDefaultAttackHandler mAttackHandler;
-
         public delegate void FSMAction();
 
         private Dictionary<EUnitStates, FSMAction> mActions = new ();
-        
+        public EUnitStates CurrentState { get; private set; } = EUnitStates.None;
         public Queue<Skill> ReadySkillQueue { get; private set; } = new Queue<Skill>();
         private void Awake()
         {
             mAnimation = GetComponent<SkeletonAnimation>();
             mMeshRenderer = mAnimation.GetComponent<MeshRenderer>();
             mMeshRenderer.sortingOrder = 11;
-            mAttackHandler = GetComponent<UnitDefaultAttackHandler>();
             foreach (var state in Enum.GetValues(typeof(EUnitStates)))
             {
                 mActions.Add((EUnitStates)state, () => { });
@@ -78,9 +76,21 @@ namespace _2_Scripts.Game.Unit
         /// </summary>
         private void InitActionAnimation()
         {
-            mActions[EUnitStates.Idle] = () => mAnimation.state.SetAnimation(0, "Idle_1", true);
-            mActions[EUnitStates.Move] = () => mAnimation.state.SetAnimation(0, "Run_Weapon", true);
-            mActions[EUnitStates.Attack] = () =>  mAnimation.state.SetAnimation(0, "Attack_1", false);
+            mActions[EUnitStates.Idle] = () =>
+            {
+                CurrentState = EUnitStates.Idle;
+                mAnimation.state.SetAnimation(0, "Idle_1", true);
+            };
+            mActions[EUnitStates.Move] = () =>
+            {
+                CurrentState = EUnitStates.Move;
+                mAnimation.state.SetAnimation(0, "Run_Weapon", true);
+            };
+            mActions[EUnitStates.Attack] = () =>
+            {
+                CurrentState = EUnitStates.Attack;
+                mAnimation.state.SetAnimation(0, "Attack_1", false);
+            };
         }
         
         private void CharacterDataLoad(string characterDataKey)
@@ -91,9 +101,7 @@ namespace _2_Scripts.Game.Unit
             InitActionAnimation();
             
             CharacterDataInfo = ResourceManager.Instance.Load<CharacterInfo>(originData.characterPack);
-          
-            mAttackHandler.SetAttack(CharacterDataInfo.DefaultAttack,
-                this, () => UpdateState(EUnitStates.Attack));
+            
             
             foreach (var skill in CharacterDataInfo.SkillList)
             {

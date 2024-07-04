@@ -1,31 +1,52 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿
+using System;
 using System.Threading;
 using _2_Scripts.Game.ScriptableObject.Skill;
 using Cysharp.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _2_Scripts.Game.Unit
 {
     public class UnitDefaultAttackHandler : MonoBehaviour
     {
-        private Skill mDefaultAttack;
-        private CharacterData mCharacterData;
-        private Action mAttackAction;
-        private CancellationTokenSource mCancellationToken = new CancellationTokenSource();
-        private EUnitStates mUnitStates;
-        public void SetAttack(Skill attack,CUnit character,Action attackAction)
+        private CUnit mUnit;
+        private CancellationTokenSource mCancellationToken;
+        private bool mbIsAttack = false;
+        public void Start()
         {
-            mDefaultAttack = attack;
-            mCharacterData = character.CharacterDatas;
-            mAttackAction = attackAction;
-            CancelAndDisposeToken();
-            TryAttack().Forget();
-            
+            mUnit = GetComponent<CUnit>();
+            mCancellationToken = new CancellationTokenSource();
+            mUnit.AddActionState(EUnitStates.Attack, () =>
+            {
+                Attack().Forget();
+            });
+            Transaction().Forget();
         }
 
+        private async UniTaskVoid Transaction()
+        {
+            while (!mCancellationToken.IsCancellationRequested)
+            {
+                await UniTask.WaitForFixedUpdate();
+                if (mUnit.CurrentState == EUnitStates.Idle)
+                {
+                    EUnitStates updateState = !mUnit.CharacterDataInfo.DefaultAttack.CanCastAttack(this.transform,mUnit.CharacterDatas.range) ? EUnitStates.Idle : EUnitStates.Attack;
+                    mUnit.UpdateState(updateState);
+                }
+            }
+        }
+
+        private async UniTaskVoid Attack()
+        {
+            if(mbIsAttack)
+                return;
+            mbIsAttack = true;
+            mUnit.CharacterDataInfo.DefaultAttack.CastAttack(this.transform, mUnit.CharacterDatas);
+            await UniTask.WaitForSeconds(mUnit.CharacterDatas.atkSpeed, cancellationToken: mCancellationToken.Token);
+            mUnit.UpdateState(EUnitStates.Idle);
+            mbIsAttack = false;
+        }
+        
         private void OnDisable()
         {
             CancelAndDisposeToken();
@@ -47,21 +68,5 @@ namespace _2_Scripts.Game.Unit
                 mCancellationToken = new CancellationTokenSource();
             }
         }
-
-        private async UniTaskVoid TryAttack()
-        {
-            while (!mCancellationToken.IsCancellationRequested)
-            {
-                await UniTask.WaitForFixedUpdate();
-                if (!mDefaultAttack.CanCastAttack(this.transform, mCharacterData.range))
-                {
-                    continue;
-                }
-                mDefaultAttack.CastAttack(this.transform, mCharacterData);
-                mAttackAction();
-                await UniTask.WaitForSeconds(mCharacterData.atkSpeed, cancellationToken: mCancellationToken.Token);
-            }
-        } 
-        
     }
 }

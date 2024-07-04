@@ -83,11 +83,11 @@ namespace _2_Scripts.Game.Summon
 
         private void Summon(int num)
         {
-            bool bSummon = MapManager.Instance.CreateUnit(mUnitClasses[num], mUnitRanks[num]);
-            if (bSummon)
-            {
-                mButtons[num].gameObject.SetActive(false);
-            }
+            // bool bSummon = MapManager.Instance.CreateUnit(mUnitClasses[num], mUnitRanks[num]);
+            // if (bSummon)
+            // {
+            //     mButtons[num].gameObject.SetActive(false);
+            // }
         }
 
         private void OnDestroy()

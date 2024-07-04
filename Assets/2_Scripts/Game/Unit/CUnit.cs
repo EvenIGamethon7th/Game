@@ -47,8 +47,6 @@ namespace _2_Scripts.Game.Unit
 
     public class CUnit : MonoBehaviour
     {
-        public EUnitClass CurrentUnitClass { get; private set; } = EUnitClass.None;
-        public EUnitRank CurrentUnitRank { get; private set; } = EUnitRank.None;
         public CharacterInfo CharacterDataInfo { get; private set; }
         public CharacterData CharacterDatas { get; private set; }
         private MeshRenderer mMeshRenderer;
@@ -109,15 +107,13 @@ namespace _2_Scripts.Game.Unit
             }
         }
         
-        public void Init(EUnitClass unitClass, EUnitRank unitRank,string characterDataKey)
+        public void Init(CharacterData characterData)
         {
-            CharacterDataLoad(characterDataKey);
-            CurrentUnitClass = unitClass;
-            CurrentUnitRank = unitRank;
+            CharacterDataLoad(characterData.Key);
             var mat = mMeshRenderer.materials;
 
-            mAnimation.skeletonDataAsset = ResourceManager.Instance.Load<SkeletonDataAsset>($"{CurrentUnitClass}_{CurrentUnitRank}_{ELabelNames.SkeletonData}");
-            mat[0] = ResourceManager.Instance.Load<Material>($"{CurrentUnitClass}_{CurrentUnitRank}_{ELabelNames.Material}");
+            mAnimation.skeletonDataAsset = ResourceManager.Instance.Load<SkeletonDataAsset>($"{characterData.characterPack}_{ELabelNames.SkeletonData}");
+            mat[0] = ResourceManager.Instance.Load<Material>($"{characterData.characterPack}_{ELabelNames.Material}");
             mMeshRenderer.materials = mat;
             string skinName = mAnimation.skeletonDataAsset.name;
             mAnimation.initialSkinName = skinName.Substring(0, skinName.LastIndexOf('_'));

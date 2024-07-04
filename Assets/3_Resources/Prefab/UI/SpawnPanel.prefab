@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 54128173179897582}
   - component: {fileID: 6814917620929368440}
   - component: {fileID: 2531931277668144489}
+  - component: {fileID: 8718258474935431907}
   m_Layer: 5
   m_Name: ReRollBtn
   m_TagString: Untagged
@@ -233,6 +234,98 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8718258474935431907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4147850618625982028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 2531931277668144489}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 719769145798264328}
+        m_TargetAssemblyTypeName: _2_Scripts.UI.UI_SummonButton, Assembly-CSharp
+        m_MethodName: Reroll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8491433333436066181}
+        m_TargetAssemblyTypeName: _2_Scripts.UI.UI_SummonButton, Assembly-CSharp
+        m_MethodName: Reroll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8698347518919514384}
+        m_TargetAssemblyTypeName: _2_Scripts.UI.UI_SummonButton, Assembly-CSharp
+        m_MethodName: Reroll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5724060096600093454}
+        m_TargetAssemblyTypeName: _2_Scripts.UI.UI_SummonButton, Assembly-CSharp
+        m_MethodName: Reroll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6118203594262281329
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,6 +827,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8613702287677626926}
     m_Modifications:
+    - target: {fileID: 3410131252111227727, guid: 095818ea09558424e94401c0dad9ecb2, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 3410131252111227727, guid: 095818ea09558424e94401c0dad9ecb2, type: 3}
+    - target: {fileID: 6015045312396498114, guid: 095818ea09558424e94401c0dad9ecb2, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 6015045312396498114, guid: 095818ea09558424e94401c0dad9ecb2, type: 3}
     - target: {fileID: 6320724929100978887, guid: 095818ea09558424e94401c0dad9ecb2, type: 3}
       propertyPath: m_Name
       value: CardPanel
@@ -818,11 +919,63 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6780352362151322711, guid: 095818ea09558424e94401c0dad9ecb2, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 6780352362151322711, guid: 095818ea09558424e94401c0dad9ecb2, type: 3}
+    - target: {fileID: 7620627284643122761, guid: 095818ea09558424e94401c0dad9ecb2, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 7620627284643122761, guid: 095818ea09558424e94401c0dad9ecb2, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 095818ea09558424e94401c0dad9ecb2, type: 3}
+--- !u!114 &719769145798264328 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3410131252111227727, guid: 095818ea09558424e94401c0dad9ecb2, type: 3}
+  m_PrefabInstance: {fileID: 2787194318331034951}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f18d3d18d4451fb780cba8718f985a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5724060096600093454 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7620627284643122761, guid: 095818ea09558424e94401c0dad9ecb2, type: 3}
+  m_PrefabInstance: {fileID: 2787194318331034951}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f18d3d18d4451fb780cba8718f985a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8491433333436066181 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6015045312396498114, guid: 095818ea09558424e94401c0dad9ecb2, type: 3}
+  m_PrefabInstance: {fileID: 2787194318331034951}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f18d3d18d4451fb780cba8718f985a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8698347518919514384 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6780352362151322711, guid: 095818ea09558424e94401c0dad9ecb2, type: 3}
+  m_PrefabInstance: {fileID: 2787194318331034951}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f18d3d18d4451fb780cba8718f985a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8932599231441755958 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6726387571269100145, guid: 095818ea09558424e94401c0dad9ecb2, type: 3}

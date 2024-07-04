@@ -63,10 +63,17 @@ namespace _2_Scripts.UI
             MapManager.Instance.CreateUnit(mCharacterData);
         }
 
+        public void Reroll()
+        {
+            mCurrentSummonButtonState = ESummonButtonState.Selected;
+            UpdateCharacter();
+            ShowChange();
+        }
+
         private void ShowChange()
         {
             mViewList[mCurrentSummonButtonState].SetActive(true);
-            mViewList[mCurrentSummonButtonState+1%1].SetActive(false);
+            mViewList[mCurrentSummonButtonState ^ ESummonButtonState.Disable].SetActive(false);
         }
         
         public void UpdateCharacter()

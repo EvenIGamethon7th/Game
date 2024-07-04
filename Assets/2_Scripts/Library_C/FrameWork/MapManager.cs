@@ -32,7 +32,7 @@ public class MapManager : Singleton<MapManager>
     public bool CreateUnit(CharacterData characterData)
     {
         //먼저 같은 유닛 그룹과 그 그룹에 공간이 있는지 확인
-        var tileSlot = mTileDatas.Where(x => x.CurrentUnitClass == characterData && x.CanAddUnit()).FirstOrDefault();
+        var tileSlot = mTileDatas.Where(x => x.CurrentUnitData?.nameKey == characterData.nameKey && x.CanAddUnit()).FirstOrDefault();
 
         //없다면 빈 타일 슬롯 확인
         if (tileSlot == null)

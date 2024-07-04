@@ -6,7 +6,7 @@ namespace _2_Scripts.Game.Map.Tile
     public class TileSlot : MonoBehaviour
     {
         public UnitGroup OccupantUnit { get; private set; }
-        public CharacterData CurrentUnitClass { get; private set; } 
+        public CharacterData CurrentUnitData { get; private set; } 
 
         public bool IsNormalUnit {  get; private set; }
 
@@ -14,6 +14,7 @@ namespace _2_Scripts.Game.Map.Tile
         {
             OccupantUnit = unitGroup;
             OccupantUnit.AddUnit(unit);
+            CurrentUnitData = unit.CharacterDatas;
             IsNormalUnit = isNormalUnit;
         }
 
@@ -27,7 +28,7 @@ namespace _2_Scripts.Game.Map.Tile
 
             else
             {
-                CurrentUnitClass = null;
+                CurrentUnitData = null;
             }
         }
 

@@ -76,7 +76,10 @@ namespace _2_Scripts.UI
            
            mCharacterGraphic.skeletonDataAsset = ResourceManager.Instance.Load<SkeletonDataAsset>($"{mCharacterData.characterPack}_{ELabelNames.SkeletonData}");
            mCharacterGraphic.material = ResourceManager.Instance.Load<Material>($"{mCharacterData.characterPack}_{ELabelNames.Material}");
-           
+           string skinName = mCharacterGraphic.skeletonDataAsset.name;
+           mCharacterGraphic.initialSkinName = skinName.Substring(0, skinName.LastIndexOf('_'));
+
+           mCharacterGraphic.Initialize(true);
            mCharacterName.SetLocalizeKey(mCharacterData.nameKey);
            mCharacterCost.text = $"{mCharacterData.cost}$";
         }

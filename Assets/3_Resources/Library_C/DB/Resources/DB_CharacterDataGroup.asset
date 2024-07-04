@@ -62,15 +62,18 @@ MonoBehaviour:
     - Name: rank
       Entry: 3
       Data: 1
-    - Name: characterPack
+    - Name: characterData
       Entry: 1
-      Data: Oni_Archer_Normal
+      Data: Oni_Archer
     - Name: range
       Entry: 4
       Data: 4
     - Name: cost
       Entry: 3
       Data: 10
+    - Name: characterPack
+      Entry: 1
+      Data: Oni_Archer_Normal
     - Name: 
       Entry: 8
       Data: 
@@ -104,15 +107,18 @@ MonoBehaviour:
     - Name: rank
       Entry: 3
       Data: 2
-    - Name: characterPack
+    - Name: characterData
       Entry: 1
-      Data: Oni_Archer_Rare
+      Data: Oni_Archer
     - Name: range
       Entry: 4
       Data: 6
     - Name: cost
       Entry: 3
       Data: 25
+    - Name: characterPack
+      Entry: 1
+      Data: Oni_Archer_Rare
     - Name: 
       Entry: 8
       Data: 
@@ -146,15 +152,18 @@ MonoBehaviour:
     - Name: rank
       Entry: 3
       Data: 3
-    - Name: characterPack
+    - Name: characterData
       Entry: 1
-      Data: Oni_Archer_Unique
+      Data: Oni_Archer
     - Name: range
       Entry: 4
       Data: 8
     - Name: cost
       Entry: 3
       Data: 70
+    - Name: characterPack
+      Entry: 1
+      Data: Oni_Archer_Unique
     - Name: 
       Entry: 8
       Data: 
@@ -188,15 +197,18 @@ MonoBehaviour:
     - Name: rank
       Entry: 3
       Data: 1
-    - Name: characterPack
+    - Name: characterData
       Entry: 1
-      Data: Angel_Archer_Norma
+      Data: Angel_Archer
     - Name: range
       Entry: 4
       Data: 4
     - Name: cost
       Entry: 3
       Data: 10
+    - Name: characterPack
+      Entry: 1
+      Data: Angel_Archer_Normal
     - Name: 
       Entry: 8
       Data: 
@@ -230,15 +242,18 @@ MonoBehaviour:
     - Name: rank
       Entry: 3
       Data: 2
-    - Name: characterPack
+    - Name: characterData
       Entry: 1
-      Data: Angel_Archer_Rare
+      Data: Angel_Archer
     - Name: range
       Entry: 4
       Data: 6
     - Name: cost
       Entry: 3
       Data: 25
+    - Name: characterPack
+      Entry: 1
+      Data: Angel_Archer_Rare
     - Name: 
       Entry: 8
       Data: 
@@ -272,15 +287,18 @@ MonoBehaviour:
     - Name: rank
       Entry: 3
       Data: 3
-    - Name: characterPack
+    - Name: characterData
       Entry: 1
-      Data: Angel_Archer_Unique
+      Data: Angel_Archer
     - Name: range
       Entry: 4
       Data: 8
     - Name: cost
       Entry: 3
       Data: 70
+    - Name: characterPack
+      Entry: 1
+      Data: Angel_Archer_Unique
     - Name: 
       Entry: 8
       Data: 
@@ -314,15 +332,18 @@ MonoBehaviour:
     - Name: rank
       Entry: 3
       Data: 1
-    - Name: characterPack
+    - Name: characterData
       Entry: 1
-      Data: Indian_Archer_Normal
+      Data: Indian_Archer
     - Name: range
       Entry: 4
       Data: 4
     - Name: cost
       Entry: 3
       Data: 10
+    - Name: characterPack
+      Entry: 1
+      Data: Indian_Archer_Normal
     - Name: 
       Entry: 8
       Data: 
@@ -356,15 +377,18 @@ MonoBehaviour:
     - Name: rank
       Entry: 3
       Data: 2
-    - Name: characterPack
+    - Name: characterData
       Entry: 1
-      Data: Indian_Archer_Rare
+      Data: Indian_Archer
     - Name: range
       Entry: 4
       Data: 6
     - Name: cost
       Entry: 3
       Data: 25
+    - Name: characterPack
+      Entry: 1
+      Data: Indian_Archer_Rare
     - Name: 
       Entry: 8
       Data: 
@@ -398,15 +422,18 @@ MonoBehaviour:
     - Name: rank
       Entry: 3
       Data: 3
-    - Name: characterPack
+    - Name: characterData
       Entry: 1
-      Data: Indian_Archer_Unique
+      Data: Indian_Archer
     - Name: range
       Entry: 4
       Data: 8
     - Name: cost
       Entry: 3
       Data: 70
+    - Name: characterPack
+      Entry: 1
+      Data: Indian_Archer_Unique
     - Name: 
       Entry: 8
       Data: 
@@ -426,81 +453,90 @@ MonoBehaviour:
     atkSpeed: 1
     matk: 0
     rank: 1
-    characterPack: Oni_Archer_Normal
+    characterData: Oni_Archer
     range: 4
     cost: 10
+    characterPack: Oni_Archer_Normal
   - Key: Character_1
     nameKey: Lo_Character_1
     atk: 25
     atkSpeed: 2
     matk: 0
     rank: 2
-    characterPack: Oni_Archer_Rare
+    characterData: Oni_Archer
     range: 6
     cost: 25
+    characterPack: Oni_Archer_Rare
   - Key: Character_2
     nameKey: Lo_Character_2
     atk: 35
     atkSpeed: 3
     matk: 0
     rank: 3
-    characterPack: Oni_Archer_Unique
+    characterData: Oni_Archer
     range: 8
     cost: 70
+    characterPack: Oni_Archer_Unique
   - Key: Character_3
     nameKey: Lo_Character_3
     atk: 8
     atkSpeed: 0.8
     matk: 0
     rank: 1
-    characterPack: Angel_Archer_Norma
+    characterData: Angel_Archer
     range: 4
     cost: 10
+    characterPack: Angel_Archer_Normal
   - Key: Character_4
     nameKey: Lo_Character_4
     atk: 16
     atkSpeed: 1.5
     matk: 0
     rank: 2
-    characterPack: Angel_Archer_Rare
+    characterData: Angel_Archer
     range: 6
     cost: 25
+    characterPack: Angel_Archer_Rare
   - Key: Character_5
     nameKey: Lo_Character_5
     atk: 45
     atkSpeed: 4
     matk: 0
     rank: 3
-    characterPack: Angel_Archer_Unique
+    characterData: Angel_Archer
     range: 8
     cost: 70
+    characterPack: Angel_Archer_Unique
   - Key: Character_6
     nameKey: Lo_Character_6
     atk: 12
     atkSpeed: 1
     matk: 0
     rank: 1
-    characterPack: Indian_Archer_Normal
+    characterData: Indian_Archer
     range: 4
     cost: 10
+    characterPack: Indian_Archer_Normal
   - Key: Character_7
     nameKey: Lo_Character_7
     atk: 20
     atkSpeed: 1.5
     matk: 0
     rank: 2
-    characterPack: Indian_Archer_Rare
+    characterData: Indian_Archer
     range: 6
     cost: 25
+    characterPack: Indian_Archer_Rare
   - Key: Character_8
     nameKey: Lo_Character_8
     atk: 32
     atkSpeed: 2
     matk: 0
     rank: 3
-    characterPack: Indian_Archer_Unique
+    characterData: Indian_Archer
     range: 8
     cost: 70
+    characterPack: Indian_Archer_Unique
   keyArr:
   - Character_0
   - Character_1

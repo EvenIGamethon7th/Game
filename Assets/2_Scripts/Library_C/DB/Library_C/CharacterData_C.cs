@@ -17,9 +17,10 @@ public partial class CharacterData : Data_C
      [LabelText("공격속도")] public float atkSpeed;
      [LabelText("마법공격력")] public float matk;
      [LabelText("랭크")] public int rank;
-     [LabelText("캐릭터팩")] public string characterPack;
+     [LabelText("캐릭터데이터")] public string characterData;
      [LabelText("공격사거리")] public float range;
      [LabelText("소환재화")] public int cost;
+     [LabelText("캐릭터팩")] public string characterPack;
 
 
 #if UNITY_EDITOR
@@ -31,9 +32,10 @@ public partial class CharacterData : Data_C
         atkSpeed = _cellDataArr[3].ToFloat();
         matk = _cellDataArr[4].ToFloat();
         rank = _cellDataArr[5].ToInt();
-        characterPack = _cellDataArr[6];
+        characterData = _cellDataArr[6];
         range = _cellDataArr[7].ToFloat();
         cost = _cellDataArr[8].ToInt();
+        characterPack = _cellDataArr[9];
     }
 #endif
 }

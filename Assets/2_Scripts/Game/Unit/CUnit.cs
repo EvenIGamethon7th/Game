@@ -96,14 +96,12 @@ namespace _2_Scripts.Game.Unit
             CharacterDatas = global::Utils.DeepCopy(characterData);
             
             InitActionAnimation();
-            // TODO 
-            // CharacterDataInfo = ResourceManager.Instance.Load<CharacterInfo>(originData.characterPack);
-            //
-            //
-            // foreach (var skill in CharacterDataInfo.SkillList)
-            // {
-            //     CoolTimeSkill(skill).Forget();
-            // }
+            CharacterDataInfo = ResourceManager.Instance.Load<CharacterInfo>(characterData.characterData);
+            
+            foreach (var skill in CharacterDataInfo.SkillList)
+            {
+                CoolTimeSkill(skill).Forget();
+            }
         }
         
         public void Init(CharacterData characterData)

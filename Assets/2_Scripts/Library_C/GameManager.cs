@@ -17,7 +17,11 @@
         public int UserLevel { get; private set; } = 1;
 
         public int UserGold { get; private set; } = 100;
-        
+        public void UpdateGold(int value)
+        {
+            UserGold += value;
+            MessageBroker.Default.Publish(EGameMessage.GoldChange);
+        }
         public List<CharacterInfo> UserCharacterList { get; private set; } = new List<CharacterInfo>();
         
         private readonly Dictionary<int, (int nomal, int rare, int epic)> mGradeRates = new Dictionary<int, (int general, int elite, int legendary)>

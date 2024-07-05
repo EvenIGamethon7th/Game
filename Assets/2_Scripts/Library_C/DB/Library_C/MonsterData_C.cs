@@ -16,6 +16,9 @@ public partial class MonsterData : Data_C
      [LabelText("공격력")] public float atk;
      [LabelText("방어력")] public float def;
      [LabelText("이동속도")] public float speed;
+     [LabelText("마법방어력")] public float mdef;
+     [LabelText("경험치")] public int exp;
+     [LabelText("보상")] public int reward;
 
     
 
@@ -28,6 +31,9 @@ public partial class MonsterData : Data_C
         atk = _cellDataArr[3].ToFloat();
         def = _cellDataArr[4].ToFloat();
         speed = _cellDataArr[5].ToFloat();
+        mdef = _cellDataArr[6].ToFloat();
+        exp = _cellDataArr[7].ToInt();
+        reward = _cellDataArr[8].ToInt();
     }
 #endif
 }

@@ -12,4 +12,7 @@ public static partial class TableDataKey_C
     public const string Localize_Lo_Character_6 = "Lo_Character_6";
     public const string Localize_Lo_Character_7 = "Lo_Character_7";
     public const string Localize_Lo_Character_8 = "Lo_Character_8";
+    public const string Localize_Lo_Character_9 = "Lo_Character_9";
+    public const string Localize_Lo_Character_10 = "Lo_Character_10";
+    public const string Localize_Lo_Character_11 = "Lo_Character_11";
 }

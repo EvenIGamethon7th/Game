@@ -10,4 +10,7 @@ public static partial class TableDataKey_C
     public const string Character_Character_6 = "Character_6";
     public const string Character_Character_7 = "Character_7";
     public const string Character_Character_8 = "Character_8";
+    public const string Character_Character_9 = "Character_9";
+    public const string Character_Character_10 = "Character_10";
+    public const string Character_Character_11 = "Character_11";
 }

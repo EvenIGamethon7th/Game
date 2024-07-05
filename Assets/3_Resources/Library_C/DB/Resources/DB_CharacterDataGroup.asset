@@ -34,7 +34,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 9
+      Data: 12
     - Name: 
       Entry: 7
       Data: 
@@ -44,6 +44,9 @@ MonoBehaviour:
     - Name: $v
       Entry: 7
       Data: 2|CharacterData, Assembly-CSharp
+    - Name: isAlumni
+      Entry: 5
+      Data: false
     - Name: Key
       Entry: 1
       Data: Character_0
@@ -89,6 +92,9 @@ MonoBehaviour:
     - Name: $v
       Entry: 7
       Data: 3|CharacterData, Assembly-CSharp
+    - Name: isAlumni
+      Entry: 5
+      Data: false
     - Name: Key
       Entry: 1
       Data: Character_1
@@ -134,6 +140,9 @@ MonoBehaviour:
     - Name: $v
       Entry: 7
       Data: 4|CharacterData, Assembly-CSharp
+    - Name: isAlumni
+      Entry: 5
+      Data: false
     - Name: Key
       Entry: 1
       Data: Character_2
@@ -179,6 +188,9 @@ MonoBehaviour:
     - Name: $v
       Entry: 7
       Data: 5|CharacterData, Assembly-CSharp
+    - Name: isAlumni
+      Entry: 5
+      Data: false
     - Name: Key
       Entry: 1
       Data: Character_3
@@ -224,6 +236,9 @@ MonoBehaviour:
     - Name: $v
       Entry: 7
       Data: 6|CharacterData, Assembly-CSharp
+    - Name: isAlumni
+      Entry: 5
+      Data: false
     - Name: Key
       Entry: 1
       Data: Character_4
@@ -269,6 +284,9 @@ MonoBehaviour:
     - Name: $v
       Entry: 7
       Data: 7|CharacterData, Assembly-CSharp
+    - Name: isAlumni
+      Entry: 5
+      Data: false
     - Name: Key
       Entry: 1
       Data: Character_5
@@ -314,6 +332,9 @@ MonoBehaviour:
     - Name: $v
       Entry: 7
       Data: 8|CharacterData, Assembly-CSharp
+    - Name: isAlumni
+      Entry: 5
+      Data: false
     - Name: Key
       Entry: 1
       Data: Character_6
@@ -359,6 +380,9 @@ MonoBehaviour:
     - Name: $v
       Entry: 7
       Data: 9|CharacterData, Assembly-CSharp
+    - Name: isAlumni
+      Entry: 5
+      Data: false
     - Name: Key
       Entry: 1
       Data: Character_7
@@ -404,6 +428,9 @@ MonoBehaviour:
     - Name: $v
       Entry: 7
       Data: 10|CharacterData, Assembly-CSharp
+    - Name: isAlumni
+      Entry: 5
+      Data: false
     - Name: Key
       Entry: 1
       Data: Character_8
@@ -441,13 +468,158 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Character_9
+    - Name: $v
+      Entry: 7
+      Data: 11|CharacterData, Assembly-CSharp
+    - Name: isAlumni
+      Entry: 5
+      Data: false
+    - Name: Key
+      Entry: 1
+      Data: Character_9
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Character_9
+    - Name: atk
+      Entry: 4
+      Data: 10
+    - Name: atkSpeed
+      Entry: 4
+      Data: 1
+    - Name: matk
+      Entry: 4
+      Data: 0
+    - Name: rank
+      Entry: 3
+      Data: 1
+    - Name: characterData
+      Entry: 1
+      Data: Green_Archer
+    - Name: range
+      Entry: 4
+      Data: 4
+    - Name: cost
+      Entry: 3
+      Data: 10
+    - Name: characterPack
+      Entry: 1
+      Data: Green_Archer_Normal
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Character_10
+    - Name: $v
+      Entry: 7
+      Data: 12|CharacterData, Assembly-CSharp
+    - Name: isAlumni
+      Entry: 5
+      Data: false
+    - Name: Key
+      Entry: 1
+      Data: Character_10
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Character_10
+    - Name: atk
+      Entry: 4
+      Data: 20
+    - Name: atkSpeed
+      Entry: 4
+      Data: 2
+    - Name: matk
+      Entry: 4
+      Data: 0
+    - Name: rank
+      Entry: 3
+      Data: 2
+    - Name: characterData
+      Entry: 1
+      Data: Green_Archer
+    - Name: range
+      Entry: 4
+      Data: 6
+    - Name: cost
+      Entry: 3
+      Data: 25
+    - Name: characterPack
+      Entry: 1
+      Data: Green_Archer_Rare
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Character_11
+    - Name: $v
+      Entry: 7
+      Data: 13|CharacterData, Assembly-CSharp
+    - Name: isAlumni
+      Entry: 5
+      Data: false
+    - Name: Key
+      Entry: 1
+      Data: Character_11
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Character_11
+    - Name: atk
+      Entry: 4
+      Data: 3
+    - Name: atkSpeed
+      Entry: 4
+      Data: 3
+    - Name: matk
+      Entry: 4
+      Data: 0
+    - Name: rank
+      Entry: 3
+      Data: 3
+    - Name: characterData
+      Entry: 1
+      Data: Green_Archer
+    - Name: range
+      Entry: 4
+      Data: 8
+    - Name: cost
+      Entry: 3
+      Data: 70
+    - Name: characterPack
+      Entry: 1
+      Data: Green_Archer_Unique
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
       Entry: 8
       Data: 
   dataArr:
-  - Key: Character_0
+  - isAlumni: 0
+    Key: Character_0
     nameKey: Lo_Character_0
     atk: 10
     atkSpeed: 1
@@ -457,7 +629,8 @@ MonoBehaviour:
     range: 4
     cost: 10
     characterPack: Oni_Archer_Normal
-  - Key: Character_1
+  - isAlumni: 0
+    Key: Character_1
     nameKey: Lo_Character_1
     atk: 25
     atkSpeed: 2
@@ -467,7 +640,8 @@ MonoBehaviour:
     range: 6
     cost: 25
     characterPack: Oni_Archer_Rare
-  - Key: Character_2
+  - isAlumni: 0
+    Key: Character_2
     nameKey: Lo_Character_2
     atk: 35
     atkSpeed: 3
@@ -477,7 +651,8 @@ MonoBehaviour:
     range: 8
     cost: 70
     characterPack: Oni_Archer_Unique
-  - Key: Character_3
+  - isAlumni: 0
+    Key: Character_3
     nameKey: Lo_Character_3
     atk: 8
     atkSpeed: 0.8
@@ -487,7 +662,8 @@ MonoBehaviour:
     range: 4
     cost: 10
     characterPack: Angel_Archer_Normal
-  - Key: Character_4
+  - isAlumni: 0
+    Key: Character_4
     nameKey: Lo_Character_4
     atk: 16
     atkSpeed: 1.5
@@ -497,7 +673,8 @@ MonoBehaviour:
     range: 6
     cost: 25
     characterPack: Angel_Archer_Rare
-  - Key: Character_5
+  - isAlumni: 0
+    Key: Character_5
     nameKey: Lo_Character_5
     atk: 45
     atkSpeed: 4
@@ -507,7 +684,8 @@ MonoBehaviour:
     range: 8
     cost: 70
     characterPack: Angel_Archer_Unique
-  - Key: Character_6
+  - isAlumni: 0
+    Key: Character_6
     nameKey: Lo_Character_6
     atk: 12
     atkSpeed: 1
@@ -517,7 +695,8 @@ MonoBehaviour:
     range: 4
     cost: 10
     characterPack: Indian_Archer_Normal
-  - Key: Character_7
+  - isAlumni: 0
+    Key: Character_7
     nameKey: Lo_Character_7
     atk: 20
     atkSpeed: 1.5
@@ -527,7 +706,8 @@ MonoBehaviour:
     range: 6
     cost: 25
     characterPack: Indian_Archer_Rare
-  - Key: Character_8
+  - isAlumni: 0
+    Key: Character_8
     nameKey: Lo_Character_8
     atk: 32
     atkSpeed: 2
@@ -537,6 +717,39 @@ MonoBehaviour:
     range: 8
     cost: 70
     characterPack: Indian_Archer_Unique
+  - isAlumni: 0
+    Key: Character_9
+    nameKey: Lo_Character_9
+    atk: 10
+    atkSpeed: 1
+    matk: 0
+    rank: 1
+    characterData: Green_Archer
+    range: 4
+    cost: 10
+    characterPack: Green_Archer_Normal
+  - isAlumni: 0
+    Key: Character_10
+    nameKey: Lo_Character_10
+    atk: 20
+    atkSpeed: 2
+    matk: 0
+    rank: 2
+    characterData: Green_Archer
+    range: 6
+    cost: 25
+    characterPack: Green_Archer_Rare
+  - isAlumni: 0
+    Key: Character_11
+    nameKey: Lo_Character_11
+    atk: 3
+    atkSpeed: 3
+    matk: 0
+    rank: 3
+    characterData: Green_Archer
+    range: 8
+    cost: 70
+    characterPack: Green_Archer_Unique
   keyArr:
   - Character_0
   - Character_1
@@ -547,3 +760,6 @@ MonoBehaviour:
   - Character_6
   - Character_7
   - Character_8
+  - Character_9
+  - Character_10
+  - Character_11

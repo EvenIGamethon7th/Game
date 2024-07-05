@@ -4,6 +4,7 @@
     {
         PlayerDamage,
         BossDeath,
+        GoldChange,
     }
     
     public class GameMessage<T>

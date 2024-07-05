@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using _2_Scripts.Game.Unit;
+using Cargold;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using Spine.Unity;
 using TMPro;
@@ -12,6 +14,7 @@ namespace _2_Scripts.UI
 {
     public class UI_SummonButton : SerializedMonoBehaviour
     {
+        [Flags]
         public enum ESummonButtonState
         {
             Selected,
@@ -57,8 +60,9 @@ namespace _2_Scripts.UI
             }
 
             //TODO 돈 뺴는거 넣어야 함
-            
+            GameManager.Instance.UpdateGold(-mCharacterData.cost);
             mCurrentSummonButtonState = ESummonButtonState.Disable;
+            Tween_C.OnPunch_Func(this.transform);
             ShowChange();
             MapManager.Instance.CreateUnit(mCharacterData);
         }

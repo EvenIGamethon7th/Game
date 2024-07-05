@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,9 +6,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 using Sirenix.OdinInspector;
-#if DoTween_C
-using DG.Tweening; 
-#endif
+
 
 namespace Cargold
 {
@@ -2880,7 +2879,7 @@ namespace Cargold
     #endregion
 
     #region Tween_C
-#if DoTween_C
+
     public static class Tween_C
     {
         private static Dictionary<Transform, TweenData> baseTwnDic;
@@ -2945,7 +2944,7 @@ namespace Cargold
             public Vector3 originScale;
         }
     } 
-#endif
+
     #endregion
     #region UGUI_C
     public class UGUI_C

@@ -101,14 +101,18 @@ namespace _2_Scripts.Game.Controller
                     else
                     {
                         mSelectTileSlot = MapManager.Instance.GetClickTileSlotDetailOrNull();
-                        mSelectUnitGroup = mSelectTileSlot?.GetComponent<TileSlot>().OccupantUnit;
+                        var selectUnitGroup = mSelectTileSlot?.GetComponent<TileSlot>().OccupantUnit;
 
                         if (mSelectUnitGroup != null)
+                            mSelectUnitGroup.IsSelect = false;
+
+                        if (selectUnitGroup != null)
                         {
                             //TODO: UI에 정보 올리기
-                            mSelectCircle.transform.parent = mSelectUnitGroup.transform;
-                            mSelectCircle.transform.position = mSelectUnitGroup.transform.position;
+                            mSelectCircle.transform.parent = selectUnitGroup.transform;
+                            mSelectCircle.transform.position = selectUnitGroup.transform.position;
                             mSelectCircle.SetActive(true);
+                            selectUnitGroup.IsSelect = true;
                         }
 
                         else
@@ -116,6 +120,8 @@ namespace _2_Scripts.Game.Controller
                             mSelectCircle.transform.parent = null;
                             mSelectCircle.SetActive(false);
                         }
+
+                        mSelectUnitGroup = selectUnitGroup;
                     }
                     Debug.Log($"select Unit : {mSelectUnitGroup?.name}");
                 });

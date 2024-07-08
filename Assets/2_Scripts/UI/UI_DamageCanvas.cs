@@ -12,14 +12,14 @@ namespace _2_Scripts.UI
     {
         [SerializeField]
         private TextMeshProUGUI mText;
-        //private CancellationTokenSource mCts;
+        private CancellationTokenSource mCts;
 
         private static Color mClear = new Color(1, 1, 1, 0);
 
         void Awake()
         {
             GetComponent<Canvas>().worldCamera = Camera.main;
-            //mCts = new CancellationTokenSource();
+            mCts = new CancellationTokenSource();
         }
 
         public void SetDamage(float damage)
@@ -34,7 +34,7 @@ namespace _2_Scripts.UI
             float originTime = time;
             while (time >= 0)
             {
-                await UniTask.DelayFrame(1);
+                await UniTask.DelayFrame(1, cancellationToken: mCts.Token);
                 time -= Time.deltaTime;
                 mText.color = Color.Lerp(mClear, Color.white, time / originTime);
                 transform.position += Vector3.up * Time.deltaTime;
@@ -47,6 +47,12 @@ namespace _2_Scripts.UI
         {
             gameObject.SetActive(false);
             mText.color = Color.white;
+        }
+
+        private void OnDestroy()
+        {
+            mCts.Cancel();
+            mCts.Dispose();
         }
     }
 }

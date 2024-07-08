@@ -155,6 +155,7 @@ namespace _2_Scripts.Game.Unit
 
         public void Clear()
         {
+            ReadySkillQueue.Clear();
             gameObject.SetActive(false);
         }
     }

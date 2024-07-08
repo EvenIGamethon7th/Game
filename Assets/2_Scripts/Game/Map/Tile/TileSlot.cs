@@ -38,8 +38,9 @@ namespace _2_Scripts.Game.Map.Tile
         public void Clear()
         {
             OccupantUnit.Clear();
+            CurrentUnitData = null;
             OccupantUnit = null;
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
     }
 }

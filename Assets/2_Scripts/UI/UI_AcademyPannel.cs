@@ -14,13 +14,12 @@ namespace _2_Scripts.UI {
 
         private int mLessonCount = 0;
 
-        private CharacterData mAdditiveData;
-        private CUnit mStudent;
+        private CharacterData mStudentData;
 
-        private void Awake()
+        public void Init()
         {
-            mLesson = GetComponentInChildren<UI_AcademyLesson>();
-            mStatus = GetComponentInChildren<UI_AcademyStatus>();
+            mLesson = GetComponentInChildren<UI_AcademyLesson>(true);
+            mStatus = GetComponentInChildren<UI_AcademyStatus>(true);
 
             mLesson.Init();
         }
@@ -46,23 +45,28 @@ namespace _2_Scripts.UI {
             mDoLesson = true;
             mStatus.SetStatus(student);
             StageManager.Instance.SubscribeWaveStart(LessonComplete);
-            mAdditiveData = new CharacterData();
-            student.gameObject.SetActive(false);
+            mStudentData = student.CharacterDatas;
+            mStudentData.isAlumni = true;
         }
 
         private void SummonAlumni()
         {
-            //MapManager.Instance.CreateUnit()
-
-            StageManager.Instance.UnSubscribeWaveStart(LessonComplete);
-            mDoLesson = false;
+            bool isCreateUnit = MapManager.Instance.CreateUnit(mStudentData, true);
+            mLessonCount = 0;
+            if (isCreateUnit)
+            {
+                StageManager.Instance.UnSubscribeWaveStart(LessonComplete);
+                mDoLesson = false;
+                mStatus.Clear();
+                mLesson.Init();
+            }
         }
 
         private void LessonComplete()
         {
             DecideLessonResult();
             ++mLessonCount;
-            if (mLessonCount == 4)
+            if (mLessonCount == 5)
             {
                 SummonAlumni();
             }
@@ -78,39 +82,40 @@ namespace _2_Scripts.UI {
             {
                 case 0:
                     if (result == ELessonResults.Success)
-                        mAdditiveData.atk = 10;
+                        mStudentData.alumniAtk += 10;
                     else if (result == ELessonResults.Bonanza)
-                        mAdditiveData.atk = 15;
+                        mStudentData.alumniAtk += 15;
                     break;
 
                 case 1:
                     if (result == ELessonResults.Success)
-                        mAdditiveData.atkSpeed = 0.1f;
+                        mStudentData.alumniAtkSpeed += 0.1f;
                     else if (result == ELessonResults.Bonanza)
-                        mAdditiveData.atkSpeed = 0.2f;
+                        mStudentData.alumniAtkSpeed += 0.2f;
                     break;
 
                 case 2:
                     if (result == ELessonResults.Success)
-                        mAdditiveData.atk = 20;
+                        mStudentData.alumniAtk += 20;
                     else if (result == ELessonResults.Bonanza)
-                        mAdditiveData.atk = 25;
+                        mStudentData.alumniAtk += 25;
                     break;
 
                 case 3:
                     if (result == ELessonResults.Success)
-                        mAdditiveData.matk = 10;
+                        mStudentData.alumniMatk += 10;
                     else if (result == ELessonResults.Bonanza)
-                        mAdditiveData.matk = 20;
+                        mStudentData.alumniMatk += 20;
                     break;
 
                 case 4:
                     if (result == ELessonResults.Success)
-                        mAdditiveData.atkSpeed = 0.2f;
+                        mStudentData.alumniAtkSpeed += 0.2f;
                     else if (result == ELessonResults.Bonanza)
-                        mAdditiveData.atkSpeed = 0.3f;
+                        mStudentData.alumniAtkSpeed += 0.3f;
                     break;
             }
+            mStatus.SetStatus(mStudentData);
         }
 
         private void OnDestroy()

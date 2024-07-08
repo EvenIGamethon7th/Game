@@ -23,7 +23,7 @@ public class StageManager : Singleton<StageManager>
     private const float SPAWN_COOL_TIME = 1.5f;
 
     private event Action mStageStart;
-    private const float NEXT_WAVE_TIME = 10.0f;
+    private const float NEXT_WAVE_TIME = 1.0f;
     
     private int mDeathBossCount = 0;
     
@@ -32,7 +32,7 @@ public class StageManager : Singleton<StageManager>
     /// </summary>
     /// <exception cref="NotImplementedException"></exception>
     public void Start()
-    {      
+    {
         MessageBroker.Default.Receive<TaskMessage>()
             .Subscribe(message =>
             {
@@ -88,7 +88,7 @@ public class StageManager : Singleton<StageManager>
             await SpawnMonsters(mCurrentWaveData);
             if (mCurrentWaveData.isBoss)
             {
-                return;
+                continue;
             }
             await UniTask.WaitForSeconds(NEXT_WAVE_TIME);
         }

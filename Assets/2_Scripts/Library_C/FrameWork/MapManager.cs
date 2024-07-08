@@ -26,10 +26,38 @@ public class MapManager : Singleton<MapManager>
         {
             CreateInitialTileSlots();
             CreatePool();
+            mAcademy.Init();
         });
     }
 
-    public bool CreateUnit(CharacterData characterData)
+    public UnitGroup CheckOccupantSameUnit(UnitGroup unitGroup)
+    {
+        var tileSlot = mTileDatas
+            .Where(x => x.OccupantUnit != null)
+            .Where(x => x.CurrentUnitData.nameKey == unitGroup.GetCharacterData().nameKey && unitGroup != x.OccupantUnit && x.OccupantUnit.CanAddUnit()).FirstOrDefault();
+        return tileSlot?.OccupantUnit;
+    }
+
+    public bool GoAcademy(UnitGroup group, CUnit unit)
+    {
+        bool canEnterAcademy = mAcademy.CanLesson(unit);
+        if (canEnterAcademy)
+            mAcademy.AcademyLesson(unit);
+
+        return canEnterAcademy;
+    }
+
+    public void ClearTile(UnitGroup group)
+    {
+        var tileSlot = mTileDatas.Where(x => x.OccupantUnit == group).FirstOrDefault();
+
+        if (tileSlot != null)
+        {
+            tileSlot.Clear();
+        }
+    }
+
+    public bool CreateUnit(CharacterData characterData, bool isAlumni = false)
     {
         //먼저 같은 유닛 그룹과 그 그룹에 공간이 있는지 확인
         var tileSlot = mTileDatas.Where(x => x.CurrentUnitData?.nameKey == characterData.nameKey && x.CanAddUnit()).FirstOrDefault();
@@ -41,7 +69,10 @@ public class MapManager : Singleton<MapManager>
             //그것도 없으면 쩔수없지...
             if (tileSlot == null)
             {
-                UI_Toast_Manager.Instance.Activate_WithContent_Func("모든 타일에 유닛이 배치되어 있습니다!");
+                if (!isAlumni)
+                    UI_Toast_Manager.Instance.Activate_WithContent_Func("모든 타일에 유닛이 배치되어 있습니다!");
+                else
+                    UI_Toast_Manager.Instance.Activate_WithContent_Func("아카데미 수업 종료\n필드를 비워주세요!");
                 return false;
             }
 

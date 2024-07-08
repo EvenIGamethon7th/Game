@@ -4,7 +4,6 @@ using UnityEngine;
 using Cargold;
 using Sirenix.OdinInspector;
 using Cargold.DB.TableImporter;
-using _2_Scripts.Game.Unit;
 
 // 카라리 테이블 임포터에 의해 생성된 스크립트입니다.
 
@@ -22,6 +21,7 @@ public partial class CharacterData : Data_C
      [LabelText("소환재화")] public int cost;
      [LabelText("캐릭터팩")] public string characterPack;
 
+    
 
 #if UNITY_EDITOR
     public override void CallEdit_OnDataImport_Func(string[] _cellDataArr)

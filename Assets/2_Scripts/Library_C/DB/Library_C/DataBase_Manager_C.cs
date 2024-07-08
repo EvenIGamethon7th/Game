@@ -37,17 +37,6 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             return this.define;
         }
     }
-    [InlineEditor, LabelText("Localize"), SerializeField] private DB_LocalizeDataGroup localize;
-    public DB_LocalizeDataGroup GetLocalize
-    {
-        get
-        {
-            if (this.localize == null)
-                this.localize = Resources.Load<DB_LocalizeDataGroup>(base.dataGroupSobjPath + "DB_LocalizeDataGroup");
-
-            return this.localize;
-        }
-    }
     [InlineEditor, LabelText("Item"), SerializeField] private DB_ItemDataGroup item;
     public DB_ItemDataGroup GetItem
     {
@@ -57,6 +46,17 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
                 this.item = Resources.Load<DB_ItemDataGroup>(base.dataGroupSobjPath + "DB_ItemDataGroup");
 
             return this.item;
+        }
+    }
+    [InlineEditor, LabelText("Localize"), SerializeField] private DB_LocalizeDataGroup localize;
+    public DB_LocalizeDataGroup GetLocalize
+    {
+        get
+        {
+            if (this.localize == null)
+                this.localize = Resources.Load<DB_LocalizeDataGroup>(base.dataGroupSobjPath + "DB_LocalizeDataGroup");
+
+            return this.localize;
         }
     }
     [InlineEditor, LabelText("Monster"), SerializeField] private DB_MonsterDataGroup monster;
@@ -123,8 +123,8 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
 
             
             this.define.Init_Func();
-            this.localize.Init_Func();
             this.item.Init_Func();
+            this.localize.Init_Func();
             this.monster.Init_Func();
             this.character.Init_Func();
             this.wave.Init_Func();
@@ -136,8 +136,8 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
     public override void CallEdit_OnDataImport_Func(bool _isDataImport = true)
     {
         this.GetDefine.CallEdit_OnDataImportDone_Func();
-        this.GetLocalize.CallEdit_OnDataImportDone_Func();
         this.GetItem.CallEdit_OnDataImportDone_Func();
+        this.GetLocalize.CallEdit_OnDataImportDone_Func();
         this.GetMonster.CallEdit_OnDataImportDone_Func();
         this.GetCharacter.CallEdit_OnDataImportDone_Func();
         this.GetWave.CallEdit_OnDataImportDone_Func();

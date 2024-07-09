@@ -10,26 +10,40 @@ namespace _2_Scripts.UI
 {
     public class UI_UnitButton : Button
     {
-        public TextMeshProUGUI Text { get; private set; }
         private SkeletonGraphic mGraphic;
+        private TextMeshProUGUI mText;
+        public string CharacterName { get; private set; }
+        private CharacterData mData;
 
         protected override void Awake()
         {
             base.Awake();
-            Text = GetComponentInChildren<TextMeshProUGUI>();
             mGraphic = GetComponentInChildren<SkeletonGraphic>();
+            mText = GetComponentInChildren<TextMeshProUGUI>();
+            mGraphic.maskable = true;
         }
 
-        public void UpdateGraphic(EUnitClass unitClass, EUnitRank unitRank)
+        public void UpdateGraphic(CharacterData data)
         {
-            mGraphic.skeletonDataAsset = ResourceManager.Instance.Load<SkeletonDataAsset>($"{unitClass}_{unitRank}_{ELabelNames.SkeletonData}");
+            mData = data; 
+            onClick.RemoveAllListeners();
+            onClick.AddListener(CreateCharacter);
 
-            mGraphic.material = ResourceManager.Instance.Load<Material>($"{unitClass}_{unitRank}_{ELabelNames.Material}");
+            mGraphic.skeletonDataAsset = ResourceManager.Instance.Load<SkeletonDataAsset>($"{data.characterPack}_{ELabelNames.SkeletonData}");
+
+            mGraphic.material = new Material(ResourceManager.Instance.Load<Material>($"{data.characterPack}_{ELabelNames.Material}"));
+            mGraphic.material.SetFloat("_StencilComp", 4);
             string skinName = mGraphic.skeletonDataAsset.name;
             mGraphic.initialSkinName = skinName.Substring(0, skinName.LastIndexOf('_'));
-
+            mText.text = mGraphic.initialSkinName;
+            CharacterName = mGraphic.initialSkinName;
             mGraphic.Initialize(true);
             mGraphic.AnimationState.SetAnimation(0, "Idle_1", true);
+        }
+
+        private void CreateCharacter()
+        {
+            MapManager.Instance.CreateUnit(mData);
         }
     }
 }

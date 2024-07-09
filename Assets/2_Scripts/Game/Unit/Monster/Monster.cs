@@ -64,7 +64,6 @@ namespace _2_Scripts.Game.Monster
 
         public void TakeDamage(float damage)
         {
-            Debug.Log($"데미지 받음{damage}");
             ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_DamageCanvas, transform.position + Vector3.up).GetComponent<UI_DamageCanvas>().SetDamage(damage);
 
             mMonsterData.hp -= damage;

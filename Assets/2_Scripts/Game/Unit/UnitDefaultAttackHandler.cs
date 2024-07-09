@@ -25,9 +25,9 @@ namespace _2_Scripts.Game.Unit
 
         private async UniTaskVoid Transaction()
         {
-            while (!mCancellationToken.IsCancellationRequested)
+            while (true)
             {
-                await UniTask.WaitForFixedUpdate();
+                await UniTask.WaitForFixedUpdate(cancellationToken: mCancellationToken.Token);
                 if (mUnit.CurrentState == EUnitStates.Idle)
                 {
                     EUnitStates updateState = !mUnit.CharacterDataInfo.DefaultAttack.CanCastAttack(this.transform,mUnit.CharacterDatas.range) ? EUnitStates.Idle : EUnitStates.Attack;

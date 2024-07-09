@@ -16,7 +16,7 @@
         // 학년
         public int UserLevel { get; private set; } = 1;
 
-        public int UserGold { get; private set; } = 100;
+        public int UserGold { get; private set; } = 10000;
         public void UpdateGold(int value)
         {
             UserGold += value;

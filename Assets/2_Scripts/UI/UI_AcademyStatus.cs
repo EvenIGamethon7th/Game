@@ -19,26 +19,37 @@ namespace _2_Scripts.UI
 
         public void SetStatus(CUnit data)
         {
-            mTexts[0].text = ((int)data.CharacterDatas.atk).ToString();
-            mTexts[1].text = ((int)data.CharacterDatas.atkSpeed).ToString();
-            mTexts[2].text = ((int)data.CharacterDatas.matk).ToString();
+            mTexts[0].text = $"{(int)data.CharacterDatas.atk} + {(int)data.CharacterDatas.alumniAtk}";
+            mTexts[1].text = $"{data.CharacterDatas.atkSpeed.ToString("F1")} + {data.CharacterDatas.alumniAtkSpeed.ToString("F1")}";
+            mTexts[2].text = $"{(int)data.CharacterDatas.matk} + {(int)data.CharacterDatas.alumniMatk}";
 
-            mSliders[0].value = data.CharacterDatas.atk;
-            mSliders[1].value = data.CharacterDatas.atkSpeed;
-            mSliders[2].value = data.CharacterDatas.matk;
+            mSliders[0].value = data.CharacterDatas.atk + data.CharacterDatas.alumniAtk;
+            mSliders[1].value = data.CharacterDatas.atkSpeed + data.CharacterDatas.alumniAtkSpeed;
+            mSliders[2].value = data.CharacterDatas.matk + data.CharacterDatas.alumniMatk;
+            UpdateGraphic(data);
         }
 
-        private void UpdateGraphic(EUnitClass unitClass, EUnitRank unitRank)
+        public void SetStatus(CharacterData data)
+        {
+            mTexts[0].text = $"{(int)data.atk} + {(int)data.alumniAtk}";
+            mTexts[1].text = $"{data.atkSpeed.ToString("F1")} + {data.alumniAtkSpeed.ToString("F1")}";
+            mTexts[2].text = $"{(int)data.matk} + {(int)data.alumniMatk}";
+
+            mSliders[0].value = data.atk + data.alumniAtk;
+            mSliders[1].value = data.atkSpeed + data.alumniAtkSpeed;
+            mSliders[2].value = data.matk + data.alumniMatk;
+        }
+
+        private void UpdateGraphic(CUnit data)
         {
             mGraphic.gameObject.SetActive(true);
-            mGraphic.skeletonDataAsset = ResourceManager.Instance.Load<SkeletonDataAsset>($"{unitClass}_{unitRank}_{ELabelNames.SkeletonData}");
+            mGraphic.skeletonDataAsset = ResourceManager.Instance.Load<SkeletonDataAsset>($"{data.CharacterDatas.characterPack}_{ELabelNames.SkeletonData}");
 
-            mGraphic.material = ResourceManager.Instance.Load<Material>($"{unitClass}_{unitRank}_{ELabelNames.Material}");
+            mGraphic.material = ResourceManager.Instance.Load<Material>($"{data.CharacterDatas.characterPack}_{ELabelNames.Material}");
             string skinName = mGraphic.skeletonDataAsset.name;
             mGraphic.initialSkinName = skinName.Substring(0, skinName.LastIndexOf('_'));
 
             mGraphic.Initialize(true);
-            mGraphic.AnimationState.SetAnimation(0, "Idle_1", true);
         }
 
         public void Clear()

@@ -12,6 +12,9 @@ using Unity.VisualScripting;
 public partial class CharacterData
 {
     [LabelText("아카데미 졸업 여부")] public bool isAlumni;
+    [LabelText("졸업 공격력")] public float alumniAtk;
+    [LabelText("졸업 공격속도")] public float alumniAtkSpeed;
+    [LabelText("졸업 마법공격력")] public float alumniMatk;
 
     protected override void Init_Project_Func()
     {
@@ -34,9 +37,20 @@ public partial class CharacterData
         newData.range = data1.range;
         newData.nameKey = data1.nameKey;
         newData.Key = data1.Key;
-        newData.isAlumni = data1.isAlumni;
+        newData.isAlumni = data1.isAlumni || data2.isAlumni;
+        newData.alumniAtk = data1.alumniAtk + data2.alumniAtk;
+        newData.alumniAtkSpeed = data1.alumniAtkSpeed + data2.alumniAtkSpeed;
+        newData.alumniMatk = data1.alumniMatk + data2.alumniMatk;
 
         return newData;
+    }
+
+    public void AddAlumniInfo(CharacterData data)
+    {
+        isAlumni = isAlumni || data.isAlumni;
+        alumniAtk += data.alumniAtk;
+        alumniAtkSpeed +=  data.alumniAtkSpeed;
+        alumniMatk +=  data.alumniMatk;
     }
 
 #if UNITY_EDITOR

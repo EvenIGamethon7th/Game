@@ -47,10 +47,13 @@ namespace _2_Scripts.Game.Unit
 
     public class CUnit : MonoBehaviour
     {
+        [field: SerializeField]
         public CharacterInfo CharacterDataInfo { get; private set; }
+        [field: SerializeField]
         public CharacterData CharacterDatas { get; private set; }
         private MeshRenderer mMeshRenderer;
         private SkeletonAnimation mAnimation;
+        private Transform mOriginParent;
         
         public delegate void FSMAction();
 
@@ -67,6 +70,8 @@ namespace _2_Scripts.Game.Unit
                 mActions.Add((EUnitStates)state, () => { });
             }
 
+            InitActionAnimation();
+            mOriginParent = transform.parent;
         }
 
         /// <summary>
@@ -95,7 +100,6 @@ namespace _2_Scripts.Game.Unit
         {
             CharacterDatas = global::Utils.DeepCopy(characterData);
             
-            InitActionAnimation();
             CharacterDataInfo = ResourceManager.Instance.Load<CharacterInfo>(characterData.characterData);
             
             foreach (var skill in CharacterDataInfo.SkillList)
@@ -157,6 +161,7 @@ namespace _2_Scripts.Game.Unit
         {
             ReadySkillQueue.Clear();
             gameObject.SetActive(false);
+            transform.parent = mOriginParent;
         }
     }
 }

@@ -12,14 +12,16 @@ namespace _2_Scripts.Game.Unit
         private CUnit mUnit;
         private CancellationTokenSource mCancellationToken;
         private bool mbIsAttack = false;
-        public void Start()
+
+        private void Start()
         {
             mUnit = GetComponent<CUnit>();
+            mUnit.AddActionState(EUnitStates.Attack, Attack);
+        }
+
+        private void OnEnable()
+        {
             mCancellationToken = new CancellationTokenSource();
-            mUnit.AddActionState(EUnitStates.Attack, () =>
-            {
-                Attack().Forget();
-            });
             Transaction().Forget();
         }
 
@@ -36,7 +38,12 @@ namespace _2_Scripts.Game.Unit
             }
         }
 
-        private async UniTaskVoid Attack()
+        private void Attack()
+        {
+            AttackAsync().Forget();
+        }
+
+        private async UniTaskVoid AttackAsync()
         {
             if(mbIsAttack)
                 return;
@@ -50,6 +57,8 @@ namespace _2_Scripts.Game.Unit
         private void OnDisable()
         {
             CancelAndDisposeToken();
+            //mUnit?.RemoveActionState(EUnitStates.Attack, Attack);
+            mbIsAttack = false;
         }
 
         private void CancelAndDisposeToken()

@@ -2,6 +2,7 @@
 using _2_Scripts.Game.Map;
 using _2_Scripts.Game.Map.Tile;
 using _2_Scripts.Game.Unit;
+using _2_Scripts.UI;
 using _2_Scripts.Utils;
 using Cargold;
 using Spine.Unity;
@@ -20,6 +21,7 @@ namespace _2_Scripts.Game.Controller
         private Indicator mIndicator;
         private GameObject mSelectCircle;
         private IDisposable mTempSubscribe;
+        private UI_UnitGroupCanvas mUnitGroupCanvas;
 
         private bool mHasLongTouch = false;
 
@@ -51,9 +53,6 @@ namespace _2_Scripts.Game.Controller
                     && mSelectTileSlot == MapManager.Instance.GetClickTileSlotDetailOrNull()
                     && mSelectTileSlot.IsNormalUnit)
                     {
-                        Debug.Log("Click Same Unit and Tile");
-                        //롱 터치 판별
-                        
                         mTempSubscribe = mouseUpStream
                             .Buffer(TimeSpan.FromMilliseconds(150))
                             .Take(1)
@@ -122,8 +121,8 @@ namespace _2_Scripts.Game.Controller
                         }
 
                         mSelectUnitGroup = selectUnitGroup;
+                        mUnitGroupCanvas.SelectUnitGroup = selectUnitGroup;
                     }
-                    Debug.Log($"select Unit : {mSelectUnitGroup?.name}");
                 });
             
         }
@@ -137,6 +136,7 @@ namespace _2_Scripts.Game.Controller
                     mIndicator = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_Indicator, Vector2.zero).GetComponent<Indicator>();
                     mSelectCircle = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_SelectCircle, Vector2.zero);
                     mSelectCircle.SetActive(false);
+                    mUnitGroupCanvas = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_UnitGroupButtonCanvas, Vector2.zero).GetComponent<UI_UnitGroupCanvas>();
                     mTempSubscribe.Dispose();
                 });
         }

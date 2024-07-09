@@ -33,14 +33,19 @@ namespace _2_Scripts.Game.Map.Tile
             if (OccupantUnit == null)
                 return true;
             return OccupantUnit.CanAddUnit();
-        } 
+        }
 
-        public void Clear()
+        public void Clear(bool isDestroy = false)
         {
-            OccupantUnit.Clear();
+            OccupantUnit?.Clear(isDestroy);
             CurrentUnitData = null;
             OccupantUnit = null;
             //gameObject.SetActive(false);
+        }
+
+        private void OnDestroy()
+        {
+            Clear(true);
         }
     }
 }

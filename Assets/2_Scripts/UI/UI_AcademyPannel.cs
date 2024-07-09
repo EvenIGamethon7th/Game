@@ -64,8 +64,12 @@ namespace _2_Scripts.UI {
 
         private void LessonComplete()
         {
-            DecideLessonResult();
-            ++mLessonCount;
+            if (mLessonCount < 5)
+            {
+                DecideLessonResult();
+                ++mLessonCount;
+            }
+
             if (mLessonCount == 5)
             {
                 SummonAlumni();

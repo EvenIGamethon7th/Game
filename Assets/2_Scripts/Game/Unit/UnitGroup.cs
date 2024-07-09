@@ -187,10 +187,12 @@ namespace _2_Scripts.Game.Unit
             }
         }
 
-        public void Clear()
+        public void Clear(bool isDestroy = false)
         {
             mToken.Cancel();
             mToken.Dispose();
+            if (!isDestroy)
+                mToken = new();
             mCurrentUnitCount = 0;
             for (int i = 0; i < mUnits.Count; ++i)
             {

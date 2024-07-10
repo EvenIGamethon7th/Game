@@ -55,8 +55,7 @@ namespace _2_Scripts.UI
                     {
                         mUnitClasses[i] = (EUnitClass)UnityEngine.Random.Range(1, mUnitClassCount);
                         mUnitRanks[i] = (EUnitRank)UnityEngine.Random.Range(1, mUnitRankCount);
-                        mButtons[i].Text.text = $"{mUnitClasses[i]} {mUnitRanks[i]}";
-                        mButtons[i].UpdateGraphic(mUnitClasses[i], mUnitRanks[i]);
+                        //mButtons[i].UpdateGraphic(mUnitClasses[i], mUnitRanks[i]);
                     }
                     gameObject.SetActive(false);
                 });
@@ -76,8 +75,7 @@ namespace _2_Scripts.UI
             {
                 mUnitClasses[i] = (EUnitClass)UnityEngine.Random.Range(1, mUnitClassCount);
                 mUnitRanks[i] = (EUnitRank)UnityEngine.Random.Range(1, mUnitRankCount);
-                mButtons[i].Text.text = $"{mUnitClasses[i]} {mUnitRanks[i]}";
-                mButtons[i].UpdateGraphic(mUnitClasses[i], mUnitRanks[i]);
+                //mButtons[i].UpdateGraphic(mUnitClasses[i], mUnitRanks[i]);
                 mButtons[i].gameObject.SetActive(true);
             }
         }

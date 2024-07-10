@@ -102,10 +102,8 @@ namespace _2_Scripts.Game.Unit
             
             CharacterDataInfo = ResourceManager.Instance.Load<CharacterInfo>(characterData.characterData);
             
-            foreach (var skill in CharacterDataInfo.SkillList)
-            {
-                CoolTimeSkill(skill).Forget();
-            }
+            CharacterDataInfo.SkillList?.ForEach(skill => CoolTimeSkill(skill).Forget());
+ 
         }
         
         public void Init(CharacterData characterData)

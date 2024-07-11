@@ -60,11 +60,14 @@ namespace _2_Scripts.UI
             }
 
             //TODO 돈 뺴는거 넣어야 함
-            GameManager.Instance.UpdateGold(-mCharacterData.cost);
-            mCurrentSummonButtonState = ESummonButtonState.Disable;
-            Tween_C.OnPunch_Func(this.transform);
-            ShowChange();
-            MapManager.Instance.CreateUnit(mCharacterData);
+            var isCreateUnit = MapManager.Instance.CreateUnit(mCharacterData);
+            if (isCreateUnit)
+            {
+                GameManager.Instance.UpdateGold(-mCharacterData.cost);
+                mCurrentSummonButtonState = ESummonButtonState.Disable;
+                Tween_C.OnPunch_Func(this.transform);
+                ShowChange();
+            }
         }
 
         public void Reroll()

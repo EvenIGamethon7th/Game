@@ -15,12 +15,13 @@ public class MapManager : Singleton<MapManager>
 {
     [SerializeField] private Tilemap mMap;
     [SerializeField] private UI_AcademyPannel mAcademy;
+    [SerializeField] private Tilemap mMonsterPathMap;
 
     private List<TileSlot> mTileDatas = new();
     private const string TILE_SLOT_NAME = AddressableTable.Default_TileSlot;
     private void Start()
     {
-        //추후 수정해야함
+        //추후 수정해야함 리소스 로드는 어차피 로비 진입화면에서 할 것이기 떄문.
         MessageBroker.Default.Receive<TaskMessage>().Where(message => message.Task == ETaskList.DefaultResourceLoad).Subscribe(
         _ =>
         {
@@ -28,6 +29,20 @@ public class MapManager : Singleton<MapManager>
             CreatePool();
             mAcademy.Init();
         });
+    }
+
+    public Vector2Int GetCellFromWorldPos(Vector2 pos)
+    {
+        int x = Mathf.FloorToInt(pos.x / mMonsterPathMap.cellSize.x);
+        int y = Mathf.FloorToInt(pos.y / mMonsterPathMap.cellSize.y);
+        return new Vector2Int(x, y);
+    }
+
+    public Vector3 GetWorldPosFromCell(Vector3Int pos)
+    {
+        Vector3 tileSize = mMonsterPathMap.cellSize;
+        Vector3 slotOffset = new Vector3(tileSize.x, tileSize.y, 0);
+        return mMonsterPathMap.CellToWorld(pos) + slotOffset;
     }
 
     public UnitGroup CheckOccupantSameUnit(UnitGroup unitGroup)

@@ -32,7 +32,8 @@ namespace _2_Scripts.Game.Unit
                 await UniTask.WaitForFixedUpdate(cancellationToken: mCancellationToken.Token);
                 if (mUnit.CurrentState == EUnitStates.Idle)
                 {
-                    EUnitStates updateState = !mUnit.CharacterDataInfo.DefaultAttack.CanCastAttack(this.transform,mUnit.CharacterDatas.range) ? EUnitStates.Idle : EUnitStates.Attack;
+                    EUnitStates updateState = !mUnit.CharacterDataInfo.DefaultAttack.CanCastAttack(this.transform,mUnit.CharacterDatas.range)
+                        ? EUnitStates.Idle : EUnitStates.Attack;
                     mUnit.UpdateState(updateState);
                 }
             }
@@ -48,8 +49,11 @@ namespace _2_Scripts.Game.Unit
             if(mbIsAttack)
                 return;
             mbIsAttack = true;
+            
             mUnit.CharacterDataInfo.DefaultAttack.CastAttack(this.transform, mUnit.CharacterDatas);
-            await UniTask.WaitForSeconds(mUnit.CharacterDatas.atkSpeed, cancellationToken: mCancellationToken.Token);
+            float delayAttack = 1 / mUnit.CharacterDatas.atkSpeed;
+            await UniTask.WaitForSeconds( delayAttack,cancellationToken: mCancellationToken.Token);
+            
             mUnit.UpdateState(EUnitStates.Idle);
             mbIsAttack = false;
         }
@@ -57,7 +61,6 @@ namespace _2_Scripts.Game.Unit
         private void OnDisable()
         {
             CancelAndDisposeToken();
-            //mUnit?.RemoveActionState(EUnitStates.Attack, Attack);
             mbIsAttack = false;
         }
 

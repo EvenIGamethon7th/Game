@@ -30,7 +30,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
         // 아군 버프와 같은 효과가 있을 수 있기에 LayerMask를 통해 타겟 구분
         [Title("타겟 레이어")] 
         [SerializeField] public LayerMask TargetLayer { get; private set; } 
-        public abstract void CastAttack(Transform ownerTransform, CharacterData ownerData);
+        public abstract bool CastAttack(Transform ownerTransform, CharacterData ownerData);
         public virtual bool CanCastAttack(Transform ownerTransform,float range)
         {
             var detectingTargets = Physics2D.OverlapCircleAll(ownerTransform.position, range, TargetLayer);

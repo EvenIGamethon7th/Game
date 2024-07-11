@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _2_Scripts.Game.Unit;
 using Sirenix.OdinInspector;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _2_Scripts.Game.ScriptableObject.Skill.DirectionSkill
@@ -42,20 +44,28 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.DirectionSkill
         {
             HashSet<Vector3> spawnPos = new HashSet<Vector3>(); 
             var targetCell= MapManager.Instance.GetCellFromWorldPos(target.position);
-            for (int i = -mDirectionPos.x; i <= mDirectionPos.x; i++)
-            {
-                var cellPos = new Vector3Int(targetCell.x + i, targetCell.y);
-                var currentCellWorldPos = MapManager.Instance.GetWorldPosFromCell(cellPos);
-                spawnPos.Add(currentCellWorldPos);
-            }
-            for (int i = -mDirectionPos.y; i <= mDirectionPos.y; i++)
-            {
-                var cellPos = new Vector3Int(targetCell.x, targetCell.y + i);
-                var currentCellWorldPos = MapManager.Instance.GetWorldPosFromCell(cellPos);
-                spawnPos.Add(currentCellWorldPos);
-            }
+            
+            Vector2 movementVector = ((target.transform.position) - target.GetComponent<Monster.Monster>().NextWayPointVector).normalized;
 
-
+            /// 상위 객체 하나로 묶어서 방향 회전으로 box colider x ,y 
+            if (Math.Abs(movementVector.x) < Math.Abs(movementVector.y))
+            {
+                for (int i = -mDirectionPos.y; i <= mDirectionPos.y; i++)
+                {
+                    var cellPos = new Vector3Int(targetCell.x, targetCell.y + i);
+                    var currentCellWorldPos = MapManager.Instance.GetWorldPosFromCell(cellPos);
+                    spawnPos.Add(currentCellWorldPos);
+                }
+            }
+            else
+            {
+                for (int i = -mDirectionPos.x; i <= mDirectionPos.x; i++)
+                {
+                    var cellPos = new Vector3Int(targetCell.x + i, targetCell.y);
+                    var currentCellWorldPos = MapManager.Instance.GetWorldPosFromCell(cellPos);
+                    spawnPos.Add(currentCellWorldPos);
+                }
+            }
             foreach (var pos in spawnPos)
             {
                var collisionSkill = ObjectPoolManager.Instance.CreatePoolingObject(mSpawnCollisionGo,pos).GetComponent<SkillCollision>();

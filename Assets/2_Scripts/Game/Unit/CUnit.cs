@@ -59,7 +59,7 @@ namespace _2_Scripts.Game.Unit
 
         private Dictionary<EUnitStates, FSMAction> mActions = new ();
         public EUnitStates CurrentState { get; private set; } = EUnitStates.None;
-        public Queue<Skill> ReadySkillQueue { get; private set; } = new Queue<Skill>();
+        public Queue<SkillInfo> ReadySkillQueue { get; private set; } = new Queue<SkillInfo>();
         private void Awake()
         {
             mAnimation = GetComponent<SkeletonAnimation>();
@@ -72,6 +72,31 @@ namespace _2_Scripts.Game.Unit
 
             InitActionAnimation();
             mOriginParent = transform.parent;
+        }
+
+        public void SetFlipUnit(Transform target)
+        {
+            int flip = target.transform.position.x > this.transform.position.x ? 1 : -1;
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * flip, transform.localScale.y, transform.localScale.z);
+        }
+
+        //임시 스킬 업데이트 함수
+        private void Update()
+        {
+            if (ReadySkillQueue.Count != 0)
+            {
+              var skill = ReadySkillQueue.Peek();
+              var isRange = skill.Skill.CastAttack(this.transform,CharacterDatas);
+              ReadySkillQueue.Dequeue();
+              if (isRange)
+              {
+                  CoolTimeSkill(skill);
+              }
+              else
+              {
+                ReadySkillQueue.Enqueue(skill);   
+              }
+            }
         }
 
         /// <summary>
@@ -126,13 +151,11 @@ namespace _2_Scripts.Game.Unit
 
             UpdateState(EUnitStates.Idle);
             gameObject.name = mAnimation.initialSkinName;
-            //mAnimation.AnimationState.End +=
-            //mAnimation.state.SetAnimation(0, "Idle_1", true).TimeScale
         }
         private async UniTaskVoid CoolTimeSkill(SkillInfo skill)
         {
             await UniTask.WaitForSeconds(skill.CoolTime);
-            ReadySkillQueue.Enqueue(skill.Skill);
+            ReadySkillQueue.Enqueue(skill);
         }
 
         public void UpdateState(EUnitStates state)

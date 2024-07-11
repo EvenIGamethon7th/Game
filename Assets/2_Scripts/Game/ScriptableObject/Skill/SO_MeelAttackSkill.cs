@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using _2_Scripts.Game.Unit;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -14,8 +15,6 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
     [CreateAssetMenu(menuName = "ScriptableObject/Skill/Melee",fileName = "Melee_")]
     public class SO_MeelAttackSkill : Skill
     {
-
-        private CharacterData mOwnerData;
         private Monster mTargetMonster;
         [Title("데미지 증감 퍼센트")]
         [SerializeField]
@@ -25,22 +24,19 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
         public bool FollowDefaultRange { get; private set; }
         
         
-        public override void CastAttack(Transform ownerTransform, CharacterData ownerData)
+        public override bool CastAttack(Transform ownerTransform, CharacterData ownerData)
         {
-            //mOwnerData = ownerTransform.GetComponent<CharacterData>(); 매번 GetComponent 비용 발생하므로 CastAttack에 참조.
-            mOwnerData = ownerData;
             float range = FollowDefaultRange ? ownerData.range : this.Range;
             // 방어력 부분은 몬스터별로 공격력 감소 수식이 있을 수 있으므로 여기선 owner 데미지만 계산.
             float totalDamage = ownerData.atk * (PercentDamage * 0.01f);
             var detectingTargets = Physics2D.OverlapCircleAll(ownerTransform.position, range, TargetLayer);
             if (detectingTargets.Length == 0)
             {
-                return;
+                return false;
             }
             var targetCount = MaxHitUnit == 0 ? detectingTargets.Length : MaxHitUnit;
             CastEffectPlay(ownerTransform.position);
-            int flip = detectingTargets[0].transform.position.x > ownerTransform.position.x ? 1 : -1;
-            ownerTransform.localScale = new Vector3(Mathf.Abs(ownerTransform.localScale.x) * flip, ownerTransform.localScale.y, ownerTransform.localScale.z);
+            ownerTransform.GetComponent<CUnit>().SetFlipUnit(detectingTargets[0].transform);
             for (int i = 0; i < targetCount; i++)
             {
                 mTargetMonster = detectingTargets[i].GetComponent<Monster>();
@@ -52,6 +48,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
                 HitEffectPlay(mTargetMonster.transform.position);
             }
 
+            return true;
         }
     }
 }

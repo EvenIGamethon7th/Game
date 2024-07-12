@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using _2_Scripts.Game.Unit;
+using _2_Scripts.Utils;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -22,9 +23,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.DirectionSkill
         [Title("기본 사거리를 따른다.")]
         private bool mbFollowDefaultRange = true;
 
-        [SerializeField] 
-        [Title("물리데미지 인지? False이면 마법데미지로")]
-        private bool mbIsAttackDamage;
+       
         public override bool CastAttack(Transform ownerTransform, CharacterData ownerData)
         {
             float range = mbFollowDefaultRange ? ownerData.range : this.Range;
@@ -92,12 +91,12 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.DirectionSkill
             foreach (var pos in spawnPos)
             {
                var collisionSkill = ObjectPoolManager.Instance.CreatePoolingObject(mSpawnCollisionGo,pos).GetComponent<SkillCollision>();
-               collisionSkill.Init(mLifeTime,damage,TargetLayer,HitEffect);
+               collisionSkill.Init(mLifeTime,this.StatueEffects);
             }
 
             foreach (var monster in takeDamageMonsters)
             {
-                monster.TakeDamage(damage);
+                monster.TakeDamage(damage,AttackType);
             }
         }
     }

@@ -15,6 +15,7 @@ namespace _2_Scripts.Game.Monster
         private Animator mAnimator;
         private MatController mMatController;
         private MonsterData mMonsterData;
+        public MonsterData GetMonsterData  => mMonsterData;
 
         private WayPoint mWayPoint;
         private int mWayPointIndex = 0;
@@ -110,9 +111,7 @@ namespace _2_Scripts.Game.Monster
         
         private void FlipSprite(Vector3 direction)
         {
-            //float scaleX = direction.x < 0 ? 1 : -1;
             mSpriteRenderer.flipX = direction.x > 0;
-            //transform.localScale = new Vector3(scaleX, transform.localScale.y, transform.localScale.z);
         }
 
         private void Enabled(bool bEnable)

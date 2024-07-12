@@ -1,8 +1,10 @@
-﻿using Sirenix.OdinInspector;
+﻿using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace _2_Scripts.Game.ScriptableObject.Skill
 {
+    using StatusEffect;
     public abstract class Skill : SerializedScriptableObject
     {
         [Title("스킬 이름 키")]
@@ -30,12 +32,18 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
         // 아군 버프와 같은 효과가 있을 수 있기에 LayerMask를 통해 타겟 구분
         [Title("타겟 레이어")] 
         [SerializeField] public LayerMask TargetLayer { get; private set; } 
+        
+        [Title("버프 또는 디버프 효과")]
+        [SerializeField]
+        public List<StatusEffect> StatueEffects { get; private set; }
+        
         public abstract bool CastAttack(Transform ownerTransform, CharacterData ownerData);
         public virtual bool CanCastAttack(Transform ownerTransform,float range)
         {
             var detectingTargets = Physics2D.OverlapCircleAll(ownerTransform.position, range, TargetLayer);
             return detectingTargets.Length > 0;
         }
+
         protected virtual void CastEffectPlay(Vector2 position)
         {
             if (CastEffect == null)

@@ -26,6 +26,8 @@ namespace _2_Scripts.Game.ScriptableObject.Character
     [Serializable]
     public class SkillInfo
     {
+        [SerializeField]
+        public int Level { get; private set; }
         [SerializeField]    
         public float CoolTime { get; private set; }
         [SerializeField]

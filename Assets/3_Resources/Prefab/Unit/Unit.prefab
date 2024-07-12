@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1147009262539137497}
   - component: {fileID: 1334266644793869700}
   - component: {fileID: 7758359553510156137}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Unit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,6 +135,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 198a74479a500644d9d435977464d231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CharacterDataInfo>k__BackingField: {fileID: 0}
+  <CharacterDatas>k__BackingField:
+    isAlumni: 0
+    alumniAtk: 0
+    alumniAtkSpeed: 0
+    alumniMatk: 0
+    Key: 
+    nameKey: 
+    atk: 0
+    atkSpeed: 0
+    matk: 0
+    rank: 0
+    characterData: 
+    range: 0
+    cost: 0
+    characterPack: 
 --- !u!114 &7758359553510156137
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,10 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _2_Scripts.Game.Unit;
+using _2_Scripts.Utils;
 using Sirenix.OdinInspector;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _2_Scripts.Game.ScriptableObject.Skill.DirectionSkill
-{   [CreateAssetMenu(menuName = "ScriptableObject/Skill/DirectionAttack",fileName = "Direction_")]
+{   
+    using Monster;
+    [CreateAssetMenu(menuName = "ScriptableObject/Skill/DirectionAttack",fileName = "Direction_")]
     public class SO_DirectionAttackSkill : DirectionSkill
     {
         [SerializeField] 
@@ -18,9 +23,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.DirectionSkill
         [Title("기본 사거리를 따른다.")]
         private bool mbFollowDefaultRange = true;
 
-        [SerializeField] 
-        [Title("물리데미지 인지? False이면 마법데미지로")]
-        private bool mbIsAttackDamage;
+       
         public override bool CastAttack(Transform ownerTransform, CharacterData ownerData)
         {
             float range = mbFollowDefaultRange ? ownerData.range : this.Range;
@@ -41,28 +44,60 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.DirectionSkill
         private void SpawnCollisionObject(Transform target,float damage)
         {
             HashSet<Vector3> spawnPos = new HashSet<Vector3>(); 
+            HashSet<Monster> takeDamageMonsters = new HashSet<Monster>();
             var targetCell= MapManager.Instance.GetCellFromWorldPos(target.position);
-            for (int i = -mDirectionPos.x; i <= mDirectionPos.x; i++)
-            {
-                var cellPos = new Vector3Int(targetCell.x + i, targetCell.y);
-                var currentCellWorldPos = MapManager.Instance.GetWorldPosFromCell(cellPos);
-                spawnPos.Add(currentCellWorldPos);
-            }
-            for (int i = -mDirectionPos.y; i <= mDirectionPos.y; i++)
-            {
-                var cellPos = new Vector3Int(targetCell.x, targetCell.y + i);
-                var currentCellWorldPos = MapManager.Instance.GetWorldPosFromCell(cellPos);
-                spawnPos.Add(currentCellWorldPos);
-            }
+            
+            Vector2 movementVector = ((target.transform.position) - target.GetComponent<Monster>().NextWayPointVector).normalized;
 
-
+            /// 상위 객체 하나로 묶어서 방향 회전으로 box colider x ,y 
+            if (Math.Abs(movementVector.x) < Math.Abs(movementVector.y))
+            {
+                for (int i = -mDirectionPos.y; i <= mDirectionPos.y; i++)
+                {
+                    var cellPos = new Vector3Int(targetCell.x, targetCell.y + i);
+                    var currentCellWorldPos = MapManager.Instance.GetWorldPosFromCell(cellPos);
+                    MapManager.Instance.CheckTileSlotOnUnit(cellPos, colliders =>
+                    {
+                        foreach (var collider in colliders)
+                        {
+                            if (collider.CompareTag("Monster"))
+                            {
+                                takeDamageMonsters.Add(collider.GetComponent<Monster>());
+                            }
+                        }
+                    });
+                    spawnPos.Add(currentCellWorldPos);
+                }
+            }
+            else
+            {
+                for (int i = -mDirectionPos.x; i <= mDirectionPos.x; i++)
+                {
+                    var cellPos = new Vector3Int(targetCell.x + i, targetCell.y);
+                    var currentCellWorldPos = MapManager.Instance.GetWorldPosFromCell(cellPos);
+                    MapManager.Instance.CheckTileSlotOnUnit(cellPos, colliders =>
+                    {
+                        foreach (var collider in colliders)
+                        {
+                            if (collider.CompareTag("Monster"))
+                            {
+                                takeDamageMonsters.Add(collider.GetComponent<Monster>());
+                            }
+                        }
+                    });
+                    spawnPos.Add(currentCellWorldPos);
+                }
+            }
             foreach (var pos in spawnPos)
             {
                var collisionSkill = ObjectPoolManager.Instance.CreatePoolingObject(mSpawnCollisionGo,pos).GetComponent<SkillCollision>();
-               collisionSkill.Init(mLifeTime,damage,TargetLayer,HitEffect);
-               
+               collisionSkill.Init(mLifeTime,this.StatueEffects);
             }
-            
+
+            foreach (var monster in takeDamageMonsters)
+            {
+                monster.TakeDamage(damage,AttackType);
+            }
         }
     }
 }

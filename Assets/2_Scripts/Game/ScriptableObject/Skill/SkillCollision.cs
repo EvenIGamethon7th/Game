@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using _2_Scripts.Game.Unit;
+using Sirenix.Utilities;
 using UniRx;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -6,21 +9,16 @@ using UnityEngine;
 namespace _2_Scripts.Game.ScriptableObject.Skill
 {
     using Monster;
+    using StatusEffect;
     public class SkillCollision : MonoBehaviour
     {
         private float mLifeTime;
-        private float mDamage;
-        private GameObject mHitEffect;
-        private LayerMask mTargetLayer;
         private CompositeDisposable disposables = new CompositeDisposable();
-        
-        public void Init(float lifeTime, float damage,LayerMask targetLayer,GameObject hitEffect = null)
+        private List<StatusEffect> mStatusEffects = new ();
+        public void Init(float lifeTime,List<StatusEffect> statusEffects)
         {
             mLifeTime = lifeTime;
-            mDamage = damage;
-            mHitEffect = hitEffect;
-            mTargetLayer = targetLayer;
-            
+            mStatusEffects = statusEffects;
             Observable.Timer(TimeSpan.FromSeconds(mLifeTime))
                 .Subscribe(_ => gameObject.SetActive(false))
                 .AddTo(disposables);
@@ -28,12 +26,13 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
         
         public void OnTriggerEnter2D(Collider2D other)
         {
-                var monster = other.transform.GetComponent<Monster>();
-                if (mHitEffect != null)
-                {
-                    ObjectPoolManager.Instance.CreatePoolingObject(mHitEffect.name, other.transform.position);
-                }
-                monster.TakeDamage(mDamage);
+            if (mStatusEffects.IsNullOrEmpty())
+                return;
+            var statusEffectHandler = other.transform.GetComponent<StatusEffectHandler>();
+            foreach (var effect in mStatusEffects)
+            {
+                statusEffectHandler.AddStatusEffect(effect);
+            }
         }
         
         private void OnDisable()

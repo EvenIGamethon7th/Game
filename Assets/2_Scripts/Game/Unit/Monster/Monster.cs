@@ -15,12 +15,12 @@ namespace _2_Scripts.Game.Monster
         private Animator mAnimator;
         private MatController mMatController;
         private MonsterData mMonsterData;
+        public MonsterData GetMonsterData  => mMonsterData;
 
         private WayPoint mWayPoint;
-        [SerializeField]
         private int mWayPointIndex = 0;
-        [SerializeField]
-        private Vector3 mNextWayPoint;
+        [field: SerializeField]
+        public Vector3 NextWayPointVector { get; private set; }
 
         private const EGameMessage PLAYER_DAMAGE = EGameMessage.PlayerDamage;
         private const EGameMessage BOSS_DEATH = EGameMessage.BossDeath;
@@ -62,11 +62,13 @@ namespace _2_Scripts.Game.Monster
             });
         }
 
-        public void TakeDamage(float damage)
+        public void TakeDamage(float damage,Define.EAttackType attackType)
         {
             ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_DamageCanvas, transform.position + Vector3.up).GetComponent<UI_DamageCanvas>().SetDamage(damage);
 
-            mMonsterData.hp -= damage;
+            float def = attackType == Define.EAttackType.Physical ? mMonsterData.def : mMonsterData.mdef;
+            float totalDamage = damage * (100 / (100 + def));
+            mMonsterData.hp -= totalDamage > 0 ? totalDamage : 0;
             mHpCanvas.SetHpSlider(mMonsterData.hp);
             if (mMonsterData.hp <= 0)
             {
@@ -88,7 +90,7 @@ namespace _2_Scripts.Game.Monster
                 gameObject.SetActive(false);
                 return;
             }
-            mNextWayPoint = mWayPoint.GetWayPointPosition(mWayPointIndex);
+            NextWayPointVector = mWayPoint.GetWayPointPosition(mWayPointIndex);
         }
 
         /// <summary>
@@ -96,24 +98,22 @@ namespace _2_Scripts.Game.Monster
         /// </summary>
         private void Update()
         {
-            if (Vector3.Distance(transform.position, mNextWayPoint) < 0.1f)
+            if (Vector3.Distance(transform.position, NextWayPointVector) < 0.1f)
             {
                 NextWayPoint();
             }
 
             var position = transform.position;
-            Vector3 direction = mNextWayPoint - position;
+            Vector3 direction = NextWayPointVector - position;
             FlipSprite(direction);
             // 위치 이동
-            position = Vector3.MoveTowards(position, mNextWayPoint, mMonsterData.speed * Time.deltaTime);
+            position = Vector3.MoveTowards(position, NextWayPointVector, mMonsterData.speed * Time.deltaTime);
             transform.position = position;
         }
         
         private void FlipSprite(Vector3 direction)
         {
-            //float scaleX = direction.x < 0 ? 1 : -1;
             mSpriteRenderer.flipX = direction.x > 0;
-            //transform.localScale = new Vector3(scaleX, transform.localScale.y, transform.localScale.z);
         }
 
         private void Enabled(bool bEnable)

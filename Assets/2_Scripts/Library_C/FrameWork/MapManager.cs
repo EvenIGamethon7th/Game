@@ -37,12 +37,22 @@ public class MapManager : Singleton<MapManager>
         int y = Mathf.FloorToInt(pos.y / mMonsterPathMap.cellSize.y);
         return new Vector2Int(x, y);
     }
-
+    
     public Vector3 GetWorldPosFromCell(Vector3Int pos)
     {
         Vector3 tileSize = mMonsterPathMap.cellSize;
         Vector3 slotOffset = new Vector3(tileSize.x, tileSize.y, 0);
         return mMonsterPathMap.CellToWorld(pos) + slotOffset;
+    }
+
+    public void CheckTileSlotOnUnit(Vector3Int pos,Action<Collider2D[]> action)
+    {
+        Vector3 cellWorldPosition = GetWorldPosFromCell(pos);
+        var _cellSize = mMonsterPathMap.cellSize;
+        Vector3 cellCenterWorldPosition = cellWorldPosition + _cellSize / 2;
+        Vector2 cellSize = _cellSize;
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(cellCenterWorldPosition, cellSize, 0f);
+        action.Invoke(colliders);
     }
 
     public UnitGroup CheckOccupantSameUnit(UnitGroup unitGroup)

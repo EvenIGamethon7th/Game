@@ -20,7 +20,7 @@ public class StageManager : Singleton<StageManager>
     private Queue<WaveData> mWaveQueue = new Queue<WaveData>();
     private WaveData mCurrentWaveData;
     
-    private const float SPAWN_COOL_TIME = 1.5f;
+    private const float SPAWN_COOL_TIME = 0.5f;
 
     private event Action mStageStart;
     private const float NEXT_WAVE_TIME = 1.0f;

@@ -3,6 +3,8 @@ Shader "Unlit/CustomSpine"
     Properties {
         _Cutoff ("Shadow alpha cutoff", Range(0,1)) = 0.1
         [NoScaleOffset] _MainTex ("Main Texture", 2D) = "black" {}
+        [HideInInspector] _StencilRef("Stencil Reference", Float) = 1.0
+		[HideInInspector][Enum(UnityEngine.Rendering.CompareFunction)] _StencilComp("Stencil Comparison", Float) = 8
 
         // Outline properties are drawn via custom editor.
         _OutlineColor ("Outline Color", Color) = (0,0,0,1)
@@ -12,8 +14,15 @@ Shader "Unlit/CustomSpine"
     SubShader {
         Tags { "RenderPipeline" = "UniversalPipeline" "Queue"="Transparent" "RenderType"="Transparent" }
         Blend One OneMinusSrcAlpha
-        Lighting Off
         Cull Off
+		ZWrite Off
+		Lighting Off
+
+        Stencil {
+			Ref[_StencilRef]
+			Comp[_StencilComp]
+			Pass Keep
+		}
 
         Pass {
 
@@ -58,8 +67,6 @@ Shader "Unlit/CustomSpine"
 
         Pass {
             Name "Outline"
-            ZWrite Off
-            ZTest Always
         
             Tags { "LightMode" = "Outline" }
         
@@ -90,6 +97,7 @@ Shader "Unlit/CustomSpine"
         
             VertexOutput vert (VertexInput v) {
                 VertexOutput o;
+
                 o.pos = TransformObjectToHClip(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 o.vertexColor = v.vertexColor;

@@ -24,6 +24,8 @@ namespace _2_Scripts.Game.Unit
         private EUnitStates mCurrentState;
         private int mFlip = 1;
 
+        private int mInt;
+
         private void Awake()
         {
             Units = new List<CUnit>(mMaxUnitCount);
@@ -31,9 +33,7 @@ namespace _2_Scripts.Game.Unit
 
         public bool CanFusion()
         {
-            if (Units.Count != mMaxUnitCount || Units[0]?.CharacterDatas.rank == (int)EUnitRank.Unique)
-                return false;
-            return true;
+            return Units.Count == mMaxUnitCount && Units[0]?.CharacterDatas.rank != (int)EUnitRank.Unique;
         }
 
         public void Fusion()
@@ -61,15 +61,11 @@ namespace _2_Scripts.Game.Unit
 
         public bool CanAddUnit()
         {
-            if (Units.Count == 1 && Units[0].CharacterDatas.rank == (int)EUnitRank.Unique)
-                return false;
-
             return Units.Count < mMaxUnitCount;
         }
 
         public void AddUnit(CUnit newUnit)
         {
-            if (Units.Count == 1 && Units[0].CharacterDatas.rank == (int)EUnitRank.Unique) return;
             if (Units.Count >= mMaxUnitCount) return;
 
             newUnit.transform.parent = transform;

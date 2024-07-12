@@ -15,7 +15,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
     [CreateAssetMenu(menuName = "ScriptableObject/Skill/Melee",fileName = "Melee_")]
     public class SO_MeelAttackSkill : Skill
     {
-        private Monster mTargetMonster;
+        
         [Title("데미지 증감 퍼센트")]
         [SerializeField]
         public float PercentDamage { get; private set; }
@@ -38,14 +38,14 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
             CastEffectPlay(ownerTransform.position);
             ownerTransform.GetComponent<CUnit>().SetFlipUnit(detectingTargets[0].transform);
             for (int i = 0; i < targetCount; i++)
-            {
-                mTargetMonster = detectingTargets[i].GetComponent<Monster>();
-                if (mTargetMonster == null)
+            { 
+                var TargetMonster = detectingTargets[i].GetComponent<Monster>();
+                if (TargetMonster == null)
                 {
                     continue;
                 }
-                mTargetMonster.TakeDamage(totalDamage);
-                HitEffectPlay(mTargetMonster.transform.position);
+                TargetMonster.TakeDamage(totalDamage,AttackType);
+                HitEffectPlay(TargetMonster.transform.position);
             }
 
             return true;

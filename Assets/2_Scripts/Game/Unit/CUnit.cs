@@ -77,7 +77,8 @@ namespace _2_Scripts.Game.Unit
         public void SetFlipUnit(Transform target)
         {
             int flip = target.transform.position.x > this.transform.position.x ? 1 : -1;
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * flip, transform.localScale.y, transform.localScale.z);
+            mAnimation.skeleton.ScaleX = flip;
+            // transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * flip, transform.localScale.y, transform.localScale.z);
         }
 
         //임시 스킬 업데이트 함수

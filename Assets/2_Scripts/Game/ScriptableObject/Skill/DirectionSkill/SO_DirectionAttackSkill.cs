@@ -6,7 +6,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _2_Scripts.Game.ScriptableObject.Skill.DirectionSkill
-{   [CreateAssetMenu(menuName = "ScriptableObject/Skill/DirectionAttack",fileName = "Direction_")]
+{   
+    using Monster;
+    [CreateAssetMenu(menuName = "ScriptableObject/Skill/DirectionAttack",fileName = "Direction_")]
     public class SO_DirectionAttackSkill : DirectionSkill
     {
         [SerializeField] 
@@ -43,9 +45,10 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.DirectionSkill
         private void SpawnCollisionObject(Transform target,float damage)
         {
             HashSet<Vector3> spawnPos = new HashSet<Vector3>(); 
+            HashSet<Monster> takeDamageMonsters = new HashSet<Monster>();
             var targetCell= MapManager.Instance.GetCellFromWorldPos(target.position);
             
-            Vector2 movementVector = ((target.transform.position) - target.GetComponent<Monster.Monster>().NextWayPointVector).normalized;
+            Vector2 movementVector = ((target.transform.position) - target.GetComponent<Monster>().NextWayPointVector).normalized;
 
             /// 상위 객체 하나로 묶어서 방향 회전으로 box colider x ,y 
             if (Math.Abs(movementVector.x) < Math.Abs(movementVector.y))
@@ -54,6 +57,16 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.DirectionSkill
                 {
                     var cellPos = new Vector3Int(targetCell.x, targetCell.y + i);
                     var currentCellWorldPos = MapManager.Instance.GetWorldPosFromCell(cellPos);
+                    MapManager.Instance.CheckTileSlotOnUnit(cellPos, colliders =>
+                    {
+                        foreach (var collider in colliders)
+                        {
+                            if (collider.CompareTag("Monster"))
+                            {
+                                takeDamageMonsters.Add(collider.GetComponent<Monster>());
+                            }
+                        }
+                    });
                     spawnPos.Add(currentCellWorldPos);
                 }
             }
@@ -63,6 +76,16 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.DirectionSkill
                 {
                     var cellPos = new Vector3Int(targetCell.x + i, targetCell.y);
                     var currentCellWorldPos = MapManager.Instance.GetWorldPosFromCell(cellPos);
+                    MapManager.Instance.CheckTileSlotOnUnit(cellPos, colliders =>
+                    {
+                        foreach (var collider in colliders)
+                        {
+                            if (collider.CompareTag("Monster"))
+                            {
+                                takeDamageMonsters.Add(collider.GetComponent<Monster>());
+                            }
+                        }
+                    });
                     spawnPos.Add(currentCellWorldPos);
                 }
             }
@@ -70,9 +93,12 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.DirectionSkill
             {
                var collisionSkill = ObjectPoolManager.Instance.CreatePoolingObject(mSpawnCollisionGo,pos).GetComponent<SkillCollision>();
                collisionSkill.Init(mLifeTime,damage,TargetLayer,HitEffect);
-               
             }
-            
+
+            foreach (var monster in takeDamageMonsters)
+            {
+                monster.TakeDamage(damage);
+            }
         }
     }
 }

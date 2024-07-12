@@ -28,12 +28,12 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
         
         public void OnTriggerEnter2D(Collider2D other)
         {
-                var monster = other.transform.GetComponent<Monster>();
-                if (mHitEffect != null)
-                {
-                    ObjectPoolManager.Instance.CreatePoolingObject(mHitEffect.name, other.transform.position);
-                }
-                monster.TakeDamage(mDamage);
+                // var monster = other.transform.GetComponent<Monster>();
+                // if (mHitEffect != null)
+                // {
+                //     ObjectPoolManager.Instance.CreatePoolingObject(mHitEffect.name, other.transform.position);
+                // }
+                // monster.TakeDamage(mDamage);
         }
         
         private void OnDisable()

@@ -79,11 +79,11 @@ Shader "Spine/Skeleton" {
 			Offset 1, 1
 			ZWrite On
 			ZTest LEqual
-
+		
 			Fog { Mode Off }
 			Cull Off
 			Lighting Off
-
+		
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
@@ -92,12 +92,12 @@ Shader "Spine/Skeleton" {
 			#include "UnityCG.cginc"
 			sampler2D _MainTex;
 			fixed _Cutoff;
-
+		
 			struct VertexOutput {
 				V2F_SHADOW_CASTER;
 				float4 uvAndAlpha : TEXCOORD1;
 			};
-
+		
 			VertexOutput vert (appdata_base v, float4 vertexColor : COLOR) {
 				VertexOutput o;
 				o.uvAndAlpha = v.texcoord;
@@ -105,7 +105,7 @@ Shader "Spine/Skeleton" {
 				TRANSFER_SHADOW_CASTER(o)
 				return o;
 			}
-
+		
 			float4 frag (VertexOutput i) : SV_Target {
 				fixed4 texcol = tex2D(_MainTex, i.uvAndAlpha.xy);
 				clip(texcol.a * i.uvAndAlpha.a - _Cutoff);

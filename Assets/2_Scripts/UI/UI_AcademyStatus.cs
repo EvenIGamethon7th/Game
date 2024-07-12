@@ -16,9 +16,12 @@ namespace _2_Scripts.UI
         private Slider[] mSliders;
         [SerializeField]
         private SkeletonGraphic mGraphic;
+        [SerializeField]
+        private TextMeshProUGUI mName;
 
         public void SetStatus(CUnit data)
         {
+            mName.text = data.name;
             mTexts[0].text = $"{(int)data.CharacterDatas.atk} + {(int)data.CharacterDatas.alumniAtk}";
             mTexts[1].text = $"{data.CharacterDatas.atkSpeed.ToString("F1")} + {data.CharacterDatas.alumniAtkSpeed.ToString("F1")}";
             mTexts[2].text = $"{(int)data.CharacterDatas.matk} + {(int)data.CharacterDatas.alumniMatk}";
@@ -59,6 +62,7 @@ namespace _2_Scripts.UI
                 mTexts[i].text = "0";
                 mSliders[i].value = 0;
             }
+            mName.text = "Empty";
 
             mGraphic.gameObject.SetActive(false);
         }

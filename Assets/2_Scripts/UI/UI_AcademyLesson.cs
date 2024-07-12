@@ -23,38 +23,35 @@ namespace _2_Scripts.UI
         {
             for (int i = 0; i < mTexts.Length; ++i) 
             {
-                mTexts[i].text = "...";
-                mTexts[i].color = Color.black;
+                mTexts[i].text = "";
             }
         }
 
         public void DoLesson(int lessonNum)
         {
-            mTexts[lessonNum].text = "... Studying";
+            mTexts[lessonNum].text = "... 진행중";
+            mTexts[lessonNum ].color = Color.black;
         }
 
         public void SetResult(int lessonNum, ELessonResults result)
         {
-            StringBuilder sb = new(20);
-            sb.Append($"... {result}");
-            mTexts[lessonNum].color = Color.blue;
             switch (result)
             {
                 case ELessonResults.Fail:
-                    sb.Append("..");
+                    mTexts[lessonNum].text = "실패..";
                     mTexts[lessonNum].color = Color.red;
                     break;
 
                 case ELessonResults.Success:
-                    sb.Append("!!");
+                    mTexts[lessonNum].text = "성공!!";
+                    mTexts[lessonNum].color = Color.green;
                     break;
 
                 case ELessonResults.Bonanza:
-                    sb.Append("!!!");
+                    mTexts[lessonNum].text = "대성공!!!";
+                    mTexts[lessonNum].color = Color.yellow;
                     break;
             }
-
-            mTexts[lessonNum].text = sb.ToString();
         }
     }
 }

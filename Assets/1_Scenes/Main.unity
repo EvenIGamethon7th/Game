@@ -2675,6 +2675,7 @@ GameObject:
   - component: {fileID: 744537071}
   - component: {fileID: 744537073}
   - component: {fileID: 744537072}
+  - component: {fileID: 744537074}
   m_Layer: 0
   m_Name: BackGround
   m_TagString: Untagged
@@ -14422,6 +14423,42 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &744537074
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744537070}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
 --- !u!1001 &785794255
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16795,7 +16832,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1164810992900734458, guid: 8c87aa2d5c1075c47a9befd890e1b4cf, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1237646111815185607, guid: 8c87aa2d5c1075c47a9befd890e1b4cf, type: 3}
       propertyPath: m_fontSize
@@ -16829,9 +16866,13 @@ PrefabInstance:
       propertyPath: mGraphic
       value: 
       objectReference: {fileID: 2024607951}
+    - target: {fileID: 2464671322721525528, guid: 8c87aa2d5c1075c47a9befd890e1b4cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2487018504154259343, guid: 8c87aa2d5c1075c47a9befd890e1b4cf, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2740001936234483473, guid: 8c87aa2d5c1075c47a9befd890e1b4cf, type: 3}
       propertyPath: m_fontSize
@@ -17059,7 +17100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8553857229114967490, guid: 8c87aa2d5c1075c47a9befd890e1b4cf, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8917681275566722297, guid: 8c87aa2d5c1075c47a9befd890e1b4cf, type: 3}
       propertyPath: m_fontSize
@@ -18474,7 +18515,7 @@ MonoBehaviour:
   m_CameraType: 0
   m_Cameras:
   - {fileID: 1840342774}
-  m_RendererIndex: -1
+  m_RendererIndex: 0
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1

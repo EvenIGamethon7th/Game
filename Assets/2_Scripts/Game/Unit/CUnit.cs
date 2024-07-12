@@ -7,6 +7,7 @@ using System.Linq;
 using _2_Scripts.Game.ScriptableObject.Character;
 using _2_Scripts.Game.ScriptableObject.Skill;
 using Cysharp.Threading.Tasks;
+using Sirenix.Utilities;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -77,7 +78,7 @@ namespace _2_Scripts.Game.Unit
         public void SetFlipUnit(Transform target)
         {
             int flip = target.transform.position.x > this.transform.position.x ? 1 : -1;
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * flip, transform.localScale.y, transform.localScale.z);
+            mAnimation.skeleton.ScaleX = flip;
         }
 
         //임시 스킬 업데이트 함수
@@ -127,7 +128,7 @@ namespace _2_Scripts.Game.Unit
             
             CharacterDataInfo = ResourceManager.Instance.Load<CharacterInfo>(characterData.characterData);
             
-            CharacterDataInfo.SkillList?.ForEach(skill => CoolTimeSkill(skill).Forget());
+            CharacterDataInfo.SkillList?.Where(skill=> skill.Level <= CharacterDatas.rank).ForEach(skill => CoolTimeSkill(skill).Forget());
  
         }
         

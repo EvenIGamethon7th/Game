@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c24a7af5bd942efb8ffa20761555d24, type: 3}
-  m_Name: Direction_Ice_Puddle
+  m_Name: Direction_Ice_Flower
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: a3a961b27d7cbd34b8633a97e3cd7224, type: 2}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -68,23 +67,10 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: StatueEffects
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[_2_Scripts.Game.StatusEffect.StatusEffect,
-        Assembly-CSharp]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
+      Entry: 6
       Data: 
   mDirectionPos: {x: 1, y: 1}
-  mSpawnCollisionGo: {fileID: 4124999916983397026, guid: abdcad04258e27544ab813068e14c68b, type: 3}
-  mLifeTime: 3
-  mPercentDamage: 300
+  mSpawnCollisionGo: {fileID: 4124999916983397026, guid: 2be733f2973d39545900edb1f26ccd00, type: 3}
+  mLifeTime: 1
+  mPercentDamage: 500
   mbFollowDefaultRange: 1

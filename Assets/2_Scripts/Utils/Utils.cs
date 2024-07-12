@@ -35,6 +35,11 @@ public class Utils
         var serialized = JsonConvert.SerializeObject(source);
         return JsonConvert.DeserializeObject<T>(serialized);
     }
+    
+    public static double DotProduct(Vector2 v1, Vector2 v2)
+    {
+        return v1.x * v2.x + v1.y * v2.y;
+    }
 
     public class ReadonlyNumber<T>
     {

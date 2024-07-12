@@ -410,9 +410,10 @@ GameObject:
   - component: {fileID: 9009686866573285570}
   - component: {fileID: 9145081223514328008}
   - component: {fileID: 8841582270403909168}
+  - component: {fileID: 7009589249692178983}
   m_Layer: 6
   m_Name: Monster
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -518,8 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54114124d65422196ce22d16dd4e3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mWayPointIndex: 0
-  mNextWayPoint: {x: 0, y: 0, z: 0}
+  <NextWayPointVector>k__BackingField: {x: 0, y: 0, z: 0}
 --- !u!114 &9009686866573285570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,6 +665,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &7009589249692178983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4674217309339450523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bfee21a2adb443e85b4d0140274d1d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5625609305928013774
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,7 +694,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5602248301969292598
 RectTransform:
   m_ObjectHideFlags: 0

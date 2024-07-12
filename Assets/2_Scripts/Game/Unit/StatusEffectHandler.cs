@@ -26,13 +26,12 @@ namespace _2_Scripts.Game.Unit
 
             if (statusEffect is IUnitStatsModifier adjuster)
             {
-                adjuster.AdjustStat(mMonster.GetMonsterData);
+                adjuster.AdjustStat(mMonster.GetMonsterData, () =>
+                {
+                    mStatusEffects.Remove(statusEffect);
+                });
             }
-            statusEffect.OnApply(()=>
-            {
-                Debug.Log("끝남");
-                mStatusEffects.Remove(statusEffect);
-            });
+            statusEffect.OnApply();
         }
     }
 }

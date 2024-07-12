@@ -62,11 +62,13 @@ namespace _2_Scripts.Game.Monster
             });
         }
 
-        public void TakeDamage(float damage)
+        public void TakeDamage(float damage,Define.EAttackType attackType)
         {
             ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_DamageCanvas, transform.position + Vector3.up).GetComponent<UI_DamageCanvas>().SetDamage(damage);
 
-            mMonsterData.hp -= damage;
+            float def = attackType == Define.EAttackType.Physical ? mMonsterData.def : mMonsterData.mdef;
+            float totalDamage = damage * (100 / (100 + def));
+            mMonsterData.hp -= totalDamage > 0 ? totalDamage : 0;
             mHpCanvas.SetHpSlider(mMonsterData.hp);
             if (mMonsterData.hp <= 0)
             {

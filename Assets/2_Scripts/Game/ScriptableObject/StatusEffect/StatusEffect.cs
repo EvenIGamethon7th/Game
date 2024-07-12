@@ -23,17 +23,15 @@ namespace _2_Scripts.Game.StatusEffect
         [Title("상태이상 이펙트 효과")] 
         [SerializeField]
         public GameObject HitEffect { get; private set; }
-
-
-        protected Action mRemoveCallback;
-        public abstract void OnApply(Action removeCallback);
+        
+        public abstract void OnApply();
         protected abstract void OnRemove();
 
-        protected virtual async UniTaskVoid ExecuteAfterDuration()
+        protected virtual async UniTaskVoid ExecuteAfterDuration(Action endCallback = null)
         {
             await UniTask.WaitForSeconds(Duration);
             OnRemove();
-            mRemoveCallback.Invoke();
+            endCallback?.Invoke();
         }
     }
 }

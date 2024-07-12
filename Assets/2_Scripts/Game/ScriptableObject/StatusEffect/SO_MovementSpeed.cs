@@ -12,27 +12,26 @@ namespace _2_Scripts.Game.StatusEffect
         [SerializeField]
         public float mPercentSpeed;
 
-        private MonsterData mMonsterData;
         
-        public override void OnApply(Action removeCallback)
+        public override void OnApply()
         {
             //TODO 체력바 밑에 아이콘 표시, 파티클 효과 표시
-
-            this.mRemoveCallback = removeCallback;
-            ExecuteAfterDuration().Forget();
         }
         
         
         protected override void OnRemove()
         {
-            mMonsterData.speed -= mMonsterData.speed * (mPercentSpeed * 0.01f);
-            Debug.Log(mMonsterData.speed);
+            
         }
 
-        public void AdjustStat(MonsterData monsterData)
+        public void AdjustStat(MonsterData monsterData, Action endCallback)
         {
-            mMonsterData = monsterData;
-            monsterData.speed += monsterData.speed * (mPercentSpeed * 0.01f);
+            monsterData.speed  *= (mPercentSpeed * 0.01f);
+            ExecuteAfterDuration(()=>
+            {
+                monsterData.speed /= (mPercentSpeed * 0.01f);
+                endCallback.Invoke();
+            }).Forget();
         }
     }
 }

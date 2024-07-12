@@ -17,10 +17,9 @@ namespace _2_Scripts.Game.Monster
         private MonsterData mMonsterData;
 
         private WayPoint mWayPoint;
-        [SerializeField]
         private int mWayPointIndex = 0;
-        [SerializeField]
-        private Vector3 mNextWayPoint;
+        [field: SerializeField]
+        public Vector3 NextWayPointVector { get; private set; }
 
         private const EGameMessage PLAYER_DAMAGE = EGameMessage.PlayerDamage;
         private const EGameMessage BOSS_DEATH = EGameMessage.BossDeath;
@@ -88,7 +87,7 @@ namespace _2_Scripts.Game.Monster
                 gameObject.SetActive(false);
                 return;
             }
-            mNextWayPoint = mWayPoint.GetWayPointPosition(mWayPointIndex);
+            NextWayPointVector = mWayPoint.GetWayPointPosition(mWayPointIndex);
         }
 
         /// <summary>
@@ -96,16 +95,16 @@ namespace _2_Scripts.Game.Monster
         /// </summary>
         private void Update()
         {
-            if (Vector3.Distance(transform.position, mNextWayPoint) < 0.1f)
+            if (Vector3.Distance(transform.position, NextWayPointVector) < 0.1f)
             {
                 NextWayPoint();
             }
 
             var position = transform.position;
-            Vector3 direction = mNextWayPoint - position;
+            Vector3 direction = NextWayPointVector - position;
             FlipSprite(direction);
             // 위치 이동
-            position = Vector3.MoveTowards(position, mNextWayPoint, mMonsterData.speed * Time.deltaTime);
+            position = Vector3.MoveTowards(position, NextWayPointVector, mMonsterData.speed * Time.deltaTime);
             transform.position = position;
         }
         

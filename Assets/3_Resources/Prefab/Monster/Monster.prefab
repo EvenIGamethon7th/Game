@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 8841582270403909168}
   m_Layer: 6
   m_Name: Monster
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -518,8 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54114124d65422196ce22d16dd4e3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mWayPointIndex: 0
-  mNextWayPoint: {x: 0, y: 0, z: 0}
+  <NextWayPointVector>k__BackingField: {x: 0, y: 0, z: 0}
 --- !u!114 &9009686866573285570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -682,7 +681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5602248301969292598
 RectTransform:
   m_ObjectHideFlags: 0

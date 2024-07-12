@@ -35,6 +35,7 @@ Shader "Spine/Skeleton" {
 			Name "Normal"
 
 			CGPROGRAM
+			#pragma multi_compile_instancing
 			#pragma shader_feature _ _STRAIGHT_ALPHA_INPUT
 			#pragma vertex vert
 			#pragma fragment frag
@@ -45,12 +46,14 @@ Shader "Spine/Skeleton" {
 				float4 vertex : POSITION;
 				float2 uv : TEXCOORD0;
 				float4 vertexColor : COLOR;
+				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
 			struct VertexOutput {
 				float4 pos : SV_POSITION;
 				float2 uv : TEXCOORD0;
 				float4 vertexColor : COLOR;
+				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
 			VertexOutput vert (VertexInput v) {
@@ -73,46 +76,46 @@ Shader "Spine/Skeleton" {
 			ENDCG
 		}
 
-		Pass {
-			Name "Caster"
-			Tags { "LightMode"="ShadowCaster" }
-			Offset 1, 1
-			ZWrite On
-			ZTest LEqual
-		
-			Fog { Mode Off }
-			Cull Off
-			Lighting Off
-		
-			CGPROGRAM
-			#pragma vertex vert
-			#pragma fragment frag
-			#pragma multi_compile_shadowcaster
-			#pragma fragmentoption ARB_precision_hint_fastest
-			#include "UnityCG.cginc"
-			sampler2D _MainTex;
-			fixed _Cutoff;
-		
-			struct VertexOutput {
-				V2F_SHADOW_CASTER;
-				float4 uvAndAlpha : TEXCOORD1;
-			};
-		
-			VertexOutput vert (appdata_base v, float4 vertexColor : COLOR) {
-				VertexOutput o;
-				o.uvAndAlpha = v.texcoord;
-				o.uvAndAlpha.a = vertexColor.a;
-				TRANSFER_SHADOW_CASTER(o)
-				return o;
-			}
-		
-			float4 frag (VertexOutput i) : SV_Target {
-				fixed4 texcol = tex2D(_MainTex, i.uvAndAlpha.xy);
-				clip(texcol.a * i.uvAndAlpha.a - _Cutoff);
-				SHADOW_CASTER_FRAGMENT(i)
-			}
-			ENDCG
-		}
+		//Pass {
+		//	Name "Caster"
+		//	Tags { "LightMode"="ShadowCaster" }
+		//	Offset 1, 1
+		//	ZWrite On
+		//	ZTest LEqual
+		//
+		//	Fog { Mode Off }
+		//	Cull Off
+		//	Lighting Off
+		//
+		//	CGPROGRAM
+		//	#pragma vertex vert
+		//	#pragma fragment frag
+		//	#pragma multi_compile_shadowcaster
+		//	#pragma fragmentoption ARB_precision_hint_fastest
+		//	#include "UnityCG.cginc"
+		//	sampler2D _MainTex;
+		//	fixed _Cutoff;
+		//
+		//	struct VertexOutput {
+		//		V2F_SHADOW_CASTER;
+		//		float4 uvAndAlpha : TEXCOORD1;
+		//	};
+		//
+		//	VertexOutput vert (appdata_base v, float4 vertexColor : COLOR) {
+		//		VertexOutput o;
+		//		o.uvAndAlpha = v.texcoord;
+		//		o.uvAndAlpha.a = vertexColor.a;
+		//		TRANSFER_SHADOW_CASTER(o)
+		//		return o;
+		//	}
+		//
+		//	float4 frag (VertexOutput i) : SV_Target {
+		//		fixed4 texcol = tex2D(_MainTex, i.uvAndAlpha.xy);
+		//		clip(texcol.a * i.uvAndAlpha.a - _Cutoff);
+		//		SHADOW_CASTER_FRAGMENT(i)
+		//	}
+		//	ENDCG
+		//}
 	}
-	CustomEditor "SpineShaderWithOutlineGUI"
+	//CustomEditor "SpineShaderWithOutlineGUI"
 }

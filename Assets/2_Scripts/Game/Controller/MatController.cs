@@ -49,7 +49,10 @@ public class MatController : SerializedMonoBehaviour
                 mPropertyBlock.SetFloat(DissolveAmount, dissolveAmount);
                 mSpriteRenderer.SetPropertyBlock(mPropertyBlock);
             }, 1f - dissolveAmount, 1.5f)
-            .OnComplete(() => action?.Invoke());
+            .OnComplete(() => { 
+                action?.Invoke();
+                ChangeMat(EMat.NORMAL);
+            });
    }
    
    

@@ -21,7 +21,7 @@ namespace _2_Scripts.UI
 
         private void Awake()
         {
-            mHpCanvas.worldCamera = Camera.main;
+            mHpCanvas.worldCamera = UICamera.Instance.Camera;
         }
 
         public void InitHpSlider(float maxHp, bool isBoss)

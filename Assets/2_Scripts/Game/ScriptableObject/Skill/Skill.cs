@@ -39,7 +39,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
         
         [Title("버프 또는 디버프 효과")]
         [SerializeField]
-        public List<StatusEffect> StatueEffects { get; private set; }
+        public List<StatusEffectSO> StatueEffects { get; private set; }
         
         public abstract bool CastAttack(Transform ownerTransform, CharacterData ownerData);
         public virtual bool CanCastAttack(Transform ownerTransform,float range)

@@ -14,8 +14,8 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
     {
         private float mLifeTime;
         private CompositeDisposable disposables = new CompositeDisposable();
-        private List<StatusEffect> mStatusEffects = new ();
-        public void Init(float lifeTime,List<StatusEffect> statusEffects)
+        private List<StatusEffectSO> mStatusEffects = new ();
+        public void Init(float lifeTime,List<StatusEffectSO> statusEffects)
         {
             mLifeTime = lifeTime;
             mStatusEffects = statusEffects;

@@ -17,7 +17,8 @@ public enum ELabelNames
     Demo,
     Material,
     SkeletonData,
-    CharacterData
+    CharacterData,
+    UIMaterial
 }
 
 public class ResourceManager : SerializedMonoBehaviour,GameSystem_Manager.IInitializer

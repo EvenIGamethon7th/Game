@@ -31,8 +31,7 @@ namespace _2_Scripts.UI
 
             mGraphic.skeletonDataAsset = ResourceManager.Instance.Load<SkeletonDataAsset>($"{data.characterPack}_{ELabelNames.SkeletonData}");
 
-            mGraphic.material = new Material(ResourceManager.Instance.Load<Material>($"{data.characterPack}_{ELabelNames.Material}"));
-            mGraphic.material.SetFloat("_StencilComp", 4);
+            mGraphic.material = ResourceManager.Instance.Load<Material>($"{data.characterPack}_{ELabelNames.UIMaterial}");
             string skinName = mGraphic.skeletonDataAsset.name;
             mGraphic.initialSkinName = skinName.Substring(0, skinName.LastIndexOf('_'));
             mText.text = mGraphic.initialSkinName;

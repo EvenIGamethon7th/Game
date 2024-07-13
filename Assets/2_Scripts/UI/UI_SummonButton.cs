@@ -89,7 +89,7 @@ namespace _2_Scripts.UI
            mCharacterData = GameManager.Instance.GetRandomCharacterData(characterInfo);
            
            mCharacterGraphic.skeletonDataAsset = ResourceManager.Instance.Load<SkeletonDataAsset>($"{mCharacterData.characterPack}_{ELabelNames.SkeletonData}");
-           mCharacterGraphic.material = ResourceManager.Instance.Load<Material>($"{mCharacterData.characterPack}_{ELabelNames.Material}");
+           mCharacterGraphic.material = ResourceManager.Instance.Load<Material>($"{mCharacterData.characterPack}_{ELabelNames.UIMaterial}");
            string skinName = mCharacterGraphic.skeletonDataAsset.name;
            mCharacterGraphic.initialSkinName = skinName.Substring(0, skinName.LastIndexOf('_'));
 

@@ -19,7 +19,7 @@ public class MatController : SerializedMonoBehaviour
    private MaterialPropertyBlock mPropertyBlock;
    private SpriteRenderer mSpriteRenderer;
 
-   private static readonly int MainTex = Shader.PropertyToID("_Texture2D");
+   private static readonly int MainTex = Shader.PropertyToID("_MainTex");
    private static readonly int DissolveAmount = Shader.PropertyToID("_DissolveAmount");
 
    private void Awake()

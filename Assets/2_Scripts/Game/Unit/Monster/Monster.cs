@@ -87,6 +87,7 @@ namespace _2_Scripts.Game.Monster
             if(++mWayPointIndex == mWayPoint.GetWayPointCount())
             {
                 MessageBroker.Default.Publish(mDamageMessage);
+                Enabled(false);
                 gameObject.SetActive(false);
                 return;
             }

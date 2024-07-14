@@ -5,6 +5,7 @@
         PlayerDamage,
         BossDeath,
         GoldChange,
+        StageChange
     }
     
     public class GameMessage<T>
@@ -15,6 +16,11 @@
         {
             Value = value;
             Message = message;
+        }
+
+        public void SetValue(T value)
+        {
+            Value = value;
         }
     }
 }

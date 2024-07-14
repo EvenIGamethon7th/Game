@@ -17,5 +17,10 @@
             Value = value;
             Message = message;
         }
+
+        public void SetValue(T value)
+        {
+            Value = value;
+        }
     }
 }

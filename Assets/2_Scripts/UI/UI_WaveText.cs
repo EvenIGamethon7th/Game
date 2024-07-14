@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using _2_Scripts.Utils;
@@ -12,7 +11,7 @@ public class UI_WaveText : MonoBehaviour
     private TextMeshProUGUI mWaveText;
     void Start()
     {
-        MessageBroker.Default.Receive<GameMessage<Int32>>().Where(message => message.Message == EGameMessage.StageChange)
+        MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange)
             .Subscribe(message => mWaveText.text = $"Wave {message.Value}");
     }
 

@@ -26,15 +26,14 @@ public class StageManager : Singleton<StageManager>
     private const float NEXT_WAVE_TIME = 1.0f;
     
     private int mDeathBossCount = 0;
-    private GameMessage<Int32> mNextStageMessage;
-    private Int32 mCurrentStageIndex = 1;
+    private GameMessage<int> mNextStageMessage;
     /// <summary>
     ///  테스트용 스테이지 시작 코드
     /// </summary>
     /// <exception cref="NotImplementedException"></exception>
     public void Start()
     {
-        mNextStageMessage = new GameMessage<Int32>(EGameMessage.StageChange, mCurrentStageIndex);
+        mNextStageMessage = new GameMessage<int>(EGameMessage.StageChange, 1);
         MessageBroker.Default.Receive<TaskMessage>()
             .Subscribe(message =>
             {
@@ -93,7 +92,7 @@ public class StageManager : Singleton<StageManager>
                 continue;
             }
             await UniTask.WaitForSeconds(NEXT_WAVE_TIME);
-            mCurrentStageIndex++;
+            mNextStageMessage.SetValue(mNextStageMessage.Value + 1);
             MessageBroker.Default.Publish(mNextStageMessage);
         }
     }

@@ -26,6 +26,8 @@ public class StageManager : Singleton<StageManager>
     private const float NEXT_WAVE_TIME = 1.0f;
     
     private int mDeathBossCount = 0;
+
+    public int WaveCount => mNextStageMessage.Value;
     
     private GameMessage<int> mNextStageMessage;
     /// <summary>

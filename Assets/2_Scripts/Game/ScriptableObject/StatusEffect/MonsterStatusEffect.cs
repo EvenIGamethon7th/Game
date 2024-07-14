@@ -44,11 +44,30 @@ namespace _2_Scripts.Game.StatusEffect
 
         public void Clear()
         {
-            mCts.Cancel();
-            mCts.Dispose();
+            CancelAndDisposeToken();
+            
             mRemoveCallback?.Invoke();
             mRemoveCallback = null;
             mIsActive = false;
         }
+        
+        private void CancelAndDisposeToken()
+        {
+            if (mCts != null)
+            {
+                if (!mCts.IsCancellationRequested)
+                {
+                    mCts.Cancel();
+                }
+                mCts.Dispose();
+                mCts = null;
+            }
+            else
+            {
+                mCts = new CancellationTokenSource();
+            }
+        }
     }
+    
+
 }

@@ -15,7 +15,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 4124999916983397026, guid: 2be733f2973d39545900edb1f26ccd00, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -55,8 +56,8 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: HitEffect
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 0
     - Name: TargetLayer
       Entry: 7
       Data: UnityEngine.LayerMask, UnityEngine.CoreModule
@@ -70,7 +71,7 @@ MonoBehaviour:
       Entry: 6
       Data: 
   mDirectionPos: {x: 1, y: 1}
-  mSpawnCollisionGo: {fileID: 4124999916983397026, guid: 2be733f2973d39545900edb1f26ccd00, type: 3}
+  mSpawnCollisionGo: {fileID: 0}
   mLifeTime: 1
   mPercentDamage: 500
   mbFollowDefaultRange: 1

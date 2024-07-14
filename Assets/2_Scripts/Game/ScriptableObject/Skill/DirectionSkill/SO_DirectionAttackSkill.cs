@@ -88,11 +88,17 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.DirectionSkill
                     spawnPos.Add(currentCellWorldPos);
                 }
             }
-            foreach (var pos in spawnPos)
+
+            if (mSpawnCollisionGo != null)
             {
-               var collisionSkill = ObjectPoolManager.Instance.CreatePoolingObject(mSpawnCollisionGo,pos).GetComponent<SkillCollision>();
-               collisionSkill.Init(mLifeTime,this.StatueEffects);
+                foreach (var pos in spawnPos)
+                {
+                    var collisionSkill = ObjectPoolManager.Instance.CreatePoolingObject(mSpawnCollisionGo,pos).GetComponent<SkillCollision>();
+                    collisionSkill.Init(mLifeTime,this.StatueEffects);
+                }
             }
+
+            HitEffectPlay(target.position);
 
             foreach (var monster in takeDamageMonsters)
             {

@@ -11,6 +11,7 @@ namespace _2_Scripts.Game.Unit
     public class StatusEffectHandler : MonoBehaviour
     {
         private Dictionary<StatusEffectSO.EDebuffTypes, MonsterStatusEffect> mStatusEffects = new ();
+        private List<StatusEffectSO.EDebuffTypes> mRemoveList = new List<StatusEffectSO.EDebuffTypes>();
         // 차후 유저 유닛도 해당 Handler를 사용할 가능성이 높기에 확장성 고려해서 다시 짜야할 듯 
         private Monster mMonster;
 
@@ -19,7 +20,7 @@ namespace _2_Scripts.Game.Unit
             mMonster = GetComponent<Monster>();
         }
 
-        public void Update()
+        public void LateUpdate()
         {
             UpdateStatusEffect();
         }
@@ -40,20 +41,27 @@ namespace _2_Scripts.Game.Unit
 
             statusEffect.OnApply();
             var monsterEffect = MemoryPoolManager<MonsterStatusEffect>.CreatePoolingObject();
+            monsterEffect.Init(statusEffect.DeBuffType, statusEffect.Duration, statusEffect.OnRemove);
             mStatusEffects.Add(statusEffect.DeBuffType, monsterEffect);
             return true;
         }
 
         private void UpdateStatusEffect()
         {
+            mRemoveList.Clear();
             foreach (var statusEffect in mStatusEffects)
             {
                 mStatusEffects[statusEffect.Key].Duration -= Time.deltaTime;
                 if (mStatusEffects[statusEffect.Key].Duration < 0)
                 {
-                    mStatusEffects[statusEffect.Key].Clear();
-                    mStatusEffects.Remove(statusEffect.Key);
+                    mRemoveList.Add(statusEffect.Key);
                 }
+            }
+
+            foreach (var remove in mRemoveList)
+            {
+                mStatusEffects[remove].Clear();
+                mStatusEffects.Remove(remove);
             }
         }
 

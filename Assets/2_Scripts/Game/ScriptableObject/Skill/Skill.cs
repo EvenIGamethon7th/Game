@@ -54,7 +54,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
             {
                 return;
             }
-            ObjectPoolManager.Instance.CreatePoolingObject(CastEffect.name, position);
+            ObjectPoolManager.Instance.CreatePoolingObject(CastEffect, position);
         }
         
         protected virtual void HitEffectPlay(Vector2 position)
@@ -63,7 +63,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
             {
                 return;
             }
-            ObjectPoolManager.Instance.CreatePoolingObject(HitEffect.name, position);
+            ObjectPoolManager.Instance.CreatePoolingObject(HitEffect, position);
         }
     }
 }

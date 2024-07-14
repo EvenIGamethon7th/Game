@@ -11,12 +11,10 @@ namespace _2_Scripts.Game.Unit
     {
         private CUnit mUnit;
         private CancellationTokenSource mCancellationToken;
-        private bool mbIsAttack = false;
 
         private void Start()
         {
             mUnit = GetComponent<CUnit>();
-            mUnit.AddActionState(EUnitStates.Attack, Attack);
         }
 
         private void OnEnable()
@@ -29,39 +27,25 @@ namespace _2_Scripts.Game.Unit
         {
             while (true)
             {
-                await UniTask.WaitForFixedUpdate(cancellationToken: mCancellationToken.Token);
-                if (mUnit.CurrentState == EUnitStates.Idle)
-                {
-                    EUnitStates updateState = !mUnit.CharacterDataInfo.DefaultAttack.CanCastAttack(this.transform,mUnit.CharacterDatas.range)
+                await UniTask.WaitForFixedUpdate();
+                if(mUnit == null)
+                    continue;
+                float delayAttack = 1 / mUnit.CharacterDatas.atkSpeed;
+                await UniTask.WaitForSeconds(delayAttack,cancellationToken: mCancellationToken.Token);
+                if(EUnitStates.Move == mUnit.CurrentState)
+                    continue;
+                EUnitStates updateState = !mUnit.CharacterDataInfo.DefaultAttack.CastAttack(this.transform,mUnit.CharacterDatas)
                         ? EUnitStates.Idle : EUnitStates.Attack;
                     mUnit.UpdateState(updateState);
-                }
+                
             }
         }
 
-        private void Attack()
-        {
-            AttackAsync().Forget();
-        }
-
-        private async UniTaskVoid AttackAsync()
-        {
-            if(mbIsAttack)
-                return;
-            mbIsAttack = true;
-            
-            mUnit.CharacterDataInfo.DefaultAttack.CastAttack(this.transform, mUnit.CharacterDatas);
-            float delayAttack = 1 / mUnit.CharacterDatas.atkSpeed;
-            await UniTask.WaitForSeconds( delayAttack,cancellationToken: mCancellationToken.Token);
-            
-            mUnit.UpdateState(EUnitStates.Idle);
-            mbIsAttack = false;
-        }
+        
         
         private void OnDisable()
         {
             CancelAndDisposeToken();
-            mbIsAttack = false;
         }
 
         private void CancelAndDisposeToken()

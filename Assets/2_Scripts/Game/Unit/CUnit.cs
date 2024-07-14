@@ -15,6 +15,9 @@ using CharacterInfo = _2_Scripts.Game.ScriptableObject.Character.CharacterInfo;
 
 namespace _2_Scripts.Game.Unit
 {
+    using _2_Scripts.Game.Monster;
+    using _2_Scripts.Game.ScriptableObject.Skill.Passive;
+
     public enum EUnitClass
     {
         None,
@@ -61,6 +64,10 @@ namespace _2_Scripts.Game.Unit
         private Dictionary<EUnitStates, FSMAction> mActions = new ();
         public EUnitStates CurrentState { get; private set; } = EUnitStates.None;
         public Queue<SkillInfo> ReadySkillQueue { get; private set; } = new Queue<SkillInfo>();
+
+        private Action<Monster[]> mBeforePassive;
+        private Action<Monster> mAfterPassive;
+
         private void Awake()
         {
             mAnimation = GetComponent<SkeletonAnimation>();
@@ -128,8 +135,20 @@ namespace _2_Scripts.Game.Unit
             
             CharacterDataInfo = ResourceManager.Instance.Load<CharacterInfo>(characterData.characterData);
             
-            CharacterDataInfo.SkillList?.Where(skill=> skill.Level <= CharacterDatas.rank).ForEach(skill => CoolTimeSkill(skill).Forget());
- 
+            CharacterDataInfo.ActiveSkillList?.Where(skill=> skill.Level <= CharacterDatas.rank).ForEach(skill => CoolTimeSkill(skill).Forget());
+            CharacterDataInfo.PassiveSkillList?.Where(skill => skill.Level <= CharacterDatas.rank).ForEach(skill =>
+            {
+                if (skill.Skill is BeforePassive)
+                {
+                    var s = skill.Skill as BeforePassive;
+                    mBeforePassive += s.BeforeDamage;
+                }
+                else if (skill.Skill is AfterPassive)
+                {
+                    var s = skill.Skill as AfterPassive;
+                    mAfterPassive += s.AfterDamage;
+                }
+            });
         }
         
         public void Init(CharacterData characterData)
@@ -153,6 +172,12 @@ namespace _2_Scripts.Game.Unit
             UpdateState(EUnitStates.Idle);
             gameObject.name = mAnimation.initialSkinName;
         }
+
+        public bool DefaultAttack()
+        {
+            return CharacterDataInfo.DefaultAttack.CastAttack(transform, CharacterDatas, mBeforePassive, mAfterPassive);
+        }
+
         private async UniTaskVoid CoolTimeSkill(SkillInfo skill)
         {
             await UniTask.WaitForSeconds(skill.CoolTime);
@@ -181,6 +206,8 @@ namespace _2_Scripts.Game.Unit
 
         public void Clear()
         {
+            mBeforePassive = null;
+            mAfterPassive = null;
             ReadySkillQueue.Clear();
             gameObject.SetActive(false);
             transform.parent = mOriginParent;

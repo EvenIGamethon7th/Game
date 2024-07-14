@@ -5,7 +5,10 @@ using UnityEngine;
 
 namespace _2_Scripts.Game.ScriptableObject.Skill
 {
+    using _2_Scripts.Game.Monster;
     using StatusEffect;
+    using System;
+
     public abstract class Skill : SerializedScriptableObject
     {
         [Title("스킬 이름 키")]
@@ -41,12 +44,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
         [SerializeField]
         public List<StatusEffectSO> StatueEffects { get; private set; }
         
-        public abstract bool CastAttack(Transform ownerTransform, CharacterData ownerData);
-        public virtual bool CanCastAttack(Transform ownerTransform,float range)
-        {
-            var detectingTargets = Physics2D.OverlapCircleAll(ownerTransform.position, range, TargetLayer);
-            return detectingTargets.Length > 0;
-        }
+        public abstract bool CastAttack(Transform ownerTransform, CharacterData ownerData, Action<Monster[]> beforeDamage = null, Action < Monster> afterDamage = null);
 
         protected virtual void CastEffectPlay(Vector2 position)
         {

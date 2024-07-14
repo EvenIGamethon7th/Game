@@ -22,10 +22,11 @@ public class StageManager : Singleton<StageManager>
     
     private const float SPAWN_COOL_TIME = 1.5f;
 
-    private event Action mStageStart;
+    private event Action<int> mWaveStart;
     private const float NEXT_WAVE_TIME = 1.0f;
     
     private int mDeathBossCount = 0;
+    public int WaveCount { get; private set; }
     
     /// <summary>
     ///  테스트용 스테이지 시작 코드
@@ -69,22 +70,23 @@ public class StageManager : Singleton<StageManager>
         StartWave().Forget();
     }
 
-    public void SubscribeWaveStart(Action action)
+    public void SubscribeWaveStart(Action<int> action)
     {
-        mStageStart += action;
+        mWaveStart += action;
     }
 
-    public void UnSubscribeWaveStart(Action action)
+    public void UnSubscribeWaveStart(Action<int> action)
     {
-        mStageStart -= action;
+        mWaveStart -= action;
     }
 
     private async UniTaskVoid StartWave()
     {
         while (mWaveQueue.Count > 0)
         {
+            ++WaveCount;
             mCurrentWaveData = mWaveQueue.Dequeue();
-            mStageStart?.Invoke();
+            mWaveStart?.Invoke(WaveCount);
             await SpawnMonsters(mCurrentWaveData);
             if (mCurrentWaveData.isBoss)
             {

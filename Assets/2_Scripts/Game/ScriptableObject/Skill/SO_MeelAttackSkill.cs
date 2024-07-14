@@ -8,10 +8,13 @@ using UnityEngine.Serialization;
 namespace _2_Scripts.Game.ScriptableObject.Skill
 {
     using _2_Scripts.Game.Monster;
+    using System;
+    using System.Linq;
+
     /// <summary>
     /// 기본 공격 또는 투사체가 없는 공격 스킬
     /// </summary>
-    
+
     [CreateAssetMenu(menuName = "ScriptableObject/Skill/Melee",fileName = "Melee_")]
     public class SO_MeelAttackSkill : Skill
     {
@@ -22,9 +25,8 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
         [Title("기본 사거리를 따른다")]
         [SerializeField]
         public bool FollowDefaultRange { get; private set; }
-        
-        
-        public override bool CastAttack(Transform ownerTransform, CharacterData ownerData)
+
+        public override bool CastAttack(Transform ownerTransform, CharacterData ownerData, Action<Monster[]> beforeDamage = null, Action<Monster> passive = null)
         {
             float range = FollowDefaultRange ? ownerData.range : this.Range;
             // 방어력 부분은 몬스터별로 공격력 감소 수식이 있을 수 있으므로 여기선 owner 데미지만 계산.
@@ -35,17 +37,30 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
                 return false;
             }
             var targetCount = MaxHitUnit == 0 ? detectingTargets.Length : MaxHitUnit;
+
+            var monsterArray = detectingTargets
+                .Select(collider => collider.GetComponent<Monster>())
+                .Where(monster => monster != null)
+                .ToArray();
+
+            beforeDamage?.Invoke(monsterArray);
             CastEffectPlay(ownerTransform.position);
             ownerTransform.GetComponent<CUnit>().SetFlipUnit(detectingTargets[0].transform);
+
             for (int i = 0; i < targetCount; i++)
             { 
-                var TargetMonster = detectingTargets[i].GetComponent<Monster>();
-                if (TargetMonster == null)
+                var TargetMonster = monsterArray[i];
+
+                if (TargetMonster.TakeDamage(totalDamage, AttackType))
                 {
-                    continue;
+                    HitEffectPlay(TargetMonster.transform.position);
+                    passive?.Invoke(TargetMonster);
                 }
-                TargetMonster.TakeDamage(totalDamage,AttackType);
-                HitEffectPlay(TargetMonster.transform.position);
+
+                else
+                {
+                    --i;
+                }
             }
 
             return true;

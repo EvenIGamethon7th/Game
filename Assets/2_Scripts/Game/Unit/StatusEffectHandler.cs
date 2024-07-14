@@ -20,7 +20,7 @@ namespace _2_Scripts.Game.Unit
             mMonster = GetComponent<Monster>();
         }
 
-        public void LateUpdate()
+        public void Update()
         {
             UpdateStatusEffect();
         }

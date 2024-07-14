@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace _2_Scripts.Game.ScriptableObject.Character
 {
+    using _2_Scripts.Game.ScriptableObject.Skill.Passive;
     using Skill;
     [CreateAssetMenu(menuName = "ScriptableObject/Character",fileName = "Character_")]
     public class CharacterInfo : SerializedScriptableObject
@@ -17,10 +18,13 @@ namespace _2_Scripts.Game.ScriptableObject.Character
         [SerializeField]
         public Skill DefaultAttack { get; private set; }
         
-        [Title("모든 스킬 리스트")]
+        [Title("액티브 스킬 리스트")]
         [SerializeField]
-        public List<SkillInfo> SkillList { get; private set; }
-        
+        public List<SkillInfo> ActiveSkillList { get; private set; }
+
+        [Title("패시브 스킬 리스트")]
+        [SerializeField]
+        public List<PassiveSkillInfo> PassiveSkillList { get; private set; }
     }
 
     [Serializable]
@@ -32,6 +36,15 @@ namespace _2_Scripts.Game.ScriptableObject.Character
         public float CoolTime { get; private set; }
         [SerializeField]
         public Skill Skill { get; private set; }
-        
+    }
+
+    [Serializable]
+    public class PassiveSkillInfo
+    {
+        [SerializeField]
+        public int Level { get; private set; }
+
+        [SerializeField]
+        public PassiveSkill Skill { get; private set; }
     }
 }

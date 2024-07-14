@@ -62,7 +62,7 @@ namespace _2_Scripts.UI {
             }
         }
 
-        private void LessonComplete()
+        private void LessonComplete(int waveCount)
         {
             if (mLessonCount < 5)
             {

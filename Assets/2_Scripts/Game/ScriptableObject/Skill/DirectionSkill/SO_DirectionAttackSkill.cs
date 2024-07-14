@@ -24,7 +24,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.DirectionSkill
         private bool mbFollowDefaultRange = true;
 
        
-        public override bool CastAttack(Transform ownerTransform, CharacterData ownerData)
+        public override bool CastAttack(Transform ownerTransform, CharacterData ownerData, Action<Monster[]> beforeDamage = null, Action <Monster> passive = null)
         {
             float range = mbFollowDefaultRange ? ownerData.range : this.Range;
             float totalDamage = ownerData.matk * (mPercentDamage * 0.01f);

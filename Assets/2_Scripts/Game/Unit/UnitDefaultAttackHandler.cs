@@ -34,7 +34,7 @@ namespace _2_Scripts.Game.Unit
                 await UniTask.WaitForSeconds(delayAttack,cancellationToken: mCancellationToken.Token);
                 if(EUnitStates.Move == mUnit.CurrentState)
                     continue;
-                EUnitStates updateState = !mUnit.CharacterDataInfo.DefaultAttack.CastAttack(this.transform,mUnit.CharacterDatas)
+                EUnitStates updateState = !mUnit.DefaultAttack()
                         ? EUnitStates.Idle : EUnitStates.Attack;
                     mUnit.UpdateState(updateState);
                 

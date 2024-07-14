@@ -41,6 +41,7 @@ namespace _2_Scripts.Game.Unit
 
             statusEffect.OnApply();
             var monsterEffect = MemoryPoolManager<MonsterStatusEffect>.CreatePoolingObject();
+            monsterEffect.Init(statusEffect.DeBuffType, statusEffect.Duration, statusEffect.OnRemove);
             mStatusEffects.Add(statusEffect.DeBuffType, monsterEffect);
             return true;
         }

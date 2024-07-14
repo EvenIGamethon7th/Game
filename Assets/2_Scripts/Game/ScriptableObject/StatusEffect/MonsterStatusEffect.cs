@@ -44,7 +44,10 @@ namespace _2_Scripts.Game.StatusEffect
 
         public void Clear()
         {
-            mCts.Cancel();
+            if (!mCts.IsCancellationRequested)
+            {
+                mCts.Cancel();
+            }
             mCts.Dispose();
             mRemoveCallback?.Invoke();
             mRemoveCallback = null;

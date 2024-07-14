@@ -45,7 +45,6 @@ namespace _2_Scripts.Game.StatusEffect
         public void Clear()
         {
             CancelAndDisposeToken();
-            
             mRemoveCallback?.Invoke();
             mRemoveCallback = null;
             mIsActive = false;

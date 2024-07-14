@@ -36,12 +36,12 @@ namespace _2_Scripts.Game.Unit
                 mStatusEffects.Remove(statusEffect.DeBuffType);
             }
 
-            isSuccess = statusEffect.CanApply();
+            isSuccess = statusEffect.CanApply(mMonster.GetMonsterData);
             if (!isSuccess) return false;
 
-            statusEffect.OnApply();
+            statusEffect.OnApply(mMonster.GetMonsterData);
             var monsterEffect = MemoryPoolManager<MonsterStatusEffect>.CreatePoolingObject();
-            monsterEffect.Init(statusEffect.DeBuffType, statusEffect.Duration, statusEffect.OnRemove);
+            monsterEffect.Init(statusEffect.DeBuffType, statusEffect.Duration, () => statusEffect.OnRemove(mMonster.GetMonsterData));
             mStatusEffects.Add(statusEffect.DeBuffType, monsterEffect);
             return true;
         }

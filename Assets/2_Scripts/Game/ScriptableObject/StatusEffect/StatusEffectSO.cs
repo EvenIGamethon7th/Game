@@ -37,15 +37,8 @@ namespace _2_Scripts.Game.StatusEffect
         public GameObject HitEffect { get; private set; }
 
 
-        public abstract bool CanApply();
-        public abstract void OnApply();
-        public abstract void OnRemove();
-
-        protected virtual async UniTaskVoid ExecuteAfterDuration(Action endCallback = null)
-        {
-            await UniTask.WaitForSeconds(Duration);
-            OnRemove();
-            endCallback?.Invoke();
-        }
+        public abstract bool CanApply(MonsterData monsterData);
+        public abstract void OnApply(MonsterData monsterData);
+        public abstract void OnRemove(MonsterData monsterData, Action endCallback = null);
     }
 }

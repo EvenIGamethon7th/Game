@@ -6,36 +6,28 @@ using UnityEngine;
 namespace _2_Scripts.Game.StatusEffect
 {
     [CreateAssetMenu(menuName = "ScriptableObject/StatueEffect/Movement",fileName = "Movement_")]
-    public class SO_MovementSpeed : StatusEffectSO, IUnitStatsModifier
+    public class SO_MovementSpeed : StatusEffectSO
     {
         [Title("이동속도 증감")]
         [SerializeField]
         public float mPercentSpeed;
 
-        public override bool CanApply()
+        public override bool CanApply(MonsterData monsterData)
         {
             return true;
         }
 
-        public override void OnApply()
+        public override void OnApply(MonsterData monsterData)
         {
             //TODO 체력바 밑에 아이콘 표시, 파티클 효과 표시
+            monsterData.speed *= (mPercentSpeed * 0.01f);
         }
         
         
-        public override void OnRemove()
+        public override void OnRemove(MonsterData monsterData, Action endCallback = null)
         {
-            
-        }
-
-        public void AdjustStat(MonsterData monsterData, Action endCallback)
-        {
-            monsterData.speed  *= (mPercentSpeed * 0.01f);
-            ExecuteAfterDuration(()=>
-            {
-                monsterData.speed /= (mPercentSpeed * 0.01f);
-                endCallback.Invoke();
-            }).Forget();
+            monsterData.speed /= (mPercentSpeed * 0.01f);
+            endCallback?.Invoke();
         }
     }
 }

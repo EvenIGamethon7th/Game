@@ -45,7 +45,8 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
 
             beforeDamage?.Invoke(monsterArray);
             CastEffectPlay(ownerTransform.position);
-            ownerTransform.GetComponent<CUnit>().SetFlipUnit(detectingTargets[0].transform);
+            var attacker = ownerTransform.GetComponent<CUnit>();
+            attacker.SetFlipUnit(detectingTargets[0].transform);
             for (int i = 0; i < targetCount; i++)
             { 
                 var TargetMonster = monsterArray[i];
@@ -53,7 +54,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
                 if (TargetMonster.TakeDamage(totalDamage, AttackType))
                 {
                     var statusEffectHandler = TargetMonster.gameObject.GetComponent<StatusEffectHandler>();
-                    StatueEffects?.ForEach(effect =>statusEffectHandler.AddStatusEffect(effect));
+                    StatueEffects?.ForEach(effect =>statusEffectHandler.AddStatusEffect(effect,attacker));
                     HitEffectPlay(TargetMonster.transform.position);
                     passive?.Invoke(TargetMonster);
                 }

@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using _2_Scripts.Game.Map;
+using _2_Scripts.Game.StatusEffect;
 using _2_Scripts.Game.Unit;
 using _2_Scripts.UI;
 using _2_Scripts.Utils;
+using JetBrains.Annotations;
 using Rito.Attributes;
 using UniRx;
 using UniRx.Triggers;
@@ -31,6 +35,28 @@ namespace _2_Scripts.Game.Monster
         private Collider2D mTrigger;
         private SpriteRenderer mSpriteRenderer;
 
+
+        private Action DamageActionCallback;
+        private List<StatusEffectSO> mTargetStatusEffectList = new ();
+
+        public void DamageActionAdd(Action action,StatusEffectSO so)
+        {
+            if (mTargetStatusEffectList.Contains(so))
+            {
+                return;
+            }
+            DamageActionCallback += action;
+            mTargetStatusEffectList.Add(so);
+        }
+        public void DamageActionRemove(Action action,StatusEffectSO so)
+        {
+            if (!mTargetStatusEffectList.Contains(so))
+            {
+                return;
+            }
+            DamageActionCallback -= action;
+            mTargetStatusEffectList.Remove(so);
+        }
 
         private void Awake()
         {
@@ -69,6 +95,7 @@ namespace _2_Scripts.Game.Monster
             if (mMonsterData.hp <= 0) return false;
             ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_DamageCanvas, transform.position + Vector3.up).GetComponent<UI_DamageCanvas>().SetDamage(damage);
             mMonsterData.hp -= DefenceCalculator.CalculateDamage(damage, mMonsterData, attackType);
+            DamageActionCallback?.Invoke();
             mHpCanvas.SetHpSlider(mMonsterData.hp);
             if (mMonsterData.hp <= 0)
             {

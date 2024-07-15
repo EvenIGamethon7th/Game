@@ -20,6 +20,7 @@ public partial class CharacterData : Data_C
      [LabelText("공격사거리")] public float range;
      [LabelText("소환재화")] public int cost;
      [LabelText("캐릭터팩")] public string characterPack;
+     [LabelText("사용 무기")] public string weapon;
 
     
 
@@ -36,6 +37,7 @@ public partial class CharacterData : Data_C
         range = _cellDataArr[7].ToFloat();
         cost = _cellDataArr[8].ToInt();
         characterPack = _cellDataArr[9];
+        weapon = _cellDataArr[10];
     }
 #endif
 }

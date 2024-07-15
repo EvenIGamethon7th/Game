@@ -16,6 +16,7 @@ namespace _2_Scripts.Game.StatusEffect
             Def,
             MDef,
             Bleeding,
+            TargetLuckyKey
         }
 
         [Title("상태이상 이름 키")]
@@ -41,7 +42,10 @@ namespace _2_Scripts.Game.StatusEffect
         public GameObject HitEffect { get; private set; }
         
         public virtual bool CanApply(MonsterData monsterData) => true;
-        public abstract void OnApply(MonsterData monsterData,Monster monster);
+
+        public virtual void OnApply(MonsterData monsterData, Monster monster, CUnit attacker) =>
+            OnApply(monsterData, monster);
+        public abstract void OnApply(MonsterData monsterData, Monster monster);
         public abstract void OnRemove(MonsterData monsterData, Action endCallback = null);
     }
 }

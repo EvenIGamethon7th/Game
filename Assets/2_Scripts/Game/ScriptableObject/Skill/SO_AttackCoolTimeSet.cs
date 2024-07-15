@@ -41,7 +41,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
                             attackerUnit.IsNotCoolTimeSKill = true;
                     }
 
-                    StatueEffects?.ForEach(effect =>statusEffectHandler.AddStatusEffect(effect));
+                    StatueEffects?.ForEach(effect =>statusEffectHandler.AddStatusEffect(effect,attackerUnit));
                     HitEffectPlay(TargetMonster.transform.position);
                 }
             }

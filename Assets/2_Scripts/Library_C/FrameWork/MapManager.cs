@@ -127,8 +127,11 @@ public class MapManager : Singleton<MapManager>
     public TileSlot GetClickTileSlotDetailOrNull()
     {
         var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        int layer = ~(1 << LayerMask.NameToLayer("Outline") + 1 << LayerMask.NameToLayer("Buff"));
-        RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 100, layer, 0); 
+        int outlineLayer = 1 << LayerMask.NameToLayer("Outline");
+        int buffLayer = 1 << LayerMask.NameToLayer("Buff");
+        int layerMask = ~(outlineLayer | buffLayer); 
+
+        RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 100, layerMask, 0);
         TileSlot tileSlot = hit.collider != null ? hit.transform.GetComponent<TileSlot>() : null;
         return tileSlot;
     }

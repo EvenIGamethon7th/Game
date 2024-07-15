@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using _2_Scripts.Game.Unit;
+using _2_Scripts.Utils;
 using Cargold;
 using DG.Tweening;
 using Sirenix.OdinInspector;
@@ -34,21 +36,23 @@ namespace _2_Scripts.UI
 
         private ESummonButtonState mCurrentSummonButtonState = ESummonButtonState.Selected;
 
-
+        private readonly Dictionary<int,string> mSummonProjectileDictionary = new()
+        {
+            {1,AddressableTable.Default_NormalProjectile},
+            {2,AddressableTable.Default_RareProjectile},
+            {3,AddressableTable.Default_UniqueProjectile},
+        };
         private CharacterData mCharacterData;
 
-        private Dictionary<int, string> mSpawnEffectDictionary = new Dictionary<int, string>
-        {
-            { 1, AddressableTable.Default_Open_BoxGift_2 },
-            { 2, AddressableTable.Default_Open_BoxGift_3 },
-            { 3, AddressableTable.Default_Open_BoxGift_5 },
-        };
+
 
         [SerializeField]
         private Button mButtom;
 
+        private RectTransform uiRectTransform;
         private void Start()
         {
+            uiRectTransform = GetComponent<RectTransform>();
             UpdateCharacter();
         }
 
@@ -66,11 +70,17 @@ namespace _2_Scripts.UI
                 return;
             }
 
-            //TODO 돈 뺴는거 넣어야 함
+            //TODO 돈 뺴는거 넣어야 함UI의 현재 위치를 World 좌표
             var isCreateUnit = MapManager.Instance.CreateUnit(mCharacterData,spawnAction:(tilePos) =>
             {
-                var effect = ObjectPoolManager.Instance.CreatePoolingObject(mSpawnEffectDictionary[mCharacterData.rank], tilePos);
-                effect.transform.position = tilePos;
+                var uiWorldPos = global::Utils.GetUIWorldPosition(uiRectTransform);
+                var projectile=  ObjectPoolManager.Instance.CreatePoolingObject(mSummonProjectileDictionary[mCharacterData.rank],uiWorldPos );
+                projectile.transform.DOMove(tilePos, 0.5f).OnComplete(() =>
+                {
+                    projectile.gameObject.SetActive(false);
+                    var effect = ObjectPoolManager.Instance.CreatePoolingObject(Define.SpawnEffectDictionary[mCharacterData.rank], tilePos);
+                    effect.transform.position = tilePos;
+                });
             });
             if (isCreateUnit)
             {

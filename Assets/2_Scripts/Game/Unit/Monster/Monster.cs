@@ -39,7 +39,9 @@ namespace _2_Scripts.Game.Monster
         private Action<Monster> DamageActionCallback;
         private List<StatusEffectSO> mTargetStatusEffectList = new ();
 
-        public void DamageActionAdd( Action<Monster> action,StatusEffectSO so)
+        // Monster 방깍 한 번만 받기 위한 플래그
+        public  bool DefenceFlag = false;
+        public void DamageActionAdd(Action<Monster> action,StatusEffectSO so)
         {
             if (mTargetStatusEffectList.Contains(so))
             {
@@ -48,7 +50,7 @@ namespace _2_Scripts.Game.Monster
             DamageActionCallback += action;
             mTargetStatusEffectList.Add(so);
         }
-        public void DamageActionRemove( Action<Monster> action,StatusEffectSO so)
+        public void DamageActionRemove(Action<Monster> action,StatusEffectSO so)
         {
             if (!mTargetStatusEffectList.Contains(so))
             {
@@ -151,6 +153,7 @@ namespace _2_Scripts.Game.Monster
             mTrigger.enabled = bEnable;
             mHpCanvas.gameObject.SetActive(bEnable);
             enabled = bEnable;
+            DefenceFlag = false;
         }
     }
 }

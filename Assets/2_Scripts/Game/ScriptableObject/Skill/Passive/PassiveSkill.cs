@@ -15,35 +15,53 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.Passive
             Buff,
         }
 
-        [Title("½ºÅ³ ÀÌ¸§ Å°")]
+        [Title("ìŠ¤í‚¬ ì´ë¦„ í‚¤")]
         [SerializeField]
         public LocalizeKey NameKey { get; private set; }
 
-        [Title("½ºÅ³ ¼³¸í Å°")]
+        [Title("ìŠ¤í‚¬ ì„¤ëª… í‚¤")]
         [SerializeField]
         public LocalizeKey DescriptionKey { get; private set; }
 
-        [Title("½ºÅ³ ¾ÆÀÌÄÜ")]
+        [Title("ìŠ¤í‚¬ ì•„ì´ì½˜")]
         [SerializeField]
         public Sprite Icon { get; private set; }
 
-        [Title("½ºÅ³ »ç°Å¸®")]
+        [Title("ìŠ¤í‚¬ ì‚¬ê±°ë¦¬")]
         [SerializeField]
         public float Range { get; private set; }
         
         [SerializeField]
-        [Title("ÆĞ½Ãºê Å¸ÀÔ")]
+        [Title("íŒ¨ì‹œë¸Œ íƒ€ì…")]
         public EPassiveType PassiveType { get; private set; }
 
-        [Title("½ÃÀü È¿°ú ÆÄÆ¼Å¬")]
+        [Title("ì‹œì „ íš¨ê³¼ íŒŒí‹°í´")]
         [SerializeField]
         public GameObject CastEffect { get; private set; }
-        [Title("ÀûÁß È¿°ú ÆÄÆ¼Å¬")]
+        [Title("ì ì¤‘ íš¨ê³¼ íŒŒí‹°í´")]
         [SerializeField]
         public GameObject HitEffect { get; private set; }
 
-        [Title("Å¸°Ù ·¹ÀÌ¾î")]
+        [Title("íƒ€ê²Ÿ ë ˆì´ì–´")]
         [SerializeField]
         public LayerMask TargetLayer { get; private set; }
+        protected virtual void CastEffectPlay(Vector2 position)
+        {
+            if (CastEffect == null)
+            {
+                return;
+            }
+            ObjectPoolManager.Instance.CreatePoolingObject(CastEffect, position);
+        }
+        
+        protected virtual void HitEffectPlay(Vector2 position)
+        {
+            if (HitEffect == null)
+            {
+                return;
+            }
+            ObjectPoolManager.Instance.CreatePoolingObject(HitEffect, position);
+        }
+    
     }
 }

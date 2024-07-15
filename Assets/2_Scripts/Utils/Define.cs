@@ -5,7 +5,8 @@
        public enum EAttackType
         {
             Physical,
-            Magical
+            Magical,
+            TrueDamage
         }   
     }
 }

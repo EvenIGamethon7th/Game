@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using _2_Scripts.Game.ScriptableObject.Character;
 using _2_Scripts.Game.ScriptableObject.Skill;
+using _2_Scripts.Utils.Structure;
 using Cysharp.Threading.Tasks;
 using Sirenix.Utilities;
 using UniRx;
@@ -63,7 +64,8 @@ namespace _2_Scripts.Game.Unit
 
         private Dictionary<EUnitStates, FSMAction> mActions = new ();
         public EUnitStates CurrentState { get; private set; } = EUnitStates.None;
-        public Queue<SkillInfo> ReadySkillQueue { get; private set; } = new Queue<SkillInfo>();
+        public Dictionary<Skill,SkillInfo> SkillInfoDictionary { get; private set; } = new Dictionary<Skill, SkillInfo>();
+        public UniqueQueue<SkillInfo> ReadySkillQueue { get; private set; } = new UniqueQueue<SkillInfo>();
 
         private Action<Monster[]> mBeforePassive;
         private Action<Monster> mAfterPassive;
@@ -88,6 +90,14 @@ namespace _2_Scripts.Game.Unit
             mAnimation.skeleton.ScaleX = flip;
         }
 
+        public void AddReadySkill(SkillInfo skill)
+        {
+            ReadySkillQueue.Enqueue(skill);
+        }
+        public void AddReadySkill(Skill skill)
+        {
+            ReadySkillQueue.Enqueue(SkillInfoDictionary[skill]);
+        }
         //임시 스킬 업데이트 함수
         private void Update()
         {
@@ -98,11 +108,11 @@ namespace _2_Scripts.Game.Unit
               ReadySkillQueue.Dequeue();
               if (isRange)
               {
-                  CoolTimeSkill(skill);
+                  CoolTimeSkill(skill).Forget();
               }
               else
               {
-                ReadySkillQueue.Enqueue(skill);   
+                  AddReadySkill(skill);   
               }
             }
         }
@@ -135,7 +145,11 @@ namespace _2_Scripts.Game.Unit
             
             CharacterDataInfo = ResourceManager.Instance.Load<CharacterInfo>(characterData.characterData);
             
-            CharacterDataInfo.ActiveSkillList?.Where(skill=> skill.Level <= CharacterDatas.rank).ForEach(skill => CoolTimeSkill(skill).Forget());
+            CharacterDataInfo.ActiveSkillList?.Where(skill=> skill.Level <= CharacterDatas.rank).ForEach(skill =>
+            {
+                SkillInfoDictionary.Add(skill.Skill,skill);
+                CoolTimeSkill(skill).Forget();
+            });
             CharacterDataInfo.PassiveSkillList?.Where(skill => skill.Level <= CharacterDatas.rank).ForEach(skill =>
             {
                 if (skill.Skill is BeforePassive)
@@ -181,7 +195,7 @@ namespace _2_Scripts.Game.Unit
         private async UniTaskVoid CoolTimeSkill(SkillInfo skill)
         {
             await UniTask.WaitForSeconds(skill.CoolTime);
-            ReadySkillQueue.Enqueue(skill);
+            AddReadySkill(skill);
         }
 
         public void UpdateState(EUnitStates state)

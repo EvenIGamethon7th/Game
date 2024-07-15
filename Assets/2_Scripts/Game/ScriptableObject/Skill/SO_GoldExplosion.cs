@@ -9,15 +9,15 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
     [CreateAssetMenu(menuName = "ScriptableObject/Skill/GoldExplosion")]
     public class SO_GoldExplosion : SO_MeelAttackSkill
     {
-        [Title("±âÁØ ½ºÅ×ÀÌÁö")]
+        [Title("ê¸°ì¤€ ìŠ¤í…Œì´ì§€")]
         [SerializeField]
         private int mEnhanceWave;
 
-        [Title("n½ºÅ×ÀÌÁö Àü¿¡ È¹µæÇÏ´Â °ñµå·®")]
+        [Title("nìŠ¤í…Œì´ì§€ ì „ì— íšë“í•˜ëŠ” ê³¨ë“œëŸ‰")]
         [SerializeField]
         private int mGoldBefore11Wave;
 
-        [Title("n½ºÅ×ÀÌÁö ÈÄ¿¡ È¹µæÇÏ´Â °ñµå·®")]
+        [Title("nìŠ¤í…Œì´ì§€ í›„ì— íšë“í•˜ëŠ” ê³¨ë“œëŸ‰")]
         [SerializeField]
         private int mGoldAfter10Wave;
 

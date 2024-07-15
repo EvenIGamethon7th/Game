@@ -1,31 +1,14 @@
-﻿
-using System.Collections.Generic;
-using _2_Scripts.Game.Unit;
-using Sirenix.OdinInspector;
-using UnityEngine;
-using UnityEngine.Serialization;
+﻿using UnityEngine;
 
 namespace _2_Scripts.Game.ScriptableObject.Skill
 {
     using _2_Scripts.Game.Monster;
     using System;
     using System.Linq;
-
-    /// <summary>
-    /// 기본 공격 또는 투사체가 없는 공격 스킬
-    /// </summary>
-
-    [CreateAssetMenu(menuName = "ScriptableObject/Skill/Melee",fileName = "Melee_")]
-    public class SO_MeelAttackSkill : Skill
+    using _2_Scripts.Game.Unit;
+    [CreateAssetMenu(menuName = "ScriptableObject/Skill/MeleeCoolTimeSet",fileName = "MeleeC_")]
+    public class SO_AttackCoolTimeSet : SO_MeelAttackSkill
     {
-        
-        [Title("데미지 증감 퍼센트")]
-        [SerializeField]
-        public float PercentDamage { get; private set; }
-        [Title("기본 사거리를 따른다")]
-        [SerializeField]
-        public bool FollowDefaultRange { get; private set; }
-
         public override bool CastAttack(Transform ownerTransform, CharacterData ownerData, Action<Monster[]> beforeDamage = null, Action<Monster> passive = null)
         {
             float range = FollowDefaultRange ? ownerData.range : this.Range;
@@ -42,10 +25,10 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
                 .Select(collider => collider.GetComponent<Monster>())
                 .Where(monster => monster != null)
                 .ToArray();
-
-            beforeDamage?.Invoke(monsterArray);
+            
             CastEffectPlay(ownerTransform.position);
-            ownerTransform.GetComponent<CUnit>().SetFlipUnit(detectingTargets[0].transform);
+            var attackerUnit = ownerTransform.GetComponent<CUnit>();
+            attackerUnit.SetFlipUnit(detectingTargets[0].transform);
             for (int i = 0; i < targetCount; i++)
             { 
                 var TargetMonster = monsterArray[i];
@@ -53,14 +36,13 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
                 if (TargetMonster.TakeDamage(totalDamage, AttackType))
                 {
                     var statusEffectHandler = TargetMonster.gameObject.GetComponent<StatusEffectHandler>();
+                    if (TargetMonster.GetMonsterData.hp <= 0)
+                    {
+                        attackerUnit.AddReadySkill(this);
+                    }
+
                     StatueEffects?.ForEach(effect =>statusEffectHandler.AddStatusEffect(effect));
                     HitEffectPlay(TargetMonster.transform.position);
-                    passive?.Invoke(TargetMonster);
-                }
-
-                else
-                {
-                    --i;
                 }
             }
 

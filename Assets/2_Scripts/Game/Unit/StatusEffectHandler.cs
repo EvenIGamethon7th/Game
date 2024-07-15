@@ -39,7 +39,7 @@ namespace _2_Scripts.Game.Unit
             isSuccess = statusEffect.CanApply(mMonster.GetMonsterData);
             if (!isSuccess) return false;
 
-            statusEffect.OnApply(mMonster.GetMonsterData);
+            statusEffect.OnApply(mMonster.GetMonsterData,monster:mMonster);
             var monsterEffect = MemoryPoolManager<MonsterStatusEffect>.CreatePoolingObject();
             monsterEffect.Init(statusEffect.DeBuffType, statusEffect.Duration, () => statusEffect.OnRemove(mMonster.GetMonsterData));
             mStatusEffects.Add(statusEffect.DeBuffType, monsterEffect);

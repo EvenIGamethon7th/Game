@@ -29,15 +29,15 @@ namespace _2_Scripts.Game.Monster
         private const EGameMessage PLAYER_DAMAGE = EGameMessage.PlayerDamage;
         private const EGameMessage BOSS_DEATH = EGameMessage.BossDeath;
         private GameMessage<float> mDamageMessage;
-        private bool mbBoss;
+        public bool IsBoss { get; private set; }
 
         private UI_MonsterCanvas mHpCanvas;
         private Collider2D mTrigger;
-        private SpriteRenderer mSpriteRenderer;
 
 
         private Action<Monster> DamageActionCallback;
         private List<StatusEffectSO> mTargetStatusEffectList = new ();
+        public SpriteRenderer Renderer { get; private set; }
 
         // Monster 방깍 한 번만 받기 위한 플래그
         public  bool DefenceFlag = false;
@@ -67,7 +67,7 @@ namespace _2_Scripts.Game.Monster
             mMatController = GetComponent<MatController>();
             mHpCanvas = GetComponentInChildren<UI_MonsterCanvas>();
             mTrigger = GetComponent<Collider2D>();
-            mSpriteRenderer = GetComponent<SpriteRenderer>();
+            Renderer = GetComponent<SpriteRenderer>();
             Enabled(false);
         }
 
@@ -86,8 +86,8 @@ namespace _2_Scripts.Game.Monster
             mWayPoint = waypoint;
             mWayPointIndex = 0;
             NextWayPoint();
-            mMatController.RunDissolve(true, () => { 
-                mbBoss = isBoss;
+            mMatController.RunDissolve(true, () => {
+                IsBoss = isBoss;
                 mDamageMessage = new GameMessage<float>(PLAYER_DAMAGE, mMonsterData.atk);
                 Enabled(true);
             });
@@ -106,7 +106,7 @@ namespace _2_Scripts.Game.Monster
                 if (!isExile) GameManager.Instance.UpdateGold(mMonsterData.reward);
 
                 mMatController.RunDissolve(false, () => gameObject.SetActive(false));
-                if (mbBoss)
+                if (IsBoss)
                 {
                     MessageBroker.Default.Publish(BOSS_DEATH);
                 }
@@ -148,7 +148,7 @@ namespace _2_Scripts.Game.Monster
         
         private void FlipSprite(Vector3 direction)
         {
-            mSpriteRenderer.flipX = direction.x > 0;
+            Renderer.flipX = direction.x > 0;
         }
 
         private void Enabled(bool bEnable)

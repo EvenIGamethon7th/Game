@@ -1,3 +1,4 @@
+using _2_Scripts.Demo;
 using _2_Scripts.Game.Unit;
 using Sirenix.OdinInspector;
 using System;
@@ -33,8 +34,26 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
             var attacker = ownerTransform.GetComponent<CUnit>();
             attacker.SetFlipUnit(detectingTargets[0].transform);
 
-            var monster = monsterArray.Where(monster => !monster.IsDead).FirstOrDefault();
-            if (monster == null) return true;
+            var monster = monsterArray.Where(monster => !monster.IsDead).ToArray();
+
+            int count = monster.Length < MaxHitUnit ? monster.Length : MaxHitUnit;
+            if (count == 0) return true;
+
+            for (int i = 0; i < count; ++i)
+            {
+                if (!monster[i].IsBoss)
+                {
+                    monster[i].TakeDamage(monster[i].GetMonsterData.MaxHp, AttackType, true);
+                    ObjectPoolManager.Instance.CreatePoolingObject(HitEffect, monster[i].transform.position).GetComponent<HomeRunParticle>().SetTextureParticle(monster[i].Renderer.sprite);
+                }
+
+                else
+                {
+                    var statusEffectHandler = monster[i].GetComponent<StatusEffectHandler>();
+                    StatueEffects?.ForEach(effect => statusEffectHandler.AddStatusEffect(effect, attacker));
+                }
+            }
+
             return true;
         }
     }

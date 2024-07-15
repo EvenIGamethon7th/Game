@@ -23,11 +23,9 @@ namespace _2_Scripts.UI
             set {
                 mSelectUnitGroup = value;
                 if (value == null) {
-                    transform.parent = null;
                     gameObject.SetActive(false);
                     return; 
                 }
-                transform.parent = value.transform;
                 transform.position = value.transform.position;
                 gameObject.SetActive(true);
                 SetFusionButton();

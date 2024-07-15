@@ -23,10 +23,11 @@ public static class MemoryPoolManager<T> where T : class, IPoolable, new ()
             if (obj == null)
             {
                 newT = new();
-                newT.IsActive = true;
                 list.Add(newT);
                 obj = newT;
             }
+
+            obj.IsActive = true;
 
             return obj as T;
         }

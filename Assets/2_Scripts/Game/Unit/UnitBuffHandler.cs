@@ -8,6 +8,7 @@ namespace _2_Scripts.Game.Unit
 
     public class UnitBuffHandler : MonoBehaviour
     {
+        [field: SerializeField]
         public BuffData BuffData { get; private set; }
 
         private void OnEnable()

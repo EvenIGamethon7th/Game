@@ -146,7 +146,10 @@ namespace _2_Scripts.Game.Unit
         
         private void CharacterDataLoad(CharacterData characterData)
         {
-            CharacterDatas = global::Utils.DeepCopy(characterData);
+            CharacterDatas = MemoryPoolManager<CharacterData>.CreatePoolingObject();
+            if (!TryGetComponent<UnitBuffHandler>(out var handler)) Debug.LogError("Has not Handler!!");
+            CharacterDatas.Init(characterData, handler.BuffData);
+
             CharacterDataInfo = ResourceManager.Instance.Load<CharacterInfo>(characterData.characterData);
             
             CharacterDataInfo.ActiveSkillList?

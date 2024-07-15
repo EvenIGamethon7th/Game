@@ -143,7 +143,7 @@ public class MapManager : Singleton<MapManager>
 
     private void CreatePool()
     {
-        ObjectPoolManager.Instance.RegisterPoolingObject(AddressableTable.Default_Unit, 100);
+        ObjectPoolManager.Instance.RegisterPoolingObject(AddressableTable.Default_Unit, 30);
         ObjectPoolManager.Instance.RegisterPoolingObject(AddressableTable.Default_DamageCanvas, 100);
     }
 

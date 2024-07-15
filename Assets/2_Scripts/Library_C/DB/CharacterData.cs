@@ -9,12 +9,15 @@ using Unity.VisualScripting;
 
 // 카라리 테이블 임포터에 의해 생성된 스크립트입니다.
 
-public partial class CharacterData
+public partial class CharacterData : IPoolable
 {
     [LabelText("아카데미 졸업 여부")] public bool isAlumni;
     [LabelText("졸업 공격력")] public float alumniAtk;
     [LabelText("졸업 공격속도")] public float alumniAtkSpeed;
     [LabelText("졸업 마법공격력")] public float alumniMatk;
+
+    public bool IsActive { get => mIsActive; set => mIsActive = value; }
+    private bool mIsActive;
 
     protected override void Init_Project_Func()
     {
@@ -51,6 +54,23 @@ public partial class CharacterData
         alumniAtk += data.alumniAtk;
         alumniAtkSpeed +=  data.alumniAtkSpeed;
         alumniMatk +=  data.alumniMatk;
+    }
+
+    public void Clear()
+    {
+        mIsActive = false;
+        atk = 0;
+        matk = 0;
+        atkSpeed = 0;
+        rank = 0;
+        characterPack = "";
+        range = 0;
+        nameKey = "";
+        Key = "";
+        isAlumni = false;
+        alumniAtk = 0;
+        alumniAtkSpeed = 0;
+        alumniMatk = 0;
     }
 
 #if UNITY_EDITOR

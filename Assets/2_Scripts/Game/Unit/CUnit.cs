@@ -16,8 +16,12 @@ using CharacterInfo = _2_Scripts.Game.ScriptableObject.Character.CharacterInfo;
 
 namespace _2_Scripts.Game.Unit
 {
+    using _2_Scripts.Buff;
     using _2_Scripts.Game.Monster;
     using _2_Scripts.Game.ScriptableObject.Skill.Passive;
+    using _2_Scripts.Game.ScriptableObject.Skill.Passive.Buff;
+    using System.Net;
+    using Unity.VisualScripting;
 
     public enum EUnitClass
     {
@@ -68,6 +72,8 @@ namespace _2_Scripts.Game.Unit
 
         private Action<Monster[]> mBeforePassive;
         private Action<Monster> mAfterPassive;
+
+        private List<BuffTrigger> mBuffs = new ();
 
         public bool IsNotCoolTimeSKill = false;
 
@@ -161,6 +167,13 @@ namespace _2_Scripts.Game.Unit
                         var s = skill.Skill as AfterPassive;
                         mAfterPassive += s.AfterDamage;
                     }
+
+                    else if (skill.Skill is PassiveBuff)
+                    {
+                        if (!ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_BuffTrigger, transform.position).TryGetComponent<BuffTrigger>(out var trigger)) return;
+                        mBuffs.Add(trigger);
+                        trigger.Init(skill.Skill as PassiveBuff);
+                    }
                 });
         }
         
@@ -222,6 +235,10 @@ namespace _2_Scripts.Game.Unit
             mBeforePassive = null;
             mAfterPassive = null;
             ReadySkillQueue.Clear();
+            for (int i = 0; i < mBuffs.Count; ++i)
+            {
+                mBuffs[i].Clear();
+            }
             gameObject.SetActive(false);
             transform.parent = mOriginParent;
         }

@@ -23,7 +23,7 @@ public static class MemoryPoolManager<T> where T : class, IPoolable, new ()
             if (obj == null)
             {
                 newT = new();
-                newT.IsActive = false;
+                newT.IsActive = true;
                 list.Add(newT);
                 obj = newT;
             }
@@ -36,7 +36,7 @@ public static class MemoryPoolManager<T> where T : class, IPoolable, new ()
             List<IPoolable> Tlist = new List<IPoolable>();
             mMemoryPool.Add(typeof(T), Tlist);
             newT = new();
-            newT.IsActive = false;
+            newT.IsActive = true;
             Tlist.Add(newT);
 
             return newT;

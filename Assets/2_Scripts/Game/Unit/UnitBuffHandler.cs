@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitBuffHandler : MonoBehaviour
+namespace _2_Scripts.Game.Unit
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    using _2_Scripts.Game.Unit.Data;
 
-    // Update is called once per frame
-    void Update()
+    public class UnitBuffHandler : MonoBehaviour
     {
-        
+        public BuffData BuffData { get; private set; }
+
+        private void OnEnable()
+        {
+            if (BuffData != null)
+            {
+                BuffData.Clear();
+            }
+            BuffData = MemoryPoolManager<BuffData>.CreatePoolingObject();
+        }
     }
 }

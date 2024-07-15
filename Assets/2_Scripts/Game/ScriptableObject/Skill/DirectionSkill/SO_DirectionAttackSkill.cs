@@ -96,7 +96,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.DirectionSkill
                 foreach (var pos in spawnPos)
                 {
                     var collisionSkill = ObjectPoolManager.Instance.CreatePoolingObject(mSpawnCollisionGo,pos).GetComponent<SkillCollision>();
-                    collisionSkill.Init(mLifeTime,this.StatueEffects);
+                    collisionSkill.Init(mLifeTime,this.StatueEffects,attacker);
                 }
             }
             foreach (var monster in takeDamageMonsters)

@@ -15,10 +15,12 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
         private float mLifeTime;
         private CompositeDisposable disposables = new CompositeDisposable();
         private List<StatusEffectSO> mStatusEffects = new ();
-        public void Init(float lifeTime,List<StatusEffectSO> statusEffects)
+        private CUnit mAttacker;
+        public void Init(float lifeTime,List<StatusEffectSO> statusEffects,CUnit attacker)
         {
             mLifeTime = lifeTime;
             mStatusEffects = statusEffects;
+            mAttacker = attacker;
             Observable.Timer(TimeSpan.FromSeconds(mLifeTime))
                 .Subscribe(_ => gameObject.SetActive(false))
                 .AddTo(disposables);
@@ -31,7 +33,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
             var statusEffectHandler = other.transform.GetComponent<StatusEffectHandler>();
             foreach (var effect in mStatusEffects)
             {
-                statusEffectHandler.AddStatusEffect(effect,null);
+                statusEffectHandler.AddStatusEffect(effect,attacker: mAttacker);
             }
         }
         

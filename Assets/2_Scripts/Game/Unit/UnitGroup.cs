@@ -25,6 +25,7 @@ namespace _2_Scripts.Game.Unit
         private int mFlip = 1;
 
         private int mInt;
+        
 
         private void Awake()
         {

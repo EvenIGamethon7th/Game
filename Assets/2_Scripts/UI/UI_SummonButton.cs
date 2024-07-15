@@ -37,6 +37,13 @@ namespace _2_Scripts.UI
 
         private CharacterData mCharacterData;
 
+        private Dictionary<int, string> mSpawnEffectDictionary = new Dictionary<int, string>
+        {
+            { 1, AddressableTable.Default_Open_BoxGift_2 },
+            { 2, AddressableTable.Default_Open_BoxGift_3 },
+            { 3, AddressableTable.Default_Open_BoxGift_5 },
+        };
+
         [SerializeField]
         private Button mButtom;
 
@@ -60,7 +67,11 @@ namespace _2_Scripts.UI
             }
 
             //TODO 돈 뺴는거 넣어야 함
-            var isCreateUnit = MapManager.Instance.CreateUnit(mCharacterData);
+            var isCreateUnit = MapManager.Instance.CreateUnit(mCharacterData,spawnAction:(tilePos) =>
+            {
+                var effect = ObjectPoolManager.Instance.CreatePoolingObject(mSpawnEffectDictionary[mCharacterData.rank], tilePos);
+                effect.transform.position = tilePos;
+            });
             if (isCreateUnit)
             {
                 GameManager.Instance.UpdateGold(-mCharacterData.cost);

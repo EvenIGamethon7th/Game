@@ -9,13 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c42606da01ec422591a515dc2d8cd7e2, type: 3}
-  m_Name: Movement_Ice_Puddle
+  m_Script: {fileID: 11500000, guid: 9c24a7af5bd942efb8ffa20761555d24, type: 3}
+  m_Name: Direction_SwordAttack
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 4124999916983397026, guid: b2ed8bde08adfd744b398b5914cd8de5, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -39,16 +40,38 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: DeBuffType
-      Entry: 3
-      Data: 0
-    - Name: Duration
-      Entry: 4
-      Data: 4
     - Name: Icon
       Entry: 6
       Data: 
-    - Name: HitEffect
+    - Name: Range
+      Entry: 4
+      Data: 0
+    - Name: AttackType
+      Entry: 3
+      Data: 0
+    - Name: MaxHitUnit
+      Entry: 3
+      Data: 0
+    - Name: CastEffect
       Entry: 6
       Data: 
-  mPercentSpeed: 30
+    - Name: HitEffect
+      Entry: 10
+      Data: 0
+    - Name: TargetLayer
+      Entry: 7
+      Data: UnityEngine.LayerMask, UnityEngine.CoreModule
+    - Name: 
+      Entry: 3
+      Data: 64
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: StatueEffects
+      Entry: 6
+      Data: 
+  mDirectionPos: {x: 2, y: 0}
+  mSpawnCollisionGo: {fileID: 0}
+  mLifeTime: 1
+  mPercentDamage: 900
+  mbFollowDefaultRange: 1

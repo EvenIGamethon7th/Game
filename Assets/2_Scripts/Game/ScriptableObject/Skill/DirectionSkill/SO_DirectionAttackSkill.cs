@@ -34,14 +34,15 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.DirectionSkill
                 return false;
             }
             CastEffectPlay(ownerTransform.position);
-            ownerTransform.GetComponent<CUnit>().SetFlipUnit(detectingTargets.transform);
-            SpawnCollisionObject(detectingTargets.transform,totalDamage);
+            var attacker = ownerTransform.GetComponent<CUnit>();
+            attacker.SetFlipUnit(detectingTargets.transform);
+            SpawnCollisionObject(detectingTargets.transform,totalDamage,attacker);
             return true;
         }
 
         // target을 기준으로 x , y를 늘리면서 타겟 감지.
 
-        private void SpawnCollisionObject(Transform target,float damage)
+        private void SpawnCollisionObject(Transform target,float damage,CUnit attacker)
         {
             HashSet<Vector3> spawnPos = new HashSet<Vector3>(); 
             HashSet<Monster> takeDamageMonsters = new HashSet<Monster>();
@@ -88,6 +89,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.DirectionSkill
                     spawnPos.Add(currentCellWorldPos);
                 }
             }
+            HitEffectPlay(target.position);
 
             if (mSpawnCollisionGo != null)
             {
@@ -97,12 +99,15 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.DirectionSkill
                     collisionSkill.Init(mLifeTime,this.StatueEffects);
                 }
             }
-
-            HitEffectPlay(target.position);
-
             foreach (var monster in takeDamageMonsters)
             {
+               
                 monster.TakeDamage(damage,AttackType);
+                if (mSpawnCollisionGo == null)
+                {
+                    var statusEffectHandler = monster.gameObject.GetComponent<StatusEffectHandler>();
+                    StatueEffects?.ForEach(effect =>statusEffectHandler.AddStatusEffect(effect,attacker));
+                }
             }
         }
     }

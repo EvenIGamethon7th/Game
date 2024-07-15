@@ -9,13 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c42606da01ec422591a515dc2d8cd7e2, type: 3}
-  m_Name: Movement_Ice_Puddle
+  m_Script: {fileID: 11500000, guid: b9bcaaa690e24f6ebaef3ba6be658336, type: 3}
+  m_Name: New SO_Black Knight Rare Passive
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 4124999916983397026, guid: 6c98a87bba2f11542ae67bb3fb68b34a, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -39,16 +40,28 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: DeBuffType
-      Entry: 3
-      Data: 0
-    - Name: Duration
-      Entry: 4
-      Data: 4
     - Name: Icon
       Entry: 6
       Data: 
-    - Name: HitEffect
+    - Name: Range
+      Entry: 4
+      Data: 0
+    - Name: PassiveType
+      Entry: 3
+      Data: 1
+    - Name: CastEffect
       Entry: 6
       Data: 
-  mPercentSpeed: 30
+    - Name: HitEffect
+      Entry: 10
+      Data: 0
+    - Name: TargetLayer
+      Entry: 7
+      Data: UnityEngine.LayerMask, UnityEngine.CoreModule
+    - Name: 
+      Entry: 3
+      Data: 64
+    - Name: 
+      Entry: 8
+      Data: 
+  mPercent: 10

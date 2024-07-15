@@ -9,13 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c42606da01ec422591a515dc2d8cd7e2, type: 3}
-  m_Name: Movement_Ice_Puddle
+  m_Script: {fileID: 11500000, guid: ae53e8e7936741f98120fbf1e562c2f6, type: 3}
+  m_Name: Melee_Frenzy
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 4124999916983397026, guid: 3f15946b614e65144b6bbebc33f7bb37, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -39,16 +40,39 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: DeBuffType
-      Entry: 3
-      Data: 0
-    - Name: Duration
-      Entry: 4
-      Data: 4
     - Name: Icon
       Entry: 6
       Data: 
-    - Name: HitEffect
+    - Name: Range
+      Entry: 4
+      Data: 0
+    - Name: AttackType
+      Entry: 3
+      Data: 0
+    - Name: MaxHitUnit
+      Entry: 3
+      Data: 1
+    - Name: CastEffect
       Entry: 6
       Data: 
-  mPercentSpeed: 30
+    - Name: HitEffect
+      Entry: 10
+      Data: 0
+    - Name: TargetLayer
+      Entry: 7
+      Data: UnityEngine.LayerMask, UnityEngine.CoreModule
+    - Name: 
+      Entry: 3
+      Data: 64
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: StatueEffects
+      Entry: 6
+      Data: 
+    - Name: PercentDamage
+      Entry: 4
+      Data: 700
+    - Name: FollowDefaultRange
+      Entry: 5
+      Data: true

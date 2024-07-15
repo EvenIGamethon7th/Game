@@ -64,7 +64,6 @@ namespace _2_Scripts.Game.Unit
 
         private Dictionary<EUnitStates, FSMAction> mActions = new ();
         public EUnitStates CurrentState { get; private set; } = EUnitStates.None;
-        public Dictionary<Skill,SkillInfo> SkillInfoDictionary { get; private set; } = new Dictionary<Skill, SkillInfo>();
         public UniqueQueue<SkillInfo> ReadySkillQueue { get; private set; } = new UniqueQueue<SkillInfo>();
 
         private Action<Monster[]> mBeforePassive;
@@ -144,24 +143,25 @@ namespace _2_Scripts.Game.Unit
             CharacterDatas = global::Utils.DeepCopy(characterData);
             CharacterDataInfo = ResourceManager.Instance.Load<CharacterInfo>(characterData.characterData);
             
-            CharacterDataInfo.ActiveSkillList?.Where(skill=> skill.Level <= CharacterDatas.rank).ForEach(skill =>
-            {
-                SkillInfoDictionary.Add(skill.Skill,skill);
-                CoolTimeSkill(skill).Forget();
-            });
-            CharacterDataInfo.PassiveSkillList?.Where(skill => skill.Level <= CharacterDatas.rank).ForEach(skill =>
-            {
-                if (skill.Skill is BeforePassive)
+            CharacterDataInfo.ActiveSkillList?
+                .Where(skill=> skill.Level <= CharacterDatas.rank)
+                .ForEach(skill =>
+                CoolTimeSkill(skill).Forget());
+            CharacterDataInfo.PassiveSkillList?.
+                Where(skill => skill.Level <= CharacterDatas.rank)
+                .ForEach(skill =>
                 {
-                    var s = skill.Skill as BeforePassive;
-                    mBeforePassive += s.BeforeDamage;
-                }
-                else if (skill.Skill is AfterPassive)
-                {
-                    var s = skill.Skill as AfterPassive;
-                    mAfterPassive += s.AfterDamage;
-                }
-            });
+                    if (skill.Skill is BeforePassive)
+                    {
+                        var s = skill.Skill as BeforePassive;
+                        mBeforePassive += s.BeforeDamage;
+                    }
+                    else if (skill.Skill is AfterPassive)
+                    {
+                        var s = skill.Skill as AfterPassive;
+                        mAfterPassive += s.AfterDamage;
+                    }
+                });
         }
         
         public void Init(CharacterData characterData)

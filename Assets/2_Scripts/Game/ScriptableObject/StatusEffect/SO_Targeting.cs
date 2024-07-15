@@ -1,0 +1,62 @@
+﻿using System;
+using _2_Scripts.Game.Unit;
+using _2_Scripts.Utils;
+using Cargold;
+using Sirenix.OdinInspector;
+using UniRx;
+using UniRx.Triggers;
+using UnityEngine;
+using Random = System.Random;
+
+namespace _2_Scripts.Game.StatusEffect
+{
+    [CreateAssetMenu(menuName = "ScriptableObject/StatueEffect/Targeting",fileName = "Targeting_")]
+    public class SO_Targeting : StatusEffectSO
+    {
+        [Title("행운 열쇠 얻을 확률")]
+        [SerializeField]
+        private int mPercent;
+
+        [Title("레벨 제한이 들어가는지?")] 
+        [SerializeField]
+        private int mLevel;
+        public override bool CanApply(MonsterData monsterData)
+        {
+            return base.CanApply(monsterData);
+        }
+
+        public override void OnApply(MonsterData monsterData, Monster.Monster monster,CUnit unit)
+        {
+            if (unit.CharacterDatas.rank < mLevel)
+                return;
+            monster.DamageActionAdd(TargetAction,this);
+            Observable.Interval(TimeSpan.FromSeconds(1))
+                .TakeUntil(Observable.Timer(TimeSpan.FromSeconds(Duration)))
+                .TakeUntil(monster.OnDisableAsObservable())
+                .TakeUntil(unit.OnDisableAsObservable())
+                .Subscribe(
+                    _ =>
+                    {
+                        if (monster.isActiveAndEnabled)
+                        {
+                            monster.DamageActionRemove(TargetAction,this);
+                        }
+                    }
+                );
+        }
+
+        public override void OnApply(MonsterData monsterData, Monster.Monster monster)
+        {
+        }
+        private void TargetAction()
+        {
+            if (Random_C.CheckPercent_Func(100, mPercent)) ;
+            GameManager.Instance.AddUserLuckyCoin(1);
+        }
+
+        public override void OnRemove(MonsterData monsterData, Action endCallback = null)
+        {
+            endCallback?.Invoke();
+        }
+    }
+}

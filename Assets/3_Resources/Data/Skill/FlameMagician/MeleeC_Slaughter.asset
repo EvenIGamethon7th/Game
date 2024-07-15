@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be408b6e0e246cda1b4a61846068cdd, type: 3}
+  m_Name: MeleeC_Slaughter
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 4124999916983397026, guid: d4bdb31c4416c3c4b838718e782c3a10, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: NameKey
+      Entry: 7
+      Data: 0|LocalizeKey, Assembly-CSharp
+    - Name: key
+      Entry: 1
+      Data: Lo_Test
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: DescriptionKey
+      Entry: 7
+      Data: 1|LocalizeKey, Assembly-CSharp
+    - Name: key
+      Entry: 1
+      Data: Lo_Test
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Icon
+      Entry: 6
+      Data: 
+    - Name: Range
+      Entry: 4
+      Data: 0
+    - Name: AttackType
+      Entry: 3
+      Data: 1
+    - Name: MaxHitUnit
+      Entry: 3
+      Data: 1
+    - Name: CastEffect
+      Entry: 6
+      Data: 
+    - Name: HitEffect
+      Entry: 10
+      Data: 0
+    - Name: TargetLayer
+      Entry: 7
+      Data: UnityEngine.LayerMask, UnityEngine.CoreModule
+    - Name: 
+      Entry: 3
+      Data: 64
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: StatueEffects
+      Entry: 6
+      Data: 
+    - Name: PercentDamage
+      Entry: 4
+      Data: 800
+    - Name: FollowDefaultRange
+      Entry: 5
+      Data: true

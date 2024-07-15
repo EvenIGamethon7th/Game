@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace _2_Scripts.Game.StatusEffect
 {
+    using _2_Scripts.Game.Monster;
     [CreateAssetMenu(menuName = "ScriptableObject/StatueEffect/Movement",fileName = "Movement_")]
     public class SO_MovementSpeed : StatusEffectSO
     {
@@ -17,7 +18,7 @@ namespace _2_Scripts.Game.StatusEffect
             return true;
         }
 
-        public override void OnApply(MonsterData monsterData)
+        public override void OnApply(MonsterData monsterData,Monster monster)
         {
             //TODO 체력바 밑에 아이콘 표시, 파티클 효과 표시
             monsterData.speed *= (mPercentSpeed * 0.01f);

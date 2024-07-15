@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using _2_Scripts.Game.Map;
+using _2_Scripts.Game.StatusEffect;
 using _2_Scripts.Game.Unit;
 using _2_Scripts.UI;
 using _2_Scripts.Utils;
+using JetBrains.Annotations;
 using Rito.Attributes;
 using UniRx;
 using UniRx.Triggers;
@@ -31,6 +35,29 @@ namespace _2_Scripts.Game.Monster
         private Collider2D mTrigger;
         private SpriteRenderer mSpriteRenderer;
 
+
+        private Action DamageActionCallback;
+        private List<StatusEffectSO> mTargetStatusEffectList = new ();
+
+        public void DamageActionAdd(Action action,StatusEffectSO so)
+        {
+            if (mTargetStatusEffectList.Contains(so))
+            {
+                return;
+            }
+            DamageActionCallback += action;
+            mTargetStatusEffectList.Add(so);
+        }
+        public void DamageActionRemove(Action action,StatusEffectSO so)
+        {
+            if (!mTargetStatusEffectList.Contains(so))
+            {
+                return;
+            }
+            DamageActionCallback -= action;
+            mTargetStatusEffectList.Remove(so);
+        }
+
         private void Awake()
         {
             mAnimator = GetComponent<Animator>();
@@ -45,6 +72,7 @@ namespace _2_Scripts.Game.Monster
         {
             var originData = DataBase_Manager.Instance.GetMonster.GetData_Func(key);
             mMonsterData = global::Utils.DeepCopy(originData);
+            mMonsterData.MaxHp = mMonsterData.hp;
             mHpCanvas.InitHpSlider(mMonsterData.hp, isBoss);
             //TODO Sprite Change And Animation
             ResourceManager.Instance.Load<RuntimeAnimatorController>(originData.nameKey,
@@ -66,10 +94,8 @@ namespace _2_Scripts.Game.Monster
         {
             if (mMonsterData.hp <= 0) return false;
             ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_DamageCanvas, transform.position + Vector3.up).GetComponent<UI_DamageCanvas>().SetDamage(damage);
-
-            float def = attackType == Define.EAttackType.Physical ? mMonsterData.def : mMonsterData.mdef;
-            float totalDamage = damage * (100 / (100 + def));
-            mMonsterData.hp -= totalDamage > 0 ? totalDamage : 0;
+            mMonsterData.hp -= DefenceCalculator.CalculateDamage(damage, mMonsterData, attackType);
+            DamageActionCallback?.Invoke();
             mHpCanvas.SetHpSlider(mMonsterData.hp);
             if (mMonsterData.hp <= 0)
             {

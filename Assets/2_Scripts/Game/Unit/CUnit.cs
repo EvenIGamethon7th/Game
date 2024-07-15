@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using _2_Scripts.Game.ScriptableObject.Character;
 using _2_Scripts.Game.ScriptableObject.Skill;
+using _2_Scripts.Utils.Structure;
 using Cysharp.Threading.Tasks;
 using Sirenix.Utilities;
 using UniRx;
@@ -63,10 +64,12 @@ namespace _2_Scripts.Game.Unit
 
         private Dictionary<EUnitStates, FSMAction> mActions = new ();
         public EUnitStates CurrentState { get; private set; } = EUnitStates.None;
-        public Queue<SkillInfo> ReadySkillQueue { get; private set; } = new Queue<SkillInfo>();
+        public UniqueQueue<SkillInfo> ReadySkillQueue { get; private set; } = new UniqueQueue<SkillInfo>();
 
         private Action<Monster[]> mBeforePassive;
         private Action<Monster> mAfterPassive;
+
+        public bool IsNotCoolTimeSKill = false;
 
         private void Awake()
         {
@@ -88,6 +91,11 @@ namespace _2_Scripts.Game.Unit
             mAnimation.skeleton.ScaleX = flip;
         }
 
+        public void AddReadySkill(SkillInfo skill)
+        {
+            ReadySkillQueue.Enqueue(skill);
+        }
+
         //임시 스킬 업데이트 함수
         private void Update()
         {
@@ -96,13 +104,14 @@ namespace _2_Scripts.Game.Unit
               var skill = ReadySkillQueue.Peek();
               var isRange = skill.Skill.CastAttack(this.transform,CharacterDatas);
               ReadySkillQueue.Dequeue();
-              if (isRange)
+              if (isRange && IsNotCoolTimeSKill == false)
               {
-                  CoolTimeSkill(skill);
+                CoolTimeSkill(skill).Forget();
               }
               else
               {
-                ReadySkillQueue.Enqueue(skill);   
+                  AddReadySkill(skill);   
+                  IsNotCoolTimeSKill = false;
               }
             }
         }
@@ -132,23 +141,27 @@ namespace _2_Scripts.Game.Unit
         private void CharacterDataLoad(CharacterData characterData)
         {
             CharacterDatas = global::Utils.DeepCopy(characterData);
-            
             CharacterDataInfo = ResourceManager.Instance.Load<CharacterInfo>(characterData.characterData);
             
-            CharacterDataInfo.ActiveSkillList?.Where(skill=> skill.Level <= CharacterDatas.rank).ForEach(skill => CoolTimeSkill(skill).Forget());
-            CharacterDataInfo.PassiveSkillList?.Where(skill => skill.Level <= CharacterDatas.rank).ForEach(skill =>
-            {
-                if (skill.Skill is BeforePassive)
+            CharacterDataInfo.ActiveSkillList?
+                .Where(skill=> skill.Level <= CharacterDatas.rank)
+                .ForEach(skill =>
+                CoolTimeSkill(skill).Forget());
+            CharacterDataInfo.PassiveSkillList?.
+                Where(skill => skill.Level <= CharacterDatas.rank)
+                .ForEach(skill =>
                 {
-                    var s = skill.Skill as BeforePassive;
-                    mBeforePassive += s.BeforeDamage;
-                }
-                else if (skill.Skill is AfterPassive)
-                {
-                    var s = skill.Skill as AfterPassive;
-                    mAfterPassive += s.AfterDamage;
-                }
-            });
+                    if (skill.Skill is BeforePassive)
+                    {
+                        var s = skill.Skill as BeforePassive;
+                        mBeforePassive += s.BeforeDamage;
+                    }
+                    else if (skill.Skill is AfterPassive)
+                    {
+                        var s = skill.Skill as AfterPassive;
+                        mAfterPassive += s.AfterDamage;
+                    }
+                });
         }
         
         public void Init(CharacterData characterData)
@@ -181,7 +194,7 @@ namespace _2_Scripts.Game.Unit
         private async UniTaskVoid CoolTimeSkill(SkillInfo skill)
         {
             await UniTask.WaitForSeconds(skill.CoolTime);
-            ReadySkillQueue.Enqueue(skill);
+            AddReadySkill(skill);
         }
 
         public void UpdateState(EUnitStates state)

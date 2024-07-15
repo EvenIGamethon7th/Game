@@ -31,7 +31,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
             var statusEffectHandler = other.transform.GetComponent<StatusEffectHandler>();
             foreach (var effect in mStatusEffects)
             {
-                statusEffectHandler.AddStatusEffect(effect);
+                statusEffectHandler.AddStatusEffect(effect,null);
             }
         }
         

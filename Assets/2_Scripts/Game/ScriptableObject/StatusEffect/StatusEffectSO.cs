@@ -1,17 +1,22 @@
 ﻿using System;
+using _2_Scripts.Game.Unit;
 using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace _2_Scripts.Game.StatusEffect
 {
+    using _2_Scripts.Game.Monster;
     public abstract class StatusEffectSO : SerializedScriptableObject
     {
+
         public enum EDebuffTypes
         {
             Slow,
             Def,
-            MDef
+            MDef,
+            Bleeding,
+            TargetLuckyKey
         }
 
         [Title("상태이상 이름 키")]
@@ -35,10 +40,12 @@ namespace _2_Scripts.Game.StatusEffect
         [Title("상태이상 이펙트 효과")] 
         [SerializeField]
         public GameObject HitEffect { get; private set; }
+        
+        public virtual bool CanApply(MonsterData monsterData) => true;
 
-
-        public abstract bool CanApply(MonsterData monsterData);
-        public abstract void OnApply(MonsterData monsterData);
+        public virtual void OnApply(MonsterData monsterData, Monster monster, CUnit attacker) =>
+            OnApply(monsterData, monster);
+        public abstract void OnApply(MonsterData monsterData, Monster monster);
         public abstract void OnRemove(MonsterData monsterData, Action endCallback = null);
     }
 }

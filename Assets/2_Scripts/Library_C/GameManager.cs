@@ -1,13 +1,14 @@
 ﻿
     //  HP , 재화 , 씬 이동 등 여러가지 관리 목적
 
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using _2_Scripts.Game.ScriptableObject.Character;
     using _2_Scripts.Utils;
     using Spine.Unity;
     using UniRx;
+    using UnityEngine;
+    using CharacterInfo = _2_Scripts.Game.ScriptableObject.Character.CharacterInfo;
+    using Random = System.Random;
 
     public class GameManager : Singleton<GameManager>
     {
@@ -17,6 +18,13 @@
         public int UserLevel { get; private set; } = 1;
 
         public int UserGold { get; private set; } = 10000;
+        
+        public int UserLuckyCoin { get; private set; } = 0;
+        public void AddUserLuckyCoin(int value)
+        {
+            UserLuckyCoin += value;
+            Debug.Log(UserLuckyCoin);
+        }
         public void UpdateGold(int value)
         {
             UserGold += value;

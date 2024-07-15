@@ -34,14 +34,14 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.AllAttack
         {
             float waitAnim = 0;
             var monsterList = StageManager.Instance.MonsterList;
-            monsterList.ForEach(go =>
+            monsterList.Where(m => m.gameObject.activeSelf).ToList().ForEach(go =>
             {
                 waitAnim = HitEffectPlayAndGetLength(go.transform.position);
             });
             
             await UniTask.Delay(TimeSpan.FromSeconds(waitAnim));
             
-            monsterList.Where(monster=> monster.gameObject.activeSelf).ForEach(monster =>
+            monsterList.Where(m => m.gameObject.activeSelf).ToList().ForEach(monster =>
             {
                 if (monster.TakeDamage(totalDamage, attackType))
                 {     

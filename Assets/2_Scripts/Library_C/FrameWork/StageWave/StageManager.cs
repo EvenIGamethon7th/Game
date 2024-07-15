@@ -109,10 +109,18 @@ public class StageManager : Singleton<StageManager>
             var monster = ObjectPoolManager.Instance.CreatePoolingObject("Monster", mWayPoint.GetWayPointPosition(0)).GetComponent<Monster>();;
             monster.SpawnMonster(waveData.monsterKey, mWayPoint, waveData.isBoss);
             MonsterList.Add(monster);
-            // List를 비워줘야함
             await UniTask.WaitForSeconds(SPAWN_COOL_TIME);
             
         }
+    }
+    
+    public void RemoveMonster(Monster monster)
+    {
+        if (!MonsterList.Contains(monster))
+        {
+            return;
+        }
+        MonsterList.Remove(monster);
     }
     
     

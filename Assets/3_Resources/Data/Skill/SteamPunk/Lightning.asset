@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c24a7af5bd942efb8ffa20761555d24, type: 3}
-  m_Name: Direction_StemPunk
+  m_Script: {fileID: 11500000, guid: ae5d7e6270fac064f9a354c769b7f2c5, type: 3}
+  m_Name: Lightning
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 0}
+    - {fileID: 4124999916983397026, guid: 455453a8b3dddbb4599792a81ed91775, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -26,8 +26,8 @@ MonoBehaviour:
       Entry: 7
       Data: 0|LocalizeKey, Assembly-CSharp
     - Name: key
-      Entry: 1
-      Data: Lo_Test
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -35,8 +35,8 @@ MonoBehaviour:
       Entry: 7
       Data: 1|LocalizeKey, Assembly-CSharp
     - Name: key
-      Entry: 1
-      Data: Lo_Test
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -45,13 +45,13 @@ MonoBehaviour:
       Data: 
     - Name: Range
       Entry: 4
-      Data: 0
+      Data: 4
     - Name: AttackType
       Entry: 3
       Data: 0
     - Name: MaxHitUnit
       Entry: 3
-      Data: 0
+      Data: 2
     - Name: CastEffect
       Entry: 6
       Data: 
@@ -70,8 +70,9 @@ MonoBehaviour:
     - Name: StatueEffects
       Entry: 6
       Data: 
-  mDirectionPos: {x: 1, y: 1}
-  mSpawnCollisionGo: {fileID: 0}
-  mLifeTime: 1
-  mPercentDamage: 700
-  mbFollowDefaultRange: 1
+    - Name: FollowDefaultRange
+      Entry: 5
+      Data: true
+  mPercentDamage: 400
+  mLifeTime: 0.15
+  mTransition: {fileID: 2631794440659725581, guid: e0b72866d2cdcfa40b2932e42397e5c4, type: 3}

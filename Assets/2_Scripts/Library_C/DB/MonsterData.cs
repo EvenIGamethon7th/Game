@@ -10,6 +10,26 @@ using Cargold.DB.TableImporter;
 public partial class MonsterData
 {
     public float MaxHp;
+
+    private float mSlow;
+
+    public void SetSpeed(float percent, bool isRemove = false)
+    {
+        if (mSlow >= percent) return;
+
+        if (!isRemove)
+        {
+            mSlow = percent;
+            speed *= percent * 0.01f;
+        }
+
+        else
+        {
+            mSlow = 0;
+            speed /= percent * 0.01f;
+        }
+    }
+
     protected override void Init_Project_Func()
     {
         base.Init_Project_Func();

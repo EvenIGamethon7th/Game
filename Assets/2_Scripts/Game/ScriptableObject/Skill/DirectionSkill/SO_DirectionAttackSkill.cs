@@ -27,7 +27,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.DirectionSkill
         public override bool CastAttack(Transform ownerTransform, CharacterData ownerData, Action<Monster[]> beforeDamage = null, Action <Monster> passive = null)
         {
             float range = mbFollowDefaultRange ? ownerData.range : this.Range;
-            float totalDamage = ownerData.GetTotalMAtk() * (mPercentDamage * 0.01f);
+            float totalDamage = ownerData.GetTotalDamageToType(AttackType) * (mPercentDamage * 0.01f);
             var detectingTargets = Physics2D.OverlapCircle(ownerTransform.position, range, TargetLayer);
             if (detectingTargets == null)
             {

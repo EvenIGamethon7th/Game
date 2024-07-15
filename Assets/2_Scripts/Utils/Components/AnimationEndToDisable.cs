@@ -12,6 +12,11 @@ namespace _2_Scripts.Utils.Components
             mAnimator = GetComponent<Animator>();
         }
 
+        public float GetClipLength()
+        {
+            return mAnimator.GetCurrentAnimatorStateInfo(0).length;
+        }
+
         private void OnEnable()
         {
              mAnimator.Play(0,-1,0);

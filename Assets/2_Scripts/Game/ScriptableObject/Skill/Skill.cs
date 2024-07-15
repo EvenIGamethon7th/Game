@@ -6,6 +6,7 @@ using UnityEngine;
 namespace _2_Scripts.Game.ScriptableObject.Skill
 {
     using _2_Scripts.Game.Monster;
+    using _2_Scripts.Utils.Components;
     using StatusEffect;
     using System;
 
@@ -62,6 +63,15 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
                 return;
             }
             ObjectPoolManager.Instance.CreatePoolingObject(HitEffect, position);
+        }
+
+        protected virtual float HitEffectPlayAndGetLength(Vector2 position)
+        {
+            if (HitEffect == null)
+            {
+                return 0;
+            }
+            return ObjectPoolManager.Instance.CreatePoolingObject(HitEffect, position).GetComponentInChildren<AnimationEndToDisable>().GetClipLength();
         }
     }
 }

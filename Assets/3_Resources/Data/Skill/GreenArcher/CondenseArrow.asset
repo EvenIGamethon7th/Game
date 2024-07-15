@@ -9,14 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c24a7af5bd942efb8ffa20761555d24, type: 3}
-  m_Name: Direction_StemPunk
+  m_Script: {fileID: 11500000, guid: ae5d7e6270fac064f9a354c769b7f2c5, type: 3}
+  m_Name: CondenseArrow
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 0}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -26,8 +25,8 @@ MonoBehaviour:
       Entry: 7
       Data: 0|LocalizeKey, Assembly-CSharp
     - Name: key
-      Entry: 1
-      Data: Lo_Test
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -35,8 +34,8 @@ MonoBehaviour:
       Entry: 7
       Data: 1|LocalizeKey, Assembly-CSharp
     - Name: key
-      Entry: 1
-      Data: Lo_Test
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -56,8 +55,8 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: HitEffect
-      Entry: 10
-      Data: 0
+      Entry: 6
+      Data: 
     - Name: TargetLayer
       Entry: 7
       Data: UnityEngine.LayerMask, UnityEngine.CoreModule
@@ -70,8 +69,9 @@ MonoBehaviour:
     - Name: StatueEffects
       Entry: 6
       Data: 
-  mDirectionPos: {x: 1, y: 1}
-  mSpawnCollisionGo: {fileID: 0}
-  mLifeTime: 1
-  mPercentDamage: 700
-  mbFollowDefaultRange: 1
+    - Name: FollowDefaultRange
+      Entry: 5
+      Data: true
+  mPercentDamage: 400
+  mLifeTime: 0
+  mTransition: {fileID: 0}

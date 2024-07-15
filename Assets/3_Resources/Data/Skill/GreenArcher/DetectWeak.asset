@@ -9,36 +9,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c24a7af5bd942efb8ffa20761555d24, type: 3}
-  m_Name: Direction_StemPunk
+  m_Script: {fileID: 11500000, guid: e923691e0332f0341bd531ca8d961bf1, type: 3}
+  m_Name: DetectWeak
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 0}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
     - Name: NameKey
-      Entry: 7
-      Data: 0|LocalizeKey, Assembly-CSharp
-    - Name: key
-      Entry: 1
-      Data: Lo_Test
-    - Name: 
-      Entry: 8
+      Entry: 6
       Data: 
     - Name: DescriptionKey
-      Entry: 7
-      Data: 1|LocalizeKey, Assembly-CSharp
-    - Name: key
-      Entry: 1
-      Data: Lo_Test
-    - Name: 
-      Entry: 8
+      Entry: 6
       Data: 
     - Name: Icon
       Entry: 6
@@ -46,18 +33,15 @@ MonoBehaviour:
     - Name: Range
       Entry: 4
       Data: 0
-    - Name: AttackType
+    - Name: PassiveType
       Entry: 3
-      Data: 0
-    - Name: MaxHitUnit
-      Entry: 3
-      Data: 0
+      Data: 1
     - Name: CastEffect
       Entry: 6
       Data: 
     - Name: HitEffect
-      Entry: 10
-      Data: 0
+      Entry: 6
+      Data: 
     - Name: TargetLayer
       Entry: 7
       Data: UnityEngine.LayerMask, UnityEngine.CoreModule
@@ -67,11 +51,4 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: StatueEffects
-      Entry: 6
-      Data: 
-  mDirectionPos: {x: 1, y: 1}
-  mSpawnCollisionGo: {fileID: 0}
-  mLifeTime: 1
-  mPercentDamage: 700
-  mbFollowDefaultRange: 1
+  mPercent: 0.4

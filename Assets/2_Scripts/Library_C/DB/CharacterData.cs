@@ -9,6 +9,7 @@ using Unity.VisualScripting;
 using _2_Scripts.Game.ScriptableObject.Skill.Passive.Buff;
 using _2_Scripts.Game.Unit.Data;
 using UnityEditor.U2D.Animation;
+using _2_Scripts.Utils;
 
 // 카라리 테이블 임포터에 의해 생성된 스크립트입니다.
 
@@ -42,7 +43,7 @@ public partial class CharacterData : IPoolable
         alumniMatk = data.alumniMatk;
     }
 
-    public float GetTotalAtk()
+    private float GetTotalAtk()
     {
         return Buff.ATKRate * 0.01f * (Buff.ATK + alumniAtk + atk);
     }
@@ -52,9 +53,17 @@ public partial class CharacterData : IPoolable
         return Buff.ATKSpeedRate * 0.01f * (Buff.ATKSpeed + alumniAtkSpeed + atkSpeed);
     }
 
-    public float GetTotalMAtk()
+    private float GetTotalMAtk()
     {
         return Buff.MATKRate * 0.01f * (Buff.MATK + alumniMatk + matk);
+    }
+
+    public float GetTotalDamageToType(Define.EAttackType type)
+    {
+        if (type == Define.EAttackType.Physical)
+            return GetTotalAtk();
+        else
+            return GetTotalMAtk();
     }
 
     protected override void Init_Project_Func()

@@ -41,6 +41,7 @@ namespace _2_Scripts.Game.Monster
 
         // Monster 방깍 한 번만 받기 위한 플래그
         public  bool DefenceFlag = false;
+        public bool IsDead => mMonsterData.hp <= 0;
         public void DamageActionAdd(Action<Monster> action,StatusEffectSO so)
         {
             if (mTargetStatusEffectList.Contains(so))
@@ -92,7 +93,7 @@ namespace _2_Scripts.Game.Monster
             });
         }
 
-        public bool TakeDamage(float damage, Define.EAttackType attackType)
+        public bool TakeDamage(float damage, Define.EAttackType attackType, bool isExile = false)
         {
             if (mMonsterData.hp <= 0) return false;
             ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_DamageCanvas, transform.position + Vector3.up).GetComponent<UI_DamageCanvas>().SetDamage(damage);
@@ -102,6 +103,8 @@ namespace _2_Scripts.Game.Monster
             if (mMonsterData.hp <= 0)
             {
                 //TODO Monster Die
+                if (!isExile) GameManager.Instance.UpdateGold(mMonsterData.reward);
+
                 mMatController.RunDissolve(false, () => gameObject.SetActive(false));
                 if (mbBoss)
                 {

@@ -21,13 +21,13 @@ namespace _2_Scripts.Game.StatusEffect
         public override void OnApply(MonsterData monsterData,Monster monster)
         {
             //TODO 체력바 밑에 아이콘 표시, 파티클 효과 표시
-            monsterData.speed *= (mPercentSpeed * 0.01f);
+            monsterData.SetSpeed(mPercentSpeed);
         }
         
         
         public override void OnRemove(MonsterData monsterData, Action endCallback = null)
         {
-            monsterData.speed /= (mPercentSpeed * 0.01f);
+            monsterData.SetSpeed(mPercentSpeed, true);
             endCallback?.Invoke();
         }
     }

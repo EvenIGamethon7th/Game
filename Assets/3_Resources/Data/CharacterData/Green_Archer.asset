@@ -17,6 +17,7 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 11400000, guid: fa7bc69f84b39b34e8165a4cab0e7c6a, type: 2}
+    - {fileID: 11400000, guid: 7008a7ad95a04a24b8089d433d0eb5a9, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -99,13 +100,28 @@ MonoBehaviour:
     - Name: DefaultAttack
       Entry: 10
       Data: 0
-    - Name: SkillList
+    - Name: ActiveSkillList
+      Entry: 6
+      Data: 
+    - Name: PassiveSkillList
       Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[_2_Scripts.Game.ScriptableObject.Character.SkillInfo,
+      Data: 5|System.Collections.Generic.List`1[[_2_Scripts.Game.ScriptableObject.Character.PassiveSkillInfo,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 0
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 6|_2_Scripts.Game.ScriptableObject.Character.PassiveSkillInfo, Assembly-CSharp
+    - Name: Level
+      Entry: 3
+      Data: 3
+    - Name: Skill
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 

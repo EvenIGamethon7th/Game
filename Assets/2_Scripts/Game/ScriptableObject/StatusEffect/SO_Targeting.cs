@@ -20,18 +20,13 @@ namespace _2_Scripts.Game.StatusEffect
         [Title("레벨 제한이 들어가는지?")] 
         [SerializeField]
         private int mLevel;
-        public override bool CanApply(MonsterData monsterData)
-        {
-            return base.CanApply(monsterData);
-        }
-
         public override void OnApply(MonsterData monsterData, Monster.Monster monster,CUnit unit)
         {
             if (unit.CharacterDatas.rank < mLevel)
                 return;
             monster.DamageActionAdd(TargetAction,this);
-            Observable.Interval(TimeSpan.FromSeconds(1))
-                .TakeUntil(Observable.Timer(TimeSpan.FromSeconds(Duration)))
+            Observable
+                .Timer(TimeSpan.FromSeconds(Duration))
                 .TakeUntil(monster.OnDisableAsObservable())
                 .TakeUntil(unit.OnDisableAsObservable())
                 .Subscribe(
@@ -48,10 +43,13 @@ namespace _2_Scripts.Game.StatusEffect
         public override void OnApply(MonsterData monsterData, Monster.Monster monster)
         {
         }
-        private void TargetAction()
+        private void TargetAction(Monster.Monster monster)
         {
-            if (Random_C.CheckPercent_Func(100, mPercent)) ;
-            GameManager.Instance.AddUserLuckyCoin(1);
+            if (Random_C.CheckPercent_Func(100, mPercent))
+            {
+                GameManager.Instance.AddUserLuckyCoin(1);
+                monster.DamageActionRemove(TargetAction,this);
+            }
         }
 
         public override void OnRemove(MonsterData monsterData, Action endCallback = null)

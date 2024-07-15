@@ -36,10 +36,10 @@ namespace _2_Scripts.Game.Monster
         private SpriteRenderer mSpriteRenderer;
 
 
-        private Action DamageActionCallback;
+        private Action<Monster> DamageActionCallback;
         private List<StatusEffectSO> mTargetStatusEffectList = new ();
 
-        public void DamageActionAdd(Action action,StatusEffectSO so)
+        public void DamageActionAdd( Action<Monster> action,StatusEffectSO so)
         {
             if (mTargetStatusEffectList.Contains(so))
             {
@@ -48,7 +48,7 @@ namespace _2_Scripts.Game.Monster
             DamageActionCallback += action;
             mTargetStatusEffectList.Add(so);
         }
-        public void DamageActionRemove(Action action,StatusEffectSO so)
+        public void DamageActionRemove( Action<Monster> action,StatusEffectSO so)
         {
             if (!mTargetStatusEffectList.Contains(so))
             {
@@ -95,7 +95,7 @@ namespace _2_Scripts.Game.Monster
             if (mMonsterData.hp <= 0) return false;
             ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_DamageCanvas, transform.position + Vector3.up).GetComponent<UI_DamageCanvas>().SetDamage(damage);
             mMonsterData.hp -= DefenceCalculator.CalculateDamage(damage, mMonsterData, attackType);
-            DamageActionCallback?.Invoke();
+            DamageActionCallback?.Invoke(this);
             mHpCanvas.SetHpSlider(mMonsterData.hp);
             if (mMonsterData.hp <= 0)
             {

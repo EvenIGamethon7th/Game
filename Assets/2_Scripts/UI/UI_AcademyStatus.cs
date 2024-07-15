@@ -22,25 +22,25 @@ namespace _2_Scripts.UI
         public void SetStatus(CUnit data)
         {
             mName.text = data.name;
-            mTexts[0].text = $"{(int)data.CharacterDatas.atk} + {(int)data.CharacterDatas.alumniAtk}";
-            mTexts[1].text = $"{data.CharacterDatas.atkSpeed.ToString("F1")} + {data.CharacterDatas.alumniAtkSpeed.ToString("F1")}";
-            mTexts[2].text = $"{(int)data.CharacterDatas.matk} + {(int)data.CharacterDatas.alumniMatk}";
+            mTexts[0].text = $"{(int)data.CharacterDatas.alumniAtk}";
+            mTexts[1].text = data.CharacterDatas.alumniAtkSpeed.ToString("F1");
+            mTexts[2].text = $"{(int)data.CharacterDatas.alumniMatk}";
 
-            mSliders[0].value = data.CharacterDatas.atk + data.CharacterDatas.alumniAtk;
-            mSliders[1].value = data.CharacterDatas.atkSpeed + data.CharacterDatas.alumniAtkSpeed;
-            mSliders[2].value = data.CharacterDatas.matk + data.CharacterDatas.alumniMatk;
+            mSliders[0].value = data.CharacterDatas.alumniAtk;
+            mSliders[1].value = data.CharacterDatas.alumniAtkSpeed;
+            mSliders[2].value = data.CharacterDatas.alumniMatk;
             UpdateGraphic(data);
         }
 
         public void SetStatus(CharacterData data)
         {
-            mTexts[0].text = $"{(int)data.atk} + {(int)data.alumniAtk}";
-            mTexts[1].text = $"{data.atkSpeed.ToString("F1")} + {data.alumniAtkSpeed.ToString("F1")}";
-            mTexts[2].text = $"{(int)data.matk} + {(int)data.alumniMatk}";
+            mTexts[0].text = $"{(int)data.alumniAtk}";
+            mTexts[1].text = data.alumniAtkSpeed.ToString("F1");
+            mTexts[2].text = $"{(int)data.alumniMatk}";
 
-            mSliders[0].value = data.atk + data.alumniAtk;
-            mSliders[1].value = data.atkSpeed + data.alumniAtkSpeed;
-            mSliders[2].value = data.matk + data.alumniMatk;
+            mSliders[0].value = data.alumniAtk;
+            mSliders[1].value = data.alumniAtkSpeed;
+            mSliders[2].value = data.alumniMatk;
         }
 
         private void UpdateGraphic(CUnit data)

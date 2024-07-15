@@ -6,6 +6,9 @@ using Sirenix.OdinInspector;
 using Cargold.DB.TableImporter;
 using OfficeOpenXml.FormulaParsing.Excel.Operators;
 using Unity.VisualScripting;
+using _2_Scripts.Game.ScriptableObject.Skill.Passive.Buff;
+using _2_Scripts.Game.Unit.Data;
+using UnityEditor.U2D.Animation;
 
 // 카라리 테이블 임포터에 의해 생성된 스크립트입니다.
 
@@ -16,8 +19,43 @@ public partial class CharacterData : IPoolable
     [LabelText("졸업 공격속도")] public float alumniAtkSpeed;
     [LabelText("졸업 마법공격력")] public float alumniMatk;
 
+    public BuffData Buff { get; private set; }
+
     public bool IsActive { get => mIsActive; set => mIsActive = value; }
     private bool mIsActive;
+
+    public void Init(CharacterData data, BuffData buff)
+    {
+        mIsActive = true;
+        Buff = buff;
+        atk = data.atk;
+        matk = data.matk;
+        atkSpeed = data.atkSpeed;
+        rank = data.rank;
+        characterPack = data.characterPack;
+        range = data.range;
+        nameKey = data.nameKey;
+        Key = data.Key;
+        isAlumni = data.isAlumni;
+        alumniAtk = data.alumniAtk;
+        alumniAtkSpeed = data.alumniAtkSpeed;
+        alumniMatk = data.alumniMatk;
+    }
+
+    public float GetTotalAtk()
+    {
+        return Buff.ATKRate * 0.01f * (Buff.ATK + alumniAtk + atk);
+    }
+
+    public float GetTotalAtkSpeed()
+    {
+        return Buff.ATKSpeedRate * 0.01f * (Buff.ATKSpeed + alumniAtkSpeed + atkSpeed);
+    }
+
+    public float GetTotalMAtk()
+    {
+        return Buff.MATKRate * 0.01f * (Buff.MATK + alumniMatk + matk);
+    }
 
     protected override void Init_Project_Func()
     {
@@ -71,6 +109,7 @@ public partial class CharacterData : IPoolable
         alumniAtk = 0;
         alumniAtkSpeed = 0;
         alumniMatk = 0;
+        Buff = null;
     }
 
 #if UNITY_EDITOR

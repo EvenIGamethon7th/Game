@@ -30,7 +30,7 @@ namespace _2_Scripts.Game.Unit
                 await UniTask.WaitForFixedUpdate();
                 if(mUnit == null)
                     continue;
-                float delayAttack = 1 / mUnit.CharacterDatas.atkSpeed;
+                float delayAttack = 1 / mUnit.CharacterDatas.GetTotalAtkSpeed();
                 await UniTask.WaitForSeconds(delayAttack,cancellationToken: mCancellationToken.Token);
                 if(EUnitStates.Move == mUnit.CurrentState)
                     continue;

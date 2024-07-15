@@ -1,4 +1,5 @@
 ﻿using System;
+using _2_Scripts.Game.Unit;
 using _2_Scripts.Utils;
 using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
@@ -15,9 +16,22 @@ namespace _2_Scripts.Game.StatusEffect
         [Title("출혈 데미지 퍼센트")]
         [SerializeField]
         private float mPercentDamage;
-        public override void OnApply(MonsterData monsterData,Monster monster)
+        
+        [Title("레벨 제한이 들어가는지?")] 
+        [SerializeField]
+        private int mLevel = 0;
+        
+        
+        public override void OnApply(MonsterData monsterData, Monster monster,CUnit unit)
         {
+            if(unit.CharacterDatas.rank < mLevel)
+                return;
+            
             BleedingDuration(monsterData, monster);
+        }
+
+        public override void OnApply(MonsterData monsterData, Monster monster)
+        {
         }
 
         private void BleedingDuration(MonsterData monsterData, Monster monster)
@@ -32,6 +46,8 @@ namespace _2_Scripts.Game.StatusEffect
                         {
                             float damage = monsterData.MaxHp * (mPercentDamage * 0.01f);
                             monster.TakeDamage(damage, Define.EAttackType.TrueDamage);
+                            HitEffectPlay(monster.transform.position);
+                            
                         }
                     }
                 )

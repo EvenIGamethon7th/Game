@@ -47,5 +47,14 @@ namespace _2_Scripts.Game.StatusEffect
             OnApply(monsterData, monster);
         public abstract void OnApply(MonsterData monsterData, Monster monster);
         public abstract void OnRemove(MonsterData monsterData, Action endCallback = null);
+        
+        protected virtual void HitEffectPlay(Vector2 position)
+        {
+            if (HitEffect == null)
+            {
+                return;
+            }
+            ObjectPoolManager.Instance.CreatePoolingObject(HitEffect, position);
+        }
     }
 }

@@ -110,14 +110,21 @@ namespace _2_Scripts.Game.Unit
               var skill = ReadySkillQueue.Peek();
               var isRange = skill.Skill.CastAttack(this.transform,CharacterDatas);
               ReadySkillQueue.Dequeue();
-              if (isRange && IsNotCoolTimeSKill == false)
+              if (isRange)
               {
-                CoolTimeSkill(skill).Forget();
+                  if (IsNotCoolTimeSKill)
+                  {
+                      IsNotCoolTimeSKill = false;
+                      CoolTimeSkill(1,skill).Forget();
+                  }
+                  else
+                  {
+                      CoolTimeSkill(skill).Forget();
+                  }
               }
               else
               {
                   AddReadySkill(skill);   
-                  IsNotCoolTimeSKill = false;
               }
             }
         }
@@ -210,6 +217,12 @@ namespace _2_Scripts.Game.Unit
         private async UniTaskVoid CoolTimeSkill(SkillInfo skill)
         {
             await UniTask.WaitForSeconds(skill.CoolTime);
+            AddReadySkill(skill);
+        }
+
+        private async UniTaskVoid CoolTimeSkill(float time,SkillInfo skill)
+        {
+            await UniTask.WaitForSeconds(time);
             AddReadySkill(skill);
         }
 

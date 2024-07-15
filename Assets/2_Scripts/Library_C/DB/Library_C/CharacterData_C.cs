@@ -21,6 +21,8 @@ public partial class CharacterData : Data_C
      [LabelText("소환재화")] public int cost;
      [LabelText("캐릭터팩")] public string characterPack;
      [LabelText("사용 무기")] public string weapon;
+     [LabelText("스킬1")] public int Skill1;
+     [LabelText("스킬2")] public int Skill2;
 
     
 
@@ -38,6 +40,8 @@ public partial class CharacterData : Data_C
         cost = _cellDataArr[8].ToInt();
         characterPack = _cellDataArr[9];
         weapon = _cellDataArr[10];
+        Skill1 = _cellDataArr[11].ToInt();
+        Skill2 = _cellDataArr[12].ToInt();
     }
 #endif
 }

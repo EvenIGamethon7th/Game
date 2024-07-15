@@ -101,7 +101,6 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.DirectionSkill
             }
             foreach (var monster in takeDamageMonsters)
             {
-               
                 monster.TakeDamage(damage,AttackType);
                 if (mSpawnCollisionGo == null)
                 {

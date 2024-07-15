@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using _2_Scripts.Game.Map;
 using _2_Scripts.Game.Monster;
@@ -30,6 +31,8 @@ public class StageManager : Singleton<StageManager>
     public int WaveCount => mNextStageMessage.Value;
     
     private GameMessage<int> mNextStageMessage;
+    public List<Monster> MonsterList = new List<Monster>();
+
     /// <summary>
     ///  테스트용 스테이지 시작 코드
     /// </summary>
@@ -103,9 +106,12 @@ public class StageManager : Singleton<StageManager>
     {
         for (int spawnCount = 0; spawnCount < waveData.spawnCount; spawnCount++)
         {
-            var monster = ObjectPoolManager.Instance.CreatePoolingObject("Monster", mWayPoint.GetWayPointPosition(0)).GetComponent<Monster>();
+            var monster = ObjectPoolManager.Instance.CreatePoolingObject("Monster", mWayPoint.GetWayPointPosition(0)).GetComponent<Monster>();;
             monster.SpawnMonster(waveData.monsterKey, mWayPoint, waveData.isBoss);
+            MonsterList.Add(monster);
+            // List를 비워줘야함
             await UniTask.WaitForSeconds(SPAWN_COOL_TIME);
+            
         }
     }
     

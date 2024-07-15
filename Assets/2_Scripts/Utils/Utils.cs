@@ -41,6 +41,15 @@ public class Utils
         return v1.x * v2.x + v1.y * v2.y;
     }
 
+    public static Vector3 GetUIWorldPosition(RectTransform rectTransform)
+    {
+        Vector3 screenPosition = RectTransformUtility.WorldToScreenPoint(Camera.main, rectTransform.position);
+        // 화면 좌표를 월드 좌표로 변환
+        RectTransformUtility.ScreenPointToWorldPointInRectangle(rectTransform, screenPosition, Camera.main, out var worldPosition);
+        return worldPosition;
+
+    }
+
     public class ReadonlyNumber<T>
     {
         private readonly T _value;

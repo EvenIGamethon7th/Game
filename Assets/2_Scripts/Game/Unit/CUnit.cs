@@ -70,6 +70,8 @@ namespace _2_Scripts.Game.Unit
         private Action<Monster[]> mBeforePassive;
         private Action<Monster> mAfterPassive;
 
+        public bool IsNotCoolTimeSKill = false;
+
         private void Awake()
         {
             mAnimation = GetComponent<SkeletonAnimation>();
@@ -94,10 +96,7 @@ namespace _2_Scripts.Game.Unit
         {
             ReadySkillQueue.Enqueue(skill);
         }
-        public void AddReadySkill(Skill skill)
-        {
-            ReadySkillQueue.Enqueue(SkillInfoDictionary[skill]);
-        }
+
         //임시 스킬 업데이트 함수
         private void Update()
         {
@@ -106,13 +105,14 @@ namespace _2_Scripts.Game.Unit
               var skill = ReadySkillQueue.Peek();
               var isRange = skill.Skill.CastAttack(this.transform,CharacterDatas);
               ReadySkillQueue.Dequeue();
-              if (isRange)
+              if (isRange && IsNotCoolTimeSKill == false)
               {
-                  CoolTimeSkill(skill).Forget();
+                CoolTimeSkill(skill).Forget();
               }
               else
               {
                   AddReadySkill(skill);   
+                  IsNotCoolTimeSKill = false;
               }
             }
         }
@@ -142,7 +142,6 @@ namespace _2_Scripts.Game.Unit
         private void CharacterDataLoad(CharacterData characterData)
         {
             CharacterDatas = global::Utils.DeepCopy(characterData);
-            
             CharacterDataInfo = ResourceManager.Instance.Load<CharacterInfo>(characterData.characterData);
             
             CharacterDataInfo.ActiveSkillList?.Where(skill=> skill.Level <= CharacterDatas.rank).ForEach(skill =>

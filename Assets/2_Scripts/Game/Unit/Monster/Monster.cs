@@ -46,6 +46,7 @@ namespace _2_Scripts.Game.Monster
         {
             var originData = DataBase_Manager.Instance.GetMonster.GetData_Func(key);
             mMonsterData = global::Utils.DeepCopy(originData);
+            mMonsterData.MaxHp = mMonsterData.hp;
             mHpCanvas.InitHpSlider(mMonsterData.hp, isBoss);
             //TODO Sprite Change And Animation
             ResourceManager.Instance.Load<RuntimeAnimatorController>(originData.nameKey,

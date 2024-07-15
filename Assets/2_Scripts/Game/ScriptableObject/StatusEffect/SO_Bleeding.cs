@@ -2,6 +2,8 @@
 using _2_Scripts.Utils;
 using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
+using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 
 namespace _2_Scripts.Game.StatusEffect
@@ -15,16 +17,25 @@ namespace _2_Scripts.Game.StatusEffect
         private float mPercentDamage;
         public override void OnApply(MonsterData monsterData,Monster monster)
         {
-            BleedingDuration(monsterData,monster).Forget();
+            BleedingDuration(monsterData, monster);
         }
 
-        private async UniTaskVoid BleedingDuration(MonsterData monsterData,Monster monster)
+        private void BleedingDuration(MonsterData monsterData, Monster monster)
         {
-            // monster max hp percent 2% damage
-            await UniTask.Delay(TimeSpan.FromSeconds(1));
-            if (!monster.isActiveAndEnabled)
-                return;
-            monster.TakeDamage((monsterData.GetMonsterMaxHP * (mPercentDamage*0.01f)),Define.EAttackType.TrueDamage);
+            Observable.Interval(TimeSpan.FromSeconds(1))
+                .TakeUntil(Observable.Timer(TimeSpan.FromSeconds(Duration)))
+                .TakeUntil(monster.OnDisableAsObservable())
+                .Subscribe(
+                    _ =>
+                    {
+                        if (monster.isActiveAndEnabled)
+                        {
+                            float damage = monsterData.MaxHp * (mPercentDamage * 0.01f);
+                            monster.TakeDamage(damage, Define.EAttackType.TrueDamage);
+                        }
+                    }
+                )
+                .AddTo(monster);
         }
         
         public override void OnRemove(MonsterData monsterData, Action endCallback = null)

@@ -33,6 +33,7 @@ namespace _2_Scripts.Utils.Structure
 
             return queue.Peek();
         }
+
         public void Clear()
         {
             queue.Clear();

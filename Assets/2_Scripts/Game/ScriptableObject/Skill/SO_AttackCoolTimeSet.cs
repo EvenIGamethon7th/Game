@@ -38,7 +38,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
                     var statusEffectHandler = TargetMonster.gameObject.GetComponent<StatusEffectHandler>();
                     if (TargetMonster.GetMonsterData.hp <= 0)
                     {
-                        attackerUnit.AddReadySkill(this);
+                            attackerUnit.IsNotCoolTimeSKill = true;
                     }
 
                     StatueEffects?.ForEach(effect =>statusEffectHandler.AddStatusEffect(effect));

@@ -16,5 +16,7 @@ namespace _2_Scripts.Utils
            { 2, AddressableTable.Default_Open_BoxGift_3 },
            { 3, AddressableTable.Default_Open_BoxGift_5 },
        };
+       
+       public const int MAX_LEVEL = 6;
     }
 }

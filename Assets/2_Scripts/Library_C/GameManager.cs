@@ -15,11 +15,11 @@
         
         public float UserHp { get; private set; } = 100;
         // 학년
-        public ReactiveProperty<int> UserLevel { get; private set; } =  new ReactiveProperty<int>();
+        public ReactiveProperty<int> UserLevel { get; private set; } =  new ReactiveProperty<int>(1);
 
         public ReactiveProperty<int> UserExp { get; private set; } = new ReactiveProperty<int>();
         
-        public int UserGold { get; private set; } = 10000;
+        public  ReactiveProperty<int> UserGold { get; private set; } = new ReactiveProperty<int>(1000);
         
         public int UserLuckyCoin { get; private set; } = 0;
         public void AddUserLuckyCoin(int value)
@@ -29,7 +29,7 @@
         }
         public void UpdateGold(int value)
         {
-            UserGold += value;
+            UserGold.Value += value;
             MessageBroker.Default.Publish(EGameMessage.GoldChange);
         }
 

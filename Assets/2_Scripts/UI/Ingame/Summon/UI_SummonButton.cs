@@ -70,7 +70,7 @@ namespace _2_Scripts.UI
                 return;
             }
             
-            if(GameManager.Instance.UserGold < mCharacterData.cost)
+            if(GameManager.Instance.UserGold.Value < mCharacterData.cost)
             {
                 // 차후 Localize로 변경
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("돈이 부족합니다");

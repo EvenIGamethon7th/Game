@@ -18,7 +18,7 @@ namespace _2_Scripts.UI
 
         void Awake()
         {
-            GetComponent<Canvas>().worldCamera = Camera.main;
+            GetComponent<Canvas>().worldCamera = UICamera.Instance.Camera;
             mCts = new CancellationTokenSource();
         }
 

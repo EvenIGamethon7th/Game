@@ -22,6 +22,7 @@ namespace _2_Scripts.Game.Unit
     using _2_Scripts.Game.ScriptableObject.Skill.Passive.Buff;
     using System.Net;
     using Unity.VisualScripting;
+    using static UnityEngine.GraphicsBuffer;
 
     public enum EUnitClass
     {
@@ -93,7 +94,13 @@ namespace _2_Scripts.Game.Unit
 
         public void SetFlipUnit(Transform target)
         {
-            int flip = target.transform.position.x > this.transform.position.x ? 1 : -1;
+            int flip = target.position.x > transform.position.x ? 1 : -1;
+            mAnimation.skeleton.ScaleX = flip;
+        }
+
+        public void SetFlipUnit(Vector3 targetPos)
+        {
+            int flip = targetPos.x > transform.position.x ? 1 : -1;
             mAnimation.skeleton.ScaleX = flip;
         }
 

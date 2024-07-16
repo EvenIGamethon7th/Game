@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2485182404912163288}
   - component: {fileID: 4334799517470654190}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: HpSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 2430026764171969184}
   - component: {fileID: 6331424839983365479}
   - component: {fileID: 6131747860157430960}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 5406617655802957663}
   - component: {fileID: 9101769461288435650}
   - component: {fileID: 8980311662251328751}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 8089571355894808901}
   - component: {fileID: 1354861067101645003}
   - component: {fileID: 4559671659600103603}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -368,7 +368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5150365907450771106}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,6 +520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <NextWayPointVector>k__BackingField: {x: 0, y: 0, z: 0}
+  DefenceFlag: 0
 --- !u!114 &9009686866573285570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -688,7 +689,7 @@ GameObject:
   - component: {fileID: 5602248301969292598}
   - component: {fileID: 5893441516808900293}
   - component: {fileID: 404692577720324041}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: HpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -22,7 +22,7 @@ namespace _2_Scripts.Game.Unit
         public List<CUnit> Units { get; private set; }
 
         private EUnitStates mCurrentState;
-        private int mFlip = 1;
+        private Vector3 mDstPos;
 
         private int mInt;
         
@@ -74,7 +74,8 @@ namespace _2_Scripts.Game.Unit
 
             Units.Add(newUnit);
             GroupRange = newUnit.CharacterDatas.range;
-            newUnit.transform.localScale = new Vector3(Mathf.Abs(newUnit.transform.localScale.x) * mFlip, newUnit.transform.localScale.y, newUnit.transform.localScale.z);
+            if (mCurrentState == EUnitStates.Move)
+                newUnit.SetFlipUnit(mDstPos);
             SetUnitPos();
         }
 
@@ -114,7 +115,7 @@ namespace _2_Scripts.Game.Unit
         {
             Vector3 originPos = transform.position;
 
-            mFlip = dstPos.x > originPos.x ? 1 : -1;
+            mDstPos = dstPos;
             mCurrentState = EUnitStates.Move;
 
             for (int i = 0; i < Units.Count; ++i)
@@ -123,7 +124,7 @@ namespace _2_Scripts.Game.Unit
                     break;
 
                 Units[i].UpdateState(mCurrentState);
-                Units[i].transform.localScale = new Vector3(Mathf.Abs(Units[i].transform.localScale.x) * mFlip, Units[i].transform.localScale.y, Units[i].transform.localScale.z);
+                Units[i].SetFlipUnit(dstPos);
             }
 
             while (time >= 0)

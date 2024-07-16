@@ -34,7 +34,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -5, y: 5, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -155,6 +155,8 @@ MonoBehaviour:
     cost: 0
     characterPack: 
     weapon: 
+    Skill1: 0
+    Skill2: 0
   IsNotCoolTimeSKill: 0
 --- !u!114 &7758359553510156137
 MonoBehaviour:
@@ -180,6 +182,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ee9f6620c1b3f044989ec5aee93cddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <BuffData>k__BackingField:
+    ATK: 0
+    ATKRate: 100
+    MATK: 0
+    MATKRate: 100
+    ATKSpeed: 0
+    ATKSpeedRate: 100
 --- !u!50 &2079742025762384100
 Rigidbody2D:
   serializedVersion: 4

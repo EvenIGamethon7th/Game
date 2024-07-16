@@ -15,9 +15,11 @@
         
         public float UserHp { get; private set; } = 100;
         // 학년
-        public int UserLevel { get; private set; } = 1;
+        public ReactiveProperty<int> UserLevel { get; private set; } =  new ReactiveProperty<int>(1);
 
-        public int UserGold { get; private set; } = 10000;
+        public ReactiveProperty<int> UserExp { get; private set; } = new ReactiveProperty<int>();
+        
+        public  ReactiveProperty<int> UserGold { get; private set; } = new ReactiveProperty<int>(1000);
         
         public int UserLuckyCoin { get; private set; } = 0;
         public void AddUserLuckyCoin(int value)
@@ -27,11 +29,32 @@
         }
         public void UpdateGold(int value)
         {
-            UserGold += value;
+            UserGold.Value += value;
             MessageBroker.Default.Publish(EGameMessage.GoldChange);
         }
+
+        public void AddExp(int exp)
+        {
+            if(UserLevel.Value == 6)
+            {
+                return;
+            }
+            UserExp.Value += exp;
+            if(mExpTable[UserLevel.Value] <= UserExp.Value)
+            {
+                UserExp.Value -= mExpTable[UserLevel.Value];
+                UserLevel.Value++;
+            }
+        }
         public List<CharacterInfo> UserCharacterList { get; private set; } = new List<CharacterInfo>();
-        
+        private readonly Dictionary<int,int> mExpTable = new Dictionary<int, int>
+        {
+            {1, 10},
+            {2, 10},
+            {3, 40},
+            {4, 60},
+            {5, 90},
+        };
         private readonly Dictionary<int, (int nomal, int rare, int epic)> mGradeRates = new Dictionary<int, (int general, int elite, int legendary)>
         {
             { 1, (100, 0, 0) },
@@ -44,12 +67,12 @@
 
         private int GetGradeBasedOnRates()
         {
-            if (!mGradeRates.ContainsKey(UserLevel))
+            if (!mGradeRates.ContainsKey(UserLevel.Value))
             {
                 return 1;
             }
             
-            var rates = mGradeRates[UserLevel];
+            var rates = mGradeRates[UserLevel.Value];
             int totalWeight = rates.nomal + rates.rare + rates.epic;
             int randomWeight = mRandom.Next(0, totalWeight);
             if (randomWeight < rates.nomal)
@@ -66,7 +89,14 @@
         
         private void Start()
         {
-            MessageBroker.Default.Receive<GameMessage<float>>().Where(message => message.Message == EGameMessage.PlayerDamage)
+            MessageBroker.Default.Receive<GameMessage<int>>().Where(message=> message.Message == EGameMessage.StageChange)
+                .Subscribe(message =>
+                {
+                    UserExp.Value += 5;
+                });
+
+            
+            MessageBroker.Default.Receive<GameMessage<float>>().Where(message=> message.Message == EGameMessage.PlayerDamage)
                 .Subscribe(message =>
                 {
                     UserHp -= message.Value;

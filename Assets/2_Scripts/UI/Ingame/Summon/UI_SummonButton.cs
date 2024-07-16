@@ -8,6 +8,7 @@ using DG.Tweening;
 using Sirenix.OdinInspector;
 using Spine.Unity;
 using TMPro;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using CharacterInfo = _2_Scripts.Game.ScriptableObject.Character.CharacterInfo;
@@ -43,9 +44,10 @@ namespace _2_Scripts.UI
             {3,AddressableTable.Default_UniqueProjectile},
         };
         private CharacterData mCharacterData;
-
-
-
+        
+        private bool mbIsLockRerollButton = false;
+        
+        
         [SerializeField]
         private Button mButtom;
 
@@ -54,6 +56,11 @@ namespace _2_Scripts.UI
         {
             uiRectTransform = GetComponent<RectTransform>();
             UpdateCharacter();
+            MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange)
+                .Subscribe(message =>
+                {
+                    Reroll();
+                });
         }
 
         public void OnSummonButton()
@@ -63,7 +70,7 @@ namespace _2_Scripts.UI
                 return;
             }
             
-            if(GameManager.Instance.UserGold < mCharacterData.cost)
+            if(GameManager.Instance.UserGold.Value < mCharacterData.cost)
             {
                 // 차후 Localize로 변경
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("돈이 부족합니다");
@@ -93,6 +100,8 @@ namespace _2_Scripts.UI
 
         public void Reroll()
         {
+            if (mbIsLockRerollButton)
+                return;
             mCurrentSummonButtonState = ESummonButtonState.Selected;
             UpdateCharacter();
             ShowChange();

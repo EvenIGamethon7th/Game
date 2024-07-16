@@ -12,20 +12,20 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
     [CreateAssetMenu(menuName = "ScriptableObject/Skill/Transition")]
     public class SO_Transition : Skill
     {
-        [Title("±âº» »ç°Å¸®¸¦ µû¸¥´Ù")]
+        [Title("ê¸°ë³¸ ì‚¬ê±°ë¦¬ë¥¼ ë”°ë¥¸ë‹¤")]
         [SerializeField]
         public bool FollowDefaultRange { get; private set; }
 
         [SerializeField]
-        [Title("µ¥¹ÌÁö Áõ°¨ ÆÛ¼¾Æ®")]
+        [Title("ë°ë¯¸ì§€ ì¦ê° í¼ì„¼íŠ¸")]
         private float mPercentDamage;
 
         [SerializeField]
-        [Title("½ºÅ³ °£°İ ( 1ÃÊ¸é 1)")]
+        [Title("ìŠ¤í‚¬ ê°„ê²© ( 1ì´ˆë©´ 1)")]
         private float mLifeTime;
 
         [SerializeField]
-        [Title("ÀüÀÌ ÀÌÆåÆ®")]
+        [Title("ì „ì´ ì´í™íŠ¸")]
         private GameObject mTransition;
 
         public override bool CastAttack(Transform ownerTransform, CharacterData ownerData, Action<Monster.Monster[]> beforeDamage = null, Action<Monster.Monster> afterDamage = null)

@@ -5,7 +5,8 @@
         PlayerDamage,
         BossDeath,
         GoldChange,
-        StageChange
+        StageChange,
+        ExpChange
     }
     
     public class GameMessage<T>

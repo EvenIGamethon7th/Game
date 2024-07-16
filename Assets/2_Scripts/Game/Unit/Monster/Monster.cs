@@ -110,6 +110,7 @@ namespace _2_Scripts.Game.Monster
                 {
                     MessageBroker.Default.Publish(BOSS_DEATH);
                 }
+                StageManager.Instance.RemoveMonster(this);
                 Enabled(false);
             }
 

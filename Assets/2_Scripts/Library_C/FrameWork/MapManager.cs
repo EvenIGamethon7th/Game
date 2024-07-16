@@ -19,6 +19,7 @@ public class MapManager : Singleton<MapManager>
 
     private List<TileSlot> mTileDatas = new();
     private const string TILE_SLOT_NAME = AddressableTable.Default_TileSlot;
+
     private void Start()
     {
         //추후 수정해야함 리소스 로드는 어차피 로비 진입화면에서 할 것이기 떄문.
@@ -152,6 +153,24 @@ public class MapManager : Singleton<MapManager>
         ObjectPoolManager.Instance.RegisterPoolingObject(AddressableTable.Default_DamageCanvas, 100);
     }
 
+    private void ChangeTile(Tilemap map,Tile tile)
+    {
+        BoundsInt bounds = map.cellBounds;
+        Vector3Int tilePosition = new Vector3Int(0, 0, 0);
+        for (int x = bounds.xMin; x < bounds.xMax; x++)
+        {
+            for (int y = bounds.yMin; y < bounds.yMax; y++)
+            {
+                tilePosition.x = x;
+                tilePosition.y = y;
+                if (map.HasTile(tilePosition))
+                {
+                    map.SetTile(tilePosition, tile);
+                }
+            }
+        }
+    }
+    
     private void CreateInitialTileSlots()
     {
         BoundsInt bounds = mMap.cellBounds;

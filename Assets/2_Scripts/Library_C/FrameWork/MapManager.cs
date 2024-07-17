@@ -177,6 +177,7 @@ public class MapManager : Singleton<MapManager>
         Vector3 tileSize = mMap.cellSize;
         Vector3 slotOffset = new Vector3(tileSize.x, tileSize.y, 0);
         bool isMainCharacterInit = false;
+        float tempZ = -0.04f;
         for (int x = bounds.xMin; x < bounds.xMax; x += 2)
         {
             for (int y = bounds.yMin; y < bounds.yMax; y += 2)
@@ -192,7 +193,8 @@ public class MapManager : Singleton<MapManager>
                     continue;
                 }
                 
-                Vector3 worldPosition = mMap.CellToWorld(cellPosition) + slotOffset;
+                Vector3 worldPosition = mMap.CellToWorld(cellPosition) + slotOffset + Vector3.forward * tempZ;
+                tempZ += 0.001f;
                 // 타일 배치
                 var tile = ObjectPoolManager.Instance.CreatePoolingObject(TILE_SLOT_NAME, worldPosition).GetComponent<TileSlot>();
                 mTileDatas.Add(tile);

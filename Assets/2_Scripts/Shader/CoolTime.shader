@@ -1,0 +1,73 @@
+Shader "Unlit/CoolTime"
+{
+    Properties
+    {
+        _MainTex ("Texture", 2D) = "white" {}
+        _CoolTime ("CoolTime", range(0, 100)) = 30
+        _CurrentCoolTime ("CurrentCoolTime", range(0, 100)) = 30
+    }
+    SubShader
+    {
+        Tags { "RenderPipeline" = "UniversalPipeline" "Queue"="Transparent" "RenderType"="Transparent" "IgnoreProjector" = "True" }
+        Blend One OneMinusSrcAlpha
+        Cull Off
+		ZWrite Off
+		Lighting Off
+
+        Pass
+        {
+            HLSLPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+
+            struct appdata
+            {
+                float4 vertex : POSITION;
+                float2 uv : TEXCOORD0;
+                UNITY_VERTEX_INPUT_INSTANCE_ID
+            };
+
+            struct v2f
+            {
+                float2 uv : TEXCOORD0;
+                float4 vertex : SV_POSITION;
+                UNITY_VERTEX_INPUT_INSTANCE_ID
+            };
+
+            sampler2D _MainTex;
+            float4 _MainTex_ST;
+
+            float _CoolTime;
+            float _CurrentCoolTime;
+
+            v2f vert (appdata v)
+            {
+                v2f o;
+                o.vertex = TransformObjectToHClip(v.vertex);
+                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                return o;
+            }
+
+            half4 frag (v2f i) : SV_Target
+            {
+                half4 col = tex2D(_MainTex, i.uv);
+
+                col.rgb *= col.a;
+
+                float pi = 3.14159;
+
+                float2 uv = i.uv - float2(0.5f, 0.5f);
+                float polar = (atan2(uv.x, -uv.y) / pi) * 0.5f + 0.5f;
+                
+                if (polar < _CurrentCoolTime / _CoolTime) {
+                    col = (col + half4(1, 0, 0, 0)) * 0.5f;
+                }
+                    
+                return col;
+            }
+            ENDHLSL
+        }
+    }
+}

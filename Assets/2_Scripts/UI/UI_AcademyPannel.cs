@@ -2,6 +2,7 @@ using _2_Scripts.Game.Unit;
 using _2_Scripts.UI;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace _2_Scripts.UI {
@@ -15,6 +16,9 @@ namespace _2_Scripts.UI {
         private int mLessonCount = 0;
 
         private CharacterData mStudentData;
+
+        [SerializeField]
+        private TextMeshProUGUI mGradeText;
 
         public void Init()
         {
@@ -80,8 +84,10 @@ namespace _2_Scripts.UI {
         {
             ELessonResults result = (ELessonResults)Random.Range(0, 3);
             mLesson.SetResult(mLessonCount, result);
+
             if (result == ELessonResults.Fail) return;
-            Handheld.Vibrate();
+            if (result == ELessonResults.Bonanza) Handheld.Vibrate();
+
             switch (mLessonCount)
             {
                 case 0:

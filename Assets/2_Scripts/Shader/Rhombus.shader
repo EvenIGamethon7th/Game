@@ -6,6 +6,7 @@ Shader "Unlit/Rhombus"
         _ChangeTime ("ChangeTime", range(0, 3)) = 1
         _CurrentTime ("CurrentTime", range(0, 3)) = 0
     }
+
     SubShader
     {
         Tags { "RenderType"="Transparent" }

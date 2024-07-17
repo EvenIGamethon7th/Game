@@ -5,6 +5,7 @@ Shader "Unlit/CoolTime"
         _MainTex ("Texture", 2D) = "white" {}
         _CoolTime ("CoolTime", range(0, 100)) = 30
         _CurrentCoolTime ("CurrentCoolTime", range(0, 100)) = 30
+        _CoolTimeColor ("CoolTimeColor", Color) = (1, 0, 0, 1)
     }
     SubShader
     {
@@ -41,6 +42,7 @@ Shader "Unlit/CoolTime"
 
             float _CoolTime;
             float _CurrentCoolTime;
+            half4 _CoolTimeColor;
 
             v2f vert (appdata v)
             {
@@ -62,7 +64,7 @@ Shader "Unlit/CoolTime"
                 float polar = (atan2(uv.x, -uv.y) / pi) * 0.5f + 0.5f;
                 
                 if (polar < _CurrentCoolTime / _CoolTime) {
-                    col = (col + half4(1, 0, 0, 0)) * 0.5f;
+                    col.rgb = (col.rgb + _CoolTimeColor.rgb) * 0.5f;
                 }
                     
                 return col;

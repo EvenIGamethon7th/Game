@@ -39,4 +39,15 @@ public static partial class TableDataKey_C
     public const string Localize_Lo_Character_33 = "Lo_Character_33";
     public const string Localize_Lo_Character_34 = "Lo_Character_34";
     public const string Localize_Lo_Character_35 = "Lo_Character_35";
+    public const string Localize_Lo_Monster_1 = "Lo_Monster_1";
+    public const string Localize_Lo_Monster_2 = "Lo_Monster_2";
+    public const string Localize_Lo_Monster_3 = "Lo_Monster_3";
+    public const string Localize_Lo_Monster_4 = "Lo_Monster_4";
+    public const string Localize_Lo_Monster_5 = "Lo_Monster_5";
+    public const string Localize_Lo_Monster_6 = "Lo_Monster_6";
+    public const string Localize_Lo_Monster_7 = "Lo_Monster_7";
+    public const string Localize_Lo_Monster_8 = "Lo_Monster_8";
+    public const string Localize_Lo_Monster_9 = "Lo_Monster_9";
+    public const string Localize_Lo_Monster_10 = "Lo_Monster_10";
+    public const string Localize_Lo_Monster_11 = "Lo_Monster_11";
 }

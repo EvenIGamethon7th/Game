@@ -47,7 +47,7 @@ namespace _2_Scripts.Game.StatusEffect
         {
             if (Random_C.CheckPercent_Func(100, mPercent))
             {
-                GameManager.Instance.AddUserLuckyCoin(1);
+                GameManager.Instance.UpdateMoney(EMoneyType.GoldKey,1);
                 monster.DamageActionRemove(TargetAction,this);
             }
         }

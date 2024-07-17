@@ -22,13 +22,22 @@
         public ReactiveProperty<int> UserGold { get; private set; } = new ReactiveProperty<int>(1000);
 
         public ReactiveProperty<int> UserLuckyCoin { get; private set; } = new ReactiveProperty<int>(0);
-        public void AddUserLuckyCoin(int value)
+        public void UpdateMoney(string moneyKey,int value)
         {
-            UserLuckyCoin.Value += value;
+            MoneyData money =  DataBase_Manager.Instance.GetMoney.GetData_Func(moneyKey);
+            UpdateMoney(money.Type,value);
         }
-        public void UpdateGold(int value)
+        public void UpdateMoney(EMoneyType moneyType,int value)
         {
-            UserGold.Value += value;
+            switch (moneyType)
+            {
+                case EMoneyType.Gold:
+                    UserGold.Value += value;
+                    break;
+                case EMoneyType.GoldKey:
+                    UserLuckyCoin.Value += value;
+                    break;
+            }
         }
 
         public void AddExp(int exp)

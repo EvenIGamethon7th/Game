@@ -59,7 +59,7 @@ namespace _2_Scripts.UI
             CUnit unit = mSelectUnitGroup.Units.Where(x => x.CharacterDatas.isAlumni == false).FirstOrDefault();
             if (unit == null)
             {
-                UI_Toast_Manager.Instance.Activate_WithContent_Func("ÀÌ¹Ì ÀüºÎ Á¹¾÷Çß½À´Ï´Ù");
+                UI_Toast_Manager.Instance.Activate_WithContent_Func("ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½");
                 return;
             }
 
@@ -82,7 +82,7 @@ namespace _2_Scripts.UI
 
             mSelectUnitGroup.RemoveUnit(unit);
             unit.Clear();
-            GameManager.Instance.UpdateGold((int)(unit.CharacterDatas.cost * mCostRate));
+            GameManager.Instance.UpdateMoney(EMoneyType.Gold,(int)(unit.CharacterDatas.cost * mCostRate));
         }
 
         private void SetFusionButton()

@@ -103,7 +103,7 @@ namespace _2_Scripts.Game.Monster
             if (mMonsterData.hp <= 0)
             {
                 //TODO Monster Die
-                if (!isExile) GameManager.Instance.UpdateGold(mMonsterData.reward);
+                if (!isExile) GameManager.Instance.UpdateMoney(mMonsterData.reward_type,mMonsterData.reward_count);
 
                 mMatController.RunDissolve(false, () => gameObject.SetActive(false));
                 if (IsBoss)

@@ -70,6 +70,17 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             return this.monster;
         }
     }
+    [InlineEditor, LabelText("Money"), SerializeField] private DB_MoneyDataGroup money;
+    public DB_MoneyDataGroup GetMoney
+    {
+        get
+        {
+            if (this.money == null)
+                this.money = Resources.Load<DB_MoneyDataGroup>(base.dataGroupSobjPath + "DB_MoneyDataGroup");
+
+            return this.money;
+        }
+    }
     [InlineEditor, LabelText("Character"), SerializeField] private DB_CharacterDataGroup character;
     public DB_CharacterDataGroup GetCharacter
     {
@@ -79,6 +90,17 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
                 this.character = Resources.Load<DB_CharacterDataGroup>(base.dataGroupSobjPath + "DB_CharacterDataGroup");
 
             return this.character;
+        }
+    }
+    [InlineEditor, LabelText("TreasureBox"), SerializeField] private DB_TreasureBoxDataGroup treasureBox;
+    public DB_TreasureBoxDataGroup GetTreasureBox
+    {
+        get
+        {
+            if (this.treasureBox == null)
+                this.treasureBox = Resources.Load<DB_TreasureBoxDataGroup>(base.dataGroupSobjPath + "DB_TreasureBoxDataGroup");
+
+            return this.treasureBox;
         }
     }
     [InlineEditor, LabelText("Stage"), SerializeField] private DB_StageDataGroup stage;
@@ -126,7 +148,9 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             this.item.Init_Func();
             this.localize.Init_Func();
             this.monster.Init_Func();
+            this.money.Init_Func();
             this.character.Init_Func();
+            this.treasureBox.Init_Func();
             this.stage.Init_Func();
             this.wave.Init_Func();
         }
@@ -139,7 +163,9 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
         this.GetItem.CallEdit_OnDataImportDone_Func();
         this.GetLocalize.CallEdit_OnDataImportDone_Func();
         this.GetMonster.CallEdit_OnDataImportDone_Func();
+        this.GetMoney.CallEdit_OnDataImportDone_Func();
         this.GetCharacter.CallEdit_OnDataImportDone_Func();
+        this.GetTreasureBox.CallEdit_OnDataImportDone_Func();
         this.GetStage.CallEdit_OnDataImportDone_Func();
         this.GetWave.CallEdit_OnDataImportDone_Func();
         

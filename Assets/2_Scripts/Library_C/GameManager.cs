@@ -35,6 +35,7 @@
         {
             if(UserLevel.Value == 6)
             {
+                UserExp.Value = 1;
                 return;
             }
             UserExp.Value += exp;
@@ -45,14 +46,20 @@
             }
         }
         public List<CharacterInfo> UserCharacterList { get; private set; } = new List<CharacterInfo>();
-        private readonly Dictionary<int,int> mExpTable = new Dictionary<int, int>
+        public readonly Dictionary<int,int> mExpTable = new Dictionary<int, int>
         {
             {1, 10},
             {2, 10},
             {3, 40},
             {4, 60},
             {5, 90},
+            {6, 1}
         };
+
+        public int GetMaxExp()
+        {
+            return mExpTable[UserLevel.Value];
+        }
         private readonly Dictionary<int, (int nomal, int rare, int epic)> mGradeRates = new Dictionary<int, (int general, int elite, int legendary)>
         {
             { 1, (100, 0, 0) },
@@ -90,7 +97,7 @@
             MessageBroker.Default.Receive<GameMessage<int>>().Where(message=> message.Message == EGameMessage.StageChange)
                 .Subscribe(message =>
                 {
-                    UserExp.Value += 5;
+                    AddExp(5);
                 });
 
             

@@ -24,7 +24,7 @@ public class StageManager : Singleton<StageManager>
     private const float SPAWN_COOL_TIME = 1.5f;
 
     private event Action<int> mWaveStart;
-    private const float NEXT_WAVE_TIME = 1.0f;
+    private const float NEXT_WAVE_TIME = 15.0f;
     
     private int mDeathBossCount = 0;
 
@@ -91,7 +91,7 @@ public class StageManager : Singleton<StageManager>
         while (mWaveQueue.Count > 0)
         {
             mCurrentWaveData = mWaveQueue.Dequeue();
-            await SpawnMonsters(mCurrentWaveData);
+            SpawnMonsters(mCurrentWaveData).Forget();
             if (mCurrentWaveData.isBoss)
             {
                 continue;

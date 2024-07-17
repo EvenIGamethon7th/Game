@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -123,6 +123,10 @@ PrefabInstance:
     - target: {fileID: 2242091039236904197, guid: df01dbd0e30aedf42a6e3260bbf09d76, type: 3}
       propertyPath: m_Name
       value: TreasureBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776749466558773962, guid: df01dbd0e30aedf42a6e3260bbf09d76, type: 3}
+      propertyPath: m_SortingLayer
+      value: 32711
       objectReference: {fileID: 0}
     - target: {fileID: 4446594460886423295, guid: df01dbd0e30aedf42a6e3260bbf09d76, type: 3}
       propertyPath: m_Pivot.x
@@ -204,11 +208,134 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6091717880429730885, guid: df01dbd0e30aedf42a6e3260bbf09d76, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 6091717880429730885, guid: df01dbd0e30aedf42a6e3260bbf09d76, type: 3}
+    - target: {fileID: 7525485278542955587, guid: df01dbd0e30aedf42a6e3260bbf09d76, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922397681842621139, guid: df01dbd0e30aedf42a6e3260bbf09d76, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922397682098916367, guid: df01dbd0e30aedf42a6e3260bbf09d76, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922397682973059093, guid: df01dbd0e30aedf42a6e3260bbf09d76, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922397683052679829, guid: df01dbd0e30aedf42a6e3260bbf09d76, type: 3}
+      propertyPath: m_Particles.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922397683052679829, guid: df01dbd0e30aedf42a6e3260bbf09d76, type: 3}
+      propertyPath: m_Particles.Array.data[1]
+      value: 
+      objectReference: {fileID: 4190697764980726698}
+    - target: {fileID: 9037893382885400356, guid: df01dbd0e30aedf42a6e3260bbf09d76, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 9037893382885400356, guid: df01dbd0e30aedf42a6e3260bbf09d76, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1601893225331624921, guid: df01dbd0e30aedf42a6e3260bbf09d76, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2429247024275413143}
   m_SourcePrefab: {fileID: 100100000, guid: df01dbd0e30aedf42a6e3260bbf09d76, type: 3}
+--- !u!114 &1544947021851094981 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6091717880429730885, guid: df01dbd0e30aedf42a6e3260bbf09d76, type: 3}
+  m_PrefabInstance: {fileID: 4754358658200220544}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46c2bfa0788541b5bd16a32214eb27ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1578484709249606200 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6061008886945993144, guid: df01dbd0e30aedf42a6e3260bbf09d76, type: 3}
+  m_PrefabInstance: {fileID: 4754358658200220544}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6323600764596697177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!198 &4190697764980726698 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8922397682973059114, guid: df01dbd0e30aedf42a6e3260bbf09d76, type: 3}
+  m_PrefabInstance: {fileID: 4754358658200220544}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6323600764596697177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1601893225331624921, guid: df01dbd0e30aedf42a6e3260bbf09d76, type: 3}
+  m_PrefabInstance: {fileID: 4754358658200220544}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2429247024275413143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6323600764596697177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1578484709249606200}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1544947021851094981}
+        m_TargetAssemblyTypeName: _2_Scripts.UI.Ingame.LootBox.UI_LootBox, Assembly-CSharp
+        m_MethodName: OnOpenLootBox
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &8957547615651194239 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4446594460886423295, guid: df01dbd0e30aedf42a6e3260bbf09d76, type: 3}

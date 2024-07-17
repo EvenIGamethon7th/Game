@@ -17,26 +17,25 @@
         // 학년
         public ReactiveProperty<int> UserLevel { get; private set; } =  new ReactiveProperty<int>(1);
 
-        public ReactiveProperty<int> UserExp { get; private set; } = new ReactiveProperty<int>();
+        public ReactiveProperty<int> UserExp { get; private set; } = new ReactiveProperty<int>(0);
         
-        public  ReactiveProperty<int> UserGold { get; private set; } = new ReactiveProperty<int>(1000);
-        
-        public int UserLuckyCoin { get; private set; } = 0;
+        public ReactiveProperty<int> UserGold { get; private set; } = new ReactiveProperty<int>(1000);
+
+        public ReactiveProperty<int> UserLuckyCoin { get; private set; } = new ReactiveProperty<int>(0);
         public void AddUserLuckyCoin(int value)
         {
-            UserLuckyCoin += value;
-            Debug.Log(UserLuckyCoin);
+            UserLuckyCoin.Value += value;
         }
         public void UpdateGold(int value)
         {
             UserGold.Value += value;
-            MessageBroker.Default.Publish(EGameMessage.GoldChange);
         }
 
         public void AddExp(int exp)
         {
             if(UserLevel.Value == 6)
             {
+                UserExp.Value = 1;
                 return;
             }
             UserExp.Value += exp;
@@ -47,14 +46,20 @@
             }
         }
         public List<CharacterInfo> UserCharacterList { get; private set; } = new List<CharacterInfo>();
-        private readonly Dictionary<int,int> mExpTable = new Dictionary<int, int>
+        public readonly Dictionary<int,int> mExpTable = new Dictionary<int, int>
         {
             {1, 10},
             {2, 10},
             {3, 40},
             {4, 60},
             {5, 90},
+            {6, 1}
         };
+
+        public int GetMaxExp()
+        {
+            return mExpTable[UserLevel.Value];
+        }
         private readonly Dictionary<int, (int nomal, int rare, int epic)> mGradeRates = new Dictionary<int, (int general, int elite, int legendary)>
         {
             { 1, (100, 0, 0) },
@@ -92,7 +97,7 @@
             MessageBroker.Default.Receive<GameMessage<int>>().Where(message=> message.Message == EGameMessage.StageChange)
                 .Subscribe(message =>
                 {
-                    UserExp.Value += 5;
+                    AddExp(5);
                 });
 
             

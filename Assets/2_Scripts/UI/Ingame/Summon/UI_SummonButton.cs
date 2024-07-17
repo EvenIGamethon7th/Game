@@ -43,15 +43,26 @@ namespace _2_Scripts.UI
             {2,AddressableTable.Default_RareProjectile},
             {3,AddressableTable.Default_UniqueProjectile},
         };
+
+        [SerializeField]
+        private readonly Dictionary<int, Sprite> mCardSpriteTable = new();
+        
+
         private CharacterData mCharacterData;
         
         private bool mbIsLockRerollButton = false;
         
+        private RectTransform uiRectTransform;
         
         [SerializeField]
-        private Button mButtom;
-
-        private RectTransform uiRectTransform;
+        private Image mCardImage;
+        
+        
+        public void OnLockButton(bool isLock)
+        {
+            mbIsLockRerollButton = isLock;
+        }
+        
         private void Start()
         {
             uiRectTransform = GetComponent<RectTransform>();
@@ -126,7 +137,13 @@ namespace _2_Scripts.UI
            mCharacterGraphic.Initialize(true);
            mCharacterName.SetLocalizeKey(mCharacterData.nameKey);
            mCharacterCost.text = $"{mCharacterData.cost}$";
+           CardChange(mCharacterData.rank);
         }
-        
+
+        private void CardChange(int rankNum)
+        {
+            mCardSpriteTable.TryGetValue(rankNum, out var image);
+            mCardImage.sprite = image;
+        }
     }
 }

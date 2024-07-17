@@ -17,20 +17,18 @@
         // 학년
         public ReactiveProperty<int> UserLevel { get; private set; } =  new ReactiveProperty<int>(1);
 
-        public ReactiveProperty<int> UserExp { get; private set; } = new ReactiveProperty<int>();
+        public ReactiveProperty<int> UserExp { get; private set; } = new ReactiveProperty<int>(0);
         
-        public  ReactiveProperty<int> UserGold { get; private set; } = new ReactiveProperty<int>(1000);
-        
-        public int UserLuckyCoin { get; private set; } = 0;
+        public ReactiveProperty<int> UserGold { get; private set; } = new ReactiveProperty<int>(1000);
+
+        public ReactiveProperty<int> UserLuckyCoin { get; private set; } = new ReactiveProperty<int>(0);
         public void AddUserLuckyCoin(int value)
         {
-            UserLuckyCoin += value;
-            Debug.Log(UserLuckyCoin);
+            UserLuckyCoin.Value += value;
         }
         public void UpdateGold(int value)
         {
             UserGold.Value += value;
-            MessageBroker.Default.Publish(EGameMessage.GoldChange);
         }
 
         public void AddExp(int exp)

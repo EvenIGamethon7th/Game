@@ -52,17 +52,19 @@ namespace _2_Scripts.UI
         
         private bool mbIsLockRerollButton = false;
         
-        
-        [SerializeField]
-        private Button mButtom;
-
         private RectTransform uiRectTransform;
         
-        private SpriteRenderer mCardImage;
+        [SerializeField]
+        private Image mCardImage;
+        
+        
+        public void OnLockButton(bool isLock)
+        {
+            mbIsLockRerollButton = isLock;
+        }
         
         private void Start()
         {
-            mCardImage = GetComponent<SpriteRenderer>();
             uiRectTransform = GetComponent<RectTransform>();
             UpdateCharacter();
             MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange)
@@ -140,7 +142,7 @@ namespace _2_Scripts.UI
 
         private void CardChange(int rankNum)
         {
-            mCardSpriteTable.TryGetValue(mCharacterData.rank, out var image);
+            mCardSpriteTable.TryGetValue(rankNum, out var image);
             mCardImage.sprite = image;
         }
     }

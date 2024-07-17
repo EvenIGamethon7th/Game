@@ -4,7 +4,6 @@
     {
         PlayerDamage,
         BossDeath,
-        GoldChange,
         StageChange,
         ExpChange
     }

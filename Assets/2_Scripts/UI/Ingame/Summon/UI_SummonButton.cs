@@ -43,6 +43,11 @@ namespace _2_Scripts.UI
             {2,AddressableTable.Default_RareProjectile},
             {3,AddressableTable.Default_UniqueProjectile},
         };
+
+        [SerializeField]
+        private readonly Dictionary<int, Sprite> mCardSpriteTable = new();
+        
+
         private CharacterData mCharacterData;
         
         private bool mbIsLockRerollButton = false;
@@ -52,8 +57,12 @@ namespace _2_Scripts.UI
         private Button mButtom;
 
         private RectTransform uiRectTransform;
+        
+        private SpriteRenderer mCardImage;
+        
         private void Start()
         {
+            mCardImage = GetComponent<SpriteRenderer>();
             uiRectTransform = GetComponent<RectTransform>();
             UpdateCharacter();
             MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange)
@@ -126,7 +135,13 @@ namespace _2_Scripts.UI
            mCharacterGraphic.Initialize(true);
            mCharacterName.SetLocalizeKey(mCharacterData.nameKey);
            mCharacterCost.text = $"{mCharacterData.cost}$";
+           CardChange(mCharacterData.rank);
         }
-        
+
+        private void CardChange(int rankNum)
+        {
+            mCardSpriteTable.TryGetValue(mCharacterData.rank, out var image);
+            mCardImage.sprite = image;
+        }
     }
 }

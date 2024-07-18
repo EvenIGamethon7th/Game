@@ -1,14 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Cargold;
 using Sirenix.OdinInspector;
-using Cargold.DB.TableImporter;
-using OfficeOpenXml.FormulaParsing.Excel.Operators;
-using Unity.VisualScripting;
-using _2_Scripts.Game.ScriptableObject.Skill.Passive.Buff;
 using _2_Scripts.Game.Unit.Data;
-using UnityEditor.U2D.Animation;
 using _2_Scripts.Utils;
 
 // 카라리 테이블 임포터에 의해 생성된 스크립트입니다.

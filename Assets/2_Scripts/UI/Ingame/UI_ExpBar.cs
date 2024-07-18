@@ -1,8 +1,5 @@
-﻿using System;
-using _2_Scripts.Utils;
-using Cysharp.Threading.Tasks;
+﻿
 using DG.Tweening;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;

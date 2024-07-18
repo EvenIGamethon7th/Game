@@ -37,4 +37,19 @@ public static partial class TableDataKey_C
     public const string Character_Character_33 = "Character_33";
     public const string Character_Character_34 = "Character_34";
     public const string Character_Character_35 = "Character_35";
+    public const string Character_Character_36 = "Character_36";
+    public const string Character_Character_37 = "Character_37";
+    public const string Character_Character_38 = "Character_38";
+    public const string Character_Character_39 = "Character_39";
+    public const string Character_Character_40 = "Character_40";
+    public const string Character_Character_41 = "Character_41";
+    public const string Character_Character_42 = "Character_42";
+    public const string Character_Character_43 = "Character_43";
+    public const string Character_Character_44 = "Character_44";
+    public const string Character_Character_45 = "Character_45";
+    public const string Character_Character_46 = "Character_46";
+    public const string Character_Character_47 = "Character_47";
+    public const string Character_Character_48 = "Character_48";
+    public const string Character_Character_49 = "Character_49";
+    public const string Character_Character_50 = "Character_50";
 }

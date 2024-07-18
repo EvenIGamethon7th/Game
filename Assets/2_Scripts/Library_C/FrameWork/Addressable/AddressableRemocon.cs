@@ -1,9 +1,8 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using Sirenix.OdinInspector;
-using UnityEditor;
+#if UNITY_EDITOR
 using UnityEditor.AddressableAssets;
-using UnityEngine.AddressableAssets;
+#endif
 
 namespace Cargold
 {
@@ -20,8 +19,9 @@ namespace Cargold
                 private const string  EXCEPT_GROUP = "Built In Data";
                 [BoxGroup(Editor_C.Mandatory), LabelText("Script 생성 경로"), FolderPath]
                 public string scriptPath = CargoldLibrary_C.GetInitError;
-                [Button("어드레서블 이름 스크립트 생성")]
+                
 #if UNITY_EDITOR
+                [Button("어드레서블 이름 스크립트 생성")]
                 private void CreateScriptData()
                 {
                     string dataKeyScriptPath = StringBuilder_C.Append_Func(scriptPath + "/", CLASS_NAME, ".cs");

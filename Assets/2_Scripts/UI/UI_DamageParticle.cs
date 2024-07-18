@@ -15,24 +15,29 @@ namespace _2_Scripts.UI
         private UI_PlayerHPSlider mPlayerHPSlider;
 
         private ParticleImage mPaticleImage;
-        
+
         public void Start()
         {
             mPaticleImage = GetComponent<ParticleImage>();
-            
-            MessageBroker.Default.Receive<GameMessage<float>>()
-                .Where(message => message.Message == EGameMessage.PlayerDamage)
-                .Subscribe(message =>
-                {
-                    mPaticleImage.rateOverTime = message.Value;
-                    mPaticleImage.Play();
-                    // 하나의 파티클로 플레이만 해주기 때문에 Action Callback 타이밍을 맞추기가 어려움
-                    // 해서 lifeTime (2초) 뒤에 그냥 실행되게끔 함
-                    DOVirtual.DelayedCall(mPaticleImage.lifetime.constantMax, () =>
-                    {
-                        mPlayerHPSlider.OnHealthBarUpdate(message.Value);
-                    });
-                }).AddTo(this);
+
+            GameManager.Instance.DamageHp += UpdateHpBar;
+        }
+
+        private void UpdateHpBar(float damage)
+        {
+            mPaticleImage.rateOverTime = damage;
+            mPaticleImage.Play();
+            // 하나의 파티클로 플레이만 해주기 때문에 Action Callback 타이밍을 맞추기가 어려움
+            // 해서 lifeTime (2초) 뒤에 그냥 실행되게끔 함
+            DOVirtual.DelayedCall(mPaticleImage.lifetime.constantMax, () =>
+            {
+                mPlayerHPSlider.OnHealthBarUpdate(damage);
+            });
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.Instance.DamageHp -= UpdateHpBar;
         }
 
     }

@@ -2,7 +2,6 @@
 {
     public enum EGameMessage
     {
-        PlayerDamage,
         BossDeath,
         StageChange,
         ExpChange

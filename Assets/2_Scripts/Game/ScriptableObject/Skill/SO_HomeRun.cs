@@ -1,5 +1,6 @@
 using _2_Scripts.Demo;
 using _2_Scripts.Game.Unit;
+using _2_Scripts.Utils;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
@@ -43,7 +44,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
             {
                 if (!monster[i].IsBoss)
                 {
-                    monster[i].TakeDamage(monster[i].GetMonsterData.MaxHp, AttackType, true);
+                    monster[i].TakeDamage(monster[i].GetMonsterData.MaxHp, AttackType, Define.EInstantKillType.Exile);
                     ObjectPoolManager.Instance.CreatePoolingObject(HitEffect, monster[i].transform.position).GetComponent<HomeRunParticle>().SetTextureParticle(monster[i].Renderer.sprite);
                 }
 

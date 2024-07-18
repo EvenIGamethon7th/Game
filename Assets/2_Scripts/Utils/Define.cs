@@ -10,6 +10,15 @@ namespace _2_Scripts.Utils
             Magical,
             TrueDamage
         }
+
+        public enum EInstantKillType
+        {
+            None,
+            Exile,
+            Execution,
+            Transition
+        }
+
        public static readonly Dictionary<int, string> SpawnEffectDictionary = new Dictionary<int, string>
        {
            { 1, AddressableTable.Default_Open_BoxGift_2 },

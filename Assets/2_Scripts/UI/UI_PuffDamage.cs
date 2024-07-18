@@ -13,12 +13,17 @@ namespace _2_Scripts.UI
         private void Start()
         {
             mPaticleImage = GetComponent<ParticleImage>();
-            MessageBroker.Default.Receive<GameMessage<float>>()
-                .Where(message => message.Message == EGameMessage.PlayerDamage)
-                .Subscribe(message =>
-                {
-                    mPaticleImage.Play();
-                }).AddTo(this);
+            GameManager.Instance.DamageHp += PlayParticle;
+        }
+
+        private void PlayParticle(float damage)
+        {
+            mPaticleImage.Play();
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.Instance.DamageHp -= PlayParticle;
         }
     }
 }

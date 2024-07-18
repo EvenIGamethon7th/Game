@@ -1,6 +1,7 @@
 ﻿
 //  HP , 재화 , 씬 이동 등 여러가지 관리 목적
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using _2_Scripts.Game.ScriptableObject.Character;
@@ -14,7 +15,9 @@ using Random = System.Random;
 public class GameManager : Singleton<GameManager>
 {
 
-    public float UserHp { get; private set; } = 100;
+    public ReactiveProperty<float> UserHp { get; private set; } = new ReactiveProperty<float>(100);
+
+    public event Action<float> DamageHp;
     // 학년
     public ReactiveProperty<int> UserLevel { get; private set; } = new ReactiveProperty<int>(1);
 
@@ -23,11 +26,13 @@ public class GameManager : Singleton<GameManager>
     public ReactiveProperty<int> UserGold { get; private set; } = new ReactiveProperty<int>(1000);
 
     public ReactiveProperty<int> UserLuckyCoin { get; private set; } = new ReactiveProperty<int>(5);
+
     public void UpdateMoney(string moneyKey, int value)
     {
         MoneyData money = DataBase_Manager.Instance.GetMoney.GetData_Func(moneyKey);
         UpdateMoney(money.Type, value);
     }
+
     public void UpdateMoney(EMoneyType moneyType, int value)
     {
         switch (moneyType)
@@ -39,6 +44,13 @@ public class GameManager : Singleton<GameManager>
                 UserLuckyCoin.Value += value;
                 break;
         }
+    }
+
+    public void UpdateUserHp(float hp)
+    {
+        if (hp > 0)
+            DamageHp?.Invoke(hp);
+        UserHp.Value -= hp;
     }
 
     public void AddExp(int exp)
@@ -114,13 +126,6 @@ public class GameManager : Singleton<GameManager>
             .Subscribe(message =>
             {
                 AddExp(5);
-            });
-
-
-        MessageBroker.Default.Receive<GameMessage<float>>().Where(message => message.Message == EGameMessage.PlayerDamage)
-            .Subscribe(message =>
-            {
-                UserHp -= message.Value;
             });
 
         MessageBroker.Default.Receive<TaskMessage>()

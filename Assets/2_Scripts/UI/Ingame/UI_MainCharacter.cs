@@ -31,6 +31,11 @@ namespace _2_Scripts.UI.Ingame
             SetCoolTime(0);
         }
 
+        public void Init(float coolTime)
+        {
+            mMaterial.SetFloat("_CoolTime", coolTime);
+        }
+
         public void OnDrag(PointerEventData eventData)
         {
             Vector2 imagePos = UICamera.Instance.Camera.WorldToScreenPoint(mRectTransform.position);

@@ -34,15 +34,16 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.DirectionSkill
                 return false;
             }
             CastEffectPlay(ownerTransform.position);
-            var attacker = ownerTransform.GetComponent<CUnit>();
-            attacker.SetFlipUnit(detectingTargets.transform);
-            SpawnCollisionObject(detectingTargets.transform,totalDamage,attacker);
+            if (ownerTransform.TryGetComponent<CUnit>(out var attacker))
+                attacker.SetFlipUnit(detectingTargets.transform);
+            SpawnCollisionObject(detectingTargets.transform, totalDamage, attacker);
+            
             return true;
         }
 
         // target을 기준으로 x , y를 늘리면서 타겟 감지.
 
-        private void SpawnCollisionObject(Transform target,float damage,CUnit attacker)
+        private void SpawnCollisionObject(Transform target,float damage,CUnit attacker = null)
         {
             HashSet<Vector3> spawnPos = new HashSet<Vector3>(); 
             HashSet<Monster> takeDamageMonsters = new HashSet<Monster>();

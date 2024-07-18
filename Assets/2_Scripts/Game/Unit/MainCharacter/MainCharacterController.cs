@@ -1,4 +1,6 @@
+using _2_Scripts.Game.ScriptableObject.Character;
 using _2_Scripts.Game.ScriptableObject.Skill;
+using _2_Scripts.Game.Unit.Data;
 using _2_Scripts.UI.Ingame;
 using Cysharp.Threading.Tasks;
 using System.Collections;
@@ -17,6 +19,11 @@ namespace _2_Scripts.Game.Unit.MainCharacter
         }
 
         [SerializeField]
+        private MainCharacterInfo mCharacterInfo;
+        [SerializeField]
+        private CharacterData mCharacterData;
+
+        [SerializeField]
         private float mCoolTime = 30;
         [SerializeField]
         private float mCurrentCoolTime = 0;
@@ -25,12 +32,22 @@ namespace _2_Scripts.Game.Unit.MainCharacter
         [SerializeField]
         private GameObject mSkillTrigger;
         [SerializeField]
+        private BuffData mBuffData;
+        [SerializeField]
         private EMainCharacterSkillType mSkillType;
 
         private CancellationTokenSource mCts = new CancellationTokenSource();
 
         private void Start()
         {
+            //TODO 나중에 게임매니저에서 받아오기
+            //mCharacterInfo = GameManager.Instance.MainCharacterList[0];
+            mCharacterData = MemoryPoolManager<CharacterData>.CreatePoolingObject();
+            mBuffData = MemoryPoolManager<BuffData>.CreatePoolingObject();
+            mCharacterData.Init(mCharacterInfo.CharacterEvolutions[1].GetData, mBuffData);
+            mCoolTime = mCharacterInfo.ActiveSkillList[0].CoolTime;
+            mMainCharacterUI.Init(mCoolTime);
+
             if (mSkillType == EMainCharacterSkillType.Buff)
             {
                 mMainCharacterUI.PointerUp += UseSkill;
@@ -67,8 +84,7 @@ namespace _2_Scripts.Game.Unit.MainCharacter
 
             if (mSkillTrigger.activeSelf)
             {
-                mSkillTrigger.TryGetComponent<TestMainCharacterSkill>(out var test);
-                test.UseSkill();
+                mCharacterInfo.ActiveSkillList[mCharacterData.rank].Skill.CastAttack(mSkillTrigger.transform, mCharacterData);
                 mSkillTrigger.SetActive(false);
             }
         }
@@ -110,6 +126,8 @@ namespace _2_Scripts.Game.Unit.MainCharacter
             mCts.Cancel();
             mCts.Dispose();
             mCts = null;
+            mBuffData.Clear();
+            mCharacterData.Clear();
         }
     }
 }

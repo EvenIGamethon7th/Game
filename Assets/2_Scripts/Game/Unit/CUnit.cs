@@ -4,6 +4,7 @@ using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using _2_Scripts.Game.ScriptableObject.Character;
 using _2_Scripts.Game.ScriptableObject.Skill;
 using _2_Scripts.Utils.Structure;
@@ -197,6 +198,7 @@ namespace _2_Scripts.Game.Unit
         public void Init(CharacterData characterData)
         {
             CharacterDataLoad(characterData);
+            CancelAndDisposeToken();
             var mat = mMeshRenderer.materials;
 
             mAnimation.skeletonDataAsset = ResourceManager.Instance.Load<SkeletonDataAsset>($"{characterData.characterPack}_{ELabelNames.SkeletonData}");
@@ -221,15 +223,32 @@ namespace _2_Scripts.Game.Unit
             return CharacterDataInfo.DefaultAttack.CastAttack(transform, CharacterDatas, mBeforePassive, mAfterPassive);
         }
 
+        private CancellationTokenSource mCancleToken = new CancellationTokenSource();
+        private void CancelAndDisposeToken()
+        {
+            if (mCancleToken != null)
+            {
+                if (!mCancleToken.IsCancellationRequested)
+                {
+                    mCancleToken.Cancel();
+                }
+                mCancleToken.Dispose();
+                mCancleToken = null;
+            }
+            else
+            {
+                mCancleToken = new CancellationTokenSource();
+            }
+        }
         private async UniTaskVoid CoolTimeSkill(SkillInfo skill)
         {
-            await UniTask.WaitForSeconds(skill.CoolTime);
+            await UniTask.WaitForSeconds(skill.CoolTime,cancellationToken:mCancleToken.Token);
             AddReadySkill(skill);
         }
 
         private async UniTaskVoid CoolTimeSkill(float time,SkillInfo skill)
         {
-            await UniTask.WaitForSeconds(time);
+            await UniTask.WaitForSeconds(time,cancellationToken:mCancleToken.Token);
             AddReadySkill(skill);
         }
 
@@ -258,6 +277,7 @@ namespace _2_Scripts.Game.Unit
             mBeforePassive = null;
             mAfterPassive = null;
             ReadySkillQueue.Clear();
+            CancelAndDisposeToken();
             for (int i = 0; i < mBuffs.Count; ++i)
             {
                 mBuffs[i].Clear();
@@ -265,5 +285,7 @@ namespace _2_Scripts.Game.Unit
             gameObject.SetActive(false);
             transform.parent = mOriginParent;
         }
+        
+     
     }
 }

@@ -29,11 +29,11 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
                 Debug.Log("GetGold Unique");
                 if (StageManager.Instance.WaveCount < mEnhanceWave)
                 {
-                    GameManager.Instance.UpdateGold(mGoldBefore11Wave);
+                    GameManager.Instance.UpdateMoney(EMoneyType.Gold,mGoldBefore11Wave);
                 }
                 else
                 {
-                    GameManager.Instance.UpdateGold(mGoldAfter10Wave);
+                    GameManager.Instance.UpdateMoney(EMoneyType.Gold,mGoldAfter10Wave);
                 }
             }
 

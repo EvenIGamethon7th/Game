@@ -13,12 +13,13 @@ public partial class MonsterData : Data_C
      public string Key;
      [LabelText("이름")] public string nameKey;
      [LabelText("체력")] public float hp;
-     [LabelText("공격력")] public float atk;
      [LabelText("방어력")] public float def;
-     [LabelText("이동속도")] public float speed;
      [LabelText("마법방어력")] public float mdef;
-     [LabelText("경험치")] public int exp;
-     [LabelText("보상")] public int reward;
+     [LabelText("이동속도")] public float speed;
+     [LabelText("공격력")] public int atk;
+     [LabelText("보상재화")] public string reward_type;
+     [LabelText("보상개수")] public int reward_count;
+     [LabelText("이미지")] public string image;
 
     
 
@@ -28,12 +29,13 @@ public partial class MonsterData : Data_C
         Key = _cellDataArr[0];
         nameKey = _cellDataArr[1];
         hp = _cellDataArr[2].ToFloat();
-        atk = _cellDataArr[3].ToFloat();
-        def = _cellDataArr[4].ToFloat();
+        def = _cellDataArr[3].ToFloat();
+        mdef = _cellDataArr[4].ToFloat();
         speed = _cellDataArr[5].ToFloat();
-        mdef = _cellDataArr[6].ToFloat();
-        exp = _cellDataArr[7].ToInt();
-        reward = _cellDataArr[8].ToInt();
+        atk = _cellDataArr[6].ToInt();
+        reward_type = _cellDataArr[7];
+        reward_count = _cellDataArr[8].ToInt();
+        image = _cellDataArr[9];
     }
 #endif
 }

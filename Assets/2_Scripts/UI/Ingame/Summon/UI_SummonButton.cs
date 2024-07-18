@@ -102,7 +102,7 @@ namespace _2_Scripts.UI
             });
             if (isCreateUnit)
             {
-                GameManager.Instance.UpdateGold(-mCharacterData.cost);
+                GameManager.Instance.UpdateMoney(EMoneyType.Gold,-mCharacterData.cost);
                 mCurrentSummonButtonState = ESummonButtonState.Disable;
                 Tween_C.OnPunch_Func(this.transform);
                 ShowChange();

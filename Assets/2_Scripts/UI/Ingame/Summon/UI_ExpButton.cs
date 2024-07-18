@@ -46,7 +46,7 @@ namespace _2_Scripts.UI
 
             Tween_C.OnPunch_Func(this.transform);
             GameManager.Instance.AddExp(mExpPrice);
-            GameManager.Instance.UpdateGold(-mExpPrice);
+            GameManager.Instance.UpdateMoney(EMoneyType.Gold,-mExpPrice);
         }
 
     }

@@ -13,14 +13,13 @@ namespace _2_Scripts.UI
         [SerializeField] 
         private TextMeshProUGUI text;
 
-        private bool mIsTimer = false;
+        private int mStartTime = 15;
         private void Start()
         {
             MessageBroker.Default.Receive<GameMessage<int>>()
                 .Where(m => m.Message == EGameMessage.StageChange)
                 .Subscribe(m =>
                 {
-                    mIsTimer = true;
                     StartTimer();
                 })
                 .AddTo(this);
@@ -30,18 +29,17 @@ namespace _2_Scripts.UI
 
         private void StartTimer()
         {
-            int startTime = 15;
             Observable.Interval(System.TimeSpan.FromSeconds(1))
-                .TakeWhile(_ => startTime >= 1)
+                .TakeWhile(_ => mStartTime >= 1)
                 .Subscribe(_ =>
                     {
-                        startTime--;
-                        text.text = $"{startTime} Sec";
+                        mStartTime--;
+                        text.text = $"00:{mStartTime}";
                         Tween_C.OnPunch_Func(this);
                     }, 
                     () =>
                     {
-                        mIsTimer = false;
+                        mStartTime = 15;
                     })
                 .AddTo(this);
         }

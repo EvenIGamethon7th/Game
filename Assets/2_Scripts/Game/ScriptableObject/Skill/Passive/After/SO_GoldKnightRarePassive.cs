@@ -20,7 +20,7 @@ public class SO_GoldKnightRarePassive : AfterPassive
     {
         if (Random.Range(0, 100f) < mPercentage)
         {
-            GameManager.Instance.UpdateGold(mGold);
+            GameManager.Instance.UpdateMoney(EMoneyType.Gold,mGold);
             Debug.Log($"GetGold {mGold}");
         }
     }

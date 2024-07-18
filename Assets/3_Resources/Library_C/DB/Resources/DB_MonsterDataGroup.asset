@@ -34,7 +34,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 34
     - Name: 
       Entry: 7
       Data: 
@@ -53,24 +53,1611 @@ MonoBehaviour:
     - Name: hp
       Entry: 4
       Data: 100
-    - Name: atk
-      Entry: 4
-      Data: 10
     - Name: def
       Entry: 4
-      Data: 2.5
-    - Name: speed
-      Entry: 4
-      Data: 1
+      Data: 2
     - Name: mdef
       Entry: 4
-      Data: 1.5
-    - Name: exp
+      Data: 2
+    - Name: speed
+      Entry: 4
+      Data: 2
+    - Name: atk
       Entry: 3
-      Data: 10
-    - Name: reward
+      Data: 1
+    - Name: reward_type
+      Entry: 1
+      Data: Money_1001
+    - Name: reward_count
       Entry: 3
       Data: 20
+    - Name: image
+      Entry: 1
+      Data: red monster 01
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_1
+    - Name: $v
+      Entry: 7
+      Data: 3|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_1
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_1
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 2
+    - Name: atk
+      Entry: 3
+      Data: 1
+    - Name: reward_type
+      Entry: 1
+      Data: Money_1001
+    - Name: reward_count
+      Entry: 3
+      Data: 20
+    - Name: image
+      Entry: 1
+      Data: red monster 01
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_2
+    - Name: $v
+      Entry: 7
+      Data: 4|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_2
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_2
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 2
+    - Name: atk
+      Entry: 3
+      Data: 1
+    - Name: reward_type
+      Entry: 1
+      Data: Money_1001
+    - Name: reward_count
+      Entry: 3
+      Data: 20
+    - Name: image
+      Entry: 1
+      Data: Red monster 02
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_3
+    - Name: $v
+      Entry: 7
+      Data: 5|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_3
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_3
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 2
+    - Name: atk
+      Entry: 3
+      Data: 1
+    - Name: reward_type
+      Entry: 1
+      Data: Money_1001
+    - Name: reward_count
+      Entry: 3
+      Data: 20
+    - Name: image
+      Entry: 1
+      Data: Red monster 03
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_4
+    - Name: $v
+      Entry: 7
+      Data: 6|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_4
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_4
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 2
+    - Name: atk
+      Entry: 3
+      Data: 1
+    - Name: reward_type
+      Entry: 1
+      Data: Money_1001
+    - Name: reward_count
+      Entry: 3
+      Data: 20
+    - Name: image
+      Entry: 1
+      Data: Red monster 04
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_5
+    - Name: $v
+      Entry: 7
+      Data: 7|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_5
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_5
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 2
+    - Name: atk
+      Entry: 3
+      Data: 1
+    - Name: reward_type
+      Entry: 1
+      Data: Money_1001
+    - Name: reward_count
+      Entry: 3
+      Data: 20
+    - Name: image
+      Entry: 1
+      Data: Red monster 05
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_6
+    - Name: $v
+      Entry: 7
+      Data: 8|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_6
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_6
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 2
+    - Name: atk
+      Entry: 3
+      Data: 1
+    - Name: reward_type
+      Entry: 1
+      Data: Money_1001
+    - Name: reward_count
+      Entry: 3
+      Data: 20
+    - Name: image
+      Entry: 1
+      Data: Red monster 06
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_7
+    - Name: $v
+      Entry: 7
+      Data: 9|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_7
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_7
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 2
+    - Name: atk
+      Entry: 3
+      Data: 1
+    - Name: reward_type
+      Entry: 1
+      Data: Money_1001
+    - Name: reward_count
+      Entry: 3
+      Data: 20
+    - Name: image
+      Entry: 1
+      Data: Red monster 07
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_8
+    - Name: $v
+      Entry: 7
+      Data: 10|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_8
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_8
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 2
+    - Name: atk
+      Entry: 3
+      Data: 1
+    - Name: reward_type
+      Entry: 1
+      Data: Money_1001
+    - Name: reward_count
+      Entry: 3
+      Data: 20
+    - Name: image
+      Entry: 1
+      Data: Red monster 08
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_9
+    - Name: $v
+      Entry: 7
+      Data: 11|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_9
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_9
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 2
+    - Name: atk
+      Entry: 3
+      Data: 1
+    - Name: reward_type
+      Entry: 1
+      Data: Money_1001
+    - Name: reward_count
+      Entry: 3
+      Data: 20
+    - Name: image
+      Entry: 1
+      Data: Red monster 09
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_10
+    - Name: $v
+      Entry: 7
+      Data: 12|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_10
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_10
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 2
+    - Name: atk
+      Entry: 3
+      Data: 1
+    - Name: reward_type
+      Entry: 1
+      Data: Money_1001
+    - Name: reward_count
+      Entry: 3
+      Data: 20
+    - Name: image
+      Entry: 1
+      Data: Red monster 10
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_11
+    - Name: $v
+      Entry: 7
+      Data: 13|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_11
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_11
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 2
+    - Name: atk
+      Entry: 3
+      Data: 1
+    - Name: reward_type
+      Entry: 1
+      Data: Money_1001
+    - Name: reward_count
+      Entry: 3
+      Data: 20
+    - Name: image
+      Entry: 1
+      Data: Red monster 11
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_12
+    - Name: $v
+      Entry: 7
+      Data: 14|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_12
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_12
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 2
+    - Name: atk
+      Entry: 3
+      Data: 1
+    - Name: reward_type
+      Entry: 1
+      Data: Money_1001
+    - Name: reward_count
+      Entry: 3
+      Data: 20
+    - Name: image
+      Entry: 1
+      Data: Green monster 01
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_13
+    - Name: $v
+      Entry: 7
+      Data: 15|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_13
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_13
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 2
+    - Name: atk
+      Entry: 3
+      Data: 1
+    - Name: reward_type
+      Entry: 1
+      Data: Money_1001
+    - Name: reward_count
+      Entry: 3
+      Data: 20
+    - Name: image
+      Entry: 1
+      Data: Green monster 02
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_14
+    - Name: $v
+      Entry: 7
+      Data: 16|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_14
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_14
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 2
+    - Name: atk
+      Entry: 3
+      Data: 1
+    - Name: reward_type
+      Entry: 1
+      Data: Money_1001
+    - Name: reward_count
+      Entry: 3
+      Data: 20
+    - Name: image
+      Entry: 1
+      Data: Green monster 03
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_15
+    - Name: $v
+      Entry: 7
+      Data: 17|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_15
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_15
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 2
+    - Name: atk
+      Entry: 3
+      Data: 1
+    - Name: reward_type
+      Entry: 1
+      Data: Money_1001
+    - Name: reward_count
+      Entry: 3
+      Data: 20
+    - Name: image
+      Entry: 1
+      Data: Green monster 04
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_16
+    - Name: $v
+      Entry: 7
+      Data: 18|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_16
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_16
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 0
+    - Name: atk
+      Entry: 3
+      Data: 0
+    - Name: reward_type
+      Entry: 1
+      Data: 
+    - Name: reward_count
+      Entry: 3
+      Data: 0
+    - Name: image
+      Entry: 1
+      Data: Green monster 05
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_17
+    - Name: $v
+      Entry: 7
+      Data: 19|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_17
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_17
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 0
+    - Name: atk
+      Entry: 3
+      Data: 0
+    - Name: reward_type
+      Entry: 1
+      Data: 
+    - Name: reward_count
+      Entry: 3
+      Data: 0
+    - Name: image
+      Entry: 1
+      Data: Green monster 06
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_18
+    - Name: $v
+      Entry: 7
+      Data: 20|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_18
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_18
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 0
+    - Name: atk
+      Entry: 3
+      Data: 0
+    - Name: reward_type
+      Entry: 1
+      Data: 
+    - Name: reward_count
+      Entry: 3
+      Data: 0
+    - Name: image
+      Entry: 1
+      Data: Green monster 07
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_19
+    - Name: $v
+      Entry: 7
+      Data: 21|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_19
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_19
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 0
+    - Name: atk
+      Entry: 3
+      Data: 0
+    - Name: reward_type
+      Entry: 1
+      Data: 
+    - Name: reward_count
+      Entry: 3
+      Data: 0
+    - Name: image
+      Entry: 1
+      Data: Green monster 08
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_20
+    - Name: $v
+      Entry: 7
+      Data: 22|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_20
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_20
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 0
+    - Name: atk
+      Entry: 3
+      Data: 0
+    - Name: reward_type
+      Entry: 1
+      Data: 
+    - Name: reward_count
+      Entry: 3
+      Data: 0
+    - Name: image
+      Entry: 1
+      Data: Green monster 09
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_21
+    - Name: $v
+      Entry: 7
+      Data: 23|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_21
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_21
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 0
+    - Name: atk
+      Entry: 3
+      Data: 0
+    - Name: reward_type
+      Entry: 1
+      Data: 
+    - Name: reward_count
+      Entry: 3
+      Data: 0
+    - Name: image
+      Entry: 1
+      Data: Green monster 10
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_22
+    - Name: $v
+      Entry: 7
+      Data: 24|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_22
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_22
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 0
+    - Name: atk
+      Entry: 3
+      Data: 0
+    - Name: reward_type
+      Entry: 1
+      Data: 
+    - Name: reward_count
+      Entry: 3
+      Data: 0
+    - Name: image
+      Entry: 1
+      Data: Green monster 11
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_23
+    - Name: $v
+      Entry: 7
+      Data: 25|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_23
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_23
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 0
+    - Name: atk
+      Entry: 3
+      Data: 0
+    - Name: reward_type
+      Entry: 1
+      Data: 
+    - Name: reward_count
+      Entry: 3
+      Data: 0
+    - Name: image
+      Entry: 1
+      Data: Blue monster 01
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_24
+    - Name: $v
+      Entry: 7
+      Data: 26|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_24
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_24
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 0
+    - Name: atk
+      Entry: 3
+      Data: 0
+    - Name: reward_type
+      Entry: 1
+      Data: 
+    - Name: reward_count
+      Entry: 3
+      Data: 0
+    - Name: image
+      Entry: 1
+      Data: Blue monster 02
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_25
+    - Name: $v
+      Entry: 7
+      Data: 27|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_25
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_25
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 0
+    - Name: atk
+      Entry: 3
+      Data: 0
+    - Name: reward_type
+      Entry: 1
+      Data: 
+    - Name: reward_count
+      Entry: 3
+      Data: 0
+    - Name: image
+      Entry: 1
+      Data: Blue monster 03
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_26
+    - Name: $v
+      Entry: 7
+      Data: 28|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_26
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_26
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 0
+    - Name: atk
+      Entry: 3
+      Data: 0
+    - Name: reward_type
+      Entry: 1
+      Data: 
+    - Name: reward_count
+      Entry: 3
+      Data: 0
+    - Name: image
+      Entry: 1
+      Data: Blue monster 04
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_27
+    - Name: $v
+      Entry: 7
+      Data: 29|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_27
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_27
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 0
+    - Name: atk
+      Entry: 3
+      Data: 0
+    - Name: reward_type
+      Entry: 1
+      Data: 
+    - Name: reward_count
+      Entry: 3
+      Data: 0
+    - Name: image
+      Entry: 1
+      Data: Blue monster 05
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_28
+    - Name: $v
+      Entry: 7
+      Data: 30|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_28
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_28
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 0
+    - Name: atk
+      Entry: 3
+      Data: 0
+    - Name: reward_type
+      Entry: 1
+      Data: 
+    - Name: reward_count
+      Entry: 3
+      Data: 0
+    - Name: image
+      Entry: 1
+      Data: Blue monster 06
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_29
+    - Name: $v
+      Entry: 7
+      Data: 31|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_29
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_29
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 0
+    - Name: atk
+      Entry: 3
+      Data: 0
+    - Name: reward_type
+      Entry: 1
+      Data: 
+    - Name: reward_count
+      Entry: 3
+      Data: 0
+    - Name: image
+      Entry: 1
+      Data: Blue monster 07
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_30
+    - Name: $v
+      Entry: 7
+      Data: 32|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_30
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_30
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 0
+    - Name: atk
+      Entry: 3
+      Data: 0
+    - Name: reward_type
+      Entry: 1
+      Data: 
+    - Name: reward_count
+      Entry: 3
+      Data: 0
+    - Name: image
+      Entry: 1
+      Data: Blue monster 08
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_31
+    - Name: $v
+      Entry: 7
+      Data: 33|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_31
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_31
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 0
+    - Name: atk
+      Entry: 3
+      Data: 0
+    - Name: reward_type
+      Entry: 1
+      Data: 
+    - Name: reward_count
+      Entry: 3
+      Data: 0
+    - Name: image
+      Entry: 1
+      Data: Blue monster 09
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_32
+    - Name: $v
+      Entry: 7
+      Data: 34|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_32
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_32
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 0
+    - Name: atk
+      Entry: 3
+      Data: 0
+    - Name: reward_type
+      Entry: 1
+      Data: 
+    - Name: reward_count
+      Entry: 3
+      Data: 0
+    - Name: image
+      Entry: 1
+      Data: Blue monster 10
+    - Name: MaxHp
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Monster_33
+    - Name: $v
+      Entry: 7
+      Data: 35|MonsterData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Monster_33
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Monster_33
+    - Name: hp
+      Entry: 4
+      Data: 0
+    - Name: def
+      Entry: 4
+      Data: 0
+    - Name: mdef
+      Entry: 4
+      Data: 0
+    - Name: speed
+      Entry: 4
+      Data: 0
+    - Name: atk
+      Entry: 3
+      Data: 0
+    - Name: reward_type
+      Entry: 1
+      Data: 
+    - Name: reward_count
+      Entry: 3
+      Data: 0
+    - Name: image
+      Entry: 1
+      Data: Blue monster 11
     - Name: MaxHp
       Entry: 4
       Data: 0
@@ -90,12 +1677,409 @@ MonoBehaviour:
   - Key: Monster_0
     nameKey: Lo_Monster_0
     hp: 100
-    atk: 10
-    def: 2.5
-    speed: 1
-    mdef: 1.5
-    exp: 10
-    reward: 20
+    def: 2
+    mdef: 2
+    speed: 2
+    atk: 1
+    reward_type: Money_1001
+    reward_count: 20
+    image: red monster 01
+    MaxHp: 0
+  - Key: Monster_1
+    nameKey: Lo_Monster_1
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 2
+    atk: 1
+    reward_type: Money_1001
+    reward_count: 20
+    image: red monster 01
+    MaxHp: 0
+  - Key: Monster_2
+    nameKey: Lo_Monster_2
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 2
+    atk: 1
+    reward_type: Money_1001
+    reward_count: 20
+    image: Red monster 02
+    MaxHp: 0
+  - Key: Monster_3
+    nameKey: Lo_Monster_3
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 2
+    atk: 1
+    reward_type: Money_1001
+    reward_count: 20
+    image: Red monster 03
+    MaxHp: 0
+  - Key: Monster_4
+    nameKey: Lo_Monster_4
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 2
+    atk: 1
+    reward_type: Money_1001
+    reward_count: 20
+    image: Red monster 04
+    MaxHp: 0
+  - Key: Monster_5
+    nameKey: Lo_Monster_5
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 2
+    atk: 1
+    reward_type: Money_1001
+    reward_count: 20
+    image: Red monster 05
+    MaxHp: 0
+  - Key: Monster_6
+    nameKey: Lo_Monster_6
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 2
+    atk: 1
+    reward_type: Money_1001
+    reward_count: 20
+    image: Red monster 06
+    MaxHp: 0
+  - Key: Monster_7
+    nameKey: Lo_Monster_7
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 2
+    atk: 1
+    reward_type: Money_1001
+    reward_count: 20
+    image: Red monster 07
+    MaxHp: 0
+  - Key: Monster_8
+    nameKey: Lo_Monster_8
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 2
+    atk: 1
+    reward_type: Money_1001
+    reward_count: 20
+    image: Red monster 08
+    MaxHp: 0
+  - Key: Monster_9
+    nameKey: Lo_Monster_9
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 2
+    atk: 1
+    reward_type: Money_1001
+    reward_count: 20
+    image: Red monster 09
+    MaxHp: 0
+  - Key: Monster_10
+    nameKey: Lo_Monster_10
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 2
+    atk: 1
+    reward_type: Money_1001
+    reward_count: 20
+    image: Red monster 10
+    MaxHp: 0
+  - Key: Monster_11
+    nameKey: Lo_Monster_11
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 2
+    atk: 1
+    reward_type: Money_1001
+    reward_count: 20
+    image: Red monster 11
+    MaxHp: 0
+  - Key: Monster_12
+    nameKey: Lo_Monster_12
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 2
+    atk: 1
+    reward_type: Money_1001
+    reward_count: 20
+    image: Green monster 01
+    MaxHp: 0
+  - Key: Monster_13
+    nameKey: Lo_Monster_13
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 2
+    atk: 1
+    reward_type: Money_1001
+    reward_count: 20
+    image: Green monster 02
+    MaxHp: 0
+  - Key: Monster_14
+    nameKey: Lo_Monster_14
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 2
+    atk: 1
+    reward_type: Money_1001
+    reward_count: 20
+    image: Green monster 03
+    MaxHp: 0
+  - Key: Monster_15
+    nameKey: Lo_Monster_15
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 2
+    atk: 1
+    reward_type: Money_1001
+    reward_count: 20
+    image: Green monster 04
+    MaxHp: 0
+  - Key: Monster_16
+    nameKey: Lo_Monster_16
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 0
+    atk: 0
+    reward_type: 
+    reward_count: 0
+    image: Green monster 05
+    MaxHp: 0
+  - Key: Monster_17
+    nameKey: Lo_Monster_17
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 0
+    atk: 0
+    reward_type: 
+    reward_count: 0
+    image: Green monster 06
+    MaxHp: 0
+  - Key: Monster_18
+    nameKey: Lo_Monster_18
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 0
+    atk: 0
+    reward_type: 
+    reward_count: 0
+    image: Green monster 07
+    MaxHp: 0
+  - Key: Monster_19
+    nameKey: Lo_Monster_19
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 0
+    atk: 0
+    reward_type: 
+    reward_count: 0
+    image: Green monster 08
+    MaxHp: 0
+  - Key: Monster_20
+    nameKey: Lo_Monster_20
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 0
+    atk: 0
+    reward_type: 
+    reward_count: 0
+    image: Green monster 09
+    MaxHp: 0
+  - Key: Monster_21
+    nameKey: Lo_Monster_21
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 0
+    atk: 0
+    reward_type: 
+    reward_count: 0
+    image: Green monster 10
+    MaxHp: 0
+  - Key: Monster_22
+    nameKey: Lo_Monster_22
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 0
+    atk: 0
+    reward_type: 
+    reward_count: 0
+    image: Green monster 11
+    MaxHp: 0
+  - Key: Monster_23
+    nameKey: Lo_Monster_23
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 0
+    atk: 0
+    reward_type: 
+    reward_count: 0
+    image: Blue monster 01
+    MaxHp: 0
+  - Key: Monster_24
+    nameKey: Lo_Monster_24
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 0
+    atk: 0
+    reward_type: 
+    reward_count: 0
+    image: Blue monster 02
+    MaxHp: 0
+  - Key: Monster_25
+    nameKey: Lo_Monster_25
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 0
+    atk: 0
+    reward_type: 
+    reward_count: 0
+    image: Blue monster 03
+    MaxHp: 0
+  - Key: Monster_26
+    nameKey: Lo_Monster_26
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 0
+    atk: 0
+    reward_type: 
+    reward_count: 0
+    image: Blue monster 04
+    MaxHp: 0
+  - Key: Monster_27
+    nameKey: Lo_Monster_27
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 0
+    atk: 0
+    reward_type: 
+    reward_count: 0
+    image: Blue monster 05
+    MaxHp: 0
+  - Key: Monster_28
+    nameKey: Lo_Monster_28
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 0
+    atk: 0
+    reward_type: 
+    reward_count: 0
+    image: Blue monster 06
+    MaxHp: 0
+  - Key: Monster_29
+    nameKey: Lo_Monster_29
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 0
+    atk: 0
+    reward_type: 
+    reward_count: 0
+    image: Blue monster 07
+    MaxHp: 0
+  - Key: Monster_30
+    nameKey: Lo_Monster_30
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 0
+    atk: 0
+    reward_type: 
+    reward_count: 0
+    image: Blue monster 08
+    MaxHp: 0
+  - Key: Monster_31
+    nameKey: Lo_Monster_31
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 0
+    atk: 0
+    reward_type: 
+    reward_count: 0
+    image: Blue monster 09
+    MaxHp: 0
+  - Key: Monster_32
+    nameKey: Lo_Monster_32
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 0
+    atk: 0
+    reward_type: 
+    reward_count: 0
+    image: Blue monster 10
+    MaxHp: 0
+  - Key: Monster_33
+    nameKey: Lo_Monster_33
+    hp: 0
+    def: 0
+    mdef: 0
+    speed: 0
+    atk: 0
+    reward_type: 
+    reward_count: 0
+    image: Blue monster 11
     MaxHp: 0
   keyArr:
   - Monster_0
+  - Monster_1
+  - Monster_2
+  - Monster_3
+  - Monster_4
+  - Monster_5
+  - Monster_6
+  - Monster_7
+  - Monster_8
+  - Monster_9
+  - Monster_10
+  - Monster_11
+  - Monster_12
+  - Monster_13
+  - Monster_14
+  - Monster_15
+  - Monster_16
+  - Monster_17
+  - Monster_18
+  - Monster_19
+  - Monster_20
+  - Monster_21
+  - Monster_22
+  - Monster_23
+  - Monster_24
+  - Monster_25
+  - Monster_26
+  - Monster_27
+  - Monster_28
+  - Monster_29
+  - Monster_30
+  - Monster_31
+  - Monster_32
+  - Monster_33

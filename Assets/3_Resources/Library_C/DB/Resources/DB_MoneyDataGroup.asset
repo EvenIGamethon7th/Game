@@ -22,7 +22,88 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes:
     - Name: dataDic
-      Entry: 6
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[MoneyData,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
       Data: 
-  dataArr: []
-  keyArr: []
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Money_1001
+    - Name: $v
+      Entry: 7
+      Data: 2|MoneyData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Money_1001
+    - Name: Index
+      Entry: 3
+      Data: 1001
+    - Name: Type
+      Entry: 3
+      Data: 1
+    - Name: Name
+      Entry: 1
+      Data: "\uACE8\uB4DC"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Money_1002
+    - Name: $v
+      Entry: 7
+      Data: 3|MoneyData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Money_1002
+    - Name: Index
+      Entry: 3
+      Data: 1002
+    - Name: Type
+      Entry: 3
+      Data: 2
+    - Name: Name
+      Entry: 1
+      Data: "\uD669\uAE08\uC5F4\uC1E0"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  dataArr:
+  - Key: Money_1001
+    Index: 1001
+    Type: 1
+    Name: "\uACE8\uB4DC"
+  - Key: Money_1002
+    Index: 1002
+    Type: 2
+    Name: "\uD669\uAE08\uC5F4\uC1E0"
+  keyArr:
+  - Money_1001
+  - Money_1002

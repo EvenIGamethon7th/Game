@@ -26,6 +26,7 @@ namespace _2_Scripts.UI
                 if (gold < mExpPrice || IsMaxLevel)
                 {
                     mExpButton.interactable = false;
+                    mText.text = "MAX LEVEL";
                     mText.color = Color.red;
                 }
                 else

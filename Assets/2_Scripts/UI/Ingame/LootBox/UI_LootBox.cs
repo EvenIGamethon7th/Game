@@ -18,6 +18,12 @@ namespace _2_Scripts.UI.Ingame.LootBox
         private GameObject mParticleEffect;
         
         private Image mImage;
+
+        [SerializeField]
+        private Button mButton;
+
+        [SerializeField] private ILootBoxReward mIReward;
+        
         
         private void Start()
         {
@@ -26,13 +32,21 @@ namespace _2_Scripts.UI.Ingame.LootBox
         
         public void OnOpenLootBox()
         {
+            if (GameManager.Instance.UserLuckyCoin.Value <= 0)
+            {
+                Cargold.UI.UI_Toast_Manager.Instance.Activate_WithContent_Func("열쇠가 부족합니다.");
+                return;
+            }
+            GameManager.Instance.UpdateMoney(EMoneyType.GoldKey,-1);
             mImageAnimation.PlayAnimation("open",0.1f,OpenLootBoxAnimation);
-            
+            mButton.interactable = false;
         }
         private void OpenLootBoxAnimation()
         {
             mParticleEffect.SetActive(true);
-            Observable.Timer(TimeSpan.FromSeconds(2)).Subscribe(_ =>
+            Cargold.UI.UI_Toast_Manager.Instance.Activate_WithContent_Func("짜란! 보상이 나왔습니다.");
+            mIReward.Reward();
+            Observable.Timer(TimeSpan.FromSeconds(1.5f)).Subscribe(_ =>
             {
                 CloseLootBoxAnimation();
             }).AddTo(this);
@@ -41,6 +55,7 @@ namespace _2_Scripts.UI.Ingame.LootBox
         {
             mImage.sprite = defaultImage;
             mParticleEffect.SetActive(false);
+            mButton.interactable = true;
         }
         
     }

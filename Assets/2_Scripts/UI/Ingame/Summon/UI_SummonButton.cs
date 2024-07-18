@@ -97,7 +97,6 @@ namespace _2_Scripts.UI
                 {
                     projectile.gameObject.SetActive(false);
                     var effect = ObjectPoolManager.Instance.CreatePoolingObject(Define.SpawnEffectDictionary[mCharacterData.rank], tilePos);
-                    effect.transform.position = tilePos;
                 });
             });
             if (isCreateUnit)

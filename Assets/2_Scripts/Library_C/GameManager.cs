@@ -21,7 +21,7 @@
         
         public ReactiveProperty<int> UserGold { get; private set; } = new ReactiveProperty<int>(1000);
 
-        public ReactiveProperty<int> UserLuckyCoin { get; private set; } = new ReactiveProperty<int>(0);
+        public ReactiveProperty<int> UserLuckyCoin { get; private set; } = new ReactiveProperty<int>(5);
         public void UpdateMoney(string moneyKey,int value)
         {
             MoneyData money =  DataBase_Manager.Instance.GetMoney.GetData_Func(moneyKey);

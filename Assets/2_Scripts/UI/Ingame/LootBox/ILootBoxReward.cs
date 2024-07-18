@@ -2,6 +2,8 @@
 {
     public interface ILootBoxReward
     {
+
+        public string RewardMessage();
         public void Reward();
     }
 }

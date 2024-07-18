@@ -19,7 +19,7 @@ namespace _2_Scripts.Game.Unit
 
         private void OnEnable()
         {
-            mCancellationToken = new CancellationTokenSource();
+            CancelAndDisposeToken();
             Transaction().Forget();
         }
 

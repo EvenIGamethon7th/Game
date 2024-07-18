@@ -45,6 +45,9 @@
                 UserLevel.Value++;
             }
         }
+
+        
+
         public List<CharacterInfo> UserCharacterList { get; private set; } = new List<CharacterInfo>();
         public readonly Dictionary<int,int> mExpTable = new Dictionary<int, int>
         {

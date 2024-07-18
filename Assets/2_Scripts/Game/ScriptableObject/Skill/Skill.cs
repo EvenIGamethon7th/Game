@@ -26,7 +26,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
         public float Range { get; private set; }
         [SerializeField] 
         [Title("공격 타입")]
-        public Define.EAttackType AttackType { get; private set;  }
+        public Define.EAttackType AttackType { get; private set; }
         [Title("최대 적중 유닛 개수 0이면, 범위내 전부")]
         [SerializeField]
         public int MaxHitUnit { get; private set; }
@@ -45,7 +45,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
         [SerializeField]
         public List<StatusEffectSO> StatueEffects { get; private set; }
         
-        public abstract bool CastAttack(Transform ownerTransform, CharacterData ownerData, Action<Monster[]> beforeDamage = null, Action < Monster> afterDamage = null);
+        public abstract bool CastAttack(Transform ownerTransform, CharacterData ownerData, Action<Monster[]> beforeDamage = null, Action <Monster> afterDamage = null);
 
         protected virtual void CastEffectPlay(Vector2 position)
         {

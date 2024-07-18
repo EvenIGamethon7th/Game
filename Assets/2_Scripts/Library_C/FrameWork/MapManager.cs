@@ -193,10 +193,11 @@ public class MapManager : Singleton<MapManager>
                     continue;
                 }
                 
-                Vector3 worldPosition = mMap.CellToWorld(cellPosition) + slotOffset + Vector3.forward * tempZ;
-                tempZ += 0.001f;
+                Vector3 worldPosition = mMap.CellToWorld(cellPosition) + slotOffset;
                 // 타일 배치
                 var tile = ObjectPoolManager.Instance.CreatePoolingObject(TILE_SLOT_NAME, worldPosition).GetComponent<TileSlot>();
+                tile.TileZ = tempZ;
+                tempZ += 0.001f;
                 mTileDatas.Add(tile);
             }
         }

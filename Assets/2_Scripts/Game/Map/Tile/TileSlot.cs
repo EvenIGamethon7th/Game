@@ -7,6 +7,7 @@ namespace _2_Scripts.Game.Map.Tile
     {
         public UnitGroup OccupantUnit { get; private set; }
         public CharacterData CurrentUnitData { get; private set; }
+        public float TileZ { get; set; }
 
         public bool IsNormalUnit { get; private set; } = true;
 
@@ -14,6 +15,7 @@ namespace _2_Scripts.Game.Map.Tile
         {
             OccupantUnit = unitGroup;
             OccupantUnit.AddUnit(unit);
+            OccupantUnit.transform.position = new Vector3(OccupantUnit.transform.position.x, OccupantUnit.transform.position.y, TileZ);
             CurrentUnitData = unit.CharacterDatas;
             IsNormalUnit = isNormalUnit;
         }
@@ -24,6 +26,7 @@ namespace _2_Scripts.Game.Map.Tile
             CurrentUnitData = OccupantUnit?.GetCharacterData();
             if (OccupantUnit != null)
             {
+                OccupantUnit.transform.position = new Vector3(OccupantUnit.transform.position.x, OccupantUnit.transform.position.y, TileZ);
                 OccupantUnit.MoveGroup(this);
             }
         }

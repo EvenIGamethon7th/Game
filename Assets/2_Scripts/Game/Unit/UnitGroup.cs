@@ -52,7 +52,8 @@ namespace _2_Scripts.Game.Unit
             mToken.Cancel();
             mToken.Dispose();
             mToken = new();
-            MoveGroupAsync(destinationTileSlot.transform.position).Forget();
+            var pos = new Vector3(destinationTileSlot.transform.position.x, destinationTileSlot.transform.position.y, destinationTileSlot.TileZ);
+            MoveGroupAsync(pos).Forget();
         }
 
         public CharacterData GetCharacterData()

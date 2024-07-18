@@ -4,6 +4,7 @@ using UnityEngine;
 using Cargold;
 using Sirenix.OdinInspector;
 using Cargold.DB.TableImporter;
+using System.Linq;
 
 // 카라리 테이블 임포터에 의해 생성된 스크립트입니다.
 
@@ -11,22 +12,32 @@ public partial class MonsterData
 {
     public float MaxHp;
 
-    private float mSlow;
+    private HashSet<float> mSlowSet = new HashSet<float>();
+    private float mCurrentSlow;
 
     public void SetSpeed(float percent, bool isRemove = false)
     {
-        if (mSlow >= percent) return;
+        if (mSlowSet.Contains(percent) && !isRemove) return;
 
-        if (!isRemove)
+        mSlowSet.Add(percent);
+
+        if (mCurrentSlow < percent && !isRemove)
         {
-            mSlow = percent;
-            speed *= percent * 0.01f;
+            speed /= (1f - mCurrentSlow * 0.01f);
+            mCurrentSlow = percent;
+            speed *= (1f - percent * 0.01f);
         }
 
-        else
+        else if (isRemove)
         {
-            mSlow = 0;
-            speed /= percent * 0.01f;
+            mSlowSet.Remove(percent);
+            if (mCurrentSlow == percent)
+            {
+                speed /= (1f - percent * 0.01f);
+                float next = mSlowSet.OrderBy(x => x).LastOrDefault();
+                speed *= (1f - next * 0.01f);
+                mCurrentSlow = next;
+            }
         }
     }
 

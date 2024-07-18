@@ -11,6 +11,7 @@ using Rito.Attributes;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using static _2_Scripts.Utils.Define;
 
 namespace _2_Scripts.Game.Monster
 {
@@ -26,9 +27,7 @@ namespace _2_Scripts.Game.Monster
         [field: SerializeField]
         public Vector3 NextWayPointVector { get; private set; }
 
-        private const EGameMessage PLAYER_DAMAGE = EGameMessage.PlayerDamage;
         private const EGameMessage BOSS_DEATH = EGameMessage.BossDeath;
-        private GameMessage<float> mDamageMessage;
         public bool IsBoss { get; private set; }
 
         private UI_MonsterCanvas mHpCanvas;
@@ -88,23 +87,23 @@ namespace _2_Scripts.Game.Monster
             NextWayPoint();
             mMatController.RunDissolve(true, () => {
                 IsBoss = isBoss;
-                mDamageMessage = new GameMessage<float>(PLAYER_DAMAGE, mMonsterData.atk);
                 Enabled(true);
             });
         }
 
-        public bool TakeDamage(float damage, Define.EAttackType attackType, bool isExile = false)
+        public bool TakeDamage(float damage, Define.EAttackType attackType, EInstantKillType instant = EInstantKillType.None)
         {
             if (mMonsterData.hp <= 0) 
                 return false;
             
-            ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_DamageCanvas, transform.position + Vector3.up).GetComponent<UI_DamageCanvas>().SetDamage(damage);
+            if (instant == EInstantKillType.None)
+                ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_DamageCanvas, transform.position + Vector3.up).GetComponent<UI_DamageCanvas>().SetDamage(damage);
             mMonsterData.hp -= DefenceCalculator.CalculateDamage(damage, mMonsterData, attackType);
             DamageActionCallback?.Invoke(this);
             mHpCanvas.SetHpSlider(mMonsterData.hp);
             if (mMonsterData.hp <= 0)
             {
-                if (!isExile) 
+                if (instant != EInstantKillType.Exile) 
                     GameManager.Instance.UpdateMoney(mMonsterData.reward_type,mMonsterData.reward_count);
 
                 mMatController.RunDissolve(false, () => gameObject.SetActive(false));
@@ -123,7 +122,7 @@ namespace _2_Scripts.Game.Monster
         {
             if(++mWayPointIndex == mWayPoint.GetWayPointCount())
             {
-                MessageBroker.Default.Publish(mDamageMessage);
+                GameManager.Instance.UpdateUserHp(mMonsterData.atk);
                 Enabled(false);
                 gameObject.SetActive(false);
                 return;

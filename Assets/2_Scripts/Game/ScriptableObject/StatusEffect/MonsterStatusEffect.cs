@@ -36,12 +36,6 @@ namespace _2_Scripts.Game.StatusEffect
             mIsActive = true;
         }
 
-        protected virtual async UniTaskVoid ExecuteAfterDuration()
-        {
-            await UniTask.WaitForSeconds(Duration, cancellationToken: mCts.Token);
-            mRemoveCallback?.Invoke();
-        }
-
         public void Clear()
         {
             CancelAndDisposeToken();

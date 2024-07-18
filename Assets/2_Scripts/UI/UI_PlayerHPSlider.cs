@@ -18,7 +18,7 @@ namespace _2_Scripts.UI
         private global::Utils.ReadonlyNumber<float> mMaxHp;
         public void Start()
         {
-            mMaxHp = new global::Utils.ReadonlyNumber<float>(GameManager.Instance.UserHp);
+            mMaxHp = new global::Utils.ReadonlyNumber<float>(GameManager.Instance.UserHp.Value);
             mHpText.text = $"{mMaxHp.Value}/{mMaxHp.Value}";
             mSlider.value = 1f;
         }

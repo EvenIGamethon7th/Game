@@ -25,7 +25,7 @@ namespace _2_Scripts.Game.Unit
             UpdateStatusEffect();
         }
 
-        public bool AddStatusEffect(StatusEffectSO statusEffect,CUnit attacker)
+        public bool AddStatusEffect(StatusEffectSO statusEffect,CUnit attacker = null)
         {
             bool isSuccess = mStatusEffects.TryGetValue(statusEffect.DeBuffType, out MonsterStatusEffect remainDebuff);
             if (isSuccess)
@@ -39,7 +39,15 @@ namespace _2_Scripts.Game.Unit
             isSuccess = statusEffect.CanApply(mMonster.GetMonsterData);
             if (!isSuccess) return false;
 
-            statusEffect.OnApply(mMonster.GetMonsterData,monster:mMonster,attacker:attacker);
+            if (attacker != null)
+            {
+                statusEffect.OnApply(mMonster.GetMonsterData, monster: mMonster, attacker: attacker);
+            }
+
+            else
+            {
+                statusEffect.OnApply(mMonster.GetMonsterData, monster: mMonster);
+            }
             var monsterEffect = MemoryPoolManager<MonsterStatusEffect>.CreatePoolingObject();
             monsterEffect.Init(statusEffect.DeBuffType, statusEffect.Duration, () => statusEffect.OnRemove(mMonster.GetMonsterData));
             mStatusEffects.Add(statusEffect.DeBuffType, monsterEffect);

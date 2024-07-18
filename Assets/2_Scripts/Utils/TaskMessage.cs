@@ -8,6 +8,7 @@
         SkeletonDatasResourceLoad,
         CharacterDataResourceLoad,
         UIMaterialResourceLoad,
+        MainCharacterDataResourceLoad,
         BossDeath,
         GameOver,
     }

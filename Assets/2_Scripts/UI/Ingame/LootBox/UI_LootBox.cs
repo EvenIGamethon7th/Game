@@ -44,8 +44,8 @@ namespace _2_Scripts.UI.Ingame.LootBox
         private void OpenLootBoxAnimation()
         {
             mParticleEffect.SetActive(true);
-            Cargold.UI.UI_Toast_Manager.Instance.Activate_WithContent_Func("짜란! 보상이 나왔습니다.");
             mIReward.Reward();
+            Cargold.UI.UI_Toast_Manager.Instance.Activate_WithContent_Func(mIReward.RewardMessage());
             Observable.Timer(TimeSpan.FromSeconds(1.5f)).Subscribe(_ =>
             {
                 CloseLootBoxAnimation();

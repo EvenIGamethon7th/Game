@@ -53,8 +53,8 @@ SpriteAtlas:
     packedSpriteRenderDataKeys:
     - 8a477530384159b479d1a4559529cefe: 21300000
     - 24a208301690ac84aab760e3da9b5eab: 21300000
-    - d99ae4a0b314e9a49b3ab2936d649b44: 21300000
     - 04dc413161e37c34aafdc8f07931b1d0: 21300000
+    - 0ad0585193926431d83928b34844ceb2: 21300000
     - 0c3489516fc0ac745ad974aa1fb8bcfd: 21300000
     - 8a4a92a15bda9c14f9a26664c7d4dae7: 21300000
     - e3044ba16a01f4e4fb1aff57d25b5c3b: 21300000
@@ -69,7 +69,6 @@ SpriteAtlas:
     - dc2b9a86c0b0e6d42838ac63f4d6387d: 21300000
     - 5cd962c638723214a825dd684432e836: 21300000
     - 6ec97597367258d4b9abddf5e4fe3803: 21300000
-    - bc90e3085212f984cad2caa27057b9bf: 21300000
     - a3f0e69866003fa4dbedd9229cab59b1: 21300000
     - c7240d6977f98344a8d53a04d08e5281: 21300000
     - 581d461a8beb6f84590e6c276c0c8ac8: 21300000
@@ -82,13 +81,14 @@ SpriteAtlas:
     - ccbb7c8e0a5bc5d4a868e99bb857ccb5: 21300000
     - c1e9b2aea077e9740a59d36f821a9425: 21300000
     - 59d67d2febf5dd04abc065c56746a209: 21300000
+    - 79d0b44fe4b1d4db1bc21c71efa5509e: 21300000
     - 68b2fe9fee41f1d48b56a5319806da0a: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 8a477530384159b479d1a4559529cefe, type: 3}
   - {fileID: 21300000, guid: 24a208301690ac84aab760e3da9b5eab, type: 3}
-  - {fileID: 21300000, guid: d99ae4a0b314e9a49b3ab2936d649b44, type: 3}
   - {fileID: 21300000, guid: 04dc413161e37c34aafdc8f07931b1d0, type: 3}
+  - {fileID: 21300000, guid: 0ad0585193926431d83928b34844ceb2, type: 3}
   - {fileID: 21300000, guid: 0c3489516fc0ac745ad974aa1fb8bcfd, type: 3}
   - {fileID: 21300000, guid: 8a4a92a15bda9c14f9a26664c7d4dae7, type: 3}
   - {fileID: 21300000, guid: e3044ba16a01f4e4fb1aff57d25b5c3b, type: 3}
@@ -103,7 +103,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: dc2b9a86c0b0e6d42838ac63f4d6387d, type: 3}
   - {fileID: 21300000, guid: 5cd962c638723214a825dd684432e836, type: 3}
   - {fileID: 21300000, guid: 6ec97597367258d4b9abddf5e4fe3803, type: 3}
-  - {fileID: 21300000, guid: bc90e3085212f984cad2caa27057b9bf, type: 3}
   - {fileID: 21300000, guid: a3f0e69866003fa4dbedd9229cab59b1, type: 3}
   - {fileID: 21300000, guid: c7240d6977f98344a8d53a04d08e5281, type: 3}
   - {fileID: 21300000, guid: 581d461a8beb6f84590e6c276c0c8ac8, type: 3}
@@ -116,12 +115,13 @@ SpriteAtlas:
   - {fileID: 21300000, guid: ccbb7c8e0a5bc5d4a868e99bb857ccb5, type: 3}
   - {fileID: 21300000, guid: c1e9b2aea077e9740a59d36f821a9425, type: 3}
   - {fileID: 21300000, guid: 59d67d2febf5dd04abc065c56746a209, type: 3}
+  - {fileID: 21300000, guid: 79d0b44fe4b1d4db1bc21c71efa5509e, type: 3}
   - {fileID: 21300000, guid: 68b2fe9fee41f1d48b56a5319806da0a, type: 3}
   m_PackedSpriteNamesToIndex:
   - keyShadow
   - keybox
-  - BottomShadow
   - whiteSlider
+  - SlideBG
   - Success Arrow
   - blackSlider
   - Durring Arrow
@@ -136,7 +136,6 @@ SpriteAtlas:
   - InfoIcon
   - Fail Arrow
   - coin
-  - SummonBackGround
   - expbar_resized
   - AcademySlider
   - Academy Panel
@@ -149,6 +148,7 @@ SpriteAtlas:
   - lock
   - btnBackGround
   - Bonanza Arrow
+  - SlideDec
   - recycle
   m_RenderDataMap: {}
   m_Tag: UI_Atlas

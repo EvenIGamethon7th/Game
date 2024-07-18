@@ -505,8 +505,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35
-  m_fontSizeBase: 35
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -515,7 +515,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: -9
+  m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -592,10 +592,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 9178664850792037554}
-  - {fileID: 2870725412400814909}
   - {fileID: 3825346081666025236}
   - {fileID: 5702601408481471138}
+  - {fileID: 2870725412400814909}
+  - {fileID: 9178664850792037554}
   m_Father: {fileID: 1355031154945469378}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -989,7 +989,6 @@ MonoBehaviour:
   mCharacterName: {fileID: 3286626214727260165}
   mCharacterCost: {fileID: 7983078045229610885}
   mCharacterGraphic: {fileID: 3001853757793641846}
-  mButtom: {fileID: 8377945815429927219}
   mCardImage: {fileID: 2136260530915873033}
 --- !u!114 &8377945815429927219
 MonoBehaviour:

@@ -5,12 +5,27 @@ using UnityEngine;
 
 namespace _2_Scripts.Game.ScriptableObject.Skill.MainCharacter
 {
+    using _2_Scripts.Game.Unit;
+    using _2_Scripts.Trigger;
     using DirectionSkill;
-
-    public class BeyondWall : DirectionSkill
+    using Sirenix.OdinInspector;
+    using UnityEditor.Experimental.GraphView;
+    [CreateAssetMenu(menuName = "ScriptableObject/MainCharacterSkill/BeyondWall")]
+    public class BeyondWall : Skill
     {
+        [SerializeField]
+        [Title("지속 시간 ( 1초면 1)")]
+        private float mLifeTime;
+
+        [SerializeField]
+        [Title("트리거 오브젝트")]
+        private GameObject mPortal;
+
         public override bool CastAttack(Transform ownerTransform, CharacterData ownerData, Action<Monster.Monster[]> beforeDamage = null, Action<Monster.Monster> passive = null)
         {
+            var trigger = ObjectPoolManager.Instance.CreatePoolingObject(mPortal, ownerTransform.position).GetComponent<PortalTrigger>();
+            trigger.Init(Range, TargetLayer, mLifeTime);
+
             return true;
         }
     }

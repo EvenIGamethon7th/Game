@@ -56,14 +56,9 @@ namespace _2_Scripts.UI
 
         private void AcademyButton()
         {
-            CUnit unit = mSelectUnitGroup.Units.Where(x => x.CharacterDatas.isAlumni == false).FirstOrDefault();
-            if (unit == null)
-            {
-                UI_Toast_Manager.Instance.Activate_WithContent_Func("�̹� ���� �����߽��ϴ�");
-                return;
-            }
+            CUnit unit = mSelectUnitGroup.Units.OrderBy(x => x.CharacterDatas.isAlumni == true).FirstOrDefault();
 
-            bool canEnterAcademy = MapManager.Instance.GoAcademy(mSelectUnitGroup, unit);
+            bool canEnterAcademy = MapManager.Instance.GoAcademy(unit);
             if (!canEnterAcademy) return;
 
             mSelectUnitGroup.RemoveUnit(unit);

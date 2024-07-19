@@ -15,12 +15,8 @@ namespace _2_Scripts.Game.ScriptableObject.Character
         [SerializeField]
         public Dictionary<int, CharacterKey> CharacterEvolutions { get; private set; }
 
-        [Title("액티브 스킬 리스트")]
+        [Title("스킬 리스트")]
         [SerializeField]
-        public List<SkillInfo> ActiveSkillList { get; private set; }
-
-        [Title("패시브 스킬 리스트")]
-        [SerializeField]
-        public List<PassiveSkillInfo> PassiveSkillList { get; private set; }
+        public List<SkillInfo> SkillList { get; private set; }
     }
 }

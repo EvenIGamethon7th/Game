@@ -1,7 +1,10 @@
 using _2_Scripts.Game.ScriptableObject.Skill.Passive.Buff;
 using _2_Scripts.Game.Unit;
+using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -14,11 +17,15 @@ namespace _2_Scripts.Buff
 
         private PassiveBuff mPassiveBuff;
 
-        public void Init(PassiveBuff passiveBuff)
+        private CancellationTokenSource mCts = new CancellationTokenSource();
+
+        public void Init(PassiveBuff passiveBuff, float duration = 0)
         {
             mPassiveBuff = passiveBuff;
             mCollider.size = Vector2.one * passiveBuff.Range * 2;
             mCollider.enabled = true;
+            if (duration != 0)
+                ActiveFalseAsync(duration).Forget();
         }
 
         public void Clear()
@@ -26,6 +33,12 @@ namespace _2_Scripts.Buff
             gameObject.SetActive(false);
             mCollider.enabled = false;
             mPassiveBuff = null;
+        }
+
+        private async UniTask ActiveFalseAsync(float duration)
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(duration), cancellationToken: mCts.Token);
+            Clear();
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

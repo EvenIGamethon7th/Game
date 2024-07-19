@@ -64,9 +64,9 @@ public class MapManager : Singleton<MapManager>
         return tileSlot?.OccupantUnit;
     }
 
-    public bool GoAcademy(UnitGroup group, CUnit unit)
+    public bool GoAcademy(CUnit unit)
     {
-        bool canEnterAcademy = mAcademy.CanLesson(unit);
+        bool canEnterAcademy = mAcademy.CanLesson();
         if (canEnterAcademy)
             mAcademy.AcademyLesson(unit);
 

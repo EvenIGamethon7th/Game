@@ -44,7 +44,8 @@ public partial class CharacterData : IPoolable
         ClassType = data.ClassType;
         skill1Key = data.Skill1;
         skill2Key = data.Skill2;
-        
+        characterData = data.characterData;
+
     }
 
     public float GetTotalAtk()
@@ -113,6 +114,10 @@ public partial class CharacterData : IPoolable
         newData.alumniAtk = data1.alumniAtk + data2.alumniAtk;
         newData.alumniAtkSpeed = data1.alumniAtkSpeed + data2.alumniAtkSpeed;
         newData.alumniMatk = data1.alumniMatk + data2.alumniMatk;
+        newData.ClassType = data1.ClassType;
+        newData.skill1Key = data1.Skill1;
+        newData.skill2Key = data1.Skill2;
+        newData.characterData = data1.characterData;
 
         return newData;
     }

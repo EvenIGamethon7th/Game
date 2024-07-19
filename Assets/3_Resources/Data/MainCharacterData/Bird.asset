@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e0e41167d7187b4b972aaf7231e4411, type: 3}
-  m_Name: Rumi
+  m_Name: Bird
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 801971bc9c5cc44459e5553ee02ded69, type: 2}
+    - {fileID: 11400000, guid: 86bea1b0000669c439e7db6986a5d360, type: 2}
+    - {fileID: 11400000, guid: e2967abb0520d984999eaa8094e1eeae, type: 2}
+    - {fileID: 11400000, guid: 1ea83e3bea36f9f44a8d07ccb20b908b, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -47,7 +49,7 @@ MonoBehaviour:
       Data: 2|CharacterKey, Assembly-CSharp
     - Name: key
       Entry: 1
-      Data: Character_45
+      Data: Character_42
     - Name: 
       Entry: 8
       Data: 
@@ -65,7 +67,7 @@ MonoBehaviour:
       Data: 3|CharacterKey, Assembly-CSharp
     - Name: key
       Entry: 1
-      Data: Character_46
+      Data: Character_43
     - Name: 
       Entry: 8
       Data: 
@@ -83,7 +85,7 @@ MonoBehaviour:
       Data: 4|CharacterKey, Assembly-CSharp
     - Name: key
       Entry: 1
-      Data: Character_47
+      Data: Character_44
     - Name: 
       Entry: 8
       Data: 
@@ -111,7 +113,7 @@ MonoBehaviour:
       Data: 1
     - Name: CoolTime
       Entry: 4
-      Data: 60
+      Data: 45
     - Name: Skill
       Entry: 10
       Data: 0
@@ -126,10 +128,10 @@ MonoBehaviour:
       Data: 2
     - Name: CoolTime
       Entry: 4
-      Data: 45
+      Data: 35
     - Name: Skill
       Entry: 10
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -144,7 +146,7 @@ MonoBehaviour:
       Data: 25
     - Name: Skill
       Entry: 10
-      Data: 0
+      Data: 2
     - Name: 
       Entry: 8
       Data: 

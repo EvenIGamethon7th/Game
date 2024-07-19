@@ -37,12 +37,14 @@ namespace _2_Scripts.Game.Unit
             return Units.Count == mMaxUnitCount && Units[0]?.CharacterDatas.rank != (int)EUnitRank.Unique;
         }
 
+        //문제의 코드 어떻게 해야 하는가?
         public void Fusion()
         {
             CharacterData alumniData = Units[0].CharacterDatas + Units[1].CharacterDatas + Units[2].CharacterDatas;
-            var newData = Units[0].CharacterDataInfo.CharacterEvolutions[Units[0].CharacterDatas.rank + 1].GetData;
-            newData = global::Utils.DeepCopy(newData);
+            var newData = MemoryPoolManager<CharacterData>.CreatePoolingObject();
+            newData.Init(Units[0].CharacterDataInfo.CharacterEvolutions[Units[0].CharacterDatas.rank + 1].GetData, null);
             newData.AddAlumniInfo(alumniData);
+
             MapManager.Instance.ClearTile(this);
             MapManager.Instance.CreateUnit(newData);
         }
@@ -167,27 +169,6 @@ namespace _2_Scripts.Game.Unit
                         break;
                 }
             }
-        }
-
-        private void AcademyButton()
-        {
-            CUnit unit = Units.Where(x => x.CharacterDatas.isAlumni == false).FirstOrDefault();
-            if (unit == null)
-            {
-                UI_Toast_Manager.Instance.Activate_WithContent_Func("이미 전부 졸업했습니다");
-                return;
-            }
-
-            bool canEnterAcademy = MapManager.Instance.GoAcademy(this, unit);
-            if (!canEnterAcademy) return;
-
-            RemoveUnit(unit);
-            unit.Clear();
-        }
-
-        private void FusionButton()
-        {
-
         }
     }
 }

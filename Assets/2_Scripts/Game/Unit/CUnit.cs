@@ -78,6 +78,7 @@ namespace _2_Scripts.Game.Unit
         private List<BuffTrigger> mBuffs = new ();
 
         public bool IsNotCoolTimeSKill = false;
+        private GameObject mAlumniEffect;
 
         private void Awake()
         {
@@ -193,6 +194,12 @@ namespace _2_Scripts.Game.Unit
                         trigger.Init(skill.Skill as PassiveBuff);
                     }
                 });
+            
+            if (CharacterDatas.isAlumni)
+            {
+                mAlumniEffect = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_Magic_Effect_11, transform.position);
+                mAlumniEffect.transform.parent = transform;
+            }
         }
         
         public void Init(CharacterData characterData)
@@ -282,8 +289,7 @@ namespace _2_Scripts.Game.Unit
             }
             gameObject.SetActive(false);
             transform.parent = mOriginParent;
+            mAlumniEffect?.SetActive(false);
         }
-        
-     
     }
 }

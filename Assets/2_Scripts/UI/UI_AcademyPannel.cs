@@ -1,8 +1,10 @@
 using _2_Scripts.Game.Unit;
 using _2_Scripts.UI;
+using _2_Scripts.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UniRx;
 using UnityEngine;
 
 namespace _2_Scripts.UI {
@@ -26,29 +28,28 @@ namespace _2_Scripts.UI {
             mStatus = GetComponentInChildren<UI_AcademyStatus>(true);
 
             mLesson.Init();
+
+            MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange)
+                .Subscribe(message =>
+                {
+                    LessonComplete(message.Value);
+                }).AddTo(this);
         }
 
-        public bool CanLesson(CUnit student)
+        public bool CanLesson()
         {
             if (mDoLesson)
             {
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("이미 수업을 듣는 영웅이 있습니다!");
             }
 
-            //else if의 이유: 두 토스트 메시지가 함께 뜨면 짜쳐서
-            else if (student.CharacterDatas.isAlumni)
-            {
-                UI_Toast_Manager.Instance.Activate_WithContent_Func("이미 아카데미를 졸업한 학생입니다!");
-            }
-
-            return !student.CharacterDatas.isAlumni && !mDoLesson;
+            return !mDoLesson;
         }
 
         public void AcademyLesson(CUnit student)
         {
             mDoLesson = true;
             mStatus.SetStatus(student);
-            StageManager.Instance.SubscribeWaveStart(LessonComplete);
             mStudentData = student.CharacterDatas;
             mStudentData.isAlumni = true;
         }
@@ -59,7 +60,6 @@ namespace _2_Scripts.UI {
             mLessonCount = 0;
             if (isCreateUnit)
             {
-                StageManager.Instance.UnSubscribeWaveStart(LessonComplete);
                 mDoLesson = false;
                 mStatus.Clear();
                 mLesson.Init();
@@ -68,10 +68,15 @@ namespace _2_Scripts.UI {
 
         private void LessonComplete(int waveCount)
         {
+            if (!mDoLesson) return;
+
             if (mLessonCount < 5)
             {
-                DecideLessonResult();
-                ++mLessonCount;
+                while (mLessonCount < 5)
+                {
+                    DecideLessonResult();
+                    ++mLessonCount;
+                }
             }
 
             if (mLessonCount == 5)
@@ -130,7 +135,7 @@ namespace _2_Scripts.UI {
 
         private void OnDestroy()
         {
-            StageManager.Instance.UnSubscribeWaveStart(LessonComplete);
+            
         }
     }
 }

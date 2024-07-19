@@ -45,7 +45,7 @@ namespace _2_Scripts.Game.Unit.MainCharacter
             mCharacterData = MemoryPoolManager<CharacterData>.CreatePoolingObject();
             mBuffData = MemoryPoolManager<BuffData>.CreatePoolingObject();
             mCharacterData.Init(mCharacterInfo.CharacterEvolutions[1].GetData, mBuffData);
-            mCoolTime = mCharacterInfo.ActiveSkillList[0].CoolTime;
+            mCoolTime = mCharacterInfo.SkillList[0].CoolTime;
             mMainCharacterUI.Init(mCoolTime);
 
             if (mSkillType == EMainCharacterSkillType.Buff)
@@ -84,13 +84,13 @@ namespace _2_Scripts.Game.Unit.MainCharacter
 
             if (mSkillType == EMainCharacterSkillType.Attack && mSkillTrigger.activeSelf)
             {
-                mCharacterInfo.ActiveSkillList[mCharacterData.rank].Skill.CastAttack(mSkillTrigger.transform, mCharacterData);
+                mCharacterInfo.SkillList[mCharacterData.rank - 1].Skill.CastAttack(mSkillTrigger.transform, mCharacterData);
                 mSkillTrigger.SetActive(false);
             }
 
             else if (mSkillType == EMainCharacterSkillType.Buff)
             {
-                mCharacterInfo.ActiveSkillList[mCharacterData.rank].Skill.CastAttack(transform, mCharacterData);
+                mCharacterInfo.SkillList[mCharacterData.rank - 1].Skill.CastAttack(transform, mCharacterData);
             }
         }
 

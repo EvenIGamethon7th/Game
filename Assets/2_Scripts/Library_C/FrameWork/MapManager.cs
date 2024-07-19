@@ -83,6 +83,12 @@ public class MapManager : Singleton<MapManager>
         }
     }
 
+    public bool CanCreateUnit()
+    {
+        var tile = mTileDatas.Where(x => x.OccupantUnit == null).FirstOrDefault();
+        return tile == null ? false : true;
+    }
+
     public bool CreateUnit(CharacterData characterData, bool isAlumni = false,Action<Vector3> spawnAction = null)
     {
         //먼저 같은 유닛 그룹과 그 그룹에 공간이 있는지 확인

@@ -13288,6 +13288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c5daaf6a204618a1d680861420ca03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiRaycaster: {fileID: 1124819714}
+  eventSystem: {fileID: 6886476}
 --- !u!4 &664099810
 Transform:
   m_ObjectHideFlags: 0
@@ -13541,7 +13543,6 @@ MonoBehaviour:
     alumniAtkSpeed: 0
     alumniMatk: 0
     Key: 
-    Group: 0
     nameKey: 
     atk: 0
     atkSpeed: 0
@@ -13553,7 +13554,7 @@ MonoBehaviour:
     characterPack: 
     Skill1: 0
     Skill2: 0
-    Description: 
+    ClassType: 
   mCoolTime: 30
   mCurrentCoolTime: 0
   mMainCharacterUI: {fileID: 546004737}
@@ -16154,6 +16155,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7438730710740820845, guid: 37715ab346026f4409d647322d45540e, type: 3}
   m_PrefabInstance: {fileID: 1124819711}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1124819714 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 429723954130978371, guid: 37715ab346026f4409d647322d45540e, type: 3}
+  m_PrefabInstance: {fileID: 1124819711}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1300083580 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7965728185090174494, guid: 8c87aa2d5c1075c47a9befd890e1b4cf, type: 3}

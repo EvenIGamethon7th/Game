@@ -38,6 +38,7 @@ namespace _2_Scripts.UI.Ingame.CharacterInfo
             mCharacterStatusAtkText.text = $"{data.GetTotalAtk()}";
             mCharacterStatusAtkSpeedText.text = $"{data.GetTotalAtkSpeed()}";
             mCharacterStatusMAtkText.text = $"{data.GetTotalMAtk()}";
+            mCharacterClassText.text = $"{data.GetCharacterClassName()}";
             global::Utils.CharacterSkeletonInit(modelGraphic,data.characterPack);
         }
     }

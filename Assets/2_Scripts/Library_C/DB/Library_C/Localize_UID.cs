@@ -65,4 +65,7 @@ public static partial class TableDataKey_C
     public const string Localize_Lo_Monster_9 = "Lo_Monster_9";
     public const string Localize_Lo_Monster_10 = "Lo_Monster_10";
     public const string Localize_Lo_Monster_11 = "Lo_Monster_11";
+    public const string Localize_Lo_ClassType_1 = "Lo_ClassType_1";
+    public const string Localize_Lo_ClassType_2 = "Lo_ClassType_2";
+    public const string Localize_Lo_ClassType_3 = "Lo_ClassType_3";
 }

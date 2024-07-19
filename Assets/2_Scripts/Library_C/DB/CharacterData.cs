@@ -32,6 +32,7 @@ public partial class CharacterData : IPoolable
         alumniAtk = data.alumniAtk;
         alumniAtkSpeed = data.alumniAtkSpeed;
         alumniMatk = data.alumniMatk;
+        ClassType = data.ClassType;
     }
 
     public float GetTotalAtk()
@@ -61,7 +62,11 @@ public partial class CharacterData : IPoolable
     {
         return LocalizeSystem_Manager.Instance.GetLcz_Func(nameKey);
     }
-    
+
+    public string GetCharacterClassName()
+    {
+        return LocalizeSystem_Manager.Instance.GetLcz_Func(ClassType);
+    }
     protected override void Init_Project_Func()
     {
         base.Init_Project_Func();

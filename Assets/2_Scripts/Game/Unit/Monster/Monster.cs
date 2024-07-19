@@ -38,6 +38,10 @@ namespace _2_Scripts.Game.Monster
         private List<StatusEffectSO> mTargetStatusEffectList = new ();
         public SpriteRenderer Renderer { get; private set; }
 
+        private List<IDamagebleAction> mDamagebleActions;
+        private Action damagebleActions;
+        
+        
         // Monster 방깍 한 번만 받기 위한 플래그
         public  bool DefenceFlag = false;
         public bool IsDead => mMonsterData.hp <= 0;
@@ -68,6 +72,8 @@ namespace _2_Scripts.Game.Monster
             mTrigger = GetComponent<Collider2D>();
             Renderer = GetComponent<SpriteRenderer>();
             Enabled(false);
+            mDamagebleActions = new List<IDamagebleAction>(GetComponents<IDamagebleAction>());
+            mDamagebleActions.ForEach(action => damagebleActions += action.DamageAction());
         }
 
         public void SpawnMonster(string key,WayPoint waypoint,bool isBoss)
@@ -100,6 +106,7 @@ namespace _2_Scripts.Game.Monster
                 ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_DamageCanvas, transform.position + Vector3.up).GetComponent<UI_DamageCanvas>().SetDamage(damage);
             mMonsterData.hp -= DefenceCalculator.CalculateDamage(damage, mMonsterData, attackType);
             DamageActionCallback?.Invoke(this);
+            damagebleActions?.Invoke();
             mHpCanvas.SetHpSlider(mMonsterData.hp);
             if (mMonsterData.hp <= 0)
             {

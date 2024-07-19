@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace _2_Scripts.UI.Ingame
 {
-    public class UI_MainCharacter : MonoBehaviour, IPointerUpHandler, IDragHandler, IEndDragHandler
+    public class UI_MainCharacter : MonoBehaviour, IPointerUpHandler, IDragHandler, IEndDragHandler, IPointerDownHandler
     {
         public event Action<Vector2> Drag;
         public event Action<Vector2> EndDrag;
@@ -81,6 +81,11 @@ namespace _2_Scripts.UI.Ingame
         public void OnEndDrag(PointerEventData eventData)
         {
             EndDrag?.Invoke(Camera.main.ScreenToWorldPoint(eventData.position));
+        }
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+
         }
     }
 }

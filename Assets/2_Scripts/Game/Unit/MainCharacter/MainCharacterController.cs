@@ -82,10 +82,15 @@ namespace _2_Scripts.Game.Unit.MainCharacter
             mMainCharacterUI.SetCoolTime(mCoolTime);
             CheckSkillCoolTime().Forget();
 
-            if (mSkillTrigger.activeSelf)
+            if (mSkillType == EMainCharacterSkillType.Attack && mSkillTrigger.activeSelf)
             {
                 mCharacterInfo.ActiveSkillList[mCharacterData.rank].Skill.CastAttack(mSkillTrigger.transform, mCharacterData);
                 mSkillTrigger.SetActive(false);
+            }
+
+            else if (mSkillType == EMainCharacterSkillType.Buff)
+            {
+                mCharacterInfo.ActiveSkillList[mCharacterData.rank].Skill.CastAttack(transform, mCharacterData);
             }
         }
 

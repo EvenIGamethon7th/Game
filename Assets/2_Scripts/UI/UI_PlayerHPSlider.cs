@@ -21,6 +21,7 @@ namespace _2_Scripts.UI
             mMaxHp = new global::Utils.ReadonlyNumber<float>(GameManager.Instance.UserHp.Value);
             mHpText.text = $"{mMaxHp.Value}/{mMaxHp.Value}";
             mSlider.value = 1f;
+            GameManager.Instance.HealHp += OnHealthBarUpdate;
         }
 
         public void OnHealthBarUpdate(float value)
@@ -31,6 +32,11 @@ namespace _2_Scripts.UI
             { 
                 mHpText.text = $"{Mathf.RoundToInt(mSlider.value * mMaxHp.Value)}/{mMaxHp.Value}";
             });
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.Instance.HealHp -= OnHealthBarUpdate;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using _2_Scripts.Game.Map;
 using _2_Scripts.Game.Map.Tile;
 using _2_Scripts.Game.Unit;
@@ -10,6 +11,7 @@ using UniRx;
 using UniRx.Triggers;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
 namespace _2_Scripts.Game.Controller
@@ -65,12 +67,6 @@ namespace _2_Scripts.Game.Controller
                                 mTempSubscribe.Dispose();
                             });
                     }
-
-                    else
-                    {
-                        Debug.Log("Click Different Unit or Tile");
-                    }
-                    
                 });
 
             mouseDownStream
@@ -120,7 +116,7 @@ namespace _2_Scripts.Game.Controller
 
                         else
                         {
-                            
+
                             mSelectUnitMessage = new GameMessage<CharacterData>(EGameMessage.SelectCharacter, null);
                             MessageBroker.Default.Publish(mSelectUnitMessage);
                             mSelectCircle.transform.parent = null;

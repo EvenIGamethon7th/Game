@@ -1,0 +1,1857 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed47ec02d8bc4b14590492bdff49ff3a, type: 3}
+  m_Name: DB_SkillDataGroup
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: dataDic
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[SkillData,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 39
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_0
+    - Name: $v
+      Entry: 7
+      Data: 2|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_0
+    - Name: Group
+      Entry: 3
+      Data: 1
+    - Name: Name
+      Entry: 1
+      Data: "\uAF41\uAF41"
+    - Name: Description
+      Entry: 1
+      Data: "\uC801\uC744 \uAF41\uAF41 \uC5BC\uB824 \uC774\uB3D9\uC744 \uBC29\uD574\uD569\uB2C8\uB2E4.\n\uC801\uC758
+        \uC774\uB3D9\uC18D\uB3C4\uB97C 30% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 8
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_1
+    - Name: $v
+      Entry: 7
+      Data: 3|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_1
+    - Name: Group
+      Entry: 3
+      Data: 1
+    - Name: Name
+      Entry: 1
+      Data: "\uC5BC\uC74C\uAF43"
+    - Name: Description
+      Entry: 1
+      Data: "\uC0B4\uC5BC\uC74C \uAF43\uC744 \uB0A0\uB824 \uC801\uC744 \uACF5\uACA9\uD569\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 10
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_2
+    - Name: $v
+      Entry: 7
+      Data: 4|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_2
+    - Name: Group
+      Entry: 3
+      Data: 2
+    - Name: Name
+      Entry: 1
+      Data: "\uC1A1\uACF3\uB2C8"
+    - Name: Description
+      Entry: 1
+      Data: "\uC801\uC744 \uAE68\uBB3C\uC5B4 \uCD9C\uD608\uC744 \uC77C\uC73C\uD0B5\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 8
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_3
+    - Name: $v
+      Entry: 7
+      Data: 5|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_3
+    - Name: Group
+      Entry: 3
+      Data: 2
+    - Name: Name
+      Entry: 1
+      Data: "\uD559\uC0B4"
+    - Name: Description
+      Entry: 1
+      Data: "\uBD89\uC740 \uD53C\uB85C \uC801\uC744 \uD559\uC0B4\uD569\uB2C8\uB2E4.
+        \n\uC801 \uCC98\uCE58 \uC2DC \uCFE8\uD0C0\uC784\uC774 \uCD08\uAE30\uD654\uB429\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 15
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_4
+    - Name: $v
+      Entry: 7
+      Data: 6|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_4
+    - Name: Group
+      Entry: 3
+      Data: 3
+    - Name: Name
+      Entry: 1
+      Data: "\uBD88\uC880\uAEBC\uC904\uB798"
+    - Name: Description
+      Entry: 1
+      Data: "\uC801\uC758 \uBC29\uC5B4\uAD6C\uB97C \uD0DC\uC6CC \n\uBC29\uC5B4\uB825\uC744
+        10% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 12
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_5
+    - Name: $v
+      Entry: 7
+      Data: 7|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_5
+    - Name: Group
+      Entry: 3
+      Data: 3
+    - Name: Name
+      Entry: 1
+      Data: "\uB3C8\uC880\uAFD4\uC904\uB798"
+    - Name: Description
+      Entry: 1
+      Data: "\uAC81\uBA39\uC740 \uBAAC\uC2A4\uD130\uB4E4\uC774\n2% \uD655\uB960\uB85C
+        \uC5F4\uC1E0\uB97C \uB0B4\uBC49\uC2B5\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 0
+    - Name: SkillType
+      Entry: 3
+      Data: 2
+    - Name: Grade
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_6
+    - Name: $v
+      Entry: 7
+      Data: 8|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_6
+    - Name: Group
+      Entry: 3
+      Data: 4
+    - Name: Name
+      Entry: 1
+      Data: "\uBB3C \uC8FC\uAE30"
+    - Name: Description
+      Entry: 1
+      Data: "\uBAA8\uB4E0 \uC544\uAD70\uC758 \uB9C8\uBC95 \uACF5\uACA9\uB825\uC744
+        10% \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 0
+    - Name: SkillType
+      Entry: 3
+      Data: 2
+    - Name: Grade
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_7
+    - Name: $v
+      Entry: 7
+      Data: 9|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_7
+    - Name: Group
+      Entry: 3
+      Data: 4
+    - Name: Name
+      Entry: 1
+      Data: "\uC528\uC557 \uC2EC\uAE30"
+    - Name: Description
+      Entry: 1
+      Data: "\uD544\uB4DC\uC5D0 \uCD9C\uB825\uB41C \uBAA8\uB4E0 \uBAAC\uC2A4\uD130\uC5D0
+        \uC528\uC557\uC744 \uC2EC\uC5B4 \uACF5\uACA9\uD569\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 20
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_8
+    - Name: $v
+      Entry: 7
+      Data: 10|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_8
+    - Name: Group
+      Entry: 3
+      Data: 5
+    - Name: Name
+      Entry: 1
+      Data: "\uD604\uC0C1\uAE08"
+    - Name: Description
+      Entry: 1
+      Data: "\uAE30\uBCF8 \uACF5\uACA9 \uC2DC 10% \uD655\uB960\uB85C 5\uACE8\uB4DC\uB97C
+        \uD68D\uB4DD\uD569\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 0
+    - Name: SkillType
+      Entry: 3
+      Data: 2
+    - Name: Grade
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_9
+    - Name: $v
+      Entry: 7
+      Data: 11|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_9
+    - Name: Group
+      Entry: 3
+      Data: 5
+    - Name: Name
+      Entry: 1
+      Data: "\uACE8\uB4DC \uC775\uC2A4\uD50C\uB85C\uC804"
+    - Name: Description
+      Entry: 1
+      Data: "\uB3D9\uC804\uC744 \uB358\uC838 \uC801\uC744 \uACF5\uACA9\uD558\uACE0
+        \uAC00\uC9C4 \uACE8\uB4DC\uB97C \uAC15\uD0C8\uD569\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 20
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_10
+    - Name: $v
+      Entry: 7
+      Data: 12|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_10
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Name
+      Entry: 1
+      Data: "\uC751\uC6D0\uAC00"
+    - Name: Description
+      Entry: 1
+      Data: "\uC751\uC6D0\uAC00\uB97C \uBD88\uB7EC \uC544\uAD70 \uC720\uB2DB\uC758
+        \uC0AC\uAE30\uB97C \uB04C\uC5B4\uC62C\uB9BD\uB2C8\uB2E4.\n\uC544\uAD70 \uC720\uB2DB\uC758
+        \uACF5\uACA9\uB825\uC774 10% \uC0C1\uC2B9\uD569\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 0
+    - Name: SkillType
+      Entry: 3
+      Data: 2
+    - Name: Grade
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_11
+    - Name: $v
+      Entry: 7
+      Data: 13|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_11
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Name
+      Entry: 1
+      Data: "\uD648\uB7F0"
+    - Name: Description
+      Entry: 1
+      Data: "\uC801\uC744 \uBA40\uB9AC \uB0A0\uB824 \uC804\uD22C\uC5D0\uC11C \uAC15\uC81C\uB85C
+        \uCD94\uBC29\uD569\uB2C8\uB2E4.\n\uCC98\uCE58 \uBCF4\uC0C1 \uACE8\uB4DC\uB294
+        \uC5BB\uC744 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 25
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_12
+    - Name: $v
+      Entry: 7
+      Data: 14|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_12
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Name
+      Entry: 1
+      Data: "\uCC98\uD615"
+    - Name: Description
+      Entry: 1
+      Data: "\uCCB4\uB825\uC774 10% \uBBF8\uB9CC\uC778 \uC801 \uACF5\uACA9 \uC2DC
+        \uC989\uC2DC \uCC98\uD615\uC2DC\uD0B5\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 0
+    - Name: SkillType
+      Entry: 3
+      Data: 2
+    - Name: Grade
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_13
+    - Name: $v
+      Entry: 7
+      Data: 15|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_13
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Name
+      Entry: 1
+      Data: "\uAD11\uBD84"
+    - Name: Description
+      Entry: 1
+      Data: "\uAC80\uC744 \uBE60\uB974\uAC8C \uD718\uB458\uB7EC \uC801\uC5D0\uAC8C
+        \uB0B4\uC0C1\uC744 \uC785\uD799\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 10
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_14
+    - Name: $v
+      Entry: 7
+      Data: 16|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_14
+    - Name: Group
+      Entry: 3
+      Data: 8
+    - Name: Name
+      Entry: 1
+      Data: "\uBB34\uBA85"
+    - Name: Description
+      Entry: 1
+      Data: "\uAE30\uBCF8 \uACF5\uACA9 \uC801\uC911 \uC2DC \uC801\uC758 \uB9C8\uBC95
+        \uBC29\uC5B4\uB825\uC774 10% \uAC10\uC18C\uD569\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 0
+    - Name: SkillType
+      Entry: 3
+      Data: 2
+    - Name: Grade
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_15
+    - Name: $v
+      Entry: 7
+      Data: 17|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_15
+    - Name: Group
+      Entry: 3
+      Data: 8
+    - Name: Name
+      Entry: 1
+      Data: "\uAC80\uACA9"
+    - Name: Description
+      Entry: 1
+      Data: "\uAC80\uC5D0 \uB9C8\uBC95\uC744 \uCDA9\uC804\uD558\uC5EC \uAC15\uB825\uD55C
+        \uC77C\uACA9\uC744 \uB0A0\uB9BD\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 10
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_16
+    - Name: $v
+      Entry: 7
+      Data: 18|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_16
+    - Name: Group
+      Entry: 3
+      Data: 9
+    - Name: Name
+      Entry: 1
+      Data: "\uD604\uD639"
+    - Name: Description
+      Entry: 1
+      Data: "\uC801\uC744 \uD604\uD639\uC2DC\uCF1C \uC774\uB3D9\uC18D\uB3C4\uB97C
+        30% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 8
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_17
+    - Name: $v
+      Entry: 7
+      Data: 19|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_17
+    - Name: Group
+      Entry: 3
+      Data: 9
+    - Name: Name
+      Entry: 1
+      Data: "\uC911\uB3C5"
+    - Name: Description
+      Entry: 1
+      Data: "\uC801\uC744 \uC911\uB3C5\uC2DC\uCF1C 5\uCD08\uAC04 \uC801\uC5D0\uAC8C
+        \uCD5C\uB300 \uCCB4\uB825 \uBE44\uB840 2% \uC758 \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 0
+    - Name: SkillType
+      Entry: 3
+      Data: 2
+    - Name: Grade
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_18
+    - Name: $v
+      Entry: 7
+      Data: 20|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_18
+    - Name: Group
+      Entry: 3
+      Data: 10
+    - Name: Name
+      Entry: 1
+      Data: "\uBBF8\uCE74\uC5D8"
+    - Name: Description
+      Entry: 1
+      Data: "\uBAA8\uB4E0 \uC544\uAD70\uC758 \uACF5\uACA9 \uC18D\uB3C4\uB97C 10%
+        \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 0
+    - Name: SkillType
+      Entry: 3
+      Data: 2
+    - Name: Grade
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_19
+    - Name: $v
+      Entry: 7
+      Data: 21|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_19
+    - Name: Group
+      Entry: 3
+      Data: 10
+    - Name: Name
+      Entry: 1
+      Data: "\uC2EC\uD310"
+    - Name: Description
+      Entry: 1
+      Data: "\uD558\uB298\uC5D0\uC11C \uBE5B\uC774 \uC3DF\uC544\uC838 \uC801\uC744
+        \uC2EC\uD310\uD569\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 10
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_20
+    - Name: $v
+      Entry: 7
+      Data: 22|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_20
+    - Name: Group
+      Entry: 3
+      Data: 11
+    - Name: Name
+      Entry: 1
+      Data: "\uB77C\uC774\uD2B8\uB2DD"
+    - Name: Description
+      Entry: 1
+      Data: "\uACE0\uC555\uC758 \uC804\uAE30\uB97C \uBC29\uCD9C\uC2DC\uCF1C \uC801\uC744
+        \uAC10\uC804\uC2DC\uD0B5\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 8
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_21
+    - Name: $v
+      Entry: 7
+      Data: 23|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_21
+    - Name: Group
+      Entry: 3
+      Data: 11
+    - Name: Name
+      Entry: 1
+      Data: "\uB77C\uC774\uD2B8\uBCFC"
+    - Name: Description
+      Entry: 1
+      Data: "\uBC88\uAC1C \uAD6C\uCCB4\uB97C \uC18C\uD658\uD558\uC5EC \uC8FC\uBCC0
+        \uC801\uC744 \uAC10\uC804\uC2DC\uD0B5\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 10
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_22
+    - Name: $v
+      Entry: 7
+      Data: 24|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_22
+    - Name: Group
+      Entry: 3
+      Data: 12
+    - Name: Name
+      Entry: 1
+      Data: "\uC751\uCD95 \uD654\uC0B4"
+    - Name: Description
+      Entry: 1
+      Data: "\uD654\uC0B4\uC744 \uC5EC\uB7EC \uAC1C \uC5EE\uC5B4 \uAC15\uB825\uD55C
+        \uC77C\uBC18 \uACF5\uACA9\uC744 \uD569\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 6
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_23
+    - Name: $v
+      Entry: 7
+      Data: 25|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_23
+    - Name: Group
+      Entry: 3
+      Data: 12
+    - Name: Name
+      Entry: 1
+      Data: "\uC57D\uC810 \uAC04\uD30C"
+    - Name: Description
+      Entry: 1
+      Data: "\uAE30\uBCF8 \uACF5\uACA9 \uC2DC \uC801 \uCD5C\uB300 \uCCB4\uB825 \uBE44\uB840
+        0.4%\uC758 \uCD94\uAC00 \uB370\uBBF8\uC9C0\uAC00 \uBC1C\uC0DD\uD569\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 0
+    - Name: SkillType
+      Entry: 3
+      Data: 2
+    - Name: Grade
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_100
+    - Name: $v
+      Entry: 7
+      Data: 26|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_100
+    - Name: Group
+      Entry: 3
+      Data: 100
+    - Name: Name
+      Entry: 1
+      Data: "\uC544\uCFE0\uC544\uBE14\uB85D"
+    - Name: Description
+      Entry: 1
+      Data: "\uBB3C\uAC10\uC625\uC744 \uC0DD\uC131\uD574 \uC801\uC758 \uC774\uB3D9\uC744
+        \uBC29\uD574\uD569\uB2C8\uB2E4.\n\uC801\uC758 \uC774\uB3D9\uC18D\uB3C4\uB97C
+        80% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 40
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_101
+    - Name: $v
+      Entry: 7
+      Data: 27|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_101
+    - Name: Group
+      Entry: 3
+      Data: 100
+    - Name: Name
+      Entry: 1
+      Data: "\uC544\uCFE0\uC544\uBE14\uB85D"
+    - Name: Description
+      Entry: 1
+      Data: "\uBB3C\uAC10\uC625\uC744 \uC0DD\uC131\uD574 \uC801\uC758 \uC774\uB3D9\uC744
+        \uBC29\uD574\uD569\uB2C8\uB2E4.\n\uC801\uC758 \uC774\uB3D9\uC18D\uB3C4\uB97C
+        80% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 30
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_102
+    - Name: $v
+      Entry: 7
+      Data: 28|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_102
+    - Name: Group
+      Entry: 3
+      Data: 100
+    - Name: Name
+      Entry: 1
+      Data: "\uC544\uCFE0\uC544\uBE14\uB85D"
+    - Name: Description
+      Entry: 1
+      Data: "\uBB3C\uAC10\uC625\uC744 \uC0DD\uC131\uD574 \uC801\uC758 \uC774\uB3D9\uC744
+        \uBC29\uD574\uD569\uB2C8\uB2E4.\n\uC801\uC758 \uC774\uB3D9\uC18D\uB3C4\uB97C
+        80% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 15
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_103
+    - Name: $v
+      Entry: 7
+      Data: 29|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_103
+    - Name: Group
+      Entry: 3
+      Data: 101
+    - Name: Name
+      Entry: 1
+      Data: "\uBD88\uAF43\uB180\uC774"
+    - Name: Description
+      Entry: 1
+      Data: "\uBD84\uB178\uC5D0 \uCC2C \uB808\uBE0C\uAC00 \uAC15\uB825\uD55C \uD654\uC5FC
+        \uACF5\uACA9\uC744 \uBC1C\uC0AC\uD569\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 35
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_104
+    - Name: $v
+      Entry: 7
+      Data: 30|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_104
+    - Name: Group
+      Entry: 3
+      Data: 101
+    - Name: Name
+      Entry: 1
+      Data: "\uBD88\uAF43\uB180\uC774"
+    - Name: Description
+      Entry: 1
+      Data: "\uBD84\uB178\uC5D0 \uCC2C \uB808\uBE0C\uAC00 \uAC15\uB825\uD55C \uD654\uC5FC
+        \uACF5\uACA9\uC744 \uBC1C\uC0AC\uD569\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 25
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_105
+    - Name: $v
+      Entry: 7
+      Data: 31|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_105
+    - Name: Group
+      Entry: 3
+      Data: 101
+    - Name: Name
+      Entry: 1
+      Data: "\uBD88\uAF43\uB180\uC774"
+    - Name: Description
+      Entry: 1
+      Data: "\uBD84\uB178\uC5D0 \uCC2C \uB808\uBE0C\uAC00 \uAC15\uB825\uD55C \uD654\uC5FC
+        \uACF5\uACA9\uC744 \uBC1C\uC0AC\uD569\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 15
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_106
+    - Name: $v
+      Entry: 7
+      Data: 32|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_106
+    - Name: Group
+      Entry: 3
+      Data: 102
+    - Name: Name
+      Entry: 1
+      Data: "\uC232\uC758 \uC218\uD638\uC790"
+    - Name: Description
+      Entry: 1
+      Data: "\uC138\uACC4\uC218\uB97C \uC18C\uD658\uD574 \uC544\uAD70\uC5D0 \uCD95\uBCF5\uC744
+        \uB0B4\uB9BD\uB2C8\uB2E4.\n10\uCD08\uAC04 \uC544\uAD70\uC758 \uACF5\uACA9\uB825
+        \uBC0F \uB9C8\uBC95\uACF5\uACA9\uB825\uC744 10% \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 45
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_107
+    - Name: $v
+      Entry: 7
+      Data: 33|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_107
+    - Name: Group
+      Entry: 3
+      Data: 102
+    - Name: Name
+      Entry: 1
+      Data: "\uC232\uC758 \uC218\uD638\uC790"
+    - Name: Description
+      Entry: 1
+      Data: "\uC138\uACC4\uC218\uB97C \uC18C\uD658\uD574 \uC544\uAD70\uC5D0 \uCD95\uBCF5\uC744
+        \uB0B4\uB9BD\uB2C8\uB2E4.\n10\uCD08\uAC04 \uC544\uAD70\uC758 \uACF5\uACA9\uB825
+        \uBC0F \uB9C8\uBC95\uACF5\uACA9\uB825\uC744 20% \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 35
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_108
+    - Name: $v
+      Entry: 7
+      Data: 34|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_108
+    - Name: Group
+      Entry: 3
+      Data: 102
+    - Name: Name
+      Entry: 1
+      Data: "\uC232\uC758 \uC218\uD638\uC790"
+    - Name: Description
+      Entry: 1
+      Data: "\uC138\uACC4\uC218\uB97C \uC18C\uD658\uD574 \uC544\uAD70\uC5D0 \uCD95\uBCF5\uC744
+        \uB0B4\uB9BD\uB2C8\uB2E4.\n10\uCD08\uAC04 \uC544\uAD70\uC758 \uACF5\uACA9\uB825
+        \uBC0F \uB9C8\uBC95\uACF5\uACA9\uB825\uC744 30% \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 25
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_109
+    - Name: $v
+      Entry: 7
+      Data: 35|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_109
+    - Name: Group
+      Entry: 3
+      Data: 103
+    - Name: Name
+      Entry: 1
+      Data: "\uBE14\uB9AC\uC2A4"
+    - Name: Description
+      Entry: 1
+      Data: "\uC2E0\uC131\uD55C \uD798\uC744 \uBC1C\uC0B0\uD558\uC5EC \uC131\uBCBD
+        HP\uB97C 10 \uD68C\uBCF5\uC2DC\uD0B5\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 60
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_110
+    - Name: $v
+      Entry: 7
+      Data: 36|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_110
+    - Name: Group
+      Entry: 3
+      Data: 103
+    - Name: Name
+      Entry: 1
+      Data: "\uBE14\uB9AC\uC2A4"
+    - Name: Description
+      Entry: 1
+      Data: "\uC2E0\uC131\uD55C \uD798\uC744 \uBC1C\uC0B0\uD558\uC5EC \uC131\uBCBD
+        HP\uB97C 10 \uD68C\uBCF5\uC2DC\uD0B5\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 45
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_111
+    - Name: $v
+      Entry: 7
+      Data: 37|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_111
+    - Name: Group
+      Entry: 3
+      Data: 103
+    - Name: Name
+      Entry: 1
+      Data: "\uBE14\uB9AC\uC2A4"
+    - Name: Description
+      Entry: 1
+      Data: "\uC2E0\uC131\uD55C \uD798\uC744 \uBC1C\uC0B0\uD558\uC5EC \uC131\uBCBD
+        HP\uB97C 10 \uD68C\uBCF5\uC2DC\uD0B5\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 25
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_112
+    - Name: $v
+      Entry: 7
+      Data: 38|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_112
+    - Name: Group
+      Entry: 3
+      Data: 104
+    - Name: Name
+      Entry: 1
+      Data: "\uBCBD \uB108\uBA38\uB85C"
+    - Name: Description
+      Entry: 1
+      Data: "\uCC28\uC6D0\uC758 \uBB38\uC744 \uC5F4\uC5B4 \uC801\uC744 \uC774\uC138\uACC4\uB85C
+        \uC774\uB3D9\uC2DC\uD0B5\uB2C8\uB2E4.\n\uBCF4\uC2A4 \uBAAC\uC2A4\uD130\uB294
+        \uC774\uB3D9\uC2DC\uD0A4\uC9C0 \uBABB\uD569\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 50
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_113
+    - Name: $v
+      Entry: 7
+      Data: 39|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_113
+    - Name: Group
+      Entry: 3
+      Data: 104
+    - Name: Name
+      Entry: 1
+      Data: "\uBCBD \uB108\uBA38\uB85C"
+    - Name: Description
+      Entry: 1
+      Data: "\uCC28\uC6D0\uC758 \uBB38\uC744 \uC5F4\uC5B4 \uC801\uC744 \uC774\uC138\uACC4\uB85C
+        \uC774\uB3D9\uC2DC\uD0B5\uB2C8\uB2E4.\n\uBCF4\uC2A4 \uBAAC\uC2A4\uD130\uB294
+        \uC774\uB3D9\uC2DC\uD0A4\uC9C0 \uBABB\uD569\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 40
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Skill_114
+    - Name: $v
+      Entry: 7
+      Data: 40|SkillData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Skill_114
+    - Name: Group
+      Entry: 3
+      Data: 104
+    - Name: Name
+      Entry: 1
+      Data: "\uBCBD \uB108\uBA38\uB85C"
+    - Name: Description
+      Entry: 1
+      Data: "\uCC28\uC6D0\uC758 \uBB38\uC744 \uC5F4\uC5B4 \uC801\uC744 \uC774\uC138\uACC4\uB85C
+        \uC774\uB3D9\uC2DC\uD0B5\uB2C8\uB2E4.\n\uBCF4\uC2A4 \uBAAC\uC2A4\uD130\uB294
+        \uC774\uB3D9\uC2DC\uD0A4\uC9C0 \uBABB\uD569\uB2C8\uB2E4."
+    - Name: CoolTime
+      Entry: 3
+      Data: 25
+    - Name: SkillType
+      Entry: 3
+      Data: 1
+    - Name: Grade
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  dataArr:
+  - Key: Skill_0
+    Group: 1
+    Name: "\uAF41\uAF41"
+    Description: "\uC801\uC744 \uAF41\uAF41 \uC5BC\uB824 \uC774\uB3D9\uC744 \uBC29\uD574\uD569\uB2C8\uB2E4.\n\uC801\uC758
+      \uC774\uB3D9\uC18D\uB3C4\uB97C 30% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+    CoolTime: 8
+    SkillType: 1
+    Grade: 2
+  - Key: Skill_1
+    Group: 1
+    Name: "\uC5BC\uC74C\uAF43"
+    Description: "\uC0B4\uC5BC\uC74C \uAF43\uC744 \uB0A0\uB824 \uC801\uC744 \uACF5\uACA9\uD569\uB2C8\uB2E4."
+    CoolTime: 10
+    SkillType: 1
+    Grade: 3
+  - Key: Skill_2
+    Group: 2
+    Name: "\uC1A1\uACF3\uB2C8"
+    Description: "\uC801\uC744 \uAE68\uBB3C\uC5B4 \uCD9C\uD608\uC744 \uC77C\uC73C\uD0B5\uB2C8\uB2E4."
+    CoolTime: 8
+    SkillType: 1
+    Grade: 2
+  - Key: Skill_3
+    Group: 2
+    Name: "\uD559\uC0B4"
+    Description: "\uBD89\uC740 \uD53C\uB85C \uC801\uC744 \uD559\uC0B4\uD569\uB2C8\uB2E4.
+      \n\uC801 \uCC98\uCE58 \uC2DC \uCFE8\uD0C0\uC784\uC774 \uCD08\uAE30\uD654\uB429\uB2C8\uB2E4."
+    CoolTime: 15
+    SkillType: 1
+    Grade: 3
+  - Key: Skill_4
+    Group: 3
+    Name: "\uBD88\uC880\uAEBC\uC904\uB798"
+    Description: "\uC801\uC758 \uBC29\uC5B4\uAD6C\uB97C \uD0DC\uC6CC \n\uBC29\uC5B4\uB825\uC744
+      10% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+    CoolTime: 12
+    SkillType: 1
+    Grade: 2
+  - Key: Skill_5
+    Group: 3
+    Name: "\uB3C8\uC880\uAFD4\uC904\uB798"
+    Description: "\uAC81\uBA39\uC740 \uBAAC\uC2A4\uD130\uB4E4\uC774\n2% \uD655\uB960\uB85C
+      \uC5F4\uC1E0\uB97C \uB0B4\uBC49\uC2B5\uB2C8\uB2E4."
+    CoolTime: 0
+    SkillType: 2
+    Grade: 3
+  - Key: Skill_6
+    Group: 4
+    Name: "\uBB3C \uC8FC\uAE30"
+    Description: "\uBAA8\uB4E0 \uC544\uAD70\uC758 \uB9C8\uBC95 \uACF5\uACA9\uB825\uC744
+      10% \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
+    CoolTime: 0
+    SkillType: 2
+    Grade: 2
+  - Key: Skill_7
+    Group: 4
+    Name: "\uC528\uC557 \uC2EC\uAE30"
+    Description: "\uD544\uB4DC\uC5D0 \uCD9C\uB825\uB41C \uBAA8\uB4E0 \uBAAC\uC2A4\uD130\uC5D0
+      \uC528\uC557\uC744 \uC2EC\uC5B4 \uACF5\uACA9\uD569\uB2C8\uB2E4."
+    CoolTime: 20
+    SkillType: 1
+    Grade: 3
+  - Key: Skill_8
+    Group: 5
+    Name: "\uD604\uC0C1\uAE08"
+    Description: "\uAE30\uBCF8 \uACF5\uACA9 \uC2DC 10% \uD655\uB960\uB85C 5\uACE8\uB4DC\uB97C
+      \uD68D\uB4DD\uD569\uB2C8\uB2E4."
+    CoolTime: 0
+    SkillType: 2
+    Grade: 2
+  - Key: Skill_9
+    Group: 5
+    Name: "\uACE8\uB4DC \uC775\uC2A4\uD50C\uB85C\uC804"
+    Description: "\uB3D9\uC804\uC744 \uB358\uC838 \uC801\uC744 \uACF5\uACA9\uD558\uACE0
+      \uAC00\uC9C4 \uACE8\uB4DC\uB97C \uAC15\uD0C8\uD569\uB2C8\uB2E4."
+    CoolTime: 20
+    SkillType: 1
+    Grade: 3
+  - Key: Skill_10
+    Group: 6
+    Name: "\uC751\uC6D0\uAC00"
+    Description: "\uC751\uC6D0\uAC00\uB97C \uBD88\uB7EC \uC544\uAD70 \uC720\uB2DB\uC758
+      \uC0AC\uAE30\uB97C \uB04C\uC5B4\uC62C\uB9BD\uB2C8\uB2E4.\n\uC544\uAD70 \uC720\uB2DB\uC758
+      \uACF5\uACA9\uB825\uC774 10% \uC0C1\uC2B9\uD569\uB2C8\uB2E4."
+    CoolTime: 0
+    SkillType: 2
+    Grade: 2
+  - Key: Skill_11
+    Group: 6
+    Name: "\uD648\uB7F0"
+    Description: "\uC801\uC744 \uBA40\uB9AC \uB0A0\uB824 \uC804\uD22C\uC5D0\uC11C
+      \uAC15\uC81C\uB85C \uCD94\uBC29\uD569\uB2C8\uB2E4.\n\uCC98\uCE58 \uBCF4\uC0C1
+      \uACE8\uB4DC\uB294 \uC5BB\uC744 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4."
+    CoolTime: 25
+    SkillType: 1
+    Grade: 3
+  - Key: Skill_12
+    Group: 7
+    Name: "\uCC98\uD615"
+    Description: "\uCCB4\uB825\uC774 10% \uBBF8\uB9CC\uC778 \uC801 \uACF5\uACA9 \uC2DC
+      \uC989\uC2DC \uCC98\uD615\uC2DC\uD0B5\uB2C8\uB2E4."
+    CoolTime: 0
+    SkillType: 2
+    Grade: 2
+  - Key: Skill_13
+    Group: 7
+    Name: "\uAD11\uBD84"
+    Description: "\uAC80\uC744 \uBE60\uB974\uAC8C \uD718\uB458\uB7EC \uC801\uC5D0\uAC8C
+      \uB0B4\uC0C1\uC744 \uC785\uD799\uB2C8\uB2E4."
+    CoolTime: 10
+    SkillType: 1
+    Grade: 3
+  - Key: Skill_14
+    Group: 8
+    Name: "\uBB34\uBA85"
+    Description: "\uAE30\uBCF8 \uACF5\uACA9 \uC801\uC911 \uC2DC \uC801\uC758 \uB9C8\uBC95
+      \uBC29\uC5B4\uB825\uC774 10% \uAC10\uC18C\uD569\uB2C8\uB2E4."
+    CoolTime: 0
+    SkillType: 2
+    Grade: 2
+  - Key: Skill_15
+    Group: 8
+    Name: "\uAC80\uACA9"
+    Description: "\uAC80\uC5D0 \uB9C8\uBC95\uC744 \uCDA9\uC804\uD558\uC5EC \uAC15\uB825\uD55C
+      \uC77C\uACA9\uC744 \uB0A0\uB9BD\uB2C8\uB2E4."
+    CoolTime: 10
+    SkillType: 1
+    Grade: 3
+  - Key: Skill_16
+    Group: 9
+    Name: "\uD604\uD639"
+    Description: "\uC801\uC744 \uD604\uD639\uC2DC\uCF1C \uC774\uB3D9\uC18D\uB3C4\uB97C
+      30% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+    CoolTime: 8
+    SkillType: 1
+    Grade: 2
+  - Key: Skill_17
+    Group: 9
+    Name: "\uC911\uB3C5"
+    Description: "\uC801\uC744 \uC911\uB3C5\uC2DC\uCF1C 5\uCD08\uAC04 \uC801\uC5D0\uAC8C
+      \uCD5C\uB300 \uCCB4\uB825 \uBE44\uB840 2% \uC758 \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
+    CoolTime: 0
+    SkillType: 2
+    Grade: 3
+  - Key: Skill_18
+    Group: 10
+    Name: "\uBBF8\uCE74\uC5D8"
+    Description: "\uBAA8\uB4E0 \uC544\uAD70\uC758 \uACF5\uACA9 \uC18D\uB3C4\uB97C
+      10% \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
+    CoolTime: 0
+    SkillType: 2
+    Grade: 2
+  - Key: Skill_19
+    Group: 10
+    Name: "\uC2EC\uD310"
+    Description: "\uD558\uB298\uC5D0\uC11C \uBE5B\uC774 \uC3DF\uC544\uC838 \uC801\uC744
+      \uC2EC\uD310\uD569\uB2C8\uB2E4."
+    CoolTime: 10
+    SkillType: 1
+    Grade: 3
+  - Key: Skill_20
+    Group: 11
+    Name: "\uB77C\uC774\uD2B8\uB2DD"
+    Description: "\uACE0\uC555\uC758 \uC804\uAE30\uB97C \uBC29\uCD9C\uC2DC\uCF1C
+      \uC801\uC744 \uAC10\uC804\uC2DC\uD0B5\uB2C8\uB2E4."
+    CoolTime: 8
+    SkillType: 1
+    Grade: 2
+  - Key: Skill_21
+    Group: 11
+    Name: "\uB77C\uC774\uD2B8\uBCFC"
+    Description: "\uBC88\uAC1C \uAD6C\uCCB4\uB97C \uC18C\uD658\uD558\uC5EC \uC8FC\uBCC0
+      \uC801\uC744 \uAC10\uC804\uC2DC\uD0B5\uB2C8\uB2E4."
+    CoolTime: 10
+    SkillType: 1
+    Grade: 3
+  - Key: Skill_22
+    Group: 12
+    Name: "\uC751\uCD95 \uD654\uC0B4"
+    Description: "\uD654\uC0B4\uC744 \uC5EC\uB7EC \uAC1C \uC5EE\uC5B4 \uAC15\uB825\uD55C
+      \uC77C\uBC18 \uACF5\uACA9\uC744 \uD569\uB2C8\uB2E4."
+    CoolTime: 6
+    SkillType: 1
+    Grade: 2
+  - Key: Skill_23
+    Group: 12
+    Name: "\uC57D\uC810 \uAC04\uD30C"
+    Description: "\uAE30\uBCF8 \uACF5\uACA9 \uC2DC \uC801 \uCD5C\uB300 \uCCB4\uB825
+      \uBE44\uB840 0.4%\uC758 \uCD94\uAC00 \uB370\uBBF8\uC9C0\uAC00 \uBC1C\uC0DD\uD569\uB2C8\uB2E4."
+    CoolTime: 0
+    SkillType: 2
+    Grade: 3
+  - Key: Skill_100
+    Group: 100
+    Name: "\uC544\uCFE0\uC544\uBE14\uB85D"
+    Description: "\uBB3C\uAC10\uC625\uC744 \uC0DD\uC131\uD574 \uC801\uC758 \uC774\uB3D9\uC744
+      \uBC29\uD574\uD569\uB2C8\uB2E4.\n\uC801\uC758 \uC774\uB3D9\uC18D\uB3C4\uB97C
+      80% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+    CoolTime: 40
+    SkillType: 1
+    Grade: 1
+  - Key: Skill_101
+    Group: 100
+    Name: "\uC544\uCFE0\uC544\uBE14\uB85D"
+    Description: "\uBB3C\uAC10\uC625\uC744 \uC0DD\uC131\uD574 \uC801\uC758 \uC774\uB3D9\uC744
+      \uBC29\uD574\uD569\uB2C8\uB2E4.\n\uC801\uC758 \uC774\uB3D9\uC18D\uB3C4\uB97C
+      80% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+    CoolTime: 30
+    SkillType: 1
+    Grade: 2
+  - Key: Skill_102
+    Group: 100
+    Name: "\uC544\uCFE0\uC544\uBE14\uB85D"
+    Description: "\uBB3C\uAC10\uC625\uC744 \uC0DD\uC131\uD574 \uC801\uC758 \uC774\uB3D9\uC744
+      \uBC29\uD574\uD569\uB2C8\uB2E4.\n\uC801\uC758 \uC774\uB3D9\uC18D\uB3C4\uB97C
+      80% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+    CoolTime: 15
+    SkillType: 1
+    Grade: 3
+  - Key: Skill_103
+    Group: 101
+    Name: "\uBD88\uAF43\uB180\uC774"
+    Description: "\uBD84\uB178\uC5D0 \uCC2C \uB808\uBE0C\uAC00 \uAC15\uB825\uD55C
+      \uD654\uC5FC \uACF5\uACA9\uC744 \uBC1C\uC0AC\uD569\uB2C8\uB2E4."
+    CoolTime: 35
+    SkillType: 1
+    Grade: 1
+  - Key: Skill_104
+    Group: 101
+    Name: "\uBD88\uAF43\uB180\uC774"
+    Description: "\uBD84\uB178\uC5D0 \uCC2C \uB808\uBE0C\uAC00 \uAC15\uB825\uD55C
+      \uD654\uC5FC \uACF5\uACA9\uC744 \uBC1C\uC0AC\uD569\uB2C8\uB2E4."
+    CoolTime: 25
+    SkillType: 1
+    Grade: 2
+  - Key: Skill_105
+    Group: 101
+    Name: "\uBD88\uAF43\uB180\uC774"
+    Description: "\uBD84\uB178\uC5D0 \uCC2C \uB808\uBE0C\uAC00 \uAC15\uB825\uD55C
+      \uD654\uC5FC \uACF5\uACA9\uC744 \uBC1C\uC0AC\uD569\uB2C8\uB2E4."
+    CoolTime: 15
+    SkillType: 1
+    Grade: 3
+  - Key: Skill_106
+    Group: 102
+    Name: "\uC232\uC758 \uC218\uD638\uC790"
+    Description: "\uC138\uACC4\uC218\uB97C \uC18C\uD658\uD574 \uC544\uAD70\uC5D0
+      \uCD95\uBCF5\uC744 \uB0B4\uB9BD\uB2C8\uB2E4.\n10\uCD08\uAC04 \uC544\uAD70\uC758
+      \uACF5\uACA9\uB825 \uBC0F \uB9C8\uBC95\uACF5\uACA9\uB825\uC744 10% \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
+    CoolTime: 45
+    SkillType: 1
+    Grade: 1
+  - Key: Skill_107
+    Group: 102
+    Name: "\uC232\uC758 \uC218\uD638\uC790"
+    Description: "\uC138\uACC4\uC218\uB97C \uC18C\uD658\uD574 \uC544\uAD70\uC5D0
+      \uCD95\uBCF5\uC744 \uB0B4\uB9BD\uB2C8\uB2E4.\n10\uCD08\uAC04 \uC544\uAD70\uC758
+      \uACF5\uACA9\uB825 \uBC0F \uB9C8\uBC95\uACF5\uACA9\uB825\uC744 20% \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
+    CoolTime: 35
+    SkillType: 1
+    Grade: 2
+  - Key: Skill_108
+    Group: 102
+    Name: "\uC232\uC758 \uC218\uD638\uC790"
+    Description: "\uC138\uACC4\uC218\uB97C \uC18C\uD658\uD574 \uC544\uAD70\uC5D0
+      \uCD95\uBCF5\uC744 \uB0B4\uB9BD\uB2C8\uB2E4.\n10\uCD08\uAC04 \uC544\uAD70\uC758
+      \uACF5\uACA9\uB825 \uBC0F \uB9C8\uBC95\uACF5\uACA9\uB825\uC744 30% \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
+    CoolTime: 25
+    SkillType: 1
+    Grade: 3
+  - Key: Skill_109
+    Group: 103
+    Name: "\uBE14\uB9AC\uC2A4"
+    Description: "\uC2E0\uC131\uD55C \uD798\uC744 \uBC1C\uC0B0\uD558\uC5EC \uC131\uBCBD
+      HP\uB97C 10 \uD68C\uBCF5\uC2DC\uD0B5\uB2C8\uB2E4."
+    CoolTime: 60
+    SkillType: 1
+    Grade: 1
+  - Key: Skill_110
+    Group: 103
+    Name: "\uBE14\uB9AC\uC2A4"
+    Description: "\uC2E0\uC131\uD55C \uD798\uC744 \uBC1C\uC0B0\uD558\uC5EC \uC131\uBCBD
+      HP\uB97C 10 \uD68C\uBCF5\uC2DC\uD0B5\uB2C8\uB2E4."
+    CoolTime: 45
+    SkillType: 1
+    Grade: 2
+  - Key: Skill_111
+    Group: 103
+    Name: "\uBE14\uB9AC\uC2A4"
+    Description: "\uC2E0\uC131\uD55C \uD798\uC744 \uBC1C\uC0B0\uD558\uC5EC \uC131\uBCBD
+      HP\uB97C 10 \uD68C\uBCF5\uC2DC\uD0B5\uB2C8\uB2E4."
+    CoolTime: 25
+    SkillType: 1
+    Grade: 3
+  - Key: Skill_112
+    Group: 104
+    Name: "\uBCBD \uB108\uBA38\uB85C"
+    Description: "\uCC28\uC6D0\uC758 \uBB38\uC744 \uC5F4\uC5B4 \uC801\uC744 \uC774\uC138\uACC4\uB85C
+      \uC774\uB3D9\uC2DC\uD0B5\uB2C8\uB2E4.\n\uBCF4\uC2A4 \uBAAC\uC2A4\uD130\uB294
+      \uC774\uB3D9\uC2DC\uD0A4\uC9C0 \uBABB\uD569\uB2C8\uB2E4."
+    CoolTime: 50
+    SkillType: 1
+    Grade: 1
+  - Key: Skill_113
+    Group: 104
+    Name: "\uBCBD \uB108\uBA38\uB85C"
+    Description: "\uCC28\uC6D0\uC758 \uBB38\uC744 \uC5F4\uC5B4 \uC801\uC744 \uC774\uC138\uACC4\uB85C
+      \uC774\uB3D9\uC2DC\uD0B5\uB2C8\uB2E4.\n\uBCF4\uC2A4 \uBAAC\uC2A4\uD130\uB294
+      \uC774\uB3D9\uC2DC\uD0A4\uC9C0 \uBABB\uD569\uB2C8\uB2E4."
+    CoolTime: 40
+    SkillType: 1
+    Grade: 2
+  - Key: Skill_114
+    Group: 104
+    Name: "\uBCBD \uB108\uBA38\uB85C"
+    Description: "\uCC28\uC6D0\uC758 \uBB38\uC744 \uC5F4\uC5B4 \uC801\uC744 \uC774\uC138\uACC4\uB85C
+      \uC774\uB3D9\uC2DC\uD0B5\uB2C8\uB2E4.\n\uBCF4\uC2A4 \uBAAC\uC2A4\uD130\uB294
+      \uC774\uB3D9\uC2DC\uD0A4\uC9C0 \uBABB\uD569\uB2C8\uB2E4."
+    CoolTime: 25
+    SkillType: 1
+    Grade: 3
+  keyArr:
+  - Skill_0
+  - Skill_1
+  - Skill_2
+  - Skill_3
+  - Skill_4
+  - Skill_5
+  - Skill_6
+  - Skill_7
+  - Skill_8
+  - Skill_9
+  - Skill_10
+  - Skill_11
+  - Skill_12
+  - Skill_13
+  - Skill_14
+  - Skill_15
+  - Skill_16
+  - Skill_17
+  - Skill_18
+  - Skill_19
+  - Skill_20
+  - Skill_21
+  - Skill_22
+  - Skill_23
+  - Skill_100
+  - Skill_101
+  - Skill_102
+  - Skill_103
+  - Skill_104
+  - Skill_105
+  - Skill_106
+  - Skill_107
+  - Skill_108
+  - Skill_109
+  - Skill_110
+  - Skill_111
+  - Skill_112
+  - Skill_113
+  - Skill_114

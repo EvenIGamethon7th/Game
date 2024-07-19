@@ -4,6 +4,7 @@ using Spine.Unity;
 using TMPro;
 using UniRx;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _2_Scripts.UI.Ingame.CharacterInfo
 {
@@ -16,6 +17,15 @@ namespace _2_Scripts.UI.Ingame.CharacterInfo
         [SerializeField] private TextMeshProUGUI mCharacterStatusMAtkText;
         [SerializeField] private TextMeshProUGUI mCharacterClassText;
         [SerializeField] private SkeletonGraphic modelGraphic;
+        
+        
+        [SerializeField] private TextMeshProUGUI mCharacterSkillNameText;
+        [SerializeField] private TextMeshProUGUI mCharacterSkillTypeText;
+        [SerializeField] private TextMeshProUGUI mCharacterSkillDescText;
+        
+        [SerializeField] private Button mCharacterRareSkillButton;
+        [SerializeField] private Button mCharacterEpicSkillButton;
+        
         private void Start()
         {
             MessageBroker.Default.Receive<GameMessage<CharacterData>>()
@@ -30,8 +40,21 @@ namespace _2_Scripts.UI.Ingame.CharacterInfo
                     mCharacterInfoGo.SetActive(true);
                   UpdateCharacterInfoData(data.Value);
                 }).AddTo(this);
+            mCharacterRareSkillButton.onClick.AddListener(() =>
+            {
+                if (mCharacterData.rank < 2)
+                    return;
+                SetSkillDescText(mCharacterData,1);
+            });
+            mCharacterEpicSkillButton.onClick.AddListener(() =>
+            {
+                if (mCharacterData.rank < 3)
+                    return;
+                SetSkillDescText(mCharacterData,2);
+            });
         }
 
+        private CharacterData mCharacterData;
         private void UpdateCharacterInfoData(CharacterData data)
         {
             mCharacterNameText.text = data.GetCharacterName();
@@ -39,7 +62,27 @@ namespace _2_Scripts.UI.Ingame.CharacterInfo
             mCharacterStatusAtkSpeedText.text = $"{data.GetTotalAtkSpeed()}";
             mCharacterStatusMAtkText.text = $"{data.GetTotalMAtk()}";
             mCharacterClassText.text = $"{data.GetCharacterClassName()}";
+            mCharacterData = data;
+            if (data.rank > 1)
+            {
+                SetSkillDescText(data,1);
+            }
+            else
+            {
+                mCharacterSkillNameText.text = "";
+                mCharacterSkillTypeText.text = "";
+                mCharacterSkillDescText.text = "스킬 미 획득";
+            }
             global::Utils.CharacterSkeletonInit(modelGraphic,data.characterPack);
         }
+
+        private void SetSkillDescText(CharacterData data,int rank)
+        {
+            data.SetSkillDataLoc(rank);
+            mCharacterSkillNameText.text = data.SkillName;
+            mCharacterSkillTypeText.text = data.SkillType;
+            mCharacterSkillDescText.text = data.SkillDesc;
+        }
+        
     }
 }

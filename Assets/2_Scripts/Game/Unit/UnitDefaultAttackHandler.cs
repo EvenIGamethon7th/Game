@@ -12,7 +12,6 @@ namespace _2_Scripts.Game.Unit
         private CUnit mUnit;
         private CancellationTokenSource mCancellationToken;
 
-
         private void OnEnable()
         {
             mCancellationToken = new CancellationTokenSource();
@@ -25,7 +24,7 @@ namespace _2_Scripts.Game.Unit
             //간혹가다가 유닛 판매 아카데미 보내기 시, 캔슬토큰이 안잡혀서 추가함
             while (!mCancellationToken.Token.IsCancellationRequested)
             {
-                await UniTask.WaitUntil(() => mUnit.CharacterDatas.IsActive);
+                await UniTask.WaitUntil(() => mUnit.CharacterDatas.IsActive,cancellationToken:mCancellationToken.Token);
                 await UniTask.WaitForFixedUpdate();
                 if(mUnit == null)
                     continue;
@@ -41,8 +40,6 @@ namespace _2_Scripts.Game.Unit
             }
         }
 
-        
-        
         private void OnDisable()
         {
             CancelAndDisposeToken();

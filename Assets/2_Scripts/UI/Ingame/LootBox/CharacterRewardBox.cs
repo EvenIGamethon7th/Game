@@ -24,6 +24,18 @@ namespace _2_Scripts.UI.Ingame.LootBox
                 Define.SpawnEffectDictionary[characterData.rank], tilePos);
             });
         }
+
+        public bool CanReward()
+        {
+            bool canCreateUnit = MapManager.Instance.CanCreateUnit();
+            if (!canCreateUnit)
+            {
+                mRewadMessage = $"현재 유닛 슬롯 칸이 모두 꽉 찼습니다.";
+            }
+
+            return canCreateUnit;
+        }
+
         private CharacterData GetRandomCharacter()
         {
             var characterInfo = GameManager.Instance.RandomCharacterCardOrNull(); 

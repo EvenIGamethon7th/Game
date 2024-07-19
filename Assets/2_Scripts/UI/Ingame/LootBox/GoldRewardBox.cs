@@ -23,6 +23,12 @@ namespace _2_Scripts.UI.Ingame.LootBox
             mRewadMessage = reward != 0  ? $"짜잔! {reward} 골드 획득!" : "ㅜㅜ 꽝!";
             GameManager.Instance.UpdateMoney(EMoneyType.Gold,reward);
         }
+
+        public bool CanReward()
+        {
+            return true;
+        }
+
         private int GetRandomGoldReward()
         {
             var rate = Random.Range(0, 100);

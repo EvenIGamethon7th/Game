@@ -1,6 +1,7 @@
 using _2_Scripts.Game.Unit;
 using _2_Scripts.UI;
 using _2_Scripts.Utils;
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,6 +11,15 @@ using UnityEngine;
 namespace _2_Scripts.UI {
     public class UI_AcademyPannel : MonoBehaviour
     {
+        private readonly Dictionary<int, string> mSummonProjectileDictionary = new()
+        {
+            {1,AddressableTable.Default_NormalProjectile},
+            {2,AddressableTable.Default_RareProjectile},
+            {3,AddressableTable.Default_UniqueProjectile},
+        };
+        [SerializeField]
+        private RectTransform mCharacterRectTransform;
+
         private UI_AcademyLesson mLesson;
         private UI_AcademyStatus mStatus;
 
@@ -56,7 +66,16 @@ namespace _2_Scripts.UI {
 
         private void SummonAlumni()
         {
-            bool isCreateUnit = MapManager.Instance.CreateUnit(mStudentData, true);
+            bool isCreateUnit = MapManager.Instance.CreateUnit(mStudentData, true, (tilePos) =>
+            {
+                var uiWorldPos = global::Utils.GetUIWorldPosition(mCharacterRectTransform);
+                var projectile = ObjectPoolManager.Instance.CreatePoolingObject(mSummonProjectileDictionary[mStudentData.rank], uiWorldPos);
+                projectile.transform.DOMove(tilePos, 0.5f).OnComplete(() =>
+                {
+                    projectile.gameObject.SetActive(false);
+                    var effect = ObjectPoolManager.Instance.CreatePoolingObject(Define.SpawnEffectDictionary[mStudentData.rank], tilePos);
+                });
+            });
             mLessonCount = 0;
             if (isCreateUnit)
             {

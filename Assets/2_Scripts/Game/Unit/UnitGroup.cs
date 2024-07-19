@@ -60,7 +60,7 @@ namespace _2_Scripts.Game.Unit
 
         public CharacterData GetCharacterData()
         {
-            return Units[0]?.CharacterDatas;
+            return Units.OrderBy(x => x.CharacterDatas.isAlumni).LastOrDefault().CharacterDatas;
         }
 
         public bool CanAddUnit()

@@ -56,7 +56,7 @@ namespace _2_Scripts.UI
 
         private void AcademyButton()
         {
-            CUnit unit = mSelectUnitGroup.Units.OrderBy(x => x.CharacterDatas.isAlumni == true).FirstOrDefault();
+            CUnit unit = mSelectUnitGroup.Units.OrderBy(x => x.CharacterDatas.isAlumni).LastOrDefault();
 
             bool canEnterAcademy = MapManager.Instance.GoAcademy(unit);
             if (!canEnterAcademy) return;
@@ -72,7 +72,7 @@ namespace _2_Scripts.UI
 
         private void SellButton()
         {
-            var unit = mSelectUnitGroup.Units.OrderBy(x => !x.CharacterDatas.isAlumni)
+            var unit = mSelectUnitGroup.Units.OrderBy(x => x.CharacterDatas.isAlumni)
                 .FirstOrDefault();
 
             mSelectUnitGroup.RemoveUnit(unit);

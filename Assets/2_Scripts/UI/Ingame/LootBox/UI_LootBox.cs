@@ -37,6 +37,12 @@ namespace _2_Scripts.UI.Ingame.LootBox
                 Cargold.UI.UI_Toast_Manager.Instance.Activate_WithContent_Func("열쇠가 부족합니다.");
                 return;
             }
+
+            if (!mIReward.CanReward())
+            {
+                Cargold.UI.UI_Toast_Manager.Instance.Activate_WithContent_Func(mIReward.RewardMessage());
+                return;
+            }
             GameManager.Instance.UpdateMoney(EMoneyType.GoldKey,-1);
             mImageAnimation.PlayAnimation("open",0.1f,OpenLootBoxAnimation);
             mButton.interactable = false;

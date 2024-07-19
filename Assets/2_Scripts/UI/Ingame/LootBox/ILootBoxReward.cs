@@ -5,5 +5,7 @@
 
         public string RewardMessage();
         public void Reward();
+        
+        public bool CanReward();
     }
 }

@@ -198,7 +198,7 @@ namespace _2_Scripts.Game.Unit
         public void Init(CharacterData characterData)
         {
             CharacterDataLoad(characterData);
-            CancelAndDisposeToken();
+            mCancleToken = new CancellationTokenSource();
             var mat = mMeshRenderer.materials;
 
             mAnimation.skeletonDataAsset = ResourceManager.Instance.Load<SkeletonDataAsset>($"{characterData.characterPack}_{ELabelNames.SkeletonData}");
@@ -224,22 +224,21 @@ namespace _2_Scripts.Game.Unit
         }
 
         private CancellationTokenSource mCancleToken = new CancellationTokenSource();
-        private void CancelAndDisposeToken()
+
+        private void OnEnable()
+        {
+            mCancleToken = new CancellationTokenSource();
+        }
+
+        private void OnDisable()
         {
             if (mCancleToken != null)
             {
-                if (!mCancleToken.IsCancellationRequested)
-                {
-                    mCancleToken.Cancel();
-                }
+                mCancleToken.Cancel();
                 mCancleToken.Dispose();
-                mCancleToken = null;
-            }
-            else
-            {
-                mCancleToken = new CancellationTokenSource();
             }
         }
+
         private async UniTaskVoid CoolTimeSkill(SkillInfo skill)
         {
             await UniTask.WaitForSeconds(skill.CoolTime,cancellationToken:mCancleToken.Token);
@@ -277,7 +276,6 @@ namespace _2_Scripts.Game.Unit
             mBeforePassive = null;
             mAfterPassive = null;
             ReadySkillQueue.Clear();
-            CancelAndDisposeToken();
             for (int i = 0; i < mBuffs.Count; ++i)
             {
                 mBuffs[i].Clear();

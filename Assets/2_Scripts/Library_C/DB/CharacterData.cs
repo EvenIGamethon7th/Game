@@ -32,9 +32,10 @@ public partial class CharacterData : IPoolable
         alumniAtk = data.alumniAtk;
         alumniAtkSpeed = data.alumniAtkSpeed;
         alumniMatk = data.alumniMatk;
+        ClassType = data.ClassType;
     }
 
-    private float GetTotalAtk()
+    public float GetTotalAtk()
     {
         return Buff.ATKRate * 0.01f * (Buff.ATK + alumniAtk + atk);
     }
@@ -44,7 +45,7 @@ public partial class CharacterData : IPoolable
         return Buff.ATKSpeedRate * 0.01f * (Buff.ATKSpeed + alumniAtkSpeed + atkSpeed);
     }
 
-    private float GetTotalMAtk()
+    public float GetTotalMAtk()
     {
         return Buff.MATKRate * 0.01f * (Buff.MATK + alumniMatk + matk);
     }
@@ -57,6 +58,15 @@ public partial class CharacterData : IPoolable
             return GetTotalMAtk();
     }
 
+    public string GetCharacterName()
+    {
+        return LocalizeSystem_Manager.Instance.GetLcz_Func(nameKey);
+    }
+
+    public string GetCharacterClassName()
+    {
+        return LocalizeSystem_Manager.Instance.GetLcz_Func(ClassType);
+    }
     protected override void Init_Project_Func()
     {
         base.Init_Project_Func();

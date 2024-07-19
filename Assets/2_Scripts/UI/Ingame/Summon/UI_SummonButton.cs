@@ -128,12 +128,7 @@ namespace _2_Scripts.UI
            CharacterInfo characterInfo = GameManager.Instance.RandomCharacterCardOrNull();
            mCharacterData = GameManager.Instance.GetRandomCharacterData(characterInfo);
            
-           mCharacterGraphic.skeletonDataAsset = ResourceManager.Instance.Load<SkeletonDataAsset>($"{mCharacterData.characterPack}_{ELabelNames.SkeletonData}");
-           mCharacterGraphic.material = ResourceManager.Instance.Load<Material>($"{mCharacterData.characterPack}_{ELabelNames.UIMaterial}");
-           string skinName = mCharacterGraphic.skeletonDataAsset.name;
-           mCharacterGraphic.initialSkinName = skinName.Substring(0, skinName.LastIndexOf('_'));
-
-           mCharacterGraphic.Initialize(true);
+           global::Utils.CharacterSkeletonInit(mCharacterGraphic, mCharacterData.characterPack);
            mCharacterName.SetLocalizeKey(mCharacterData.nameKey);
            mCharacterCost.text = $"{mCharacterData.cost}$";
            CardChange(mCharacterData.rank);

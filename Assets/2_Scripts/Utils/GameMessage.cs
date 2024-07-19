@@ -4,7 +4,8 @@
     {
         BossDeath,
         StageChange,
-        ExpChange
+        ExpChange,
+        SelectCharacter,
     }
     
     public class GameMessage<T>

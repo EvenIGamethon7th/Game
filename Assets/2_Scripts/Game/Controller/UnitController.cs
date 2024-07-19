@@ -24,6 +24,8 @@ namespace _2_Scripts.Game.Controller
         private UI_UnitGroupCanvas mUnitGroupCanvas;
 
         private bool mHasLongTouch = false;
+        
+        private GameMessage<CharacterData> mSelectUnitMessage;
 
         private void Start()
         {
@@ -107,7 +109,9 @@ namespace _2_Scripts.Game.Controller
 
                         if (selectUnitGroup != null)
                         {
-                            //TODO: UI에 정보 올리기
+                            //TODO: UI에 정보 올리기 SelectCharacter 메모리 풀링 사용해야할듯 메세지도
+                            mSelectUnitMessage = new GameMessage<CharacterData>(EGameMessage.SelectCharacter, selectUnitGroup.GetCharacterData());
+                            MessageBroker.Default.Publish(mSelectUnitMessage);
                             mSelectCircle.transform.parent = selectUnitGroup.transform;
                             mSelectCircle.transform.position = selectUnitGroup.transform.position;
                             mSelectCircle.SetActive(true);
@@ -116,6 +120,9 @@ namespace _2_Scripts.Game.Controller
 
                         else
                         {
+                            
+                            mSelectUnitMessage = new GameMessage<CharacterData>(EGameMessage.SelectCharacter, null);
+                            MessageBroker.Default.Publish(mSelectUnitMessage);
                             mSelectCircle.transform.parent = null;
                             mSelectCircle.SetActive(false);
                         }

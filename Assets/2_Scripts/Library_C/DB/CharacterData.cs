@@ -1,3 +1,4 @@
+using _2_Scripts.Game.ScriptableObject.Skill;
 using Sirenix.OdinInspector;
 using _2_Scripts.Game.Unit.Data;
 using _2_Scripts.Utils;
@@ -16,6 +17,14 @@ public partial class CharacterData : IPoolable
     public bool IsActive { get => mIsActive; set => mIsActive = value; }
     private bool mIsActive;
 
+    private string skill1Key;
+    private string skill2Key;
+
+    public string SkillName { get; private set;}
+    public string SkillType { get; private set; }
+    public string SkillDesc { get; private set; }
+    
+    
     public void Init(CharacterData data, BuffData buff)
     {
         mIsActive = true;
@@ -33,6 +42,9 @@ public partial class CharacterData : IPoolable
         alumniAtkSpeed = data.alumniAtkSpeed;
         alumniMatk = data.alumniMatk;
         ClassType = data.ClassType;
+        skill1Key = data.Skill1;
+        skill2Key = data.Skill2;
+        
     }
 
     public float GetTotalAtk()
@@ -66,6 +78,15 @@ public partial class CharacterData : IPoolable
     public string GetCharacterClassName()
     {
         return LocalizeSystem_Manager.Instance.GetLcz_Func(ClassType);
+    }
+
+    public void SetSkillDataLoc(int rank)
+    {
+        string skillKey = rank == 1 ? skill1Key : skill2Key; 
+        SkillData skillData = DataBase_Manager.Instance.GetSkill.GetData_Func(skillKey);
+        SkillName = skillData.Name;
+        SkillDesc = skillData.Description;
+        SkillType = skillData.SkillType == ESkillType.Active ? "액티브" : "패시브";
     }
     protected override void Init_Project_Func()
     {

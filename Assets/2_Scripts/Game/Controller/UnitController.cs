@@ -5,14 +5,11 @@ using _2_Scripts.Game.Map.Tile;
 using _2_Scripts.Game.Unit;
 using _2_Scripts.UI;
 using _2_Scripts.Utils;
-using Cargold;
-using Spine.Unity;
 using UniRx;
 using UniRx.Triggers;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 namespace _2_Scripts.Game.Controller
 {
@@ -29,6 +26,11 @@ namespace _2_Scripts.Game.Controller
         
         private GameMessage<CharacterData> mSelectUnitMessage;
 
+        
+        public GraphicRaycaster uiRaycaster;
+        public EventSystem eventSystem;
+        
+        
         private void Start()
         {
             WaitResourceLoad();
@@ -53,6 +55,11 @@ namespace _2_Scripts.Game.Controller
             mouseDownStream
                 .Subscribe(_ =>
                 {
+                    if (IsPointerOverUIPopUp() || mSelectTileSlot == null)
+                    {
+                        return;
+                    }
+                    
                     if (mSelectUnitGroup != null 
                     && mSelectTileSlot == MapManager.Instance.GetClickTileSlotDetailOrNull()
                     && mSelectTileSlot.IsNormalUnit)
@@ -116,7 +123,10 @@ namespace _2_Scripts.Game.Controller
 
                         else
                         {
-
+                            if (IsPointerOverUIPopUp())
+                            {
+                                return;
+                            }
                             mSelectUnitMessage = new GameMessage<CharacterData>(EGameMessage.SelectCharacter, null);
                             MessageBroker.Default.Publish(mSelectUnitMessage);
                             mSelectCircle.transform.parent = null;
@@ -143,5 +153,18 @@ namespace _2_Scripts.Game.Controller
                     mTempSubscribe.Dispose();
                 });
         }
+        
+        private bool IsPointerOverUIPopUp()
+        {
+            PointerEventData eventDataCurrentPosition = new PointerEventData(eventSystem);
+            eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            List<RaycastResult> results = new List<RaycastResult>();
+            uiRaycaster.Raycast(eventDataCurrentPosition, results);
+            if(results.Count == 0) 
+                return false;
+            
+            return results[0].gameObject.CompareTag("PopUp");
+        }
+        
     }
 }

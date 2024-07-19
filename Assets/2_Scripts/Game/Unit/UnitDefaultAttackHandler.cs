@@ -30,6 +30,7 @@ namespace _2_Scripts.Game.Unit
                 if(mUnit == null)
                     continue;
                 float delayAttack = 1 / mUnit.CharacterDatas.GetTotalAtkSpeed();
+                // 공격 캔슬 토큰이 계속 잡힘...
                 await UniTask.WaitForSeconds(delayAttack,cancellationToken: mCancellationToken.Token);
                 if(EUnitStates.Move == mUnit.CurrentState)
                     continue;

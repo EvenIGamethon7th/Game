@@ -1,5 +1,6 @@
 ﻿using System;
 using _2_Scripts.Utils;
+using Spine.Unity;
 using TMPro;
 using UniRx;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace _2_Scripts.UI.Ingame.CharacterInfo
         [SerializeField] private TextMeshProUGUI mCharacterStatusAtkSpeedText;
         [SerializeField] private TextMeshProUGUI mCharacterStatusMAtkText;
         [SerializeField] private TextMeshProUGUI mCharacterClassText;
+        [SerializeField] private SkeletonGraphic modelGraphic;
         private void Start()
         {
             MessageBroker.Default.Receive<GameMessage<CharacterData>>()
@@ -36,6 +38,7 @@ namespace _2_Scripts.UI.Ingame.CharacterInfo
             mCharacterStatusAtkText.text = $"{data.GetTotalAtk()}";
             mCharacterStatusAtkSpeedText.text = $"{data.GetTotalAtkSpeed()}";
             mCharacterStatusMAtkText.text = $"{data.GetTotalMAtk()}";
+            global::Utils.CharacterSkeletonInit(modelGraphic,data.characterPack);
         }
     }
 }

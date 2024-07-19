@@ -2,6 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Newtonsoft.Json;
+using Spine.Unity;
 using UnityEngine;
 
 public class Utils
@@ -48,6 +49,15 @@ public class Utils
         RectTransformUtility.ScreenPointToWorldPointInRectangle(rectTransform, screenPosition, Camera.main, out var worldPosition);
         return worldPosition;
 
+    }
+
+    public static void CharacterSkeletonInit(SkeletonGraphic skeletonGraphic,string characterPackName)
+    {
+        skeletonGraphic.skeletonDataAsset = ResourceManager.Instance.Load<SkeletonDataAsset>($"{characterPackName}_{ELabelNames.SkeletonData}");
+        skeletonGraphic.material = ResourceManager.Instance.Load<Material>($"{characterPackName}_{ELabelNames.UIMaterial}");
+        string skinName = skeletonGraphic.skeletonDataAsset.name;
+        skeletonGraphic.initialSkinName = skinName.Substring(0, skinName.LastIndexOf('_'));
+        skeletonGraphic.Initialize(true);
     }
 
     public class ReadonlyNumber<T>

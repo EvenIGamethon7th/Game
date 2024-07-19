@@ -18,6 +18,7 @@ public class GameManager : Singleton<GameManager>
     public ReactiveProperty<float> UserHp { get; private set; } = new ReactiveProperty<float>(100);
 
     public event Action<float> DamageHp;
+    public event Action<float> HealHp;
     // 학년
     public ReactiveProperty<int> UserLevel { get; private set; } = new ReactiveProperty<int>(1);
 
@@ -50,6 +51,8 @@ public class GameManager : Singleton<GameManager>
     {
         if (hp > 0)
             DamageHp?.Invoke(hp);
+        else
+            HealHp?.Invoke(hp);
         UserHp.Value -= hp;
     }
 

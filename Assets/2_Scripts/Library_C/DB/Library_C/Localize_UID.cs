@@ -101,4 +101,18 @@ public static partial class TableDataKey_C
     public const string Localize_Lo_ClassType_1 = "Lo_ClassType_1";
     public const string Localize_Lo_ClassType_2 = "Lo_ClassType_2";
     public const string Localize_Lo_ClassType_3 = "Lo_ClassType_3";
+    public const string Localize_Lo_AcademyClass_0 = "Lo_AcademyClass_0";
+    public const string Localize_Lo_AcademyClass_1 = "Lo_AcademyClass_1";
+    public const string Localize_Lo_AcademyClass_2 = "Lo_AcademyClass_2";
+    public const string Localize_Lo_AcademyClass_3 = "Lo_AcademyClass_3";
+    public const string Localize_Lo_AcademyClass_4 = "Lo_AcademyClass_4";
+    public const string Localize_Lo_AcademyClass_5 = "Lo_AcademyClass_5";
+    public const string Localize_Lo_AcademyClass_6 = "Lo_AcademyClass_6";
+    public const string Localize_Lo_AcademyClass_7 = "Lo_AcademyClass_7";
+    public const string Localize_Lo_AcademyClass_8 = "Lo_AcademyClass_8";
+    public const string Localize_Lo_AcademyClass_9 = "Lo_AcademyClass_9";
+    public const string Localize_Lo_AcademyClass_10 = "Lo_AcademyClass_10";
+    public const string Localize_Lo_AcademyClass_11 = "Lo_AcademyClass_11";
+    public const string Localize_Lo_AcademyClass_12 = "Lo_AcademyClass_12";
+    public const string Localize_Lo_AcademyClass_13 = "Lo_AcademyClass_13";
 }

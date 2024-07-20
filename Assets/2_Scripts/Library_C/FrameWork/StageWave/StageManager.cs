@@ -96,7 +96,7 @@ public class StageManager : Singleton<StageManager>
         {
             var monster = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_Monster, mWayPoint.GetWayPointPosition(0)).GetComponent<Monster>();;
             WaveStatData waveStateData = DataBase_Manager.Instance.GetWaveStat.GetData_Func(waveData.apply_stat);
-            monster.SpawnMonster(waveData.monsterKey, mWayPoint, waveData.isBoss, waveStateData);
+            monster.SpawnMonster(waveData.monsterKey, mWayPoint, waveData.isBoss, waveStateData,waveData.weight);
             MonsterList.Add(monster);
             await UniTask.WaitForSeconds(SPAWN_COOL_TIME);
             

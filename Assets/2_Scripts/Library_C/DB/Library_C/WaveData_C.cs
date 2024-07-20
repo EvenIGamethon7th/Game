@@ -16,6 +16,7 @@ public partial class WaveData : Data_C
      [LabelText("소환갯수")] public int spawnCount;
      [LabelText("보스웨이브여부")] public bool isBoss;
      [LabelText("적용스탯")] public string apply_stat;
+     [LabelText("스탯(체력)가중치")] public float weight;
 
     
 
@@ -28,6 +29,7 @@ public partial class WaveData : Data_C
         spawnCount = _cellDataArr[3].ToInt();
         isBoss = _cellDataArr[4].ToBool();
         apply_stat = _cellDataArr[5];
+        weight = _cellDataArr[6].ToFloat();
     }
 #endif
 }

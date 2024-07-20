@@ -36,10 +36,10 @@ public partial class MonsterData : IPoolable
         rewardList["Money_1002"] = 0;
     }
 
-    public void Init(WaveStatData waveStatData)
+    public void Init(WaveStatData waveStatData,float weight)
     {
         mIsActive = true;
-        hp = waveStatData.hp;
+        hp = waveStatData.hp * weight;
         atk = waveStatData.atk;
         def = waveStatData.def;
         speed = waveStatData.speed;

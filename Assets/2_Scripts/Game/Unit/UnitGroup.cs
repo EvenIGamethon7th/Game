@@ -24,7 +24,8 @@ namespace _2_Scripts.Game.Unit
         private EUnitStates mCurrentState;
         private Vector3 mDstPos;
 
-        private int mInt;
+        [SerializeField]
+        private float mSpeed = 3f;
         
 
         private void Awake()
@@ -114,7 +115,7 @@ namespace _2_Scripts.Game.Unit
             gameObject.SetActive(false);
         }
 
-        private async UniTask MoveGroupAsync(Vector3 dstPos, float time = 1f)
+        private async UniTask MoveGroupAsync(Vector3 dstPos)
         {
             Vector3 originPos = transform.position;
 
@@ -130,11 +131,12 @@ namespace _2_Scripts.Game.Unit
                 Units[i].SetFlipUnit(dstPos);
             }
 
-            while (time >= 0)
+            Vector3 normal = Vector3.Normalize(dstPos - transform.position);
+
+            while (Vector3.Distance(dstPos, transform.position) > 0.1f)
             {
                 await UniTask.DelayFrame(1, cancellationToken: mToken.Token);
-                transform.position = Vector3.Lerp(dstPos, originPos, Mathf.Max(time, 0));
-                time -= Time.deltaTime;
+                transform.position += normal * mSpeed * Time.deltaTime;
             }
             transform.position = dstPos;
 

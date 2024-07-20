@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using Cargold;
+﻿using Cargold;
+using Cysharp.Threading.Tasks;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,11 +14,24 @@ namespace _2_Scripts.UI
         [SerializeField]
         private UI_SummonButton[] mSummonButtons;
 
+        
+        private const int REROOL_COST = 20;
 
         [SerializeField] private UI_LockButton mLockButton;
         private void Start()
         {
             mButton.onClick.AddListener(OnClickReRollBtn);
+            GameManager.Instance.UserGold.Subscribe(gold =>
+            {
+                if (gold < REROOL_COST)
+                {
+                    mButton.interactable = false;
+                }
+                else
+                {
+                    mButton.interactable = true;
+                }
+            }).AddTo(this);
         }
 
         public void OnClickReRollBtn()
@@ -28,6 +41,7 @@ namespace _2_Scripts.UI
                 return;
             }
             Tween_C.OnPunch_Func(transform);
+            GameManager.Instance.UpdateMoney(EMoneyType.Gold,-REROOL_COST);
             foreach (var btn in mSummonButtons)
             {
                 btn.Reroll();

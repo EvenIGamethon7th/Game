@@ -112,12 +112,7 @@ namespace _2_Scripts.UI
         {
             if (mbIsLockRerollButton)
                 return;
-            if (GameManager.Instance.UserGold.Value < 20)
-            {
-                UI_Toast_Manager.Instance.Activate_WithContent_Func("돈이 부족합니다");
-                return;
-            }
-            
+   
             mCurrentSummonButtonState = ESummonButtonState.Selected;
             UpdateCharacter();
             ShowChange();

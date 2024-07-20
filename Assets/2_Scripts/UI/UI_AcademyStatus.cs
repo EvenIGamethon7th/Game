@@ -48,7 +48,7 @@ namespace _2_Scripts.UI
             mGraphic.gameObject.SetActive(true);
             mGraphic.skeletonDataAsset = ResourceManager.Instance.Load<SkeletonDataAsset>($"{data.CharacterDatas.characterPack}_{ELabelNames.SkeletonData}");
 
-            mGraphic.material = ResourceManager.Instance.Load<Material>($"{data.CharacterDatas.characterPack}_{ELabelNames.Material}");
+            mGraphic.material = ResourceManager.Instance.Load<Material>($"{data.CharacterDatas.characterPack}_{ELabelNames.UIMaterial}");
             string skinName = mGraphic.skeletonDataAsset.name;
             mGraphic.initialSkinName = skinName.Substring(0, skinName.LastIndexOf('_'));
 

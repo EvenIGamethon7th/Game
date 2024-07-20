@@ -38,6 +38,8 @@ public partial class MonsterData : IPoolable
 
     public void Init(WaveStatData waveStatData)
     {
+        mSlowSet.Clear();
+        mCurrentSlow = 0;
         mIsActive = true;
         hp = waveStatData.hp;
         atk = waveStatData.atk;
@@ -70,16 +72,15 @@ public partial class MonsterData : IPoolable
     {
         if (mSlowSet.Contains(percent) && !isRemove) return;
 
-        mSlowSet.Add(percent);
-
         if (mCurrentSlow < percent && !isRemove)
         {
+            mSlowSet.Add(percent);
             speed /= (1f - mCurrentSlow * 0.01f);
             mCurrentSlow = percent;
             speed *= (1f - percent * 0.01f);
         }
 
-        else if (isRemove)
+        else if (isRemove && mSlowSet.Contains(percent))
         {
             mSlowSet.Remove(percent);
             if (mCurrentSlow == percent)

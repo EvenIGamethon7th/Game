@@ -36,7 +36,7 @@ namespace _2_Scripts.UI
 
         private UnitGroup mSelectUnitGroup;
 
-        private float mCostRate = 0.8f;
+        private float mCostRate = 0.6f;
 
         private void Awake()
         {

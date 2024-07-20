@@ -21,7 +21,7 @@ namespace _2_Scripts.UI
 
         public void SetStatus(CUnit data)
         {
-            mName.text = data.name;
+            mName.text = data.CharacterDatas.GetCharacterName();
             mTexts[0].text = $"{(int)data.CharacterDatas.alumniAtk}";
             mTexts[1].text = data.CharacterDatas.alumniAtkSpeed.ToString("F1");
             mTexts[2].text = $"{(int)data.CharacterDatas.alumniMatk}";

@@ -21,18 +21,26 @@ namespace _2_Scripts.UI
         private void Start()
         {
             mExpButton.onClick.AddListener(OnBuyExp);
+            
             GameManager.Instance.UserGold.Subscribe(gold =>
             {
-                if (gold < mExpPrice || IsMaxLevel)
+                if (gold < mExpPrice)
                 {
                     mExpButton.interactable = false;
-                    mText.text = "MAX LEVEL";
-                    mText.color = Color.red;
                 }
                 else
                 {
                     mExpButton.interactable = true;
                     mText.color = Color.white;
+                }
+            }).AddTo(this);
+            
+            GameManager.Instance.UserLevel.Subscribe(level =>
+            {
+                if (level >= Define.MAX_LEVEL)
+                {
+                    mExpButton.interactable = false;
+                    mText.color = Color.red;
                 }
             }).AddTo(this);
         }

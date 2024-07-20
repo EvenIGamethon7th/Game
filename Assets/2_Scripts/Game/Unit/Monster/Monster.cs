@@ -6,6 +6,7 @@ using _2_Scripts.Game.StatusEffect;
 using _2_Scripts.Game.Unit;
 using _2_Scripts.UI;
 using _2_Scripts.Utils;
+using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
 using Rito.Attributes;
 using Sirenix.Utilities;
@@ -89,16 +90,25 @@ namespace _2_Scripts.Game.Monster
             (controller) =>
             {
                 mAnimator.runtimeAnimatorController = controller;
-                Renderer.sprite =
-                    global::Utils.GetSpriteFromAnimationClip(mAnimator.runtimeAnimatorController.animationClips[0], 0);
+                // global::Utils.GetSpriteFromAnimationClip(mAnimator.runtimeAnimatorController.animationClips[0], 0);
             });
             mWayPoint = waypoint;
             mWayPointIndex = 0;
             NextWayPoint();
-            mMatController.RunDissolve(true, () => {
-                IsBoss = isBoss;
-                Enabled(true);
-            });
+            WaitLoadSprite(() =>
+            {
+                mMatController.RunDissolve(true, () => {
+                    IsBoss = isBoss;
+                    Enabled(true);
+                });
+            }).Forget();
+
+        }
+        
+        private async UniTaskVoid WaitLoadSprite(Action callbackAction)
+        {
+            await UniTask.WaitUntil(() => Renderer.sprite != null);
+            callbackAction.Invoke();
         }
 
         public bool TakeDamage(float damage, Define.EAttackType attackType, EInstantKillType instant = EInstantKillType.None)

@@ -1,9 +1,11 @@
 using _2_Scripts.Game.Unit;
+using _2_Scripts.Utils;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,11 +26,8 @@ namespace _2_Scripts.UI
                 mSelectUnitGroup = value;
                 if (value == null) {
                     gameObject.SetActive(false);
-                    transform.parent = null;
                     return; 
                 }
-                transform.parent = value.transform;
-                transform.position = value.transform.position;
                 gameObject.SetActive(true);
                 SetFusionButton();
             } 
@@ -38,10 +37,16 @@ namespace _2_Scripts.UI
 
         private float mCostRate = 0.6f;
 
-        private void Awake()
+        private void Start()
         {
+            MessageBroker.Default.Receive<GameMessage<UnitGroup>>()
+                .Where(message => message.Message == EGameMessage.SelectCharacter)
+                .Subscribe(data =>
+                {
+                    SelectUnitGroup = data.Value;
+                });
+                
             mButtons = GetComponentsInChildren<Button>();
-            GetComponent<Canvas>().worldCamera = Camera.main;
             SubscribeAction(EButtonType.Academy, AcademyButton);
             SubscribeAction(EButtonType.Fusion, FusionButton);
             SubscribeAction(EButtonType.Sell, SellButton);

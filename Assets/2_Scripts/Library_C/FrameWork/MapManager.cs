@@ -76,7 +76,8 @@ public class MapManager : Singleton<MapManager>
     public void ClearTile(UnitGroup group)
     {
         var tileSlot = mTileDatas.Where(x => x.OccupantUnit == group).FirstOrDefault();
-
+        
+        MessageBroker.Default.Publish(new GameMessage<UnitGroup>(EGameMessage.SelectCharacter, null));
         if (tileSlot != null)
         {
             tileSlot.Clear();

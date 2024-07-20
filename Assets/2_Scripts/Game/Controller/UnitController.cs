@@ -51,6 +51,8 @@ namespace _2_Scripts.Game.Controller
 
             mouseDownStream.Subscribe(_ =>
             {
+                if (IsPointerOverUIPopUp()) return;
+
                 mSelectTileSlot = MapManager.Instance.GetClickTileSlotDetailOrNull();
                 mSelectUnitGroup = mSelectTileSlot?.OccupantUnit;
                 mSelectUnitMessage = new GameMessage<UnitGroup>(EGameMessage.SelectCharacter, null);

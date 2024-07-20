@@ -25,12 +25,13 @@ namespace _2_Scripts.Game.Unit
             while (!mCancellationToken.Token.IsCancellationRequested)
             {
                 await UniTask.WaitUntil(() => mUnit.CharacterDatas.IsActive,cancellationToken:mCancellationToken.Token);
-                await UniTask.WaitForFixedUpdate();
+                await UniTask.WaitForFixedUpdate(cancellationToken:mCancellationToken.Token);
                 if(mUnit == null)
                     continue;
                 float delayAttack = 1 / mUnit.CharacterDatas.GetTotalAtkSpeed();
                 // 공격 캔슬 토큰이 계속 잡힘...
-                await UniTask.WaitForSeconds(delayAttack,cancellationToken: mCancellationToken.Token);
+                await UniTask.WaitForSeconds(delayAttack,cancellationToken: mCancellationToken.Token);    
+           
                 if(EUnitStates.Move == mUnit.CurrentState)
                     continue;
                 EUnitStates updateState = !mUnit.DefaultAttack()

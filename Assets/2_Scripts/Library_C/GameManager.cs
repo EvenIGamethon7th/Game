@@ -24,9 +24,9 @@ public class GameManager : Singleton<GameManager>
 
     public ReactiveProperty<int> UserExp { get; private set; } = new ReactiveProperty<int>(0);
 
-    public ReactiveProperty<int> UserGold { get; private set; } = new ReactiveProperty<int>(1000);
+    public ReactiveProperty<int> UserGold { get; private set; } = new ReactiveProperty<int>(30);
 
-    public ReactiveProperty<int> UserLuckyCoin { get; private set; } = new ReactiveProperty<int>(5);
+    public ReactiveProperty<int> UserLuckyCoin { get; private set; } = new ReactiveProperty<int>(0);
 
     public void UpdateMoney(string moneyKey, int value)
     {
@@ -79,11 +79,11 @@ public class GameManager : Singleton<GameManager>
 
     public readonly Dictionary<int, int> mExpTable = new Dictionary<int, int>
         {
-            {1, 10},
-            {2, 10},
-            {3, 40},
-            {4, 60},
-            {5, 90},
+            {1, 20},
+            {2, 80},
+            {3, 150},
+            {4, 280},
+            {5, 550},
             {6, 1}
         };
 
@@ -128,7 +128,8 @@ public class GameManager : Singleton<GameManager>
         MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange)
             .Subscribe(message =>
             {
-                AddExp(5);
+                UpdateMoney(EMoneyType.Gold, 10);
+                AddExp(20);
             });
 
         MessageBroker.Default.Receive<TaskMessage>()

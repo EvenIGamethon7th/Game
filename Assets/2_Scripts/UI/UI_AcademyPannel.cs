@@ -50,7 +50,7 @@ namespace _2_Scripts.UI {
         {
             if (mDoLesson)
             {
-                UI_Toast_Manager.Instance.Activate_WithContent_Func("ÀÌ¹Ì ¼ö¾÷À» µè´Â ¿µ¿õÀÌ ÀÖ½À´Ï´Ù!");
+                UI_Toast_Manager.Instance.Activate_WithContent_Func("ì´ë¯¸ ìˆ˜ì—…ì„ ë“£ëŠ” ì˜ì›…ì´ ìˆìŠµë‹ˆë‹¤!");
             }
 
             return !mDoLesson;
@@ -91,11 +91,11 @@ namespace _2_Scripts.UI {
 
             if (mLessonCount < 5)
             {
-                while (mLessonCount < 5)
-                {
+                // while (mLessonCount < 5)
+                // {
                     DecideLessonResult();
                     ++mLessonCount;
-                }
+                // }
             }
 
             if (mLessonCount == 5)

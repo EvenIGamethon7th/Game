@@ -7,18 +7,16 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.MainCharacter
 {
     using _2_Scripts.Game.Unit;
     using _2_Scripts.Trigger;
-    using DirectionSkill;
     using Sirenix.OdinInspector;
-    using UnityEditor.Experimental.GraphView;
     [CreateAssetMenu(menuName = "ScriptableObject/MainCharacterSkill/BeyondWall")]
     public class BeyondWall : Skill
     {
         [SerializeField]
-        [Title("Áö¼Ó ½Ã°£ ( 1ÃÊ¸é 1)")]
+        [Title("ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ( 1ï¿½Ê¸ï¿½ 1)")]
         private float mLifeTime;
 
         [SerializeField]
-        [Title("Æ®¸®°Å ¿ÀºêÁ§Æ®")]
+        [Title("Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®")]
         private GameObject mPortal;
 
         public override bool CastAttack(Transform ownerTransform, CharacterData ownerData, Action<Monster.Monster[]> beforeDamage = null, Action<Monster.Monster> passive = null)

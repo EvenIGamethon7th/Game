@@ -20,11 +20,10 @@ namespace _2_Scripts.Game.Controller
         private Indicator mIndicator;
         private GameObject mSelectCircle;
         private IDisposable mTempSubscribe;
-        private UI_UnitGroupCanvas mUnitGroupCanvas;
 
         private bool mHasLongTouch = false;
         
-        private GameMessage<CharacterData> mSelectUnitMessage;
+        private GameMessage<UnitGroup> mSelectUnitMessage;
 
         
         public GraphicRaycaster uiRaycaster;
@@ -113,7 +112,7 @@ namespace _2_Scripts.Game.Controller
                         if (selectUnitGroup != null)
                         {
                             //TODO: UI에 정보 올리기 SelectCharacter 메모리 풀링 사용해야할듯 메세지도
-                            mSelectUnitMessage = new GameMessage<CharacterData>(EGameMessage.SelectCharacter, selectUnitGroup.GetCharacterData());
+                            mSelectUnitMessage = new GameMessage<UnitGroup>(EGameMessage.SelectCharacter, selectUnitGroup);
                             MessageBroker.Default.Publish(mSelectUnitMessage);
                             mSelectCircle.transform.parent = selectUnitGroup.transform;
                             mSelectCircle.transform.position = selectUnitGroup.transform.position;
@@ -127,14 +126,13 @@ namespace _2_Scripts.Game.Controller
                             {
                                 return;
                             }
-                            mSelectUnitMessage = new GameMessage<CharacterData>(EGameMessage.SelectCharacter, null);
+                            mSelectUnitMessage = new GameMessage<UnitGroup>(EGameMessage.SelectCharacter, null);
                             MessageBroker.Default.Publish(mSelectUnitMessage);
                             mSelectCircle.transform.parent = null;
                             mSelectCircle.SetActive(false);
                         }
 
                         mSelectUnitGroup = selectUnitGroup;
-                        mUnitGroupCanvas.SelectUnitGroup = selectUnitGroup;
                     }
                 });
             
@@ -149,7 +147,6 @@ namespace _2_Scripts.Game.Controller
                     mIndicator = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_Indicator, Vector2.zero).GetComponent<Indicator>();
                     mSelectCircle = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_SelectCircle, Vector2.zero);
                     mSelectCircle.SetActive(false);
-                    mUnitGroupCanvas = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_UnitGroupButtonCanvas, Vector2.zero).GetComponent<UI_UnitGroupCanvas>();
                     mTempSubscribe.Dispose();
                 });
         }

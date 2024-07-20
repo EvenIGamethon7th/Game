@@ -28,6 +28,7 @@ namespace _2_Scripts.UI {
         private int mLessonCount = 0;
 
         private CharacterData mStudentData;
+        private CharacterData mTempAlumniData;
 
         [SerializeField]
         private TextMeshProUGUI mGradeText;
@@ -59,13 +60,17 @@ namespace _2_Scripts.UI {
         public void AcademyLesson(CUnit student)
         {
             mDoLesson = true;
-            mStatus.SetStatus(student);
+            mTempAlumniData = MemoryPoolManager<CharacterData>.CreatePoolingObject();
+            mStatus.Init(student);
             mStudentData = student.CharacterDatas;
             mStudentData.isAlumni = true;
         }
 
         private void SummonAlumni()
         {
+            mStudentData.AddAlumniInfo(mTempAlumniData);
+            mTempAlumniData.Clear();
+            
             bool isCreateUnit = MapManager.Instance.CreateUnit(mStudentData, true, (tilePos) =>
             {
                 var uiWorldPos = global::Utils.GetUIWorldPosition(mCharacterRectTransform);
@@ -82,6 +87,7 @@ namespace _2_Scripts.UI {
                 mDoLesson = false;
                 mStatus.Clear();
                 mLesson.Init();
+                mTempAlumniData = null;
             }
         }
 
@@ -116,45 +122,40 @@ namespace _2_Scripts.UI {
             {
                 case 0:
                     if (result == ELessonResults.Success)
-                        mStudentData.alumniAtk += 10;
+                        mTempAlumniData.alumniAtk += 10;
                     else if (result == ELessonResults.Bonanza)
-                        mStudentData.alumniAtk += 15;
+                        mTempAlumniData.alumniAtk += 15;
                     break;
 
                 case 1:
                     if (result == ELessonResults.Success)
-                        mStudentData.alumniAtkSpeed += 0.1f;
+                        mTempAlumniData.alumniAtkSpeed += 0.1f;
                     else if (result == ELessonResults.Bonanza)
-                        mStudentData.alumniAtkSpeed += 0.2f;
+                        mTempAlumniData.alumniAtkSpeed += 0.2f;
                     break;
 
                 case 2:
                     if (result == ELessonResults.Success)
-                        mStudentData.alumniAtk += 20;
+                        mTempAlumniData.alumniAtk += 20;
                     else if (result == ELessonResults.Bonanza)
-                        mStudentData.alumniAtk += 25;
+                        mTempAlumniData.alumniAtk += 25;
                     break;
 
                 case 3:
                     if (result == ELessonResults.Success)
-                        mStudentData.alumniMatk += 10;
+                        mTempAlumniData.alumniMatk += 10;
                     else if (result == ELessonResults.Bonanza)
-                        mStudentData.alumniMatk += 20;
+                        mTempAlumniData.alumniMatk += 20;
                     break;
 
                 case 4:
                     if (result == ELessonResults.Success)
-                        mStudentData.alumniAtkSpeed += 0.2f;
+                        mTempAlumniData.alumniAtkSpeed += 0.2f;
                     else if (result == ELessonResults.Bonanza)
-                        mStudentData.alumniAtkSpeed += 0.3f;
+                        mTempAlumniData.alumniAtkSpeed += 0.3f;
                     break;
             }
-            mStatus.SetStatus(mStudentData);
-        }
-
-        private void OnDestroy()
-        {
-            
+            mStatus.SetStatus(mTempAlumniData);
         }
     }
 }

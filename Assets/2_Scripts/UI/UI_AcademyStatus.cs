@@ -19,16 +19,9 @@ namespace _2_Scripts.UI
         [SerializeField]
         private TextMeshProUGUI mName;
 
-        public void SetStatus(CUnit data)
+        public void Init(CUnit data)
         {
             mName.text = data.CharacterDatas.GetCharacterName();
-            mTexts[0].text = $"{(int)data.CharacterDatas.alumniAtk}";
-            mTexts[1].text = data.CharacterDatas.alumniAtkSpeed.ToString("F1");
-            mTexts[2].text = $"{(int)data.CharacterDatas.alumniMatk}";
-
-            mSliders[0].value = data.CharacterDatas.alumniAtk;
-            mSliders[1].value = data.CharacterDatas.alumniAtkSpeed;
-            mSliders[2].value = data.CharacterDatas.alumniMatk;
             UpdateGraphic(data);
         }
 

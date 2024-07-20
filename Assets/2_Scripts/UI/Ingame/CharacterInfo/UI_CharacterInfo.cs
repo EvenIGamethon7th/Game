@@ -1,4 +1,5 @@
 ﻿using System;
+using _2_Scripts.Game.Unit;
 using _2_Scripts.Utils;
 using Spine.Unity;
 using TMPro;
@@ -28,7 +29,7 @@ namespace _2_Scripts.UI.Ingame.CharacterInfo
         
         private void Start()
         {
-            MessageBroker.Default.Receive<GameMessage<CharacterData>>()
+            MessageBroker.Default.Receive<GameMessage<UnitGroup>>()
                 .Where(message => message.Message == EGameMessage.SelectCharacter)
                 .Subscribe(data =>
                 {
@@ -38,7 +39,7 @@ namespace _2_Scripts.UI.Ingame.CharacterInfo
                         return;
                     }
                     mCharacterInfoGo.SetActive(true);
-                  UpdateCharacterInfoData(data.Value);
+                  UpdateCharacterInfoData(data.Value.GetCharacterData());
                 }).AddTo(this);
             mCharacterRareSkillButton.onClick.AddListener(() =>
             {

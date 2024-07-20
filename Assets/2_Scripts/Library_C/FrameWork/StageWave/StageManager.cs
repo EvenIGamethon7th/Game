@@ -79,14 +79,16 @@ public class StageManager : Singleton<StageManager>
         while (mWaveQueue.Count > 0)
         {
             mCurrentWaveData = mWaveQueue.Dequeue();
+            Debug.Log(mCurrentWaveData.Key);
             SpawnMonsters(mCurrentWaveData).Forget();
-            if (mCurrentWaveData.isBoss)
-            {
-                continue;
-            }
+            // if (mCurrentWaveData.isBoss)
+            // {
+            //     continue;
+            // }
             await UniTask.WaitForSeconds(NEXT_WAVE_TIME);
             mNextStageMessage.SetValue(mNextStageMessage.Value + 1);
             MessageBroker.Default.Publish(mNextStageMessage);
+            
         }
     }
 

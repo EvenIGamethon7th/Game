@@ -401,8 +401,4 @@ public static partial class TableDataKey_C
     public const string Wave_Wave_398 = "Wave_398";
     public const string Wave_Wave_399 = "Wave_399";
     public const string Wave_Wave_400 = "Wave_400";
-    public const string Wave_Wave_401 = "Wave_401";
-    public const string Wave_Wave_402 = "Wave_402";
-    public const string Wave_Wave_403 = "Wave_403";
-    public const string Wave_Wave_404 = "Wave_404";
 }

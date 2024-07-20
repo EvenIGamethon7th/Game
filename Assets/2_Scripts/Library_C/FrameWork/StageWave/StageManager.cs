@@ -31,11 +31,25 @@ public class StageManager : Singleton<StageManager>
     private GameMessage<int> mNextStageMessage;
     public List<Monster> MonsterList = new List<Monster>();
 
+    public bool IsTest = false;
+
     /// <summary>
     ///  테스트용 스테이지 시작 코드
     /// </summary>
     /// <exception cref="NotImplementedException"></exception>
     public void Start()
+    {
+        if (!IsTest)
+        {
+            Init();
+        }
+        else
+        {
+            EditInit();
+        }
+    }
+
+    private void Init()
     {
         mNextStageMessage = new GameMessage<int>(EGameMessage.StageChange, 1);
         MessageBroker.Default.Receive<TaskMessage>()
@@ -48,7 +62,7 @@ public class StageManager : Singleton<StageManager>
                         StageInit(TableDataKey_C.Stage_Stage_0);
                         break;
                     case ETaskList.BossDeath:
-                        if(mDeathBossCount == mCurrentWaveData.spawnCount)
+                        if (mDeathBossCount == mCurrentWaveData.spawnCount)
                         {
                             mDeathBossCount = 0;
                             StartWave().Forget();
@@ -86,7 +100,7 @@ public class StageManager : Singleton<StageManager>
             //     continue;
             // }
             await UniTask.WaitForSeconds(NEXT_WAVE_TIME);
-            mNextStageMessage.SetValue(mNextStageMessage.Value + 1);
+            mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
             MessageBroker.Default.Publish(mNextStageMessage);
             
         }
@@ -113,7 +127,26 @@ public class StageManager : Singleton<StageManager>
         }
         MonsterList.Remove(monster);
     }
-    
-    
-    
+
+    #region Edit
+
+    private void EditInit()
+    {
+        MessageBroker.Default.Receive<EditMessage<int, int>>().Subscribe(message =>
+        {
+            GetStageAndWaveData(message.Value1, message.Value2);
+        });
+    }
+
+    private void GetStageAndWaveData(int stage, int wave)
+    {
+        var currentStageData = DataBase_Manager.Instance.GetStage.GetData_Func($"Stage_{stage}");
+        
+        var waveData = DataBase_Manager.Instance.GetWave.GetData_Func(currentStageData.waveList[wave]);
+        mWaveQueue.Enqueue(waveData);
+
+        StartWave().Forget();
+    }
+
+    #endregion
 }

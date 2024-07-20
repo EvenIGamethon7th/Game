@@ -10807,6 +10807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsDontDestroy: 1
   MonsterList: []
+  IsTest: 1
 --- !u!4 &482833718
 Transform:
   m_ObjectHideFlags: 0
@@ -17538,6 +17539,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1840342774}
+    - target: {fileID: 2202758861680830159, guid: 37715ab346026f4409d647322d45540e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3343201556423713847, guid: 37715ab346026f4409d647322d45540e, type: 3}
       propertyPath: serializationData.Prefab
       value: 

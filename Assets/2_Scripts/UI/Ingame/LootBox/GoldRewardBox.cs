@@ -20,6 +20,10 @@ namespace _2_Scripts.UI.Ingame.LootBox
         public void Reward()
         {
             var reward = GetRandomGoldReward();
+            if (reward == 150)
+            {
+                Handheld.Vibrate();
+            }
             mRewadMessage = reward != 0  ? $"짜잔! {reward} 골드 획득!" : "ㅜㅜ 꽝!";
             GameManager.Instance.UpdateMoney(EMoneyType.Gold,reward);
         }

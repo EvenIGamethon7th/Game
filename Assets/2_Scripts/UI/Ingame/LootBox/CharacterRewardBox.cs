@@ -16,6 +16,10 @@ namespace _2_Scripts.UI.Ingame.LootBox
         public void Reward()
         {
             var characterData = GetRandomCharacter();
+            if (characterData.rank == 3)
+            {
+                Handheld.Vibrate();
+            }
             string characterName = DataBase_Manager.Instance.GetLocalize.GetData_Func(characterData.nameKey).ko;
             mRewadMessage = $"짜잔! {characterData.rank}등급 '{characterName}' 소환!";
             MapManager.Instance.CreateUnit(characterData, spawnAction: (tilePos) =>

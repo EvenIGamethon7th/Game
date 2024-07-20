@@ -47,33 +47,27 @@ namespace _2_Scripts.Game.Controller
                         mIndicator.SetIndicator(mSelectTileSlot.transform.position, dstSlot.transform.position);
                     }
                     
-                    Debug.Log($"Long touch : srcTile: {mSelectTileSlot?.transform.position}, dstTile: {MapManager.Instance.GetClickTileSlotDetailOrNull()?.transform.position}");
                 });
 
-            //유닛을 선택했을 때 같은 타일을 선택했는지
-            mouseDownStream
-                .Subscribe(_ =>
+            mouseDownStream.Subscribe(_ =>
+            {
+                mSelectTileSlot = MapManager.Instance.GetClickTileSlotDetailOrNull();
+                mSelectUnitGroup = mSelectTileSlot?.OccupantUnit;
+                mSelectUnitMessage = new GameMessage<UnitGroup>(EGameMessage.SelectCharacter, null);
+                MessageBroker.Default.Publish(mSelectUnitMessage);
+                if (mSelectTileSlot != null && mSelectTileSlot.IsNormalUnit)
                 {
-                    if (IsPointerOverUIPopUp() || mSelectTileSlot == null)
-                    {
-                        return;
-                    }
-                    
-                    if (mSelectUnitGroup != null 
-                    && mSelectTileSlot == MapManager.Instance.GetClickTileSlotDetailOrNull()
-                    && mSelectTileSlot.IsNormalUnit)
-                    {
-                        mTempSubscribe = mouseUpStream
-                            .Buffer(TimeSpan.FromMilliseconds(150))
-                            .Take(1)
-                            .Where(x => x.Count == 0)
-                            .Subscribe(_ =>
-                            {
-                                mHasLongTouch = true;
-                                mTempSubscribe.Dispose();
-                            });
-                    }
-                });
+                    mTempSubscribe = mouseUpStream
+                        .Buffer(TimeSpan.FromMilliseconds(150))
+                        .Take(1)
+                        .Where(x => x.Count == 0)
+                        .Subscribe(_ =>
+                        {
+                            mHasLongTouch = true;
+                            mTempSubscribe.Dispose();
+                        });
+                }
+            });
 
             mouseDownStream
                 .SelectMany(_ => mouseUpStream.First())

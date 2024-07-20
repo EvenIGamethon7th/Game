@@ -42,6 +42,8 @@ public partial class CharacterData : IPoolable
         alumniAtkSpeed = data.alumniAtkSpeed;
         alumniMatk = data.alumniMatk;
         ClassType = data.ClassType;
+        Skill1 = data.Skill1;
+        Skill2 = data.Skill2;
         skill1Key = data.Skill1;
         skill2Key = data.Skill2;
         characterData = data.characterData;

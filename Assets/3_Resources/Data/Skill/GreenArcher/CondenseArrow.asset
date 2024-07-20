@@ -15,7 +15,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 4124999916983397026, guid: 2fd5775b9dceae643b8594609772aced, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -50,13 +51,13 @@ MonoBehaviour:
       Data: 0
     - Name: MaxHitUnit
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: CastEffect
       Entry: 6
       Data: 
     - Name: HitEffect
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 0
     - Name: TargetLayer
       Entry: 7
       Data: UnityEngine.LayerMask, UnityEngine.CoreModule
@@ -72,6 +73,6 @@ MonoBehaviour:
     - Name: FollowDefaultRange
       Entry: 5
       Data: true
-  mPercentDamage: 400
+  mPercentDamage: 600
   mLifeTime: 0
   mTransition: {fileID: 0}

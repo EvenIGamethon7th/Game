@@ -11,7 +11,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.Passive
         {
             if(monsters.DefenceFlag)
                 return;
-            monsters.GetMonsterData.mdef -= monsters.GetMonsterData.mdef * (mPercent * 0.01f);
+            monsters.GetMonsterData.AddMagicDefenceStat(-monsters.GetMonsterData.mdef * (mPercent * 0.01f));
             monsters.DefenceFlag = true;
         }
     }

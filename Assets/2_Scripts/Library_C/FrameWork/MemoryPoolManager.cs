@@ -48,4 +48,5 @@ public static class MemoryPoolManager<T> where T : class, IPoolable, new ()
 public interface IPoolable
 {
     public bool IsActive { get; set; }
+    public void Clear();
 }

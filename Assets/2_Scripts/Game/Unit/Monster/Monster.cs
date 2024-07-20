@@ -8,6 +8,7 @@ using _2_Scripts.UI;
 using _2_Scripts.Utils;
 using JetBrains.Annotations;
 using Rito.Attributes;
+using Sirenix.Utilities;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -76,17 +77,20 @@ namespace _2_Scripts.Game.Monster
             mDamagebleActions.ForEach(action => damagebleActions += action.DamageAction());
         }
 
-        public void SpawnMonster(string key,WayPoint waypoint,bool isBoss)
+        public void SpawnMonster(string key,WayPoint waypoint,bool isBoss,WaveStatData waveStatData)
         {
-            var originData = DataBase_Manager.Instance.GetMonster.GetData_Func(key);
-            mMonsterData = global::Utils.DeepCopy(originData);
-            mMonsterData.MaxHp = mMonsterData.hp;
+            var monsterData = DataBase_Manager.Instance.GetMonster.GetData_Func(key);
+            mMonsterData = MemoryPoolManager<MonsterData>.CreatePoolingObject();
+            mMonsterData.Init(waveStatData);
             mHpCanvas.InitHpSlider(mMonsterData.hp, isBoss);
+            
             //TODO Sprite Change And Animation
-            ResourceManager.Instance.Load<RuntimeAnimatorController>(originData.nameKey,
+            ResourceManager.Instance.Load<RuntimeAnimatorController>(monsterData.image,
             (controller) =>
             {
                 mAnimator.runtimeAnimatorController = controller;
+                Renderer.sprite =
+                    global::Utils.GetSpriteFromAnimationClip(mAnimator.runtimeAnimatorController.animationClips[0], 0);
             });
             mWayPoint = waypoint;
             mWayPointIndex = 0;
@@ -104,14 +108,18 @@ namespace _2_Scripts.Game.Monster
             
             if (instant == EInstantKillType.None)
                 ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_DamageCanvas, transform.position + Vector3.up).GetComponent<UI_DamageCanvas>().SetDamage(damage);
-            mMonsterData.hp -= DefenceCalculator.CalculateDamage(damage, mMonsterData, attackType);
+            mMonsterData.DamageHp(DefenceCalculator.CalculateDamage(damage, mMonsterData, attackType));
             DamageActionCallback?.Invoke(this);
             damagebleActions?.Invoke();
             mHpCanvas.SetHpSlider(mMonsterData.hp);
             if (mMonsterData.hp <= 0)
             {
-                if (instant != EInstantKillType.Exile) 
-                    GameManager.Instance.UpdateMoney(mMonsterData.reward_type,mMonsterData.reward_count);
+                if (instant != EInstantKillType.Exile)
+                {
+                    mMonsterData.rewardList
+                        .Where(reward=>reward.Value > 0)
+                        .ForEach(reward => GameManager.Instance.UpdateMoney(reward.Key, reward.Value));
+                }  // GameManager.Instance.UpdateMoney(mMonsterData.reward_type,mMonsterData.reward_count);
 
                 mMatController.RunDissolve(false, () => gameObject.SetActive(false));
                 if (IsBoss)
@@ -120,6 +128,7 @@ namespace _2_Scripts.Game.Monster
                 }
                 StageManager.Instance.RemoveMonster(this);
                 Enabled(false);
+                ClearData();
             }
 
             return true;
@@ -158,6 +167,11 @@ namespace _2_Scripts.Game.Monster
         private void FlipSprite(Vector3 direction)
         {
             Renderer.flipX = direction.x > 0;
+        }
+
+        private void ClearData()
+        {
+            mMonsterData.Clear();
         }
 
         private void Enabled(bool bEnable)

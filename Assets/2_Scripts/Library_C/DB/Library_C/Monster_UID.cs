@@ -46,11 +46,4 @@ public static partial class TableDataKey_C
     public const string Monster_Monster_42 = "Monster_42";
     public const string Monster_Monster_43 = "Monster_43";
     public const string Monster_Monster_44 = "Monster_44";
-    public const string Monster_Monster_45 = "Monster_45";
-    public const string Monster_Monster_46 = "Monster_46";
-    public const string Monster_Monster_47 = "Monster_47";
-    public const string Monster_Monster_48 = "Monster_48";
-    public const string Monster_Monster_49 = "Monster_49";
-    public const string Monster_Monster_50 = "Monster_50";
-    public const string Monster_Monster_51 = "Monster_51";
 }

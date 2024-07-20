@@ -1,0 +1,25 @@
+
+public static partial class TableDataKey_C
+{
+    public const string WaveStat_stat_0 = "stat_0";
+    public const string WaveStat_stat_1 = "stat_1";
+    public const string WaveStat_stat_2 = "stat_2";
+    public const string WaveStat_stat_3 = "stat_3";
+    public const string WaveStat_stat_4 = "stat_4";
+    public const string WaveStat_stat_5 = "stat_5";
+    public const string WaveStat_stat_6 = "stat_6";
+    public const string WaveStat_stat_7 = "stat_7";
+    public const string WaveStat_stat_8 = "stat_8";
+    public const string WaveStat_stat_9 = "stat_9";
+    public const string WaveStat_stat_10 = "stat_10";
+    public const string WaveStat_stat_11 = "stat_11";
+    public const string WaveStat_stat_12 = "stat_12";
+    public const string WaveStat_stat_13 = "stat_13";
+    public const string WaveStat_stat_14 = "stat_14";
+    public const string WaveStat_stat_15 = "stat_15";
+    public const string WaveStat_stat_16 = "stat_16";
+    public const string WaveStat_stat_17 = "stat_17";
+    public const string WaveStat_stat_18 = "stat_18";
+    public const string WaveStat_stat_19 = "stat_19";
+    public const string WaveStat_stat_20 = "stat_20";
+}

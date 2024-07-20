@@ -62,7 +62,7 @@ public class StageManager : Singleton<StageManager>
             });
     }
 
-    public void StageInit(string stageKey)
+    private void StageInit(string stageKey)
     {
         mCurrentStageData = DataBase_Manager.Instance.GetStage.GetData_Func(stageKey);
         foreach (var wave in mCurrentStageData.waveList)
@@ -94,8 +94,9 @@ public class StageManager : Singleton<StageManager>
     {
         for (int spawnCount = 0; spawnCount < waveData.spawnCount; spawnCount++)
         {
-            var monster = ObjectPoolManager.Instance.CreatePoolingObject("Monster", mWayPoint.GetWayPointPosition(0)).GetComponent<Monster>();;
-            monster.SpawnMonster(waveData.monsterKey, mWayPoint, waveData.isBoss);
+            var monster = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_Monster, mWayPoint.GetWayPointPosition(0)).GetComponent<Monster>();;
+            WaveStatData waveStateData = DataBase_Manager.Instance.GetWaveStat.GetData_Func(waveData.apply_stat);
+            monster.SpawnMonster(waveData.monsterKey, mWayPoint, waveData.isBoss, waveStateData);
             MonsterList.Add(monster);
             await UniTask.WaitForSeconds(SPAWN_COOL_TIME);
             

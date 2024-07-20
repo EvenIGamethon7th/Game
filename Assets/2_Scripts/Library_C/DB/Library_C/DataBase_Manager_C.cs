@@ -92,6 +92,17 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             return this.wave;
         }
     }
+    [InlineEditor, LabelText("WaveStat"), SerializeField] private DB_WaveStatDataGroup waveStat;
+    public DB_WaveStatDataGroup GetWaveStat
+    {
+        get
+        {
+            if (this.waveStat == null)
+                this.waveStat = Resources.Load<DB_WaveStatDataGroup>(base.dataGroupSobjPath + "DB_WaveStatDataGroup");
+
+            return this.waveStat;
+        }
+    }
     [InlineEditor, LabelText("Money"), SerializeField] private DB_MoneyDataGroup money;
     public DB_MoneyDataGroup GetMoney
     {
@@ -114,17 +125,6 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             return this.character;
         }
     }
-    [InlineEditor, LabelText("Skill"), SerializeField] private DB_SkillDataGroup skill;
-    public DB_SkillDataGroup GetSkill
-    {
-        get
-        {
-            if (this.skill == null)
-                this.skill = Resources.Load<DB_SkillDataGroup>(base.dataGroupSobjPath + "DB_SkillDataGroup");
-
-            return this.skill;
-        }
-    }
     [InlineEditor, LabelText("TreasureBox"), SerializeField] private DB_TreasureBoxDataGroup treasureBox;
     public DB_TreasureBoxDataGroup GetTreasureBox
     {
@@ -134,6 +134,17 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
                 this.treasureBox = Resources.Load<DB_TreasureBoxDataGroup>(base.dataGroupSobjPath + "DB_TreasureBoxDataGroup");
 
             return this.treasureBox;
+        }
+    }
+    [InlineEditor, LabelText("Skill"), SerializeField] private DB_SkillDataGroup skill;
+    public DB_SkillDataGroup GetSkill
+    {
+        get
+        {
+            if (this.skill == null)
+                this.skill = Resources.Load<DB_SkillDataGroup>(base.dataGroupSobjPath + "DB_SkillDataGroup");
+
+            return this.skill;
         }
     }
     #endregion
@@ -161,10 +172,11 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             this.monster.Init_Func();
             this.stage.Init_Func();
             this.wave.Init_Func();
+            this.waveStat.Init_Func();
             this.money.Init_Func();
             this.character.Init_Func();
-            this.skill.Init_Func();
             this.treasureBox.Init_Func();
+            this.skill.Init_Func();
         }
     }
 
@@ -177,10 +189,11 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
         this.GetMonster.CallEdit_OnDataImportDone_Func();
         this.GetStage.CallEdit_OnDataImportDone_Func();
         this.GetWave.CallEdit_OnDataImportDone_Func();
+        this.GetWaveStat.CallEdit_OnDataImportDone_Func();
         this.GetMoney.CallEdit_OnDataImportDone_Func();
         this.GetCharacter.CallEdit_OnDataImportDone_Func();
-        this.GetSkill.CallEdit_OnDataImportDone_Func();
         this.GetTreasureBox.CallEdit_OnDataImportDone_Func();
+        this.GetSkill.CallEdit_OnDataImportDone_Func();
         
         base.CallEdit_OnDataImport_Func();
     }

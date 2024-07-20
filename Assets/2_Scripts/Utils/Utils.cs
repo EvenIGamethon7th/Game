@@ -3,6 +3,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Newtonsoft.Json;
 using Spine.Unity;
+using UnityEditor;
 using UnityEngine;
 
 public class Utils
@@ -59,6 +60,32 @@ public class Utils
         skeletonGraphic.initialSkinName = skinName.Substring(0, skinName.LastIndexOf('_'));
         skeletonGraphic.Initialize(true);
     }
+
+    public static Sprite GetSpriteFromAnimationClip(AnimationClip clip, float time)
+    {
+        // Get all curves in the animation clip
+        EditorCurveBinding[] bindings = AnimationUtility.GetObjectReferenceCurveBindings(clip);
+        
+        foreach (var binding in bindings)
+        {
+            if (binding.propertyName.Contains("m_Sprite"))
+            {
+                ObjectReferenceKeyframe[] keyframes = AnimationUtility.GetObjectReferenceCurve(clip, binding);
+                
+                // Find the keyframe at the specified time (or closest to it)
+                foreach (var keyframe in keyframes)
+                {
+                    if (Mathf.Approximately(keyframe.time, time))
+                    {
+                        return keyframe.value as Sprite;
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
+    
 
     public class ReadonlyNumber<T>
     {

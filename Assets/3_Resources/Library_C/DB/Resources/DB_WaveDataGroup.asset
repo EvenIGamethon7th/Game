@@ -34,55 +34,34 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 5
+      Data: 40
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 1
-      Data: Wave_0
+      Data: Wave_1
     - Name: $v
       Entry: 7
       Data: 2|WaveData, Assembly-CSharp
     - Name: Key
       Entry: 1
-      Data: Wave_0
-    - Name: monsterKey
-      Entry: 1
-      Data: Monster_0
-    - Name: spawnCount
+      Data: Wave_1
+    - Name: Stage_Group
       Entry: 3
-      Data: 5
-    - Name: isBoss
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: Wave_1
-    - Name: $v
-      Entry: 7
-      Data: 3|WaveData, Assembly-CSharp
-    - Name: Key
-      Entry: 1
-      Data: Wave_1
+      Data: 1
     - Name: monsterKey
       Entry: 1
-      Data: Monster_0
+      Data: Monster_1
     - Name: spawnCount
       Entry: 3
       Data: 10
     - Name: isBoss
       Entry: 5
       Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_1
     - Name: 
       Entry: 8
       Data: 
@@ -95,21 +74,60 @@ MonoBehaviour:
     - Name: $k
       Entry: 1
       Data: Wave_2
+    - Name: $v
+      Entry: 7
+      Data: 3|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_2
+    - Name: Stage_Group
+      Entry: 3
+      Data: 1
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_1
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_3
     - Name: $v
       Entry: 7
       Data: 4|WaveData, Assembly-CSharp
     - Name: Key
       Entry: 1
-      Data: Wave_2
+      Data: Wave_3
+    - Name: Stage_Group
+      Entry: 3
+      Data: 1
     - Name: monsterKey
       Entry: 1
-      Data: Monster_0
+      Data: Monster_1
     - Name: spawnCount
       Entry: 3
-      Data: 15
+      Data: 10
     - Name: isBoss
       Entry: 5
       Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_3
     - Name: 
       Entry: 8
       Data: 
@@ -121,22 +139,226 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: Wave_3
+      Data: Wave_4
     - Name: $v
       Entry: 7
       Data: 5|WaveData, Assembly-CSharp
     - Name: Key
       Entry: 1
-      Data: Wave_3
+      Data: Wave_4
+    - Name: Stage_Group
+      Entry: 3
+      Data: 1
     - Name: monsterKey
       Entry: 1
-      Data: Monster_0
+      Data: Monster_1
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_5
+    - Name: $v
+      Entry: 7
+      Data: 6|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_5
+    - Name: Stage_Group
+      Entry: 3
+      Data: 1
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_2
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_6
+    - Name: $v
+      Entry: 7
+      Data: 7|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_6
+    - Name: Stage_Group
+      Entry: 3
+      Data: 1
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_2
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_7
+    - Name: $v
+      Entry: 7
+      Data: 8|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_7
+    - Name: Stage_Group
+      Entry: 3
+      Data: 1
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_2
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_8
+    - Name: $v
+      Entry: 7
+      Data: 9|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_8
+    - Name: Stage_Group
+      Entry: 3
+      Data: 1
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_2
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_9
+    - Name: $v
+      Entry: 7
+      Data: 10|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_9
+    - Name: Stage_Group
+      Entry: 3
+      Data: 1
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_2
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_10
+    - Name: $v
+      Entry: 7
+      Data: 11|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_10
+    - Name: Stage_Group
+      Entry: 3
+      Data: 1
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_10
     - Name: spawnCount
       Entry: 3
       Data: 1
     - Name: isBoss
       Entry: 5
       Data: true
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_10
     - Name: 
       Entry: 8
       Data: 
@@ -148,22 +370,985 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: Wave_4
+      Data: Wave_11
     - Name: $v
       Entry: 7
-      Data: 6|WaveData, Assembly-CSharp
+      Data: 12|WaveData, Assembly-CSharp
     - Name: Key
       Entry: 1
-      Data: Wave_4
+      Data: Wave_11
+    - Name: Stage_Group
+      Entry: 3
+      Data: 1
     - Name: monsterKey
       Entry: 1
-      Data: Monster_0
+      Data: Monster_3
     - Name: spawnCount
       Entry: 3
       Data: 10
     - Name: isBoss
       Entry: 5
       Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_12
+    - Name: $v
+      Entry: 7
+      Data: 13|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_12
+    - Name: Stage_Group
+      Entry: 3
+      Data: 1
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_3
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_12
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_13
+    - Name: $v
+      Entry: 7
+      Data: 14|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_13
+    - Name: Stage_Group
+      Entry: 3
+      Data: 1
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_3
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_13
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_14
+    - Name: $v
+      Entry: 7
+      Data: 15|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_14
+    - Name: Stage_Group
+      Entry: 3
+      Data: 1
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_3
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_14
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_15
+    - Name: $v
+      Entry: 7
+      Data: 16|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_15
+    - Name: Stage_Group
+      Entry: 3
+      Data: 1
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_4
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_16
+    - Name: $v
+      Entry: 7
+      Data: 17|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_16
+    - Name: Stage_Group
+      Entry: 3
+      Data: 1
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_4
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_16
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_17
+    - Name: $v
+      Entry: 7
+      Data: 18|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_17
+    - Name: Stage_Group
+      Entry: 3
+      Data: 1
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_4
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_17
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_18
+    - Name: $v
+      Entry: 7
+      Data: 19|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_18
+    - Name: Stage_Group
+      Entry: 3
+      Data: 1
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_4
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_18
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_19
+    - Name: $v
+      Entry: 7
+      Data: 20|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_19
+    - Name: Stage_Group
+      Entry: 3
+      Data: 1
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_4
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_19
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_20
+    - Name: $v
+      Entry: 7
+      Data: 21|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_20
+    - Name: Stage_Group
+      Entry: 3
+      Data: 1
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_11
+    - Name: spawnCount
+      Entry: 3
+      Data: 1
+    - Name: isBoss
+      Entry: 5
+      Data: true
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_20
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_21
+    - Name: $v
+      Entry: 7
+      Data: 22|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_21
+    - Name: Stage_Group
+      Entry: 3
+      Data: 2
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_2
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_22
+    - Name: $v
+      Entry: 7
+      Data: 23|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_22
+    - Name: Stage_Group
+      Entry: 3
+      Data: 2
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_2
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_23
+    - Name: $v
+      Entry: 7
+      Data: 24|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_23
+    - Name: Stage_Group
+      Entry: 3
+      Data: 2
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_2
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_24
+    - Name: $v
+      Entry: 7
+      Data: 25|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_24
+    - Name: Stage_Group
+      Entry: 3
+      Data: 2
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_2
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_25
+    - Name: $v
+      Entry: 7
+      Data: 26|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_25
+    - Name: Stage_Group
+      Entry: 3
+      Data: 2
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_3
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_26
+    - Name: $v
+      Entry: 7
+      Data: 27|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_26
+    - Name: Stage_Group
+      Entry: 3
+      Data: 2
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_3
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_27
+    - Name: $v
+      Entry: 7
+      Data: 28|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_27
+    - Name: Stage_Group
+      Entry: 3
+      Data: 2
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_3
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_28
+    - Name: $v
+      Entry: 7
+      Data: 29|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_28
+    - Name: Stage_Group
+      Entry: 3
+      Data: 2
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_3
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_29
+    - Name: $v
+      Entry: 7
+      Data: 30|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_29
+    - Name: Stage_Group
+      Entry: 3
+      Data: 2
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_3
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_30
+    - Name: $v
+      Entry: 7
+      Data: 31|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_30
+    - Name: Stage_Group
+      Entry: 3
+      Data: 2
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_10
+    - Name: spawnCount
+      Entry: 3
+      Data: 1
+    - Name: isBoss
+      Entry: 5
+      Data: true
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_31
+    - Name: $v
+      Entry: 7
+      Data: 32|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_31
+    - Name: Stage_Group
+      Entry: 3
+      Data: 2
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_4
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_32
+    - Name: $v
+      Entry: 7
+      Data: 33|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_32
+    - Name: Stage_Group
+      Entry: 3
+      Data: 2
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_4
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_12
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_33
+    - Name: $v
+      Entry: 7
+      Data: 34|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_33
+    - Name: Stage_Group
+      Entry: 3
+      Data: 2
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_4
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_13
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_34
+    - Name: $v
+      Entry: 7
+      Data: 35|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_34
+    - Name: Stage_Group
+      Entry: 3
+      Data: 2
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_4
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_14
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_35
+    - Name: $v
+      Entry: 7
+      Data: 36|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_35
+    - Name: Stage_Group
+      Entry: 3
+      Data: 2
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_5
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_36
+    - Name: $v
+      Entry: 7
+      Data: 37|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_36
+    - Name: Stage_Group
+      Entry: 3
+      Data: 2
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_5
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_16
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_37
+    - Name: $v
+      Entry: 7
+      Data: 38|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_37
+    - Name: Stage_Group
+      Entry: 3
+      Data: 2
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_5
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_17
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_38
+    - Name: $v
+      Entry: 7
+      Data: 39|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_38
+    - Name: Stage_Group
+      Entry: 3
+      Data: 2
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_5
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_18
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_39
+    - Name: $v
+      Entry: 7
+      Data: 40|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_39
+    - Name: Stage_Group
+      Entry: 3
+      Data: 2
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_5
+    - Name: spawnCount
+      Entry: 3
+      Data: 10
+    - Name: isBoss
+      Entry: 5
+      Data: false
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_19
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Wave_40
+    - Name: $v
+      Entry: 7
+      Data: 41|WaveData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Wave_40
+    - Name: Stage_Group
+      Entry: 3
+      Data: 2
+    - Name: monsterKey
+      Entry: 1
+      Data: Monster_11
+    - Name: spawnCount
+      Entry: 3
+      Data: 1
+    - Name: isBoss
+      Entry: 5
+      Data: true
+    - Name: apply_stat
+      Entry: 1
+      Data: stat_20
     - Name: 
       Entry: 8
       Data: 
@@ -177,29 +1362,284 @@ MonoBehaviour:
       Entry: 8
       Data: 
   dataArr:
-  - Key: Wave_0
-    monsterKey: Monster_0
-    spawnCount: 5
-    isBoss: 0
   - Key: Wave_1
-    monsterKey: Monster_0
+    Stage_Group: 1
+    monsterKey: Monster_1
     spawnCount: 10
     isBoss: 0
+    apply_stat: stat_1
   - Key: Wave_2
-    monsterKey: Monster_0
-    spawnCount: 15
+    Stage_Group: 1
+    monsterKey: Monster_1
+    spawnCount: 10
     isBoss: 0
+    apply_stat: stat_2
   - Key: Wave_3
-    monsterKey: Monster_0
+    Stage_Group: 1
+    monsterKey: Monster_1
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_3
+  - Key: Wave_4
+    Stage_Group: 1
+    monsterKey: Monster_1
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_4
+  - Key: Wave_5
+    Stage_Group: 1
+    monsterKey: Monster_2
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_5
+  - Key: Wave_6
+    Stage_Group: 1
+    monsterKey: Monster_2
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_6
+  - Key: Wave_7
+    Stage_Group: 1
+    monsterKey: Monster_2
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_7
+  - Key: Wave_8
+    Stage_Group: 1
+    monsterKey: Monster_2
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_8
+  - Key: Wave_9
+    Stage_Group: 1
+    monsterKey: Monster_2
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_9
+  - Key: Wave_10
+    Stage_Group: 1
+    monsterKey: Monster_10
     spawnCount: 1
     isBoss: 1
-  - Key: Wave_4
-    monsterKey: Monster_0
+    apply_stat: stat_10
+  - Key: Wave_11
+    Stage_Group: 1
+    monsterKey: Monster_3
     spawnCount: 10
     isBoss: 0
+    apply_stat: stat_11
+  - Key: Wave_12
+    Stage_Group: 1
+    monsterKey: Monster_3
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_12
+  - Key: Wave_13
+    Stage_Group: 1
+    monsterKey: Monster_3
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_13
+  - Key: Wave_14
+    Stage_Group: 1
+    monsterKey: Monster_3
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_14
+  - Key: Wave_15
+    Stage_Group: 1
+    monsterKey: Monster_4
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_15
+  - Key: Wave_16
+    Stage_Group: 1
+    monsterKey: Monster_4
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_16
+  - Key: Wave_17
+    Stage_Group: 1
+    monsterKey: Monster_4
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_17
+  - Key: Wave_18
+    Stage_Group: 1
+    monsterKey: Monster_4
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_18
+  - Key: Wave_19
+    Stage_Group: 1
+    monsterKey: Monster_4
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_19
+  - Key: Wave_20
+    Stage_Group: 1
+    monsterKey: Monster_11
+    spawnCount: 1
+    isBoss: 1
+    apply_stat: stat_20
+  - Key: Wave_21
+    Stage_Group: 2
+    monsterKey: Monster_2
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_1
+  - Key: Wave_22
+    Stage_Group: 2
+    monsterKey: Monster_2
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_2
+  - Key: Wave_23
+    Stage_Group: 2
+    monsterKey: Monster_2
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_3
+  - Key: Wave_24
+    Stage_Group: 2
+    monsterKey: Monster_2
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_4
+  - Key: Wave_25
+    Stage_Group: 2
+    monsterKey: Monster_3
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_5
+  - Key: Wave_26
+    Stage_Group: 2
+    monsterKey: Monster_3
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_6
+  - Key: Wave_27
+    Stage_Group: 2
+    monsterKey: Monster_3
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_7
+  - Key: Wave_28
+    Stage_Group: 2
+    monsterKey: Monster_3
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_8
+  - Key: Wave_29
+    Stage_Group: 2
+    monsterKey: Monster_3
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_9
+  - Key: Wave_30
+    Stage_Group: 2
+    monsterKey: Monster_10
+    spawnCount: 1
+    isBoss: 1
+    apply_stat: stat_10
+  - Key: Wave_31
+    Stage_Group: 2
+    monsterKey: Monster_4
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_11
+  - Key: Wave_32
+    Stage_Group: 2
+    monsterKey: Monster_4
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_12
+  - Key: Wave_33
+    Stage_Group: 2
+    monsterKey: Monster_4
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_13
+  - Key: Wave_34
+    Stage_Group: 2
+    monsterKey: Monster_4
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_14
+  - Key: Wave_35
+    Stage_Group: 2
+    monsterKey: Monster_5
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_15
+  - Key: Wave_36
+    Stage_Group: 2
+    monsterKey: Monster_5
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_16
+  - Key: Wave_37
+    Stage_Group: 2
+    monsterKey: Monster_5
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_17
+  - Key: Wave_38
+    Stage_Group: 2
+    monsterKey: Monster_5
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_18
+  - Key: Wave_39
+    Stage_Group: 2
+    monsterKey: Monster_5
+    spawnCount: 10
+    isBoss: 0
+    apply_stat: stat_19
+  - Key: Wave_40
+    Stage_Group: 2
+    monsterKey: Monster_11
+    spawnCount: 1
+    isBoss: 1
+    apply_stat: stat_20
   keyArr:
-  - Wave_0
   - Wave_1
   - Wave_2
   - Wave_3
   - Wave_4
+  - Wave_5
+  - Wave_6
+  - Wave_7
+  - Wave_8
+  - Wave_9
+  - Wave_10
+  - Wave_11
+  - Wave_12
+  - Wave_13
+  - Wave_14
+  - Wave_15
+  - Wave_16
+  - Wave_17
+  - Wave_18
+  - Wave_19
+  - Wave_20
+  - Wave_21
+  - Wave_22
+  - Wave_23
+  - Wave_24
+  - Wave_25
+  - Wave_26
+  - Wave_27
+  - Wave_28
+  - Wave_29
+  - Wave_30
+  - Wave_31
+  - Wave_32
+  - Wave_33
+  - Wave_34
+  - Wave_35
+  - Wave_36
+  - Wave_37
+  - Wave_38
+  - Wave_39
+  - Wave_40

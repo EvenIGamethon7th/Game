@@ -40,7 +40,7 @@ namespace _2_Scripts.Game.Unit.MainCharacter
 
         private void Start()
         {
-            //TODO ³ªÁß¿¡ °ÔÀÓ¸Å´ÏÀú¿¡¼­ ¹Ş¾Æ¿À±â
+            //TODO ë‚˜ì¤‘ì— ê²Œì„ë§¤ë‹ˆì €ì—ì„œ ë°›ì•„ì˜¤ê¸°
             //mCharacterInfo = GameManager.Instance.MainCharacterList[0];
             mCharacterData = MemoryPoolManager<CharacterData>.CreatePoolingObject();
             mBuffData = MemoryPoolManager<BuffData>.CreatePoolingObject();
@@ -75,7 +75,7 @@ namespace _2_Scripts.Game.Unit.MainCharacter
         {
             if (!CheckCondition())
             {
-                //TODO: ½ºÅ³ »ç¿ë ºÒ°¡
+                //TODO: ìŠ¤í‚¬ ì‚¬ìš© ë¶ˆê°€
                 return;
             }
             mCurrentCoolTime = mCoolTime;

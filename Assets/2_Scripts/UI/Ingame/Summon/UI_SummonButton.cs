@@ -137,6 +137,10 @@ namespace _2_Scripts.UI
            global::Utils.CharacterSkeletonInit(mCharacterGraphic, mCharacterData.characterPack);
            mCharacterName.SetLocalizeKey(mCharacterData.nameKey);
            mCharacterCost.text = $"{mCharacterData.cost}$";
+           if (mCharacterData.rank == 3)
+           {
+               Handheld.Vibrate();
+           }
            CardChange(mCharacterData.rank);
         }
 

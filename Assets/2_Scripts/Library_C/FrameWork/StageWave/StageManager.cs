@@ -11,6 +11,7 @@ using Cysharp.Threading.Tasks;
 using Rito.Attributes;
 using UniRx;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StageManager : Singleton<StageManager>
 {
@@ -149,4 +150,9 @@ public class StageManager : Singleton<StageManager>
     }
 
     #endregion
+
+    protected override void ChangeSceneInit(Scene prev, Scene next)
+    {
+        throw new NotImplementedException();
+    }
 }

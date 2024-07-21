@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UICamera : Singleton<UICamera>
 {
@@ -9,5 +10,10 @@ public class UICamera : Singleton<UICamera>
     {
         base.Awake();
         Camera = GetComponent<Camera>();
+    }
+
+    protected override void ChangeSceneInit(Scene prev, Scene next)
+    {
+        
     }
 }

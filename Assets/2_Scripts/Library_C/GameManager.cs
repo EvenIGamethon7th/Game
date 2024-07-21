@@ -9,6 +9,7 @@ using _2_Scripts.Utils;
 using Spine.Unity;
 using UniRx;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using CharacterInfo = _2_Scripts.Game.ScriptableObject.Character.CharacterInfo;
 using Random = System.Random;
 
@@ -169,5 +170,14 @@ public class GameManager : Singleton<GameManager>
     {
         int grade = GetGradeBasedOnRates();
         return characterInfo.CharacterEvolutions[grade].GetData;
+    }
+
+    protected override void ChangeSceneInit(Scene prev, Scene next)
+    {
+        //TOdo UserHp Max HP는 BackEnd에서 가져오는 형태로 수정해야할듯 차후
+        UserHp.Value = 100;
+        UserLevel.Value = 1;
+        UserGold.Value = 30;
+        UserLuckyCoin.Value = 0;
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
 public class ObjectPoolManager : Singleton<ObjectPoolManager>
@@ -274,5 +275,9 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         _poolList.Clear();
     }
 
+    protected override void ChangeSceneInit(Scene prev, Scene next)
+    {
+        Clear();
+    }
 }
 

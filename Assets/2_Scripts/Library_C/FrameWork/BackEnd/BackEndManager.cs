@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using PlayFab;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Cargold.FrameWork.BackEnd
 {
@@ -15,7 +16,12 @@ namespace Cargold.FrameWork.BackEnd
             base.Awake();
             mAuthService = new PlayFabAuthService();
         }
-        
+
+        protected override void ChangeSceneInit(Scene prev, Scene next)
+        {
+            throw new NotImplementedException();
+        }
+
         public void OnLogin(Action callback)
         {
             LoginAsync(callback).Forget();

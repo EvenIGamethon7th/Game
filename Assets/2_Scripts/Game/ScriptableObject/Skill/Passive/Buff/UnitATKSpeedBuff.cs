@@ -1,4 +1,5 @@
-﻿using _2_Scripts.Game.Unit.Data;
+﻿using _2_Scripts.Game.Unit;
+using _2_Scripts.Game.Unit.Data;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -10,14 +11,24 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.Passive.Buff
         [Title("공속 증가 퍼센트")]
         [SerializeField]
         private float mPercent;
-        public override void AddPassive(BuffData data)
+        public override void AddPassive(UnitBuffHandler handler)
         {
-            data.ATKSpeedRate += mPercent;
+            handler.AddCount(mBuffType);
+
+            if (handler.GetCount(mBuffType) == 1)
+            {
+                handler.BuffData.ATKSpeedRate += mPercent;
+            }
         }
 
-        public override void RemovePassive(BuffData data)
+        public override void RemovePassive(UnitBuffHandler handler)
         {
-            data.ATKSpeedRate -= mPercent;
+            handler.RemoveCount(mBuffType);
+
+            if (handler.GetCount(mBuffType) == 0)
+            {
+                handler.BuffData.ATKSpeedRate -= mPercent;
+            }
         }
     }
 }

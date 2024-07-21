@@ -19,7 +19,7 @@ namespace Cargold.FrameWork.BackEnd
 
         protected override void ChangeSceneInit(Scene prev, Scene next)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void OnLogin(Action callback)

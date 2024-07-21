@@ -1,5 +1,6 @@
 ﻿using System;
 using _2_Scripts.Game.Unit;
+using _2_Scripts.UI.Ingame;
 using _2_Scripts.Utils;
 using Cargold;
 using Sirenix.OdinInspector;
@@ -47,6 +48,12 @@ namespace _2_Scripts.Game.StatusEffect
         {
             if (Random_C.CheckPercent_Func(100, mPercent))
             {
+                var lootingItem = ObjectPoolManager.Instance
+                    .CreatePoolingObject(AddressableTable.Default_LootingItem, monster.transform.position, true)
+                    .GetComponent<LootingItem>();
+
+                lootingItem.CreateItem(EMoneyType.GoldKey, 1);
+                
                 GameManager.Instance.UpdateMoney(EMoneyType.GoldKey,1);
                 monster.DamageActionRemove(TargetAction,this);
             }

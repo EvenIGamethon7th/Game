@@ -224,7 +224,7 @@ RectTransform:
   m_Father: {fileID: 791009289}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -12569,9 +12569,9 @@ RectTransform:
   m_Father: {fileID: 939900977}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -17, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &971094686
 MonoBehaviour:
@@ -15773,7 +15773,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1193967932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16600,6 +16600,14 @@ PrefabInstance:
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 3927486968737949816, guid: 2fa6cb2f581008145916284d58408c00, type: 3}
+    - target: {fileID: 4540559774796286049, guid: 2fa6cb2f581008145916284d58408c00, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5523593601335109278, guid: 2fa6cb2f581008145916284d58408c00, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7186679714381466274, guid: 2fa6cb2f581008145916284d58408c00, type: 3}
       propertyPath: serializationData.Prefab
       value: 
@@ -17211,6 +17219,10 @@ PrefabInstance:
     - target: {fileID: 6890909614643750473, guid: e2d95c58e46c72c45afa2f3708ff69c1, type: 3}
       propertyPath: m_Name
       value: UICanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890909614643750473, guid: e2d95c58e46c72c45afa2f3708ff69c1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

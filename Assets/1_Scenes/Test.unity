@@ -13065,7 +13065,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &482833716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13461,6 +13461,7 @@ MonoBehaviour:
     range: 0
     cost: 0
     characterPack: 
+    academyClass: 0
     Skill1: 0
     Skill2: 0
     ClassType: 
@@ -15738,6 +15739,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1840342774}
+    - target: {fileID: 2251008894887963797, guid: 37715ab346026f4409d647322d45540e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2919695295735039756, guid: 37715ab346026f4409d647322d45540e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3343201556423713847, guid: 37715ab346026f4409d647322d45540e, type: 3}
       propertyPath: serializationData.Prefab
       value: 
@@ -15750,6 +15759,10 @@ PrefabInstance:
       propertyPath: mBottomGo.Array.data[0]
       value: 
       objectReference: {fileID: 1300083580}
+    - target: {fileID: 4763161545687981646, guid: 37715ab346026f4409d647322d45540e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5883860578737544032, guid: 37715ab346026f4409d647322d45540e, type: 3}
       propertyPath: serializationData.Prefab
       value: 
@@ -28848,6 +28861,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 276388992742796199, guid: 8c87aa2d5c1075c47a9befd890e1b4cf, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 350890371710901670, guid: 8c87aa2d5c1075c47a9befd890e1b4cf, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -28936,6 +28953,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1840342774}
+    - target: {fileID: 1754939565172144059, guid: 8c87aa2d5c1075c47a9befd890e1b4cf, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097863535546945730, guid: 8c87aa2d5c1075c47a9befd890e1b4cf, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28967,6 +28992,6 @@ SceneRoots:
   - {fileID: 1010884679}
   - {fileID: 218113370}
   - {fileID: 386116055}
-  - {fileID: 3102404977084433711}
   - {fileID: 1124819711}
+  - {fileID: 3102404977084433711}
   - {fileID: 2214456061388802975}

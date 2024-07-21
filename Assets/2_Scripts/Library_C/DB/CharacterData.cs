@@ -48,6 +48,7 @@ public partial class CharacterData : IPoolable
         skill2Key = data.Skill2;
         characterData = data.characterData;
         cost = data.cost;
+        academyClass = data.academyClass;
     }
 
     public float GetTotalAtk()

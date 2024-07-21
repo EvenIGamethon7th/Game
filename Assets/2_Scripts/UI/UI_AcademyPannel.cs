@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using TMPro;
 using UniRx;
 using UnityEngine;
+using UnityEngine.U2D;
+using UnityEngine.UI;
 
 namespace _2_Scripts.UI {
     public class UI_AcademyPannel : MonoBehaviour
@@ -30,8 +32,14 @@ namespace _2_Scripts.UI {
         private CharacterData mStudentData;
         private CharacterData mTempAlumniData;
 
+        private AcademyClassData[] mClassData = new AcademyClassData[5];
+        private float[] mClassRate = new float[3];
+
         [SerializeField]
-        private TextMeshProUGUI mGradeText;
+        private SpriteAtlas mAtlas;
+
+        [SerializeField]
+        private Image mClassImage;
 
         public void Init()
         {
@@ -62,7 +70,18 @@ namespace _2_Scripts.UI {
             mDoLesson = true;
             mTempAlumniData = MemoryPoolManager<CharacterData>.CreatePoolingObject();
             mStatus.Init(student);
+
+            for (int i = 0; i < mClassData.Length; ++i)
+            {
+                DataBase_Manager.Instance.GetAcademyClass.TryGetData_Func($"AcademyClass_{(student.CharacterDatas.academyClass - 1) * 5 + i}", out var classData);
+                mClassData[i] = classData;
+            }
+
+            mLesson.SetLesson(student.CharacterDatas);
             mStudentData = student.CharacterDatas;
+            mClassImage.gameObject.SetActive(true);
+            mClassImage.sprite = mAtlas.GetSprite(mClassData[0].AcademyClassKey);
+            mLesson.DoLesson(0);
             mStudentData.isAlumni = true;
         }
 
@@ -84,6 +103,7 @@ namespace _2_Scripts.UI {
             mLessonCount = 0;
             if (isCreateUnit)
             {
+                mClassImage.gameObject.SetActive(false);
                 mDoLesson = false;
                 mStatus.Clear();
                 mLesson.Init();
@@ -97,11 +117,13 @@ namespace _2_Scripts.UI {
 
             if (mLessonCount < 5)
             {
-                // while (mLessonCount < 5)
-                // {
-                    DecideLessonResult();
-                    ++mLessonCount;
-                // }
+                DecideLessonResult();
+                ++mLessonCount;
+                if (mLessonCount < 5)
+                {
+                    mLesson.DoLesson(mLessonCount);
+                    mClassImage.sprite = mAtlas.GetSprite(mClassData[mLessonCount].AcademyClassKey);
+                }
             }
 
             if (mLessonCount == 5)
@@ -112,50 +134,46 @@ namespace _2_Scripts.UI {
 
         private void DecideLessonResult()
         {
-            ELessonResults result = (ELessonResults)Random.Range(0, 3);
+            mClassRate[0] = mClassData[mLessonCount].Success_pro * 100;
+            mClassRate[1] = mClassData[mLessonCount].Great_pro * 100;
+            mClassRate[2] = mClassData[mLessonCount].Fail_pro * 100;
+            int rate = global::Utils.GetRandomIntBasedOnRates(mClassRate);
+            ELessonResults result = (ELessonResults)rate;
             mLesson.SetResult(mLessonCount, result);
 
             if (result == ELessonResults.Fail) return;
-            if (result == ELessonResults.Bonanza) Handheld.Vibrate();
-
-            switch (mLessonCount)
-            {
-                case 0:
-                    if (result == ELessonResults.Success)
-                        mTempAlumniData.alumniAtk += 10;
-                    else if (result == ELessonResults.Bonanza)
-                        mTempAlumniData.alumniAtk += 15;
-                    break;
-
-                case 1:
-                    if (result == ELessonResults.Success)
-                        mTempAlumniData.alumniAtkSpeed += 0.1f;
-                    else if (result == ELessonResults.Bonanza)
-                        mTempAlumniData.alumniAtkSpeed += 0.2f;
-                    break;
-
-                case 2:
-                    if (result == ELessonResults.Success)
-                        mTempAlumniData.alumniAtk += 20;
-                    else if (result == ELessonResults.Bonanza)
-                        mTempAlumniData.alumniAtk += 25;
-                    break;
-
-                case 3:
-                    if (result == ELessonResults.Success)
-                        mTempAlumniData.alumniMatk += 10;
-                    else if (result == ELessonResults.Bonanza)
-                        mTempAlumniData.alumniMatk += 20;
-                    break;
-
-                case 4:
-                    if (result == ELessonResults.Success)
-                        mTempAlumniData.alumniAtkSpeed += 0.2f;
-                    else if (result == ELessonResults.Bonanza)
-                        mTempAlumniData.alumniAtkSpeed += 0.3f;
-                    break;
+            
+            else if (result == ELessonResults.Bonanza) 
+            { 
+                Handheld.Vibrate();
+                SelectStat(mClassData[mLessonCount].Stat_value2);
             }
+
+            else
+            {
+                SelectStat(mClassData[mLessonCount].Stat_value1);
+            }
+
+            
             mStatus.SetStatus(mTempAlumniData);
+        }
+
+        private void SelectStat(float stat)
+        {
+            if (mClassData[mLessonCount].Stat_type1.Contains("마법공격력"))
+            {
+                mTempAlumniData.alumniMatk += stat;
+            }
+
+            else if (mClassData[mLessonCount].Stat_type1.Contains("공격속도"))
+            {
+                mTempAlumniData.alumniAtkSpeed += stat;
+            }
+
+            else
+            {
+                mTempAlumniData.alumniAtk += stat;
+            }
         }
     }
 }

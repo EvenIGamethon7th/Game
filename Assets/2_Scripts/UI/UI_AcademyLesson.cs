@@ -10,9 +10,9 @@ namespace _2_Scripts.UI
 {
     public enum ELessonResults
     {
-        Fail,
         Success,
         Bonanza,
+        Fail,
         During
     }
 
@@ -23,7 +23,12 @@ namespace _2_Scripts.UI
         private readonly Color Fail = new Color(0.996f, 0.169f, 0.153f);
 
         [SerializeField]
-        private TextMeshProUGUI[] mTexts;
+        private TextMeshProUGUI[] mResultTexts;
+        [SerializeField]
+        private TextMeshProUGUI[] mLessonTexts;
+
+        [SerializeField]
+        private Image mPortrail;
 
         [SerializeField]
         private Image[] mArrowImages;
@@ -33,10 +38,20 @@ namespace _2_Scripts.UI
 
         public void Init()
         {
-            for (int i = 0; i < mTexts.Length; ++i) 
+            for (int i = 0; i < mResultTexts.Length; ++i) 
             {
-                mTexts[i].text = "";
+                mResultTexts[i].text = "";
+                mLessonTexts[i].text = "";
                 mArrowImages[i].gameObject.SetActive(false);
+            }
+        }
+
+        public void SetLesson(CharacterData data)
+        {
+            for (int i = 0; i < mLessonTexts.Length; ++i)
+            {
+                DataBase_Manager.Instance.GetAcademyClass.TryGetData_Func($"AcademyClass_{(data.academyClass - 1) * 5 + i}", out var classData);
+                mLessonTexts[i].text = classData.Name;
             }
         }
 
@@ -51,20 +66,20 @@ namespace _2_Scripts.UI
             switch (result)
             {
                 case ELessonResults.Fail:
-                    mTexts[lessonNum].text = "실패..";
-                    mTexts[lessonNum].color = Fail;
+                    mResultTexts[lessonNum].text = "실패..";
+                    mResultTexts[lessonNum].color = Fail;
                     mArrowImages[lessonNum].sprite = mSprites[(int)ELessonResults.Fail];
                     break;
 
                 case ELessonResults.Success:
-                    mTexts[lessonNum].text = "성공!!";
-                    mTexts[lessonNum].color = Success;
+                    mResultTexts[lessonNum].text = "성공!!";
+                    mResultTexts[lessonNum].color = Success;
                     mArrowImages[lessonNum].sprite = mSprites[(int)ELessonResults.Success];
                     break;
 
                 case ELessonResults.Bonanza:
-                    mTexts[lessonNum].text = "대성공!!!";
-                    mTexts[lessonNum].color = Bonanza;
+                    mResultTexts[lessonNum].text = "대성공!!!";
+                    mResultTexts[lessonNum].color = Bonanza;
                     mArrowImages[lessonNum].sprite = mSprites[(int)ELessonResults.Bonanza];
                     break;
             }

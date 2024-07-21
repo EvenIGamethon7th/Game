@@ -152,6 +152,7 @@ public class MapManager : Singleton<MapManager>
         }
 
         mTileDatas.Clear();
+
     }
 
     private void CreatePool()

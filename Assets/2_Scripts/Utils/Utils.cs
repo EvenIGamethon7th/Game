@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Spine.Unity;
 using UnityEngine;
@@ -58,6 +59,25 @@ public class Utils
         skeletonGraphic.Initialize(true);
     }
     
+    public static int GetRandomIntBasedOnRates(IEnumerable<float> rateList)
+    {
+        float rate = UnityEngine.Random.Range(0f, 100f);
+        float limit = 0;
+        int count = 0;
+
+        foreach (float next in rateList)
+        {
+            limit += next;
+            if (limit > rate)
+            {
+                return count;
+            }
+            ++count;
+        }
+
+        return count - 1;
+    }
+
 
     public class ReadonlyNumber<T>
     {

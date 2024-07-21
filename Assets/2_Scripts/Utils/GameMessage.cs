@@ -8,7 +8,10 @@ namespace _2_Scripts.Utils
         StageChange,
         ExpChange,
         SelectCharacter,
-        GoAcademy
+        GoAcademy,
+        MainCharacterSkillDuring,
+        MainCharacterSkillUse,
+        MainCharacterCoolTime
     }
     
     public class GameMessage<T>

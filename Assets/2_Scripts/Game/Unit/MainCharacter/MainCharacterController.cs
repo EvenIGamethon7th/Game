@@ -2,10 +2,12 @@ using _2_Scripts.Game.ScriptableObject.Character;
 using _2_Scripts.Game.ScriptableObject.Skill;
 using _2_Scripts.Game.Unit.Data;
 using _2_Scripts.UI.Ingame;
+using _2_Scripts.Utils;
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using UniRx;
 using UnityEngine;
 
 namespace _2_Scripts.Game.Unit.MainCharacter
@@ -28,8 +30,6 @@ namespace _2_Scripts.Game.Unit.MainCharacter
         [SerializeField]
         private float mCurrentCoolTime = 0;
         [SerializeField]
-        private UI_MainCharacter mMainCharacterUI;
-        [SerializeField]
         private GameObject mSkillTrigger;
         [SerializeField]
         private BuffData mBuffData;
@@ -37,6 +37,7 @@ namespace _2_Scripts.Game.Unit.MainCharacter
         private EMainCharacterSkillType mSkillType;
 
         private CancellationTokenSource mCts = new CancellationTokenSource();
+        private GameMessage<float> mCoolTimeMessage;
 
         private void Start()
         {
@@ -46,18 +47,42 @@ namespace _2_Scripts.Game.Unit.MainCharacter
             mBuffData = MemoryPoolManager<BuffData>.CreatePoolingObject();
             mCharacterData.Init(mCharacterInfo.CharacterEvolutions[1].GetData, mBuffData);
             mCoolTime = mCharacterInfo.SkillList[0].CoolTime;
-            mMainCharacterUI.Init(mCoolTime);
+            mCoolTimeMessage = new GameMessage<float>(EGameMessage.MainCharacterCoolTime, 0);
+            MessageBroker.Default.Publish(mCoolTimeMessage);
+            mSkillTrigger.SetActive(false);
 
             if (mSkillType == EMainCharacterSkillType.Buff)
             {
-                mMainCharacterUI.PointerUp += UseSkill;
+                MessageBroker.Default.Receive<GameMessage<bool>>().
+                    Where(message => message.Message == EGameMessage.MainCharacterSkillUse).
+                    Subscribe(message =>
+                    {
+                        UseSkill();
+                    }).AddTo(this);
             }
 
             else
             {
-                mMainCharacterUI.EndDrag += UseSkill;
-                mMainCharacterUI.Drag += SetSkillPos;
-                mMainCharacterUI.OnImage += SetSkillActive;
+                MessageBroker.Default.Receive<GameMessage<Vector2>>().
+                   Where(message => message.Message == EGameMessage.MainCharacterSkillUse).
+                   Subscribe(message =>
+                   {
+                        UseSkill(message.Value);
+                   }).AddTo(this);
+
+                MessageBroker.Default.Receive<GameMessage<Vector2>>().
+                   Where(message => message.Message == EGameMessage.MainCharacterSkillDuring).
+                   Subscribe(message =>
+                   {
+                       SetSkillPos(message.Value);
+                   }).AddTo(this);
+
+                MessageBroker.Default.Receive<GameMessage<bool>>().
+                   Where(message => message.Message == EGameMessage.MainCharacterSkillDuring).
+                   Subscribe(message =>
+                   {
+                       SetSkillActive(message.Value);
+                   }).AddTo(this);
             }
         }
 
@@ -67,7 +92,8 @@ namespace _2_Scripts.Game.Unit.MainCharacter
             {
                 await UniTask.DelayFrame(1, cancellationToken: mCts.Token);
                 mCurrentCoolTime -= Time.deltaTime;
-                mMainCharacterUI.SetCoolTime(mCurrentCoolTime);
+                mCoolTimeMessage.SetValue(mCurrentCoolTime);
+                MessageBroker.Default.Publish(mCoolTimeMessage);
             }
         }
 
@@ -79,7 +105,8 @@ namespace _2_Scripts.Game.Unit.MainCharacter
                 return;
             }
             mCurrentCoolTime = mCoolTime;
-            mMainCharacterUI.SetCoolTime(mCoolTime);
+            mCoolTimeMessage.SetValue(mCurrentCoolTime);
+            MessageBroker.Default.Publish(mCoolTimeMessage);
             CheckSkillCoolTime().Forget();
 
             if (mSkillType == EMainCharacterSkillType.Attack && mSkillTrigger.activeSelf)
@@ -123,11 +150,6 @@ namespace _2_Scripts.Game.Unit.MainCharacter
 
         private void OnDestroy()
         {
-            mMainCharacterUI.PointerUp -= UseSkill;
-            mMainCharacterUI.EndDrag -= UseSkill;
-            mMainCharacterUI.Drag -= SetSkillPos;
-            mMainCharacterUI.OnImage -= SetSkillActive;
-
             mCts.Cancel();
             mCts.Dispose();
             mCts = null;

@@ -68,6 +68,8 @@ namespace _2_Scripts.UI
 
             mSelectUnitGroup.RemoveUnit(unit);
             unit.Clear();
+            if (mSelectUnitGroup != null)
+                SetFusionButton();
         }
 
         private void FusionButton()
@@ -82,6 +84,8 @@ namespace _2_Scripts.UI
 
             mSelectUnitGroup.RemoveUnit(unit);
             unit.Clear();
+            if (mSelectUnitGroup != null)
+                SetFusionButton();
             GameManager.Instance.UpdateMoney(EMoneyType.Gold,(int)(unit.CharacterDatas.cost * mCostRate));
         }
 

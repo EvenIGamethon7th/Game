@@ -25,7 +25,7 @@ namespace _2_Scripts.Game.Unit
         private Vector3 mDstPos;
 
         [SerializeField]
-        private float mSpeed = 3f;
+        private float mSpeed = 10f;
         
 
         private void Awake()

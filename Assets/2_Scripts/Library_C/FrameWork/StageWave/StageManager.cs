@@ -99,10 +99,10 @@ public class StageManager : Singleton<StageManager>
             mCurrentWaveData = mWaveQueue.Dequeue();
             Debug.Log(mCurrentWaveData.Key);
             SpawnMonsters(mCurrentWaveData).Forget();
-            // if (mCurrentWaveData.isBoss)
-            // {
-            //     continue;
-            // }
+            if (mCurrentWaveData.isIceMonster)
+            {
+                continue;
+            }
             await UniTask.WaitForSeconds(NEXT_WAVE_TIME,cancellationToken:mCancellationToken.Token);
             mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
             MessageBroker.Default.Publish(mNextStageMessage);

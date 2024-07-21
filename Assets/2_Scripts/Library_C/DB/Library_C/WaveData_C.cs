@@ -17,6 +17,7 @@ public partial class WaveData : Data_C
      [LabelText("보스웨이브여부")] public bool isBoss;
      [LabelText("적용스탯")] public string apply_stat;
      [LabelText("스탯(체력)가중치")] public float weight;
+     [LabelText("얼음몬스터여부")] public bool isIceMonster;
 
     
 
@@ -30,6 +31,7 @@ public partial class WaveData : Data_C
         isBoss = _cellDataArr[4].ToBool();
         apply_stat = _cellDataArr[5];
         weight = _cellDataArr[6].ToFloat();
+        isIceMonster = _cellDataArr[7].ToBool();
     }
 #endif
 }

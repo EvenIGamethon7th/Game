@@ -1,4 +1,6 @@
-﻿namespace _2_Scripts.Utils
+﻿using System;
+
+namespace _2_Scripts.Utils
 {
     public enum EGameMessage
     {
@@ -6,12 +8,14 @@
         StageChange,
         ExpChange,
         SelectCharacter,
+        GoAcademy
     }
     
     public class GameMessage<T>
     {
         public EGameMessage Message { get; private set; }
         public T Value { get; private set; }
+
         public GameMessage(EGameMessage message,T value)
         {
             Value = value;

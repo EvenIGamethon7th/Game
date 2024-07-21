@@ -34,8 +34,11 @@ namespace _2_Scripts.UI
         }
 
         private UnitGroup mSelectUnitGroup;
+        private CUnit mSelectUnit;
 
         private float mCostRate = 0.6f;
+
+        private GameMessage<CUnit> mAcademyMessage;
 
         private void Start()
         {
@@ -45,13 +48,28 @@ namespace _2_Scripts.UI
                 {
                     SelectUnitGroup = data.Value;
                 });
-                
+
+            MessageBroker.Default.Receive<GameMessage<bool>>()
+                .Where(message => message.Message == EGameMessage.GoAcademy)
+                .Subscribe(data =>
+                {
+                    if (data.Value) return;
+                    mSelectUnitGroup.RemoveUnit(mSelectUnit);
+                    mSelectUnit.Clear();
+                    mSelectUnit = null;
+                    if (mSelectUnitGroup != null)
+                    {
+                        SetFusionButton();
+                    }
+                });
+
             mButtons = GetComponentsInChildren<Button>();
             SubscribeAction(EButtonType.Academy, AcademyButton);
             SubscribeAction(EButtonType.Fusion, FusionButton);
             SubscribeAction(EButtonType.Sell, SellButton);
 
             gameObject.SetActive(false);
+            mAcademyMessage = new GameMessage<CUnit>(EGameMessage.GoAcademy, mSelectUnit);
         }
 
         private void SubscribeAction(EButtonType button, Action action)
@@ -62,14 +80,9 @@ namespace _2_Scripts.UI
         private void AcademyButton()
         {
             CUnit unit = mSelectUnitGroup.Units.OrderBy(x => x.CharacterDatas.isAlumni).LastOrDefault();
-
-            bool canEnterAcademy = MapManager.Instance.GoAcademy(unit);
-            if (!canEnterAcademy) return;
-
-            mSelectUnitGroup.RemoveUnit(unit);
-            unit.Clear();
-            if (mSelectUnitGroup != null)
-                SetFusionButton();
+            mSelectUnit = unit;
+            mAcademyMessage.SetValue(mSelectUnit);
+            MessageBroker.Default.Publish(mAcademyMessage);
         }
 
         private void FusionButton()

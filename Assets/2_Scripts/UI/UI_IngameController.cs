@@ -20,6 +20,7 @@ namespace _2_Scripts.UI
                 .Where(message => message.Task == ETaskList.CharacterDataResourceLoad).Subscribe(
                     _ =>
                     {
+                        if (mBottomGo[0].TryGetComponent<UI_AcademyPannel>(out var academi)) academi.Init();
                         mBottomGo[1].SetActive(true);
                     }).AddTo(this);
 

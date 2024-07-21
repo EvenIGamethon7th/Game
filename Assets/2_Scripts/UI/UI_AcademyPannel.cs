@@ -35,6 +35,8 @@ namespace _2_Scripts.UI {
         private AcademyClassData[] mClassData = new AcademyClassData[5];
         private float[] mClassRate = new float[3];
 
+        private GameMessage<bool> mCanLesson;
+
         [SerializeField]
         private SpriteAtlas mAtlas;
 
@@ -53,19 +55,30 @@ namespace _2_Scripts.UI {
                 {
                     LessonComplete(message.Value);
                 }).AddTo(this);
+            MessageBroker.Default.Receive<GameMessage<CUnit>>().Where(message => message.Message == EGameMessage.GoAcademy)
+                .Subscribe(message =>
+                {
+                    CanLesson(message.Value);
+                }).AddTo(this);
+
+            mCanLesson = new GameMessage<bool>(EGameMessage.GoAcademy, false);
         }
 
-        public bool CanLesson()
+        private void CanLesson(CUnit student)
         {
             if (mDoLesson)
             {
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("이미 수업을 듣는 영웅이 있습니다!");
             }
-
-            return !mDoLesson;
+            else
+            {
+                AcademyLesson(student);
+            }
+            mCanLesson.SetValue(!mDoLesson);
+            MessageBroker.Default.Publish(mCanLesson);
         }
 
-        public void AcademyLesson(CUnit student)
+        private void AcademyLesson(CUnit student)
         {
             mDoLesson = true;
             mTempAlumniData = MemoryPoolManager<CharacterData>.CreatePoolingObject();

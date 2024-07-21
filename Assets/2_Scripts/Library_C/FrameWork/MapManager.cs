@@ -14,7 +14,6 @@ using UnityEngine.Tilemaps;
 public class MapManager : Singleton<MapManager>
 {
     [SerializeField] private Tilemap mMap;
-    [SerializeField] private UI_AcademyPannel mAcademy;
     [SerializeField] private Tilemap mMonsterPathMap;
 
     private List<TileSlot> mTileDatas = new();
@@ -28,7 +27,6 @@ public class MapManager : Singleton<MapManager>
         {
             CreateInitialTileSlots();
             CreatePool();
-            mAcademy.Init();
         });
     }
 
@@ -62,15 +60,6 @@ public class MapManager : Singleton<MapManager>
             .Where(x => x.OccupantUnit != null)
             .Where(x => x.CurrentUnitData.nameKey == unitGroup.GetCharacterData().nameKey && unitGroup != x.OccupantUnit && x.OccupantUnit.CanAddUnit()).FirstOrDefault();
         return tileSlot?.OccupantUnit;
-    }
-
-    public bool GoAcademy(CUnit unit)
-    {
-        bool canEnterAcademy = mAcademy.CanLesson();
-        if (canEnterAcademy)
-            mAcademy.AcademyLesson(unit);
-
-        return canEnterAcademy;
     }
 
     public void ClearTile(UnitGroup group)

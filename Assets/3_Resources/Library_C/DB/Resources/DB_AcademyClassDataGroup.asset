@@ -1,0 +1,945 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc16fd933087c5044adc180f459c9a15, type: 3}
+  m_Name: DB_AcademyClassDataGroup
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: dataDic
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[AcademyClassData,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 15
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: AcademyClass_0
+    - Name: $v
+      Entry: 7
+      Data: 2|AcademyClassData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: AcademyClass_0
+    - Name: Group
+      Entry: 3
+      Data: 1
+    - Name: Apply_Class
+      Entry: 3
+      Data: 1
+    - Name: AcademyClassKey
+      Entry: 1
+      Data: Lo_AcademyClass_0
+    - Name: Name
+      Entry: 1
+      Data: "\uAC80\uC220 \uC774\uB860"
+    - Name: Stat_type1
+      Entry: 1
+      Data: "\uACF5\uACA9\uB825"
+    - Name: Stat_value1
+      Entry: 4
+      Data: 10
+    - Name: Stat_value2
+      Entry: 4
+      Data: 15
+    - Name: Success_pro
+      Entry: 4
+      Data: 0.7
+    - Name: Great_pro
+      Entry: 4
+      Data: 0.2
+    - Name: Fail_pro
+      Entry: 4
+      Data: 0.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: AcademyClass_1
+    - Name: $v
+      Entry: 7
+      Data: 3|AcademyClassData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: AcademyClass_1
+    - Name: Group
+      Entry: 3
+      Data: 1
+    - Name: Apply_Class
+      Entry: 3
+      Data: 1
+    - Name: AcademyClassKey
+      Entry: 1
+      Data: Lo_AcademyClass_1
+    - Name: Name
+      Entry: 1
+      Data: "\uBC29\uC5B4\uC220"
+    - Name: Stat_type1
+      Entry: 1
+      Data: "\uACF5\uACA9\uB825"
+    - Name: Stat_value1
+      Entry: 4
+      Data: 10
+    - Name: Stat_value2
+      Entry: 4
+      Data: 15
+    - Name: Success_pro
+      Entry: 4
+      Data: 0.6
+    - Name: Great_pro
+      Entry: 4
+      Data: 0.2
+    - Name: Fail_pro
+      Entry: 4
+      Data: 0.2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: AcademyClass_2
+    - Name: $v
+      Entry: 7
+      Data: 4|AcademyClassData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: AcademyClass_2
+    - Name: Group
+      Entry: 3
+      Data: 1
+    - Name: Apply_Class
+      Entry: 3
+      Data: 1
+    - Name: AcademyClassKey
+      Entry: 1
+      Data: Lo_AcademyClass_2
+    - Name: Name
+      Entry: 1
+      Data: "\uCE7C\uCDA4 \uC218\uC5C5"
+    - Name: Stat_type1
+      Entry: 1
+      Data: "\uACF5\uACA9\uB825"
+    - Name: Stat_value1
+      Entry: 4
+      Data: 10
+    - Name: Stat_value2
+      Entry: 4
+      Data: 15
+    - Name: Success_pro
+      Entry: 4
+      Data: 0.4
+    - Name: Great_pro
+      Entry: 4
+      Data: 0.2
+    - Name: Fail_pro
+      Entry: 4
+      Data: 0.4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: AcademyClass_3
+    - Name: $v
+      Entry: 7
+      Data: 5|AcademyClassData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: AcademyClass_3
+    - Name: Group
+      Entry: 3
+      Data: 1
+    - Name: Apply_Class
+      Entry: 3
+      Data: 1
+    - Name: AcademyClassKey
+      Entry: 1
+      Data: Lo_AcademyClass_3
+    - Name: Name
+      Entry: 1
+      Data: "\uACA9\uD22C\uC220"
+    - Name: Stat_type1
+      Entry: 1
+      Data: "\uACF5\uACA9\uB825"
+    - Name: Stat_value1
+      Entry: 4
+      Data: 15
+    - Name: Stat_value2
+      Entry: 4
+      Data: 25
+    - Name: Success_pro
+      Entry: 4
+      Data: 0.4
+    - Name: Great_pro
+      Entry: 4
+      Data: 0.1
+    - Name: Fail_pro
+      Entry: 4
+      Data: 0.5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: AcademyClass_4
+    - Name: $v
+      Entry: 7
+      Data: 6|AcademyClassData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: AcademyClass_4
+    - Name: Group
+      Entry: 3
+      Data: 1
+    - Name: Apply_Class
+      Entry: 3
+      Data: 1
+    - Name: AcademyClassKey
+      Entry: 1
+      Data: Lo_AcademyClass_4
+    - Name: Name
+      Entry: 1
+      Data: "\uC18D\uACF5 \uC218\uC5C5"
+    - Name: Stat_type1
+      Entry: 1
+      Data: "\uACF5\uACA9\uC18D\uB3C4"
+    - Name: Stat_value1
+      Entry: 4
+      Data: 0.2
+    - Name: Stat_value2
+      Entry: 4
+      Data: 0.3
+    - Name: Success_pro
+      Entry: 4
+      Data: 0.3
+    - Name: Great_pro
+      Entry: 4
+      Data: 0.1
+    - Name: Fail_pro
+      Entry: 4
+      Data: 0.6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: AcademyClass_5
+    - Name: $v
+      Entry: 7
+      Data: 7|AcademyClassData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: AcademyClass_5
+    - Name: Group
+      Entry: 3
+      Data: 2
+    - Name: Apply_Class
+      Entry: 3
+      Data: 2
+    - Name: AcademyClassKey
+      Entry: 1
+      Data: Lo_AcademyClass_5
+    - Name: Name
+      Entry: 1
+      Data: "\uC870\uC900 \uC218\uC5C5"
+    - Name: Stat_type1
+      Entry: 1
+      Data: "\uACF5\uACA9\uB825"
+    - Name: Stat_value1
+      Entry: 4
+      Data: 10
+    - Name: Stat_value2
+      Entry: 4
+      Data: 15
+    - Name: Success_pro
+      Entry: 4
+      Data: 0.7
+    - Name: Great_pro
+      Entry: 4
+      Data: 0.2
+    - Name: Fail_pro
+      Entry: 4
+      Data: 0.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: AcademyClass_6
+    - Name: $v
+      Entry: 7
+      Data: 8|AcademyClassData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: AcademyClass_6
+    - Name: Group
+      Entry: 3
+      Data: 2
+    - Name: Apply_Class
+      Entry: 3
+      Data: 2
+    - Name: AcademyClassKey
+      Entry: 1
+      Data: Lo_AcademyClass_6
+    - Name: Name
+      Entry: 1
+      Data: "\uBA85\uC911 \uC218\uC5C5"
+    - Name: Stat_type1
+      Entry: 1
+      Data: "\uACF5\uACA9\uB825"
+    - Name: Stat_value1
+      Entry: 4
+      Data: 10
+    - Name: Stat_value2
+      Entry: 4
+      Data: 15
+    - Name: Success_pro
+      Entry: 4
+      Data: 0.6
+    - Name: Great_pro
+      Entry: 4
+      Data: 0.2
+    - Name: Fail_pro
+      Entry: 4
+      Data: 0.2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: AcademyClass_7
+    - Name: $v
+      Entry: 7
+      Data: 9|AcademyClassData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: AcademyClass_7
+    - Name: Group
+      Entry: 3
+      Data: 2
+    - Name: Apply_Class
+      Entry: 3
+      Data: 2
+    - Name: AcademyClassKey
+      Entry: 1
+      Data: Lo_AcademyClass_7
+    - Name: Name
+      Entry: 1
+      Data: "\uC9D1\uC911 \uD6C8\uB828"
+    - Name: Stat_type1
+      Entry: 1
+      Data: "\uACF5\uACA9\uB825"
+    - Name: Stat_value1
+      Entry: 4
+      Data: 15
+    - Name: Stat_value2
+      Entry: 4
+      Data: 25
+    - Name: Success_pro
+      Entry: 4
+      Data: 0.4
+    - Name: Great_pro
+      Entry: 4
+      Data: 0.2
+    - Name: Fail_pro
+      Entry: 4
+      Data: 0.4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: AcademyClass_8
+    - Name: $v
+      Entry: 7
+      Data: 10|AcademyClassData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: AcademyClass_8
+    - Name: Group
+      Entry: 3
+      Data: 2
+    - Name: Apply_Class
+      Entry: 3
+      Data: 2
+    - Name: AcademyClassKey
+      Entry: 1
+      Data: Lo_AcademyClass_8
+    - Name: Name
+      Entry: 1
+      Data: "\uC18D\uC0AC \uC218\uC5C5"
+    - Name: Stat_type1
+      Entry: 1
+      Data: "\uACF5\uACA9\uC18D\uB3C4"
+    - Name: Stat_value1
+      Entry: 4
+      Data: 0.2
+    - Name: Stat_value2
+      Entry: 4
+      Data: 0.3
+    - Name: Success_pro
+      Entry: 4
+      Data: 0.4
+    - Name: Great_pro
+      Entry: 4
+      Data: 0.1
+    - Name: Fail_pro
+      Entry: 4
+      Data: 0.5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: AcademyClass_9
+    - Name: $v
+      Entry: 7
+      Data: 11|AcademyClassData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: AcademyClass_9
+    - Name: Group
+      Entry: 3
+      Data: 2
+    - Name: Apply_Class
+      Entry: 3
+      Data: 2
+    - Name: AcademyClassKey
+      Entry: 1
+      Data: Lo_AcademyClass_9
+    - Name: Name
+      Entry: 1
+      Data: "\uC9C8\uD48D \uC218\uC5C5"
+    - Name: Stat_type1
+      Entry: 1
+      Data: "\uACF5\uACA9\uC18D\uB3C4"
+    - Name: Stat_value1
+      Entry: 4
+      Data: 0.2
+    - Name: Stat_value2
+      Entry: 4
+      Data: 0.3
+    - Name: Success_pro
+      Entry: 4
+      Data: 0.3
+    - Name: Great_pro
+      Entry: 4
+      Data: 0.1
+    - Name: Fail_pro
+      Entry: 4
+      Data: 0.6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: AcademyClass_10
+    - Name: $v
+      Entry: 7
+      Data: 12|AcademyClassData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: AcademyClass_10
+    - Name: Group
+      Entry: 3
+      Data: 3
+    - Name: Apply_Class
+      Entry: 3
+      Data: 3
+    - Name: AcademyClassKey
+      Entry: 1
+      Data: Lo_AcademyClass_10
+    - Name: Name
+      Entry: 1
+      Data: "\uC218\uD559 \uC218\uC5C5"
+    - Name: Stat_type1
+      Entry: 1
+      Data: "\uB9C8\uBC95\uACF5\uACA9\uB825"
+    - Name: Stat_value1
+      Entry: 4
+      Data: 10
+    - Name: Stat_value2
+      Entry: 4
+      Data: 15
+    - Name: Success_pro
+      Entry: 4
+      Data: 0.7
+    - Name: Great_pro
+      Entry: 4
+      Data: 0.2
+    - Name: Fail_pro
+      Entry: 4
+      Data: 0.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: AcademyClass_11
+    - Name: $v
+      Entry: 7
+      Data: 13|AcademyClassData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: AcademyClass_11
+    - Name: Group
+      Entry: 3
+      Data: 3
+    - Name: Apply_Class
+      Entry: 3
+      Data: 3
+    - Name: AcademyClassKey
+      Entry: 1
+      Data: Lo_AcademyClass_11
+    - Name: Name
+      Entry: 1
+      Data: "\uACFC\uD559 \uC218\uC5C5"
+    - Name: Stat_type1
+      Entry: 1
+      Data: "\uB9C8\uBC95\uACF5\uACA9\uB825"
+    - Name: Stat_value1
+      Entry: 4
+      Data: 10
+    - Name: Stat_value2
+      Entry: 4
+      Data: 15
+    - Name: Success_pro
+      Entry: 4
+      Data: 0.6
+    - Name: Great_pro
+      Entry: 4
+      Data: 0.2
+    - Name: Fail_pro
+      Entry: 4
+      Data: 0.2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: AcademyClass_12
+    - Name: $v
+      Entry: 7
+      Data: 14|AcademyClassData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: AcademyClass_12
+    - Name: Group
+      Entry: 3
+      Data: 3
+    - Name: Apply_Class
+      Entry: 3
+      Data: 3
+    - Name: AcademyClassKey
+      Entry: 1
+      Data: Lo_AcademyClass_12
+    - Name: Name
+      Entry: 1
+      Data: "\uB9C8\uBC95 \uC774\uB860"
+    - Name: Stat_type1
+      Entry: 1
+      Data: "\uB9C8\uBC95\uACF5\uACA9\uB825"
+    - Name: Stat_value1
+      Entry: 4
+      Data: 10
+    - Name: Stat_value2
+      Entry: 4
+      Data: 15
+    - Name: Success_pro
+      Entry: 4
+      Data: 0.4
+    - Name: Great_pro
+      Entry: 4
+      Data: 0.2
+    - Name: Fail_pro
+      Entry: 4
+      Data: 0.4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: AcademyClass_13
+    - Name: $v
+      Entry: 7
+      Data: 15|AcademyClassData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: AcademyClass_13
+    - Name: Group
+      Entry: 3
+      Data: 3
+    - Name: Apply_Class
+      Entry: 3
+      Data: 3
+    - Name: AcademyClassKey
+      Entry: 1
+      Data: Lo_AcademyClass_13
+    - Name: Name
+      Entry: 1
+      Data: "\uC5F0\uAE08\uC220"
+    - Name: Stat_type1
+      Entry: 1
+      Data: "\uB9C8\uBC95\uACF5\uACA9\uB825"
+    - Name: Stat_value1
+      Entry: 4
+      Data: 15
+    - Name: Stat_value2
+      Entry: 4
+      Data: 25
+    - Name: Success_pro
+      Entry: 4
+      Data: 0.4
+    - Name: Great_pro
+      Entry: 4
+      Data: 0.1
+    - Name: Fail_pro
+      Entry: 4
+      Data: 0.5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: AcademyClass_14
+    - Name: $v
+      Entry: 7
+      Data: 16|AcademyClassData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: AcademyClass_14
+    - Name: Group
+      Entry: 3
+      Data: 3
+    - Name: Apply_Class
+      Entry: 3
+      Data: 3
+    - Name: AcademyClassKey
+      Entry: 1
+      Data: Lo_AcademyClass_14
+    - Name: Name
+      Entry: 1
+      Data: "\uC18D\uC131 \uC218\uC5C5"
+    - Name: Stat_type1
+      Entry: 1
+      Data: "\uACF5\uACA9\uC18D\uB3C4"
+    - Name: Stat_value1
+      Entry: 4
+      Data: 0.2
+    - Name: Stat_value2
+      Entry: 4
+      Data: 0.3
+    - Name: Success_pro
+      Entry: 4
+      Data: 0.3
+    - Name: Great_pro
+      Entry: 4
+      Data: 0.1
+    - Name: Fail_pro
+      Entry: 4
+      Data: 0.6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  dataArr:
+  - Key: AcademyClass_0
+    Group: 1
+    Apply_Class: 1
+    AcademyClassKey: Lo_AcademyClass_0
+    Name: "\uAC80\uC220 \uC774\uB860"
+    Stat_type1: "\uACF5\uACA9\uB825"
+    Stat_value1: 10
+    Stat_value2: 15
+    Success_pro: 0.7
+    Great_pro: 0.2
+    Fail_pro: 0.1
+  - Key: AcademyClass_1
+    Group: 1
+    Apply_Class: 1
+    AcademyClassKey: Lo_AcademyClass_1
+    Name: "\uBC29\uC5B4\uC220"
+    Stat_type1: "\uACF5\uACA9\uB825"
+    Stat_value1: 10
+    Stat_value2: 15
+    Success_pro: 0.6
+    Great_pro: 0.2
+    Fail_pro: 0.2
+  - Key: AcademyClass_2
+    Group: 1
+    Apply_Class: 1
+    AcademyClassKey: Lo_AcademyClass_2
+    Name: "\uCE7C\uCDA4 \uC218\uC5C5"
+    Stat_type1: "\uACF5\uACA9\uB825"
+    Stat_value1: 10
+    Stat_value2: 15
+    Success_pro: 0.4
+    Great_pro: 0.2
+    Fail_pro: 0.4
+  - Key: AcademyClass_3
+    Group: 1
+    Apply_Class: 1
+    AcademyClassKey: Lo_AcademyClass_3
+    Name: "\uACA9\uD22C\uC220"
+    Stat_type1: "\uACF5\uACA9\uB825"
+    Stat_value1: 15
+    Stat_value2: 25
+    Success_pro: 0.4
+    Great_pro: 0.1
+    Fail_pro: 0.5
+  - Key: AcademyClass_4
+    Group: 1
+    Apply_Class: 1
+    AcademyClassKey: Lo_AcademyClass_4
+    Name: "\uC18D\uACF5 \uC218\uC5C5"
+    Stat_type1: "\uACF5\uACA9\uC18D\uB3C4"
+    Stat_value1: 0.2
+    Stat_value2: 0.3
+    Success_pro: 0.3
+    Great_pro: 0.1
+    Fail_pro: 0.6
+  - Key: AcademyClass_5
+    Group: 2
+    Apply_Class: 2
+    AcademyClassKey: Lo_AcademyClass_5
+    Name: "\uC870\uC900 \uC218\uC5C5"
+    Stat_type1: "\uACF5\uACA9\uB825"
+    Stat_value1: 10
+    Stat_value2: 15
+    Success_pro: 0.7
+    Great_pro: 0.2
+    Fail_pro: 0.1
+  - Key: AcademyClass_6
+    Group: 2
+    Apply_Class: 2
+    AcademyClassKey: Lo_AcademyClass_6
+    Name: "\uBA85\uC911 \uC218\uC5C5"
+    Stat_type1: "\uACF5\uACA9\uB825"
+    Stat_value1: 10
+    Stat_value2: 15
+    Success_pro: 0.6
+    Great_pro: 0.2
+    Fail_pro: 0.2
+  - Key: AcademyClass_7
+    Group: 2
+    Apply_Class: 2
+    AcademyClassKey: Lo_AcademyClass_7
+    Name: "\uC9D1\uC911 \uD6C8\uB828"
+    Stat_type1: "\uACF5\uACA9\uB825"
+    Stat_value1: 15
+    Stat_value2: 25
+    Success_pro: 0.4
+    Great_pro: 0.2
+    Fail_pro: 0.4
+  - Key: AcademyClass_8
+    Group: 2
+    Apply_Class: 2
+    AcademyClassKey: Lo_AcademyClass_8
+    Name: "\uC18D\uC0AC \uC218\uC5C5"
+    Stat_type1: "\uACF5\uACA9\uC18D\uB3C4"
+    Stat_value1: 0.2
+    Stat_value2: 0.3
+    Success_pro: 0.4
+    Great_pro: 0.1
+    Fail_pro: 0.5
+  - Key: AcademyClass_9
+    Group: 2
+    Apply_Class: 2
+    AcademyClassKey: Lo_AcademyClass_9
+    Name: "\uC9C8\uD48D \uC218\uC5C5"
+    Stat_type1: "\uACF5\uACA9\uC18D\uB3C4"
+    Stat_value1: 0.2
+    Stat_value2: 0.3
+    Success_pro: 0.3
+    Great_pro: 0.1
+    Fail_pro: 0.6
+  - Key: AcademyClass_10
+    Group: 3
+    Apply_Class: 3
+    AcademyClassKey: Lo_AcademyClass_10
+    Name: "\uC218\uD559 \uC218\uC5C5"
+    Stat_type1: "\uB9C8\uBC95\uACF5\uACA9\uB825"
+    Stat_value1: 10
+    Stat_value2: 15
+    Success_pro: 0.7
+    Great_pro: 0.2
+    Fail_pro: 0.1
+  - Key: AcademyClass_11
+    Group: 3
+    Apply_Class: 3
+    AcademyClassKey: Lo_AcademyClass_11
+    Name: "\uACFC\uD559 \uC218\uC5C5"
+    Stat_type1: "\uB9C8\uBC95\uACF5\uACA9\uB825"
+    Stat_value1: 10
+    Stat_value2: 15
+    Success_pro: 0.6
+    Great_pro: 0.2
+    Fail_pro: 0.2
+  - Key: AcademyClass_12
+    Group: 3
+    Apply_Class: 3
+    AcademyClassKey: Lo_AcademyClass_12
+    Name: "\uB9C8\uBC95 \uC774\uB860"
+    Stat_type1: "\uB9C8\uBC95\uACF5\uACA9\uB825"
+    Stat_value1: 10
+    Stat_value2: 15
+    Success_pro: 0.4
+    Great_pro: 0.2
+    Fail_pro: 0.4
+  - Key: AcademyClass_13
+    Group: 3
+    Apply_Class: 3
+    AcademyClassKey: Lo_AcademyClass_13
+    Name: "\uC5F0\uAE08\uC220"
+    Stat_type1: "\uB9C8\uBC95\uACF5\uACA9\uB825"
+    Stat_value1: 15
+    Stat_value2: 25
+    Success_pro: 0.4
+    Great_pro: 0.1
+    Fail_pro: 0.5
+  - Key: AcademyClass_14
+    Group: 3
+    Apply_Class: 3
+    AcademyClassKey: Lo_AcademyClass_14
+    Name: "\uC18D\uC131 \uC218\uC5C5"
+    Stat_type1: "\uACF5\uACA9\uC18D\uB3C4"
+    Stat_value1: 0.2
+    Stat_value2: 0.3
+    Success_pro: 0.3
+    Great_pro: 0.1
+    Fail_pro: 0.6
+  keyArr:
+  - AcademyClass_0
+  - AcademyClass_1
+  - AcademyClass_2
+  - AcademyClass_3
+  - AcademyClass_4
+  - AcademyClass_5
+  - AcademyClass_6
+  - AcademyClass_7
+  - AcademyClass_8
+  - AcademyClass_9
+  - AcademyClass_10
+  - AcademyClass_11
+  - AcademyClass_12
+  - AcademyClass_13
+  - AcademyClass_14

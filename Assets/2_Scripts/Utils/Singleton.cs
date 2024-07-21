@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Singleton<T> : MonoBehaviour where T : Component
+public abstract class Singleton<T> : MonoBehaviour where T : Component
 {
 
     protected static T instance;
@@ -55,8 +55,5 @@ public class Singleton<T> : MonoBehaviour where T : Component
         Destroy(this.gameObject);
     }
 
-    protected virtual void ChangeSceneInit(Scene prev, Scene next)
-    {
-
-    }
+    protected abstract void ChangeSceneInit(Scene prev, Scene next);
 }

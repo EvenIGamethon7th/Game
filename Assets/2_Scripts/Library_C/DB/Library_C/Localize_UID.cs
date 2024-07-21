@@ -115,4 +115,5 @@ public static partial class TableDataKey_C
     public const string Localize_Lo_AcademyClass_11 = "Lo_AcademyClass_11";
     public const string Localize_Lo_AcademyClass_12 = "Lo_AcademyClass_12";
     public const string Localize_Lo_AcademyClass_13 = "Lo_AcademyClass_13";
+    public const string Localize_Lo_AcademyClass_14 = "Lo_AcademyClass_14";
 }

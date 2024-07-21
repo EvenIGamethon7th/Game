@@ -1,3 +1,4 @@
+using _2_Scripts.Game.Unit;
 using _2_Scripts.Game.Unit.Data;
 using Sirenix.OdinInspector;
 using System.Collections;
@@ -13,14 +14,24 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.Passive.Buff
         [SerializeField]
         private float mPercent;
 
-        public override void AddPassive(BuffData data)
+        public override void AddPassive(UnitBuffHandler handler)
         {
-            data.ATKRate += mPercent;
+            handler.AddCount(mBuffType);
+
+            if (handler.GetCount(mBuffType) == 1)
+            {
+                handler.BuffData.ATKRate += mPercent;
+            }
         }
 
-        public override void RemovePassive(BuffData data)
+        public override void RemovePassive(UnitBuffHandler handler)
         {
-            data.ATKRate -= mPercent;
+            handler.RemoveCount(mBuffType);
+
+            if (handler.GetCount(mBuffType) == 0)
+            {
+                handler.BuffData.ATKRate -= mPercent;
+            }
         }
     }
 }

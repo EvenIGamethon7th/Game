@@ -11,6 +11,7 @@ using Cysharp.Threading.Tasks;
 using Rito.Attributes;
 using UniRx;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StageManager : Singleton<StageManager>
 {
@@ -31,11 +32,28 @@ public class StageManager : Singleton<StageManager>
     private GameMessage<int> mNextStageMessage;
     public List<Monster> MonsterList = new List<Monster>();
 
+    public bool IsTest = false;
+
+    private CancellationTokenSource mCancellationToken;
+    
+
     /// <summary>
     ///  테스트용 스테이지 시작 코드
     /// </summary>
     /// <exception cref="NotImplementedException"></exception>
     public void Start()
+    {
+        if (!IsTest)
+        {
+            Init();
+        }
+        else
+        {
+            EditInit();
+        }
+    }
+
+    private void Init()
     {
         mNextStageMessage = new GameMessage<int>(EGameMessage.StageChange, 1);
         MessageBroker.Default.Receive<TaskMessage>()
@@ -48,7 +66,7 @@ public class StageManager : Singleton<StageManager>
                         StageInit(TableDataKey_C.Stage_Stage_0);
                         break;
                     case ETaskList.BossDeath:
-                        if(mDeathBossCount == mCurrentWaveData.spawnCount)
+                        if (mDeathBossCount == mCurrentWaveData.spawnCount)
                         {
                             mDeathBossCount = 0;
                             StartWave().Forget();
@@ -85,8 +103,8 @@ public class StageManager : Singleton<StageManager>
             // {
             //     continue;
             // }
-            await UniTask.WaitForSeconds(NEXT_WAVE_TIME);
-            mNextStageMessage.SetValue(mNextStageMessage.Value + 1);
+            await UniTask.WaitForSeconds(NEXT_WAVE_TIME,cancellationToken:mCancellationToken.Token);
+            mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
             MessageBroker.Default.Publish(mNextStageMessage);
             
         }
@@ -100,7 +118,7 @@ public class StageManager : Singleton<StageManager>
             WaveStatData waveStateData = DataBase_Manager.Instance.GetWaveStat.GetData_Func(waveData.apply_stat);
             monster.SpawnMonster(waveData.monsterKey, mWayPoint, waveData.isBoss, waveStateData,waveData.weight);
             MonsterList.Add(monster);
-            await UniTask.WaitForSeconds(SPAWN_COOL_TIME);
+            await UniTask.WaitForSeconds(SPAWN_COOL_TIME,cancellationToken:mCancellationToken.Token);
             
         }
     }
@@ -113,7 +131,48 @@ public class StageManager : Singleton<StageManager>
         }
         MonsterList.Remove(monster);
     }
+
+    #region Edit
+
+    private void EditInit()
+    {
+        MessageBroker.Default.Receive<EditMessage<int, int>>().Subscribe(message =>
+        {
+            GetStageAndWaveData(message.Value1, message.Value2);
+        });
+    }
+
+    private void GetStageAndWaveData(int stage, int wave)
+    {
+        var currentStageData = DataBase_Manager.Instance.GetStage.GetData_Func($"Stage_{stage}");
+        
+        var waveData = DataBase_Manager.Instance.GetWave.GetData_Func(currentStageData.waveList[wave]);
+        mWaveQueue.Enqueue(waveData);
+
+        StartWave().Forget();
+    }
+
+    #endregion
+
+    protected override void ChangeSceneInit(Scene prev, Scene next)
+    {
+        CancelAndDisposeToken();
+    }
     
-    
-    
+    private void CancelAndDisposeToken()
+    {
+        if (mCancellationToken != null)
+        {
+            if (!mCancellationToken.IsCancellationRequested)
+            {
+                mCancellationToken.Cancel();
+            }
+            mCancellationToken.Dispose();
+            mCancellationToken = null;
+        }
+        else
+        {
+            mCancellationToken = new CancellationTokenSource();
+        }
+    }
 }

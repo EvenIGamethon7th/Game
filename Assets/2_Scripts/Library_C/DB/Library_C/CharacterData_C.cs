@@ -20,6 +20,7 @@ public partial class CharacterData : Data_C
      [LabelText("공격사거리")] public float range;
      [LabelText("소환재화")] public int cost;
      [LabelText("캐릭터팩")] public string characterPack;
+     [LabelText("아카데미수업")] public int academyClass;
      [LabelText("스킬1")] public string Skill1;
      [LabelText("스킬2")] public string Skill2;
      [LabelText("클래스타입")] public string ClassType;
@@ -39,9 +40,10 @@ public partial class CharacterData : Data_C
         range = _cellDataArr[7].ToFloat();
         cost = _cellDataArr[8].ToInt();
         characterPack = _cellDataArr[9];
-        Skill1 = _cellDataArr[10];
-        Skill2 = _cellDataArr[11];
-        ClassType = _cellDataArr[12];
+        academyClass = _cellDataArr[10].ToInt();
+        Skill1 = _cellDataArr[11];
+        Skill2 = _cellDataArr[12];
+        ClassType = _cellDataArr[13];
     }
 #endif
 }

@@ -11,7 +11,7 @@ using Cargold.DB.TableImporter;
 public partial class StageData : Data_C
 {
      public string Key;
-     [LabelText("이름")] public string[] waveList;
+     [LabelText("웨이브리스트")] public string[] waveList;
 
     
 

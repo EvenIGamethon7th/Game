@@ -34,6 +34,9 @@ public class StageManager : Singleton<StageManager>
 
     public bool IsTest = false;
 
+    private CancellationTokenSource mCancellationToken;
+    
+
     /// <summary>
     ///  테스트용 스테이지 시작 코드
     /// </summary>
@@ -100,7 +103,7 @@ public class StageManager : Singleton<StageManager>
             // {
             //     continue;
             // }
-            await UniTask.WaitForSeconds(NEXT_WAVE_TIME);
+            await UniTask.WaitForSeconds(NEXT_WAVE_TIME,cancellationToken:mCancellationToken.Token);
             mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
             MessageBroker.Default.Publish(mNextStageMessage);
             
@@ -115,7 +118,7 @@ public class StageManager : Singleton<StageManager>
             WaveStatData waveStateData = DataBase_Manager.Instance.GetWaveStat.GetData_Func(waveData.apply_stat);
             monster.SpawnMonster(waveData.monsterKey, mWayPoint, waveData.isBoss, waveStateData,waveData.weight);
             MonsterList.Add(monster);
-            await UniTask.WaitForSeconds(SPAWN_COOL_TIME);
+            await UniTask.WaitForSeconds(SPAWN_COOL_TIME,cancellationToken:mCancellationToken.Token);
             
         }
     }
@@ -153,6 +156,23 @@ public class StageManager : Singleton<StageManager>
 
     protected override void ChangeSceneInit(Scene prev, Scene next)
     {
-        throw new NotImplementedException();
+        CancelAndDisposeToken();
+    }
+    
+    private void CancelAndDisposeToken()
+    {
+        if (mCancellationToken != null)
+        {
+            if (!mCancellationToken.IsCancellationRequested)
+            {
+                mCancellationToken.Cancel();
+            }
+            mCancellationToken.Dispose();
+            mCancellationToken = null;
+        }
+        else
+        {
+            mCancellationToken = new CancellationTokenSource();
+        }
     }
 }

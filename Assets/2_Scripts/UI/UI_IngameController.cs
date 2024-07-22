@@ -25,16 +25,28 @@ namespace _2_Scripts.UI
 
         protected override void StartInit()
         {
-            MessageBroker.Default.Receive<TaskMessage>()
-                .Where(message => message.Task == ETaskList.CharacterDataResourceLoad).Subscribe(
-                    _ =>
-                    {
-                        if (mBottomGo[0].TryGetComponent<UI_AcademyPannel>(out var academi))
+            if (GameManager.Instance.IsTest)
+            {
+                MessageBroker.Default.Receive<TaskMessage>()
+                    .Where(message => message.Task == ETaskList.CharacterDataResourceLoad).Subscribe(
+                        _ =>
                         {
-                            academi.Init();
-                        }
-                        mBottomGo[1].SetActive(true);
-                    }).AddTo(this);
+                            if (mBottomGo[0].TryGetComponent<UI_AcademyPannel>(out var academi))
+                            {
+                                academi.Init();
+                            }
+                            mBottomGo[1].SetActive(true);
+                        }).AddTo(this);
+            }
+
+            else
+            {
+                if (mBottomGo[0].TryGetComponent<UI_AcademyPannel>(out var academi))
+                {
+                    academi.Init();
+                }
+                mBottomGo[1].SetActive(true);
+            }
 
             for (int i = 0; i < mBottomGo.Count; ++i)
             {

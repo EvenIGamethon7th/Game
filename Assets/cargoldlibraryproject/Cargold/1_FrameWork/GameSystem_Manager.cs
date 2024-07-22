@@ -17,20 +17,22 @@ namespace Cargold.FrameWork
 
         private void Awake()
         {
-            if(this.isAutoInit == true)
-            {
-                this.Init_Func();
-            }
+            bool b = true;
 
             if (Instance != null && Instance != this)
             {
+                b = false;
                 Destroy(gameObject);
-            }else if(Instance == null)
+            }
+            else if(Instance == null)
             {
                 Instance = this;
             }
-            
-            
+
+            if (this.isAutoInit == true && b)
+            {
+                this.Init_Func();
+            }
         }
 
         protected virtual void Init_Func()

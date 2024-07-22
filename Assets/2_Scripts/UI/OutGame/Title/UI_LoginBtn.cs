@@ -29,7 +29,7 @@ namespace _2_Scripts.UI.OutGame.Title
                 mButton.interactable = true;
                 mTapToStartText.text = "Tap to Start";
                 mButton.onClick.AddListener(OnClickLoginBtn);
-            });
+            }).AddTo(this);
         }
 
         private void OnClickLoginBtn()

@@ -22,7 +22,8 @@ namespace Cargold.FrameWork
         {
             if(_layer == 0)
             {
-                Instance = this;
+                if (Instance == null)
+                    Instance = this;
 
                 this.innerPoolManager = new PoolingSystemManager<string>(this.transform);
 

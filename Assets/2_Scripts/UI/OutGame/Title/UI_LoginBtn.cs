@@ -1,5 +1,6 @@
 ﻿using System;
 using _2_Scripts.Utils;
+using Cargold.FrameWork;
 using Cargold.FrameWork.BackEnd;
 using TMPro;
 using UniRx;
@@ -37,7 +38,7 @@ namespace _2_Scripts.UI.OutGame.Title
             
             BackEndManager.Instance.OnLogin(() =>
             {
-                SceneManager.LoadScene("1_Scenes/Main");
+                SceneLoadManager.Instance.SceneChange("1_Scenes/Main");
             });
         }
     }

@@ -12,7 +12,7 @@ public class UI_WaveText : MonoBehaviour
     void Start()
     {
         MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange)
-            .Subscribe(message => mWaveText.text = $"Wave {message.Value}");
+            .Subscribe(message => mWaveText.text = $"Wave {message.Value}").AddTo(this);
     }
 
 }

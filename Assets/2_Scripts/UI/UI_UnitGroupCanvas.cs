@@ -47,7 +47,7 @@ namespace _2_Scripts.UI
                 .Subscribe(data =>
                 {
                     SelectUnitGroup = data.Value;
-                });
+                }).AddTo(this);
 
             MessageBroker.Default.Receive<GameMessage<bool>>()
                 .Where(message => message.Message == EGameMessage.GoAcademy)
@@ -61,7 +61,7 @@ namespace _2_Scripts.UI
                     {
                         SetFusionButton();
                     }
-                });
+                }).AddTo(this);
 
             mButtons = GetComponentsInChildren<Button>();
             SubscribeAction(EButtonType.Academy, AcademyButton);

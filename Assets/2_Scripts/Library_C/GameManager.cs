@@ -160,7 +160,7 @@ public class GameManager : Singleton<GameManager>
                     ? 10 : 20;
                 UpdateMoney(EMoneyType.Gold, stageClearReward + interest);
                 AddExp(20);
-            });
+            }).AddTo(this);
 
         MessageBroker.Default.Receive<TaskMessage>()
             .Where(message => message.Task == ETaskList.CharacterDataResourceLoad).Subscribe(
@@ -170,7 +170,7 @@ public class GameManager : Singleton<GameManager>
                     {
                         UserCharacterList.Add(resource.Value as CharacterInfo);
                     }
-                });
+                }).AddTo(this);
 
         MessageBroker.Default.Receive<TaskMessage>()
             .Where(message => message.Task == ETaskList.MainCharacterDataResourceLoad).Subscribe(
@@ -181,7 +181,7 @@ public class GameManager : Singleton<GameManager>
                         mMainCharacterList.Add(resource.Value as MainCharacterInfo);
                     }
                     CurrentMainCharacter = mMainCharacterList[0];
-                });
+                }).AddTo(this);
     }
     private Random mRandom = new Random();
     public CharacterInfo RandomCharacterCardOrNull()

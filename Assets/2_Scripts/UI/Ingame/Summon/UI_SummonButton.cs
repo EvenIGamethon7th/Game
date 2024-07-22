@@ -71,7 +71,7 @@ namespace _2_Scripts.UI
                 .Subscribe(message =>
                 {
                     Reroll();
-                });
+                }).AddTo(this);
         }
 
         public void OnSummonButton()

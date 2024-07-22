@@ -76,7 +76,7 @@ public class StageManager : Singleton<StageManager>
                         }
                         break;
                 }
-            });
+            }).AddTo(this);
     }
 
     private void StageInit(string stageKey)
@@ -152,7 +152,7 @@ public class StageManager : Singleton<StageManager>
         MessageBroker.Default.Receive<EditMessage<int, int>>().Subscribe(message =>
         {
             GetStageAndWaveData(message.Value1, message.Value2);
-        });
+        }).AddTo(this);
     }
 
     private void GetStageAndWaveData(int stage, int wave)

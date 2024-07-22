@@ -49,14 +49,14 @@ namespace _2_Scripts.UI
                             mUserCharacterList.Add(resource.Value as CharacterInfo);
                         }
                         isInitList = true;
-                    });
+                    }).AddTo(this);
 
             MessageBroker.Default.Receive<TaskMessage>()
                 .Where(message => message.Task == ETaskList.DefaultResourceLoad).Subscribe(
                     _ =>
                     {
                         isInitButton = true;
-                    });
+                    }).AddTo(this);
 
             IDisposable dispose = null;
 
@@ -79,7 +79,7 @@ namespace _2_Scripts.UI
                     }
                     
                     dispose.Dispose();
-                });
+                }).AddTo(this);
 
             this.ObserveEveryValueChanged(_ => mInputField.text).Subscribe(_ => CheckInput());
         }

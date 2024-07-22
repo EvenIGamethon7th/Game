@@ -19,7 +19,7 @@ namespace _2_Scripts.UI.Ingame
 
         private Button mButton;
 
-        void Awake()
+        public void Init()
         {
             mButton = GetComponent<Button>();
             mButton.onClick.AddListener(OnClick);

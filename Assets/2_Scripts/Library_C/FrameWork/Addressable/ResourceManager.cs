@@ -9,6 +9,7 @@
     using UnityEngine;
     using UnityEngine.AddressableAssets;
     using UnityEngine.ResourceManagement.AsyncOperations;
+    using UnityEngine.SceneManagement;
     using Object = UnityEngine.Object;
 
 public enum ELabelNames
@@ -21,10 +22,8 @@ public enum ELabelNames
     UIMaterial
 }
 
-public class ResourceManager : SerializedMonoBehaviour,GameSystem_Manager.IInitializer
+public class ResourceManager :Singleton<ResourceManager>
 {
-    public static ResourceManager Instance;
-
     public Dictionary<string, Object> _resources { get; private set; } = new();
     public bool IsPreLoad {get; private set; }
     
@@ -155,13 +154,9 @@ public class ResourceManager : SerializedMonoBehaviour,GameSystem_Manager.IIniti
         };
     }
     #endregion
-    public virtual void Init_Func(int _layer)
+     protected override void Awake()
     {
-        if (_layer != 0) 
-            return;
-        
-        Instance = this;
-        Debug_C.Log_Func("Resource Load Start");
+        base.Awake();
         string[] labelNames = Enum.GetNames(typeof(ELabelNames));
         for (int i = 0; i < labelNames.Length; ++i)
         {
@@ -179,5 +174,10 @@ public class ResourceManager : SerializedMonoBehaviour,GameSystem_Manager.IIniti
                 }
             });
         }
+    }
+
+    protected override void ChangeSceneInit(Scene prev, Scene next)
+    {
+     
     }
 }

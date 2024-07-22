@@ -21,13 +21,20 @@ public class MapManager : Singleton<MapManager>
 
     private void Start()
     {
-        //추후 수정해야함 리소스 로드는 어차피 로비 진입화면에서 할 것이기 떄문.
-        MessageBroker.Default.Receive<TaskMessage>().Where(message => message.Task == ETaskList.DefaultResourceLoad).Subscribe(
-        _ =>
+        if (GameManager.Instance.IsTest)
+        {
+            MessageBroker.Default.Receive<TaskMessage>().Where(message => message.Task == ETaskList.DefaultResourceLoad).Subscribe(
+                _ =>
+                {
+                    CreateInitialTileSlots();
+                    CreatePool();
+                });
+        }
+        else
         {
             CreateInitialTileSlots();
             CreatePool();
-        });
+        }
     }
 
     public Vector2Int GetCellFromWorldPos(Vector2 pos)

@@ -29,6 +29,13 @@ public class GameManager : Singleton<GameManager>
 
     public ReactiveProperty<int> UserLuckyCoin { get; private set; } = new ReactiveProperty<int>(0);
 
+    public bool IsTest { get; private set; } = true;
+
+    public void NotTestMode()
+    {
+        IsTest = false;
+    }
+    
     public void UpdateMoney(string moneyKey, int value)
     {
         MoneyData money = DataBase_Manager.Instance.GetMoney.GetData_Func(moneyKey);

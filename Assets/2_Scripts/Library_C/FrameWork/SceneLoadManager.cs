@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using AsyncOperation = UnityEngine.AsyncOperation;
 
-namespace Cargold.FrameWork
-{
     public class SceneLoadManager : Singleton<SceneLoadManager>
     {
         [SerializeField]
@@ -22,8 +20,9 @@ namespace Cargold.FrameWork
             await UniTask.WaitForSeconds(2f);
             SceneManager.LoadScene("LoadingScene");
             AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
+            asyncOperation.allowSceneActivation = false;
             await UniTask.WaitUntil(() => asyncOperation.isDone);
-            SceneManager.LoadScene(sceneName);
+            asyncOperation.allowSceneActivation = true;
             mSceneLoadAnimator.gameObject.SetActive(false);
         }
     
@@ -32,4 +31,3 @@ namespace Cargold.FrameWork
         
         }
     }
-}

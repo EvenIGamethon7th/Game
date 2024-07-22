@@ -30,32 +30,40 @@ public class StageManager : Singleton<StageManager>
     
     private GameMessage<int> mNextStageMessage;
     public List<Monster> MonsterList = new List<Monster>();
-
-    public bool IsTest = false;
+    
 
     private CancellationTokenSource mCancellationToken;
     private TaskMessage mBossSpawnMessage;
 
     public int MaxStageCount { get; private set; }
 
-    private void Start()
+    /// <summary>
+    ///  테스트용 스테이지 시작 코드
+    /// </summary>
+    /// <exception cref="NotImplementedException"></exception>
+    public void Start()
     {
-        Init();
+        if (GameManager.Instance.IsTest)
+        {
+            EditInit();
+        }
+        else
+        {
+            Init();
+        }
     }
 
     private void Init()
     {
         mNextStageMessage = new GameMessage<int>(EGameMessage.StageChange, 1);
         mBossSpawnMessage = new TaskMessage(ETaskList.BossSpawn);
+        ObjectPoolManager.Instance.RegisterPoolingObject("Monster", 100);
+        StageInit(TableDataKey_C.Stage_Stage_0);
         MessageBroker.Default.Receive<TaskMessage>()
             .Subscribe(message =>
             {
                 switch (message.Task)
                 {
-                    case ETaskList.DefaultResourceLoad:
-                        ObjectPoolManager.Instance.RegisterPoolingObject("Monster", 100);
-                        StageInit(TableDataKey_C.Stage_Stage_0);
-                        break;
                     case ETaskList.BossDeath:
                         if (mDeathBossCount == mCurrentWaveData.spawnCount)
                         {

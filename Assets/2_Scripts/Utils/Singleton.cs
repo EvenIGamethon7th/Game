@@ -40,11 +40,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
             instance = this as T;
             if (IsDontDestroy)
                 DontDestroyOnLoad(gameObject);
-            else
-            {
-                Destroy(gameObject);
-            }
-
+       
             SceneManager.activeSceneChanged -= ChangeSceneInit;
             SceneManager.activeSceneChanged += ChangeSceneInit;
         }

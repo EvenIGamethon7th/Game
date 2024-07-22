@@ -49,9 +49,13 @@ namespace _2_Scripts.UI
             mCts.Dispose();
         }
 
-        protected override void StartInit()
+        private void Awake()
         {
             mCts = new CancellationTokenSource();
+        }
+
+        protected override void StartInit()
+        {
         }
     }
 }

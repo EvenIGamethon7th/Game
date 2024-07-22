@@ -94,6 +94,8 @@ public class StageManager : Singleton<StageManager>
 
     private async UniTaskVoid StartWave()
     {
+        await UniTask.WaitForSeconds(5f);
+        MessageBroker.Default.Publish(mNextStageMessage);
         while (mWaveQueue.Count > 0)
         {
             mCurrentWaveData = mWaveQueue.Dequeue();

@@ -143,7 +143,11 @@ public class GameManager : Singleton<GameManager>
         MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange)
             .Subscribe(message =>
             {
-        
+                // 첫 시작은 리턴
+                if (message.Value == 0)
+                {
+                    return;
+                }
                 int interest = 0;
                 foreach (var tableValue in mInterestTable)
                 {

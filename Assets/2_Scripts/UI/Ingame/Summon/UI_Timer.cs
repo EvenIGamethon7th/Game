@@ -23,8 +23,6 @@ namespace _2_Scripts.UI
                     StartTimer();
                 })
                 .AddTo(this);
-            //최초 실행
-            StartTimer();
         }
 
         private void StartTimer()

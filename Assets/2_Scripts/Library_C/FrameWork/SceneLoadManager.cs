@@ -1,5 +1,8 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using Plugins.Animate_UI_Materials;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using AsyncOperation = UnityEngine.AsyncOperation;
@@ -8,21 +11,61 @@ using AsyncOperation = UnityEngine.AsyncOperation;
     {
         [SerializeField]
         private Animator mSceneLoadAnimator;
+        
+        [SerializeField]
+        private GraphicPropertyOverrideFloat mGraphicMaterialOverride;
+
+        [SerializeField] 
+        private CanvasGroup mToolTipGroup;
+
+
+
+
         public void SceneChange(string sceneName)
         {
             LoadSceneAsync(sceneName).Forget();
         }
-    
+
+        private void ToolTipAnimation()
+        {
+            mToolTipGroup.alpha = 0;
+            mToolTipGroup.gameObject.SetActive(true);
+            Sequence tooltipSequence = DOTween.Sequence();
+            tooltipSequence.Append(mToolTipGroup.DOFade(1, 2));
+            tooltipSequence.Join(mToolTipGroup.transform.DOMoveX(0, 2));
+            tooltipSequence.SetAutoKill(false);
+        }
+
+        private void ToolTipAlpha()
+        {
+            mToolTipGroup.DOFade(0, 2)
+                .OnComplete(() =>
+                {
+                    mToolTipGroup.gameObject.SetActive(false);
+                });
+        }
         private async UniTaskVoid LoadSceneAsync(string sceneName)
         {
+            mSceneLoadAnimator.SetBool("Fade",false);
             mSceneLoadAnimator.gameObject.SetActive(true);
             mSceneLoadAnimator.Play(0);
+            
+            await UniTask.WaitUntil(()=>mGraphicMaterialOverride.PropertyValue <= 0f);
+            ToolTipAnimation();
             await UniTask.WaitForSeconds(2f);
+            ToolTipAlpha();
+
             SceneManager.LoadScene("LoadingScene");
+            
             AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
             asyncOperation.allowSceneActivation = false;
+
             await UniTask.WaitUntil(() => asyncOperation.isDone);
+            
+            mSceneLoadAnimator.SetBool("Fade",true);
             asyncOperation.allowSceneActivation = true;
+            
+            await  UniTask.WaitUntil(()=>mGraphicMaterialOverride.PropertyValue >= 0.99);
             mSceneLoadAnimator.gameObject.SetActive(false);
         }
     

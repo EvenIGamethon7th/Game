@@ -24,7 +24,7 @@ namespace _2_Scripts.UI.Ingame
             mButton = GetComponent<Button>();
             mButton.onClick.AddListener(OnClick);
             mBubble = transform.GetChild(0).gameObject;
-            mInfoText = mBubble?.GetComponentsInChildren<TextMeshProUGUI>();
+            mInfoText = mBubble?.GetComponentsInChildren<TextMeshProUGUI>(true);
             mInfoText[0].color = Success;
             mInfoText[1].color = Bonanza;
             mInfoText[2].color = Fail;

@@ -145,7 +145,7 @@ namespace _2_Scripts.Game.Controller
                     mSelectCircle = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_SelectCircle, Vector2.zero);
                     mSelectCircle.SetActive(false);
                     mTempSubscribe.Dispose();
-                });
+                }).AddTo(this);
         }
         
         private bool IsPointerOverUIPopUp()

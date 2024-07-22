@@ -28,7 +28,7 @@ public class MapManager : Singleton<MapManager>
                 {
                     CreateInitialTileSlots();
                     CreatePool();
-                });
+                }).AddTo(this);
         }
         else
         {

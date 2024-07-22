@@ -54,7 +54,7 @@ namespace _2_Scripts.UI
                     _ =>
                     {
                         Init();
-                    });
+                    }).AddTo(this);
             }
             else
             {

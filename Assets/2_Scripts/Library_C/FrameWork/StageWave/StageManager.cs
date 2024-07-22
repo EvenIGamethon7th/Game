@@ -37,7 +37,7 @@ public class StageManager : Singleton<StageManager>
     private CancellationTokenSource mCancellationToken;
     private TaskMessage mBossSpawnMessage;
 
-    public int MaxStageCount { get; private set; };
+    public int MaxStageCount { get; private set; }
 
     /// <summary>
     ///  테스트용 스테이지 시작 코드

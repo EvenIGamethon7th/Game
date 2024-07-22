@@ -2,6 +2,7 @@ using _2_Scripts.Game.ScriptableObject.Skill;
 using Sirenix.OdinInspector;
 using _2_Scripts.Game.Unit.Data;
 using _2_Scripts.Utils;
+using UnityEngine;
 
 // 카라리 테이블 임포터에 의해 생성된 스크립트입니다.
 
@@ -51,6 +52,15 @@ public partial class CharacterData : IPoolable
         academyClass = data.academyClass;
     }
 
+    public Sprite GetSkillIconOrNull(string skillKey)
+    {
+        if (skillKey != "-1")
+        {
+           return DataBase_Manager.Instance.GetSkill.GetData_Func(skillKey).icon;
+        }
+
+        return null;
+    }
     public float GetTotalAtk()
     {
         return Buff.ATKRate * 0.01f * (Buff.ATK + alumniAtk + atk);

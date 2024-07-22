@@ -15,7 +15,6 @@ using UnityEngine.SceneManagement;
 
 public class StageManager : Singleton<StageManager>
 {
-
     [GetComponent] private WayPoint mWayPoint;
     
     private StageData mCurrentStageData;

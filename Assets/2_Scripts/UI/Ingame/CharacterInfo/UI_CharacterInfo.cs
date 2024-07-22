@@ -26,7 +26,7 @@ namespace _2_Scripts.UI.Ingame.CharacterInfo
         
         [SerializeField] private Button mCharacterRareSkillButton;
         [SerializeField] private Button mCharacterEpicSkillButton;
-        
+        [SerializeField] private Sprite mBlinkImage;
         private void Start()
         {
             MessageBroker.Default.Receive<GameMessage<UnitGroup>>()
@@ -58,8 +58,8 @@ namespace _2_Scripts.UI.Ingame.CharacterInfo
         private CharacterData mCharacterData;
         private void UpdateCharacterInfoData(CharacterData data)
         {
-            mCharacterRareSkillButton.GetComponent<Image>().sprite = data.GetSkillIconOrNull(data.Skill1) != null ? data.GetSkillIconOrNull(data.Skill1) : null;
-            mCharacterEpicSkillButton.GetComponent<Image>().sprite = data.GetSkillIconOrNull(data.Skill2) != null ? data.GetSkillIconOrNull(data.Skill2) : null;
+            mCharacterRareSkillButton.GetComponent<Image>().sprite = data.GetSkillIconOrNull(data.Skill1) != null ? data.GetSkillIconOrNull(data.Skill1) : mBlinkImage;
+            mCharacterEpicSkillButton.GetComponent<Image>().sprite = data.GetSkillIconOrNull(data.Skill2) != null ? data.GetSkillIconOrNull(data.Skill2) : mBlinkImage;
             mCharacterNameText.text = data.GetCharacterName();
             mCharacterStatusAtkText.text = $"{data.GetTotalAtk()}";
             mCharacterStatusAtkSpeedText.text = $"{data.GetTotalAtkSpeed()}";

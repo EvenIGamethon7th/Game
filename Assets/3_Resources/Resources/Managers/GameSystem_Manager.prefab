@@ -535,7 +535,6 @@ MonoBehaviour:
     - {fileID: 7456855956202164841}
     - {fileID: 3927486968737949816}
     - {fileID: 3713819977703297463}
-    - {fileID: 3492626475648249783}
     - {fileID: 7186679714381466274}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -547,7 +546,7 @@ MonoBehaviour:
       Data: 0|Cargold.FrameWork.GameSystem_Manager+InitializeData[], Assembly-CSharp
     - Name: 
       Entry: 12
-      Data: 7
+      Data: 6
     - Name: 
       Entry: 7
       Data: 1|Cargold.FrameWork.GameSystem_Manager+InitializeData, Assembly-CSharp
@@ -614,18 +613,6 @@ MonoBehaviour:
     - Name: iInitializer
       Entry: 10
       Data: 5
-    - Name: typeNameStr
-      Entry: 1
-      Data: ResourceManager
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 7|Cargold.FrameWork.GameSystem_Manager+InitializeData, Assembly-CSharp
-    - Name: iInitializer
-      Entry: 10
-      Data: 6
     - Name: typeNameStr
       Entry: 1
       Data: UI_Toast_Manager
@@ -1571,15 +1558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c71c10446f014107b7da11c037835adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
+  IsDontDestroy: 1
 --- !u!1 &6315854402900515536
 GameObject:
   m_ObjectHideFlags: 0
@@ -1870,6 +1849,7 @@ GameObject:
   - component: {fileID: 2619726219629112990}
   - component: {fileID: 2556856128279603746}
   - component: {fileID: 7988365979210809875}
+  - component: {fileID: 2644371779024285586}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1960,6 +1940,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 1015
+--- !u!114 &2644371779024285586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7000154149853977282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d8eda09b309a64081a376c0425d5a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mRenderCamera: 2
 --- !u!1 &7199048179260015261
 GameObject:
   m_ObjectHideFlags: 0
@@ -2786,8 +2779,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6890909614643750473, guid: e2d95c58e46c72c45afa2f3708ff69c1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6876998620758079502}
   m_SourcePrefab: {fileID: 100100000, guid: e2d95c58e46c72c45afa2f3708ff69c1, type: 3}
+--- !u!1 &4540559774796286049 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6890909614643750473, guid: e2d95c58e46c72c45afa2f3708ff69c1, type: 3}
+  m_PrefabInstance: {fileID: 6963166208103493160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6876998620758079502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4540559774796286049}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d8eda09b309a64081a376c0425d5a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mRenderCamera: 2
 --- !u!224 &4686829249882114911 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2425422152533632375, guid: e2d95c58e46c72c45afa2f3708ff69c1, type: 3}

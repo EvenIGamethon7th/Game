@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class UI_Base : MonoBehaviour
+public class UI_Base : MonoBehaviour
 {
     [SerializeField]
     protected CameraManager.ECameraType mRenderCamera;
@@ -13,5 +13,8 @@ public abstract class UI_Base : MonoBehaviour
         StartInit();
     }
 
-    protected abstract void StartInit();
+    protected virtual void StartInit()
+    {
+        
+    }
 }

@@ -16,10 +16,10 @@ namespace Cargold
         {
             if (Debug_C.iDebugC == null)
             {
-#if UNITY_EDITOR
-                if (Application.isPlaying == false)
-                    return true;
-#endif
+// #if UNITY_EDITOR
+//                 if (Application.isPlaying == false)
+//                     return true;
+// #endif
 
                 return false;
             }

@@ -48,19 +48,32 @@ namespace _2_Scripts.UI
             mPanel.SetActive(false);
             mReroll.gameObject.SetActive(false);
 
-            MessageBroker.Default.Receive<TaskMessage>().Where(message => message.Task == ETaskList.DefaultResourceLoad).Subscribe(
-                _ =>
-                {
-                    for (int i = 0; i < mRerollNum; ++i)
+            if (GameManager.Instance.IsTest)
+            {
+                MessageBroker.Default.Receive<TaskMessage>().Where(message => message.Task == ETaskList.DefaultResourceLoad).Subscribe(
+                    _ =>
                     {
-                        mUnitClasses[i] = (EUnitClass)UnityEngine.Random.Range(1, mUnitClassCount);
-                        mUnitRanks[i] = (EUnitRank)UnityEngine.Random.Range(1, mUnitRankCount);
-                        //mButtons[i].UpdateGraphic(mUnitClasses[i], mUnitRanks[i]);
-                    }
-                    gameObject.SetActive(false);
-                });
+                        Init();
+                    });
+            }
+            else
+            {
+                Init();
+            }
+  
         }
 
+        private void Init()
+        {
+            for (int i = 0; i < mRerollNum; ++i)
+            {
+                mUnitClasses[i] = (EUnitClass)UnityEngine.Random.Range(1, mUnitClassCount);
+                mUnitRanks[i] = (EUnitRank)UnityEngine.Random.Range(1, mUnitRankCount);
+                //mButtons[i].UpdateGraphic(mUnitClasses[i], mUnitRanks[i]);
+            }
+            gameObject.SetActive(false);
+            
+        }
         private void Resume()
         {
             bool b = !mPanel.gameObject.activeSelf;

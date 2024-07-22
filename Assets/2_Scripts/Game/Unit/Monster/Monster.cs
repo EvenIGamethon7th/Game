@@ -91,7 +91,6 @@ namespace _2_Scripts.Game.Monster
             (controller) =>
             {
                 mAnimator.runtimeAnimatorController = controller;
-                // global::Utils.GetSpriteFromAnimationClip(mAnimator.runtimeAnimatorController.animationClips[0], 0);
             });
             mWayPoint = waypoint;
             mWayPointIndex = 0;

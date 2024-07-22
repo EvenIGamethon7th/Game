@@ -35,7 +35,7 @@ public class StageManager : Singleton<StageManager>
     public bool IsTest = false;
 
     private CancellationTokenSource mCancellationToken;
-    
+    private TaskMessage mBossSpawnMessage;
 
     /// <summary>
     ///  테스트용 스테이지 시작 코드
@@ -56,6 +56,7 @@ public class StageManager : Singleton<StageManager>
     private void Init()
     {
         mNextStageMessage = new GameMessage<int>(EGameMessage.StageChange, 1);
+        mBossSpawnMessage = new TaskMessage(ETaskList.BossSpawn);
         MessageBroker.Default.Receive<TaskMessage>()
             .Subscribe(message =>
             {
@@ -103,11 +104,17 @@ public class StageManager : Singleton<StageManager>
             {
                 continue;
             }
+
+            if (mCurrentWaveData.isBoss)
+            {
+                MessageBroker.Default.Publish(mBossSpawnMessage);
+            }
             await UniTask.WaitForSeconds(NEXT_WAVE_TIME,cancellationToken:mCancellationToken.Token);
             mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
             MessageBroker.Default.Publish(mNextStageMessage);
-            
         }
+        await UniTask.WaitForSeconds(NEXT_WAVE_TIME,cancellationToken:mCancellationToken.Token);
+        MessageBroker.Default.Publish(new TaskMessage(ETaskList.GameOver));
     }
 
     private async UniTask SpawnMonsters(WaveData waveData)

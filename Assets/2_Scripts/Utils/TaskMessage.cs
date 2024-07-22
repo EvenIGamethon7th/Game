@@ -10,6 +10,7 @@
         UIMaterialResourceLoad,
         MainCharacterDataResourceLoad,
         BossDeath,
+        BossSpawn,
         GameOver,
     }
     

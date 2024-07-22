@@ -58,6 +58,8 @@ namespace _2_Scripts.UI.Ingame.CharacterInfo
         private CharacterData mCharacterData;
         private void UpdateCharacterInfoData(CharacterData data)
         {
+            mCharacterRareSkillButton.GetComponent<Image>().sprite = data.GetSkillIconOrNull(data.Skill1) != null ? data.GetSkillIconOrNull(data.Skill1) : null;
+            mCharacterEpicSkillButton.GetComponent<Image>().sprite = data.GetSkillIconOrNull(data.Skill2) != null ? data.GetSkillIconOrNull(data.Skill2) : null;
             mCharacterNameText.text = data.GetCharacterName();
             mCharacterStatusAtkText.text = $"{data.GetTotalAtk()}";
             mCharacterStatusAtkSpeedText.text = $"{data.GetTotalAtkSpeed()}";

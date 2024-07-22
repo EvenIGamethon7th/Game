@@ -17,6 +17,7 @@ public partial class SkillData : Data_C
      [LabelText("쿨타임")] public int CoolTime;
      [LabelText("패시브/액티브")] public ESkillType SkillType;
      [LabelText("등급")] public int Grade;
+     [LabelText("스킬아이콘")] public Sprite icon;
 
     
 
@@ -30,6 +31,7 @@ public partial class SkillData : Data_C
         CoolTime = _cellDataArr[4].ToInt();
         SkillType = _cellDataArr[5].ToEnum<ESkillType>();
         Grade = _cellDataArr[6].ToInt();
+        icon = Editor_C.GetLoadAssetAtPath_Func<Sprite>(_cellDataArr[7]);
     }
 #endif
 }

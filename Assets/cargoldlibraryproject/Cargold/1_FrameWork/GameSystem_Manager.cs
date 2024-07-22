@@ -12,14 +12,25 @@ namespace Cargold.FrameWork
         [SerializeField, LabelText("모바일 콘솔로그 에셋")] private Reporter reporterClass = null;
         [SerializeField, LabelText("자동 이니셜라이즈 여부")] private bool isAutoInit = true;
         [SerializeField, LabelText("Dont Destory 여부")] private bool isDontDestroy = true;
-
+        private static GameSystem_Manager Instance;
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+
         private void Awake()
         {
             if(this.isAutoInit == true)
             {
                 this.Init_Func();
             }
+
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+            }else if(Instance == null)
+            {
+                Instance = this;
+            }
+            
+            
         }
 
         protected virtual void Init_Func()

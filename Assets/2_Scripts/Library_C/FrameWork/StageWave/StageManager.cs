@@ -38,20 +38,9 @@ public class StageManager : Singleton<StageManager>
 
     public int MaxStageCount { get; private set; }
 
-    /// <summary>
-    ///  테스트용 스테이지 시작 코드
-    /// </summary>
-    /// <exception cref="NotImplementedException"></exception>
-    public void Start()
+    private void Start()
     {
-        if (!IsTest)
-        {
-            Init();
-        }
-        else
-        {
-            EditInit();
-        }
+        Init();
     }
 
     private void Init()

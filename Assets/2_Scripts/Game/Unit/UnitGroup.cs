@@ -132,8 +132,9 @@ namespace _2_Scripts.Game.Unit
             }
 
             Vector3 normal = Vector3.Normalize(dstPos - transform.position);
+            float length = Vector3.Distance(dstPos, originPos);
 
-            while (Vector3.Distance(dstPos, transform.position) > 0.1f)
+            while (length > Vector3.Distance(transform.position, originPos))
             {
                 await UniTask.DelayFrame(1, cancellationToken: mToken.Token);
                 transform.position += normal * mSpeed * Time.deltaTime;

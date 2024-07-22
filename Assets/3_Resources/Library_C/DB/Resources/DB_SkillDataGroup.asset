@@ -22,6 +22,8 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 7e7d2eabb6cf3f741a491023e5e3f584, type: 3}
     - {fileID: 21300000, guid: f448e364d02b09540aae7409aa34656f, type: 3}
     - {fileID: 21300000, guid: 1df7f24bd92c1f24c9b03adbb1e209c8, type: 3}
+    - {fileID: 21300000, guid: 581c241ee282dc64eae38554dab53a84, type: 3}
+    - {fileID: 21300000, guid: 31f690fe3b5b83f4ab62d2f089c33a62, type: 3}
     - {fileID: 21300000, guid: b5989cc02c99dfe42ba82ca28944ed8d, type: 3}
     - {fileID: 21300000, guid: 2e009f8dd000f8849a31e15f7a29df3f, type: 3}
     - {fileID: 21300000, guid: f1b904487589c9f4f9ad11d3f558d7a7, type: 3}
@@ -327,8 +329,8 @@ MonoBehaviour:
       Entry: 3
       Data: 2
     - Name: icon
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 6
     - Name: 
       Entry: 8
       Data: 
@@ -367,8 +369,8 @@ MonoBehaviour:
       Entry: 3
       Data: 3
     - Name: icon
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 7
     - Name: 
       Entry: 8
       Data: 
@@ -408,7 +410,7 @@ MonoBehaviour:
       Data: 2
     - Name: icon
       Entry: 10
-      Data: 6
+      Data: 8
     - Name: 
       Entry: 8
       Data: 
@@ -448,7 +450,7 @@ MonoBehaviour:
       Data: 3
     - Name: icon
       Entry: 10
-      Data: 7
+      Data: 9
     - Name: 
       Entry: 8
       Data: 
@@ -489,7 +491,7 @@ MonoBehaviour:
       Data: 2
     - Name: icon
       Entry: 10
-      Data: 8
+      Data: 10
     - Name: 
       Entry: 8
       Data: 
@@ -530,7 +532,7 @@ MonoBehaviour:
       Data: 3
     - Name: icon
       Entry: 10
-      Data: 9
+      Data: 11
     - Name: 
       Entry: 8
       Data: 
@@ -570,7 +572,7 @@ MonoBehaviour:
       Data: 2
     - Name: icon
       Entry: 10
-      Data: 10
+      Data: 12
     - Name: 
       Entry: 8
       Data: 
@@ -610,7 +612,7 @@ MonoBehaviour:
       Data: 3
     - Name: icon
       Entry: 10
-      Data: 11
+      Data: 13
     - Name: 
       Entry: 8
       Data: 
@@ -650,7 +652,7 @@ MonoBehaviour:
       Data: 2
     - Name: icon
       Entry: 10
-      Data: 12
+      Data: 14
     - Name: 
       Entry: 8
       Data: 
@@ -690,7 +692,7 @@ MonoBehaviour:
       Data: 3
     - Name: icon
       Entry: 10
-      Data: 13
+      Data: 15
     - Name: 
       Entry: 8
       Data: 
@@ -730,7 +732,7 @@ MonoBehaviour:
       Data: 2
     - Name: icon
       Entry: 10
-      Data: 14
+      Data: 16
     - Name: 
       Entry: 8
       Data: 
@@ -770,7 +772,7 @@ MonoBehaviour:
       Data: 3
     - Name: icon
       Entry: 10
-      Data: 15
+      Data: 17
     - Name: 
       Entry: 8
       Data: 
@@ -810,7 +812,7 @@ MonoBehaviour:
       Data: 2
     - Name: icon
       Entry: 10
-      Data: 16
+      Data: 18
     - Name: 
       Entry: 8
       Data: 
@@ -850,7 +852,7 @@ MonoBehaviour:
       Data: 3
     - Name: icon
       Entry: 10
-      Data: 17
+      Data: 19
     - Name: 
       Entry: 8
       Data: 
@@ -890,7 +892,7 @@ MonoBehaviour:
       Data: 2
     - Name: icon
       Entry: 10
-      Data: 18
+      Data: 20
     - Name: 
       Entry: 8
       Data: 
@@ -930,7 +932,7 @@ MonoBehaviour:
       Data: 3
     - Name: icon
       Entry: 10
-      Data: 19
+      Data: 21
     - Name: 
       Entry: 8
       Data: 
@@ -970,7 +972,7 @@ MonoBehaviour:
       Data: 2
     - Name: icon
       Entry: 10
-      Data: 20
+      Data: 22
     - Name: 
       Entry: 8
       Data: 
@@ -1010,7 +1012,7 @@ MonoBehaviour:
       Data: 3
     - Name: icon
       Entry: 10
-      Data: 21
+      Data: 23
     - Name: 
       Entry: 8
       Data: 
@@ -1693,7 +1695,7 @@ MonoBehaviour:
     CoolTime: 0
     SkillType: 2
     Grade: 2
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: 581c241ee282dc64eae38554dab53a84, type: 3}
   - Key: Skill_7
     Group: 4
     Name: "\uC528\uC557 \uC2EC\uAE30"
@@ -1702,7 +1704,7 @@ MonoBehaviour:
     CoolTime: 20
     SkillType: 1
     Grade: 3
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: 31f690fe3b5b83f4ab62d2f089c33a62, type: 3}
   - Key: Skill_8
     Group: 5
     Name: "\uD604\uC0C1\uAE08"

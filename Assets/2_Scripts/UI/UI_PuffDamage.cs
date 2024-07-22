@@ -19,6 +19,7 @@ namespace _2_Scripts.UI
         private void PlayParticle(float damage)
         {
             mPaticleImage.Play();
+            Handheld.Vibrate();
             CameraManager.Instance.DoShake(CameraManager.ECameraType.Main, isUnscale: true);
         }
 

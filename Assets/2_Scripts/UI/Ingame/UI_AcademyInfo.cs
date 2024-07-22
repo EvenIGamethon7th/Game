@@ -8,6 +8,10 @@ namespace _2_Scripts.UI.Ingame
 {
     public class UI_AcademyInfo : MonoBehaviour
     {
+        private readonly Color Bonanza = new Color(0.996f, 0.859f, 0.373f);
+        private readonly Color Success = new Color(0.227f, 0.635f, 0.447f);
+        private readonly Color Fail = new Color(0.996f, 0.169f, 0.153f);
+
         [SerializeField]
         private GameObject mBubble;
         [SerializeField]
@@ -20,7 +24,10 @@ namespace _2_Scripts.UI.Ingame
             mButton = GetComponent<Button>();
             mButton.onClick.AddListener(OnClick);
             mBubble = transform.GetChild(0).gameObject;
-            mInfoText = mBubble?.GetComponents<TextMeshProUGUI>();
+            mInfoText = mBubble?.GetComponentsInChildren<TextMeshProUGUI>();
+            mInfoText[0].color = Success;
+            mInfoText[1].color = Bonanza;
+            mInfoText[2].color = Fail;
         }
 
         public void SetText(float[] rateArr)

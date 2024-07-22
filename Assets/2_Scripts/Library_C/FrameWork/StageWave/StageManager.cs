@@ -106,8 +106,9 @@ public class StageManager : Singleton<StageManager>
             await UniTask.WaitForSeconds(NEXT_WAVE_TIME,cancellationToken:mCancellationToken.Token);
             mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
             MessageBroker.Default.Publish(mNextStageMessage);
-            
         }
+        await UniTask.WaitForSeconds(NEXT_WAVE_TIME,cancellationToken:mCancellationToken.Token);
+        MessageBroker.Default.Publish(new TaskMessage(ETaskList.GameOver));
     }
 
     private async UniTask SpawnMonsters(WaveData waveData)

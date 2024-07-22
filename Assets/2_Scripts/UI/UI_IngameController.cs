@@ -7,32 +7,12 @@ using UnityEngine.UI;
 
 namespace _2_Scripts.UI
 {
-    public class UI_IngameController : MonoBehaviour
+    public class UI_IngameController : UI_Base
     {
         [SerializeField]
         private List<GameObject> mBottomGo;
 
         [SerializeField] private List<Button> mBottomButtons;
-
-        private void Start()
-        {
-            MessageBroker.Default.Receive<TaskMessage>()
-                .Where(message => message.Task == ETaskList.CharacterDataResourceLoad).Subscribe(
-                    _ =>
-                    {
-                        if (mBottomGo[0].TryGetComponent<UI_AcademyPannel>(out var academi)) 
-                        { 
-                            academi.Init(); 
-                        }
-                        mBottomGo[1].SetActive(true);
-                    }).AddTo(this);
-
-            for (int i = 0; i <  mBottomGo.Count; ++i)
-            {
-                int idx = i;
-                mBottomButtons[idx].onClick.AddListener(() => SetActive(idx));
-            }
-        }
 
         private void SetActive(int index)
         {
@@ -41,6 +21,26 @@ namespace _2_Scripts.UI
                 mBottomGo[i].SetActive(false);
             }
             mBottomGo[index].SetActive(true);
+        }
+
+        protected override void StartInit()
+        {
+            MessageBroker.Default.Receive<TaskMessage>()
+                .Where(message => message.Task == ETaskList.CharacterDataResourceLoad).Subscribe(
+                    _ =>
+                    {
+                        if (mBottomGo[0].TryGetComponent<UI_AcademyPannel>(out var academi))
+                        {
+                            academi.Init();
+                        }
+                        mBottomGo[1].SetActive(true);
+                    }).AddTo(this);
+
+            for (int i = 0; i < mBottomGo.Count; ++i)
+            {
+                int idx = i;
+                mBottomButtons[idx].onClick.AddListener(() => SetActive(idx));
+            }
         }
     }
 }

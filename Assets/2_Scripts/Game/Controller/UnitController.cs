@@ -57,6 +57,7 @@ namespace _2_Scripts.Game.Controller
                 mSelectUnitGroup = mSelectTileSlot?.OccupantUnit;
                 mSelectUnitMessage = new GameMessage<UnitGroup>(EGameMessage.SelectCharacter, null);
                 MessageBroker.Default.Publish(mSelectUnitMessage);
+                mSelectCircle.gameObject.SetActive(false);
                 if (mSelectUnitGroup != null)
                 {
                     mTempSubscribe = mouseUpStream

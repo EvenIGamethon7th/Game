@@ -74,7 +74,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
 
             var transitionMonsterArray = detectingTargets
                 .Select(collider => collider.GetComponent<Monster.Monster>())
-                .Where(monster => monster != null)
+                .Where(otherMonster => otherMonster != null && otherMonster != monster)
                 .ToArray();
 
             int count = transitionMonsterArray.Length < MaxHitUnit ? transitionMonsterArray.Length : MaxHitUnit;

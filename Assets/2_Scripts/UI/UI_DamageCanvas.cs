@@ -8,19 +8,13 @@ using UnityEngine;
 
 namespace _2_Scripts.UI
 {
-    public class UI_DamageCanvas : MonoBehaviour
+    public class UI_DamageCanvas : UI_Base
     {
         [SerializeField]
         private TextMeshProUGUI mText;
         private CancellationTokenSource mCts;
 
         private static Color mClear = new Color(1, 1, 1, 0);
-
-        void Awake()
-        {
-            GetComponent<Canvas>().worldCamera = UICamera.Instance.Camera;
-            mCts = new CancellationTokenSource();
-        }
 
         public void SetDamage(float damage)
         {
@@ -53,6 +47,11 @@ namespace _2_Scripts.UI
         {
             mCts.Cancel();
             mCts.Dispose();
+        }
+
+        protected override void StartInit()
+        {
+            mCts = new CancellationTokenSource();
         }
     }
 }

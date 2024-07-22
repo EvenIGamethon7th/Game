@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
 using Spine.Unity;
 using UnityEngine;
@@ -78,6 +79,22 @@ public class Utils
         return count - 1;
     }
 
+    public static async void DoShake(Transform transform, float time = 1f, float amount = 0.1f, bool isUnscale = false)
+    {
+        Vector3 originPos = transform.position;
+
+        while (time > 0)
+        {
+            transform.position = originPos + new Vector3(UnityEngine.Random.Range(-amount, amount), UnityEngine.Random.Range(-amount, amount), 0);
+            await UniTask.DelayFrame(1);
+            transform.position = originPos;
+            if (isUnscale)
+                time -= Time.unscaledDeltaTime;
+
+            else
+                time -= Time.deltaTime;
+        }
+    }
 
     public class ReadonlyNumber<T>
     {

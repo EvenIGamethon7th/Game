@@ -124,12 +124,30 @@ public class GameManager : Singleton<GameManager>
         return 3;
     }
 
+    private readonly Dictionary<int, int> mInterestTable = new()
+    {
+        {100,20},
+        {300,30}
+    };
+
+    private const int ROUND_BONUS_GOLD_STAGE = 10;
     private void Start()
     {
         MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange)
             .Subscribe(message =>
             {
-                UpdateMoney(EMoneyType.Gold, 10);
+        
+                int interest = 0;
+                foreach (var tableValue in mInterestTable)
+                {
+                    if (tableValue.Key < UserGold.Value)
+                    {
+                        interest = Mathf.Max(interest, tableValue.Value);
+                    }
+                }
+                int stageClearReward = message.Value < ROUND_BONUS_GOLD_STAGE
+                    ? 10 : 20;
+                UpdateMoney(EMoneyType.Gold, stageClearReward + interest);
                 AddExp(20);
             });
 

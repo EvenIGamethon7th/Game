@@ -36,6 +36,8 @@ public class StageManager : Singleton<StageManager>
     private CancellationTokenSource mCancellationToken;
     private TaskMessage mBossSpawnMessage;
 
+    public int MaxStageCount { get; private set; }
+
     /// <summary>
     ///  테스트용 스테이지 시작 코드
     /// </summary>
@@ -89,6 +91,7 @@ public class StageManager : Singleton<StageManager>
             mWaveQueue.Enqueue(waveData);
         }
 
+        MaxStageCount = mWaveQueue.Count;
         StartWave().Forget();
     }
 
@@ -107,6 +110,11 @@ public class StageManager : Singleton<StageManager>
             if (mCurrentWaveData.isBoss)
             {
                 MessageBroker.Default.Publish(mBossSpawnMessage);
+            }
+
+            if (MaxStageCount == mNextStageMessage?.Value)
+            {
+                break;
             }
             await UniTask.WaitForSeconds(NEXT_WAVE_TIME,cancellationToken:mCancellationToken.Token);
             mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);

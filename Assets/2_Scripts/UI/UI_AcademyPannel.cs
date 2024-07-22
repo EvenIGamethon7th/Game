@@ -1,5 +1,6 @@
 using _2_Scripts.Game.Unit;
 using _2_Scripts.UI;
+using _2_Scripts.UI.Ingame;
 using _2_Scripts.Utils;
 using DG.Tweening;
 using System.Collections;
@@ -43,11 +44,13 @@ namespace _2_Scripts.UI {
         [SerializeField]
         private Image mClassImage;
 
+        private UI_AcademyInfo mInfo;
+
         public void Init()
         {
             mLesson = GetComponentInChildren<UI_AcademyLesson>(true);
             mStatus = GetComponentInChildren<UI_AcademyStatus>(true);
-
+            mInfo = GetComponentInChildren<UI_AcademyInfo>(true);
             mLesson.Init();
 
             MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange)
@@ -95,6 +98,9 @@ namespace _2_Scripts.UI {
             mClassImage.gameObject.SetActive(true);
             mClassImage.sprite = mAtlas.GetSprite(mClassData[0].AcademyClassKey);
             mLesson.DoLesson(0);
+
+            SetInfoRate();
+
             mStudentData.isAlumni = true;
         }
 
@@ -136,6 +142,7 @@ namespace _2_Scripts.UI {
                 {
                     mLesson.DoLesson(mLessonCount);
                     mClassImage.sprite = mAtlas.GetSprite(mClassData[mLessonCount].AcademyClassKey);
+                    SetInfoRate();
                 }
             }
 
@@ -147,9 +154,6 @@ namespace _2_Scripts.UI {
 
         private void DecideLessonResult()
         {
-            mClassRate[0] = mClassData[mLessonCount].Success_pro * 100;
-            mClassRate[1] = mClassData[mLessonCount].Great_pro * 100;
-            mClassRate[2] = mClassData[mLessonCount].Fail_pro * 100;
             int rate = global::Utils.GetRandomIntBasedOnRates(mClassRate);
             ELessonResults result = (ELessonResults)rate;
             mLesson.SetResult(mLessonCount, result);
@@ -187,6 +191,14 @@ namespace _2_Scripts.UI {
             {
                 mTempAlumniData.alumniAtk += stat;
             }
+        }
+
+        private void SetInfoRate()
+        {
+            mClassRate[0] = mClassData[mLessonCount].Success_pro * 100;
+            mClassRate[1] = mClassData[mLessonCount].Great_pro * 100;
+            mClassRate[2] = mClassData[mLessonCount].Fail_pro * 100;
+            mInfo.SetText(mClassRate);
         }
     }
 }

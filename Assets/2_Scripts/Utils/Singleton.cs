@@ -48,6 +48,11 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
             SceneManager.activeSceneChanged -= ChangeSceneInit;
             SceneManager.activeSceneChanged += ChangeSceneInit;
         }
+
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
     protected virtual void OnDestory()
     {

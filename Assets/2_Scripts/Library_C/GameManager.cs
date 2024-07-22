@@ -129,6 +129,8 @@ public class GameManager : Singleton<GameManager>
         {100,20},
         {300,30}
     };
+
+    private const int ROUND_BONUS_GOLD_STAGE = 10;
     private void Start()
     {
         MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange)
@@ -143,7 +145,7 @@ public class GameManager : Singleton<GameManager>
                         interest = Mathf.Max(interest, tableValue.Value);
                     }
                 }
-                int stageClearReward = message.Value < StageManager.Instance.MaxStageCount/2 
+                int stageClearReward = message.Value < ROUND_BONUS_GOLD_STAGE
                     ? 10 : 20;
                 UpdateMoney(EMoneyType.Gold, stageClearReward + interest);
                 AddExp(20);

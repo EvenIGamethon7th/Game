@@ -57,6 +57,7 @@ Shader "Unlit/CoolTime"
                 half4 col = tex2D(_MainTex, i.uv);
 
                 col.rgb *= col.a;
+                clip(col.a - 0.0005f);
 
                 float pi = 3.14159;
 

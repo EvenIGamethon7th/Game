@@ -1,16 +1,16 @@
 using _2_Scripts.Utils;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UniRx;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.U2D;
 using UnityEngine.UI;
 
 namespace _2_Scripts.UI.Ingame
 {
-    public class UI_MainCharacter : MonoBehaviour, IPointerUpHandler, IDragHandler, IEndDragHandler, IPointerDownHandler
+    public class UI_MainCharacterButton : MonoBehaviour, IPointerUpHandler, IDragHandler, IEndDragHandler, IPointerDownHandler
     {
         private RectTransform mRectTransform;
 
@@ -18,8 +18,6 @@ namespace _2_Scripts.UI.Ingame
 
         [SerializeField]
         private Material mMaterial;
-        [SerializeField]
-        private TextMeshProUGUI mCoolTimeText;
 
         private GameMessage<Vector2> mWorldPosMessage;
         private GameMessage<bool> mOnImageMessage;
@@ -45,8 +43,9 @@ namespace _2_Scripts.UI.Ingame
                 }).AddTo(this);
         }
 
-        public void Init(float coolTime)
+        public void Init(Sprite sprite, float coolTime)
         {
+            mMaterial.SetTexture("_MainTex", sprite.texture);
             mMaterial.SetFloat("_CoolTime", coolTime);
         }
 
@@ -54,6 +53,11 @@ namespace _2_Scripts.UI.Ingame
         {
             Vector2 imagePos = UICamera.Instance.Camera.WorldToScreenPoint(mRectTransform.position);
             Vector2 mousePos = eventData.position;
+            if (!IsMouseOnImage(imagePos, mousePos))
+            {
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(eventData.position), Vector2.zero);
+                Debug.Log(hit.collider?.name);
+            }
 
             mOnImageMessage.SetValue(IsMouseOnImage(imagePos, mousePos));
             MessageBroker.Default.Publish(mOnImageMessage);
@@ -71,21 +75,6 @@ namespace _2_Scripts.UI.Ingame
         private void SetCoolTime(float time)
         {
             mMaterial.SetFloat("_CurrentCoolTime", time);
-
-            if (time <= 0)
-            {
-                mCoolTimeText.text = $"사용 가능";
-            }
-
-            else if (time < 1)
-            {
-                mCoolTimeText.text = $"{time.ToString("F1")}초";
-            }
-
-            else
-            {
-                mCoolTimeText.text = $"{(int)time}초";
-            }
         }
 
         private bool IsMouseOnImage(Vector2 imagePos, Vector2 mousePos)

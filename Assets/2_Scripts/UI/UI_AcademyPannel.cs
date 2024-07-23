@@ -72,16 +72,17 @@ namespace _2_Scripts.UI {
 
         private void CanLesson(CUnit student)
         {
+            mCanLesson.SetValue(mDoLesson);
+            MessageBroker.Default.Publish(mCanLesson);
             if (mDoLesson)
             {
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("이미 수업을 듣는 영웅이 있습니다!");
             }
+
             else
             {
                 AcademyLesson(student);
             }
-            mCanLesson.SetValue(!mDoLesson);
-            MessageBroker.Default.Publish(mCanLesson);
         }
 
         private void AcademyLesson(CUnit student)
@@ -139,8 +140,12 @@ namespace _2_Scripts.UI {
 
             if (mLessonCount < 5)
             {
-                DecideLessonResult();
-                ++mLessonCount;
+                for (int i = 0; i < 2; ++i)
+                {
+                    DecideLessonResult();
+                    ++mLessonCount;
+                }
+
                 if (mLessonCount < 5)
                 {
                     mLesson.DoLesson(mLessonCount);

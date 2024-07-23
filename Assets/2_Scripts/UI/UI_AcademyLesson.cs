@@ -57,8 +57,12 @@ namespace _2_Scripts.UI
 
         public void DoLesson(int lessonNum)
         {
-            mArrowImages[lessonNum].gameObject.SetActive(true);
-            mArrowImages[lessonNum].sprite = mSprites[(int)ELessonResults.During];
+            for (int i = 0; i < 2; ++i)
+            {
+                if (lessonNum + i == 5) break;
+                mArrowImages[lessonNum + i].gameObject.SetActive(true);
+                mArrowImages[lessonNum + i].sprite = mSprites[(int)ELessonResults.During];
+            }
         }
 
         public void SetResult(int lessonNum, ELessonResults result)

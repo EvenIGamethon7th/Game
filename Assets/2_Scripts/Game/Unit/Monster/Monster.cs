@@ -148,6 +148,11 @@ namespace _2_Scripts.Game.Monster
                 {
                     MessageBroker.Default.Publish(BOSS_DEATH);
                 }
+
+                if (IsLastBoss)
+                {
+                    MessageBroker.Default.Publish(new TaskMessage(ETaskList.GameOver));
+                }
                 StageManager.Instance.RemoveMonster(this);
                 Enabled(false);
                 ClearData();

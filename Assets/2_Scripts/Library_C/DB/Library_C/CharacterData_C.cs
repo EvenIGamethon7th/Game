@@ -11,6 +11,7 @@ using Cargold.DB.TableImporter;
 public partial class CharacterData : Data_C
 {
      public string Key;
+     [LabelText("그룹")] public int Group;
      [LabelText("이름")] public string nameKey;
      [LabelText("공격력")] public float atk;
      [LabelText("공격속도")] public float atkSpeed;
@@ -31,19 +32,20 @@ public partial class CharacterData : Data_C
     public override void CallEdit_OnDataImport_Func(string[] _cellDataArr)
     {
         Key = _cellDataArr[0];
-        nameKey = _cellDataArr[1];
-        atk = _cellDataArr[2].ToFloat();
-        atkSpeed = _cellDataArr[3].ToFloat();
-        matk = _cellDataArr[4].ToFloat();
-        rank = _cellDataArr[5].ToInt();
-        characterData = _cellDataArr[6];
-        range = _cellDataArr[7].ToFloat();
-        cost = _cellDataArr[8].ToInt();
-        characterPack = _cellDataArr[9];
-        academyClass = _cellDataArr[10].ToInt();
-        Skill1 = _cellDataArr[11];
-        Skill2 = _cellDataArr[12];
-        ClassType = _cellDataArr[13];
+        Group = _cellDataArr[1].ToInt();
+        nameKey = _cellDataArr[2];
+        atk = _cellDataArr[3].ToFloat();
+        atkSpeed = _cellDataArr[4].ToFloat();
+        matk = _cellDataArr[5].ToFloat();
+        rank = _cellDataArr[6].ToInt();
+        characterData = _cellDataArr[7];
+        range = _cellDataArr[8].ToFloat();
+        cost = _cellDataArr[9].ToInt();
+        characterPack = _cellDataArr[10];
+        academyClass = _cellDataArr[11].ToInt();
+        Skill1 = _cellDataArr[12];
+        Skill2 = _cellDataArr[13];
+        ClassType = _cellDataArr[14];
     }
 #endif
 }

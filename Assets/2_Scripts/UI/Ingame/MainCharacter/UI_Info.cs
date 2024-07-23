@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace _2_Scripts.UI.Ingame
 {
-    public class UI_MainCharacterInfo : MonoBehaviour
+    public class UI_Info : MonoBehaviour
     {
         [SerializeField]
         private GameObject mInfo;
@@ -13,7 +13,6 @@ namespace _2_Scripts.UI.Ingame
 
         private void Awake()
         {
-            mInfo.SetActive(false);
             mButton = GetComponent<Button>();
             mButton.onClick.AddListener(SetActiveInfo);
         }

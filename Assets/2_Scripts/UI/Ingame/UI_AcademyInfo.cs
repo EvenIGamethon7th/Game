@@ -28,6 +28,9 @@ namespace _2_Scripts.UI.Ingame
             mInfoText[0].color = Success;
             mInfoText[1].color = Bonanza;
             mInfoText[2].color = Fail;
+            mInfoText[0].text = "성공: ";
+            mInfoText[1].text = "대성공: ";
+            mInfoText[2].text = "실패: ";
         }
 
         public void SetText(float[] rateArr)

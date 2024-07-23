@@ -88,6 +88,8 @@ public class Utils
         {
             transform.position = originPos + new Vector3(UnityEngine.Random.Range(-amount, amount), UnityEngine.Random.Range(-amount, amount), 0);
             await UniTask.DelayFrame(1);
+            if (transform == null)
+                break;
             transform.position = originPos;
             if (isUnscale)
                 time -= Time.unscaledDeltaTime;
@@ -97,12 +99,22 @@ public class Utils
         }
     }
 
+    public static bool IsPosOnUI(RectTransform rect, Vector2 mousePos, Vector2 imagePos)
+    {
+        if (imagePos.x - rect.sizeDelta.x * 0.5f > mousePos.x || imagePos.x + rect.sizeDelta.x * 0.5f < mousePos.x) return false;
+        if (imagePos.y - rect.sizeDelta.y * 0.5f > mousePos.y || imagePos.y + rect.sizeDelta.y * 0.5f < mousePos.y) return false;
+
+        return true;
+    }
+
+    
     public static string GetEnumDescription(Enum value)
     {
         var field = value.GetType().GetField(value.ToString());
         var attributes = (DescriptionAttribute[])field.GetCustomAttributes(typeof(DescriptionAttribute), false);
         return attributes.Length > 0 ? attributes[0].Description : value.ToString();
     }
+    
     public class ReadonlyNumber<T>
     {
         private readonly T _value;

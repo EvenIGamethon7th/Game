@@ -53,6 +53,8 @@ namespace _2_Scripts.UI {
             mInfo = GetComponentInChildren<UI_AcademyInfo>(true);
             mLesson.Init();
             mInfo.Init();
+            mStatus.Clear();
+            mClassImage.gameObject.SetActive(false);
 
             MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange)
                 .Subscribe(message =>

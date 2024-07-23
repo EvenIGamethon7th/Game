@@ -208,5 +208,6 @@ public class GameManager : Singleton<GameManager>
         UserLevel.Value = 1;
         UserGold.Value = 30;
         UserLuckyCoin.Value = 0;
+        UserExp.Value = 0;
     }
 }

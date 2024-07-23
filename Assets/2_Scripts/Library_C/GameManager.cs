@@ -156,8 +156,8 @@ public class GameManager : Singleton<GameManager>
                         interest = Mathf.Max(interest, tableValue.Value);
                     }
                 }
-                int stageClearReward = message.Value < ROUND_BONUS_GOLD_STAGE
-                    ? 10 : 20;
+
+                int stageClearReward = 10;
                 UpdateMoney(EMoneyType.Gold, stageClearReward + interest);
                 AddExp(20);
             }).AddTo(this);

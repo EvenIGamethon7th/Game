@@ -11,8 +11,8 @@ public class UI_WaveText : MonoBehaviour
     private TextMeshProUGUI mWaveText;
     void Start()
     {
-        MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange)
-            .Subscribe(message => mWaveText.text = $"Wave {message.Value}").AddTo(this);
+        MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange && message.Value != 0)
+            .Subscribe(message => mWaveText.text = $"WAVE {message.Value}").AddTo(this);
     }
 
 }

@@ -43,8 +43,8 @@ namespace _2_Scripts.Game.Monster
 
         private List<IDamagebleAction> mDamagebleActions;
         private Action damagebleActions;
-        
-        
+
+        public bool IsLastBoss = false;
         // Monster 방깍 한 번만 받기 위한 플래그
         public  bool DefenceFlag = false;
         public bool IsDead => mMonsterData.hp <= 0;
@@ -143,6 +143,11 @@ namespace _2_Scripts.Game.Monster
                 {
                     MessageBroker.Default.Publish(BOSS_DEATH);
                 }
+
+                if (IsLastBoss)
+                {
+                    MessageBroker.Default.Publish(new TaskMessage(ETaskList.GameOver));
+                }
                 StageManager.Instance.RemoveMonster(this);
                 Enabled(false);
                 ClearData();
@@ -197,6 +202,7 @@ namespace _2_Scripts.Game.Monster
             mHpCanvas.gameObject.SetActive(bEnable);
             enabled = bEnable;
             DefenceFlag = false;
+            IsLastBoss = false;
         }
     }
 }

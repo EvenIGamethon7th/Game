@@ -1,18 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class UI_MainCharacterInfo : MonoBehaviour
+namespace _2_Scripts.UI.Ingame
 {
-    // Start is called before the first frame update
-    void Start()
+    public class UI_MainCharacterInfo : MonoBehaviour
     {
-        
-    }
+        [SerializeField]
+        private GameObject mInfo;
+        private Button mButton;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void Awake()
+        {
+            mInfo.SetActive(false);
+            mButton = GetComponent<Button>();
+            mButton.onClick.AddListener(SetActiveInfo);
+        }
+
+        private void SetActiveInfo()
+        {
+            mInfo.SetActive(true);
+        }
+
+        private void OnDestroy()
+        {
+            mButton?.onClick.RemoveAllListeners();
+        }
     }
 }

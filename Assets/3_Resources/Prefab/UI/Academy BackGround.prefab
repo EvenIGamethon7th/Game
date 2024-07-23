@@ -2516,7 +2516,7 @@ GameObject:
   - component: {fileID: 6979507016993874489}
   - component: {fileID: 2134594070038228297}
   - component: {fileID: 7540079892374917539}
-  - component: {fileID: 5120869332012869914}
+  - component: {fileID: 8792897784162479255}
   m_Layer: 5
   m_Name: Grade Text
   m_TagString: Untagged
@@ -2640,7 +2640,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &5120869332012869914
+--- !u!114 &8792897784162479255
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2649,9 +2649,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5830159296713888612}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3651e5951bbe65d4ab3f847671c89926, type: 3}
+  m_Script: {fileID: 11500000, guid: 52eeba0a4dc74830a22096c644cee295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mText: {fileID: 0}
 --- !u!1 &6280066677440536956
 GameObject:
   m_ObjectHideFlags: 0

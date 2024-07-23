@@ -56,7 +56,6 @@ namespace _2_Scripts.UI.Ingame
             if (!IsMouseOnImage(imagePos, mousePos))
             {
                 RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(eventData.position), Vector2.zero);
-                Debug.Log(hit.collider?.name);
             }
 
             mOnImageMessage.SetValue(IsMouseOnImage(imagePos, mousePos));

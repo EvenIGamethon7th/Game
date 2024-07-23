@@ -52,15 +52,14 @@ using AsyncOperation = UnityEngine.AsyncOperation;
             
             await UniTask.WaitUntil(()=>mGraphicMaterialOverride.PropertyValue <= 0f);
             ToolTipAnimation();
+            
             await UniTask.WaitForSeconds(2f);
             ToolTipAlpha();
 
-            SceneManager.LoadScene("LoadingScene");
-            
             AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
             asyncOperation.allowSceneActivation = false;
 
-            await UniTask.WaitUntil(() => asyncOperation.isDone);
+            await UniTask.WaitUntil(() => asyncOperation.progress >= 0.9f);
             
             mSceneLoadAnimator.SetBool("Fade",true);
             asyncOperation.allowSceneActivation = true;

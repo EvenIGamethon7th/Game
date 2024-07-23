@@ -48,6 +48,7 @@ namespace Cargold.FrameWork.BackEnd
         public void AddCurrencyData(ECurrency currency, int amount)
         {
             UserCurrency[currency].Value += amount;
+            PublishCurrencyData(currency,amount);
         }
         
         private async UniTaskVoid LoginAsync(Action successCallback)
@@ -88,12 +89,13 @@ namespace Cargold.FrameWork.BackEnd
 
             await tcs.Task;
         }
-        private void PublishCurrencyData()
+        private void PublishCurrencyData(ECurrency currency,int value)
         {
+            string serverKey = Utils.GetEnumDescription(currency);
             PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest()
             {
                 FunctionName = "UpdateCurrency",
-                FunctionParameter = new { currency = UserCurrency },
+                FunctionParameter = new Dictionary<string,object>{ {"Currency",serverKey},{"Value",value} },
                 GeneratePlayStreamEvent = true
             }, (result) =>
             {

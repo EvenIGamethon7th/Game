@@ -96,6 +96,7 @@ public class StageManager : Singleton<StageManager>
     {
         await UniTask.WaitForSeconds(3f);
         MessageBroker.Default.Publish(mNextStageMessage);
+        mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
         while (mWaveQueue.Count > 0)
         {
             mCurrentWaveData = mWaveQueue.Dequeue();
@@ -113,6 +114,8 @@ public class StageManager : Singleton<StageManager>
 
             if (MaxStageCount == mNextStageMessage?.Value)
             {
+                mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
+                MessageBroker.Default.Publish(mNextStageMessage);
                 break;
             }
             await UniTask.WaitForSeconds(NEXT_WAVE_TIME,cancellationToken:mCancellationToken.Token);

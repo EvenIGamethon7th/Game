@@ -60,12 +60,12 @@ using AsyncOperation = UnityEngine.AsyncOperation;
             asyncOperation.allowSceneActivation = false;
             await UniTask.WaitUntil(() => asyncOperation.progress >= 0.9f);
             mGraphicMaterialOverride.PropertyValue = 0f;
-            await UniTask.WaitForFixedUpdate();
-            asyncOperation.allowSceneActivation = true;
+            await UniTask.WaitForSeconds(1f);
             mSceneLoadAnimator.SetBool("Fade",true);
-         
-            
+            asyncOperation.allowSceneActivation = true;
+       
             await  UniTask.WaitUntil(()=>mGraphicMaterialOverride.PropertyValue >= 0.99);
+            
             mSceneLoadAnimator.gameObject.SetActive(false);
         }
     

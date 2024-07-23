@@ -67,7 +67,7 @@ namespace _2_Scripts.UI
         {
             uiRectTransform = GetComponent<RectTransform>();
             UpdateCharacter();
-            MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange)
+            MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange && message.Value != 0)
                 .Subscribe(message =>
                 {
                     Reroll();

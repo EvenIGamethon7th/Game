@@ -40,7 +40,8 @@ namespace _2_Scripts.UI.Ingame
 
         public void OnRetryGame()
         {
-            SceneManager.LoadScene("1_Scenes/Main");
+            Time.timeScale = 1;
+            SceneLoadManager.Instance.SceneChange("Main"); 
         }
     }
 }

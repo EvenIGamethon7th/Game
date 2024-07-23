@@ -31,14 +31,14 @@ using AsyncOperation = UnityEngine.AsyncOperation;
             mToolTipGroup.alpha = 0;
             mToolTipGroup.gameObject.SetActive(true);
             Sequence tooltipSequence = DOTween.Sequence();
-            tooltipSequence.Append(mToolTipGroup.DOFade(1, 1));
-            tooltipSequence.Join(mToolTipGroup.transform.DOMoveX(0, 1));
+            tooltipSequence.Append(mToolTipGroup.DOFade(1, 2));
+            tooltipSequence.Join(mToolTipGroup.transform.DOMoveX(0, 2));
             tooltipSequence.SetAutoKill(false);
         }
 
         private void ToolTipAlpha()
         {
-            mToolTipGroup.DOFade(0, 1)
+            mToolTipGroup.DOFade(0, 2)
                 .OnComplete(() =>
                 {
                     mToolTipGroup.gameObject.SetActive(false);
@@ -53,14 +53,18 @@ using AsyncOperation = UnityEngine.AsyncOperation;
             await UniTask.WaitUntil(()=>mGraphicMaterialOverride.PropertyValue <= 0f);
             ToolTipAnimation();
             
+            await UniTask.WaitForSeconds(2f);
+            ToolTipAlpha();
+
             AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
             asyncOperation.allowSceneActivation = false;
-
             await UniTask.WaitUntil(() => asyncOperation.progress >= 0.9f);
-            
-            mSceneLoadAnimator.SetBool("Fade",true);
+            mGraphicMaterialOverride.PropertyValue = 0f;
+            await UniTask.WaitForFixedUpdate();
             asyncOperation.allowSceneActivation = true;
-            ToolTipAlpha();
+            mSceneLoadAnimator.SetBool("Fade",true);
+         
+            
             await  UniTask.WaitUntil(()=>mGraphicMaterialOverride.PropertyValue >= 0.99);
             mSceneLoadAnimator.gameObject.SetActive(false);
         }

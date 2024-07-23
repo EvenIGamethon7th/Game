@@ -43,6 +43,7 @@ public class StageManager : Singleton<StageManager>
     /// <exception cref="NotImplementedException"></exception>
     public void Start()
     {
+        Time.timeScale = 10;
         if (GameManager.Instance.IsTest)
         {
             EditInit();
@@ -97,7 +98,7 @@ public class StageManager : Singleton<StageManager>
         await UniTask.WaitForSeconds(3f);
         MessageBroker.Default.Publish(mNextStageMessage);
         mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
-        while (mWaveQueue.Count > 0)
+        while (true)
         {
             mCurrentWaveData = mWaveQueue.Dequeue();
             Debug.Log(mCurrentWaveData.Key);
@@ -131,8 +132,9 @@ public class StageManager : Singleton<StageManager>
         {
             var monster = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_Monster, mWayPoint.GetWayPointPosition(0)).GetComponent<Monster>();;
             WaveStatData waveStateData = DataBase_Manager.Instance.GetWaveStat.GetData_Func(waveData.apply_stat);
-            monster.SpawnMonster(waveData.monsterKey, mWayPoint, waveData.isBoss, waveStateData,waveData.weight);
-            monster.IsLastBoss = mWaveQueue.Count == 0;
+            bool isLastBoss =  monster.IsLastBoss = mWaveQueue.Count == 0;
+            monster.SpawnMonster(waveData.monsterKey, mWayPoint, waveData.isBoss, waveStateData,waveData.weight,isLastBoss);
+  
             MonsterList.Add(monster);
             await UniTask.WaitForSeconds(SPAWN_COOL_TIME,cancellationToken:mCancellationToken.Token);
             

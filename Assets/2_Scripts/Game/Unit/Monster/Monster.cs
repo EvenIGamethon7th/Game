@@ -79,12 +79,13 @@ namespace _2_Scripts.Game.Monster
             mDamagebleActions.ForEach(action => damagebleActions += action.DamageAction());
         }
         
-        public void SpawnMonster(string key,WayPoint waypoint,bool isBoss,WaveStatData waveStatData,float statWeight)
+        public void SpawnMonster(string key,WayPoint waypoint,bool isBoss,WaveStatData waveStatData,float statWeight,bool isLastBoss)
         {
             var monsterData = DataBase_Manager.Instance.GetMonster.GetData_Func(key);
             mMonsterData = MemoryPoolManager<MonsterData>.CreatePoolingObject();
             mMonsterData.Init(waveStatData,statWeight);
             mHpCanvas.InitHpSlider(mMonsterData.hp, isBoss);
+            this.IsLastBoss = isLastBoss;
             
             //TODO Sprite Change And Animation
             ResourceManager.Instance.Load<RuntimeAnimatorController>(monsterData.image,
@@ -148,11 +149,6 @@ namespace _2_Scripts.Game.Monster
                 {
                     MessageBroker.Default.Publish(BOSS_DEATH);
                 }
-
-                if (IsLastBoss)
-                {
-                    MessageBroker.Default.Publish(new TaskMessage(ETaskList.GameOver));
-                }
                 StageManager.Instance.RemoveMonster(this);
                 Enabled(false);
                 ClearData();
@@ -207,7 +203,6 @@ namespace _2_Scripts.Game.Monster
             mHpCanvas.gameObject.SetActive(bEnable);
             enabled = bEnable;
             DefenceFlag = false;
-            IsLastBoss = false;
         }
     }
 }

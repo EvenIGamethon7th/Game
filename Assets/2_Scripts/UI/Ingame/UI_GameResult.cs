@@ -14,14 +14,17 @@ namespace _2_Scripts.UI.Ingame
         [SerializeField] private GameObject mDefeat;
         [SerializeField] private Image mBackGroundImage;
         [SerializeField] private GameObject mButtons;
+
+        private bool isGameOver = false;
         private void Start()
         {
             GameManager.Instance.UserHp.Subscribe(hp =>
             {
-                if (hp <= 0)
+                if (hp <= 0 && isGameOver == false)
                 {
                     /// 0 하면 에러 남 
                     Time.timeScale = 0.00001f;
+                    isGameOver = true;
                     mBackGroundImage.enabled = true;
                     mDefeat.SetActive(true);
                     mButtons.SetActive(true);

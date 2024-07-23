@@ -112,18 +112,18 @@ public class StageManager : Singleton<StageManager>
                 MessageBroker.Default.Publish(mBossSpawnMessage);
             }
 
-            if (MaxStageCount == mNextStageMessage?.Value)
+            if (mWaveQueue.Count == 0)
             {
-                mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
-                MessageBroker.Default.Publish(mNextStageMessage);
+                this.MonsterList[0].IsLastBoss = true;
                 break;
             }
+            
             await UniTask.WaitForSeconds(NEXT_WAVE_TIME,cancellationToken:mCancellationToken.Token);
             mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
             MessageBroker.Default.Publish(mNextStageMessage);
         }
         await UniTask.WaitForSeconds(NEXT_WAVE_TIME,cancellationToken:mCancellationToken.Token);
-        MessageBroker.Default.Publish(new TaskMessage(ETaskList.GameOver));
+        GameManager.Instance.UpdateUserHp(-GameManager.Instance.UserHp.Value);
     }
 
     private async UniTask SpawnMonsters(WaveData waveData)

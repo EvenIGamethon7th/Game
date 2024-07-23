@@ -112,11 +112,6 @@ public class StageManager : Singleton<StageManager>
                 MessageBroker.Default.Publish(mBossSpawnMessage);
             }
 
-            if (mWaveQueue.Count == 0)
-            {
-                this.MonsterList[0].IsLastBoss = true;
-                break;
-            }
             
             await UniTask.WaitForSeconds(NEXT_WAVE_TIME,cancellationToken:mCancellationToken.Token);
             mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
@@ -133,6 +128,7 @@ public class StageManager : Singleton<StageManager>
             var monster = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_Monster, mWayPoint.GetWayPointPosition(0)).GetComponent<Monster>();;
             WaveStatData waveStateData = DataBase_Manager.Instance.GetWaveStat.GetData_Func(waveData.apply_stat);
             monster.SpawnMonster(waveData.monsterKey, mWayPoint, waveData.isBoss, waveStateData,waveData.weight);
+            monster.IsLastBoss = mWaveQueue.Count == 0;
             MonsterList.Add(monster);
             await UniTask.WaitForSeconds(SPAWN_COOL_TIME,cancellationToken:mCancellationToken.Token);
             

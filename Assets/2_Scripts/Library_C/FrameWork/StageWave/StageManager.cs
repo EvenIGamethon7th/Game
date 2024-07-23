@@ -55,7 +55,7 @@ public class StageManager : Singleton<StageManager>
 
     private void Init()
     {
-        mNextStageMessage = new GameMessage<int>(EGameMessage.StageChange, 1);
+        mNextStageMessage = new GameMessage<int>(EGameMessage.StageChange, 0);
         mBossSpawnMessage = new TaskMessage(ETaskList.BossSpawn);
         ObjectPoolManager.Instance.RegisterPoolingObject("Monster", 100);
         StageInit(TableDataKey_C.Stage_Stage_0);
@@ -94,7 +94,7 @@ public class StageManager : Singleton<StageManager>
 
     private async UniTaskVoid StartWave()
     {
-        await UniTask.WaitForSeconds(5f);
+        await UniTask.WaitForSeconds(3f);
         MessageBroker.Default.Publish(mNextStageMessage);
         while (mWaveQueue.Count > 0)
         {

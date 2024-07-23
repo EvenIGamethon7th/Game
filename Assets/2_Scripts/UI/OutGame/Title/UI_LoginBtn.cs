@@ -39,7 +39,7 @@ namespace _2_Scripts.UI.OutGame.Title
             BackEndManager.Instance.OnLogin(() =>
             {
                 GameManager.Instance.NotTestMode();
-                SceneLoadManager.Instance.SceneChange("1_Scenes/Main");
+                SceneLoadManager.Instance.SceneChange("LobbyScene");
             });
         }
     }

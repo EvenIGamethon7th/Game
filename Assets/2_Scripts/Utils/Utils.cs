@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
 using Spine.Unity;
@@ -106,6 +107,14 @@ public class Utils
         return true;
     }
 
+    
+    public static string GetEnumDescription(Enum value)
+    {
+        var field = value.GetType().GetField(value.ToString());
+        var attributes = (DescriptionAttribute[])field.GetCustomAttributes(typeof(DescriptionAttribute), false);
+        return attributes.Length > 0 ? attributes[0].Description : value.ToString();
+    }
+    
     public class ReadonlyNumber<T>
     {
         private readonly T _value;

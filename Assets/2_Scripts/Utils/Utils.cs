@@ -87,6 +87,8 @@ public class Utils
         {
             transform.position = originPos + new Vector3(UnityEngine.Random.Range(-amount, amount), UnityEngine.Random.Range(-amount, amount), 0);
             await UniTask.DelayFrame(1);
+            if (transform == null)
+                break;
             transform.position = originPos;
             if (isUnscale)
                 time -= Time.unscaledDeltaTime;
@@ -94,6 +96,14 @@ public class Utils
             else
                 time -= Time.deltaTime;
         }
+    }
+
+    public static bool IsPosOnUI(RectTransform rect, Vector2 mousePos, Vector2 imagePos)
+    {
+        if (imagePos.x - rect.sizeDelta.x * 0.5f > mousePos.x || imagePos.x + rect.sizeDelta.x * 0.5f < mousePos.x) return false;
+        if (imagePos.y - rect.sizeDelta.y * 0.5f > mousePos.y || imagePos.y + rect.sizeDelta.y * 0.5f < mousePos.y) return false;
+
+        return true;
     }
 
     public class ReadonlyNumber<T>

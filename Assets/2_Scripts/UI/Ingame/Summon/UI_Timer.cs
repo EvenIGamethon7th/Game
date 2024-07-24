@@ -37,7 +37,7 @@ namespace _2_Scripts.UI
                     }, 
                     () =>
                     {
-                        mStartTime = 15;
+                        mStartTime = 20;
                     })
                 .AddTo(this);
         }

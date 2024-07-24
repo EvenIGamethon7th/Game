@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using Cysharp.Threading.Tasks;
+using Newtonsoft.Json;
 using PlayFab;
 using PlayFab.ClientModels;
+using PlayFab.DataModels;
 using UniRx;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using EntityKey = PlayFab.DataModels.EntityKey;
 
 namespace Cargold.FrameWork.BackEnd
 {
+    
+    using _2_Scripts.Game.BackEndData.Stage;
     public enum ECurrency
     {
         [Description("FT")]
@@ -28,6 +33,36 @@ namespace Cargold.FrameWork.BackEnd
         {
             {ECurrency.Father,new ReactiveProperty<int>(0)},
             {ECurrency.Diamond,new ReactiveProperty<int>(0)}
+        };
+
+        public List<ChapterData> ChapterDataList { get; private set; } = new()
+        {
+            {new ChapterData()
+            {
+                ChapterNumber = 1,
+                Star = 0,
+                StageList = new List<StageData>()
+                {
+                    new StageData()
+                    {
+                        StageNumber = 1,
+                        Star = 0,
+                        IsClear = false
+                    },
+                    new StageData()
+                    {
+                        StageNumber = 2,
+                        Star = 0,
+                        IsClear = false
+                    },
+                    new StageData()
+                    {
+                        StageNumber = 3,
+                        Star = 0,
+                        IsClear = false
+                    }
+                }
+            }}
         };
 
         protected override void Awake()
@@ -66,6 +101,7 @@ namespace Cargold.FrameWork.BackEnd
         private async UniTaskVoid SyncCurrencyDataFromServer(Action successCallback)
         {
             await ReceiveCurrencyData();
+            SaveChapterData();
             successCallback?.Invoke();
         }
 
@@ -89,6 +125,32 @@ namespace Cargold.FrameWork.BackEnd
 
             await tcs.Task;
         }
+
+        public void SaveChapterData()
+        {
+            string jsonData = JsonConvert.SerializeObject(ChapterDataList);
+            PublishChapterData(new Dictionary<string, string> { { "ChapterData", jsonData } });
+        }
+        
+        private void PublishChapterData(Dictionary<string,string> data)
+        {
+           var request = new ExecuteCloudScriptRequest
+           {
+              FunctionName = "UpdateChapterData",
+              FunctionParameter = new {data},
+              GeneratePlayStreamEvent = true
+           };
+
+           PlayFabClientAPI.ExecuteCloudScript(request, (result) =>
+           {
+               Debug.Log("PublishChapterData");
+           }, (error) =>
+           {
+               ErrorLog(error);
+           });
+
+        }
+        
         private void PublishCurrencyData(ECurrency currency,int value)
         {
             string serverKey = Utils.GetEnumDescription(currency);

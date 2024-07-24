@@ -86,7 +86,7 @@ namespace _2_Scripts.Game.Monster
             mMonsterData.Init(waveStatData,statWeight);
             mHpCanvas.InitHpSlider(mMonsterData.hp, isBoss);
             this.IsLastBoss = isLastBoss;
-            
+            mAnimator.speed = 0;
             //TODO Sprite Change And Animation
             ResourceManager.Instance.Load<RuntimeAnimatorController>(monsterData.image,
             (controller) =>
@@ -101,6 +101,7 @@ namespace _2_Scripts.Game.Monster
                 mMatController.RunDissolve(true, () => {
                     IsBoss = isBoss;
                     Enabled(true);
+                    mAnimator.speed = 1;
                 });
             }).Forget();
 

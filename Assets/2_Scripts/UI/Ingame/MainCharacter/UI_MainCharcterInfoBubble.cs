@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
+using UnityEngine.EventSystems;
 
 
 namespace _2_Scripts.UI.Ingame

@@ -154,7 +154,7 @@ namespace _2_Scripts.UI {
                 }
             }
 
-            if (mLessonCount == 5)
+            if (mLessonCount >= 5)
             {
                 SummonAlumni();
             }

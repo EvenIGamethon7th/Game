@@ -22,7 +22,7 @@ public class StageManager : Singleton<StageManager>
     private WaveData mCurrentWaveData;
     
     private const float SPAWN_COOL_TIME = 1.5f;
-    private const float NEXT_WAVE_TIME = 15.0f;
+    private const float NEXT_WAVE_TIME = 20.0f;
     
     private int mDeathBossCount = 0;
 
@@ -43,7 +43,7 @@ public class StageManager : Singleton<StageManager>
     /// <exception cref="NotImplementedException"></exception>
     public void Start()
     {
-        Time.timeScale = 10;
+        Time.timeScale = 2;
         if (GameManager.Instance.IsTest)
         {
             EditInit();
@@ -83,7 +83,7 @@ public class StageManager : Singleton<StageManager>
     private void StageInit()
     {
         var currentStage = GameManager.Instance.CurrentStageData;
-        var stageKey = $"Stage_{(currentStage.ChapterNumber - 1) * 5 + currentStage.StageNumber}";
+        var stageKey = $"Stage_{(currentStage.ChapterNumber - 1) * 5 + (currentStage.StageNumber-1)}";
         mCurrentStageData = DataBase_Manager.Instance.GetStage.GetData_Func(stageKey);
         foreach (var wave in mCurrentStageData.waveList)
         {

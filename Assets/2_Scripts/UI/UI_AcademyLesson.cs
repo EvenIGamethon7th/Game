@@ -67,6 +67,7 @@ namespace _2_Scripts.UI
 
         public void SetResult(int lessonNum, ELessonResults result)
         {
+            if (lessonNum >= 5) return;
             switch (result)
             {
                 case ELessonResults.Fail:

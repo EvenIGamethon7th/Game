@@ -5,6 +5,7 @@ using _2_Scripts.Game.Map.Tile;
 using _2_Scripts.Game.Unit;
 using _2_Scripts.UI;
 using _2_Scripts.Utils;
+using OfficeOpenXml.Drawing.Chart;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -21,7 +22,7 @@ namespace _2_Scripts.Game.Controller
         private GameObject mSelectCircle;
         private IDisposable mTempSubscribe;
 
-        private bool mHasLongTouch = false;
+        private bool mHasUnitTouch = false;
         
         private GameMessage<UnitGroup> mSelectUnitMessage;
 
@@ -38,10 +39,16 @@ namespace _2_Scripts.Game.Controller
             
             //롱 터치 시 목적지 위치를 프레임마다 받아옴
             this.UpdateAsObservable()
-                .Where(_ => mHasLongTouch)
+                .Where(_ => mHasUnitTouch)
                 .Subscribe(_ =>
                 {
                     var dstSlot = MapManager.Instance.GetClickTileSlotDetailOrNull();
+
+                    if (mSelectTileSlot == dstSlot)
+                    {
+                        mIndicator.SetActive(false);
+                    }
+
                     if (dstSlot != null && dstSlot.IsNormalUnit)
                     {
                         mIndicator.SetIndicator(mSelectTileSlot.transform.position, dstSlot.transform.position);
@@ -60,15 +67,7 @@ namespace _2_Scripts.Game.Controller
                 mSelectCircle.gameObject.SetActive(false);
                 if (mSelectUnitGroup != null)
                 {
-                    mTempSubscribe = mouseUpStream
-                        .Buffer(TimeSpan.FromMilliseconds(150))
-                        .Take(1)
-                        .Where(x => x.Count == 0)
-                        .Subscribe(_ =>
-                        {
-                            mHasLongTouch = true;
-                            mTempSubscribe.Dispose();
-                        });
+                    mHasUnitTouch = true;
                 }
             });
 
@@ -76,13 +75,14 @@ namespace _2_Scripts.Game.Controller
                 .SelectMany(_ => mouseUpStream.First())
                 .Subscribe(_ =>
                 {
-                    if (mHasLongTouch)
+                    //위치 이동 및 자리 변경
+                    TileSlot dstSlot = MapManager.Instance.GetClickTileSlotDetailOrNull();
+                    if (dstSlot != null)
                     {
-                        //위치 이동 및 자리 변경
-                        TileSlot dstSlot = MapManager.Instance.GetClickTileSlotDetailOrNull();
-                        if (dstSlot != null && dstSlot != mSelectTileSlot && dstSlot.IsNormalUnit)
+                        if (dstSlot != mSelectTileSlot)
                         {
                             UnitGroup dstUnit = dstSlot.OccupantUnit;
+                            mSelectTileSlot.SetOccupantUnit(dstUnit);
                             if (dstUnit != null)
                             {
                                 mSelectTileSlot.SetOccupantUnit(dstUnit);
@@ -94,43 +94,42 @@ namespace _2_Scripts.Game.Controller
                             dstSlot.SetOccupantUnit(mSelectUnitGroup);
                             mSelectTileSlot = dstSlot;
                         }
-                        mHasLongTouch = false;
-                        mIndicator?.SetActive(false);
-                    }
-
-                    else
-                    {
-                        mSelectTileSlot = MapManager.Instance.GetClickTileSlotDetailOrNull();
-                        var selectUnitGroup = mSelectTileSlot?.GetComponent<TileSlot>().OccupantUnit;
-
-                        if (mSelectUnitGroup != null)
-                            mSelectUnitGroup.IsSelect = false;
-
-                        if (selectUnitGroup != null)
-                        {
-                            //TODO: UI에 정보 올리기 SelectCharacter 메모리 풀링 사용해야할듯 메세지도
-                            mSelectUnitMessage = new GameMessage<UnitGroup>(EGameMessage.SelectCharacter, selectUnitGroup);
-                            MessageBroker.Default.Publish(mSelectUnitMessage);
-                            mSelectCircle.transform.parent = selectUnitGroup.transform;
-                            mSelectCircle.transform.position = selectUnitGroup.transform.position;
-                            mSelectCircle.SetActive(true);
-                            selectUnitGroup.IsSelect = true;
-                        }
 
                         else
                         {
-                            if (IsPointerOverUIPopUp())
-                            {
-                                return;
-                            }
-                            mSelectUnitMessage = new GameMessage<UnitGroup>(EGameMessage.SelectCharacter, null);
-                            MessageBroker.Default.Publish(mSelectUnitMessage);
-                            mSelectCircle.transform.parent = null;
-                            mSelectCircle.SetActive(false);
-                        }
+                            mSelectTileSlot = dstSlot;
+                            var selectUnitGroup = mSelectTileSlot?.GetComponent<TileSlot>().OccupantUnit;
 
-                        mSelectUnitGroup = selectUnitGroup;
+                            if (mSelectUnitGroup != null)
+                                mSelectUnitGroup.IsSelect = false;
+
+                            if (selectUnitGroup != null)
+                            {
+                                //TODO: UI에 정보 올리기 SelectCharacter 메모리 풀링 사용해야할듯 메세지도
+                                mSelectUnitMessage = new GameMessage<UnitGroup>(EGameMessage.SelectCharacter, selectUnitGroup);
+                                MessageBroker.Default.Publish(mSelectUnitMessage);
+                                mSelectCircle.transform.parent = selectUnitGroup.transform;
+                                mSelectCircle.transform.position = selectUnitGroup.transform.position;
+                                mSelectCircle.SetActive(true);
+                                selectUnitGroup.IsSelect = true;
+                            }
+
+                            else
+                            {
+                                if (IsPointerOverUIPopUp())
+                                {
+                                    return;
+                                }
+                                mSelectUnitMessage = new GameMessage<UnitGroup>(EGameMessage.SelectCharacter, null);
+                                MessageBroker.Default.Publish(mSelectUnitMessage);
+                                mSelectCircle.transform.parent = null;
+                                mSelectCircle.SetActive(false);
+                            }
+                            mSelectUnitGroup = selectUnitGroup;
+                        }
                     }
+                    mIndicator?.SetActive(false);
+                    mHasUnitTouch = false;
                 });
             
         }

@@ -7,9 +7,9 @@ namespace _2_Scripts.UI.Ingame.LootBox
     {
         private Dictionary<int,int> rates = new()
         {
-            {0,40},
-            {10,50},
-            {150,5}
+            {10,70},
+            {30,20},
+            {70,10}
         };
         private string mRewadMessage;
         public string RewardMessage()

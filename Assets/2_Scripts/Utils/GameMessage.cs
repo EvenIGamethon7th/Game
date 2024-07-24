@@ -11,7 +11,8 @@ namespace _2_Scripts.Utils
         GoAcademy,
         MainCharacterSkillDuring,
         MainCharacterSkillUse,
-        MainCharacterCoolTime
+        MainCharacterCoolTime,
+        GameStartPopUpOpen,
     }
     
     public class GameMessage<T>

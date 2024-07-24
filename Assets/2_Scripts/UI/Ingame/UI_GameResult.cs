@@ -46,5 +46,11 @@ namespace _2_Scripts.UI.Ingame
             Time.timeScale = 1;
             SceneLoadManager.Instance.SceneChange("Main"); 
         }
+        
+        public void OnLobby()
+        {
+            Time.timeScale = 1;
+            SceneLoadManager.Instance.SceneChange("LobbyScene");
+        }
     }
 }

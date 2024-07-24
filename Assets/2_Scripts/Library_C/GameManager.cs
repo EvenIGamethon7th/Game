@@ -12,7 +12,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using CharacterInfo = _2_Scripts.Game.ScriptableObject.Character.CharacterInfo;
 using Random = System.Random;
-
 public class GameManager : Singleton<GameManager>
 {
 
@@ -31,6 +30,13 @@ public class GameManager : Singleton<GameManager>
 
     public bool IsTest { get; private set; } = true;
 
+    public _2_Scripts.Game.BackEndData.Stage.StageData CurrentStageData { get; private set; }
+
+    public void SetCurrentStageData(_2_Scripts.Game.BackEndData.Stage.StageData stageData)
+    {
+        CurrentStageData = stageData;
+    }
+    
     public void NotTestMode()
     {
         IsTest = false;
@@ -102,11 +108,11 @@ public class GameManager : Singleton<GameManager>
     private readonly Dictionary<int, (int nomal, int rare, int epic)> mGradeRates = new Dictionary<int, (int general, int elite, int legendary)>
         {
             { 1, (100, 0, 0) },
-            { 2, (90, 10, 0) },
-            { 3, (80, 20, 0) },
-            { 4, (70, 25, 5) },
-            { 5, (55, 35, 10) },
-            { 6, (40, 45, 15) }
+            { 2, (95, 5, 0) },
+            { 3, (90, 10, 0) },
+            { 4, (80, 18, 2) },
+            { 5, (70, 25, 5) },
+            { 6, (60, 30, 10) }
         };
 
     private int GetGradeBasedOnRates()
@@ -157,8 +163,7 @@ public class GameManager : Singleton<GameManager>
                     }
                 }
 
-                int stageClearReward = 10;
-                UpdateMoney(EMoneyType.Gold, stageClearReward + interest);
+                UpdateMoney(EMoneyType.Gold, ROUND_BONUS_GOLD_STAGE + interest);
                 AddExp(20);
             }).AddTo(this);
 

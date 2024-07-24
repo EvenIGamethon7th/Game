@@ -35,35 +35,7 @@ namespace Cargold.FrameWork.BackEnd
             {ECurrency.Diamond,new ReactiveProperty<int>(0)}
         };
 
-        public List<ChapterData> ChapterDataList { get; private set; } = new()
-        {
-            {new ChapterData()
-            {
-                ChapterNumber = 1,
-                Star = 0,
-                StageList = new List<StageData>()
-                {
-                    new StageData()
-                    {
-                        StageNumber = 1,
-                        Star = 0,
-                        IsClear = false
-                    },
-                    new StageData()
-                    {
-                        StageNumber = 2,
-                        Star = 0,
-                        IsClear = false
-                    },
-                    new StageData()
-                    {
-                        StageNumber = 3,
-                        Star = 0,
-                        IsClear = false
-                    }
-                }
-            }}
-        };
+        public List<ChapterData> ChapterDataList { get; private set; } = new();
 
         protected override void Awake()
         {
@@ -76,6 +48,11 @@ namespace Cargold.FrameWork.BackEnd
             
         }
 
+        public void ChapterDataSync(ChapterData chapterData)
+        {
+            ChapterDataList.Add(chapterData);
+        }
+        
         public void OnLogin(Action callback)
         {
             LoginAsync(callback).Forget();
@@ -101,7 +78,7 @@ namespace Cargold.FrameWork.BackEnd
         private async UniTaskVoid SyncCurrencyDataFromServer(Action successCallback)
         {
             await ReceiveCurrencyData();
-            SaveChapterData();
+            await LoadChapterData();
             successCallback?.Invoke();
         }
 
@@ -131,6 +108,26 @@ namespace Cargold.FrameWork.BackEnd
             string jsonData = JsonConvert.SerializeObject(ChapterDataList);
             PublishChapterData(new Dictionary<string, string> { { "ChapterData", jsonData } });
         }
+        
+        private async UniTask LoadChapterData()
+        {
+            var tcs = new UniTaskCompletionSource();
+            PlayFabClientAPI.GetUserData(new GetUserDataRequest(), (result) =>
+            {
+                if (result.Data.TryGetValue("ChapterData", out var data))
+                {
+                    ChapterDataList = JsonConvert.DeserializeObject<List<ChapterData>>(data.Value);
+                }
+                tcs.TrySetResult();
+            }, (error) =>
+            {
+                tcs.TrySetException(new Exception(error.GenerateErrorReport()));
+                ErrorLog(error);
+            });
+
+            await tcs.Task;
+        }
+        
         
         private void PublishChapterData(Dictionary<string,string> data)
         {

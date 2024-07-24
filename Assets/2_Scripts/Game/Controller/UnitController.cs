@@ -5,7 +5,6 @@ using _2_Scripts.Game.Map.Tile;
 using _2_Scripts.Game.Unit;
 using _2_Scripts.UI;
 using _2_Scripts.Utils;
-using OfficeOpenXml.Drawing.Chart;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -77,7 +76,7 @@ namespace _2_Scripts.Game.Controller
                 {
                     //위치 이동 및 자리 변경
                     TileSlot dstSlot = MapManager.Instance.GetClickTileSlotDetailOrNull();
-                    if (dstSlot != null)
+                    if (dstSlot != null && mHasUnitTouch)
                     {
                         if (dstSlot != mSelectTileSlot)
                         {

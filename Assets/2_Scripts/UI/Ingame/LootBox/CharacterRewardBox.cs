@@ -6,7 +6,7 @@ namespace _2_Scripts.UI.Ingame.LootBox
 {
     public class CharacterRewardBox : MonoBehaviour,ILootBoxReward
     {
-        private List<int> rates = new() { 50, 30, 20 };
+        private List<int> rates = new() { 50, 40, 10 };
         private string mRewadMessage;
         public string RewardMessage()
         {

@@ -43,7 +43,7 @@ public class StageManager : Singleton<StageManager>
     /// <exception cref="NotImplementedException"></exception>
     public void Start()
     {
-        Time.timeScale = 2;
+        Time.timeScale = 1.5f;
         if (GameManager.Instance.IsTest)
         {
             EditInit();

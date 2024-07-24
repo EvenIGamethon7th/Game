@@ -1,8 +1,10 @@
-﻿using _2_Scripts.Utils;
+﻿using System;
+using _2_Scripts.Utils;
 using Cargold;
 using Cysharp.Threading.Tasks;
 using TMPro;
 using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,11 +19,19 @@ namespace _2_Scripts.UI
         private int mExpPrice = 10;
 
         [SerializeField] private TextMeshProUGUI mText;
+
+        private float holdInterval = 0.5f;
         
         private void Start()
         {
-            mExpButton.onClick.AddListener(OnBuyExp);
-            
+            var pointerDownStream = mExpButton.OnPointerDownAsObservable();
+            var pointerUpStream = mExpButton.OnPointerUpAsObservable();
+
+            var handleStream = pointerDownStream.SelectMany(_ =>
+                Observable.Interval(TimeSpan.FromSeconds(holdInterval)).TakeUntil(pointerUpStream).RepeatUntilDestroy(this));
+
+            handleStream.Subscribe(_ => OnBuyExp());
+
             GameManager.Instance.UserGold.Subscribe(gold =>
             {
                 if (gold < mExpPrice)

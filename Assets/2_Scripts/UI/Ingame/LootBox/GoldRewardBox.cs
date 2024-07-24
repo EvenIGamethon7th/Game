@@ -9,7 +9,7 @@ namespace _2_Scripts.UI.Ingame.LootBox
         {
             {10,70},
             {30,20},
-            {70,10}
+            {60,10}
         };
         private string mRewadMessage;
         public string RewardMessage()

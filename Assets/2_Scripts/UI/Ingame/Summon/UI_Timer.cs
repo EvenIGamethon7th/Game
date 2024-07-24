@@ -13,7 +13,7 @@ namespace _2_Scripts.UI
         [SerializeField] 
         private TextMeshProUGUI text;
 
-        private int mStartTime = 15;
+        private int mStartTime = 20;
         private void Start()
         {
             MessageBroker.Default.Receive<GameMessage<int>>()

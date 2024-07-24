@@ -5,13 +5,17 @@ using System.Linq;
 using Cysharp.Threading.Tasks;
 using PlayFab;
 using PlayFab.ClientModels;
+using PlayFab.DataModels;
 using UniRx;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using EntityKey = PlayFab.DataModels.EntityKey;
 
 namespace Cargold.FrameWork.BackEnd
 {
+    
+    using _2_Scripts.Game.BackEndData.Stage;
     public enum ECurrency
     {
         [Description("FT")]
@@ -28,6 +32,36 @@ namespace Cargold.FrameWork.BackEnd
         {
             {ECurrency.Father,new ReactiveProperty<int>(0)},
             {ECurrency.Diamond,new ReactiveProperty<int>(0)}
+        };
+
+        public List<ChapterData> ChapterDataList { get; private set; } = new()
+        {
+            {new ChapterData()
+            {
+                ChapterNumber = 1,
+                Star = 0,
+                StageList = new List<StageData>()
+                {
+                    new StageData()
+                    {
+                        StageNumber = 1,
+                        Star = 0,
+                        IsClear = false
+                    },
+                    new StageData()
+                    {
+                        StageNumber = 2,
+                        Star = 0,
+                        IsClear = false
+                    },
+                    new StageData()
+                    {
+                        StageNumber = 3,
+                        Star = 0,
+                        IsClear = false
+                    }
+                }
+            }}
         };
 
         protected override void Awake()
@@ -66,6 +100,7 @@ namespace Cargold.FrameWork.BackEnd
         private async UniTaskVoid SyncCurrencyDataFromServer(Action successCallback)
         {
             await ReceiveCurrencyData();
+            PublishChapterData().Forget();
             successCallback?.Invoke();
         }
 
@@ -89,6 +124,33 @@ namespace Cargold.FrameWork.BackEnd
 
             await tcs.Task;
         }
+
+        private async UniTaskVoid PublishChapterData()
+        {
+            var token = await mAuthService.GetEntity();
+            var dataList = new List<SetObject>()
+            {
+                new SetObject()
+                {
+                    ObjectName = "ChapterData",
+                    DataObject = ChapterDataList
+                },
+            };
+            PlayFabDataAPI.SetObjects(new SetObjectsRequest()
+            {
+                Entity = new EntityKey
+                {
+                    Id = token.Entity.Id,
+                    Type = token.Entity.Type
+                },
+                Objects = dataList
+            }, (result) =>
+            {
+                Debug.Log(result);
+            },ErrorLog);
+            
+        }
+        
         private void PublishCurrencyData(ECurrency currency,int value)
         {
             string serverKey = Utils.GetEnumDescription(currency);

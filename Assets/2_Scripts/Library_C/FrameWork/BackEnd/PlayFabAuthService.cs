@@ -5,6 +5,9 @@ using PlayFab;
 using PlayFab.ClientModels;
 using LoginResult = PlayFab.ClientModels.LoginResult;
 using System;
+using Cysharp.Threading.Tasks;
+using PlayFab.AuthenticationModels;
+using EntityKey = PlayFab.ClientModels.EntityKey;
 
 #if FACEBOOK
 using Facebook.Unity;
@@ -62,10 +65,25 @@ public class PlayFabAuthService
 
 
 
+    public async UniTask<GetEntityTokenResponse> GetEntity()
+    {
+        var tcs = new UniTaskCompletionSource();
+        GetEntityTokenResponse rtnEntityKey = null;
+        PlayFabAuthenticationAPI.GetEntityToken(new GetEntityTokenRequest()
+        , (result) =>
+        {
+            rtnEntityKey = result;
+            tcs.TrySetResult();
+        }, Debug.LogError);
+        await tcs.Task;
+        return rtnEntityKey;
+    }
+    
     /// <summary>
     /// Remember the user next time they log in
     /// This is used for Auto-Login purpose.
     /// </summary>
+    /// 
     public bool RememberMe
     {
         get

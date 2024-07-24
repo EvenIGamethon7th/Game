@@ -172,6 +172,7 @@ namespace _2_Scripts.UI {
             { 
                 Handheld.Vibrate();
                 SelectStat(mClassData[mLessonCount].Stat_value2);
+                Cargold.UI.UI_Toast_Manager.Instance.Activate_WithContent_Func("아카데미 수업 대성공!");
             }
 
             else

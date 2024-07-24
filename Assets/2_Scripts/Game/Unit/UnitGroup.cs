@@ -46,8 +46,9 @@ namespace _2_Scripts.Game.Unit
             newData.Init(Units[0].CharacterDataInfo.CharacterEvolutions[Units[0].CharacterDatas.rank + 1].GetData, null);
             newData.AddAlumniInfo(alumniData);
 
-            MapManager.Instance.ClearTile(this);
-            MapManager.Instance.CreateUnit(newData);
+            var masterSlot = MapManager.Instance.GetTileSlotAboutGroup(this);
+            MapManager.Instance.ClearTile(masterSlot);
+            MapManager.Instance.CreateUnit(newData, assignSlot: masterSlot);
         }
 
         public void MoveGroup(TileSlot destinationTileSlot)
@@ -88,7 +89,7 @@ namespace _2_Scripts.Game.Unit
             Units.Remove(unit);
             SetUnitPos();
             //가지고 있는 유닛이 없으므로
-            if (Units.Count == 0) MapManager.Instance.ClearTile(this);
+            if (Units.Count == 0) MapManager.Instance.ClearTile(MapManager.Instance.GetTileSlotAboutGroup(this));
             //타일 중 같은 유닛이 있는지 확인해야 한다
             else if (Units.Count == 2)
             {

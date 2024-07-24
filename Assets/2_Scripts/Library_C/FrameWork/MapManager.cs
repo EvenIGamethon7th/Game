@@ -69,10 +69,13 @@ public class MapManager : Singleton<MapManager>
         return tileSlot?.OccupantUnit;
     }
 
-    public void ClearTile(UnitGroup group)
+    public TileSlot GetTileSlotAboutGroup(UnitGroup group)
     {
-        var tileSlot = mTileDatas.Where(x => x.OccupantUnit == group).FirstOrDefault();
-        
+        return mTileDatas.Where(x => x.OccupantUnit == group).FirstOrDefault();
+    }
+
+    public void ClearTile(TileSlot tileSlot)
+    {
         MessageBroker.Default.Publish(new GameMessage<UnitGroup>(EGameMessage.SelectCharacter, null));
         if (tileSlot != null)
         {
@@ -86,7 +89,7 @@ public class MapManager : Singleton<MapManager>
         return tile == null ? false : true;
     }
 
-    public bool CreateUnit(CharacterData characterData, bool isAlumni = false,Action<Vector3> spawnAction = null)
+    public bool CreateUnit(CharacterData characterData, bool isAlumni = false, Action<Vector3> spawnAction = null, TileSlot assignSlot = null)
     {
         //먼저 같은 유닛 그룹과 그 그룹에 공간이 있는지 확인
         var tileSlot = mTileDatas.Where(x => x.CurrentUnitData?.nameKey == characterData.nameKey && x.CanAddUnit()).FirstOrDefault();
@@ -94,7 +97,16 @@ public class MapManager : Singleton<MapManager>
         //없다면 빈 타일 슬롯 확인
         if (tileSlot == null)
         {
-            tileSlot = mTileDatas.Where(x => x.OccupantUnit == null).FirstOrDefault();
+            if (assignSlot != null && assignSlot.OccupantUnit == null)
+            {
+                tileSlot = assignSlot;
+            }
+
+            else
+            {
+                tileSlot = mTileDatas.Where(x => x.OccupantUnit == null).FirstOrDefault();
+            }
+
             //그것도 없으면 쩔수없지...
             if (tileSlot == null)
             {

@@ -1,6 +1,7 @@
 ﻿using System;
 using _2_Scripts.Utils;
 using Cargold.FrameWork.BackEnd;
+using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,7 +25,7 @@ namespace _2_Scripts.UI.OutGame.Lobby
                     {
                         mStageData = data.Value;
                         mPopUpGo.gameObject.SetActive(true);
-                    });
+                    }).AddTo(this);
         }
 
         private void OnClickPlay()

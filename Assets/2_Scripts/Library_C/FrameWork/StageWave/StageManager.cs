@@ -83,7 +83,7 @@ public class StageManager : Singleton<StageManager>
     private void StageInit()
     {
         var currentStage = GameManager.Instance.CurrentStageData;
-        var stageKey = $"$Stage_{(currentStage.ChapterNumber - 1) * 5 + currentStage.StageNumber}";
+        var stageKey = $"Stage_{(currentStage.ChapterNumber - 1) * 5 + currentStage.StageNumber}";
         mCurrentStageData = DataBase_Manager.Instance.GetStage.GetData_Func(stageKey);
         foreach (var wave in mCurrentStageData.waveList)
         {

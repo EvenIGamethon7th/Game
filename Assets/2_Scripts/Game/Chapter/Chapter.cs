@@ -43,7 +43,11 @@ namespace _2_Scripts.Game.Chapter
                 mStageList[i].Init(mStageDataList[i]);
             }
             var lastIdx = mStageList.FirstOrDefault(data => data.IsClear == false);
-            lastIdx.LastSelectIdx();
+            if (lastIdx == null)
+            {
+                chapterData.isClear = true;
+            }
+            lastIdx?.LastSelectIdx();
         }
     }
 }

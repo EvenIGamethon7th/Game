@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using _2_Scripts.Game.Handler;
-using Cargold.FrameWork.BackEnd;
+using _2_Scripts.UI.OutGame.Lobby;
 using Sirenix.OdinInspector;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _2_Scripts.Game.Controller
 {
@@ -18,11 +18,13 @@ namespace _2_Scripts.Game.Controller
         private Dictionary<int, Chapter> 
         mChapterList = new Dictionary<int, Chapter>();
 
+        [SerializeField]
+        private List<UI_ChapterButton> mChapterButtonList = new List<UI_ChapterButton>();
+        
         private void Start()
         {
             ChapterDataInit();
             LastChapterEnable();
-  
         }
 
         private void ChapterDataInit()
@@ -31,8 +33,20 @@ namespace _2_Scripts.Game.Controller
             {
                 var chapterData = mChapterHandler.ChapterDataLoad(i);
                 mChapterList[chapterData.ChapterNumber].Init(chapterData);
-                
+
+                var i1 = i+1;
+                mChapterButtonList[i].Init(chapterData.isClear,()=>OnDrawMap(i1));
             }
+            mChapterButtonList[0].Init(true,()=>OnDrawMap(1));
+        }
+
+        private void OnDrawMap(int idx)
+        {
+            for (int i = 1; i <= mChapterList.Count; i++)
+            {
+                mChapterList[i].gameObject.SetActive(false);
+            }
+            mChapterList[idx].gameObject.SetActive(true);
         }
 
         private void LastChapterEnable()

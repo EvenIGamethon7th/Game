@@ -29,7 +29,7 @@ namespace _2_Scripts.UI.Ingame
         {
             int rank = RankCalculator(GameManager.Instance.UserHp.Value);
             var stageData = GameManager.Instance.CurrentStageData;
-            stageData.Star = rank;
+            stageData.Star = Math.Max(stageData.Star,rank);
             stageData.IsClear = true;
             BackEndManager.Instance.SaveChapterData();
             

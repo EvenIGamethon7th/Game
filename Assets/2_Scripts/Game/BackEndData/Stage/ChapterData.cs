@@ -7,6 +7,7 @@ namespace _2_Scripts.Game.BackEndData.Stage
     public class ChapterData
     {
         public int ChapterNumber;
+        public bool isClear;
         public int Star;
         public List<StageData> StageList;
         

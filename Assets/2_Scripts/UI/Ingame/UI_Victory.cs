@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Cargold;
+using Cargold.FrameWork.BackEnd;
 using Coffee.UIExtensions;
 using DG.Tweening;
 using UnityEngine;
@@ -27,6 +28,11 @@ namespace _2_Scripts.UI.Ingame
         IEnumerator StartAnimationCoroutine()
         {
             int rank = RankCalculator(GameManager.Instance.UserHp.Value);
+            var stageData = GameManager.Instance.CurrentStageData;
+            stageData.Star = rank;
+            stageData.IsClear = true;
+            BackEndManager.Instance.SaveChapterData();
+            
             for (int i = 0; i < rank; i++)
             {
                 Tween_C.OnPunch_Func(mStarts[i]);

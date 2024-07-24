@@ -59,7 +59,7 @@ public class StageManager : Singleton<StageManager>
         mNextStageMessage = new GameMessage<int>(EGameMessage.StageChange, 0);
         mBossSpawnMessage = new TaskMessage(ETaskList.BossSpawn);
         ObjectPoolManager.Instance.RegisterPoolingObject("Monster", 100);
-        StageInit(TableDataKey_C.Stage_Stage_0);
+        StageInit();
         MessageBroker.Default.Receive<TaskMessage>()
             .Subscribe(message =>
             {
@@ -80,8 +80,10 @@ public class StageManager : Singleton<StageManager>
             }).AddTo(this);
     }
 
-    private void StageInit(string stageKey)
+    private void StageInit()
     {
+        var currentStage = GameManager.Instance.CurrentStageData;
+        var stageKey = $"$Stage_{(currentStage.ChapterNumber - 1) * 5 + currentStage.StageNumber}";
         mCurrentStageData = DataBase_Manager.Instance.GetStage.GetData_Func(stageKey);
         foreach (var wave in mCurrentStageData.waveList)
         {

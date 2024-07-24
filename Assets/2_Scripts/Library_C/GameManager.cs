@@ -12,7 +12,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using CharacterInfo = _2_Scripts.Game.ScriptableObject.Character.CharacterInfo;
 using Random = System.Random;
-
 public class GameManager : Singleton<GameManager>
 {
 
@@ -31,6 +30,13 @@ public class GameManager : Singleton<GameManager>
 
     public bool IsTest { get; private set; } = true;
 
+    public _2_Scripts.Game.BackEndData.Stage.StageData CurrentStageData { get; private set; }
+
+    public void SetCurrentStageData(_2_Scripts.Game.BackEndData.Stage.StageData stageData)
+    {
+        CurrentStageData = stageData;
+    }
+    
     public void NotTestMode()
     {
         IsTest = false;

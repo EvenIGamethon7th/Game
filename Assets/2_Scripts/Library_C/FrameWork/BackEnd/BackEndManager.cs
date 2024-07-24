@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using Cysharp.Threading.Tasks;
+using Newtonsoft.Json;
 using PlayFab;
 using PlayFab.ClientModels;
 using PlayFab.DataModels;
@@ -100,7 +101,7 @@ namespace Cargold.FrameWork.BackEnd
         private async UniTaskVoid SyncCurrencyDataFromServer(Action successCallback)
         {
             await ReceiveCurrencyData();
-            PublishChapterData().Forget();
+            SaveChapterData();
             successCallback?.Invoke();
         }
 
@@ -125,30 +126,29 @@ namespace Cargold.FrameWork.BackEnd
             await tcs.Task;
         }
 
-        private async UniTaskVoid PublishChapterData()
+        public void SaveChapterData()
         {
-            var token = await mAuthService.GetEntity();
-            var dataList = new List<SetObject>()
-            {
-                new SetObject()
-                {
-                    ObjectName = "ChapterData",
-                    DataObject = ChapterDataList
-                },
-            };
-            PlayFabDataAPI.SetObjects(new SetObjectsRequest()
-            {
-                Entity = new EntityKey
-                {
-                    Id = token.Entity.Id,
-                    Type = token.Entity.Type
-                },
-                Objects = dataList
-            }, (result) =>
-            {
-                Debug.Log(result);
-            },ErrorLog);
-            
+            string jsonData = JsonConvert.SerializeObject(ChapterDataList);
+            PublishChapterData(new Dictionary<string, string> { { "ChapterData", jsonData } });
+        }
+        
+        private void PublishChapterData(Dictionary<string,string> data)
+        {
+           var request = new ExecuteCloudScriptRequest
+           {
+              FunctionName = "UpdateChapterData",
+              FunctionParameter = new {data},
+              GeneratePlayStreamEvent = true
+           };
+
+           PlayFabClientAPI.ExecuteCloudScript(request, (result) =>
+           {
+               Debug.Log("PublishChapterData");
+           }, (error) =>
+           {
+               ErrorLog(error);
+           });
+
         }
         
         private void PublishCurrencyData(ECurrency currency,int value)

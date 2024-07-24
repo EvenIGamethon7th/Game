@@ -142,6 +142,7 @@ namespace _2_Scripts.UI {
             {
                 for (int i = 0; i < 2; ++i)
                 {
+                    if (mLessonCount >= 5) break;
                     DecideLessonResult();
                     ++mLessonCount;
                 }

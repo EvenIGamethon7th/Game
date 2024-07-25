@@ -3,6 +3,7 @@ using Cargold;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UniRx;
 using UnityEngine;
@@ -36,17 +37,10 @@ namespace _2_Scripts.UI.Ingame
             var mainData = GameManager.Instance.CurrentMainCharacter;
             string name = mainData.CharacterEvolutions[1].GetData.characterData;
 
-            //Sprite[] s = new Sprite[mSpriteAtlas.spriteCount];
-            //mSpriteAtlas.GetSprites(s);
-            //foreach (var sprite in s)
-            //{
-            //    if (sprite.name.Contains(name))
-            //    {
-            //        var st = sprite.name;
-            //    }
-            //}
-            
-            mButton.Init(mSpriteAtlas.GetSprite($"{name}_SkillIcon(Clone)"), mainData.SkillList[0].CoolTime);
+            Sprite[] s = new Sprite[mSpriteAtlas.spriteCount];
+            mSpriteAtlas.GetSprites(s);
+            var sp = s.FirstOrDefault(x => x.name == $"{name}_SkillIcon(Clone)");
+            mButton.Init(sp, mainData.SkillList[0].CoolTime);
             mCoolTime.Init(mSpriteAtlas.GetSprite($"{name}(Clone)"));
             mInfoBubble.Init(mainData.CharacterEvolutions[1].GetData);
         }

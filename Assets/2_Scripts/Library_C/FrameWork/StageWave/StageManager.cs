@@ -118,7 +118,6 @@ public class StageManager : Singleton<StageManager>
             if (mWaveQueue.Count == 0)
             {
                 await UniTask.WaitForSeconds(NEXT_WAVE_TIME,cancellationToken:mCancellationToken.Token);
-                GameManager.Instance.UpdateUserHp(-GameManager.Instance.UserHp.Value);
                 break;
             }
             await UniTask.WaitForSeconds(NEXT_WAVE_TIME,cancellationToken:mCancellationToken.Token);

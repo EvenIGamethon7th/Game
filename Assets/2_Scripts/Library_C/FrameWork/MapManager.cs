@@ -17,6 +17,7 @@ public class MapManager : Singleton<MapManager>
     [SerializeField] private Tilemap mMap;
     [SerializeField] private Tilemap mMonsterPathMap;
     [SerializeField] private MapTile mMapTile;
+    [SerializeField] private GameObject mTestCharacter;
 
     private List<TileSlot> mTileDatas = new();
     private const string TILE_SLOT_NAME = AddressableTable.Default_TileSlot;
@@ -33,12 +34,14 @@ public class MapManager : Singleton<MapManager>
             MessageBroker.Default.Receive<TaskMessage>().Where(message => message.Task == ETaskList.DefaultResourceLoad).Subscribe(
                 _ =>
                 {
+                    mTestCharacter?.SetActive(true);
                     CreateInitialTileSlots();
                     CreatePool();
                 }).AddTo(this);
         }
         else
         {
+            Instantiate(ResourceManager.Instance.Load<GameObject>($"{GameManager.Instance.CurrentMainCharacter.CharacterEvolutions[1].GetData.characterData}1"));
             CreateInitialTileSlots();
             CreatePool();
         }

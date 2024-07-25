@@ -92,7 +92,7 @@ public class GameManager : Singleton<GameManager>
 
     public List<CharacterInfo> UserCharacterList { get; private set; } = new List<CharacterInfo>();
     private List<MainCharacterInfo> mMainCharacterList = new List<MainCharacterInfo>();
-    public MainCharacterInfo CurrentMainCharacter { get; private set; }
+    public MainCharacterInfo CurrentMainCharacter { get; set; }
 
     public readonly Dictionary<int, int> mExpTable = new Dictionary<int, int>
         {
@@ -188,9 +188,10 @@ public class GameManager : Singleton<GameManager>
                     {
                         mMainCharacterList.Add(resource.Value as MainCharacterInfo);
                     }
-                    CurrentMainCharacter = mMainCharacterList[0];
+                    CurrentMainCharacter = mMainCharacterList[3];
                 }).AddTo(this);
     }
+
     private Random mRandom = new Random();
     public CharacterInfo RandomCharacterCardOrNull()
     {

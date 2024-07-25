@@ -1552,7 +1552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1985475408514212, guid: dec0eda26eaeddd46b1d715a390ecf3b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4302527663153198, guid: dec0eda26eaeddd46b1d715a390ecf3b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1594,15 +1594,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5228642712912264603, guid: dec0eda26eaeddd46b1d715a390ecf3b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dec0eda26eaeddd46b1d715a390ecf3b, type: 3}
+--- !u!1 &1088218926 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1985475408514212, guid: dec0eda26eaeddd46b1d715a390ecf3b, type: 3}
+  m_PrefabInstance: {fileID: 1088218925}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1122048674
 GameObject:
   m_ObjectHideFlags: 0
@@ -2336,6 +2337,7 @@ MonoBehaviour:
   mMap: {fileID: 1124014220}
   mMonsterPathMap: {fileID: 40754401}
   mMapTile: {fileID: 0}
+  mTestCharacter: {fileID: 1088218926}
 --- !u!4 &1771616169
 Transform:
   m_ObjectHideFlags: 0

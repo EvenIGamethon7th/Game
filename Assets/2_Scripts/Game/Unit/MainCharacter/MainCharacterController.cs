@@ -39,10 +39,15 @@ namespace _2_Scripts.Game.Unit.MainCharacter
         private CancellationTokenSource mCts = new CancellationTokenSource();
         private GameMessage<float> mCoolTimeMessage;
 
+        [SerializeField]
+        private Vector2 mPos;
+
         private void Start()
         {
             //TODO 나중에 게임매니저에서 받아오기
-            //mCharacterInfo = GameManager.Instance.MainCharacterList[0];
+            if (!GameManager.Instance.IsTest)
+                mCharacterInfo = GameManager.Instance.CurrentMainCharacter;
+            transform.position = mPos;
             mCharacterData = MemoryPoolManager<CharacterData>.CreatePoolingObject();
             mBuffData = MemoryPoolManager<BuffData>.CreatePoolingObject();
             mCharacterData.Init(mCharacterInfo.CharacterEvolutions[1].GetData, mBuffData);

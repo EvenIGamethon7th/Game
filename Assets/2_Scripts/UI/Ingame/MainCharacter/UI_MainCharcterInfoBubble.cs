@@ -38,6 +38,14 @@ namespace _2_Scripts.UI.Ingame
                         gameObject.SetActive(false);
                     }
                 }).AddTo(this);
+
+            if (data != null)
+            {
+                mCharacterNameText.text = data.GetCharacterName();
+                mSkillNameText.text = data.SkillName;
+                mLevelText.text = data.rank.ToString();
+                mDescriptionText.text = data.SkillDesc;
+            }
         }
     }
 }

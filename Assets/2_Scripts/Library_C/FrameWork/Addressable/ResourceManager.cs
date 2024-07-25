@@ -21,7 +21,8 @@ public enum ELabelNames
     CharacterData,
     UIMaterial,
     MainCharacterData,
-    Map
+    Map,
+    MainCharacterObject
 }
 
 public class ResourceManager :Singleton<ResourceManager>

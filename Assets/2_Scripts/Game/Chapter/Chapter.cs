@@ -16,6 +16,11 @@ namespace _2_Scripts.Game.Chapter
         [SerializeField]
         private GameObject mLockObject;
 
+        public bool IsLocked => !mLockObject.activeSelf;
+
+        public Stage LastClearStage => mStageList
+            .FirstOrDefault(data => data.IsClear == false) ?? mStageList
+            .LastOrDefault();
         public int ChapterClearStar => mStageDataList.Sum(data => data.Star);
         public int ChapterAllStar => mStageDataList.Count * 3;
         public void Init(ChapterData chapterData)

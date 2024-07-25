@@ -23,6 +23,9 @@ namespace _2_Scripts.Game.Controller
         [SerializeField]
         private List<UI_ChapterButton> mChapterButtonList = new List<UI_ChapterButton>();
         
+        [SerializeField]
+        private UI_StageIndicator mStageIndicator;
+        
         private GameMessage<Chapter> mChapterMessage = new GameMessage<Chapter>(EGameMessage.ChapterChange,null);
         private void Start()
         {
@@ -57,6 +60,7 @@ namespace _2_Scripts.Game.Controller
             mChapterList[idx].gameObject.SetActive(true);
             mChapterMessage.SetValue(mChapterList[idx]);
             MessageBroker.Default.Publish(mChapterMessage);
+            mStageIndicator.OnChange(mChapterList[idx]);
         }
 
         private void LastChapterEnable()

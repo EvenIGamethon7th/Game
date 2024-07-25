@@ -14,8 +14,12 @@ namespace _2_Scripts.Game.Chapter
         private GameMessage<StageData> mPopUpOpenMessage;
         [SerializeField] 
         private Image[] mStarImage;
-        
         public bool IsClear => mStageData.IsClear;
+        
+        public RectTransform GetRectTransform()
+        {
+            return GetComponent<RectTransform>();
+        }
         public void Init(StageData stageData)
         {
             mStageData = stageData;

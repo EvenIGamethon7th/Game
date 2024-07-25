@@ -1,14 +1,16 @@
-﻿using _2_Scripts.Utils;
+﻿using System;
+using _2_Scripts.Utils;
 using Cargold;
 using Cysharp.Threading.Tasks;
 using TMPro;
 using UniRx;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace _2_Scripts.UI
 {
-    public class UI_ExpButton : Cargold.UI.UI_BaseButton_Script
+    public class UI_ExpButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         [SerializeField]
         private Button mExpButton;
@@ -17,7 +19,7 @@ namespace _2_Scripts.UI
         private int mExpPrice = 10;
 
         [SerializeField] private TextMeshProUGUI mText;
-        
+        private IDisposable buttonHoldSubscription;
         private void Start()
         {
             mExpButton.onClick.AddListener(OnBuyExp);
@@ -57,6 +59,31 @@ namespace _2_Scripts.UI
             GameManager.Instance.AddExp(mExpPrice);
             GameManager.Instance.UpdateMoney(EMoneyType.Gold,-mExpPrice);
         }
+        
+        private bool mIsButtonPressed = false;
+        private float mRepeatRate = 1f; 
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            if (buttonHoldSubscription == null)
+            {
+                mIsButtonPressed = true;
+                buttonHoldSubscription = Observable.EveryUpdate()
+                    .Where(_ => mIsButtonPressed)
+                    .ThrottleFirst(System.TimeSpan.FromSeconds(mRepeatRate))
+                    .Subscribe(_ => OnBuyExp())
+                    .AddTo(this);
+            }
 
+        }
+
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            if (buttonHoldSubscription != null)
+            {
+                mIsButtonPressed = false;
+                buttonHoldSubscription.Dispose();
+                buttonHoldSubscription = null;
+            }
+        }
     }
 }

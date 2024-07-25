@@ -211,7 +211,7 @@ public class GameManager : Singleton<GameManager>
         //TOdo UserHp Max HP는 BackEnd에서 가져오는 형태로 수정해야할듯 차후
         UserHp.Value = 100;
         UserLevel.Value = 1;
-        UserGold.Value = 30;
+        UserGold.Value = 300;
         UserLuckyCoin.Value = 0;
         UserExp.Value = 0;
     }

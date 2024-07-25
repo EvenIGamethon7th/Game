@@ -175,6 +175,7 @@ MonoBehaviour:
     - {fileID: 7144135639223964073}
     - {fileID: 1899873084}
     - {fileID: 235597990}
+    - {fileID: 5515977985060260987}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -193,7 +194,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 4
     - Name: 
       Entry: 7
       Data: 
@@ -231,6 +232,18 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -241,6 +254,7 @@ MonoBehaviour:
   - {fileID: 567707873}
   - {fileID: 559447048}
   - {fileID: 1030527064}
+  mStageIndicator: {fileID: 5515977985060260986}
 --- !u!4 &147470136
 Transform:
   m_ObjectHideFlags: 0
@@ -1382,18 +1396,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 632252952}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 145675169}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -2585,9 +2587,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 658470981}
     m_Modifications:
-    - target: {fileID: 2597142894921500346, guid: 7a4505c2957234f40ad2a7de82975fed, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 1473675699688800346, guid: 7a4505c2957234f40ad2a7de82975fed, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972427424483575636, guid: 7a4505c2957234f40ad2a7de82975fed, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2979711640229515127, guid: 7a4505c2957234f40ad2a7de82975fed, type: 3}
       propertyPath: m_Name
@@ -2595,6 +2601,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2979711640229515127, guid: 7a4505c2957234f40ad2a7de82975fed, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3248317677069183402, guid: 7a4505c2957234f40ad2a7de82975fed, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3556073595918099406, guid: 7a4505c2957234f40ad2a7de82975fed, type: 3}
@@ -2677,11 +2687,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6275528812047520165, guid: 7a4505c2957234f40ad2a7de82975fed, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6390822010977123302, guid: 7a4505c2957234f40ad2a7de82975fed, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a4505c2957234f40ad2a7de82975fed, type: 3}
+--- !u!114 &5515977985060260986 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3735150726445655779, guid: 7a4505c2957234f40ad2a7de82975fed, type: 3}
+  m_PrefabInstance: {fileID: 5515977985060260985}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c7a81ddea4b4cfcbdeb7a3dbca41145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5515977985060260987 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2387513521797612544, guid: 7a4505c2957234f40ad2a7de82975fed, type: 3}
+  m_PrefabInstance: {fileID: 5515977985060260985}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb30a934f11f4bb9806fc6664b41b806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5833307134115336208
 PrefabInstance:
   m_ObjectHideFlags: 0

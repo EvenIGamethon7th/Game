@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using _2_Scripts.Game.Handler;
 using _2_Scripts.UI.OutGame.Lobby;
+using _2_Scripts.Utils;
 using Sirenix.OdinInspector;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +23,10 @@ namespace _2_Scripts.Game.Controller
         [SerializeField]
         private List<UI_ChapterButton> mChapterButtonList = new List<UI_ChapterButton>();
         
+        [SerializeField]
+        private UI_StageIndicator mStageIndicator;
+        
+        private GameMessage<Chapter> mChapterMessage = new GameMessage<Chapter>(EGameMessage.ChapterChange,null);
         private void Start()
         {
             ChapterDataInit();
@@ -34,10 +40,15 @@ namespace _2_Scripts.Game.Controller
                 var chapterData = mChapterHandler.ChapterDataLoad(i);
                 mChapterList[chapterData.ChapterNumber].Init(chapterData);
 
-                var i1 = i+1;
-                mChapterButtonList[i].Init(chapterData.isClear,()=>OnDrawMap(i1));
+                var i1 = i;
+                mChapterButtonList[i-1].Init(()=>OnDrawMap(i1));
+                if (chapterData.isClear && i < mChapterList.Count)
+                {
+                    mChapterList[chapterData.ChapterNumber+1].OnDrawChapter();
+                }
             }
-            mChapterButtonList[0].Init(true,()=>OnDrawMap(1));
+            mChapterList[1].OnDrawChapter();
+            mChapterButtonList[0].Init(()=>OnDrawMap(1));
         }
 
         private void OnDrawMap(int idx)
@@ -47,12 +58,16 @@ namespace _2_Scripts.Game.Controller
                 mChapterList[i].gameObject.SetActive(false);
             }
             mChapterList[idx].gameObject.SetActive(true);
+            mChapterMessage.SetValue(mChapterList[idx]);
+            MessageBroker.Default.Publish(mChapterMessage);
+            mStageIndicator.OnChange(mChapterList[idx]);
         }
 
         private void LastChapterEnable()
         {
             var chapterIdx = mChapterHandler.GetLastChapter();
             mChapterList[chapterIdx].gameObject.SetActive(true);
+            OnDrawMap(chapterIdx);
         }
     }
 }

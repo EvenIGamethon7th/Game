@@ -17,6 +17,8 @@ public class GameManager : Singleton<GameManager>
 
     public ReactiveProperty<float> UserHp { get; private set; } = new ReactiveProperty<float>(100);
 
+    private readonly int mMaxHp = 100;
+
     public event Action<float> DamageHp;
     public event Action<float> HealHp;
     // 학년
@@ -67,7 +69,8 @@ public class GameManager : Singleton<GameManager>
             DamageHp?.Invoke(hp);
         else
             HealHp?.Invoke(hp);
-        UserHp.Value -= hp;
+
+        UserHp.Value = UserHp.Value - hp <= mMaxHp ? UserHp.Value - hp : mMaxHp;
     }
 
     public void AddExp(int exp)
@@ -209,9 +212,9 @@ public class GameManager : Singleton<GameManager>
     protected override void ChangeSceneInit(Scene prev, Scene next)
     {
         //TOdo UserHp Max HP는 BackEnd에서 가져오는 형태로 수정해야할듯 차후
-        UserHp.Value = 100;
+        UserHp.Value = mMaxHp;
         UserLevel.Value = 1;
-        UserGold.Value = 300;
+        UserGold.Value = 30;
         UserLuckyCoin.Value = 0;
         UserExp.Value = 0;
     }

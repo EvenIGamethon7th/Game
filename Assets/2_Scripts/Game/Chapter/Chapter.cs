@@ -13,6 +13,16 @@ namespace _2_Scripts.Game.Chapter
         
         private List<StageData> mStageDataList = new ();
         
+        [SerializeField]
+        private GameObject mLockObject;
+
+        public bool IsLocked => !mLockObject.activeSelf;
+
+        public Stage LastClearStage => mStageList
+            .FirstOrDefault(data => data.IsClear == false) ?? mStageList
+            .LastOrDefault();
+        public int ChapterClearStar => mStageDataList.Sum(data => data.Star);
+        public int ChapterAllStar => mStageDataList.Count * 3;
         public void Init(ChapterData chapterData)
         {
             // 초기 데이터 만들어줌
@@ -35,7 +45,7 @@ namespace _2_Scripts.Game.Chapter
                 mStageDataList.Add(stageData);
             }
             chapterData.StageList = mStageDataList;
-            
+          
             // 스테이지 초기화
           
             for (int i = 0; i < mStageDataList.Count; i++)
@@ -48,6 +58,11 @@ namespace _2_Scripts.Game.Chapter
                 chapterData.isClear = true;
             }
             lastIdx?.LastSelectIdx();
+        }
+
+        public void OnDrawChapter()
+        {
+            mLockObject.SetActive(false);
         }
     }
 }

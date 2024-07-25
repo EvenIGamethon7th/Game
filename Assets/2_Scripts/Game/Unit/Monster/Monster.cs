@@ -86,6 +86,7 @@ namespace _2_Scripts.Game.Monster
             mMonsterData.Init(waveStatData,statWeight);
             mHpCanvas.InitHpSlider(mMonsterData.hp, isBoss);
             this.IsLastBoss = isLastBoss;
+
             mAnimator.speed = 0;
             //TODO Sprite Change And Animation
             ResourceManager.Instance.Load<RuntimeAnimatorController>(monsterData.image,
@@ -162,7 +163,16 @@ namespace _2_Scripts.Game.Monster
         {
             if(++mWayPointIndex == mWayPoint.GetWayPointCount())
             {
-                GameManager.Instance.UpdateUserHp(mMonsterData.atk);
+                if (IsLastBoss)
+                {
+                    GameManager.Instance.UpdateUserHp(GameManager.Instance.UserHp.Value);
+                }
+
+                else
+                {
+                    GameManager.Instance.UpdateUserHp(mMonsterData.atk);
+                }
+
                 Enabled(false);
                 gameObject.SetActive(false);
                 return;

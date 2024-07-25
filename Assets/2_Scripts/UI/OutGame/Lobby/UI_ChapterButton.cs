@@ -8,9 +8,8 @@ namespace _2_Scripts.UI.OutGame.Lobby
     {
         [SerializeField] private Button mButton;
 
-        public void Init(bool isClear,Action action)
+        public void Init(Action action)
         {
-            mButton.interactable = isClear;
             mButton.onClick.AddListener(action.Invoke);
         }
     }

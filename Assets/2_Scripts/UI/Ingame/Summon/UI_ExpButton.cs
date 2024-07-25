@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace _2_Scripts.UI
 {
-    public class UI_ExpButton : MonoBehaviour
+    public class UI_ExpButton : Cargold.UI.UI_BaseButton_Script
     {
         [SerializeField]
         private Button mExpButton;

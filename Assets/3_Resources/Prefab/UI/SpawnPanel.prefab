@@ -91,6 +91,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 136476af1e7a4ff4a5f2ada0da0c1a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  punchTrfArr: []
+  btnClass: {fileID: 888295921790217622}
+  sfxType:
+    ID: 2000000000
+  anim: {fileID: 0}
+  isAutoAnim: 1
+  activateAniData:
+    clip: {fileID: 0}
+    isRewind: 0
+    speed: 1
+  deactivateAniData:
+    clip: {fileID: 0}
+    isRewind: 1
+    speed: 1
+  isContinuousBtn: 1
+  isPunchable: 1
+  punchTargetTrfArr: []
+  outEase: 0
   mExpButton: {fileID: 888295921790217622}
   mExpPrice: 10
   mText: {fileID: 4571453446618210546}

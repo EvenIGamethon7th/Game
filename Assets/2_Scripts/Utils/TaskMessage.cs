@@ -9,6 +9,7 @@
         CharacterDataResourceLoad,
         UIMaterialResourceLoad,
         MainCharacterDataResourceLoad,
+        MapDataResourceLoad,
         BossDeath,
         BossSpawn,
         GameOver,

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using _2_Scripts.Game.Map;
 using _2_Scripts.Game.Map.Tile;
 using _2_Scripts.Game.Unit;
 using _2_Scripts.UI;
@@ -15,12 +16,18 @@ public class MapManager : Singleton<MapManager>
 {
     [SerializeField] private Tilemap mMap;
     [SerializeField] private Tilemap mMonsterPathMap;
+    [SerializeField] private MapTile mMapTile;
 
     private List<TileSlot> mTileDatas = new();
     private const string TILE_SLOT_NAME = AddressableTable.Default_TileSlot;
 
     private void Start()
     {
+        var go = Instantiate(ResourceManager.Instance.Load<GameObject>(GameManager.Instance.CurrentStageData.ChapterNumber.ToString()));
+        mMapTile = go.GetComponent<MapTile>();
+        mMap = mMapTile.UnitTile;
+        mMonsterPathMap = mMapTile.MonsterTile;
+
         if (GameManager.Instance.IsTest)
         {
             MessageBroker.Default.Receive<TaskMessage>().Where(message => message.Task == ETaskList.DefaultResourceLoad).Subscribe(

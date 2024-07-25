@@ -45,7 +45,7 @@ namespace _2_Scripts.UI.Ingame
 
         public void Init(Sprite sprite, float coolTime)
         {
-            mMaterial.SetTexture("_MainTex", sprite.texture);
+            //mMaterial.SetTexture("_MainTex", sprite.texture);
             mMaterial.SetFloat("_CoolTime", coolTime);
         }
 

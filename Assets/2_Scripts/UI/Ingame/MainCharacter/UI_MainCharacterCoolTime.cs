@@ -28,7 +28,7 @@ namespace _2_Scripts.UI.Ingame
 
         public void Init(Sprite sprite)
         {
-            mBackground.sprite = sprite;
+            //mBackground.sprite = sprite;
             SetCoolTime(0);
         }
 

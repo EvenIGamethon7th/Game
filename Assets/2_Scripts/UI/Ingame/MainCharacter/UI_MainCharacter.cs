@@ -32,12 +32,22 @@ namespace _2_Scripts.UI.Ingame
         private void Start()
         {
             //TODO: 메인캐릭터를 매니저에서 받아온 후 자식들 초기화
-            if (!GameManager.Instance.IsTest) return;
+            if (GameManager.Instance.IsTest) return;
             var mainData = GameManager.Instance.CurrentMainCharacter;
             string name = mainData.CharacterEvolutions[1].GetData.characterData;
+
+            //Sprite[] s = new Sprite[mSpriteAtlas.spriteCount];
+            //mSpriteAtlas.GetSprites(s);
+            //foreach (var sprite in s)
+            //{
+            //    if (sprite.name.Contains(name))
+            //    {
+            //        var st = sprite.name;
+            //    }
+            //}
             
-            mButton.Init(mSpriteAtlas.GetSprite($"{name}_SkillIcon"), mainData.SkillList[0].CoolTime);
-            mCoolTime.Init(mSpriteAtlas.GetSprite(name));
+            mButton.Init(mSpriteAtlas.GetSprite($"{name}_SkillIcon(Clone)"), mainData.SkillList[0].CoolTime);
+            mCoolTime.Init(mSpriteAtlas.GetSprite($"{name}(Clone)"));
             mInfoBubble.Init(mainData.CharacterEvolutions[1].GetData);
         }
     }

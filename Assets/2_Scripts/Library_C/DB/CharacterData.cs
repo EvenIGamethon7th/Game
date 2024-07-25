@@ -102,6 +102,7 @@ public partial class CharacterData : IPoolable
         SkillDesc = skillData.Description;
         SkillType = skillData.SkillType == ESkillType.Active ? "액티브" : "패시브";
     }
+
     protected override void Init_Project_Func()
     {
         base.Init_Project_Func();

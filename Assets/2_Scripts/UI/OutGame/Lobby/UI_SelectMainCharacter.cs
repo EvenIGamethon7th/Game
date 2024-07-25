@@ -1,6 +1,7 @@
 using _2_Scripts.Game.ScriptableObject.Character;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,15 @@ namespace _2_Scripts.UI.OutGame.Lobby
 
         private Button[] mSelectButtons;
         private Image[] mSelectImages;
+
+        [SerializeField]
+        private Sprite[] mCharacterImage;
+
+        [SerializeField]
+        private Image mSelectCharacterImage;
+
+        [SerializeField]
+        private TextMeshProUGUI mCharacterName;
 
         private void Awake()
         {
@@ -40,7 +50,10 @@ namespace _2_Scripts.UI.OutGame.Lobby
 
             mSelectImages[num].sprite = mOnSprite;
 
+            mSelectCharacterImage.sprite = mCharacterImage[num];
+
             GameManager.Instance.CurrentMainCharacter = ResourceManager.Instance.Load<MainCharacterInfo>(mMainCharacters[num]);
+            mCharacterName.text = GameManager.Instance.CurrentMainCharacter.CharacterEvolutions[1].GetData.GetCharacterName();
         }
     }
 }

@@ -355,6 +355,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Champion Flyingegg 0020 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1985475408514212, guid: dec0eda26eaeddd46b1d715a390ecf3b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4302527663153198, guid: dec0eda26eaeddd46b1d715a390ecf3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -14615,6 +14619,7 @@ MonoBehaviour:
   mMap: {fileID: 343315138}
   mMonsterPathMap: {fileID: 1187910939}
   mMapTile: {fileID: 0}
+  mTestCharacter: {fileID: 0}
 --- !u!4 &1771616169
 Transform:
   m_ObjectHideFlags: 0

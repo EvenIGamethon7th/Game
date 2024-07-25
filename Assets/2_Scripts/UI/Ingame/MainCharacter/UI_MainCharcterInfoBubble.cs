@@ -5,6 +5,7 @@ using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 
 namespace _2_Scripts.UI.Ingame
@@ -25,8 +26,11 @@ namespace _2_Scripts.UI.Ingame
 
         private RectTransform mRectTransform;
 
-        public void Init(CharacterData data)
+        private Image mImage;
+
+        public void Init(CharacterData data, Sprite sprite)
         {
+            mImage = GetComponent<Image>();
             mRectTransform = GetComponent<RectTransform>();
 
             this.UpdateAsObservable()
@@ -42,9 +46,11 @@ namespace _2_Scripts.UI.Ingame
             if (data != null)
             {
                 mCharacterNameText.text = data.GetCharacterName();
-                mSkillNameText.text = data.SkillName;
-                mLevelText.text = data.rank.ToString();
-                mDescriptionText.text = data.SkillDesc;
+                var skillData = DataBase_Manager.Instance.GetSkill.GetData_Func(data.Skill1);
+                mSkillNameText.text = skillData.Name;
+                mLevelText.text = $"LV. {data.rank}";
+                mDescriptionText.text = skillData.Description;
+                mImage.sprite = sprite;
             }
         }
     }

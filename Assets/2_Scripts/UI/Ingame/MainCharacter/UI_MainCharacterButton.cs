@@ -45,7 +45,8 @@ namespace _2_Scripts.UI.Ingame
 
         public void Init(Sprite sprite, float coolTime)
         {
-            //mMaterial.SetTexture("_MainTex", sprite.texture);
+            mMaterial.SetTexture("_MainTex", sprite.texture);
+            mMaterial.SetVector("_SpriteUV", GetSpriteUV(sprite));
             mMaterial.SetFloat("_CoolTime", coolTime);
         }
 
@@ -93,6 +94,22 @@ namespace _2_Scripts.UI.Ingame
         public void OnPointerDown(PointerEventData eventData)
         {
 
+        }
+
+        private Vector4 GetSpriteUV(Sprite sprite)
+        {
+            Rect textureRect = sprite.textureRect;
+            Rect atlasRect = sprite.textureRect;
+
+            float atlasWidth = sprite.texture.width;
+            float atlasHeight = sprite.texture.height;
+
+            float xMin = textureRect.x / atlasWidth;
+            float yMin = textureRect.y / atlasHeight;
+            float xMax = (textureRect.x + textureRect.width) / atlasWidth;
+            float yMax = (textureRect.y + textureRect.height) / atlasHeight;
+
+            return new Vector4(xMin, yMin, xMax, yMax);
         }
     }
 }

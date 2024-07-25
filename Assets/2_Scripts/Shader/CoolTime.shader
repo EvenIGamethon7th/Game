@@ -5,6 +5,7 @@ Shader "Unlit/CoolTime"
         _MainTex ("Texture", 2D) = "white" {}
         _CoolTime ("CoolTime", range(0, 100)) = 30
         _CurrentCoolTime ("CurrentCoolTime", range(0, 100)) = 30
+        _SpriteUV ("Sprite UV", Vector) = (0,0,1,1)
         _CoolTimeColor ("CoolTimeColor", Color) = (1, 0, 0, 1)
     }
     SubShader
@@ -44,11 +45,17 @@ Shader "Unlit/CoolTime"
             float _CurrentCoolTime;
             half4 _CoolTimeColor;
 
+            float4 _SpriteUV;
+
             v2f vert (appdata v)
             {
                 v2f o;
                 o.vertex = TransformObjectToHClip(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+
+                o.uv.x = lerp(_SpriteUV.x, _SpriteUV.z, o.uv.x);
+                o.uv.y = lerp(_SpriteUV.y, _SpriteUV.w, o.uv.y);
+
                 return o;
             }
 
@@ -60,8 +67,8 @@ Shader "Unlit/CoolTime"
                 clip(col.a - 0.0005f);
 
                 float pi = 3.14159;
-
-                float2 uv = i.uv - float2(0.5f, 0.5f);
+                
+                float2 uv = i.uv - float2(lerp(_SpriteUV.x, _SpriteUV.z, 0.5f), lerp(_SpriteUV.y, _SpriteUV.w, 0.5f));
                 float polar = (atan2(uv.x, -uv.y) / pi) * 0.5f + 0.5f;
                 
                 if (polar < _CurrentCoolTime / _CoolTime) {

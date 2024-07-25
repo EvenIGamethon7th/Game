@@ -1,5 +1,6 @@
 using _2_Scripts.Utils;
 using Cargold;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 namespace _2_Scripts.UI.Ingame
 {
-    public class UI_MainCharacter : MonoBehaviour
+    public class UI_MainCharacter : SerializedMonoBehaviour
     {
         private UI_MainCharacterButton mButton;
         private UI_MainCharacterCoolTime mCoolTime;
@@ -22,6 +23,9 @@ namespace _2_Scripts.UI.Ingame
 
         [SerializeField]
         private SpriteAtlas mSpriteAtlas;
+
+        [SerializeField]
+        private Dictionary<string, Sprite> mButtonSpriteDict = new();
 
         private void Awake()
         {
@@ -39,10 +43,18 @@ namespace _2_Scripts.UI.Ingame
 
             Sprite[] s = new Sprite[mSpriteAtlas.spriteCount];
             mSpriteAtlas.GetSprites(s);
-            var sp = s.FirstOrDefault(x => x.name == $"{name}_SkillIcon(Clone)");
-            mButton.Init(sp, mainData.SkillList[0].CoolTime);
-            mCoolTime.Init(mSpriteAtlas.GetSprite($"{name}(Clone)"));
-            mInfoBubble.Init(mainData.CharacterEvolutions[1].GetData);
+            foreach (var sprite in s)
+            {
+                if (sprite.name.Contains(name))
+                {
+                    var x = sprite.name;
+                }
+            }
+
+            mButton.Init(mButtonSpriteDict[name], mainData.SkillList[0].CoolTime);
+
+            mCoolTime.Init(s.FirstOrDefault(x => x.name == $"{name}(Clone)"));
+            mInfoBubble.Init(mainData.CharacterEvolutions[1].GetData, s.FirstOrDefault(x => x.name == $"{name}_Info(Clone)"));
         }
     }
 }

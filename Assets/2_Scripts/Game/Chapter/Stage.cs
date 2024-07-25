@@ -1,4 +1,5 @@
 ﻿using _2_Scripts.Utils;
+using TMPro;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,8 @@ namespace _2_Scripts.Game.Chapter
         private GameMessage<StageData> mPopUpOpenMessage;
         [SerializeField] 
         private Image[] mStarImage;
+        [SerializeField]
+        private TextMeshProUGUI mStageNumberText;
         public bool IsClear => mStageData.IsClear;
         
         public RectTransform GetRectTransform()
@@ -23,6 +26,7 @@ namespace _2_Scripts.Game.Chapter
         public void Init(StageData stageData)
         {
             mStageData = stageData;
+            mStageNumberText.text = $"{stageData.ChapterNumber}-{stageData.StageNumber}";
             mPopUpOpenMessage = new GameMessage<StageData>(EGameMessage.GameStartPopUpOpen, mStageData);
             for (int i = 0; i < stageData.Star; i++)
             {

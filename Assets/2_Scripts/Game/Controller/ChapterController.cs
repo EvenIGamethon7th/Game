@@ -40,8 +40,8 @@ namespace _2_Scripts.Game.Controller
                 var chapterData = mChapterHandler.ChapterDataLoad(i);
                 mChapterList[chapterData.ChapterNumber].Init(chapterData);
 
-                var i1 = i+1;
-                mChapterButtonList[i].Init(()=>OnDrawMap(i1));
+                var i1 = i;
+                mChapterButtonList[i-1].Init(()=>OnDrawMap(i1));
                 if (chapterData.isClear && i < mChapterList.Count)
                 {
                     mChapterList[chapterData.ChapterNumber+1].OnDrawChapter();

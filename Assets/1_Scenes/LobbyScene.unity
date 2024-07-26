@@ -255,6 +255,7 @@ MonoBehaviour:
   - {fileID: 559447048}
   - {fileID: 1030527064}
   mStageIndicator: {fileID: 5515977985060260986}
+  mChapterClearStarText: {fileID: 5515977985060260988}
 --- !u!4 &147470136
 Transform:
   m_ObjectHideFlags: 0
@@ -2695,7 +2696,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3123944585389054552, guid: 7a4505c2957234f40ad2a7de82975fed, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2720,6 +2722,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb30a934f11f4bb9806fc6664b41b806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5515977985060260988 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2087366916468236844, guid: 7a4505c2957234f40ad2a7de82975fed, type: 3}
+  m_PrefabInstance: {fileID: 5515977985060260985}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &5833307134115336208

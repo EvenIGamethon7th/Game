@@ -19,7 +19,7 @@ namespace _2_Scripts.UI
         public void SetDamage(float damage)
         {
             gameObject.SetActive(true);
-            mText.text = $"-{damage}";
+            mText.text = $"{damage:F1}";
             FadeAsync().Forget();
         }
 

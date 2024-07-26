@@ -5,6 +5,7 @@ using _2_Scripts.Game.Handler;
 using _2_Scripts.UI.OutGame.Lobby;
 using _2_Scripts.Utils;
 using Sirenix.OdinInspector;
+using TMPro;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,7 +26,8 @@ namespace _2_Scripts.Game.Controller
         
         [SerializeField]
         private UI_StageIndicator mStageIndicator;
-        
+        [SerializeField]
+        private TextMeshProUGUI mChapterClearStarText;
         private GameMessage<Chapter> mChapterMessage = new GameMessage<Chapter>(EGameMessage.ChapterChange,null);
         private void Start()
         {
@@ -61,6 +63,7 @@ namespace _2_Scripts.Game.Controller
             mChapterMessage.SetValue(mChapterList[idx]);
             MessageBroker.Default.Publish(mChapterMessage);
             mStageIndicator.OnChange(mChapterList[idx]);
+            mChapterClearStarText.text = $"{mChapterList[idx].ChapterClearStar}/{mChapterList[idx].ChapterAllStar}";
         }
 
         private void LastChapterEnable()

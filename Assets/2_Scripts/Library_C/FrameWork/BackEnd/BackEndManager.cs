@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using _2_Scripts.Game.BackEndData.Mission;
 using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
 using PlayFab;
@@ -34,7 +35,7 @@ namespace Cargold.FrameWork.BackEnd
             {ECurrency.Father,new ReactiveProperty<int>(0)},
             {ECurrency.Diamond,new ReactiveProperty<int>(0)}
         };
-
+        public Dictionary<string, SpawnMission> UserMission { get; private set; } = new Dictionary<string, SpawnMission>();
         public List<ChapterData> ChapterDataList { get; private set; } = new();
 
         protected override void Awake()
@@ -69,7 +70,6 @@ namespace Cargold.FrameWork.BackEnd
             await UniTask.WaitUntil(() => mAuthService.SessionTicket != null);
             //맨 마지막에 
             SyncCurrencyDataFromServer(successCallback.Invoke).Forget();
-
         }
         
         /// <summary>

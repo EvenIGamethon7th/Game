@@ -6,6 +6,7 @@ using _2_Scripts.Game.Map.Tile;
 using _2_Scripts.Game.Unit;
 using _2_Scripts.UI;
 using _2_Scripts.Utils;
+using Cargold.FrameWork.BackEnd;
 using UniRx;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -155,6 +156,10 @@ public class MapManager : Singleton<MapManager>
             tileSlot.OccupantUnit.AddUnit(unit);
         }
         spawnAction?.Invoke(tileSlot.transform.position);
+        if (characterData.rank == 3)
+        {
+            BackEndManager.Instance.AddSpawnMission(characterData);
+        }
 
         return true;
     }

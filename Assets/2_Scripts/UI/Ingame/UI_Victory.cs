@@ -31,7 +31,7 @@ namespace _2_Scripts.UI.Ingame
             var stageData = GameManager.Instance.CurrentStageData;
             stageData.Star = Math.Max(stageData.Star,rank);
             stageData.IsClear = true;
-            BackEndManager.Instance.SaveChapterData();
+            BackEndManager.Instance.SaveCharacterData();
             
             for (int i = 0; i < rank; i++)
             {

@@ -12,12 +12,20 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using CharacterInfo = _2_Scripts.Game.ScriptableObject.Character.CharacterInfo;
 using Random = System.Random;
+
+public enum EItemType
+{
+    Lecturer1st,
+    Lecturer2nd,
+    HpUp,
+}
+
 public class GameManager : Singleton<GameManager>
 {
 
     public ReactiveProperty<float> UserHp { get; private set; } = new ReactiveProperty<float>(100);
 
-    private readonly int mMaxHp = 100;
+    private int mMaxHp = 100;
 
     public event Action<float> DamageHp;
     public event Action<float> HealHp;
@@ -33,6 +41,25 @@ public class GameManager : Singleton<GameManager>
     public bool IsTest { get; private set; } = true;
 
     public _2_Scripts.Game.BackEndData.Stage.StageData CurrentStageData { get; private set; }
+
+    #region Item Manage
+    private HashSet<EItemType> mIngameItem = new HashSet<EItemType>();
+
+    public void UseItem(EItemType type)
+    {
+        mIngameItem.Add(type);
+    }
+
+    public void RemoveItem(EItemType type)
+    {
+        mIngameItem.Remove(type);
+    }
+
+    public bool IsUseItem(EItemType type)
+    {
+        return mIngameItem.Contains(type);
+    }
+    #endregion
 
     public void SetCurrentStageData(_2_Scripts.Game.BackEndData.Stage.StageData stageData)
     {
@@ -87,8 +114,6 @@ public class GameManager : Singleton<GameManager>
             UserLevel.Value++;
         }
     }
-
-
 
     public List<CharacterInfo> UserCharacterList { get; private set; } = new List<CharacterInfo>();
     private List<MainCharacterInfo> mMainCharacterList = new List<MainCharacterInfo>();

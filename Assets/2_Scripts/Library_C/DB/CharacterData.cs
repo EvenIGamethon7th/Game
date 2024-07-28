@@ -84,6 +84,10 @@ public partial class CharacterData : IPoolable
             return GetTotalMAtk();
     }
 
+    public Sprite GetCharacterSprite()
+    {
+        return null;
+    }
     public string GetCharacterName()
     {
         return LocalizeSystem_Manager.Instance.GetLcz_Func(nameKey);

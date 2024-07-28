@@ -50,6 +50,7 @@ public partial class CharacterData : IPoolable
         characterData = data.characterData;
         cost = data.cost;
         academyClass = data.academyClass;
+        Icon = data.Icon;
     }
 
     public Sprite GetSkillIconOrNull(string skillKey)
@@ -86,7 +87,7 @@ public partial class CharacterData : IPoolable
 
     public Sprite GetCharacterSprite()
     {
-        return null;
+        return Icon;
     }
     public string GetCharacterName()
     {

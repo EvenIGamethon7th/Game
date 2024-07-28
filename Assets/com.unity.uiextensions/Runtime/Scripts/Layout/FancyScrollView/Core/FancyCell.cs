@@ -1,6 +1,8 @@
 ﻿/// Credit setchi (https://github.com/setchi)
 /// Sourced from - https://github.com/setchi/FancyScrollView
 
+using Sirenix.OdinInspector;
+
 namespace UnityEngine.UI.Extensions
 {
     /// <summary>
@@ -10,7 +12,7 @@ namespace UnityEngine.UI.Extensions
     /// </summary>
     /// <typeparam name="TItemData">アイテムのデータ型.</typeparam>
     /// <typeparam name="TContext"><see cref="Context"/> の型.</typeparam>
-    public abstract class FancyCell<TItemData, TContext> : MonoBehaviour where TContext : class, new()
+    public abstract class FancyCell<TItemData, TContext> : SerializedMonoBehaviour where TContext : class, new()
     {
         /// <summary>
         /// このセルで表示しているデータのインデックス.

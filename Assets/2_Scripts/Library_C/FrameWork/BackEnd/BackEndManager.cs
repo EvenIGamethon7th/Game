@@ -44,7 +44,7 @@ namespace Cargold.FrameWork.BackEnd
             List<CharacterData> characterDatas = new List<CharacterData>();
             GameManager.Instance.UserCharacterList.ForEach(characterData =>
             {
-                characterDatas.Add(characterData.CharacterEvolutions[2].GetData);
+                characterDatas.Add(characterData.CharacterEvolutions[3].GetData);
             });
             characterDatas.ForEach(data =>
             {

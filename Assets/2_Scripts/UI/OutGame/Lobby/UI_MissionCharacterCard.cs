@@ -37,11 +37,5 @@ namespace _2_Scripts.UI.OutGame.Lobby
             }
             mCharacterInfo.text = infoText;
         }
-        
-        protected override void UpdatePosition(float normalizedPosition, float localPosition)
-        {
-            base.UpdatePosition(normalizedPosition, localPosition);
-            transform.localPosition += new Vector3(424, 0, 0);
-        }
     }
 }

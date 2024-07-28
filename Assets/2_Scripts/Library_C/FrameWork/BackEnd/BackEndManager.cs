@@ -38,6 +38,28 @@ namespace Cargold.FrameWork.BackEnd
         public Dictionary<string, SpawnMission> UserMission { get; private set; } = new Dictionary<string, SpawnMission>();
         public List<ChapterData> ChapterDataList { get; private set; } = new();
 
+
+        public List<SpawnMission> SpawnMissions()
+        {
+            List<CharacterData> characterDatas = new List<CharacterData>();
+            GameManager.Instance.UserCharacterList.ForEach(characterData =>
+            {
+                characterDatas.Add(characterData.CharacterEvolutions[2].GetData);
+            });
+            characterDatas.ForEach(data =>
+            {
+                if(UserMission.TryGetValue(data.Key,out var mission))
+                {
+                    mission.CharacterKey = data.Key;
+                }
+                else
+                {
+                    UserMission.Add(data.Key,new SpawnMission(data.Key));
+                }
+            });
+            return UserMission.Values.ToList();
+        }
+        
         protected override void Awake()
         {
             base.Awake();
@@ -205,7 +227,7 @@ namespace Cargold.FrameWork.BackEnd
             }
             else
             {
-                UserMission.Add(characterData.Key,new SpawnMission{CharacterKey = characterData.Key,SpawnCount = 1});
+                UserMission.Add(characterData.Key,new SpawnMission(characterData.Key,spawnCount: 1));
             }
         }
     }

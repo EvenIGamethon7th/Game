@@ -24,11 +24,6 @@ public class MapManager : Singleton<MapManager>
 
     private void Start()
     {
-        var go = Instantiate(ResourceManager.Instance.Load<GameObject>(GameManager.Instance.CurrentStageData.ChapterNumber.ToString()));
-        mMapTile = go.GetComponent<MapTile>();
-        mMap = mMapTile.UnitTile;
-        mMonsterPathMap = mMapTile.MonsterTile;
-
         if (GameManager.Instance.IsTest)
         {
             MessageBroker.Default.Receive<TaskMessage>().Where(message => message.Task == ETaskList.DefaultResourceLoad).Subscribe(
@@ -38,9 +33,23 @@ public class MapManager : Singleton<MapManager>
                     CreateInitialTileSlots();
                     CreatePool();
                 }).AddTo(this);
+
+            MessageBroker.Default.Receive<TaskMessage>().Where(message => message.Task == ETaskList.MapDataResourceLoad).Subscribe(
+                _ =>
+                {
+                    var go = Instantiate(ResourceManager.Instance.Load<GameObject>("1"));
+                    mMapTile = go.GetComponent<MapTile>();
+                    mMap = mMapTile.UnitTile;
+                    mMonsterPathMap = mMapTile.MonsterTile;
+                }).AddTo(this);
         }
         else
         {
+            var go = Instantiate(ResourceManager.Instance.Load<GameObject>(GameManager.Instance.CurrentStageData.ChapterNumber.ToString()));
+            mMapTile = go.GetComponent<MapTile>();
+            mMap = mMapTile.UnitTile;
+            mMonsterPathMap = mMapTile.MonsterTile;
+
             Instantiate(ResourceManager.Instance.Load<GameObject>($"{GameManager.Instance.CurrentMainCharacter.CharacterEvolutions[1].GetData.characterData}1"));
             CreateInitialTileSlots();
             CreatePool();

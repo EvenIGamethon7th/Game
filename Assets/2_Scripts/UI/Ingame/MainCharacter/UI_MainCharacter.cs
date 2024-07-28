@@ -36,7 +36,7 @@ namespace _2_Scripts.UI.Ingame
 
         private void Start()
         {
-            //TODO: ¸ŞÀÎÄ³¸¯ÅÍ¸¦ ¸Å´ÏÀú¿¡¼­ ¹Ş¾Æ¿Â ÈÄ ÀÚ½Äµé ÃÊ±âÈ­
+            //TODO: ë©”ì¸ìºë¦­í„°ë¥¼ ë§¤ë‹ˆì €ì—ì„œ ë°›ì•„ì˜¨ í›„ ìì‹ë“¤ ì´ˆê¸°í™”
             if (GameManager.Instance.IsTest) return;
             var mainData = GameManager.Instance.CurrentMainCharacter;
             string name = mainData.CharacterEvolutions[1].GetData.characterData;

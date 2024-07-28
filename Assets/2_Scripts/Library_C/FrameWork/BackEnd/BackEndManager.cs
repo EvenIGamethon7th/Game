@@ -79,6 +79,7 @@ namespace Cargold.FrameWork.BackEnd
         {
             await ReceiveCurrencyData();
             await LoadChapterData();
+            await ReceiveMissionData();
             successCallback?.Invoke();
         }
 
@@ -103,10 +104,10 @@ namespace Cargold.FrameWork.BackEnd
             await tcs.Task;
         }
 
-        public void SaveChapterData()
+        public void SaveCharacterData()
         {
             string jsonData = JsonConvert.SerializeObject(ChapterDataList);
-            PublishChapterData(new Dictionary<string, string> { { "ChapterData", jsonData } });
+            PublishCharacterData(new Dictionary<string, string> { { "ChapterData", jsonData }, { "MissionData", JsonConvert.SerializeObject(UserMission) }});
         }
         
         private async UniTask LoadChapterData()
@@ -128,8 +129,26 @@ namespace Cargold.FrameWork.BackEnd
             await tcs.Task;
         }
         
+        private async UniTask ReceiveMissionData()
+        {
+            var tcs = new UniTaskCompletionSource();
+            PlayFabClientAPI.GetUserData(new GetUserDataRequest(), (result) =>
+            {
+                if (result.Data.TryGetValue("MissionData", out var data))
+                {
+                    UserMission = JsonConvert.DeserializeObject<Dictionary<string, SpawnMission>>(data.Value);
+                }
+                tcs.TrySetResult();
+            }, (error) =>
+            {
+                tcs.TrySetException(new Exception(error.GenerateErrorReport()));
+                ErrorLog(error);
+            });
+
+            await tcs.Task;
+        }
         
-        private void PublishChapterData(Dictionary<string,string> data)
+        private void PublishCharacterData(Dictionary<string,string> data)
         {
            var request = new ExecuteCloudScriptRequest
            {
@@ -178,5 +197,16 @@ namespace Cargold.FrameWork.BackEnd
             
         }
 
+        public void AddSpawnMission(CharacterData characterData)
+        {
+            if (UserMission.TryGetValue(characterData.Key, out var mission))
+            {
+                mission.AddSpawnCount(1);
+            }
+            else
+            {
+                UserMission.Add(characterData.Key,new SpawnMission{CharacterKey = characterData.Key,SpawnCount = 1});
+            }
+        }
     }
 }

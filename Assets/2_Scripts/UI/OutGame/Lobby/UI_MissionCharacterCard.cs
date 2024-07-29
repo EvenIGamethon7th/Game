@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _2_Scripts.Game.BackEndData.Mission;
+using _2_Scripts.Utils;
 using _2_Scripts.Utils.Components;
 using TMPro;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UI.Extensions;
@@ -22,7 +25,24 @@ namespace _2_Scripts.UI.OutGame.Lobby
         [SerializeField] private Image mBorderImage;
         [SerializeField] private GameObject mLockIcon;
         [SerializeField] private Dictionary<EStateCard,Sprite> mBorderSprite;
+        [SerializeField] private Button mButton;
+
+        private GameMessage<UI_MissionCharacterCard> mSelectCharacterCardMessage;
+        
+        public SpawnMission MissionData { get; private set; }
         //TODO Select Initialize add
+        private void Start()
+        {
+            mSelectCharacterCardMessage = new GameMessage<UI_MissionCharacterCard>(EGameMessage.SelectCharacter,this);
+            mButton.onClick.AddListener(OnClickCard);
+        }
+
+        private void OnClickCard()
+        {
+            if (MissionData.IsGet == false)
+                return;
+            MessageBroker.Default.Publish(mSelectCharacterCardMessage);
+        }
         public override void UpdateContent(SpawnMission itemData)
         {
             EStateCard cardState = EStateCard.Lock;
@@ -33,10 +53,20 @@ namespace _2_Scripts.UI.OutGame.Lobby
             {
                 cardState = itemData.IsEquip ? EStateCard.Equip : EStateCard.Unlock;
             }
+         
+            MissionData = itemData; 
+            SelectBorder(cardState);
+        }
+        public void SelectBorder(EStateCard state)
+        {
+            bool isLock = state == EStateCard.Lock;
+            MissionData.IsEquip = EStateCard.Equip == state;
+            mBorderImage.sprite = mBorderSprite[state];
+            
             string infoText = "";
-            if (itemData.IsGet)
+            if (MissionData.IsGet)
             {
-                if (itemData.IsEquip)
+                if (MissionData.IsEquip)
                 {
                     infoText = "장착 중";
                 }
@@ -47,15 +77,10 @@ namespace _2_Scripts.UI.OutGame.Lobby
             }
             else
             {
-                infoText = $"소환 하기 {itemData.SpawnCount}/100";
+                infoText = $"소환 하기 {MissionData.SpawnCount}/100";
             }
             mCharacterInfo.text = infoText;
-            SelectBorder(cardState);
-        }
-        public void SelectBorder(EStateCard state)
-        {
-            bool isLock = state == EStateCard.Lock;
-            mBorderImage.sprite = mBorderSprite[state];
+            
             mLockIcon.SetActive(isLock);
         }
     }

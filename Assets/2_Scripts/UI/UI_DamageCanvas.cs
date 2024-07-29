@@ -15,11 +15,18 @@ namespace _2_Scripts.UI
         private CancellationTokenSource mCts;
 
         private static Color mClear = new Color(1, 1, 1, 0);
+        private static Color mTopMinDamage = new Color(0, 0.3658f, 1, 1);
+        private static Color mTopMaxDamage = new Color(1, 0.3658f, 0, 1);
+        private static Color mBottomMinDamage = new Color(0, 1, 1, 1);
+        private static Color mBottomMaxDamage = new Color(1, 1, 0, 1);
 
         public void SetDamage(float damage)
         {
             gameObject.SetActive(true);
             mText.text = $"{damage:F1}";
+            Color topCol = Color.Lerp(mTopMinDamage, mTopMaxDamage, damage * 0.001f);
+            Color botCol = Color.Lerp(mBottomMinDamage, mBottomMaxDamage, damage * 0.001f);
+            mText.colorGradient = new VertexGradient(topCol, topCol, botCol, botCol);
             FadeAsync().Forget();
         }
 

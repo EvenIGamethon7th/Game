@@ -27,13 +27,13 @@ namespace _2_Scripts.UI.OutGame.Lobby
         [SerializeField] private Dictionary<EStateCard,Sprite> mBorderSprite;
         [SerializeField] private Button mButton;
 
-        private GameMessage<UI_MissionCharacterCard> mSelectCharacterCardMessage;
+        private GameMessage<SpawnMission> mSelectCharacterCardMessage;
         
         public SpawnMission MissionData { get; private set; }
         //TODO Select Initialize add
         private void Start()
         {
-            mSelectCharacterCardMessage = new GameMessage<UI_MissionCharacterCard>(EGameMessage.SelectCharacter,this);
+            mSelectCharacterCardMessage = new GameMessage<SpawnMission>(EGameMessage.SelectCharacter, MissionData);
             mButton.onClick.AddListener(OnClickCard);
         }
 
@@ -54,10 +54,12 @@ namespace _2_Scripts.UI.OutGame.Lobby
                 cardState = itemData.IsEquip ? EStateCard.Equip : EStateCard.Unlock;
             }
          
-            MissionData = itemData; 
+            MissionData = itemData;
+            mSelectCharacterCardMessage?.SetValue(itemData);
             SelectBorder(cardState);
         }
-        public void SelectBorder(EStateCard state)
+
+        private void SelectBorder(EStateCard state)
         {
             bool isLock = state == EStateCard.Lock;
             MissionData.IsEquip = EStateCard.Equip == state;

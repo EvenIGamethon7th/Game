@@ -24,8 +24,9 @@ namespace _2_Scripts.UI
         {
             gameObject.SetActive(true);
             mText.text = $"{damage:F1}";
-            Color topCol = Color.Lerp(mTopMinDamage, mTopMaxDamage, damage * 0.001f);
-            Color botCol = Color.Lerp(mBottomMinDamage, mBottomMaxDamage, damage * 0.001f);
+            float rate = damage * 0.001f;
+            Color topCol = Color.Lerp(mTopMinDamage, mTopMaxDamage, rate);
+            Color botCol = Color.Lerp(mBottomMinDamage, mBottomMaxDamage, rate);
             mText.colorGradient = new VertexGradient(topCol, topCol, botCol, botCol);
             FadeAsync().Forget();
         }

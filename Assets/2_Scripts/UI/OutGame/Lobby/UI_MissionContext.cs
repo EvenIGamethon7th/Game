@@ -14,20 +14,25 @@ namespace _2_Scripts.UI.OutGame.Lobby
     public class UI_MissionContext : MonoBehaviour
     {
         [SerializeField] private UI_MissionGrid mMissionGrid;
-        private UI_MissionCharacterCard mSelectedMission;
+        private SpawnMission mSelectedMission;
         private void Start()
         {
             mMissionGrid.UpdateContents(BackEndManager.Instance.SpawnMissions());
-            MessageBroker.Default.Receive<GameMessage<UI_MissionCharacterCard>>()
+
+            mSelectedMission = BackEndManager.Instance.SpawnMissions().DefaultIfEmpty(null).Where(x => x.IsEquip == true).FirstOrDefault();
+
+            MessageBroker.Default.Receive<GameMessage<SpawnMission>>()
                 .Where(message => message.Message == EGameMessage.SelectCharacter)
                 .Subscribe(data =>
                 {
-                    if(mSelectedMission != null)
-                        mSelectedMission.SelectBorder(EStateCard.Unlock);
-                    
+                    if (mSelectedMission != null)
+                        mSelectedMission.IsEquip = false;
+
                     mSelectedMission = data.Value;
-                    mSelectedMission.SelectBorder(EStateCard.Equip);
-                });
+                    mSelectedMission.IsEquip = true;
+
+                    mMissionGrid.UpdateContents(BackEndManager.Instance.SpawnMissions());
+                }).AddTo(this);
         }
     }
 }

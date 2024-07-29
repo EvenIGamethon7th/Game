@@ -146,7 +146,7 @@ namespace _2_Scripts.UI {
                     DecideLessonResult();
                     ++mLessonCount;
                 }
-
+                
                 if (mLessonCount < 5)
                 {
                     mLesson.DoLesson(mLessonCount);

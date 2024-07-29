@@ -10,6 +10,7 @@ using Cargold;
 using Cysharp.Threading.Tasks;
 using Rito.Attributes;
 using UniRx;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -83,7 +84,15 @@ public class StageManager : Singleton<StageManager>
     private void StageInit()
     {
         var currentStage = GameManager.Instance.CurrentStageData;
-        var stageKey = $"Stage_{(currentStage.ChapterNumber - 1) * 5 + (currentStage.StageNumber-1)}";
+        string stageKey;
+        if (currentStage != null)
+        {
+            stageKey = $"Stage_{(currentStage.ChapterNumber - 1) * 5 + (currentStage.StageNumber - 1)}";
+        }
+        else
+        {
+            stageKey = "Stage_0";
+        }
         mCurrentStageData = DataBase_Manager.Instance.GetStage.GetData_Func(stageKey);
         foreach (var wave in mCurrentStageData.waveList)
         {
@@ -155,6 +164,16 @@ public class StageManager : Singleton<StageManager>
 
     private void EditInit()
     {
+        Time.timeScale = 5f;
+        MessageBroker.Default.Receive<TaskMessage>()
+            .Where(message => message.Task == ETaskList.DefaultResourceLoad)
+            .Subscribe(message =>
+            {
+                mNextStageMessage = new GameMessage<int>(EGameMessage.StageChange, 0);
+                mBossSpawnMessage = new TaskMessage(ETaskList.BossSpawn);
+                ObjectPoolManager.Instance.RegisterPoolingObject("Monster", 100);
+                StageInit();
+            }).AddTo(this);
         MessageBroker.Default.Receive<EditMessage<int, int>>().Subscribe(message =>
         {
             GetStageAndWaveData(message.Value1, message.Value2);

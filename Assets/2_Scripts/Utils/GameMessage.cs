@@ -13,7 +13,8 @@ namespace _2_Scripts.Utils
         MainCharacterSkillUse,
         MainCharacterCoolTime,
         GameStartPopUpOpen,
-        ChapterChange
+        ChapterChange,
+        CharacterCardChange
     }
     
     public class GameMessage<T>

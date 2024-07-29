@@ -222,7 +222,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: c9c04a4c986c94eeda2da7acd9f38a95, type: 3}
-  m_Type: 1
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -628,7 +628,7 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: -17}
-  m_Pivot: {x: 1, y: 1}
+  m_Pivot: {x: 1, y: 0}
 --- !u!222 &4589288978011861547
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -679,7 +679,7 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 2210623061781946623}
   m_HandleRect: {fileID: 1519403463184830700}
-  m_Direction: 2
+  m_Direction: 3
   m_Value: 1
   m_Size: 0.1
   m_NumberOfSteps: 0
@@ -772,14 +772,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d54c13ea634e4da509141fd0c532ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellInterval: 0.37000975
-  scrollOffset: 0.37000975
+  cellInterval: 0.38204393
+  scrollOffset: 0.38204393
   loop: 0
   cellContainer: {fileID: 6255323369011900340}
   reuseCellMarginCount: 0
-  paddingHead: 760
+  paddingHead: 0
   paddingTail: 0
-  spacing: 0
+  spacing: 20
   startAxisSpacing: 0
   startAxisCellCount: 2
   cellSize: {x: 400, y: 380}
@@ -1409,7 +1409,7 @@ MonoBehaviour:
   m_text: "\uBA54\uC778 \uD654\uBA74\n\uBCC0\uACBD"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2308dcf15792bf143afa19e3e9c71c9e, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: c9f161a443d5f64418d75c5a78b3d78a, type: 2}
+  m_sharedMaterial: {fileID: -8666318514138864823, guid: 2308dcf15792bf143afa19e3e9c71c9e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1507,8 +1507,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 420, y: -380}
+  m_SizeDelta: {x: -420, y: -380}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &7776495339406179273
 GameObject:

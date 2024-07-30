@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace _2_Scripts.UI.Ingame
 {
-    public class UI_DefaultMonsterHpSlider : MonoBehaviour, IMonsterHpUI
+    public class UI_BossMonsterHpSlider : MonoBehaviour, IMonsterHpUI
     {
         [SerializeField]
-        private Slider mHpSlider;
+        private UI_SlicedFilledImage mHpSlider;
 
         [SerializeField]
-        private Image mHpColor;
+        private TextMeshProUGUI mHpText;
 
         private float mMaxHp;
 
@@ -19,23 +19,22 @@ namespace _2_Scripts.UI.Ingame
 
         public void InitHpUI(float maxHp)
         {
-            mHpSlider.maxValue = maxHp;
-            mHpSlider.value = maxHp;
+            mHpSlider.fillAmount = 1;
             mMaxHp = maxHp;
-            mHpColor.color = Color.green;
+            mHpText.text = maxHp.ToString("F1");
             gameObject.SetActive(true);
         }
 
         public void SetHpUI(float currentHp)
         {
-            mHpSlider.value = currentHp;
+            mHpSlider.fillAmount = currentHp / mMaxHp;
 
-            mHpColor.color = Color.Lerp(Color.red, Color.green, currentHp / mMaxHp);
+            mHpText.text = currentHp.ToString("F1");
         }
 
         public void UpdatePos(Vector3 pos)
         {
-            transform.localPosition = pos + Vector3.up;
+            transform.localPosition = pos + Vector3.up * 2;
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IMonsterHpUI
 {
-    public void InitHpUI(float maxHp, bool isBoss);
+    public void InitHpUI(float maxHp);
     public void SetHpUI(float currentHp);
     public bool Active { get; set; }
 

@@ -164,7 +164,7 @@ public class StageManager : Singleton<StageManager>
 
     private void EditInit()
     {
-        //Time.timeScale = 5f;
+        Time.timeScale = 2.5f;
         MessageBroker.Default.Receive<TaskMessage>()
             .Where(message => message.Task == ETaskList.DefaultResourceLoad)
             .Subscribe(message =>

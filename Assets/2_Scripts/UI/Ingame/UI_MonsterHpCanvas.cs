@@ -3,6 +3,7 @@ using _2_Scripts.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UniRx;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace _2_Scripts.UI.Ingame
@@ -14,19 +15,35 @@ namespace _2_Scripts.UI.Ingame
             MessageBroker.Default.Receive<GameMessage<Monster>>()
                 .Subscribe(message =>
                 {
-                    GameObject canvas = ObjectPoolManager.Instance.CreatePoolingObject("DefaultMonsterHpSlider", message.Value.transform.position);
-                    if (canvas == null) return;
-                    var rect = canvas.GetComponent<RectTransform>();
-                    rect.parent = transform;
-                    rect.localScale = Vector3.one;
-                    rect.localPosition = Vector3.zero;
-                    rect.sizeDelta = new Vector2(1, 0.25f);
-                    if (canvas.TryGetComponent<IMonsterHpUI>(out var monsterHpUI))
+                    GameObject canvas;
+
+                    if (message.Value.IsBoss)
                     {
-                        message.Value.CurrentHpCanvas = monsterHpUI;
+                        canvas = ObjectPoolManager.Instance.CreatePoolingObject("BossHpSlider", Vector3.zero);
                     }
+
+                    else
+                    {
+                        canvas = ObjectPoolManager.Instance.CreatePoolingObject("DefaultMonsterHpSlider", Vector3.zero);
+                    }
+
+                    if (canvas == null) return;
+                    CreateInterface(canvas, message.Value);
                 })
                 .AddTo(this);
+        }
+
+        private void CreateInterface(GameObject canvas, Monster monster)
+        {
+            var rect = canvas.GetComponent<RectTransform>();
+            rect.parent = transform;
+            rect.localScale = Vector3.one;
+            rect.localPosition = Vector3.zero;
+            rect.sizeDelta = new Vector2(1, 0.25f);
+            if (canvas.TryGetComponent<IMonsterHpUI>(out var monsterHpUI))
+            {
+                monster.CurrentHpCanvas = monsterHpUI;
+            }
         }
     }
 }

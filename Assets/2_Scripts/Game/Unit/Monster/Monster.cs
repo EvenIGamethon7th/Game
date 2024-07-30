@@ -103,9 +103,9 @@ namespace _2_Scripts.Game.Monster
             WaitLoadSprite(() =>
             {
                 mMatController.RunDissolve(true, () => {
+                    IsBoss = isBoss;
                     MessageBroker.Default.Publish(mMonsterMessage);
                     CurrentHpCanvas.InitHpUI(mMonsterData.MaxHp);
-                    IsBoss = isBoss;
                     Enabled(true);
                     mAnimator.speed = 1;
                 });

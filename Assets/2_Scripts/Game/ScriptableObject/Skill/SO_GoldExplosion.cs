@@ -1,3 +1,5 @@
+using _2_Scripts.Game.Monster;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
@@ -26,18 +28,33 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
             bool isSuccess = base.CastAttack(ownerTransform, ownerData, beforeDamage, afterDamage);
             if (isSuccess)
             {
-                Debug.Log("GetGold Unique");
                 if (StageManager.Instance.WaveCount < mEnhanceWave)
                 {
-                    GameManager.Instance.UpdateMoney(EMoneyType.Gold,mGoldBefore11Wave);
+                    GameManager.Instance.UpdateMoney(EMoneyType.Gold, mGoldBefore11Wave);
                 }
                 else
                 {
-                    GameManager.Instance.UpdateMoney(EMoneyType.Gold,mGoldAfter10Wave);
+                    GameManager.Instance.UpdateMoney(EMoneyType.Gold, mGoldAfter10Wave);
                 }
             }
 
             return isSuccess;
+        }
+
+        protected override void HitEffectPlay(Vector2 pos)
+        {
+            var lootingItem = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_LootingItem,
+                pos).GetComponent<LootingItem>();
+
+            if (StageManager.Instance.WaveCount < mEnhanceWave)
+            {
+                lootingItem.CreateItem(EMoneyType.Gold, mGoldBefore11Wave);
+            }
+
+            else
+            {
+                lootingItem.CreateItem(EMoneyType.Gold, mGoldAfter10Wave);
+            }
         }
     }
 }

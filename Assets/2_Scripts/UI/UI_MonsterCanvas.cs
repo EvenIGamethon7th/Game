@@ -6,40 +6,42 @@ using UnityEngine.UI;
 
 namespace _2_Scripts.UI
 {
-    public class UI_MonsterCanvas : MonoBehaviour
+    public class UI_MonsterCanvas : UI_Base, IMonsterHpUI
     {
         [SerializeField]
-        private Canvas mHpCanvas;
-        [SerializeField]
         private Slider mHpSlider;
+
         [SerializeField]
         private Image mHpColor;
-        [SerializeField]
-        private TextMeshProUGUI mHpText;
 
         private float mMaxHp;
 
-        private void Awake()
-        {
-            mHpCanvas.worldCamera = UICamera.Instance.Camera;
-        }
+        public bool Active { get => gameObject.activeSelf; set => gameObject.SetActive(value); }
 
-        public void InitHpSlider(float maxHp, bool isBoss)
+        public void InitHpUI(float maxHp, bool isBoss)
         {
+            if (isBoss) 
+            { 
+                gameObject.SetActive(false);
+                return;
+            }
+
             mHpSlider.maxValue = maxHp;
             mHpSlider.value = maxHp;
             mMaxHp = maxHp;
             mHpColor.color = Color.green;
-            mHpText.gameObject.SetActive(isBoss);
-            mHpText.text = $"{mMaxHp} / {mMaxHp}";
         }
 
-        public void SetHpSlider(float currentHp)
+        public void SetHpUI(float currentHp)
         {
             mHpSlider.value = currentHp;
 
             mHpColor.color = Color.Lerp(Color.red, Color.green, currentHp / mMaxHp);
-            mHpText.text = $"{Mathf.Max(currentHp, 0)} / {mMaxHp}";
+        }
+
+        public void UpdatePos(Vector3 pos)
+        {
+            transform.localPosition = pos + Vector3.up;
         }
     }
 }

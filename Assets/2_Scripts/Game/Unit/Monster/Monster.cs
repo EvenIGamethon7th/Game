@@ -33,7 +33,8 @@ namespace _2_Scripts.Game.Monster
         private const EGameMessage BOSS_DEATH = EGameMessage.BossDeath;
         public bool IsBoss { get; private set; }
 
-        private UI_MonsterCanvas mHpCanvas;
+        public IMonsterHpUI CurrentHpCanvas { get; set; }
+
         private Collider2D mTrigger;
 
 
@@ -48,6 +49,9 @@ namespace _2_Scripts.Game.Monster
         // Monster 방깍 한 번만 받기 위한 플래그
         public  bool DefenceFlag = false;
         public bool IsDead => mMonsterData.hp <= 0;
+
+        private GameMessage<Monster> mMonsterMessage;
+
         public void DamageActionAdd(Action<Monster> action,StatusEffectSO so)
         {
             if (mTargetStatusEffectList.Contains(so))
@@ -71,12 +75,12 @@ namespace _2_Scripts.Game.Monster
         {
             mAnimator = GetComponent<Animator>();
             mMatController = GetComponent<MatController>();
-            mHpCanvas = GetComponentInChildren<UI_MonsterCanvas>();
             mTrigger = GetComponent<Collider2D>();
             Renderer = GetComponent<SpriteRenderer>();
             Enabled(false);
             mDamagebleActions = new List<IDamagebleAction>(GetComponents<IDamagebleAction>());
             mDamagebleActions.ForEach(action => damagebleActions += action.DamageAction());
+            mMonsterMessage = new GameMessage<Monster>(EGameMessage.MonsterHp, this);
         }
         
         public void SpawnMonster(string key,WayPoint waypoint,bool isBoss,WaveStatData waveStatData,float statWeight,bool isLastBoss)
@@ -84,7 +88,6 @@ namespace _2_Scripts.Game.Monster
             var monsterData = DataBase_Manager.Instance.GetMonster.GetData_Func(key);
             mMonsterData = MemoryPoolManager<MonsterData>.CreatePoolingObject();
             mMonsterData.Init(waveStatData,statWeight);
-            mHpCanvas.InitHpSlider(mMonsterData.hp, isBoss);
             this.IsLastBoss = isLastBoss;
 
             mAnimator.speed = 0;
@@ -100,12 +103,12 @@ namespace _2_Scripts.Game.Monster
             WaitLoadSprite(() =>
             {
                 mMatController.RunDissolve(true, () => {
+                    MessageBroker.Default.Publish(mMonsterMessage);
                     IsBoss = isBoss;
                     Enabled(true);
                     mAnimator.speed = 1;
                 });
             }).Forget();
-
         }
         
         private async UniTaskVoid WaitLoadSprite(Action callbackAction)
@@ -124,7 +127,8 @@ namespace _2_Scripts.Game.Monster
             mMonsterData.DamageHp(DefenceCalculator.CalculateDamage(damage, mMonsterData, attackType));
             DamageActionCallback?.Invoke(this);
             damagebleActions?.Invoke();
-            mHpCanvas.SetHpSlider(mMonsterData.hp);
+            CurrentHpCanvas.SetHpUI(mMonsterData.hp);
+
             if (mMonsterData.hp <= 0)
             {
                 if (IsLastBoss)
@@ -144,7 +148,7 @@ namespace _2_Scripts.Game.Monster
                             lootingItem.CreateItem(reward.Key, reward.Value);
                             GameManager.Instance.UpdateMoney(reward.Key, reward.Value);
                         });
-                }  // GameManager.Instance.UpdateMoney(mMonsterData.reward_type,mMonsterData.reward_count);
+                }
 
                 mMatController.RunDissolve(false, () => gameObject.SetActive(false));
                 if (IsBoss)
@@ -196,6 +200,7 @@ namespace _2_Scripts.Game.Monster
             // 위치 이동
             position = Vector3.MoveTowards(position, NextWayPointVector, mMonsterData.speed * Time.deltaTime);
             transform.position = position;
+            CurrentHpCanvas.UpdatePos(position);
         }
         
         private void FlipSprite(Vector3 direction)
@@ -211,7 +216,8 @@ namespace _2_Scripts.Game.Monster
         private void Enabled(bool bEnable)
         {
             mTrigger.enabled = bEnable;
-            mHpCanvas.gameObject.SetActive(bEnable);
+            if (!bEnable && CurrentHpCanvas != null)
+                CurrentHpCanvas.Active = bEnable;
             enabled = bEnable;
             DefenceFlag = false;
         }

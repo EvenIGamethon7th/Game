@@ -45,4 +45,9 @@ public class CameraManager : Singleton<CameraManager>
     {
         global::Utils.DoShake(mCameras[(int)type].transform, isUnscale: isUnscale);
     }
+
+    public Vector3 WorldToScreenPoint(Vector3 pos, ECameraType type = ECameraType.Main)
+    {
+        return mCameras[(int)type].WorldToScreenPoint(pos);
+    }
 }

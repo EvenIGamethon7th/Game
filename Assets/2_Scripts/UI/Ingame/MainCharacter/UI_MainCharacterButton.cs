@@ -52,7 +52,7 @@ namespace _2_Scripts.UI.Ingame
 
         public void OnDrag(PointerEventData eventData)
         {
-            Vector2 imagePos = UICamera.Instance.Camera.WorldToScreenPoint(mRectTransform.position);
+            Vector2 imagePos = CameraManager.Instance.WorldToScreenPoint(mRectTransform.position, CameraManager.ECameraType.UI);
             Vector2 mousePos = eventData.position;
             if (!IsMouseOnImage(imagePos, mousePos))
             {

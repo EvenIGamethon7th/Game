@@ -21,6 +21,9 @@ public partial class AcademyClassData : Data_C
      [LabelText("성공확률")] public float Success_pro;
      [LabelText("대성공확률")] public float Great_pro;
      [LabelText("실패확률")] public float Fail_pro;
+     [LabelText("1타강사 성공")] public float Item_success;
+     [LabelText("1타강사 대성공")] public float Item_great;
+     [LabelText("1타강사 대성공")] public float Item_Fail;
 
     
 
@@ -38,6 +41,9 @@ public partial class AcademyClassData : Data_C
         Success_pro = _cellDataArr[8].ToFloat();
         Great_pro = _cellDataArr[9].ToFloat();
         Fail_pro = _cellDataArr[10].ToFloat();
+        Item_success = _cellDataArr[11].ToFloat();
+        Item_great = _cellDataArr[12].ToFloat();
+        Item_Fail = _cellDataArr[13].ToFloat();
     }
 #endif
 }

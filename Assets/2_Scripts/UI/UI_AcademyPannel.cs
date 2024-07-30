@@ -207,14 +207,16 @@ namespace _2_Scripts.UI {
         {
             if (GameManager.Instance.IsUseItem(EItemType.Lecturer1st))
             {
-                mClassRate[0] = mClassData[mLessonCount].Item_success * 100;
-                mClassRate[1] = mClassData[mLessonCount].Item_great * 100;
-                mClassRate[2] = mClassData[mLessonCount].Item_Fail * 100;
+                mClassRate[0] = mClassData[mLessonCount].Success_pro_item1 * 100;
+                mClassRate[1] = mClassData[mLessonCount].Great_pro_item1 * 100;
+                mClassRate[2] = mClassData[mLessonCount].Fail_pro_item1 * 100;
             }
 
             else if (GameManager.Instance.IsUseItem(EItemType.Lecturer2nd))
             {
-
+                mClassRate[0] = mClassData[mLessonCount].Success_pro_item2 * 100;
+                mClassRate[1] = mClassData[mLessonCount].Great_pro_item2 * 100;
+                mClassRate[2] = mClassData[mLessonCount].Fail_pro_item2 * 100;
             }
 
             else

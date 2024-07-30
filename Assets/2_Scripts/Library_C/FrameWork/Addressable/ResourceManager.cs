@@ -160,6 +160,10 @@ public class ResourceManager :Singleton<ResourceManager>
      protected override void Awake()
     {
         base.Awake();
+        if (instance != null && instance != this)
+        {
+            return;
+        }
         string[] labelNames = Enum.GetNames(typeof(ELabelNames));
         for (int i = 0; i < labelNames.Length; ++i)
         {

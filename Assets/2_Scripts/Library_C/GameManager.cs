@@ -218,7 +218,6 @@ public class GameManager : Singleton<GameManager>
                     {
                         MainCharacterList.Add(resource.Value as MainCharacterInfo);
                     }
-                    CurrentMainCharacter = MainCharacterList[3];
                 }).AddTo(this);
     }
 

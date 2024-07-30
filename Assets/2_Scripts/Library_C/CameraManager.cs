@@ -23,14 +23,6 @@ public class CameraManager : Singleton<CameraManager>
 
     private List<Camera> mCameras = new List<Camera>();
 
-    protected override void Awake()
-    {
-        base.Awake();
-        mCameras.Add(MainCamera);
-        mCameras.Add(FXCamera);
-        mCameras.Add(UICamera);
-    }
-
     protected override void ChangeSceneInit(Scene prev, Scene next)
     {
         
@@ -49,5 +41,12 @@ public class CameraManager : Singleton<CameraManager>
     public Vector3 WorldToScreenPoint(Vector3 pos, ECameraType type = ECameraType.Main)
     {
         return mCameras[(int)type].WorldToScreenPoint(pos);
+    }
+
+    protected override void AwakeInit()
+    {
+        mCameras.Add(MainCamera);
+        mCameras.Add(FXCamera);
+        mCameras.Add(UICamera);
     }
 }

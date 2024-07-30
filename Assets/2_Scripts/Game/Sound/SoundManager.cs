@@ -39,18 +39,7 @@ namespace _2_Scripts.Game.Sound
         public event Action<float> BGMAction;
         public event Action<float> EffectAction;
 
-        protected override void Awake()
-        {
-            base.Awake();
-            _volume = LoadVolume(Path.Combine(Application.persistentDataPath, "volume"));
-            BGMAction?.Invoke(_volume.BGM);
-            EffectAction?.Invoke(_volume.Effect);
-            AudioClip[] sfx = Resources.LoadAll<AudioClip>("Sound/SFX");
-            var sfxs = Enum.GetValues(typeof(ESFX)) as ESFX[];
-
-            for (int i = 0; i < sfx.Length; ++i)
-                _sfxs.Add(sfxs[i], sfx[i]);
-        }
+        
 
         public void Play2DSound(ESFX type)
         {
@@ -91,6 +80,18 @@ namespace _2_Scripts.Game.Sound
             {
                 return new SoundVolume(0.3f, 0.3f);
             }
+        }
+
+        protected override void AwakeInit()
+        {
+            _volume = LoadVolume(Path.Combine(Application.persistentDataPath, "volume"));
+            BGMAction?.Invoke(_volume.BGM);
+            EffectAction?.Invoke(_volume.Effect);
+            AudioClip[] sfx = Resources.LoadAll<AudioClip>("Sound/SFX");
+            var sfxs = Enum.GetValues(typeof(ESFX)) as ESFX[];
+
+            for (int i = 0; i < sfx.Length; ++i)
+                _sfxs.Add(sfxs[i], sfx[i]);
         }
     }
 }

@@ -32,7 +32,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
         }
     }
 
-    protected virtual void Awake()
+    private void Awake()
     {
 
         if (instance == null)
@@ -43,6 +43,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
        
             SceneManager.activeSceneChanged -= ChangeSceneInit;
             SceneManager.activeSceneChanged += ChangeSceneInit;
+            AwakeInit();
         }
 
         if (instance != null && instance != this)
@@ -51,6 +52,12 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
             return;
         }
     }
+
+    protected virtual void AwakeInit()
+    {
+
+    }
+
     protected virtual void OnDestory()
     {
         instance = null;

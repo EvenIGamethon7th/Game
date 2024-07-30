@@ -59,21 +59,6 @@ namespace Cargold.FrameWork.BackEnd
             });
             return UserMission.Values.ToList();
         }
-        
-        protected override void Awake()
-        {
-            base.Awake();
-            mAuthService = new PlayFabAuthService();
-            MessageBroker.Default.Receive<TaskMessage>().Where(message => message.Task == ETaskList.MapDataResourceLoad)
-                .Take(1)
-                .Subscribe(_ =>
-                {
-                    foreach (var mainCharacter in GameManager.Instance.MainCharacterList)
-                    {
-                        UserMainCharacterData.Add(mainCharacter.name,new MainCharacterData(mainCharacter.name,1,false,EGetType.Lock));
-                    }
-                }).AddTo(this);
-        }
 
         protected override void ChangeSceneInit(Scene prev, Scene next)
         {
@@ -259,6 +244,20 @@ namespace Cargold.FrameWork.BackEnd
             {
                 UserMission.Add(characterData.Key,new SpawnMission(characterData.Key,spawnCount: 1));
             }
+        }
+
+        protected override void AwakeInit()
+        {
+            mAuthService = new PlayFabAuthService();
+            MessageBroker.Default.Receive<TaskMessage>().Where(message => message.Task == ETaskList.MapDataResourceLoad)
+                .Take(1)
+                .Subscribe(_ =>
+                {
+                    foreach (var mainCharacter in GameManager.Instance.MainCharacterList)
+                    {
+                        UserMainCharacterData.Add(mainCharacter.name, new MainCharacterData(mainCharacter.name, 1, false, EGetType.Lock));
+                    }
+                }).AddTo(this);
         }
     }
 }

@@ -157,13 +157,14 @@ public class ResourceManager :Singleton<ResourceManager>
         };
     }
     #endregion
-     protected override void Awake()
+
+    protected override void ChangeSceneInit(Scene prev, Scene next)
     {
-        base.Awake();
-        if (instance != null && instance != this)
-        {
-            return;
-        }
+     
+    }
+
+    protected override void AwakeInit()
+    {
         string[] labelNames = Enum.GetNames(typeof(ELabelNames));
         for (int i = 0; i < labelNames.Length; ++i)
         {
@@ -181,10 +182,5 @@ public class ResourceManager :Singleton<ResourceManager>
                 }
             });
         }
-    }
-
-    protected override void ChangeSceneInit(Scene prev, Scene next)
-    {
-     
     }
 }

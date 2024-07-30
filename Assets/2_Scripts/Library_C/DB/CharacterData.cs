@@ -51,6 +51,7 @@ public partial class CharacterData : IPoolable
         cost = data.cost;
         academyClass = data.academyClass;
         Icon = data.Icon;
+        illustration = data.illustration;
     }
 
     public Sprite GetSkillIconOrNull(string skillKey)

@@ -19,7 +19,7 @@ namespace _2_Scripts.UI.OutGame.Lobby
         {
             mMissionGrid.UpdateContents(BackEndManager.Instance.SpawnMissions());
 
-            mSelectedMission = BackEndManager.Instance.SpawnMissions().DefaultIfEmpty(null).Where(x => x.IsEquip == true).FirstOrDefault();
+            mSelectedMission = BackEndManager.Instance.SpawnMissions().DefaultIfEmpty(null).FirstOrDefault(x => x.IsEquip == true);
 
             MessageBroker.Default.Receive<GameMessage<SpawnMission>>()
                 .Where(message => message.Message == EGameMessage.SelectCharacter)
@@ -33,6 +33,12 @@ namespace _2_Scripts.UI.OutGame.Lobby
 
                     mMissionGrid.UpdateContents(BackEndManager.Instance.SpawnMissions());
                 }).AddTo(this);
+        }
+
+        public void OnExitButton()
+        {
+            // BackEndManager.Instance.SaveMissionCharacterCardChange();
+            this.gameObject.SetActive(false);
         }
     }
 }

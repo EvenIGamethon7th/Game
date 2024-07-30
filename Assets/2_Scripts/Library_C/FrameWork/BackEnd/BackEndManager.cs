@@ -7,12 +7,9 @@ using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
 using PlayFab;
 using PlayFab.ClientModels;
-using PlayFab.DataModels;
 using UniRx;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using EntityKey = PlayFab.DataModels.EntityKey;
 
 namespace Cargold.FrameWork.BackEnd
 {
@@ -131,6 +128,11 @@ namespace Cargold.FrameWork.BackEnd
             string jsonData = JsonConvert.SerializeObject(ChapterDataList);
             PublishCharacterData(new Dictionary<string, string> { { "ChapterData", jsonData }, { "MissionData", JsonConvert.SerializeObject(UserMission) }});
         }
+
+        // public void SaveMissionCharacterCardChange()
+        // {
+        //     PublishCharacterData(new Dictionary<string, string> { { "MissionData", JsonConvert.SerializeObject(UserMission) }});
+        // }
         
         private async UniTask LoadChapterData()
         {
@@ -216,7 +218,7 @@ namespace Cargold.FrameWork.BackEnd
         /// </summary>
         private void OnApplicationQuit()
         {
-            
+            SaveCharacterData();
         }
 
         public void AddSpawnMission(CharacterData characterData)

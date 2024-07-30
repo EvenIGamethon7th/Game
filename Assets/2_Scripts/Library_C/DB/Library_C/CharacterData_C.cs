@@ -26,6 +26,7 @@ public partial class CharacterData : Data_C
      [LabelText("스킬2")] public string Skill2;
      [LabelText("클래스타입")] public string ClassType;
      [LabelText("아이콘")] public Sprite Icon;
+     [LabelText("일러스트")] public Sprite illustration;
 
     
 
@@ -48,6 +49,7 @@ public partial class CharacterData : Data_C
         Skill2 = _cellDataArr[13];
         ClassType = _cellDataArr[14];
         Icon = Editor_C.GetLoadAssetAtPath_Func<Sprite>(_cellDataArr[15]);
+        illustration = Editor_C.GetLoadAssetAtPath_Func<Sprite>(_cellDataArr[16]);
     }
 #endif
 }

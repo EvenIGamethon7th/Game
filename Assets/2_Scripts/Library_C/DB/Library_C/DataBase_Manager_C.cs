@@ -114,17 +114,6 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             return this.money;
         }
     }
-    [InlineEditor, LabelText("Character"), SerializeField] private DB_CharacterDataGroup character;
-    public DB_CharacterDataGroup GetCharacter
-    {
-        get
-        {
-            if (this.character == null)
-                this.character = Resources.Load<DB_CharacterDataGroup>(base.dataGroupSobjPath + "DB_CharacterDataGroup");
-
-            return this.character;
-        }
-    }
     [InlineEditor, LabelText("AcademyClass"), SerializeField] private DB_AcademyClassDataGroup academyClass;
     public DB_AcademyClassDataGroup GetAcademyClass
     {
@@ -134,6 +123,17 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
                 this.academyClass = Resources.Load<DB_AcademyClassDataGroup>(base.dataGroupSobjPath + "DB_AcademyClassDataGroup");
 
             return this.academyClass;
+        }
+    }
+    [InlineEditor, LabelText("Character"), SerializeField] private DB_CharacterDataGroup character;
+    public DB_CharacterDataGroup GetCharacter
+    {
+        get
+        {
+            if (this.character == null)
+                this.character = Resources.Load<DB_CharacterDataGroup>(base.dataGroupSobjPath + "DB_CharacterDataGroup");
+
+            return this.character;
         }
     }
     [InlineEditor, LabelText("Skill"), SerializeField] private DB_SkillDataGroup skill;
@@ -185,8 +185,8 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             this.wave.Init_Func();
             this.waveStat.Init_Func();
             this.money.Init_Func();
-            this.character.Init_Func();
             this.academyClass.Init_Func();
+            this.character.Init_Func();
             this.skill.Init_Func();
             this.treasureBox.Init_Func();
         }
@@ -203,8 +203,8 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
         this.GetWave.CallEdit_OnDataImportDone_Func();
         this.GetWaveStat.CallEdit_OnDataImportDone_Func();
         this.GetMoney.CallEdit_OnDataImportDone_Func();
-        this.GetCharacter.CallEdit_OnDataImportDone_Func();
         this.GetAcademyClass.CallEdit_OnDataImportDone_Func();
+        this.GetCharacter.CallEdit_OnDataImportDone_Func();
         this.GetSkill.CallEdit_OnDataImportDone_Func();
         this.GetTreasureBox.CallEdit_OnDataImportDone_Func();
         

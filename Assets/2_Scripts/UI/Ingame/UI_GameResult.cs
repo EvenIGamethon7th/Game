@@ -1,5 +1,6 @@
 ﻿using System;
 using _2_Scripts.Utils;
+using Cargold.FrameWork.BackEnd;
 using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
@@ -41,15 +42,22 @@ namespace _2_Scripts.UI.Ingame
                 }).AddTo(this);
         }
 
+        private void SaveData()
+        {
+            BackEndManager.Instance.SaveCharacterData();
+        }
+
         public void OnRetryGame()
         {
             Time.timeScale = 1;
+            SaveData();
             SceneLoadManager.Instance.SceneChange("Main"); 
         }
         
         public void OnLobby()
         {
             Time.timeScale = 1;
+            SaveData();
             SceneLoadManager.Instance.SceneChange("LobbyScene");
         }
     }

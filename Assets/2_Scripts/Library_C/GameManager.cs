@@ -116,8 +116,13 @@ public class GameManager : Singleton<GameManager>
     }
 
     public List<CharacterInfo> UserCharacterList { get; private set; } = new List<CharacterInfo>();
-    private List<MainCharacterInfo> mMainCharacterList = new List<MainCharacterInfo>();
+    public List<MainCharacterInfo> MainCharacterList { get; private set; } = new List<MainCharacterInfo>();
     public MainCharacterInfo CurrentMainCharacter { get; set; }
+
+    public void SetCurrentMainCharacter(string key)
+    {
+        CurrentMainCharacter = MainCharacterList.FirstOrDefault(x => x.name == key);
+    }
 
     public readonly Dictionary<int, int> mExpTable = new Dictionary<int, int>
         {
@@ -211,9 +216,9 @@ public class GameManager : Singleton<GameManager>
                 {
                     foreach (var resource in ResourceManager.Instance._resources.Where(x => x.Value is MainCharacterInfo))
                     {
-                        mMainCharacterList.Add(resource.Value as MainCharacterInfo);
+                        MainCharacterList.Add(resource.Value as MainCharacterInfo);
                     }
-                    CurrentMainCharacter = mMainCharacterList[3];
+                    CurrentMainCharacter = MainCharacterList[3];
                 }).AddTo(this);
     }
 

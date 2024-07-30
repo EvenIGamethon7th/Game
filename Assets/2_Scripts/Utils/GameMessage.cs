@@ -15,7 +15,8 @@ namespace _2_Scripts.Utils
         GameStartPopUpOpen,
         ChapterChange,
         CharacterCardChange,
-        MonsterHp
+        MonsterHp,
+        MainCharacterChange
     }
     
     public class GameMessage<T>

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using _2_Scripts.Game.BackEndData.MainCharacter;
 using _2_Scripts.Game.BackEndData.Mission;
+using _2_Scripts.Utils;
 using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
 using PlayFab;
@@ -35,6 +37,7 @@ namespace Cargold.FrameWork.BackEnd
         public Dictionary<string, SpawnMission> UserMission { get; private set; } = new Dictionary<string, SpawnMission>();
         public List<ChapterData> ChapterDataList { get; private set; } = new();
 
+        public Dictionary<string, MainCharacterData> UserMainCharacterData { get; private set; } = new Dictionary<string, MainCharacterData>();
 
         public List<SpawnMission> SpawnMissions()
         {
@@ -61,6 +64,15 @@ namespace Cargold.FrameWork.BackEnd
         {
             base.Awake();
             mAuthService = new PlayFabAuthService();
+            MessageBroker.Default.Receive<TaskMessage>().Where(message => message.Task == ETaskList.MapDataResourceLoad)
+                .Take(1)
+                .Subscribe(_ =>
+                {
+                    foreach (var mainCharacter in GameManager.Instance.MainCharacterList)
+                    {
+                        UserMainCharacterData.Add(mainCharacter.name,new MainCharacterData(mainCharacter.name,1,false,EGetType.Lock));
+                    }
+                }).AddTo(this);
         }
 
         protected override void ChangeSceneInit(Scene prev, Scene next)
@@ -99,6 +111,8 @@ namespace Cargold.FrameWork.BackEnd
             await ReceiveCurrencyData();
             await LoadChapterData();
             await ReceiveMissionData();
+            await ReceiveMainCharacterData();
+            
             successCallback?.Invoke();
         }
 
@@ -126,14 +140,10 @@ namespace Cargold.FrameWork.BackEnd
         public void SaveCharacterData()
         {
             string jsonData = JsonConvert.SerializeObject(ChapterDataList);
-            PublishCharacterData(new Dictionary<string, string> { { "ChapterData", jsonData }, { "MissionData", JsonConvert.SerializeObject(UserMission) }});
+            PublishCharacterData(new Dictionary<string, string> { { "ChapterData", jsonData }, { "MissionData", JsonConvert.SerializeObject(UserMission)}, 
+                { "MainCharacterData", JsonConvert.SerializeObject(UserMainCharacterData) }});
         }
 
-        // public void SaveMissionCharacterCardChange()
-        // {
-        //     PublishCharacterData(new Dictionary<string, string> { { "MissionData", JsonConvert.SerializeObject(UserMission) }});
-        // }
-        
         private async UniTask LoadChapterData()
         {
             var tcs = new UniTaskCompletionSource();
@@ -169,6 +179,24 @@ namespace Cargold.FrameWork.BackEnd
                 ErrorLog(error);
             });
 
+            await tcs.Task;
+        }
+
+        private async UniTask ReceiveMainCharacterData()
+        {
+            var tcs = new UniTaskCompletionSource();
+            PlayFabClientAPI.GetUserData(new GetUserDataRequest(), (result) =>
+            {
+                if(result.Data.TryGetValue("MainCharacterData",out var data))
+                {
+                    UserMainCharacterData = JsonConvert.DeserializeObject<Dictionary<string, MainCharacterData>>(data.Value);
+                }
+                tcs.TrySetResult();
+            }, (error) =>
+            {
+                tcs.TrySetException(new Exception(error.GenerateErrorReport()));
+                ErrorLog(error);
+            });
             await tcs.Task;
         }
         

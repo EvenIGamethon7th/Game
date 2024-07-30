@@ -205,9 +205,26 @@ namespace _2_Scripts.UI {
 
         private void SetInfoRate()
         {
-            mClassRate[0] = mClassData[mLessonCount].Success_pro * 100;
-            mClassRate[1] = mClassData[mLessonCount].Great_pro * 100;
-            mClassRate[2] = mClassData[mLessonCount].Fail_pro * 100;
+            if (GameManager.Instance.IsUseItem(EItemType.Lecturer1st))
+            {
+                mClassRate[0] = mClassData[mLessonCount].Success_pro_item1 * 100;
+                mClassRate[1] = mClassData[mLessonCount].Great_pro_item1 * 100;
+                mClassRate[2] = mClassData[mLessonCount].Fail_pro_item1 * 100;
+            }
+
+            else if (GameManager.Instance.IsUseItem(EItemType.Lecturer2nd))
+            {
+                mClassRate[0] = mClassData[mLessonCount].Success_pro_item2 * 100;
+                mClassRate[1] = mClassData[mLessonCount].Great_pro_item2 * 100;
+                mClassRate[2] = mClassData[mLessonCount].Fail_pro_item2 * 100;
+            }
+
+            else
+            {
+                mClassRate[0] = mClassData[mLessonCount].Success_pro * 100;
+                mClassRate[1] = mClassData[mLessonCount].Great_pro * 100;
+                mClassRate[2] = mClassData[mLessonCount].Fail_pro * 100;
+            }
             mInfo.SetText(mClassRate);
         }
     }

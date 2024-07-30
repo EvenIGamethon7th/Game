@@ -17,7 +17,7 @@ namespace _2_Scripts.UI.Ingame
                 .Where(_ => Input.GetMouseButtonDown(0) && gameObject.activeSelf)
                 .Subscribe(_ =>
                 {
-                    if (!global::Utils.IsPosOnUI(mRectTransform, Input.mousePosition, UICamera.Instance.Camera.WorldToScreenPoint(mRectTransform.position)))
+                    if (!global::Utils.IsPosOnUI(mRectTransform, Input.mousePosition, CameraManager.Instance.WorldToScreenPoint(mRectTransform.position, CameraManager.ECameraType.UI)))
                     {
                         gameObject.SetActive(false);
                     }

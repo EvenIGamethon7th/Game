@@ -12,10 +12,10 @@ namespace _2_Scripts.UI
 
         public void Start()
         {
-            GameManager.Instance.UserLevel.Subscribe(level =>
+            IngameDataManager.Instance.Subscribe(this, IngameDataManager.EDataType.Level, level =>
             {
                 mText.text = $"{level}학년";
-            }).AddTo(this);
+            });
         }
     }
 }

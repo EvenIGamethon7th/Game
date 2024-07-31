@@ -1,7 +1,9 @@
 using _2_Scripts.Game.ScriptableObject.Character;
+using _2_Scripts.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UniRx;
 using Unity.Mathematics;
 using UnityEngine;
@@ -20,7 +22,7 @@ public class IngameDataManager : Singleton<IngameDataManager>
     }
     private ReactiveProperty<int> mUserHp;
 
-    private int mMaxHp = 100;
+    public int MaxHp { get; private set; } = 100;
 
     public event Action<int> DamageHp;
     public event Action<int> HealHp;
@@ -29,10 +31,15 @@ public class IngameDataManager : Singleton<IngameDataManager>
     private ReactiveProperty<int> mUserExp = new ReactiveProperty<int>(0);
     private ReactiveProperty<int> mUserGold = new ReactiveProperty<int>(30);
     private ReactiveProperty<int> mUserLuckyCoin = new ReactiveProperty<int>(0);
+
+    public int CurrentHp => mUserHp.Value;
+    public int CurrentLevel => mUserLevel.Value;
+    public int CurrentGold => mUserGold.Value;
+    public int CurrentLuckyCoin => mUserLuckyCoin.Value;
+
     private System.Random mRandom = new System.Random();
 
     public List<CharacterInfo> UserCharacterList { get; private set; } = new List<CharacterInfo>();
-    private List<MainCharacterInfo> mMainCharacterList = new List<MainCharacterInfo>();
     public MainCharacterInfo CurrentMainCharacter { get; set; }
 
     public readonly Dictionary<int, int> mExpTable = new Dictionary<int, int>
@@ -45,10 +52,6 @@ public class IngameDataManager : Singleton<IngameDataManager>
             {6, 1}
         };
 
-    public int GetMaxExp()
-    {
-        return mExpTable[mUserLevel.Value];
-    }
     private readonly Dictionary<int, (int nomal, int rare, int epic)> mGradeRates = new Dictionary<int, (int general, int elite, int legendary)>
         {
             { 1, (100, 0, 0) },
@@ -58,6 +61,63 @@ public class IngameDataManager : Singleton<IngameDataManager>
             { 5, (70, 25, 5) },
             { 6, (60, 30, 10) }
         };
+
+    protected override void AwakeInit()
+    {
+        if (!GameManager.Instance.IsTest)
+        {
+            MaxHp = GameManager.Instance.IsUseItem(EItemType.HpUp) ? 125 : 100;
+
+            foreach (var resource in ResourceManager.Instance._resources.Where(x => x.Value is CharacterInfo))
+            {
+                UserCharacterList.Add(resource.Value as CharacterInfo);
+            }
+        }
+
+        else
+        {
+            MessageBroker.Default.Receive<TaskMessage>()
+            .Where(message => message.Task == ETaskList.CharacterDataResourceLoad).Subscribe(
+                _ =>
+                {
+                    foreach (var resource in ResourceManager.Instance._resources.Where(x => x.Value is CharacterInfo))
+                    {
+                        UserCharacterList.Add(resource.Value as CharacterInfo);
+                    }
+                }).AddTo(this);
+        }
+
+        mUserHp = new ReactiveProperty<int>(MaxHp);
+    }
+
+    private void Start()
+    {
+        MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange)
+            .Subscribe(message =>
+            {
+                // 첫 시작은 리턴
+                if (message.Value == 0)
+                {
+                    return;
+                }
+                int interest = 0;
+                foreach (var tableValue in mInterestTable)
+                {
+                    if (tableValue.Key < mUserGold.Value)
+                    {
+                        interest = Mathf.Max(interest, tableValue.Value);
+                    }
+                }
+
+                UpdateMoney(EMoneyType.Gold, ROUND_BONUS_GOLD_STAGE + interest);
+                AddExp(20);
+            }).AddTo(this);
+    }
+
+    public int GetMaxExp()
+    {
+        return mExpTable[mUserLevel.Value];
+    }
 
     private int GetGradeBasedOnRates()
     {
@@ -89,25 +149,6 @@ public class IngameDataManager : Singleton<IngameDataManager>
 
     private const int ROUND_BONUS_GOLD_STAGE = 10;
 
-    #region Item Manage
-    private HashSet<EItemType> mIngameItem = new HashSet<EItemType>();
-
-    public void UseItem(EItemType type)
-    {
-        mIngameItem.Add(type);
-    }
-
-    public void RemoveItem(EItemType type)
-    {
-        mIngameItem.Remove(type);
-    }
-
-    public bool IsUseItem(EItemType type)
-    {
-        return mIngameItem.Contains(type);
-    }
-    #endregion
-
     public void Subscribe<T>(T component, EDataType type, Action<int> action) where T : notnull, Component
     {
         switch (type)
@@ -132,12 +173,6 @@ public class IngameDataManager : Singleton<IngameDataManager>
                 mUserLuckyCoin.Subscribe(luckyCoin => action(luckyCoin)).AddTo(component);
                 break;
         }
-    }
-
-    public void InitHp(int hp)
-    {
-        mMaxHp = hp;
-        mUserHp = new ReactiveProperty<int>(hp);
     }
 
     public void UpdateMoney(string moneyKey, int value)
@@ -166,7 +201,7 @@ public class IngameDataManager : Singleton<IngameDataManager>
         else
             HealHp?.Invoke(hp);
 
-        mUserHp.Value = mUserHp.Value - hp <= mMaxHp ? mUserHp.Value - hp : mMaxHp;
+        mUserHp.Value = mUserHp.Value - hp <= MaxHp ? mUserHp.Value - hp : MaxHp;
     }
 
     public void AddExp(int exp)

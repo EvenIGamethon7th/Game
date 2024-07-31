@@ -32,7 +32,7 @@ namespace _2_Scripts.UI.Ingame.LootBox
         
         public void OnOpenLootBox()
         {
-            if (GameManager.Instance.UserLuckyCoin.Value <= 0)
+            if (IngameDataManager.Instance.CurrentLuckyCoin <= 0)
             {
                 Cargold.UI.UI_Toast_Manager.Instance.Activate_WithContent_Func("열쇠가 부족합니다.");
                 return;
@@ -43,7 +43,7 @@ namespace _2_Scripts.UI.Ingame.LootBox
                 Cargold.UI.UI_Toast_Manager.Instance.Activate_WithContent_Func(mIReward.RewardMessage());
                 return;
             }
-            GameManager.Instance.UpdateMoney(EMoneyType.GoldKey,-1);
+            IngameDataManager.Instance.UpdateMoney(EMoneyType.GoldKey,-1);
             mImageAnimation.PlayAnimation("open",0.1f,OpenLootBoxAnimation);
             mButton.interactable = false;
         }

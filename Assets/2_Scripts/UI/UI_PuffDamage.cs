@@ -13,10 +13,10 @@ namespace _2_Scripts.UI
         private void Start()
         {
             mPaticleImage = GetComponent<ParticleImage>();
-            GameManager.Instance.DamageHp += PlayParticle;
+            IngameDataManager.Instance.DamageHp += PlayParticle;
         }
 
-        private void PlayParticle(float damage)
+        private void PlayParticle(int damage)
         {
             mPaticleImage.Play();
             CameraManager.Instance.DoShake(CameraManager.ECameraType.Main, isUnscale: true);
@@ -24,7 +24,7 @@ namespace _2_Scripts.UI
 
         private void OnDestroy()
         {
-            GameManager.Instance.DamageHp -= PlayParticle;
+            IngameDataManager.Instance.DamageHp -= PlayParticle;
         }
     }
 }

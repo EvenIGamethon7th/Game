@@ -53,8 +53,8 @@ namespace _2_Scripts.Game.StatusEffect
                     .GetComponent<LootingItem>();
 
                 lootingItem.CreateItem(EMoneyType.GoldKey, 1);
-                
-                GameManager.Instance.UpdateMoney(EMoneyType.GoldKey,1);
+
+                IngameDataManager.Instance.UpdateMoney(EMoneyType.GoldKey,1);
                 monster.DamageActionRemove(TargetAction,this);
             }
         }

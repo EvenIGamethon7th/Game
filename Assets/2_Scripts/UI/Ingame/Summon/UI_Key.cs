@@ -11,12 +11,12 @@ namespace _2_Scripts.UI
         [SerializeField] private GameObject mCoinImageGo;
         private void Start()
         {
-            mText.text = $"{GameManager.Instance.UserGold:#,0}";
-            GameManager.Instance.UserLuckyCoin.Subscribe(key =>
+            mText.text = $"{IngameDataManager.Instance.CurrentGold:#,0}";
+            IngameDataManager.Instance.Subscribe(this, IngameDataManager.EDataType.LuckyCoin, key =>
             {
                 mText.text = $"{key:#,0}";
                 Tween_C.OnPunch_Func(mCoinImageGo.transform);
-            }).AddTo(this);
+            });
         }
     }
 }

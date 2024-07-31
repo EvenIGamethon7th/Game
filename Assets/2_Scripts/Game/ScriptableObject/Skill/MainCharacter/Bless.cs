@@ -14,7 +14,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
         public override bool CastAttack(Transform ownerTransform, CharacterData ownerData, Action<Monster.Monster[]> beforeDamage = null, Action<Monster.Monster> afterDamage = null)
         {
             CastEffectPlay(ownerTransform.position);
-            GameManager.Instance.UpdateUserHp(-mHealAmount);
+            IngameDataManager.Instance.UpdateUserHp(-(int)mHealAmount);
             return true;
         }
     }

@@ -147,7 +147,7 @@ namespace _2_Scripts.Game.Monster
                                 ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_LootingItem,
                                     transform.position).GetComponent<LootingItem>();
                             lootingItem.CreateItem(reward.Key, reward.Value);
-                            GameManager.Instance.UpdateMoney(reward.Key, reward.Value);
+                            IngameDataManager.Instance.UpdateMoney(reward.Key, reward.Value);
                         });
                 }
 
@@ -170,12 +170,12 @@ namespace _2_Scripts.Game.Monster
             {
                 if (IsLastBoss)
                 {
-                    GameManager.Instance.UpdateUserHp(GameManager.Instance.UserHp.Value);
+                    IngameDataManager.Instance.UpdateUserHp(IngameDataManager.Instance.MaxHp);
                 }
 
                 else
                 {
-                    GameManager.Instance.UpdateUserHp(mMonsterData.atk);
+                    IngameDataManager.Instance.UpdateUserHp((int)mMonsterData.atk);
                 }
 
                 Enabled(false);

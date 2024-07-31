@@ -25,7 +25,7 @@ public class SO_GoldKnightRarePassive : AfterPassive
             var lootingItem = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_LootingItem, 
                 monsters.transform.position).GetComponent<LootingItem>();
             lootingItem.CreateItem(EMoneyType.Gold, mGold);
-            GameManager.Instance.UpdateMoney(EMoneyType.Gold, mGold);
+            IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold, mGold);
             Debug.Log($"GetGold {mGold}");
         }
     }

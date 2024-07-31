@@ -30,11 +30,11 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
             {
                 if (StageManager.Instance.WaveCount < mEnhanceWave)
                 {
-                    GameManager.Instance.UpdateMoney(EMoneyType.Gold, mGoldBefore11Wave);
+                    IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold, mGoldBefore11Wave);
                 }
                 else
                 {
-                    GameManager.Instance.UpdateMoney(EMoneyType.Gold, mGoldAfter10Wave);
+                    IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold, mGoldAfter10Wave);
                 }
             }
 

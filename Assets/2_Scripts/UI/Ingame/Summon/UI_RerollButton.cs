@@ -21,7 +21,7 @@ namespace _2_Scripts.UI
         private void Start()
         {
             mButton.onClick.AddListener(OnClickReRollBtn);
-            GameManager.Instance.UserGold.Subscribe(gold =>
+            IngameDataManager.Instance.Subscribe(this, IngameDataManager.EDataType.Gold, gold =>
             {
                 if (gold < REROOL_COST)
                 {
@@ -31,7 +31,7 @@ namespace _2_Scripts.UI
                 {
                     mButton.interactable = true;
                 }
-            }).AddTo(this);
+            });
         }
 
         public void OnClickReRollBtn()
@@ -41,7 +41,7 @@ namespace _2_Scripts.UI
                 return;
             }
             Tween_C.OnPunch_Func(transform);
-            GameManager.Instance.UpdateMoney(EMoneyType.Gold,-REROOL_COST);
+            IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold,-REROOL_COST);
             foreach (var btn in mSummonButtons)
             {
                 btn.Reroll();

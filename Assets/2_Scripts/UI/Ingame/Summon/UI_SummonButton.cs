@@ -81,7 +81,7 @@ namespace _2_Scripts.UI
                 return;
             }
             
-            if(GameManager.Instance.UserGold.Value < mCharacterData.cost)
+            if(IngameDataManager.Instance.CurrentGold < mCharacterData.cost)
             {
                 // 차후 Localize로 변경
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("돈이 부족합니다");
@@ -101,7 +101,7 @@ namespace _2_Scripts.UI
             });
             if (isCreateUnit)
             {
-                GameManager.Instance.UpdateMoney(EMoneyType.Gold,-mCharacterData.cost);
+                IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold,-mCharacterData.cost);
                 mCurrentSummonButtonState = ESummonButtonState.Disable;
                 Tween_C.OnPunch_Func(this.transform);
                 ShowChange();
@@ -127,7 +127,7 @@ namespace _2_Scripts.UI
         public void UpdateCharacter()
         {
            CharacterInfo characterInfo = GameManager.Instance.RandomCharacterCardOrNull();
-           mCharacterData = GameManager.Instance.GetRandomCharacterData(characterInfo);
+           mCharacterData = IngameDataManager.Instance.GetRandomCharacterData(characterInfo);
            
            global::Utils.CharacterSkeletonInit(mCharacterGraphic, mCharacterData.characterPack);
            mCharacterName.SetLocalizeKey(mCharacterData.nameKey);

@@ -27,7 +27,7 @@ namespace _2_Scripts.UI.Ingame
 
         IEnumerator StartAnimationCoroutine()
         {
-            int rank = RankCalculator(GameManager.Instance.UserHp.Value);
+            int rank = RankCalculator(IngameDataManager.Instance.CurrentHp);
             var stageData = GameManager.Instance.CurrentStageData;
             stageData.Star = Math.Max(stageData.Star,rank);
             stageData.IsClear = true;

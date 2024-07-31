@@ -65,6 +65,8 @@ namespace Cargold.FrameWork.BackEnd
             UserEnchantData[classType] = new CharacterEnchantData(classType,0,false);
             return UserEnchantData[classType];
         }
+        
+
         public CatalogItem GetStoreItem(string itemId)
         {
             return CatalogItems.Find(item => item.ItemId == itemId);

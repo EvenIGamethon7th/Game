@@ -3,6 +3,7 @@ using Sirenix.OdinInspector;
 using _2_Scripts.Game.Unit.Data;
 using _2_Scripts.Utils;
 using UnityEngine;
+using Cargold.FrameWork.BackEnd;
 
 // 카라리 테이블 임포터에 의해 생성된 스크립트입니다.
 
@@ -24,6 +25,8 @@ public partial class CharacterData : IPoolable
     public string SkillName { get; private set;}
     public string SkillType { get; private set; }
     public string SkillDesc { get; private set; }
+
+    private EEnchantClassType mEnchant;
     
     
     public void Init(CharacterData data, BuffData buff)
@@ -52,6 +55,8 @@ public partial class CharacterData : IPoolable
         academyClass = data.academyClass;
         Icon = data.Icon;
         illustration = data.illustration;
+        if (!string.IsNullOrEmpty(ClassType))
+            mEnchant = Utils.GetEnumFromDescription<EEnchantClassType>(ClassType);
     }
 
     public Sprite GetSkillIconOrNull(string skillKey)
@@ -65,7 +70,10 @@ public partial class CharacterData : IPoolable
     }
     public float GetTotalAtk()
     {
-        return Buff.ATKRate * 0.01f * (Buff.ATK + alumniAtk + atk);
+        float enchant = 1;
+        if (EEnchantClassType.Mage != mEnchant)
+            enchant = BackEndManager.Instance.GetEnchantData(mEnchant).GetEnchantStat();
+        return Buff.ATKRate * 0.01f * (Buff.ATK + alumniAtk + atk * enchant);
     }
 
     public float GetTotalAtkSpeed()
@@ -75,7 +83,11 @@ public partial class CharacterData : IPoolable
 
     public float GetTotalMAtk()
     {
-        return Buff.MATKRate * 0.01f * (Buff.MATK + alumniMatk + matk);
+        float enchant = 1;
+        EEnchantClassType type = Utils.GetEnumFromDescription<EEnchantClassType>(ClassType);
+        if (EEnchantClassType.Mage == mEnchant)
+            enchant = BackEndManager.Instance.GetEnchantData(mEnchant).GetEnchantStat();
+        return Buff.MATKRate * 0.01f * (Buff.MATK + alumniMatk + matk * enchant);
     }
 
     public float GetTotalDamageToType(Define.EAttackType type)

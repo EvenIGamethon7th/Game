@@ -59,8 +59,9 @@ namespace Cargold.FrameWork.BackEnd
                 failedCallBack?.Invoke();
                 return;
             }
+            successCallback?.Invoke();
             UserCurrency[ECurrency.Diamond].Value -= (int)itemPrice;
-            PurchaseItem(item.ItemId,itemPrice,item.VirtualCurrencyPrices.Keys.First(),successCallback,failedCallBack,"PublicShop");
+            PurchaseItem(item.ItemId,itemPrice,item.VirtualCurrencyPrices.Keys.First(),failedCallBack,"PublicShop");
         }
         public List<SpawnMission> SpawnMissions()
         {
@@ -207,7 +208,7 @@ namespace Cargold.FrameWork.BackEnd
                 ErrorLog(error);
             });
         }
-        private void PurchaseItem(string itemId,uint price,string vc,Action successCallback,Action failedCallBack,string storeId)
+        private void PurchaseItem(string itemId,uint price,string vc,Action failedCallBack,string storeId)
         {
             PlayFabClientAPI.PurchaseItem(new PurchaseItemRequest()
             {
@@ -217,7 +218,7 @@ namespace Cargold.FrameWork.BackEnd
                 StoreId = storeId
             }, (result) =>
             {
-                ReceiveInventory(()=> successCallback?.Invoke()).Forget();
+                ReceiveInventory().Forget();
              
             }, (error) =>
             {
@@ -243,13 +244,12 @@ namespace Cargold.FrameWork.BackEnd
             });
             await tcs.Task;
         }
-        private async UniTask ReceiveInventory(Action sucessCallback =null)
+        private async UniTask ReceiveInventory()
         {
             var tcs = new UniTaskCompletionSource();
             PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest(), (result) =>
             {
                 UserInventory = result.Inventory;
-                sucessCallback?.Invoke();
                 tcs.TrySetResult();
             }, (error) =>
             {

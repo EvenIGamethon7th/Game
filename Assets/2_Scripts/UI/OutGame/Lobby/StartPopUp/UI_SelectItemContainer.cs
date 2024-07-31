@@ -60,6 +60,12 @@ namespace _2_Scripts.UI.OutGame.Lobby.StartPopUp
                 {
                     itemsToConsume.Add(useItem.Key,1);
                     //TODO GAMEMANAGER에 아이템 사용 로직 추가
+                    if (useItem.Key.CompareTo("item_1st_instructor") == 0)
+                        GameManager.Instance.UseItem(EItemType.Lecturer1st);
+                    else if (useItem.Key.CompareTo("item_2st_instructor") == 0)
+                        GameManager.Instance.UseItem(EItemType.Lecturer2nd);
+                    else if (useItem.Key.CompareTo("hp_position") == 0)
+                        GameManager.Instance.UseItem(EItemType.HpUp);
                 }
             }
 

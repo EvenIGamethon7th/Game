@@ -49,8 +49,8 @@ namespace _2_Scripts.UI.Ingame
         {
             return hp switch
             {
-                >= 70 => 3,
-                >= 40 => 2,
+                >= 80 => 3,
+                >= 50 => 2,
                 _ => 1,
             };
         }

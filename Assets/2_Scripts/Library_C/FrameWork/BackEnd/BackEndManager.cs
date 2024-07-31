@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using _2_Scripts.Game.BackEndData.Enchant;
 using _2_Scripts.Game.BackEndData.MainCharacter;
 using _2_Scripts.Game.BackEndData.Mission;
 using _2_Scripts.Utils;
@@ -24,6 +25,16 @@ namespace Cargold.FrameWork.BackEnd
         [Description("DI")]
         Diamond, // Diamond
     }
+    
+    public enum EEnchantClassType
+    {
+        [Description("Lo_ClassType_1")]
+        Warrior,
+        [Description("Lo_ClassType_3")]
+        Archer,
+        [Description("Lo_ClassType_2")]
+        Mage
+    }
     public class BackEndManager : Singleton<BackEndManager>
     {
 
@@ -38,11 +49,21 @@ namespace Cargold.FrameWork.BackEnd
         public List<ChapterData> ChapterDataList { get; private set; } = new();
 
         public Dictionary<string, MainCharacterData> UserMainCharacterData { get; private set; } = new Dictionary<string, MainCharacterData>();
-        
+
+        public Dictionary<EEnchantClassType, CharacterEnchantData> UserEnchantData { get; private set; } = new();
         public List<CatalogItem> CatalogItems { get; private set; } = new List<CatalogItem>();
         public List<StoreItem> PublicStoreItems { get; private set; } = new List<StoreItem>();
         public List<ItemInstance> UserInventory { get; private set; }= new List<ItemInstance>();
 
+        public CharacterEnchantData GetEnchantData(EEnchantClassType classType)
+        {
+            if(UserEnchantData.TryGetValue(classType,out var data))
+            {
+                return data;
+            }
+            UserEnchantData[classType] = new CharacterEnchantData(classType,0,false);
+            return UserEnchantData[classType];
+        }
         public CatalogItem GetStoreItem(string itemId)
         {
             return CatalogItems.Find(item => item.ItemId == itemId);
@@ -121,12 +142,31 @@ namespace Cargold.FrameWork.BackEnd
             await LoadChapterData();
             await ReceiveMissionData();
             await ReceiveMainCharacterData();
+            await ReceiveEnchantData();
             await ReceiveStoreItems("PublicShop");
             await ReceiveInventory();
             await FetchCatalogItems();
             successCallback?.Invoke();
         }
 
+        private async UniTask ReceiveEnchantData()
+        {
+            var tcs = new UniTaskCompletionSource();
+            PlayFabClientAPI.GetUserData(new GetUserDataRequest(), (result) =>
+            {
+                if (result.Data.TryGetValue("EnchantData", out var data))
+                {
+                    UserEnchantData = JsonConvert.DeserializeObject<Dictionary<EEnchantClassType, CharacterEnchantData>>(data.Value);
+                }
+                tcs.TrySetResult();
+            }, (error) =>
+            {
+                tcs.TrySetException(new Exception(error.GenerateErrorReport()));
+                ErrorLog(error);
+            });
+            await tcs.Task;
+        }
+        
         private async UniTask ReceiveCurrencyData()
         {
             var tcs = new UniTaskCompletionSource();
@@ -152,7 +192,7 @@ namespace Cargold.FrameWork.BackEnd
         {
             string jsonData = JsonConvert.SerializeObject(ChapterDataList);
             PublishCharacterData(new Dictionary<string, string> { { "ChapterData", jsonData }, { "MissionData", JsonConvert.SerializeObject(UserMission)}, 
-                { "MainCharacterData", JsonConvert.SerializeObject(UserMainCharacterData) }});
+                { "MainCharacterData", JsonConvert.SerializeObject(UserMainCharacterData) },{"EnchantData",JsonConvert.SerializeObject(UserEnchantData)}});
         }
 
         private async UniTask LoadChapterData()

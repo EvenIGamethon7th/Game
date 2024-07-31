@@ -23,7 +23,7 @@ namespace _2_Scripts.UI.OutGame.Lobby
                 mDiamondText.text = $"{Diamond}";
             }).AddTo(this);
             
-            mTestButton.onClick.AddListener(()=>BackEndManager.Instance.AddCurrencyData(ECurrency.Diamond,100));
+            mTestButton.onClick.AddListener(()=>BackEndManager.Instance.AddCurrencyData(ECurrency.Diamond,10000));
         }
     }
 }

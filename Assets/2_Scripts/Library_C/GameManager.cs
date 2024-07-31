@@ -31,11 +31,6 @@ public class GameManager : Singleton<GameManager>
 
     public void UseItem(EItemType type)
     {
-        if (type == EItemType.Lecturer1st && mIngameItem.Contains(EItemType.Lecturer2nd))
-            mIngameItem.Remove(EItemType.Lecturer2nd);
-        else if (type == EItemType.Lecturer2nd && mIngameItem.Contains(EItemType.Lecturer1st))
-            mIngameItem.Remove(EItemType.Lecturer1st);
-
         mIngameItem.Add(type);
     }
 

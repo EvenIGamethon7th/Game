@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Cargold.FrameWork.BackEnd;
 using PlayFab.ClientModels;
 using TMPro;
@@ -14,6 +15,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.StartPopUp
         private GameObject mItemPrefab;
 
         private UI_SelectItem mSelectItem;
+        private List<UI_SelectItem> mAllItems = new List<UI_SelectItem>();
         
         [SerializeField]
         private TextMeshProUGUI mItemName;
@@ -48,6 +50,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.StartPopUp
             {
                 var itemObject = Instantiate(mItemPrefab, transform).GetComponent<UI_SelectItem>();
                 itemObject.SetItem(item,OnClickItem);
+                mAllItems.Add(itemObject);
             }
         }
 
@@ -64,7 +67,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.StartPopUp
                         GameManager.Instance.UseItem(EItemType.Lecturer1st);
                     else if (useItem.Key.CompareTo("item_2st_instructor") == 0)
                         GameManager.Instance.UseItem(EItemType.Lecturer2nd);
-                    else if (useItem.Key.CompareTo("hp_position") == 0)
+                    else if (useItem.Key.CompareTo("item_hp_position") == 0)
                         GameManager.Instance.UseItem(EItemType.HpUp);
                 }
             }
@@ -101,8 +104,27 @@ namespace _2_Scripts.UI.OutGame.Lobby.StartPopUp
         private void OnUseItem()
         {
             bool isUse = mSelectItem.SetSelect();
+
             mUseText.text = isUse ? "사용해제" : "사용하기";
             mUseItems[mSelectItem.StoreItem.ItemId] = isUse;
+            if (isUse)
+                RemoveSameClassItem();
+        }
+
+        private void RemoveSameClassItem()
+        {
+            var item = BackEndManager.Instance.GetInventoryItem(mSelectItem.StoreItem.ItemId);
+            ItemInstance nonSelectItem = null;
+
+            foreach (var nonSelect in mAllItems)
+            {
+                if (nonSelect == mSelectItem) continue;
+                nonSelectItem = BackEndManager.Instance.GetInventoryItem(nonSelect.StoreItem.ItemId);
+                if (nonSelectItem == null) continue;
+                if (nonSelectItem.ItemClass.CompareTo(item.ItemClass) != 0 || !nonSelect.IsUseItem) continue;
+                nonSelect.SetSelect();
+                mUseItems[nonSelect.StoreItem.ItemId] = false;
+            }
         }
 
         private void DisplayUseContainer(ItemInstance item)

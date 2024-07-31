@@ -15,9 +15,11 @@ namespace _2_Scripts.UI.OutGame.Title
     {
         [SerializeField]
         private Button mButton;
-        
+
         [SerializeField]
         private TextMeshProUGUI mTapToStartText;
+
+        private int mLoadCount;
         private void Start()
         {
             mButton.interactable = false;
@@ -26,21 +28,36 @@ namespace _2_Scripts.UI.OutGame.Title
                 message.Task == ETaskList.DefaultResourceLoad
             ).Subscribe(_ =>
             {
-                mButton.interactable = true;
-                mTapToStartText.text = "Tap to Start";
-                mButton.onClick.AddListener(OnClickLoginBtn);
+                SetCount();
             }).AddTo(this);
+
+            BackEndManager.Instance.OnLogin(() =>
+            {
+                SetCount();
+            });
+        }
+
+        private void SetCount()
+        {
+            ++mLoadCount;
+            if (mLoadCount >= 2)
+            {
+                OnButton();
+            }
+        }
+
+        private void OnButton()
+        {
+            mButton.interactable = true;
+            mTapToStartText.text = "Tap to Start";
+            mButton.onClick.AddListener(OnClickLoginBtn);
         }
 
         private void OnClickLoginBtn()
         {
             mButton.interactable = false;
-            
-            BackEndManager.Instance.OnLogin(() =>
-            {
-                GameManager.Instance.NotTestMode();
-                SceneLoadManager.Instance.SceneChange("LobbyScene");
-            });
+            GameManager.Instance.NotTestMode();
+            SceneLoadManager.Instance.SceneChange("LobbyScene");
         }
     }
 }

@@ -103,7 +103,11 @@ namespace _2_Scripts.UI.OutGame.Lobby.StartPopUp
         {
             mBuyContainer.SetActive(false);
             mUseContainer.SetActive(true);
-            mRemainCountText.text = $"{item.RemainingUses}";
+            var count = 1;
+            if(item != null)
+                count = item.RemainingUses.Value;
+            
+            mRemainCountText.text = $"{count} 보유수량";
             mUseText.text = mSelectItem.IsUseItem ? "사용해제" : "사용하기";
         }
         private void DisPlayBuyContainer()

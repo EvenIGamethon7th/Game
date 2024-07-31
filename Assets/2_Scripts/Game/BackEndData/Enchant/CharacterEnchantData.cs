@@ -5,13 +5,13 @@ namespace _2_Scripts.Game.BackEndData.Enchant
     [Serializable]
     public class CharacterEnchantData
     {
-        public string CharacterKey;
+        public string ClassTypeKey;
         public int EnchantLevel;
         public bool isMaxEnchant;
         
-        public CharacterEnchantData(string characterKey, int enchantLevel, bool isMaxEnchant)
+        public CharacterEnchantData(string classTypeKey, int enchantLevel, bool isMaxEnchant)
         {
-            CharacterKey = characterKey;
+            ClassTypeKey = classTypeKey;
             EnchantLevel = enchantLevel;
             this.isMaxEnchant = isMaxEnchant;
         }

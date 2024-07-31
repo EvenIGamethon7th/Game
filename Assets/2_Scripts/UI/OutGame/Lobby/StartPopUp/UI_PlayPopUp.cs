@@ -1,4 +1,5 @@
 ﻿using System;
+using _2_Scripts.UI.OutGame.Lobby.StartPopUp;
 using _2_Scripts.Utils;
 using Cargold.FrameWork.BackEnd;
 using Cysharp.Threading.Tasks;
@@ -16,6 +17,8 @@ namespace _2_Scripts.UI.OutGame.Lobby
         [SerializeField]
         private GameObject mPopUpGo;
         private StageData mStageData;
+        [SerializeField]
+        private UI_SelectItemContainer mSelectItemContainer;
         public void Start()
         {
             mPlayButton.onClick.AddListener(OnClickPlay);
@@ -38,6 +41,7 @@ namespace _2_Scripts.UI.OutGame.Lobby
             }
             BackEndManager.Instance.AddCurrencyData(ECurrency.Father,-1);
             #endif
+            mSelectItemContainer.UseItems();
             GameManager.Instance.SetCurrentStageData(mStageData);
             SceneLoadManager.Instance.SceneChange("Main");
         }

@@ -38,7 +38,30 @@ namespace Cargold.FrameWork.BackEnd
         public List<ChapterData> ChapterDataList { get; private set; } = new();
 
         public Dictionary<string, MainCharacterData> UserMainCharacterData { get; private set; } = new Dictionary<string, MainCharacterData>();
+        
+        public List<CatalogItem> CatalogItems { get; private set; } = new List<CatalogItem>();
+        public List<StoreItem> PublicStoreItems { get; private set; } = new List<StoreItem>();
+        public List<ItemInstance> UserInventory { get; private set; }= new List<ItemInstance>();
 
+        public CatalogItem GetStoreItem(string itemId)
+        {
+            return CatalogItems.Find(item => item.ItemId == itemId);
+        }
+        public ItemInstance GetInventoryItem(string itemId)
+        {
+            return UserInventory.Find(item=>item.ItemId == itemId);
+        }
+        public void PurchasePopUpItem(StoreItem item,Action successCallback,Action failedCallBack)
+        {
+            var itemPrice = item.VirtualCurrencyPrices.Values.First();
+            if(itemPrice > UserCurrency[ECurrency.Diamond].Value)
+            {
+                failedCallBack?.Invoke();
+                return;
+            }
+            UserCurrency[ECurrency.Diamond].Value -= (int)itemPrice;
+            PurchaseItem(item.ItemId,itemPrice,item.VirtualCurrencyPrices.Keys.First(),successCallback,failedCallBack,"PublicShop");
+        }
         public List<SpawnMission> SpawnMissions()
         {
             List<CharacterData> characterDatas = new List<CharacterData>();
@@ -97,7 +120,9 @@ namespace Cargold.FrameWork.BackEnd
             await LoadChapterData();
             await ReceiveMissionData();
             await ReceiveMainCharacterData();
-            
+            await ReceiveStoreItems("PublicShop");
+            await ReceiveInventory();
+            await FetchCatalogItems();
             successCallback?.Invoke();
         }
 
@@ -167,6 +192,40 @@ namespace Cargold.FrameWork.BackEnd
             await tcs.Task;
         }
 
+        public void UseInventoryItem(Dictionary<string,int> itemsToConsume)
+        {
+            PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest
+            {
+               FunctionName = "UseInventoryItem",
+               FunctionParameter = new {itemsToConsume=itemsToConsume},
+               GeneratePlayStreamEvent = true
+            }, (result) =>
+            {
+                Debug.Log("UseInventoryItem");
+            }, (error) =>
+            {
+                ErrorLog(error);
+            });
+        }
+        private void PurchaseItem(string itemId,uint price,string vc,Action successCallback,Action failedCallBack,string storeId)
+        {
+            PlayFabClientAPI.PurchaseItem(new PurchaseItemRequest()
+            {
+                ItemId = itemId,
+                Price = (int)price,
+                VirtualCurrency = vc,
+                StoreId = storeId
+            }, (result) =>
+            {
+                ReceiveInventory(()=> successCallback?.Invoke()).Forget();
+             
+            }, (error) =>
+            {
+                failedCallBack?.Invoke();
+                ErrorLog(error);
+            });
+        }
+
         private async UniTask ReceiveMainCharacterData()
         {
             var tcs = new UniTaskCompletionSource();
@@ -176,6 +235,56 @@ namespace Cargold.FrameWork.BackEnd
                 {
                     UserMainCharacterData = JsonConvert.DeserializeObject<Dictionary<string, MainCharacterData>>(data.Value);
                 }
+                tcs.TrySetResult();
+            }, (error) =>
+            {
+                tcs.TrySetException(new Exception(error.GenerateErrorReport()));
+                ErrorLog(error);
+            });
+            await tcs.Task;
+        }
+        private async UniTask ReceiveInventory(Action sucessCallback =null)
+        {
+            var tcs = new UniTaskCompletionSource();
+            PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest(), (result) =>
+            {
+                UserInventory = result.Inventory;
+                sucessCallback?.Invoke();
+                tcs.TrySetResult();
+            }, (error) =>
+            {
+                tcs.TrySetException(new Exception(error.GenerateErrorReport()));
+                ErrorLog(error);
+            });
+            await tcs.Task;
+        }
+
+        private async UniTask FetchCatalogItems()
+        {
+            var tcs = new UniTaskCompletionSource();
+            PlayFabClientAPI.GetCatalogItems(new GetCatalogItemsRequest()
+            {
+                CatalogVersion = "shop"
+            }, (result) =>
+            {
+                CatalogItems = result.Catalog;
+                tcs.TrySetResult();
+            }, (error) =>
+            {
+                tcs.TrySetException(new Exception(error.GenerateErrorReport()));
+                ErrorLog(error);
+            });
+            await tcs.Task;
+        }
+        private async UniTask ReceiveStoreItems(string storeId)
+        {
+            var tcs = new UniTaskCompletionSource();
+            PlayFabClientAPI.GetStoreItems(new GetStoreItemsRequest()
+            {
+                StoreId = storeId
+            }, (result) =>
+            {
+                PublicStoreItems = result.Store;
                 tcs.TrySetResult();
             }, (error) =>
             {

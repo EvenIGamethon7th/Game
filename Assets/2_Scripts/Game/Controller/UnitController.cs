@@ -146,7 +146,10 @@ namespace _2_Scripts.Game.Controller
                         mSelectCircle.SetActive(false);
                         mTempSubscribe.Dispose();
                     }).AddTo(this);
+            }
 
+            else
+            {
                 mIndicator = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_Indicator, Vector2.zero).GetComponent<Indicator>();
                 mSelectCircle = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_SelectCircle, Vector2.zero);
                 mSelectCircle.SetActive(false);

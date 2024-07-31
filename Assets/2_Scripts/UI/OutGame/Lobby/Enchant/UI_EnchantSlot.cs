@@ -47,10 +47,14 @@ namespace _2_Scripts.UI.OutGame.Lobby.Enchant
         
         private void UpdateDisplayText()
         {
+            var enchantLevel = mEnchantData.EnchantLevel;
             if (mEnchantData.isMaxEnchant)
+            {
                 mEnchantButton.interactable = false;
+                enchantLevel = DataBase_Manager.Instance.GetUnitEnchant.GetDataArr.Length - 1;
+            }
             
-            var enchantTableData =DataBase_Manager.Instance.GetUnitEnchant.GetData_Func($"Enchant_{mEnchantData.EnchantLevel}");
+            var enchantTableData =DataBase_Manager.Instance.GetUnitEnchant.GetData_Func($"Enchant_{enchantLevel}");
             mEnchantCost = enchantTableData.Enchant_Price;
             mEnchantLevelText.text = $"Lv.{enchantTableData.Enchant_Step}";
             mEnchantPriceText.text = $"{mEnchantCost:#,0}";

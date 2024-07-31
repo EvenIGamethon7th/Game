@@ -25,6 +25,13 @@ namespace _2_Scripts.Game.BackEndData.Enchant
             this.isMaxEnchant = isMaxEnchant;
         }
 
+        public float GetEnchantStat()
+        {
+            if(EnchantLevel == 0)
+                return 1;
+            return DataBase_Manager.Instance.GetUnitEnchant.GetData_Func($"Enchant_{EnchantLevel-1}").Enchant_Stat;
+        }
+
         //돈 계산은 알아서하라하고 여긴 Level만 관리
         public void Enchant()
         {

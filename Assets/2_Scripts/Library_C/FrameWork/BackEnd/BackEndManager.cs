@@ -55,6 +55,7 @@ namespace Cargold.FrameWork.BackEnd
         public List<StoreItem> PublicStoreItems { get; private set; } = new List<StoreItem>();
         public List<ItemInstance> UserInventory { get; private set; }= new List<ItemInstance>();
 
+        private bool mbIsLoadData = false;
         public CharacterEnchantData GetEnchantData(EEnchantClassType classType)
         {
             if(UserEnchantData.TryGetValue(classType,out var data))
@@ -146,6 +147,7 @@ namespace Cargold.FrameWork.BackEnd
             await ReceiveStoreItems("PublicShop");
             await ReceiveInventory();
             await FetchCatalogItems();
+            mbIsLoadData = true;
             successCallback?.Invoke();
         }
 
@@ -380,7 +382,10 @@ namespace Cargold.FrameWork.BackEnd
         /// </summary>
         private void OnApplicationQuit()
         {
-            SaveCharacterData();
+            if (mbIsLoadData)
+            {
+                SaveCharacterData();
+            }
         }
 
         public void AddSpawnMission(CharacterData characterData)

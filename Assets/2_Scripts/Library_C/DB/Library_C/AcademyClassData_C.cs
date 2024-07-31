@@ -44,7 +44,6 @@ public partial class AcademyClassData : Data_C
         Success_pro = _cellDataArr[8].ToFloat();
         Great_pro = _cellDataArr[9].ToFloat();
         Fail_pro = _cellDataArr[10].ToFloat();
-
         Success_pro_item1 = _cellDataArr[11].ToFloat();
         Great_pro_item1 = _cellDataArr[12].ToFloat();
         Fail_pro_item1 = _cellDataArr[13].ToFloat();

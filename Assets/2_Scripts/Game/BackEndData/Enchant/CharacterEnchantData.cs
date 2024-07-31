@@ -1,15 +1,24 @@
 ﻿using System;
+using Cargold.FrameWork.BackEnd;
+using UnityEngine;
 
 namespace _2_Scripts.Game.BackEndData.Enchant
 {
     [Serializable]
     public class CharacterEnchantData
     {
-        public string ClassTypeKey;
+        [SerializeField]
+        private string classTypeKeyString;
+
+        public EEnchantClassType ClassTypeKey
+        {
+            get => (EEnchantClassType) Enum.Parse(typeof(EEnchantClassType), classTypeKeyString);
+            set => classTypeKeyString = value.ToString();
+        }
         public int EnchantLevel;
         public bool isMaxEnchant;
         
-        public CharacterEnchantData(string classTypeKey, int enchantLevel, bool isMaxEnchant)
+        public CharacterEnchantData(EEnchantClassType classTypeKey, int enchantLevel, bool isMaxEnchant)
         {
             ClassTypeKey = classTypeKey;
             EnchantLevel = enchantLevel;
@@ -21,6 +30,9 @@ namespace _2_Scripts.Game.BackEndData.Enchant
         {
             if(isMaxEnchant == false)
                 EnchantLevel++;
+            if(DataBase_Manager.Instance.GetUnitEnchant.GetDataArr.Length <= EnchantLevel)
+                isMaxEnchant = true;
+            
             
         }
     }

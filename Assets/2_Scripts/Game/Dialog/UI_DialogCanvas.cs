@@ -161,7 +161,7 @@ namespace _2_Scripts.Game.Dialog
             async UniTask AfterFadeOut()
             {
                 await mFadePanel.OnlyFadeIn(1);
-                string data = JsonUtility.ToJson(true);
+                string data = JsonUtility.ToJson(false);
                 string path = Path.Combine(Application.persistentDataPath, "IsFirstConnect");
                 File.WriteAllText(path, data);
                 SceneLoadManager.Instance.SceneChange("LobbyScene");

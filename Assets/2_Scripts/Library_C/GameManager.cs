@@ -24,7 +24,7 @@ public enum EItemType
 public class GameManager : Singleton<GameManager>
 {
     public bool IsTest { get; private set; } = true;
-    public bool IsFirstConnect { get; private set; } = false;
+    public bool IsFirstConnect { get; private set; } = true;
 
     public _2_Scripts.Game.BackEndData.Stage.StageData CurrentStageData { get; private set; }
 
@@ -100,7 +100,7 @@ public class GameManager : Singleton<GameManager>
 
         else
         {
-            IsFirstConnect = false;
+            IsFirstConnect = true;
         }
     }
 

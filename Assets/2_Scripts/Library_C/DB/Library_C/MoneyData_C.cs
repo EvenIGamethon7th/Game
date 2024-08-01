@@ -11,7 +11,6 @@ using Cargold.DB.TableImporter;
 public partial class MoneyData : Data_C
 {
      public string Key;
-     [LabelText("인덱스")] public int Index;
      [LabelText("재화 유형")] public EMoneyType Type;
      [LabelText("재화명")] public string Name;
 
@@ -21,9 +20,8 @@ public partial class MoneyData : Data_C
     public override void CallEdit_OnDataImport_Func(string[] _cellDataArr)
     {
         Key = _cellDataArr[0];
-        Index = _cellDataArr[1].ToInt();
-        Type = _cellDataArr[2].ToEnum<EMoneyType>();
-        Name = _cellDataArr[3];
+        Type = _cellDataArr[1].ToEnum<EMoneyType>();
+        Name = _cellDataArr[2];
     }
 #endif
 }

@@ -1,0 +1,5013 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee0c768ed4e9794ba808672c9e2e569, type: 3}
+  m_Name: DB_StoryDataGroup
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: dataDic
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[StoryData,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 82
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_1
+    - Name: $v
+      Entry: 7
+      Data: 2|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_1
+    - Name: Group
+      Entry: 3
+      Data: 1
+    - Name: Order
+      Entry: 3
+      Data: 1
+    - Name: Image
+      Entry: 1
+      Data: opening 1 scene UI. png
+    - Name: Description
+      Entry: 1
+      Data: "\uC624\uB298\uB3C4 \uC57C\uADFC... "
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_2
+    - Name: $v
+      Entry: 7
+      Data: 3|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_2
+    - Name: Group
+      Entry: 3
+      Data: 1
+    - Name: Order
+      Entry: 3
+      Data: 2
+    - Name: Image
+      Entry: 1
+      Data: opening 1 scene UI. png
+    - Name: Description
+      Entry: 1
+      Data: "\uC778\uC0DD \uB178\uC7BC\uC2DC\uAE30 \uBE68\uB9AC \uC9D1\uC5D0\uB098
+        \uAC00\uC790"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_3
+    - Name: $v
+      Entry: 7
+      Data: 4|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_3
+    - Name: Group
+      Entry: 3
+      Data: 1
+    - Name: Order
+      Entry: 3
+      Data: 3
+    - Name: Image
+      Entry: 1
+      Data: choose scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\uC544\uB2C8\uC57C.... \uC870\uAE08\uB9CC \uC77C \uB354\uD558\uC790"
+    - Name: Duration
+      Entry: 4
+      Data: 1E+16
+    - Name: Interval
+      Entry: 4
+      Data: 1E+16
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: true
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_4
+    - Name: $v
+      Entry: 7
+      Data: 5|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_4
+    - Name: Group
+      Entry: 3
+      Data: 1
+    - Name: Order
+      Entry: 3
+      Data: 3
+    - Name: Image
+      Entry: 1
+      Data: choose scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\uC5D0\uB77C \uBAA8\uB974\uACA0\uB2E4 \uC9D1\uC774\uB098 \uAC00\uC790"
+    - Name: Duration
+      Entry: 4
+      Data: 1E+16
+    - Name: Interval
+      Entry: 4
+      Data: 1E+16
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: true
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_5
+    - Name: $v
+      Entry: 7
+      Data: 6|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_5
+    - Name: Group
+      Entry: 3
+      Data: 1
+    - Name: Order
+      Entry: 3
+      Data: 4
+    - Name: Image
+      Entry: 1
+      Data: opening 1 scene UI. png
+    - Name: Description
+      Entry: 1
+      Data: "(\uD55C\uC2DC\uAC04\uB4A4....)"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_6
+    - Name: $v
+      Entry: 7
+      Data: 7|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_6
+    - Name: Group
+      Entry: 3
+      Data: 1
+    - Name: Order
+      Entry: 3
+      Data: 5
+    - Name: Image
+      Entry: 1
+      Data: opening 1 scene UI. png
+    - Name: Description
+      Entry: 1
+      Data: "(\uC544\uB2C8\uC57C \uADF8\uB798\uB3C4 \uB9E1\uC740 \uC5C5\uBB34\uC5D0
+        \uCC45\uC784\uC774 \uB530\uB974\uB2C8... \uC774\uAC83\uAE4C\uC9C0\uB9CC)"
+    - Name: Duration
+      Entry: 4
+      Data: 3
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_7
+    - Name: $v
+      Entry: 7
+      Data: 8|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_7
+    - Name: Group
+      Entry: 3
+      Data: 1
+    - Name: Order
+      Entry: 3
+      Data: 6
+    - Name: Image
+      Entry: 1
+      Data: opening 1 scene UI. png
+    - Name: Description
+      Entry: 1
+      Data: "\uB354\uC774\uC0C1 \uBA38\uB9AC\uAC00 \uC548\uB3CC\uC544\uAC00.... \uC9D1\uC774\uB098
+        \uAC00\uC790"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_8
+    - Name: $v
+      Entry: 7
+      Data: 9|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_8
+    - Name: Group
+      Entry: 3
+      Data: 2
+    - Name: Order
+      Entry: 3
+      Data: 1
+    - Name: Image
+      Entry: 1
+      Data: opening 2 scene UI.png
+    - Name: Description
+      Entry: 1
+      Data: "(\uD130\uBC85 \uD130\uBC85)"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_9
+    - Name: $v
+      Entry: 7
+      Data: 10|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_9
+    - Name: Group
+      Entry: 3
+      Data: 2
+    - Name: Order
+      Entry: 3
+      Data: 2
+    - Name: Image
+      Entry: 1
+      Data: opening 2 scene UI.png
+    - Name: Description
+      Entry: 1
+      Data: "(\uD130\uBC85 \uD130\uBC85......)"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_10
+    - Name: $v
+      Entry: 7
+      Data: 11|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_10
+    - Name: Group
+      Entry: 3
+      Data: 2
+    - Name: Order
+      Entry: 3
+      Data: 3
+    - Name: Image
+      Entry: 1
+      Data: opening 2 scene UI.png
+    - Name: Description
+      Entry: 1
+      Data: "\uBC30\uACE0\uD504\uB2E4...."
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_11
+    - Name: $v
+      Entry: 7
+      Data: 12|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_11
+    - Name: Group
+      Entry: 3
+      Data: 2
+    - Name: Order
+      Entry: 3
+      Data: 4
+    - Name: Image
+      Entry: 1
+      Data: opening 2 scene UI.png
+    - Name: Description
+      Entry: 1
+      Data: "\uAE30\uBD84\uC774 \uAFC0\uAFC0 \uD55C\uB370...  :( "
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_12
+    - Name: $v
+      Entry: 7
+      Data: 13|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_12
+    - Name: Group
+      Entry: 3
+      Data: 2
+    - Name: Order
+      Entry: 3
+      Data: 5
+    - Name: Image
+      Entry: 1
+      Data: opening 2 scene UI.png
+    - Name: Description
+      Entry: 1
+      Data: "\uC774\uB7F0 \uBA4D\uCCAD\uD55C \uD558\uB8E8~"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_13
+    - Name: $v
+      Entry: 7
+      Data: 14|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_13
+    - Name: Group
+      Entry: 3
+      Data: 2
+    - Name: Order
+      Entry: 3
+      Data: 6
+    - Name: Image
+      Entry: 1
+      Data: opening 2 scene UI.png
+    - Name: Description
+      Entry: 1
+      Data: "\uC57C\uB808\uC57C\uB808~"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_14
+    - Name: $v
+      Entry: 7
+      Data: 15|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_14
+    - Name: Group
+      Entry: 3
+      Data: 2
+    - Name: Order
+      Entry: 3
+      Data: 7
+    - Name: Image
+      Entry: 1
+      Data: opening 2 scene UI.png
+    - Name: Description
+      Entry: 1
+      Data: "\uC624\uB298 \uC800\uB141\uC740 \uCE58\uD0A8\uC774\uB098 \uBA39\uC5B4\uC57C\uACA0\uB2E4"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_15
+    - Name: $v
+      Entry: 7
+      Data: 16|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_15
+    - Name: Group
+      Entry: 3
+      Data: 3
+    - Name: Order
+      Entry: 3
+      Data: 1
+    - Name: Image
+      Entry: 1
+      Data: opening 3 scene UI
+    - Name: Description
+      Entry: 1
+      Data: "-\uB4DC\uB514\uC5B4 \uC9D1\uB3C4\uCC29-"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_16
+    - Name: $v
+      Entry: 7
+      Data: 17|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_16
+    - Name: Group
+      Entry: 3
+      Data: 4
+    - Name: Order
+      Entry: 3
+      Data: 1
+    - Name: Image
+      Entry: 1
+      Data: opening 4 scene UI
+    - Name: Description
+      Entry: 1
+      Data: "(\uC790\uC5F0\uC2A4\uB7FD\uAC8C \uBAB8\uC774 \uCE68\uB300\uB85C \uAC04\uB2E4)"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_17
+    - Name: $v
+      Entry: 7
+      Data: 18|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_17
+    - Name: Group
+      Entry: 3
+      Data: 4
+    - Name: Order
+      Entry: 3
+      Data: 2
+    - Name: Image
+      Entry: 1
+      Data: opening 4 scene UI
+    - Name: Description
+      Entry: 1
+      Data: "(\uCE58\uD0A8\uC774 \uBA39\uAD6C \uC2F6\uC740\uB370...)"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_18
+    - Name: $v
+      Entry: 7
+      Data: 19|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_18
+    - Name: Group
+      Entry: 3
+      Data: 4
+    - Name: Order
+      Entry: 3
+      Data: 3
+    - Name: Image
+      Entry: 1
+      Data: opening 4 scene UI
+    - Name: Description
+      Entry: 1
+      Data: "(\uBAB8\uC774 \uC6C0\uC9C1\uC774\uC9C8 \uC54A\uB124...)"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_19
+    - Name: $v
+      Entry: 7
+      Data: 20|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_19
+    - Name: Group
+      Entry: 3
+      Data: 4
+    - Name: Order
+      Entry: 3
+      Data: 4
+    - Name: Image
+      Entry: 1
+      Data: opening 4 scene UI
+    - Name: Description
+      Entry: 1
+      Data: "(\uCE58\uD0A8\uBCF4\uB2E4 \uCE68\uB300\uAC00 \uCD5C\uACE0\uAE34\uD574~)"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_20
+    - Name: $v
+      Entry: 7
+      Data: 21|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_20
+    - Name: Group
+      Entry: 3
+      Data: 4
+    - Name: Order
+      Entry: 3
+      Data: 5
+    - Name: Image
+      Entry: 1
+      Data: opening 4 scene UI
+    - Name: Description
+      Entry: 1
+      Data: "-\uC11C\uC11C\uD788 \uB208\uC774 \uAC10\uAE34\uB2E4-"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: 
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0.2
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_21
+    - Name: $v
+      Entry: 7
+      Data: 22|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_21
+    - Name: Group
+      Entry: 3
+      Data: 4
+    - Name: Order
+      Entry: 3
+      Data: 6
+    - Name: Image
+      Entry: 1
+      Data: opening 4 scene UI
+    - Name: Description
+      Entry: 1
+      Data: "-\uAFC8\uB098\uB77C\uB85C \uAC00\uB294 \uC911...-"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: 
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0.4
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_22
+    - Name: $v
+      Entry: 7
+      Data: 23|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_22
+    - Name: Group
+      Entry: 3
+      Data: 4
+    - Name: Order
+      Entry: 3
+      Data: 7
+    - Name: Image
+      Entry: 1
+      Data: opening 4 scene UI
+    - Name: Description
+      Entry: 1
+      Data: "(\uCFE8..\uCFE8..)"
+    - Name: Duration
+      Entry: 4
+      Data: 1.5
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: 
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0.6
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_23
+    - Name: $v
+      Entry: 7
+      Data: 24|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_23
+    - Name: Group
+      Entry: 3
+      Data: 4
+    - Name: Order
+      Entry: 3
+      Data: 8
+    - Name: Image
+      Entry: 1
+      Data: opening 4 scene UI
+    - Name: Description
+      Entry: 1
+      Data: "(\uC74C\uB0D0...\uC74C\uB0D0...)"
+    - Name: Duration
+      Entry: 4
+      Data: 1.5
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: 
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0.8
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_24
+    - Name: $v
+      Entry: 7
+      Data: 25|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_24
+    - Name: Group
+      Entry: 3
+      Data: 4
+    - Name: Order
+      Entry: 3
+      Data: 9
+    - Name: Image
+      Entry: 1
+      Data: opening 4 scene UI
+    - Name: Description
+      Entry: 1
+      Data: "(\uCF54\uCF54 \uB0B8\uB0B4 \uCF54\uCF54 \uB0B8\uB0B4)"
+    - Name: Duration
+      Entry: 4
+      Data: 1.5
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: 
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 1
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_25
+    - Name: $v
+      Entry: 7
+      Data: 26|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_25
+    - Name: Group
+      Entry: 3
+      Data: 5
+    - Name: Order
+      Entry: 3
+      Data: 1
+    - Name: Image
+      Entry: 1
+      Data: 'wake up '
+    - Name: Description
+      Entry: 1
+      Data: 
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: 1
+    - Name: Speaker
+      Entry: 1
+      Data: 
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 1
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_26
+    - Name: $v
+      Entry: 7
+      Data: 27|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_26
+    - Name: Group
+      Entry: 3
+      Data: 5
+    - Name: Order
+      Entry: 3
+      Data: 2
+    - Name: Image
+      Entry: 1
+      Data: wake up scene UI.png
+    - Name: Description
+      Entry: 1
+      Data: "\"\uB208\uC744 \uB5A0\uB77C\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: ???
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0.9
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_27
+    - Name: $v
+      Entry: 7
+      Data: 28|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_27
+    - Name: Group
+      Entry: 3
+      Data: 5
+    - Name: Order
+      Entry: 3
+      Data: 3
+    - Name: Image
+      Entry: 1
+      Data: wake up scene UI.png
+    - Name: Description
+      Entry: 1
+      Data: "\"\uB208\uC744 \uB5A0\uB77C\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: ???
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0.8
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_28
+    - Name: $v
+      Entry: 7
+      Data: 29|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_28
+    - Name: Group
+      Entry: 3
+      Data: 5
+    - Name: Order
+      Entry: 3
+      Data: 4
+    - Name: Image
+      Entry: 1
+      Data: wake up scene UI.png
+    - Name: Description
+      Entry: 1
+      Data: "\uC557 \uB208\uBD80\uC154 "
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0.7
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_29
+    - Name: $v
+      Entry: 7
+      Data: 30|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_29
+    - Name: Group
+      Entry: 3
+      Data: 5
+    - Name: Order
+      Entry: 3
+      Data: 5
+    - Name: Image
+      Entry: 1
+      Data: wake up scene UI.png
+    - Name: Description
+      Entry: 1
+      Data: "\uB208\uBF55\uC774 \uB108\uBB34 \uC2EC\uD574\uC9C0\uACE0 \uC788\uC5B4"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0.5
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_30
+    - Name: $v
+      Entry: 7
+      Data: 31|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_30
+    - Name: Group
+      Entry: 3
+      Data: 5
+    - Name: Order
+      Entry: 3
+      Data: 6
+    - Name: Image
+      Entry: 1
+      Data: wake up scene UI.png
+    - Name: Description
+      Entry: 1
+      Data: "\uB300\uCCB4 \uBB50\uC57C..."
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0.3
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_31
+    - Name: $v
+      Entry: 7
+      Data: 32|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_31
+    - Name: Group
+      Entry: 3
+      Data: 5
+    - Name: Order
+      Entry: 3
+      Data: 7
+    - Name: Image
+      Entry: 1
+      Data: wake up scene UI.png
+    - Name: Description
+      Entry: 1
+      Data: "\uC73C\uC544\uC544\uC545!!!"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0.1
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_32
+    - Name: $v
+      Entry: 7
+      Data: 33|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_32
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 1
+    - Name: Image
+      Entry: 1
+      Data: Her
+    - Name: Description
+      Entry: 1
+      Data: 
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: 1
+    - Name: Speaker
+      Entry: 1
+      Data: 
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_33
+    - Name: $v
+      Entry: 7
+      Data: 34|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_33
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 2
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uB4DC\uB514\uC5B4 \uC815\uC2E0\uC774 \uB4DC\uB294 \uBAA8\uC591\uC774\uB124\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: ???
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_34
+    - Name: $v
+      Entry: 7
+      Data: 35|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_34
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 3
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI
+    - Name: Description
+      Entry: 1
+      Data: "(\uC5EC\uAE34...\uC5B4\uB514...)"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_35
+    - Name: $v
+      Entry: 7
+      Data: 36|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_35
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 4
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uC548\uB155 \uB09C \uC774\uC138\uACC4 \uC5EC\uC2E0\uC774\uC57C\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC5EC\uC2E0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_36
+    - Name: $v
+      Entry: 7
+      Data: 37|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_36
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 5
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uC5B4\uB9AC\uB465\uC808\uD558\uC9C0? \""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC5EC\uC2E0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_37
+    - Name: $v
+      Entry: 7
+      Data: 38|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_37
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 6
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI
+    - Name: Description
+      Entry: 1
+      Data: "(\uC5B4...\uC608\uC058\uB2E4...)"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_38
+    - Name: $v
+      Entry: 7
+      Data: 39|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_38
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 7
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI
+    - Name: Description
+      Entry: 1
+      Data: "(\uADF8\uB7F0\uB370 \uB204\uAD6C\uC9C0?)"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_39
+    - Name: $v
+      Entry: 7
+      Data: 40|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_39
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 8
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uC2DC\uAC04\uC774 \uC5C6\uC73C\uB2C8 \uBE60\uB974\uAC8C \uB9D0\uD560\uAC8C\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC5EC\uC2E0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_40
+    - Name: $v
+      Entry: 7
+      Data: 41|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_40
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 9
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uD604\uC7AC \uC774\uC138\uACC4\uB294 \uBAAC\uC2A4\uD130\uB4E4\uB85C
+        \uC778\uD574 \uBA78\uB9DD\uC758 \uC704\uAE30\uC5D0 \uCC98\uD574\uC788\uC5B4\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC5EC\uC2E0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_41
+    - Name: $v
+      Entry: 7
+      Data: 42|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_41
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 10
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uB108\uB294 \uB0B4\uAC00 \uC120\uD0DD\uD55C \uC18C\uD658\uC0AC\uB85C\uC368
+        \uC6A9\uC0AC\uB4E4\uC744 \uC18C\uD658\uD558\uACE0"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC5EC\uC2E0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_42
+    - Name: $v
+      Entry: 7
+      Data: 43|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_42
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 11
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\uC0AC\uC545\uD55C \uBAAC\uC2A4\uD130\uB4E4\uC744 \uCC98\uCE58\uD574
+        \uC774\uC138\uACC4\uC758 \uBA78\uB9DD\uC744 \uB9C9\uC544\uC57C\uB9CC\uD574\"\n"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC5EC\uC2E0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: ' '
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_43
+    - Name: $v
+      Entry: 7
+      Data: 44|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_43
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 12
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI
+    - Name: Description
+      Entry: 1
+      Data: "(\uC18C\uD658\uC0AC? \uC6A9\uC0AC? \uBAAC\uC2A4\uD130? \uC774\uAC8C
+        \uB2E4 \uBB34\uC2A8 \uC18C\uB9AC\uC57C!?!?)"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_44
+    - Name: $v
+      Entry: 7
+      Data: 45|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_44
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 13
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uD63C\uB780\uC2A4\uB7FD\uB2E4\uB294 \uAC83\uC744 \uC798\uC54C\uC544
+        \uD558\uC9C0\uB9CC... \""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC5EC\uC2E0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_45
+    - Name: $v
+      Entry: 7
+      Data: 46|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_45
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 14
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uC774\uC138\uACC4\uC5D0 \uC788\uB294 \uD3C9\uD654\uB97C \uC218\uD638\uD558\uB294
+        \uC18C\uD658\uC0AC\uB294 \uC804\uBD80 \uC0AC\uB77C\uC838\uBC84\uB838\uC5B4...\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC5EC\uC2E0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_46
+    - Name: $v
+      Entry: 7
+      Data: 47|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_46
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 15
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uC544\uB2C8...\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC5EC\uC2E0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_47
+    - Name: $v
+      Entry: 7
+      Data: 48|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_47
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 16
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI-2
+    - Name: Description
+      Entry: 1
+      Data: "( \uC774\uC81C\uB294 \uB098 \uD558\uB098\uB9CC \uB0A8\uC740 \uAC78\uC9C0\uB3C4.....
+        )"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC5EC\uC2E0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_48
+    - Name: $v
+      Entry: 7
+      Data: 49|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_48
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 19
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uC2DC\uAC04\uC774 \uC5C6\uC5B4!!  \uBE68\uB9AC \uAC00\uC57C\uB9CC\uD574\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC5EC\uC2E0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_49
+    - Name: $v
+      Entry: 7
+      Data: 50|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_49
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 20
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uC790\uC138\uD55C \uAC83\uC740 \uC544\uCE74\uB370\uBBF8\uC5D0\uC11C
+        \uB108\uC758 \uB2A5\uB825\uC744 \uC2DC\uD5D8\uD574\uBCF4\uB294 \uAC83\uBFD0\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC5EC\uC2E0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_50
+    - Name: $v
+      Entry: 7
+      Data: 51|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_50
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 21
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI
+    - Name: Description
+      Entry: 1
+      Data: "-\uB208\uC774 \uAC10\uAE34\uB2E4-"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: 
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0.2
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_51
+    - Name: $v
+      Entry: 7
+      Data: 52|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_51
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 22
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI
+    - Name: Description
+      Entry: 1
+      Data: "(\uC544\uB2C8 \uC7A0\uAE50\uB9CC \uB610 \uC7A0\uB4E0\uB2E4\uACE0 \uC544\uB2C8
+        \uC774\uAC74 \uC5D0\uBC14\uC9C0...)"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0.3
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_52
+    - Name: $v
+      Entry: 7
+      Data: 53|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_52
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 23
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uC544 \uB9DE\uB2E4~\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC5EC\uC2E0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0.4
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_53
+    - Name: $v
+      Entry: 7
+      Data: 54|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_53
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 24
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uC774\uC138\uACC4 \uBA78\uB9DD\uC744 \uB9C9\uC544\uC900\uB2E4\uBA74
+        \uD604\uC2E4\uB85C \uB3CC\uB824\uBCF4\uB0B4\uC904\uAC8C \uADF8\uB9AC\uACE0...\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC5EC\uC2E0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0.5
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_54
+    - Name: $v
+      Entry: 7
+      Data: 55|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_54
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 25
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uD2B9.\uBCC4.\uD55C \uC18C\uC6D0\uB3C4 \uD558\uB098 \uB4E4\uC5B4\uC904\uAC8C\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC5EC\uC2E0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0.6
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_55
+    - Name: $v
+      Entry: 7
+      Data: 56|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_55
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 26
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI
+    - Name: Description
+      Entry: 1
+      Data: "(\uBA48\uCDB0!!!  \uB098 \uB3CC\uC544\uAC08\uB798~~~)"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0.7
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_56
+    - Name: $v
+      Entry: 7
+      Data: 57|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_56
+    - Name: Group
+      Entry: 3
+      Data: 6
+    - Name: Order
+      Entry: 3
+      Data: 27
+    - Name: Image
+      Entry: 1
+      Data: Her scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uB2F9\uC2E0\uC758 \uC18C\uD658\uC5D0 \uD589\uC6B4\uC774 \uAE43\uB4E4\uAE38!\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC5EC\uC2E0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0.8
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_57
+    - Name: $v
+      Entry: 7
+      Data: 58|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_57
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 1
+    - Name: Image
+      Entry: 1
+      Data: 'Astar '
+    - Name: Description
+      Entry: 1
+      Data: 
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: 1
+    - Name: Speaker
+      Entry: 1
+      Data: 
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0.2
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_58
+    - Name: $v
+      Entry: 7
+      Data: 59|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_58
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 2
+    - Name: Image
+      Entry: 1
+      Data: 'Astar '
+    - Name: Description
+      Entry: 1
+      Data: 
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: 1
+    - Name: Speaker
+      Entry: 1
+      Data: 
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_59
+    - Name: $v
+      Entry: 7
+      Data: 60|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_59
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 3
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "(\uB098\uB294 \uB204\uAD6C \uC5EC\uAE34 \uB300\uCCB4...)"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_60
+    - Name: $v
+      Entry: 7
+      Data: 61|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_60
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 4
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uC5EC\uC2E0\uB2D8\uAED8\uC11C \uC120\uD0DD\uD558\uC2E0 \uC18C\uD658\uC0AC\uB77C\uB358\uB385~\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: ???
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_61
+    - Name: $v
+      Entry: 7
+      Data: 62|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_61
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 5
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\uC634\uB9C8 \uAE5C\uC9DD\uC774\uC57C! "
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_62
+    - Name: $v
+      Entry: 7
+      Data: 63|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_62
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 6
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uC5B4\uBA38, \uB4DC\uB514\uC5B4 \uB208\uC744 \uB728\uC168\uAD70\uC694,
+        \uC18C\uD658\uC0AC\uB2D8\" :) \u314E\u314E"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: ???
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_63
+    - Name: $v
+      Entry: 7
+      Data: 64|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_63
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 7
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\uB204\uB204..\uB204\uAD6C\uC2DC\uC8E0?"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_64
+    - Name: $v
+      Entry: 7
+      Data: 65|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_64
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 8
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uC544 \uCC38! \uC800\uC758 \uC18C\uAC1C\uAC00 \uB2A6\uC5C8\uB124\uC694\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: ???
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_65
+    - Name: $v
+      Entry: 7
+      Data: 66|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_65
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 9
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uC800\uB294 \uC2A4\uD0C0\uD130 \uAE38\uB77C\uC7A1\uC774 \uC544\uC2A4\uD0C0\uC5D0\uC694:)
+        \uB9CC\uB098\uC11C \uBC18\uAC00\uC6CC\uC694 \uC18C\uD658\uC0AC\uB2D8!\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC544\uC2A4\uD0C0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_66
+    - Name: $v
+      Entry: 7
+      Data: 67|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_66
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 10
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "(\uB2E4\uC9DC\uACE0\uC9DC \uC790\uAE30\uC18C\uAC1C\uD558\uAE30 \uC788\uC5B4?)"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_67
+    - Name: $v
+      Entry: 7
+      Data: 68|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_67
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 11
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "(\uADF8\uB098\uC800\uB098 \uC790\uC138\uD788 \uBCF4\uB2C8 \uADC0\uC5FD\uB124...
+        )"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_68
+    - Name: $v
+      Entry: 7
+      Data: 69|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_68
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 12
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "(\uC544\uAE4C \uC5EC\uC2E0\uC778\uAC00 \uBB54\uAC00\uB3C4 \uC608\uC058\uACE0..)"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_69
+    - Name: $v
+      Entry: 7
+      Data: 70|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_69
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 13
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "(\uC5EC\uAE30 \uC0DD\uAC01\uBCF4\uB2E4 \uC88B\uC744\uC9C0\uB3C4)"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_70
+    - Name: $v
+      Entry: 7
+      Data: 71|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_70
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 14
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uB208\uB3C4 \uB728\uC168\uAD6C, \uC815\uC2E0\uB3C4 \uBA40\uCA61\uD574\uBCF4\uC774\uB124\uC694\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC544\uC2A4\uD0C0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_71
+    - Name: $v
+      Entry: 7
+      Data: 72|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_71
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 15
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uADF8\uB7FC..\uC5EC\uC2E0\uB2D8\uAED8\uC11C \uC18C\uD658\uC0AC\uB2D8
+        \uC131\uACA9\uC774 \uAE09\uD558\uC2DC\uB2E4\uACE0 \uD558\uC2DC\uB358\uB370
+        \uACE7\uBC14\uB85C \uC804\uD22C\uC5D0 \uC9C4\uC785\uD574\uBCFC\uAE4C\uC694?\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC544\uC2A4\uD0C0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_72
+    - Name: $v
+      Entry: 7
+      Data: 73|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_72
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 16
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\uC5E5??! \uAC11\uC790\uAE30?"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC544\uC2A4\uD0C0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_73
+    - Name: $v
+      Entry: 7
+      Data: 74|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_73
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 17
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uB139! \uADF8\uB7FC\uC694\u314E\u314E \uC120\uD0DD\uBC1B\uC740 \uC18C\uD658\uC0AC\uB2D8\uC744
+        \uAC00\uC774\uB4DC\uD560 \uC218 \uC788\uC5B4\uC11C \uC544\uC2A4\uD0C0\uB294
+        \uAE30\uC058\uB2F5\uB2C8\uB2E4 \u314E\u314E\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC544\uC2A4\uD0C0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_74
+    - Name: $v
+      Entry: 7
+      Data: 75|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_74
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 18
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "(\uADC0\uC5EC\uC6B4 \uC5BC\uAD74\uC5D0 \uC2EB\uB2E4\uACE0 \uD560 \uC218\uB3C4
+        \uC5C6\uACE0...)"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_75
+    - Name: $v
+      Entry: 7
+      Data: 76|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_75
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 19
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\uB098 \uC131\uACA9 \uC548\uAE09\uD574~ \uC2DC\uAC04\uB3C4 \uB9CE\uACE0~"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_76
+    - Name: $v
+      Entry: 7
+      Data: 77|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_76
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 20
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uC18C\uD658\uC0AC\uB2D8! \uB18D\uB2F4\uB3C4 \uCC38\u314E\u314E~\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC544\uC2A4\uD0C0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_77
+    - Name: $v
+      Entry: 7
+      Data: 78|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_77
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 21
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uC778\uC0DD\uC740 \uC2E4\uC804\uC774\uB77C\uB294 \uB9D0 \uC544\uC2DC\uC8E0?\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC544\uC2A4\uD0C0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_78
+    - Name: $v
+      Entry: 7
+      Data: 79|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_78
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 22
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uC18C\uD658\uC0AC\uB2D8 \uC2E4\uB825\uB3C4 \uC54C\uC544\uBCFC\uACB8,
+        \uC790\uC138\uD55C\uAC74 \uC804\uD22C\uC5D0\uC11C \uC54C\uC544\uBCF4\uB3C4\uB85D
+        \uD558\uC8E0\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC544\uC2A4\uD0C0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_79
+    - Name: $v
+      Entry: 7
+      Data: 80|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_79
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 23
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "(\uAC70\uC808\uD574\uC57C\uD558\uB294\uB370...\uAC70\uC808\uD574\uC57C\uD558\uB294\uB370...)"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_80
+    - Name: $v
+      Entry: 7
+      Data: 81|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_80
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 24
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\"\uAC00\uC2DC\uC8E0!! \uC18C\uD658\uC0AC\uB2D8\""
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uC544\uC2A4\uD0C0"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_81
+    - Name: $v
+      Entry: 7
+      Data: 82|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_81
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 25
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "\uADF8...\uADF8\uB798"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Script_82
+    - Name: $v
+      Entry: 7
+      Data: 83|StoryData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Script_82
+    - Name: Group
+      Entry: 3
+      Data: 7
+    - Name: Order
+      Entry: 3
+      Data: 26
+    - Name: Image
+      Entry: 1
+      Data: Astar scene UI
+    - Name: Description
+      Entry: 1
+      Data: "(\uBE44\uCC38\uD55C \uBAA8\uC3E0\uC778\uC0DD....)"
+    - Name: Duration
+      Entry: 4
+      Data: 2
+    - Name: Interval
+      Entry: 4
+      Data: -1
+    - Name: Speaker
+      Entry: 1
+      Data: "\uB098"
+    - Name: IsChoice
+      Entry: 5
+      Data: false
+    - Name: shadow
+      Entry: 4
+      Data: 0
+    - Name: sound
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  dataArr:
+  - Key: Script_1
+    Group: 1
+    Order: 1
+    Image: opening 1 scene UI. png
+    Description: "\uC624\uB298\uB3C4 \uC57C\uADFC... "
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_2
+    Group: 1
+    Order: 2
+    Image: opening 1 scene UI. png
+    Description: "\uC778\uC0DD \uB178\uC7BC\uC2DC\uAE30 \uBE68\uB9AC \uC9D1\uC5D0\uB098
+      \uAC00\uC790"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_3
+    Group: 1
+    Order: 3
+    Image: choose scene UI
+    Description: "\uC544\uB2C8\uC57C.... \uC870\uAE08\uB9CC \uC77C \uB354\uD558\uC790"
+    Duration: 1e+16
+    Interval: 1e+16
+    Speaker: "\uB098"
+    IsChoice: 1
+    shadow: 0
+    sound: 
+  - Key: Script_4
+    Group: 1
+    Order: 3
+    Image: choose scene UI
+    Description: "\uC5D0\uB77C \uBAA8\uB974\uACA0\uB2E4 \uC9D1\uC774\uB098 \uAC00\uC790"
+    Duration: 1e+16
+    Interval: 1e+16
+    Speaker: "\uB098"
+    IsChoice: 1
+    shadow: 0
+    sound: 
+  - Key: Script_5
+    Group: 1
+    Order: 4
+    Image: opening 1 scene UI. png
+    Description: "(\uD55C\uC2DC\uAC04\uB4A4....)"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_6
+    Group: 1
+    Order: 5
+    Image: opening 1 scene UI. png
+    Description: "(\uC544\uB2C8\uC57C \uADF8\uB798\uB3C4 \uB9E1\uC740 \uC5C5\uBB34\uC5D0
+      \uCC45\uC784\uC774 \uB530\uB974\uB2C8... \uC774\uAC83\uAE4C\uC9C0\uB9CC)"
+    Duration: 3
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_7
+    Group: 1
+    Order: 6
+    Image: opening 1 scene UI. png
+    Description: "\uB354\uC774\uC0C1 \uBA38\uB9AC\uAC00 \uC548\uB3CC\uC544\uAC00....
+      \uC9D1\uC774\uB098 \uAC00\uC790"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_8
+    Group: 2
+    Order: 1
+    Image: opening 2 scene UI.png
+    Description: "(\uD130\uBC85 \uD130\uBC85)"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_9
+    Group: 2
+    Order: 2
+    Image: opening 2 scene UI.png
+    Description: "(\uD130\uBC85 \uD130\uBC85......)"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_10
+    Group: 2
+    Order: 3
+    Image: opening 2 scene UI.png
+    Description: "\uBC30\uACE0\uD504\uB2E4...."
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_11
+    Group: 2
+    Order: 4
+    Image: opening 2 scene UI.png
+    Description: "\uAE30\uBD84\uC774 \uAFC0\uAFC0 \uD55C\uB370...  :( "
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_12
+    Group: 2
+    Order: 5
+    Image: opening 2 scene UI.png
+    Description: "\uC774\uB7F0 \uBA4D\uCCAD\uD55C \uD558\uB8E8~"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_13
+    Group: 2
+    Order: 6
+    Image: opening 2 scene UI.png
+    Description: "\uC57C\uB808\uC57C\uB808~"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_14
+    Group: 2
+    Order: 7
+    Image: opening 2 scene UI.png
+    Description: "\uC624\uB298 \uC800\uB141\uC740 \uCE58\uD0A8\uC774\uB098 \uBA39\uC5B4\uC57C\uACA0\uB2E4"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_15
+    Group: 3
+    Order: 1
+    Image: opening 3 scene UI
+    Description: "-\uB4DC\uB514\uC5B4 \uC9D1\uB3C4\uCC29-"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_16
+    Group: 4
+    Order: 1
+    Image: opening 4 scene UI
+    Description: "(\uC790\uC5F0\uC2A4\uB7FD\uAC8C \uBAB8\uC774 \uCE68\uB300\uB85C
+      \uAC04\uB2E4)"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_17
+    Group: 4
+    Order: 2
+    Image: opening 4 scene UI
+    Description: "(\uCE58\uD0A8\uC774 \uBA39\uAD6C \uC2F6\uC740\uB370...)"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_18
+    Group: 4
+    Order: 3
+    Image: opening 4 scene UI
+    Description: "(\uBAB8\uC774 \uC6C0\uC9C1\uC774\uC9C8 \uC54A\uB124...)"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_19
+    Group: 4
+    Order: 4
+    Image: opening 4 scene UI
+    Description: "(\uCE58\uD0A8\uBCF4\uB2E4 \uCE68\uB300\uAC00 \uCD5C\uACE0\uAE34\uD574~)"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_20
+    Group: 4
+    Order: 5
+    Image: opening 4 scene UI
+    Description: "-\uC11C\uC11C\uD788 \uB208\uC774 \uAC10\uAE34\uB2E4-"
+    Duration: 2
+    Interval: -1
+    Speaker: 
+    IsChoice: 0
+    shadow: 0.2
+    sound: 
+  - Key: Script_21
+    Group: 4
+    Order: 6
+    Image: opening 4 scene UI
+    Description: "-\uAFC8\uB098\uB77C\uB85C \uAC00\uB294 \uC911...-"
+    Duration: 2
+    Interval: -1
+    Speaker: 
+    IsChoice: 0
+    shadow: 0.4
+    sound: 
+  - Key: Script_22
+    Group: 4
+    Order: 7
+    Image: opening 4 scene UI
+    Description: "(\uCFE8..\uCFE8..)"
+    Duration: 1.5
+    Interval: -1
+    Speaker: 
+    IsChoice: 0
+    shadow: 0.6
+    sound: 
+  - Key: Script_23
+    Group: 4
+    Order: 8
+    Image: opening 4 scene UI
+    Description: "(\uC74C\uB0D0...\uC74C\uB0D0...)"
+    Duration: 1.5
+    Interval: -1
+    Speaker: 
+    IsChoice: 0
+    shadow: 0.8
+    sound: 
+  - Key: Script_24
+    Group: 4
+    Order: 9
+    Image: opening 4 scene UI
+    Description: "(\uCF54\uCF54 \uB0B8\uB0B4 \uCF54\uCF54 \uB0B8\uB0B4)"
+    Duration: 1.5
+    Interval: -1
+    Speaker: 
+    IsChoice: 0
+    shadow: 1
+    sound: 
+  - Key: Script_25
+    Group: 5
+    Order: 1
+    Image: 'wake up '
+    Description: 
+    Duration: 2
+    Interval: 1
+    Speaker: 
+    IsChoice: 0
+    shadow: 1
+    sound: 
+  - Key: Script_26
+    Group: 5
+    Order: 2
+    Image: wake up scene UI.png
+    Description: "\"\uB208\uC744 \uB5A0\uB77C\""
+    Duration: 2
+    Interval: -1
+    Speaker: ???
+    IsChoice: 0
+    shadow: 0.9
+    sound: 
+  - Key: Script_27
+    Group: 5
+    Order: 3
+    Image: wake up scene UI.png
+    Description: "\"\uB208\uC744 \uB5A0\uB77C\""
+    Duration: 2
+    Interval: -1
+    Speaker: ???
+    IsChoice: 0
+    shadow: 0.8
+    sound: 
+  - Key: Script_28
+    Group: 5
+    Order: 4
+    Image: wake up scene UI.png
+    Description: "\uC557 \uB208\uBD80\uC154 "
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0.7
+    sound: 
+  - Key: Script_29
+    Group: 5
+    Order: 5
+    Image: wake up scene UI.png
+    Description: "\uB208\uBF55\uC774 \uB108\uBB34 \uC2EC\uD574\uC9C0\uACE0 \uC788\uC5B4"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0.5
+    sound: 
+  - Key: Script_30
+    Group: 5
+    Order: 6
+    Image: wake up scene UI.png
+    Description: "\uB300\uCCB4 \uBB50\uC57C..."
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0.3
+    sound: 
+  - Key: Script_31
+    Group: 5
+    Order: 7
+    Image: wake up scene UI.png
+    Description: "\uC73C\uC544\uC544\uC545!!!"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0.1
+    sound: 
+  - Key: Script_32
+    Group: 6
+    Order: 1
+    Image: Her
+    Description: 
+    Duration: 2
+    Interval: 1
+    Speaker: 
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_33
+    Group: 6
+    Order: 2
+    Image: Her scene UI
+    Description: "\"\uB4DC\uB514\uC5B4 \uC815\uC2E0\uC774 \uB4DC\uB294 \uBAA8\uC591\uC774\uB124\""
+    Duration: 2
+    Interval: -1
+    Speaker: ???
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_34
+    Group: 6
+    Order: 3
+    Image: Her scene UI
+    Description: "(\uC5EC\uAE34...\uC5B4\uB514...)"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_35
+    Group: 6
+    Order: 4
+    Image: Her scene UI
+    Description: "\"\uC548\uB155 \uB09C \uC774\uC138\uACC4 \uC5EC\uC2E0\uC774\uC57C\""
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC5EC\uC2E0"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_36
+    Group: 6
+    Order: 5
+    Image: Her scene UI
+    Description: "\"\uC5B4\uB9AC\uB465\uC808\uD558\uC9C0? \""
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC5EC\uC2E0"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_37
+    Group: 6
+    Order: 6
+    Image: Her scene UI
+    Description: "(\uC5B4...\uC608\uC058\uB2E4...)"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_38
+    Group: 6
+    Order: 7
+    Image: Her scene UI
+    Description: "(\uADF8\uB7F0\uB370 \uB204\uAD6C\uC9C0?)"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_39
+    Group: 6
+    Order: 8
+    Image: Her scene UI
+    Description: "\"\uC2DC\uAC04\uC774 \uC5C6\uC73C\uB2C8 \uBE60\uB974\uAC8C \uB9D0\uD560\uAC8C\""
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC5EC\uC2E0"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_40
+    Group: 6
+    Order: 9
+    Image: Her scene UI
+    Description: "\"\uD604\uC7AC \uC774\uC138\uACC4\uB294 \uBAAC\uC2A4\uD130\uB4E4\uB85C
+      \uC778\uD574 \uBA78\uB9DD\uC758 \uC704\uAE30\uC5D0 \uCC98\uD574\uC788\uC5B4\""
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC5EC\uC2E0"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_41
+    Group: 6
+    Order: 10
+    Image: Her scene UI
+    Description: "\"\uB108\uB294 \uB0B4\uAC00 \uC120\uD0DD\uD55C \uC18C\uD658\uC0AC\uB85C\uC368
+      \uC6A9\uC0AC\uB4E4\uC744 \uC18C\uD658\uD558\uACE0"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC5EC\uC2E0"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_42
+    Group: 6
+    Order: 11
+    Image: Her scene UI
+    Description: "\uC0AC\uC545\uD55C \uBAAC\uC2A4\uD130\uB4E4\uC744 \uCC98\uCE58\uD574
+      \uC774\uC138\uACC4\uC758 \uBA78\uB9DD\uC744 \uB9C9\uC544\uC57C\uB9CC\uD574\"\n"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC5EC\uC2E0"
+    IsChoice: 0
+    shadow: 0
+    sound: ' '
+  - Key: Script_43
+    Group: 6
+    Order: 12
+    Image: Her scene UI
+    Description: "(\uC18C\uD658\uC0AC? \uC6A9\uC0AC? \uBAAC\uC2A4\uD130? \uC774\uAC8C
+      \uB2E4 \uBB34\uC2A8 \uC18C\uB9AC\uC57C!?!?)"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_44
+    Group: 6
+    Order: 13
+    Image: Her scene UI
+    Description: "\"\uD63C\uB780\uC2A4\uB7FD\uB2E4\uB294 \uAC83\uC744 \uC798\uC54C\uC544
+      \uD558\uC9C0\uB9CC... \""
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC5EC\uC2E0"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_45
+    Group: 6
+    Order: 14
+    Image: Her scene UI
+    Description: "\"\uC774\uC138\uACC4\uC5D0 \uC788\uB294 \uD3C9\uD654\uB97C \uC218\uD638\uD558\uB294
+      \uC18C\uD658\uC0AC\uB294 \uC804\uBD80 \uC0AC\uB77C\uC838\uBC84\uB838\uC5B4...\""
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC5EC\uC2E0"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_46
+    Group: 6
+    Order: 15
+    Image: Her scene UI
+    Description: "\"\uC544\uB2C8...\""
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC5EC\uC2E0"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_47
+    Group: 6
+    Order: 16
+    Image: Her scene UI-2
+    Description: "( \uC774\uC81C\uB294 \uB098 \uD558\uB098\uB9CC \uB0A8\uC740 \uAC78\uC9C0\uB3C4.....
+      )"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC5EC\uC2E0"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_48
+    Group: 6
+    Order: 19
+    Image: Her scene UI
+    Description: "\"\uC2DC\uAC04\uC774 \uC5C6\uC5B4!!  \uBE68\uB9AC \uAC00\uC57C\uB9CC\uD574\""
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC5EC\uC2E0"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_49
+    Group: 6
+    Order: 20
+    Image: Her scene UI
+    Description: "\"\uC790\uC138\uD55C \uAC83\uC740 \uC544\uCE74\uB370\uBBF8\uC5D0\uC11C
+      \uB108\uC758 \uB2A5\uB825\uC744 \uC2DC\uD5D8\uD574\uBCF4\uB294 \uAC83\uBFD0\""
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC5EC\uC2E0"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_50
+    Group: 6
+    Order: 21
+    Image: Her scene UI
+    Description: "-\uB208\uC774 \uAC10\uAE34\uB2E4-"
+    Duration: 2
+    Interval: -1
+    Speaker: 
+    IsChoice: 0
+    shadow: 0.2
+    sound: 
+  - Key: Script_51
+    Group: 6
+    Order: 22
+    Image: Her scene UI
+    Description: "(\uC544\uB2C8 \uC7A0\uAE50\uB9CC \uB610 \uC7A0\uB4E0\uB2E4\uACE0
+      \uC544\uB2C8 \uC774\uAC74 \uC5D0\uBC14\uC9C0...)"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0.3
+    sound: 
+  - Key: Script_52
+    Group: 6
+    Order: 23
+    Image: Her scene UI
+    Description: "\"\uC544 \uB9DE\uB2E4~\""
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC5EC\uC2E0"
+    IsChoice: 0
+    shadow: 0.4
+    sound: 
+  - Key: Script_53
+    Group: 6
+    Order: 24
+    Image: Her scene UI
+    Description: "\"\uC774\uC138\uACC4 \uBA78\uB9DD\uC744 \uB9C9\uC544\uC900\uB2E4\uBA74
+      \uD604\uC2E4\uB85C \uB3CC\uB824\uBCF4\uB0B4\uC904\uAC8C \uADF8\uB9AC\uACE0...\""
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC5EC\uC2E0"
+    IsChoice: 0
+    shadow: 0.5
+    sound: 
+  - Key: Script_54
+    Group: 6
+    Order: 25
+    Image: Her scene UI
+    Description: "\"\uD2B9.\uBCC4.\uD55C \uC18C\uC6D0\uB3C4 \uD558\uB098 \uB4E4\uC5B4\uC904\uAC8C\""
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC5EC\uC2E0"
+    IsChoice: 0
+    shadow: 0.6
+    sound: 
+  - Key: Script_55
+    Group: 6
+    Order: 26
+    Image: Her scene UI
+    Description: "(\uBA48\uCDB0!!!  \uB098 \uB3CC\uC544\uAC08\uB798~~~)"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0.7
+    sound: 
+  - Key: Script_56
+    Group: 6
+    Order: 27
+    Image: Her scene UI
+    Description: "\"\uB2F9\uC2E0\uC758 \uC18C\uD658\uC5D0 \uD589\uC6B4\uC774 \uAE43\uB4E4\uAE38!\""
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC5EC\uC2E0"
+    IsChoice: 0
+    shadow: 0.8
+    sound: 
+  - Key: Script_57
+    Group: 7
+    Order: 1
+    Image: 'Astar '
+    Description: 
+    Duration: 2
+    Interval: 1
+    Speaker: 
+    IsChoice: 0
+    shadow: 0.2
+    sound: 
+  - Key: Script_58
+    Group: 7
+    Order: 2
+    Image: 'Astar '
+    Description: 
+    Duration: 2
+    Interval: 1
+    Speaker: 
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_59
+    Group: 7
+    Order: 3
+    Image: Astar scene UI
+    Description: "(\uB098\uB294 \uB204\uAD6C \uC5EC\uAE34 \uB300\uCCB4...)"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_60
+    Group: 7
+    Order: 4
+    Image: Astar scene UI
+    Description: "\"\uC5EC\uC2E0\uB2D8\uAED8\uC11C \uC120\uD0DD\uD558\uC2E0 \uC18C\uD658\uC0AC\uB77C\uB358\uB385~\""
+    Duration: 2
+    Interval: -1
+    Speaker: ???
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_61
+    Group: 7
+    Order: 5
+    Image: Astar scene UI
+    Description: "\uC634\uB9C8 \uAE5C\uC9DD\uC774\uC57C! "
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_62
+    Group: 7
+    Order: 6
+    Image: Astar scene UI
+    Description: "\"\uC5B4\uBA38, \uB4DC\uB514\uC5B4 \uB208\uC744 \uB728\uC168\uAD70\uC694,
+      \uC18C\uD658\uC0AC\uB2D8\" :) \u314E\u314E"
+    Duration: 2
+    Interval: -1
+    Speaker: ???
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_63
+    Group: 7
+    Order: 7
+    Image: Astar scene UI
+    Description: "\uB204\uB204..\uB204\uAD6C\uC2DC\uC8E0?"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_64
+    Group: 7
+    Order: 8
+    Image: Astar scene UI
+    Description: "\"\uC544 \uCC38! \uC800\uC758 \uC18C\uAC1C\uAC00 \uB2A6\uC5C8\uB124\uC694\""
+    Duration: 2
+    Interval: -1
+    Speaker: ???
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_65
+    Group: 7
+    Order: 9
+    Image: Astar scene UI
+    Description: "\"\uC800\uB294 \uC2A4\uD0C0\uD130 \uAE38\uB77C\uC7A1\uC774 \uC544\uC2A4\uD0C0\uC5D0\uC694:)
+      \uB9CC\uB098\uC11C \uBC18\uAC00\uC6CC\uC694 \uC18C\uD658\uC0AC\uB2D8!\""
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC544\uC2A4\uD0C0"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_66
+    Group: 7
+    Order: 10
+    Image: Astar scene UI
+    Description: "(\uB2E4\uC9DC\uACE0\uC9DC \uC790\uAE30\uC18C\uAC1C\uD558\uAE30
+      \uC788\uC5B4?)"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_67
+    Group: 7
+    Order: 11
+    Image: Astar scene UI
+    Description: "(\uADF8\uB098\uC800\uB098 \uC790\uC138\uD788 \uBCF4\uB2C8 \uADC0\uC5FD\uB124...
+      )"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_68
+    Group: 7
+    Order: 12
+    Image: Astar scene UI
+    Description: "(\uC544\uAE4C \uC5EC\uC2E0\uC778\uAC00 \uBB54\uAC00\uB3C4 \uC608\uC058\uACE0..)"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_69
+    Group: 7
+    Order: 13
+    Image: Astar scene UI
+    Description: "(\uC5EC\uAE30 \uC0DD\uAC01\uBCF4\uB2E4 \uC88B\uC744\uC9C0\uB3C4)"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_70
+    Group: 7
+    Order: 14
+    Image: Astar scene UI
+    Description: "\"\uB208\uB3C4 \uB728\uC168\uAD6C, \uC815\uC2E0\uB3C4 \uBA40\uCA61\uD574\uBCF4\uC774\uB124\uC694\""
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC544\uC2A4\uD0C0"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_71
+    Group: 7
+    Order: 15
+    Image: Astar scene UI
+    Description: "\"\uADF8\uB7FC..\uC5EC\uC2E0\uB2D8\uAED8\uC11C \uC18C\uD658\uC0AC\uB2D8
+      \uC131\uACA9\uC774 \uAE09\uD558\uC2DC\uB2E4\uACE0 \uD558\uC2DC\uB358\uB370
+      \uACE7\uBC14\uB85C \uC804\uD22C\uC5D0 \uC9C4\uC785\uD574\uBCFC\uAE4C\uC694?\""
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC544\uC2A4\uD0C0"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_72
+    Group: 7
+    Order: 16
+    Image: Astar scene UI
+    Description: "\uC5E5??! \uAC11\uC790\uAE30?"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC544\uC2A4\uD0C0"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_73
+    Group: 7
+    Order: 17
+    Image: Astar scene UI
+    Description: "\"\uB139! \uADF8\uB7FC\uC694\u314E\u314E \uC120\uD0DD\uBC1B\uC740
+      \uC18C\uD658\uC0AC\uB2D8\uC744 \uAC00\uC774\uB4DC\uD560 \uC218 \uC788\uC5B4\uC11C
+      \uC544\uC2A4\uD0C0\uB294 \uAE30\uC058\uB2F5\uB2C8\uB2E4 \u314E\u314E\""
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC544\uC2A4\uD0C0"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_74
+    Group: 7
+    Order: 18
+    Image: Astar scene UI
+    Description: "(\uADC0\uC5EC\uC6B4 \uC5BC\uAD74\uC5D0 \uC2EB\uB2E4\uACE0 \uD560
+      \uC218\uB3C4 \uC5C6\uACE0...)"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_75
+    Group: 7
+    Order: 19
+    Image: Astar scene UI
+    Description: "\uB098 \uC131\uACA9 \uC548\uAE09\uD574~ \uC2DC\uAC04\uB3C4 \uB9CE\uACE0~"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_76
+    Group: 7
+    Order: 20
+    Image: Astar scene UI
+    Description: "\"\uC18C\uD658\uC0AC\uB2D8! \uB18D\uB2F4\uB3C4 \uCC38\u314E\u314E~\""
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC544\uC2A4\uD0C0"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_77
+    Group: 7
+    Order: 21
+    Image: Astar scene UI
+    Description: "\"\uC778\uC0DD\uC740 \uC2E4\uC804\uC774\uB77C\uB294 \uB9D0 \uC544\uC2DC\uC8E0?\""
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC544\uC2A4\uD0C0"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_78
+    Group: 7
+    Order: 22
+    Image: Astar scene UI
+    Description: "\"\uC18C\uD658\uC0AC\uB2D8 \uC2E4\uB825\uB3C4 \uC54C\uC544\uBCFC\uACB8,
+      \uC790\uC138\uD55C\uAC74 \uC804\uD22C\uC5D0\uC11C \uC54C\uC544\uBCF4\uB3C4\uB85D
+      \uD558\uC8E0\""
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC544\uC2A4\uD0C0"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_79
+    Group: 7
+    Order: 23
+    Image: Astar scene UI
+    Description: "(\uAC70\uC808\uD574\uC57C\uD558\uB294\uB370...\uAC70\uC808\uD574\uC57C\uD558\uB294\uB370...)"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_80
+    Group: 7
+    Order: 24
+    Image: Astar scene UI
+    Description: "\"\uAC00\uC2DC\uC8E0!! \uC18C\uD658\uC0AC\uB2D8\""
+    Duration: 2
+    Interval: -1
+    Speaker: "\uC544\uC2A4\uD0C0"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_81
+    Group: 7
+    Order: 25
+    Image: Astar scene UI
+    Description: "\uADF8...\uADF8\uB798"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  - Key: Script_82
+    Group: 7
+    Order: 26
+    Image: Astar scene UI
+    Description: "(\uBE44\uCC38\uD55C \uBAA8\uC3E0\uC778\uC0DD....)"
+    Duration: 2
+    Interval: -1
+    Speaker: "\uB098"
+    IsChoice: 0
+    shadow: 0
+    sound: 
+  keyArr:
+  - Script_1
+  - Script_2
+  - Script_3
+  - Script_4
+  - Script_5
+  - Script_6
+  - Script_7
+  - Script_8
+  - Script_9
+  - Script_10
+  - Script_11
+  - Script_12
+  - Script_13
+  - Script_14
+  - Script_15
+  - Script_16
+  - Script_17
+  - Script_18
+  - Script_19
+  - Script_20
+  - Script_21
+  - Script_22
+  - Script_23
+  - Script_24
+  - Script_25
+  - Script_26
+  - Script_27
+  - Script_28
+  - Script_29
+  - Script_30
+  - Script_31
+  - Script_32
+  - Script_33
+  - Script_34
+  - Script_35
+  - Script_36
+  - Script_37
+  - Script_38
+  - Script_39
+  - Script_40
+  - Script_41
+  - Script_42
+  - Script_43
+  - Script_44
+  - Script_45
+  - Script_46
+  - Script_47
+  - Script_48
+  - Script_49
+  - Script_50
+  - Script_51
+  - Script_52
+  - Script_53
+  - Script_54
+  - Script_55
+  - Script_56
+  - Script_57
+  - Script_58
+  - Script_59
+  - Script_60
+  - Script_61
+  - Script_62
+  - Script_63
+  - Script_64
+  - Script_65
+  - Script_66
+  - Script_67
+  - Script_68
+  - Script_69
+  - Script_70
+  - Script_71
+  - Script_72
+  - Script_73
+  - Script_74
+  - Script_75
+  - Script_76
+  - Script_77
+  - Script_78
+  - Script_79
+  - Script_80
+  - Script_81
+  - Script_82

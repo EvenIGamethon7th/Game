@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace _2_Scripts.UI.Ingame
 {
-    public class UI_IngameSetting : MonoBehaviour
+    public class UI_IngameSetting : UI_Base
     {
         private float mRecvSpeed;
 

@@ -827,8 +827,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64
-  m_fontSizeBase: 64
+  m_fontSize: 72
+  m_fontSizeBase: 72
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1302,7 +1302,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -354, y: -337}
+  m_AnchoredPosition: {x: -311, y: -337}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &463979854
@@ -1541,7 +1541,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 1a494719534814d9c8cedde17a9251c2, type: 3}
-  m_Type: 1
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1642,8 +1642,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64
-  m_fontSizeBase: 64
+  m_fontSize: 72
+  m_fontSizeBase: 72
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1765,7 +1765,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 75, y: -337}
+  m_AnchoredPosition: {x: 118, y: -337}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &583746526
@@ -2171,7 +2171,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 2c1184c2ce52845caad14c9a25623dab, type: 3}
-  m_Type: 1
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2224,7 +2224,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 179, y: 0}
+  m_AnchoredPosition: {x: 203, y: 0}
   m_SizeDelta: {x: 100, y: 108}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &984356647
@@ -3557,6 +3557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334132a5802f618489c19c5ce7fabd4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mRenderCamera: 2
   mExitButton: {fileID: 980500485}
 --- !u!1 &1375996923
 GameObject:
@@ -4058,11 +4059,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1355218721102885502, guid: 13eaa30d673934047ba7ec6b9b604bf7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8795401
+      value: 2.0293128
       objectReference: {fileID: 0}
     - target: {fileID: 1355218721102885502, guid: 13eaa30d673934047ba7ec6b9b604bf7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.4513774
+      value: -7.5137825
       objectReference: {fileID: 0}
     - target: {fileID: 3281016667957265146, guid: 13eaa30d673934047ba7ec6b9b604bf7, type: 3}
       propertyPath: m_TargetTexture
@@ -4090,11 +4091,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4481130322261367100, guid: 13eaa30d673934047ba7ec6b9b604bf7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.7584466
+      value: 2.0293128
       objectReference: {fileID: 0}
     - target: {fileID: 4481130322261367100, guid: 13eaa30d673934047ba7ec6b9b604bf7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.759573
+      value: -7.5137825
       objectReference: {fileID: 0}
     - target: {fileID: 4875623804704995396, guid: 13eaa30d673934047ba7ec6b9b604bf7, type: 3}
       propertyPath: m_Name
@@ -4102,11 +4103,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6895580727436520636, guid: 13eaa30d673934047ba7ec6b9b604bf7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.7584466
+      value: 2.0293128
       objectReference: {fileID: 0}
     - target: {fileID: 6895580727436520636, guid: 13eaa30d673934047ba7ec6b9b604bf7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.759573
+      value: -7.5137825
       objectReference: {fileID: 0}
     - target: {fileID: 8075403408752574699, guid: 13eaa30d673934047ba7ec6b9b604bf7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4512,7 +4513,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 179, y: 0}
+  m_AnchoredPosition: {x: 203, y: 0}
   m_SizeDelta: {x: 100, y: 108}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2031925316

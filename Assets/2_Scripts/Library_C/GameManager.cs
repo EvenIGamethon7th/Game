@@ -101,6 +101,6 @@ public class GameManager : Singleton<GameManager>
 
     protected override void ChangeSceneInit(Scene prev, Scene next)
     {
-
+        Debug.Log(prev.name);
     }
 }

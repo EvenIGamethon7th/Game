@@ -21,13 +21,13 @@ public partial class StageData
         switch (reward)
         {
             case EStageReward.Low:
-                return lowReward;
+                return this.Stage_Reward_1star;
             case EStageReward.Middle:
-                return middleReward;
+                return this.Stage_Reward_2star;
             case EStageReward.High:
-                return highReward;
+                return this.Stage_Reward_3star;
             default:
-                return lowReward;
+                return this.Stage_Reward_1star;
         }
     }
     

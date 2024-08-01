@@ -17,6 +17,7 @@ namespace _2_Scripts.UI
 
         public bool InitType(ESettingBoolType type)
         {
+            mType = type;
             switch (type)
             {
                 case ESettingBoolType.Vibe:

@@ -15,10 +15,13 @@ namespace _2_Scripts.UI
         [SerializeField]
         private Image mImage;
 
+        [SerializeField]
+        private ESettingBoolType mSetting;
+
         void Start()
         {
             mButton = GetComponentInChildren<UI_ButtonSlider>();
-            bool active = mButton.InitType(ESettingBoolType.Vibe);
+            bool active = mButton.InitType(mSetting);
             if (active)
             {
                 mImage.sprite = mSprites[0];

@@ -1,3 +1,4 @@
+using _2_Scripts.Game.Sound;
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
@@ -32,7 +33,7 @@ namespace _2_Scripts.Game.Dialog
         [SerializeField]
         private Button mSkipButton;
         [SerializeField]
-        private Button mAutoButton;
+        private UI_AutoButton mAutoButton;
 
         private UI_DialogPanel mDialog;
         private bool mIsSpeaking = false;
@@ -151,6 +152,12 @@ namespace _2_Scripts.Game.Dialog
                 mBackGround.sprite = mBackGrounds[mGroup];
                 mGroup = data.Story_Group;
             }
+
+            if (!String.IsNullOrEmpty(data.sound))
+            {
+                BGMManager.Instance.PlaySound(data.sound, true);
+            }
+
             await mDialog.SetTextAsync(data.Speaker, data.Description);
             mIsSpeaking = false;
         }
@@ -158,6 +165,7 @@ namespace _2_Scripts.Game.Dialog
         private void IsAuto()
         {
             mIsAuto = !mIsAuto;
+            mAutoButton.IsAuto(mIsAuto);
         }
 
         private void SceneChange()

@@ -12,14 +12,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
   m_Name: Sound
   m_EditorClassIdentifier: 
-  m_GroupName: BGM
+  m_GroupName: Sound
   m_Data:
     m_SerializedData: []
-  m_GUID: a0204fac8379c9a4796e5fd6cfa32c65
-  m_SerializeEntries: []
+  m_GUID: bcced18597d8b52499d4263918030aec
+  m_SerializeEntries:
+  - m_GUID: 886e5e1f31eb4cc43b9bd80d85c30546
+    m_Address: Title
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fcc96c547dfd3334cbb71242250ad0ee
+    m_Address: Prologue
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a2ed4af84ef68d643b89506da04108c5
+    m_Address: Chapter3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 202c6659bca44344a810171b84fb79fb
+    m_Address: God
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8c9b8f48e1ffee545a3908e6e468c517
+    m_Address: Astar
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 569afd778281a674ab07b4509df3083c
+    m_Address: Chapter4
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cd3ae4c6aa190d4468f344e6acefe24f
+    m_Address: Lobby
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a409d8b979e44ce4d90f783d0d7fcafe
+    m_Address: Chapter2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1d66f1d5d3667c346abd0060802a8b4d
+    m_Address: Chapter1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 807a1aab8c1a69e479fb445aaa41535a, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 884d9e998f76e8643a3b79d91a430d16, type: 2}
-    - {fileID: 11400000, guid: 94d94238c4a821940a5167bd69e8c9f7, type: 2}
+    - {fileID: 11400000, guid: 63a3c3015fece9b4ca2a8f5105dd73ec, type: 2}
+    - {fileID: 11400000, guid: 192462f33a5db55439f26642e2aa3470, type: 2}

@@ -6,16 +6,26 @@ using UnityEngine.UI;
 
 public class UI_AutoButton : Button
 {
-    private ReactiveProperty<bool> mIsAuto = new ReactiveProperty<bool>(false);
+    private Material[] mMats;
+    private float mOutlineThick;
 
     protected override void Awake()
     {
         base.Awake();
-        onClick.AddListener(IsAuto);
+        var img = GetComponentsInChildren<Image>();
+        mMats = new Material[img.Length];
+        mOutlineThick = 0.01f;
+        for (int i = 0; i <  img.Length; i++)
+        {
+            mMats[i] = img[i].material;
+        }
     }
 
-    private void IsAuto()
+    public void IsAuto(bool isAuto)
     {
-        mIsAuto.Value = !mIsAuto.Value;
+        for (int i = 0; i < mMats.Length; ++i)
+        {
+            mMats[i].SetFloat("_OutlineThickness", isAuto ? mOutlineThick : 0);
+        }
     }
 }

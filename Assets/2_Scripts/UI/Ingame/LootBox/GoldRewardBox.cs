@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using _2_Scripts.Game.Sound;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace _2_Scripts.UI.Ingame.LootBox
@@ -22,7 +23,7 @@ namespace _2_Scripts.UI.Ingame.LootBox
             var reward = GetRandomGoldReward();
             if (reward == 150)
             {
-                Handheld.Vibrate();
+                SoundManager.Instance.Vibrate();
             }
             mRewadMessage = reward != 0  ? $"짜잔! {reward} 골드 획득!" : "ㅜㅜ 꽝!";
             IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold,reward);

@@ -1,3 +1,4 @@
+using _2_Scripts.Game.Sound;
 using _2_Scripts.Game.Unit;
 using _2_Scripts.UI;
 using _2_Scripts.UI.Ingame;
@@ -170,8 +171,8 @@ namespace _2_Scripts.UI {
             if (result == ELessonResults.Fail) return;
             
             else if (result == ELessonResults.Bonanza) 
-            { 
-                Handheld.Vibrate();
+            {
+                SoundManager.Instance.Vibrate();
                 SelectStat(mClassData[mLessonCount].Stat_value2);
                 Cargold.UI.UI_Toast_Manager.Instance.Activate_WithContent_Func("아카데미 수업 대성공!");
             }

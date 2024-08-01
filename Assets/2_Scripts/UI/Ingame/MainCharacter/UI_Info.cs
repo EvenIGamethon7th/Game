@@ -19,7 +19,8 @@ namespace _2_Scripts.UI.Ingame
 
         private void SetActiveInfo()
         {
-            mInfo.SetActive(true);
+            if (!mInfo.activeSelf)
+                mInfo.SetActive(true);
         }
 
         private void OnDestroy()

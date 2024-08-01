@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using _2_Scripts.Game.Sound;
 using _2_Scripts.Game.Unit;
 using _2_Scripts.Utils;
 using Cargold;
@@ -134,7 +135,7 @@ namespace _2_Scripts.UI
            mCharacterCost.text = $"{mCharacterData.cost}$";
            if (mCharacterData.rank == 3)
            {
-               Handheld.Vibrate();
+                SoundManager.Instance.Vibrate();
            }
            CardChange(mCharacterData.rank);
         }

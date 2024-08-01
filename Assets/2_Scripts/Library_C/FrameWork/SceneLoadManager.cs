@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using _2_Scripts.Game.Sound;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Plugins.Animate_UI_Materials;
@@ -23,6 +24,7 @@ using AsyncOperation = UnityEngine.AsyncOperation;
 
         public void SceneChange(string sceneName)
         {
+            BGMManager.Instance.StopSound(true);
             LoadSceneAsync(sceneName).Forget();
         }
 

@@ -543,7 +543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: e82f952817b74e94d92193edf4b1c2fb, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1352,7 +1352,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5723abad920069c45bde563f19dd3d91, type: 3}
   - {fileID: 21300000, guid: 49236950d4001d44b81295f2eea5d73f, type: 3}
   mSkipButton: {fileID: 591882568}
-  mAutoButton: {fileID: 1959620108}
+  mAutoButton: {fileID: 1959620110}
 --- !u!1 &1584635509
 GameObject:
   m_ObjectHideFlags: 0
@@ -1832,7 +1832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1959620107}
   - component: {fileID: 1959620109}
-  - component: {fileID: 1959620108}
+  - component: {fileID: 1959620110}
   m_Layer: 5
   m_Name: AutoButton
   m_TagString: Untagged
@@ -1861,7 +1861,15 @@ RectTransform:
   m_AnchoredPosition: {x: 146.6, y: 0}
   m_SizeDelta: {x: 180, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1959620108
+--- !u!222 &1959620109
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959620106}
+  m_CullTransparentMesh: 1
+--- !u!114 &1959620110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1870,7 +1878,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1959620106}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 56408859038d7814099503d426fad3d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -1905,14 +1913,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!222 &1959620109
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1959620106}
-  m_CullTransparentMesh: 1
 --- !u!1 &2024769834
 GameObject:
   m_ObjectHideFlags: 0
@@ -2039,7 +2039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 48ca3fe77d8b2424fbf68eb177676b53, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}

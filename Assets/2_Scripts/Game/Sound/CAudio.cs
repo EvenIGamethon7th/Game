@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using Cysharp.Threading.Tasks;
 
 namespace _2_Scripts.Game.Sound
 {
@@ -17,6 +18,9 @@ namespace _2_Scripts.Game.Sound
         private AudioSource _audioSource;
         [SerializeField]
         private ESound _type;
+
+        private int _fadeCount;
+        private float _prevVolume;
 
         private void InitVolume(Scene prev, Scene next)
         {
@@ -57,12 +61,14 @@ namespace _2_Scripts.Game.Sound
                 case ESound.Effect:
                     SoundManager.Instance.EffectAction -= SetVolume;
                     SoundManager.Instance.EffectAction += SetVolume;
+                    _prevVolume = SoundManager.Instance.EffectVolume;
                     SetVolume(SoundManager.Instance.EffectVolume);
                     break;
 
                 case ESound.Bgm:
                     SoundManager.Instance.BGMAction -= SetVolume;
                     SoundManager.Instance.BGMAction += SetVolume;
+                    _prevVolume = SoundManager.Instance.BGMVolume;
                     SetVolume(SoundManager.Instance.BGMVolume);
                     break;
             }
@@ -110,13 +116,52 @@ namespace _2_Scripts.Game.Sound
 
         public void StopSoundFade(float time = 1.5f)
         {
-            _audioSource.DOFade(0, time);
+            ++_fadeCount;
+            _audioSource.volume = _prevVolume;
+            _prevVolume = 0;
+            StopSoundAsync().Forget();
+
+            async UniTask StopSoundAsync()
+            {
+                float temp = time;
+                float tempVolume = _audioSource.volume;
+                while (temp > 0)
+                {
+                    await UniTask.DelayFrame(1);
+                    if (_fadeCount > 1)
+                    {
+                        break;
+                    }
+                    temp -= Time.deltaTime;
+                    _audioSource.volume = Mathf.Lerp(0, tempVolume, temp / time);
+                }
+                --_fadeCount;
+            }
         }
 
         public void StartSoundFade(float time = 1.5f)
         {
+            ++_fadeCount;
             _audioSource.volume = 0;
-            _audioSource.DOFade(SoundManager.Instance.BGMVolume, time);
+            _prevVolume = SoundManager.Instance.BGMVolume;
+            StartSoundAsync().Forget();
+
+            async UniTask StartSoundAsync()
+            {
+                float temp = time;
+                float tempVolume = SoundManager.Instance.BGMVolume;
+                while (temp > 0)
+                {
+                    await UniTask.DelayFrame(1);
+                    if (_fadeCount > 1)
+                    {
+                        break;
+                    }
+                    temp -= Time.deltaTime;
+                    _audioSource.volume = Mathf.Lerp(tempVolume, 0, temp / time);
+                }
+                --_fadeCount;
+            }
         }
 
         public void StopSound()

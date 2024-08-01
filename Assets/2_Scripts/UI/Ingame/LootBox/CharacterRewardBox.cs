@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using _2_Scripts.Game.Sound;
 using _2_Scripts.Utils;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ namespace _2_Scripts.UI.Ingame.LootBox
             var characterData = GetRandomCharacter();
             if (characterData.rank == 3)
             {
-                Handheld.Vibrate();
+                SoundManager.Instance.Vibrate();
             }
             string characterName = DataBase_Manager.Instance.GetLocalize.GetData_Func(characterData.nameKey).ko;
             mRewadMessage = $"짜잔! {characterData.rank}등급 '{characterName}' 소환!";

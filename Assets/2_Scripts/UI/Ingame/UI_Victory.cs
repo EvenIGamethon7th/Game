@@ -35,6 +35,7 @@ namespace _2_Scripts.UI.Ingame
             stageData.Star = Math.Max(stageData.Star,rank);
             stageData.IsClear = true;
             var reward = StageManager.Instance.mCurrentStageData.GetStageReward(rank);
+            mRewardText.text = $"+{reward}";
             BackEndManager.Instance.AddCurrencyData(ECurrency.Diamond,reward);
             for (int i = 0; i < rank; i++)
             {

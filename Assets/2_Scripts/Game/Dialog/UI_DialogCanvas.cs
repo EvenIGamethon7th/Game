@@ -28,7 +28,7 @@ namespace _2_Scripts.Game.Dialog
         [SerializeField]
         private Image mBackGround;
         [SerializeField]
-        private Sprite[] mBackGrounds;
+        private List<Sprite> mBackGrounds;
         [SerializeField]
         private Button mSkipButton;
         [SerializeField]
@@ -45,7 +45,18 @@ namespace _2_Scripts.Game.Dialog
         protected override void StartInit()
         {
             base.StartInit();
-
+            int num = 1;
+            Texture2D tempTex;
+            Sprite tempSprite;
+            mBackGrounds.Clear();
+            while (true)
+            {
+                tempTex = ResourceManager.Instance.Load<Texture2D>($"-1_{num++}");
+                if (tempTex == null) break;
+                Rect rect = new Rect(0, 0, tempTex.width, tempTex.height);
+                tempSprite = Sprite.Create(tempTex, rect, new Vector2(0.5f, 0.5f));
+                mBackGrounds.Add(tempSprite);
+            }
             for (int i = 1; i < 100; ++i)
             {
                 if (!DataBase_Manager.Instance.GetStory.TryGetData_Func($"Script_{i}", out var data)) break;
@@ -135,10 +146,10 @@ namespace _2_Scripts.Game.Dialog
         {
             mIsSpeaking = true;
 
-            if (mGroup != data.Group)
+            if (mGroup != data.Story_Group)
             {
                 mBackGround.sprite = mBackGrounds[mGroup];
-                mGroup = data.Group;
+                mGroup = data.Story_Group;
             }
             await mDialog.SetTextAsync(data.Speaker, data.Description);
             mIsSpeaking = false;

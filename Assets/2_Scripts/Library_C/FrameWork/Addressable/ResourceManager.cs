@@ -22,7 +22,9 @@ public enum ELabelNames
     UIMaterial,
     MainCharacterData,
     Map,
-    MainCharacterObject
+    MainCharacterObject,
+    Sound,
+    CutScene
 }
 
 public class ResourceManager :Singleton<ResourceManager>

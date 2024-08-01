@@ -113,6 +113,12 @@ namespace _2_Scripts.Game.Sound
             _audioSource.DOFade(0, time);
         }
 
+        public void StartSoundFade(float time = 1.5f)
+        {
+            _audioSource.volume = 0;
+            _audioSource.DOFade(SoundManager.Instance.BGMVolume, time);
+        }
+
         public void StopSound()
         {
             if (_audioSource.isPlaying)

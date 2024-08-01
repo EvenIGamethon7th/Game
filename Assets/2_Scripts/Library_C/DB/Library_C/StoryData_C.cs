@@ -11,9 +11,9 @@ using Cargold.DB.TableImporter;
 public partial class StoryData : Data_C
 {
      public string Key;
-     [LabelText("챕터별 스토리")] public int Chapter;
-     [LabelText("그룹(첫번째 이미지)")] public int Group;
-     [LabelText("그룹내순서")] public int Order;
+     [LabelText("챕터별 스토리")] public int Story_Chapter;
+     [LabelText("그룹")] public int Story_Group;
+     [LabelText("그룹내순서")] public int Story_Order;
      [LabelText("컷씬이미지")] public string Image;
      public string Description;
      [LabelText("대사 지속시간")] public float Duration;
@@ -29,9 +29,9 @@ public partial class StoryData : Data_C
     public override void CallEdit_OnDataImport_Func(string[] _cellDataArr)
     {
         Key = _cellDataArr[0];
-        Chapter = _cellDataArr[1].ToInt();
-        Group = _cellDataArr[2].ToInt();
-        Order = _cellDataArr[3].ToInt();
+        Story_Chapter = _cellDataArr[1].ToInt();
+        Story_Group = _cellDataArr[2].ToInt();
+        Story_Order = _cellDataArr[3].ToInt();
         Image = _cellDataArr[4];
         Description = _cellDataArr[5];
         Duration = _cellDataArr[6].ToFloat();

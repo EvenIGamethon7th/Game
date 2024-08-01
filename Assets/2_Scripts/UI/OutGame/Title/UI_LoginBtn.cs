@@ -57,7 +57,10 @@ namespace _2_Scripts.UI.OutGame.Title
         {
             mButton.interactable = false;
             GameManager.Instance.NotTestMode();
-            SceneLoadManager.Instance.SceneChange("LobbyScene");
+            if (!GameManager.Instance.IsFirstConnect)
+                SceneLoadManager.Instance.SceneChange("LobbyScene");
+            else
+                SceneLoadManager.Instance.SceneChange("PrologueScene");
         }
     }
 }

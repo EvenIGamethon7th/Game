@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using UnityEngine;
@@ -160,6 +161,9 @@ namespace _2_Scripts.Game.Dialog
             async UniTask AfterFadeOut()
             {
                 await mFadePanel.OnlyFadeIn(1);
+                string data = JsonUtility.ToJson(true);
+                string path = Path.Combine(Application.persistentDataPath, "IsFirstConnect");
+                File.WriteAllText(path, data);
                 SceneLoadManager.Instance.SceneChange("LobbyScene");
             }
         }

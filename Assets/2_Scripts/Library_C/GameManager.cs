@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using _2_Scripts.Game.ScriptableObject.Character;
 using _2_Scripts.Utils;
@@ -23,6 +24,7 @@ public enum EItemType
 public class GameManager : Singleton<GameManager>
 {
     public bool IsTest { get; private set; } = true;
+    public bool IsFirstConnect { get; private set; } = false;
 
     public _2_Scripts.Game.BackEndData.Stage.StageData CurrentStageData { get; private set; }
 
@@ -85,6 +87,21 @@ public class GameManager : Singleton<GameManager>
                         MainCharacterList.Add(resource.Value as MainCharacterInfo);
                     }
                 }).AddTo(this);
+    }
+
+    protected override void AwakeInit()
+    {
+        string path = Path.Combine(Application.persistentDataPath, "IsFirstConnect");
+        if (File.Exists(path))
+        {
+            string data = File.ReadAllText(path);
+            IsFirstConnect = JsonUtility.FromJson<bool>(data);
+        }
+
+        else
+        {
+            IsFirstConnect = false;
+        }
     }
 
     private Random mRandom = new Random();

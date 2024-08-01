@@ -18,7 +18,7 @@ public class StageManager : Singleton<StageManager>
 {
     [GetComponent] private WayPoint mWayPoint;
     
-    private StageData mCurrentStageData;
+    public StageData mCurrentStageData { get;private set; }
     private Queue<WaveData> mWaveQueue = new Queue<WaveData>();
     private WaveData mCurrentWaveData;
     
@@ -44,7 +44,7 @@ public class StageManager : Singleton<StageManager>
     /// <exception cref="NotImplementedException"></exception>
     public void Start()
     {
-        Time.timeScale = 1.5f;
+        //Time.timeScale = 1.5f;
         if (GameManager.Instance.IsTest)
         {
             EditInit();
@@ -164,7 +164,7 @@ public class StageManager : Singleton<StageManager>
 
     private void EditInit()
     {
-        Time.timeScale = 5f;
+        //Time.timeScale = 2.5f;
         MessageBroker.Default.Receive<TaskMessage>()
             .Where(message => message.Task == ETaskList.DefaultResourceLoad)
             .Subscribe(message =>

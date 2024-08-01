@@ -99,7 +99,7 @@ namespace _2_Scripts.UI
             unit.Clear();
             if (mSelectUnitGroup != null)
                 SetFusionButton();
-            GameManager.Instance.UpdateMoney(EMoneyType.Gold,(int)(unit.CharacterDatas.cost * mCostRate));
+            IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold,(int)(unit.CharacterDatas.cost * mCostRate));
         }
 
         private void SetFusionButton()

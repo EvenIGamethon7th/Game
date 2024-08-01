@@ -19,7 +19,7 @@ namespace _2_Scripts.UI.Ingame
         private bool isGameOver = false;
         private void Start()
         {
-            GameManager.Instance.UserHp.Subscribe(hp =>
+            IngameDataManager.Instance.Subscribe(this, IngameDataManager.EDataType.Hp, hp =>
             {
                 if (hp <= 0 && isGameOver == false)
                 {
@@ -30,7 +30,7 @@ namespace _2_Scripts.UI.Ingame
                     mDefeat.SetActive(true);
                     mButtons.SetActive(true);
                 }
-            }).AddTo(this);
+            });
 
             MessageBroker.Default.Receive<TaskMessage>().Where(message =>
                 message.Task == ETaskList.GameOver)
@@ -49,6 +49,13 @@ namespace _2_Scripts.UI.Ingame
 
         public void OnRetryGame()
         {
+
+            if (BackEndManager.Instance.UserCurrency[ECurrency.Father].Value <= 0)
+            {
+                UI_Toast_Manager.Instance.Activate_WithContent_Func("깃털이 부족합니다.");
+                return;
+            }
+            BackEndManager.Instance.AddCurrencyData(ECurrency.Father,-1);
             Time.timeScale = 1;
             SaveData();
             SceneLoadManager.Instance.SceneChange("Main"); 

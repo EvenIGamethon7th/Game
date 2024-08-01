@@ -32,8 +32,12 @@ Shader "Unlit/CustomSpine"
             #pragma vertex vert
             #pragma fragment frag
 
+            CBUFFER_START(UnityPerMaterial)
+
             sampler2D _MainTex;
             float4 _MainTex_ST;
+
+            CBUFFER_END
 
             struct VertexInput {
                 float4 vertex : POSITION;
@@ -75,11 +79,15 @@ Shader "Unlit/CustomSpine"
             #pragma fragment frag
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
         
+            CBUFFER_START(UnityPerMaterial)
+
             sampler2D _MainTex;
             float4 _MainTex_ST;
         
             float4 _OutlineColor;
             float _OutlineThickness;
+
+            CBUFFER_END
         
             struct VertexInput {
                 float4 vertex : POSITION;

@@ -18,15 +18,15 @@ namespace _2_Scripts.UI
         private global::Utils.ReadonlyNumber<float> mMaxHp;
         public void Start()
         {
-            mMaxHp = new global::Utils.ReadonlyNumber<float>(GameManager.Instance.UserHp.Value);
+            mMaxHp = new global::Utils.ReadonlyNumber<float>(IngameDataManager.Instance.MaxHp);
             mHpText.text = $"{mMaxHp.Value}/{mMaxHp.Value}";
             mSlider.value = 1f;
-            GameManager.Instance.HealHp += OnHealthBarUpdate;
+            IngameDataManager.Instance.HealHp += OnHealthBarUpdate;
         }
 
-        public void OnHealthBarUpdate(float value)
+        public void OnHealthBarUpdate(int value)
         {
-            float damagePercentage = value / mMaxHp.Value;
+            float damagePercentage = (float)value / mMaxHp.Value;
             float newValue = mSlider.value - damagePercentage;
             mSlider.DOValue(newValue, 1f).OnUpdate(() =>
             { 
@@ -36,7 +36,7 @@ namespace _2_Scripts.UI
 
         private void OnDestroy()
         {
-            GameManager.Instance.HealHp -= OnHealthBarUpdate;
+            IngameDataManager.Instance.HealHp -= OnHealthBarUpdate;
         }
     }
 }

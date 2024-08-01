@@ -4,6 +4,8 @@ using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Cargold.FrameWork.Sound_C;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 [CreateAssetMenu(menuName = "ScriptableObject/PassiveSkill/Gold")]
 public class SO_GoldKnightRarePassive : AfterPassive
@@ -20,7 +22,10 @@ public class SO_GoldKnightRarePassive : AfterPassive
     {
         if (Random.Range(0, 100f) < mPercentage)
         {
-            GameManager.Instance.UpdateMoney(EMoneyType.Gold,mGold);
+            var lootingItem = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_LootingItem, 
+                monsters.transform.position).GetComponent<LootingItem>();
+            lootingItem.CreateItem(EMoneyType.Gold, mGold);
+            IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold, mGold);
             Debug.Log($"GetGold {mGold}");
         }
     }

@@ -25,7 +25,7 @@ namespace _2_Scripts.UI.Ingame.LootBox
                 Handheld.Vibrate();
             }
             mRewadMessage = reward != 0  ? $"짜잔! {reward} 골드 획득!" : "ㅜㅜ 꽝!";
-            GameManager.Instance.UpdateMoney(EMoneyType.Gold,reward);
+            IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold,reward);
         }
 
         public bool CanReward()

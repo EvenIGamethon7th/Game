@@ -6,7 +6,7 @@ using DG.Tweening;
 
 namespace _2_Scripts.Game.Sound
 {
-    public enum Sound
+    public enum ESound
     {
         Effect,
         Bgm
@@ -16,21 +16,21 @@ namespace _2_Scripts.Game.Sound
     {
         private AudioSource _audioSource;
         [SerializeField]
-        private Sound _type;
+        private ESound _type;
 
         private void InitVolume(Scene prev, Scene next)
         {
             if (_audioSource != null)
                 switch (_type)
                 {
-                    case Sound.Effect:
+                    case ESound.Effect:
                         //º¼·ý ÃÊ±âÈ­
-                        SetVolume(SoundManager.Instance.Volume.Effect);
+                        SetVolume(SoundManager.Instance.EffectVolume);
                         break;
 
-                    case Sound.Bgm:
+                    case ESound.Bgm:
                         //º¼·ý ÃÊ±âÈ­
-                        SetVolume(SoundManager.Instance.Volume.BGM);
+                        SetVolume(SoundManager.Instance.BGMVolume);
                         break;
                 }
             else
@@ -54,16 +54,16 @@ namespace _2_Scripts.Game.Sound
 
             switch (_type)
             {
-                case Sound.Effect:
+                case ESound.Effect:
                     SoundManager.Instance.EffectAction -= SetVolume;
                     SoundManager.Instance.EffectAction += SetVolume;
-                    SetVolume(SoundManager.Instance.Volume.Effect);
+                    SetVolume(SoundManager.Instance.EffectVolume);
                     break;
 
-                case Sound.Bgm:
+                case ESound.Bgm:
                     SoundManager.Instance.BGMAction -= SetVolume;
                     SoundManager.Instance.BGMAction += SetVolume;
-                    SetVolume(SoundManager.Instance.Volume.BGM);
+                    SetVolume(SoundManager.Instance.BGMVolume);
                     break;
             }
 
@@ -85,7 +85,7 @@ namespace _2_Scripts.Game.Sound
             }
         }
 
-        public void PlaySound(AudioClip clip, Sound type, float pitch = 1f)
+        public void PlaySound(AudioClip clip, ESound type, float pitch = 1f)
         {
 
             if (_audioSource.isPlaying)
@@ -98,7 +98,7 @@ namespace _2_Scripts.Game.Sound
 
             _audioSource.pitch = pitch;
 
-            if (type == Sound.Bgm)
+            if (type == ESound.Bgm)
             {
                 _audioSource.clip = clip;
                 _audioSource.Play();

@@ -115,6 +115,30 @@ public class Utils
         return attributes.Length > 0 ? attributes[0].Description : value.ToString();
     }
     
+    public static T GetEnumFromDescription<T>(string description) where T : Enum
+    {
+        var type = typeof(T);
+        if (!type.IsEnum)
+        {
+            throw new ArgumentException($"{type.FullName} is not an enum type");
+        }
+
+        foreach (var field in type.GetFields())
+        {
+            var attributes = (DescriptionAttribute[])field.GetCustomAttributes(typeof(DescriptionAttribute), false);
+            if (attributes.Length > 0 && attributes[0].Description == description)
+            {
+                return (T)field.GetValue(null);
+            }
+            else if (field.Name == description)
+            {
+                return (T)field.GetValue(null);
+            }
+        }
+
+        throw new ArgumentException($"No matching enum value found for description '{description}' in {type.FullName}");
+    }
+    
     public class ReadonlyNumber<T>
     {
         private readonly T _value;

@@ -23,8 +23,8 @@ namespace _2_Scripts.UI
         private void Start()
         {
             mExpButton.onClick.AddListener(OnBuyExp);
-            
-            GameManager.Instance.UserGold.Subscribe(gold =>
+
+            IngameDataManager.Instance.Subscribe(this, IngameDataManager.EDataType.Gold, gold =>
             {
                 if (gold < mExpPrice)
                 {
@@ -35,29 +35,29 @@ namespace _2_Scripts.UI
                     mExpButton.interactable = true;
                     mText.color = Color.white;
                 }
-            }).AddTo(this);
-            
-            GameManager.Instance.UserLevel.Subscribe(level =>
+            });
+
+            IngameDataManager.Instance.Subscribe(this, IngameDataManager.EDataType.Level, level =>
             {
                 if (level >= Define.MAX_LEVEL)
                 {
                     mExpButton.interactable = false;
                     mText.color = Color.red;
                 }
-            }).AddTo(this);
+            });
         }
 
 
-        private bool IsMaxLevel=> GameManager.Instance.UserLevel.Value >= Define.MAX_LEVEL;
+        private bool IsMaxLevel=> IngameDataManager.Instance.CurrentLevel >= Define.MAX_LEVEL;
         
         private void OnBuyExp()
         {
-            if (GameManager.Instance.UserGold.Value < mExpPrice || IsMaxLevel )
+            if (IngameDataManager.Instance.CurrentGold < mExpPrice || IsMaxLevel )
                 return;
 
             Tween_C.OnPunch_Func(this.transform);
-            GameManager.Instance.AddExp(mExpPrice);
-            GameManager.Instance.UpdateMoney(EMoneyType.Gold,-mExpPrice);
+            IngameDataManager.Instance.AddExp(mExpPrice);
+            IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold,-mExpPrice);
         }
         
         private bool mIsButtonPressed = false;

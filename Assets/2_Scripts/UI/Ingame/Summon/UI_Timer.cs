@@ -14,6 +14,10 @@ namespace _2_Scripts.UI
         private TextMeshProUGUI text;
 
         private int mStartTime = 20;
+
+        [SerializeField]
+        private Color mOriginColor;
+
         private void Start()
         {
             MessageBroker.Default.Receive<GameMessage<int>>()
@@ -33,6 +37,14 @@ namespace _2_Scripts.UI
                     {
                         mStartTime--;
                         text.text = $"00:{mStartTime}";
+                        if (mStartTime < 5)
+                        {
+                            text.color = Color.red;
+                        }
+                        else
+                        {
+                            text.color = mOriginColor;
+                        }
                         Tween_C.OnPunch_Func(this);
                     }, 
                     () =>

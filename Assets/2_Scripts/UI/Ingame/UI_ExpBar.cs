@@ -13,11 +13,11 @@ namespace _2_Scripts.UI.Ingame
 
         private void Start()
         {
-            GameManager.Instance.UserExp.Subscribe(exp =>
+            IngameDataManager.Instance.Subscribe(this, IngameDataManager.EDataType.EXP, exp =>
             {
-                var fillAmount = (float)exp / GameManager.Instance.GetMaxExp();
+                var fillAmount = (float)exp / IngameDataManager.Instance.GetMaxExp();
                 SetFillAmount(fillAmount);
-            }).AddTo(this);
+            });
         }
 
 

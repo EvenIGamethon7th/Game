@@ -63,7 +63,7 @@ namespace _2_Scripts.Game.Controller
                 mSelectUnitGroup = mSelectTileSlot?.OccupantUnit;
                 mSelectUnitMessage = new GameMessage<UnitGroup>(EGameMessage.SelectCharacter, null);
                 MessageBroker.Default.Publish(mSelectUnitMessage);
-                mSelectCircle.gameObject.SetActive(false);
+                mSelectCircle?.gameObject.SetActive(false);
                 if (mSelectUnitGroup != null)
                 {
                     mHasUnitTouch = true;
@@ -135,15 +135,25 @@ namespace _2_Scripts.Game.Controller
 
         private void WaitResourceLoad()
         {
-            mTempSubscribe = MessageBroker.Default.Receive<TaskMessage>()
-                .Where(message => message.Task == ETaskList.DefaultResourceLoad)
-                .Subscribe(_ =>
-                {
-                    mIndicator = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_Indicator, Vector2.zero).GetComponent<Indicator>();
-                    mSelectCircle = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_SelectCircle, Vector2.zero);
-                    mSelectCircle.SetActive(false);
-                    mTempSubscribe.Dispose();
-                }).AddTo(this);
+            if (GameManager.Instance.IsTest)
+            {
+                mTempSubscribe = MessageBroker.Default.Receive<TaskMessage>()
+                    .Where(message => message.Task == ETaskList.DefaultResourceLoad)
+                    .Subscribe(_ =>
+                    {
+                        mIndicator = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_Indicator, Vector2.zero).GetComponent<Indicator>();
+                        mSelectCircle = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_SelectCircle, Vector2.zero);
+                        mSelectCircle.SetActive(false);
+                        mTempSubscribe.Dispose();
+                    }).AddTo(this);
+            }
+
+            else
+            {
+                mIndicator = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_Indicator, Vector2.zero).GetComponent<Indicator>();
+                mSelectCircle = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_SelectCircle, Vector2.zero);
+                mSelectCircle.SetActive(false);
+            }
         }
         
         private bool IsPointerOverUIPopUp()

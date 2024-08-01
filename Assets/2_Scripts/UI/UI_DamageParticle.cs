@@ -20,10 +20,10 @@ namespace _2_Scripts.UI
         {
             mPaticleImage = GetComponent<ParticleImage>();
 
-            GameManager.Instance.DamageHp += UpdateHpBar;
+            IngameDataManager.Instance.DamageHp += UpdateHpBar;
         }
 
-        private void UpdateHpBar(float damage)
+        private void UpdateHpBar(int damage)
         {
             mPaticleImage.rateOverTime = damage;
             mPaticleImage.Play();
@@ -37,7 +37,7 @@ namespace _2_Scripts.UI
 
         private void OnDestroy()
         {
-            GameManager.Instance.DamageHp -= UpdateHpBar;
+            IngameDataManager.Instance.DamageHp -= UpdateHpBar;
         }
 
     }

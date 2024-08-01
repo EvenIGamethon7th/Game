@@ -12,6 +12,9 @@ public partial class StageData : Data_C
 {
      public string Key;
      [LabelText("웨이브리스트")] public string[] waveList;
+     [LabelText("클리어보상_3별")] public int Stage_Reward_3star;
+     [LabelText("클리어보상_2별")] public int Stage_Reward_2star;
+     [LabelText("클리어보상_1별")] public int Stage_Reward_1star;
 
     
 
@@ -22,6 +25,9 @@ public partial class StageData : Data_C
         string[] _strArr1 = _cellDataArr[1].Split(',');
         waveList = new string[_strArr1.Length];
         waveList = _strArr1;
+        Stage_Reward_3star = _cellDataArr[2].ToInt();
+        Stage_Reward_2star = _cellDataArr[3].ToInt();
+        Stage_Reward_1star = _cellDataArr[4].ToInt();
     }
 #endif
 }

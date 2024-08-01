@@ -17,25 +17,19 @@ namespace _2_Scripts.UI.OutGame.Lobby
         [SerializeField]
         private Slider mBGMSlider;
 
-        [SerializeField]
-        private Toggle mVibe;
-
         private void Start()
         {
+            mBGMSlider.value = SoundManager.Instance.BGMVolumeIgnorebool;
+            mEffectSlider.value = SoundManager.Instance.EffectVolumeIgnorebool;
+
             mEffectSlider.onValueChanged.AddListener((value) => SetSound(value, ESound.Effect));
             mBGMSlider.onValueChanged.AddListener((value) => SetSound(value, ESound.Bgm));
-            mVibe.onValueChanged.AddListener(SetVibe);
             mExitButton.onClick.AddListener(ExitSetting);
         }
 
         private void SetSound(float vol, ESound type)
         {
             SoundManager.Instance.SetVolumeTemporary(vol, type);
-        }
-
-        private void SetVibe(bool vibe)
-        {
-            SoundManager.Instance.SetBoolTemporary(vibe, ESettingBoolType.Vibe);
         }
 
         private void ExitSetting()
@@ -48,7 +42,6 @@ namespace _2_Scripts.UI.OutGame.Lobby
         {
             mEffectSlider.onValueChanged.RemoveAllListeners();
             mBGMSlider.onValueChanged.RemoveAllListeners();
-            mVibe.onValueChanged.RemoveAllListeners();
             mExitButton.onClick.RemoveAllListeners();
         }
     }

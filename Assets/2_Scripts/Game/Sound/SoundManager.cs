@@ -15,7 +15,8 @@ namespace _2_Scripts.Game.Sound
     public enum ESettingBoolType
     {
         Vibe,
-        Sound
+        Sound,
+        Push
     }
 
     public class SoundManager : Singleton<SoundManager>
@@ -52,6 +53,10 @@ namespace _2_Scripts.Game.Sound
 
         public float EffectVolume => _volume.IsUseSound ? _volume.Effect : 0;
         public float BGMVolume => _volume.IsUseSound ? _volume.BGM : 0;
+        public float EffectVolumeIgnorebool => _volume.Effect;
+        public float BGMVolumeIgnorebool => _volume.BGM;
+        public bool IsUseVibe => _volume.IsUseVibe;
+        public bool IsUseSound => _volume.IsUseSound;
         private SoundVolume _volume;
         private SoundVolume _tempVolume;
 
@@ -134,7 +139,7 @@ namespace _2_Scripts.Game.Sound
         {
             if (type == ESettingBoolType.Sound)
             {
-                _volume.IsUseSound = b;
+                _tempVolume.IsUseSound = b;
 
                 if (!b)
                 {
@@ -150,8 +155,8 @@ namespace _2_Scripts.Game.Sound
             }
 
             else 
-            { 
-                _volume.IsUseVibe = b;
+            {
+                _tempVolume.IsUseVibe = b;
                 if (b)
                     Handheld.Vibrate(); 
             }
@@ -180,11 +185,11 @@ namespace _2_Scripts.Game.Sound
             _volume = LoadVolume(Path.Combine(Application.persistentDataPath, "volume"));
             BGMAction?.Invoke(_volume.BGM);
             EffectAction?.Invoke(_volume.Effect);
-            AudioClip[] sfx = Resources.LoadAll<AudioClip>("Sound/SFX");
-            var sfxs = Enum.GetValues(typeof(ESFX)) as ESFX[];
-
-            for (int i = 0; i < sfx.Length; ++i)
-                _sfxs.Add(sfxs[i], sfx[i]);
+            //AudioClip[] sfx = Resources.LoadAll<AudioClip>("Sound/SFX");
+            //var sfxs = Enum.GetValues(typeof(ESFX)) as ESFX[];
+            _tempVolume = _volume;
+            //for (int i = 0; i < sfx.Length; ++i)
+            //    _sfxs.Add(sfxs[i], sfx[i]);
         }
     }
 }

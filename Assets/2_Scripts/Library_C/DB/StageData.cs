@@ -9,6 +9,31 @@ using Cargold.DB.TableImporter;
 
 public partial class StageData
 {
+    public enum EStageReward
+    {
+        Low = 1,
+        Middle = 2,
+        High = 3
+    }
+    public int GetStageReward(int rewardType)
+    {
+        EStageReward reward = (EStageReward)rewardType;
+        switch (reward)
+        {
+            case EStageReward.Low:
+                return lowReward;
+            case EStageReward.Middle:
+                return middleReward;
+            case EStageReward.High:
+                return highReward;
+            default:
+                return lowReward;
+        }
+    }
+    
+    
+    
+    
     protected override void Init_Project_Func()
     {
         base.Init_Project_Func();

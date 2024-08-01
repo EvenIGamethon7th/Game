@@ -18,7 +18,7 @@ public class StageManager : Singleton<StageManager>
 {
     [GetComponent] private WayPoint mWayPoint;
     
-    private StageData mCurrentStageData;
+    public StageData mCurrentStageData { get;private set; }
     private Queue<WaveData> mWaveQueue = new Queue<WaveData>();
     private WaveData mCurrentWaveData;
     

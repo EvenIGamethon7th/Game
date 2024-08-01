@@ -99,7 +99,7 @@ public class GameManager : Singleton<GameManager>
         return UserCharacterList[randomIdx];
     }
 
-    private string mPrevName;
+    private string mPrevName = "";
     protected override void ChangeSceneInit(Scene prev, Scene next)
     {
         if (mPrevName.CompareTo("Main") == 0)

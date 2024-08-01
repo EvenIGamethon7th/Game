@@ -38,17 +38,24 @@ public class PlayFabAuthService
     public static event DisplayAuthenticationEvent OnDisplayAuthentication;
 
     public delegate void LoginSuccessEvent(LoginResult success);
-    public static event LoginSuccessEvent OnLoginSuccess;
+    public static event LoginSuccessEvent OnLoginSuccess = success =>
+    {
+        NickName = success.InfoResultPayload.AccountInfo.TitleInfo.DisplayName;
+    } ;
 
     public delegate void PlayFabErrorEvent(PlayFabError error);
     public static event PlayFabErrorEvent OnPlayFabError;
 
     //These are fields that we set when we are using the service.
+    public static string NickName = null;
     public string Email;
     public string Username;
     public string Password;
     public string AuthTicket;
-    public GetPlayerCombinedInfoRequestParams InfoRequestParams;
+    public GetPlayerCombinedInfoRequestParams InfoRequestParams = new GetPlayerCombinedInfoRequestParams
+    {
+        GetUserAccountInfo =  true
+    };
 
     //this is a force link flag for custom ids for demoing
     public bool ForceLink = false;

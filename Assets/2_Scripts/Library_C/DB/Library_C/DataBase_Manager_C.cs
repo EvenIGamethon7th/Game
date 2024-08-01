@@ -169,6 +169,17 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             return this.skill;
         }
     }
+    [InlineEditor, LabelText("Story"), SerializeField] private DB_StoryDataGroup story;
+    public DB_StoryDataGroup GetStory
+    {
+        get
+        {
+            if (this.story == null)
+                this.story = Resources.Load<DB_StoryDataGroup>(base.dataGroupSobjPath + "DB_StoryDataGroup");
+
+            return this.story;
+        }
+    }
     [InlineEditor, LabelText("TreasureBox"), SerializeField] private DB_TreasureBoxDataGroup treasureBox;
     public DB_TreasureBoxDataGroup GetTreasureBox
     {
@@ -212,6 +223,7 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             this.unitEnchant.Init_Func();
             this.story.Init_Func();
             this.skill.Init_Func();
+            this.story.Init_Func();
             this.treasureBox.Init_Func();
         }
     }
@@ -232,6 +244,7 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
         this.GetUnitEnchant.CallEdit_OnDataImportDone_Func();
         this.GetStory.CallEdit_OnDataImportDone_Func();
         this.GetSkill.CallEdit_OnDataImportDone_Func();
+        this.GetStory.CallEdit_OnDataImportDone_Func();
         this.GetTreasureBox.CallEdit_OnDataImportDone_Func();
         
         base.CallEdit_OnDataImport_Func();

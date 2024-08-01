@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using PlayFab;
 using PlayFab.ClientModels;
 using UniRx;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -55,6 +56,11 @@ namespace Cargold.FrameWork.BackEnd
         public List<StoreItem> PublicStoreItems { get; private set; } = new List<StoreItem>();
         public List<ItemInstance> UserInventory { get; private set; }= new List<ItemInstance>();
 
+        public string GetUserNickName()
+        {
+            return PlayFabAuthService.NickName;
+        }
+        
         private bool mbIsLoadData = false;
         public CharacterEnchantData GetEnchantData(EEnchantClassType classType)
         {
@@ -126,6 +132,44 @@ namespace Cargold.FrameWork.BackEnd
         {
             UserCurrency[currency].Value += amount;
             PublishCurrencyData(currency,amount);
+        }
+        
+        public void ChangeDisplayName(string nickName,Action successCallback,Action<string> failCallback)
+        {
+            var request = new ExecuteCloudScriptRequest
+            {
+                FunctionName = "ChangeDisplayName",
+                FunctionParameter = new {DisplayName = nickName},
+                GeneratePlayStreamEvent = true
+            };
+            PlayFabClientAPI.ExecuteCloudScript(request, (result) =>
+            {
+                var functionResult = result.FunctionResult as IDictionary<string, object>;
+                if ((bool)functionResult["success"])
+                {
+                    PlayFabClientAPI.UpdateUserTitleDisplayName(new UpdateUserTitleDisplayNameRequest
+                    {
+                        DisplayName = (string)functionResult["nickName"]
+                    }, (result) =>
+                    {
+                        PlayFabAuthService.NickName = result.DisplayName;
+                        successCallback?.Invoke();
+                    }, (error) =>
+                    {
+                        var message = error.ErrorMessage;
+                        if (error.Error == PlayFabErrorCode.NameNotAvailable)
+                        {
+                            message = "중복된 닉네임 입니다.";
+                        }
+                        failCallback?.Invoke(message);
+                    });
+                }
+                else
+                {
+                    failCallback?.Invoke((string)functionResult["errorMessage"]);
+                }
+                
+            },ErrorLog);
         }
         
         private async UniTaskVoid LoginAsync(Action successCallback)

@@ -46,7 +46,7 @@ namespace _2_Scripts.Game.StatusEffect
         }
         private void TargetAction(Monster.Monster monster)
         {
-            if (Random_C.CheckPercent_Func(100, mPercent))
+            if (Random_C.CheckPercent_Func(1000, mPercent))
             {
                 var lootingItem = ObjectPoolManager.Instance
                     .CreatePoolingObject(AddressableTable.Default_LootingItem, monster.transform.position, true)

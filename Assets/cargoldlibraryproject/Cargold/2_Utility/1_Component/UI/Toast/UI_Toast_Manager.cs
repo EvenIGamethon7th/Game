@@ -43,11 +43,11 @@ namespace Cargold.UI
 
             _elemClass.Activate_WithLcz_Func(_lczKey, _endCallbackDel);
         }
-        public void Activate_WithContent_Func(string _contentStr, Action _endCallbackDel = null, bool _isTouchBlock = false)
+        public void Activate_WithContent_Func(string _contentStr, Action _endCallbackDel = null, bool _isTouchBlock = false, bool isIgnoreTimeScale = false)
         {
             UI_BaseToast_Script _elemClass = this.ActivateElem_Func(_isTouchBlock);
 
-            _elemClass.Activate_WithContent_Func(_contentStr, _endCallbackDel);
+            _elemClass.Activate_WithContent_Func(_contentStr, _endCallbackDel, isIgnoreTimeScale: isIgnoreTimeScale);
         }
         private UI_BaseToast_Script ActivateElem_Func(bool _isTouchBlock)
         {

@@ -52,7 +52,7 @@ namespace _2_Scripts.UI.Ingame
 
             if (BackEndManager.Instance.UserCurrency[ECurrency.Father].Value <= 0)
             {
-                UI_Toast_Manager.Instance.Activate_WithContent_Func("깃털이 부족합니다.");
+                UI_Toast_Manager.Instance.Activate_WithContent_Func("깃털이 부족합니다.", isIgnoreTimeScale: true);
                 return;
             }
             BackEndManager.Instance.AddCurrencyData(ECurrency.Father,-1);

@@ -21,16 +21,16 @@ namespace Cargold.UI
             this.Deactivate_Func(true, false);
         }
 
-        public void Activate_WithLcz_Func(string _lczKey, Action _endCallbackDel = null)
+        public void Activate_WithLcz_Func(string _lczKey, Action _endCallbackDel = null, bool isIgnoreTimeScale = false)
         {
             string _str = FrameWork.LocalizeSystem_Manager.Instance.GetLcz_Func(_lczKey);
-            this.Activate_Func(_str, _endCallbackDel);
+            this.Activate_Func(_str, _endCallbackDel, isIgnoreTimeScale);
         }
-        public void Activate_WithContent_Func(string _contentStr, Action _endCallbackDel = null)
+        public void Activate_WithContent_Func(string _contentStr, Action _endCallbackDel = null, bool isIgnoreTimeScale = false)
         {
-            this.Activate_Func(_contentStr, _endCallbackDel);
+            this.Activate_Func(_contentStr, _endCallbackDel, isIgnoreTimeScale);
         }
-        protected virtual void Activate_Func(string _contentStr, Action _endCallbackDel = null)
+        protected virtual void Activate_Func(string _contentStr, Action _endCallbackDel = null, bool isIgnoreTimeScale = false)
         {
             this.groupObj.SetActive(true);
 
@@ -38,7 +38,7 @@ namespace Cargold.UI
 
             this.transform.SetAsLastSibling();
 
-            this.anim.Play_Func();
+            this.anim.Play_Func(isIgnoreTimeScale: isIgnoreTimeScale);
 
             this.endCallbackDel = _endCallbackDel;
         }

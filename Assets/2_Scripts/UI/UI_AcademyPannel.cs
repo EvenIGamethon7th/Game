@@ -77,7 +77,7 @@ namespace _2_Scripts.UI {
             MessageBroker.Default.Publish(mCanLesson);
             if (mDoLesson)
             {
-                UI_Toast_Manager.Instance.Activate_WithContent_Func("이미 수업을 듣는 영웅이 있습니다!");
+                UI_Toast_Manager.Instance.Activate_WithContent_Func("이미 수업을 듣는 영웅이 있습니다!", isIgnoreTimeScale: true);
             }
 
             else

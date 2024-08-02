@@ -6,6 +6,8 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 using Sirenix.OdinInspector;
+using Unity.VisualScripting;
+using Cysharp.Threading.Tasks;
 
 
 namespace Cargold
@@ -16,11 +18,11 @@ namespace Cargold
         public const string Signature = "_C";
 
         #region Animation Group
-        public static void Play_Func(this Animation _anim, bool _isRewind = false, bool _isImmediatly = false, float _speed = 1f)
+        public static void Play_Func(this Animation _anim, bool _isRewind = false, bool _isImmediatly = false, float _speed = 1f, bool isIgnoreTimeScale = false)
         {
-            _anim.Play_Func(_anim.clip, _isRewind, _isImmediatly, _speed);
+            _anim.Play_Func(_anim.clip, _isRewind, _isImmediatly, _speed, isIgnoreTimeScale);
         }
-        public static void Play_Func(this Animation _anim, AnimationClip _clip, bool _isRewind = false, bool _isImmediatly = false, float _speed = 1f)
+        public static void Play_Func(this Animation _anim, AnimationClip _clip, bool _isRewind = false, bool _isImmediatly = false, float _speed = 1f, bool isIgnoreTimeScale = false)
         {
             // _isImmediatly를 사용할 경우 애니메이션 이벤트 함수는 작동 안 됨
 
@@ -93,6 +95,23 @@ namespace Cargold
                 _animationState.speed = _speed;
                 _animationState.time = _time;
                 _anim.Play(_clipName);
+
+                if (isIgnoreTimeScale)
+                {
+                    var animState = _anim[_clipName];
+                    animState.normalizedTime += (Time.unscaledDeltaTime / animState.length);
+
+                    UpdateUnscaled().Forget();
+
+                    async UniTask UpdateUnscaled()
+                    {
+                        while (animState.normalizedTime < 1)
+                        {
+                            await UniTask.DelayFrame(1);
+                            animState.normalizedTime += (Time.unscaledDeltaTime / animState.length);
+                        }
+                    }
+                }
             }
             else
             {

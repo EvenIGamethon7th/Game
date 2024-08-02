@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using _2_Scripts.Game.Map;
@@ -189,7 +189,7 @@ public class MapManager : Singleton<MapManager>
 
     private void CreatePool()
     {
-        ObjectPoolManager.Instance.RegisterPoolingObject(AddressableTable.Default_Unit, 30);
+        //ObjectPoolManager.Instance.RegisterPoolingObject(AddressableTable.Default_Unit, 30);
         ObjectPoolManager.Instance.RegisterPoolingObject(AddressableTable.Default_DamageCanvas, 100);
     }
 

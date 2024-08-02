@@ -60,6 +60,15 @@ namespace Cargold.FrameWork.BackEnd
         {
             return PlayFabAuthService.NickName;
         }
+
+        private async UniTask ExecuteTaskEveryTenMinutesUserCurrencyUpdate()
+        {
+            while (true)
+            {
+                await UniTask.Delay(600000);
+                ReceiveCurrencyData().Forget();
+            }
+        }
         
         private bool mbIsLoadData = false;
         public CharacterEnchantData GetEnchantData(EEnchantClassType classType)
@@ -195,6 +204,7 @@ namespace Cargold.FrameWork.BackEnd
             await FetchCatalogItems();
             mbIsLoadData = true;
             successCallback?.Invoke();
+            ExecuteTaskEveryTenMinutesUserCurrencyUpdate().Forget();
         }
 
         private async UniTask ReceiveEnchantData()

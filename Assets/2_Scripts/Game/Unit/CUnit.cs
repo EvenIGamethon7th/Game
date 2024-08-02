@@ -70,6 +70,7 @@ namespace _2_Scripts.Game.Unit
 
         private Dictionary<EUnitStates, FSMAction> mActions = new ();
         public EUnitStates CurrentState { get; private set; } = EUnitStates.None;
+        [field: SerializeField]
         public UniqueQueue<SkillInfo> ReadySkillQueue { get; private set; } = new UniqueQueue<SkillInfo>();
 
         private Action<Monster[]> mBeforePassive;

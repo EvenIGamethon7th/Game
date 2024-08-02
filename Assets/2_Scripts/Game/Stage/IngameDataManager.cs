@@ -64,6 +64,7 @@ public class IngameDataManager : Singleton<IngameDataManager>
 
     protected override void AwakeInit()
     {
+        IsDontDestroy = false;
         if (!GameManager.Instance.IsTest)
         {
             foreach (var resource in ResourceManager.Instance._resources.Where(x => x.Value is CharacterInfo))
@@ -95,7 +96,7 @@ public class IngameDataManager : Singleton<IngameDataManager>
         MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange)
             .Subscribe(message =>
             {
-                // Ã¹ ½ÃÀÛÀº ¸®ÅÏ
+                // ì²« ì‹œì‘ì€ ë¦¬í„´
                 if (message.Value == 0)
                 {
                     return;
@@ -196,7 +197,7 @@ public class IngameDataManager : Singleton<IngameDataManager>
 
     public void UpdateUserHp(int hp)
     {
-        if (hp > 0)
+        if (hp >= 0)
             DamageHp?.Invoke(hp);
         else
             HealHp?.Invoke(hp);

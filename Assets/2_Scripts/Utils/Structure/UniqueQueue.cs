@@ -1,11 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace _2_Scripts.Utils.Structure
 {
+    [Serializable]
     public class UniqueQueue<T>
     {
+        [SerializeField]
         private Queue<T> queue = new Queue<T>();
+        [SerializeField]
         private HashSet<T> set = new HashSet<T>();
 
         public void Enqueue(T item)

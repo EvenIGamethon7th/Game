@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,12 +38,12 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
         if (instance == null)
         {
             instance = this as T;
+            AwakeInit();
             if (IsDontDestroy)
                 DontDestroyOnLoad(gameObject);
        
             SceneManager.activeSceneChanged -= ChangeSceneInit;
             SceneManager.activeSceneChanged += ChangeSceneInit;
-            AwakeInit();
         }
 
         if (instance != null && instance != this)

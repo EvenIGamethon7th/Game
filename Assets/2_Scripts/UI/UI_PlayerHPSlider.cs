@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using _2_Scripts.Utils;
 using Cysharp.Threading.Tasks;
@@ -33,21 +33,23 @@ namespace _2_Scripts.UI
         {
             //float damagePercentage = (float)value / mMaxHp.Value;
             //float newValue = mSlider.value - damagePercentage;
-            UpdateHealthAsync(value).Forget();
+            UpdateHealthAsync(value, isHeal: value < 0).Forget();
             //mSlider.DOValue(newValue, 1f).OnUpdate(() =>
             //{ 
             //    mHpText.text = $"{Mathf.RoundToInt(mSlider.value * mMaxHp.Value)}/{mMaxHp.Value}";
             //});
         }
 
-        private async UniTask UpdateHealthAsync(float damage, float time = 1)
+        private async UniTask UpdateHealthAsync(float damage, float time = 1, bool isHeal = false)
         {
+            damage = Mathf.Abs(damage);
             float waitTime = time / damage;
             while (damage > 0)
             {
                 await UniTask.Delay(TimeSpan.FromSeconds(waitTime), ignoreTimeScale: true, cancellationToken: mCts.Token);
                 --damage;
-                --mSlider.value;
+
+                mSlider.value += isHeal ? 1 : -1;
                 mHpText.text = $"{mSlider.value}/{mMaxHp.Value}";
             }
         }

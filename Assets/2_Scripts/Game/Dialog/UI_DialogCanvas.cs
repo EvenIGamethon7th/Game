@@ -83,6 +83,7 @@ namespace _2_Scripts.Game.Dialog
                 if (duration > 100)
                 {
                     mIsAuto = false;
+                    mAutoButton.IsAuto(false);
                     duration = 0;
                 }
                 await UniTask.Delay(TimeSpan.FromSeconds(duration), cancellationToken: mCts.Token);

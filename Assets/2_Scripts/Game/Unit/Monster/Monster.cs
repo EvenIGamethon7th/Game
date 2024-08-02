@@ -132,6 +132,7 @@ namespace _2_Scripts.Game.Monster
 
             if (mMonsterData.hp <= 0)
             {
+                CurrentHpCanvas.Active = false;
                 if (IsLastBoss)
                 {
                     MessageBroker.Default.Publish(new TaskMessage(ETaskList.GameOver));

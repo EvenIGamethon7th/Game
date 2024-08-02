@@ -3,7 +3,6 @@ using _2_Scripts.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UniRx;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace _2_Scripts.UI.Ingame

@@ -28,7 +28,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2, guid: 00000000000000000000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -41,7 +41,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CoolTime: 45
+    - _CoolTime: 50
     - _CurrentCoolTime: 0
     - _EnableExternalAlpha: 0
     m_Colors:
@@ -49,5 +49,5 @@ Material:
     - _CoolTimeColor: {r: 1, g: 0, b: 0, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _SpriteUV: {r: 0.1850586, g: 0.88134766, b: 0.25097656, a: 0.9187012}
+    - _SpriteUV: {r: 0.5131836, g: 0.6948242, b: 0.57910156, a: 0.7319336}
   m_BuildTextureStacks: []

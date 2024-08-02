@@ -1,6 +1,7 @@
 ﻿using System;
 using _2_Scripts.Utils;
 using Cargold;
+using Cysharp.Threading.Tasks;
 using TMPro;
 using UniRx;
 using Unity.VisualScripting;
@@ -13,10 +14,10 @@ namespace _2_Scripts.UI
         [SerializeField] 
         private TextMeshProUGUI text;
 
-        private int mStartTime = 20;
-
         [SerializeField]
         private Color mOriginColor;
+
+        private int mCount;
 
         private void Start()
         {
@@ -24,34 +25,45 @@ namespace _2_Scripts.UI
                 .Where(m => m.Message == EGameMessage.StageChange)
                 .Subscribe(m =>
                 {
-                    StartTimer();
+                    StartTimerAsync(20).Forget();
                 })
                 .AddTo(this);
         }
 
-        private void StartTimer()
+        private async UniTask StartTimerAsync(int val)
         {
-            Observable.Interval(System.TimeSpan.FromSeconds(1))
-                .TakeWhile(_ => mStartTime >= 1)
-                .Subscribe(_ =>
-                    {
-                        mStartTime--;
-                        text.text = $"00:{mStartTime}";
-                        if (mStartTime < 5)
-                        {
-                            text.color = Color.red;
-                        }
-                        else
-                        {
-                            text.color = mOriginColor;
-                        }
-                        Tween_C.OnPunch_Func(this);
-                    }, 
-                    () =>
-                    {
-                        mStartTime = 20;
-                    })
-                .AddTo(this);
+            ++mCount;
+            float temp = val;
+            int standard = val - 1;
+            text.text = $"00:{val}";
+            Tween_C.OnPunch_Func(this);
+            while (temp > 0)
+            {
+                await UniTask.DelayFrame(1);
+                if (mCount > 1 && temp < 15) break;
+
+                if (text == null) break;
+
+                temp -= Time.deltaTime;
+                text.text = $"00:{(int)temp}";
+
+                if (temp < 5)
+                {
+                    text.color = Color.red;
+                }
+                else
+                {
+                    text.color = mOriginColor;
+                }
+
+                if ((int)temp != standard)
+                {
+                    standard = (int)temp;
+                    Tween_C.OnPunch_Func(this);
+                }
+            }
+
+            --mCount;
         }
     }
 }

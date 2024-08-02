@@ -43,14 +43,14 @@ namespace _2_Scripts.Game.Controller
                 mChapterList[chapterData.ChapterNumber].Init(chapterData);
 
                 var i1 = i;
-                mChapterButtonList[i-1].Init(()=>OnDrawMap(i1));
+                mChapterButtonList[i-1].Init(()=>OnDrawMap(i1),i);
                 if (chapterData.isClear && i < mChapterList.Count)
                 {
                     mChapterList[chapterData.ChapterNumber+1].OnDrawChapter();
                 }
             }
             mChapterList[1].OnDrawChapter();
-            mChapterButtonList[0].Init(()=>OnDrawMap(1));
+            // mChapterButtonList[0].Init(()=>OnDrawMap(1),1);
         }
 
         private void OnDrawMap(int idx)

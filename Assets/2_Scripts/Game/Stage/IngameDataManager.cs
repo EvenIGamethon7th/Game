@@ -240,6 +240,7 @@ public class IngameDataManager : Singleton<IngameDataManager>
     {
         mUserLevel.Value = 1;
         mUserGold.Value = 30;
+        // mUserHp.Value = 100;
         mUserLuckyCoin.Value = 0;
         mUserExp.Value = 0;
     }

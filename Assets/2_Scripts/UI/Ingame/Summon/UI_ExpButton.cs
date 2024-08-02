@@ -61,7 +61,7 @@ namespace _2_Scripts.UI
         }
         
         private bool mIsButtonPressed = false;
-        private float mRepeatRate = 1f; 
+        private float mRepeatRate = 0.5f; 
         public void OnPointerDown(PointerEventData eventData)
         {
             if (buttonHoldSubscription == null)

@@ -10,6 +10,7 @@ using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
 using PlayFab;
 using PlayFab.ClientModels;
+using Sirenix.Utilities;
 using UniRx;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -58,6 +59,15 @@ namespace Cargold.FrameWork.BackEnd
         public string GetUserNickName()
         {
             return PlayFabAuthService.NickName;
+        }
+
+        private async UniTask ExecuteTaskEveryTenMinutesUserCurrencyUpdate()
+        {
+            while (true)
+            {
+                await UniTask.Delay(600000);
+                ReceiveCurrencyData().Forget();
+            }
         }
         
         private bool mbIsLoadData = false;
@@ -194,6 +204,7 @@ namespace Cargold.FrameWork.BackEnd
             await FetchCatalogItems();
             mbIsLoadData = true;
             successCallback?.Invoke();
+            ExecuteTaskEveryTenMinutesUserCurrencyUpdate().Forget();
         }
 
         private async UniTask ReceiveEnchantData()
@@ -280,15 +291,22 @@ namespace Cargold.FrameWork.BackEnd
             await tcs.Task;
         }
 
-        public void UseInventoryItem(Dictionary<string,int> itemsToConsume)
+        public void UseInventoryItem(Dictionary<string,int> ItemsToConsume)
         {
+            Dictionary<string, int> itemKey = new();
+            foreach (var item in ItemsToConsume)
+            {
+                itemKey.Add(GetInventoryItem(item.Key).ItemInstanceId,item.Value);
+            }
+            
             PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest
             {
                FunctionName = "UseInventoryItem",
-               FunctionParameter = new {itemsToConsume=itemsToConsume},
+               FunctionParameter = new {itemsToConsume=itemKey},
                GeneratePlayStreamEvent = true
             }, (result) =>
             {
+                ReceiveInventory().Forget();
                 Debug.Log("UseInventoryItem");
             }, (error) =>
             {

@@ -11,7 +11,6 @@ namespace _2_Scripts.UI.OutGame.Lobby
     {
         [SerializeField] private TextMeshProUGUI mFeatherText;
         [SerializeField] private TextMeshProUGUI mDiamondText;
-        [SerializeField] private Button mTestButton; 
         private void Start()
         {
             BackEndManager.Instance.UserCurrency[ECurrency.Father].Subscribe(father =>
@@ -23,7 +22,6 @@ namespace _2_Scripts.UI.OutGame.Lobby
                 mDiamondText.text = $"{Diamond}";
             }).AddTo(this);
             
-            mTestButton.onClick.AddListener(()=>BackEndManager.Instance.AddCurrencyData(ECurrency.Diamond,10000));
         }
     }
 }

@@ -206,7 +206,6 @@ namespace _2_Scripts.Game.Unit
         public void Init(CharacterData characterData)
         {
             CharacterDataLoad(characterData);
-            mCancleToken = new CancellationTokenSource();
             var mat = mMeshRenderer.materials;
 
             mAnimation.skeletonDataAsset = ResourceManager.Instance.Load<SkeletonDataAsset>($"{characterData.characterPack}_{ELabelNames.SkeletonData}");

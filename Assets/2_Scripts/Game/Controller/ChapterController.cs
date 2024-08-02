@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using _2_Scripts.Game.Handler;
@@ -42,8 +42,8 @@ namespace _2_Scripts.Game.Controller
                 var chapterData = mChapterHandler.ChapterDataLoad(i);
                 mChapterList[chapterData.ChapterNumber].Init(chapterData);
 
-                var i1 = i;
-                mChapterButtonList[i-1].Init(()=>OnDrawMap(i1),i);
+                int i1 = i;
+                mChapterButtonList[i-1].Init(()=>OnDrawMap(i1),i1);
                 if (chapterData.isClear && i < mChapterList.Count)
                 {
                     mChapterList[chapterData.ChapterNumber+1].OnDrawChapter();

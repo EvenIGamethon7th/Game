@@ -10,6 +10,7 @@ using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
 using PlayFab;
 using PlayFab.ClientModels;
+using Sirenix.Utilities;
 using UniRx;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -280,15 +281,22 @@ namespace Cargold.FrameWork.BackEnd
             await tcs.Task;
         }
 
-        public void UseInventoryItem(Dictionary<string,int> itemsToConsume)
+        public void UseInventoryItem(Dictionary<string,int> ItemsToConsume)
         {
+            Dictionary<string, int> itemKey = new();
+            foreach (var item in ItemsToConsume)
+            {
+                itemKey.Add(GetInventoryItem(item.Key).ItemInstanceId,item.Value);
+            }
+            
             PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest
             {
                FunctionName = "UseInventoryItem",
-               FunctionParameter = new {itemsToConsume=itemsToConsume},
+               FunctionParameter = new {itemsToConsume=itemKey},
                GeneratePlayStreamEvent = true
             }, (result) =>
             {
+                ReceiveInventory().Forget();
                 Debug.Log("UseInventoryItem");
             }, (error) =>
             {

@@ -159,9 +159,9 @@ namespace Cargold.FrameWork.BackEnd
                     PlayFabClientAPI.UpdateUserTitleDisplayName(new UpdateUserTitleDisplayNameRequest
                     {
                         DisplayName = (string)functionResult["nickName"]
-                    }, (result) =>
+                    }, (result2) =>
                     {
-                        PlayFabAuthService.NickName = result.DisplayName;
+                        PlayFabAuthService.NickName = result2.DisplayName;
                         successCallback?.Invoke();
                     }, (error) =>
                     {

@@ -236,11 +236,4 @@ public class IngameDataManager : Singleton<IngameDataManager>
         return characterInfo.CharacterEvolutions[grade].GetData;
     }
 
-    protected override void ChangeSceneInit(Scene prev, Scene next)
-    {
-        mUserLevel.Value = 1;
-        mUserGold.Value = 30;
-        mUserLuckyCoin.Value = 0;
-        mUserExp.Value = 0;
-    }
 }

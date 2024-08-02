@@ -18,13 +18,16 @@ namespace _2_Scripts.Game.Chapter
 
         public bool IsLocked => !mLockObject.activeSelf;
 
+        private ChapterData mChapterData;
         public Stage LastClearStage => mStageList
             .FirstOrDefault(data => data.IsClear == false) ?? mStageList
             .LastOrDefault();
         public int ChapterClearStar => mStageDataList.Sum(data => data.Star);
         public int ChapterAllStar => mStageDataList.Count * 3;
+        public int ChapterNumber => mChapterData.ChapterNumber;
         public void Init(ChapterData chapterData)
         {
+            mChapterData = chapterData;
             // 초기 데이터 만들어줌
             for (int i = 0; i < mStageList.Count; i++)
             {

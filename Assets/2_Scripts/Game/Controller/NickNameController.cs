@@ -25,5 +25,11 @@ namespace _2_Scripts.Game.Controller
                 mNickNameText.text = userNickName;
             }
         }
+        
+        //당장 넣을 controlle가 없어서 임시
+        public void OnReadyButton()
+        {
+            UI_Toast_Manager.Instance.Activate_WithContent_Func("준비중 입니다.");
+        }
     }
 }

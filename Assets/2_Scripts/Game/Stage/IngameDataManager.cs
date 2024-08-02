@@ -66,8 +66,6 @@ public class IngameDataManager : Singleton<IngameDataManager>
     {
         if (!GameManager.Instance.IsTest)
         {
-            MaxHp = GameManager.Instance.IsUseItem(EItemType.HpUp) ? 125 : 100;
-
             foreach (var resource in ResourceManager.Instance._resources.Where(x => x.Value is CharacterInfo))
             {
                 UserCharacterList.Add(resource.Value as CharacterInfo);
@@ -92,6 +90,8 @@ public class IngameDataManager : Singleton<IngameDataManager>
 
     private void Start()
     {
+        MaxHp = GameManager.Instance.IsUseItem(EItemType.HpUp) ? 125 : 100;
+
         MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange)
             .Subscribe(message =>
             {

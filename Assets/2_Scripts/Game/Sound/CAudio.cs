@@ -96,10 +96,11 @@ namespace _2_Scripts.Game.Sound
 
             if (_audioSource.isPlaying)
             {
-                if (_audioSource.clip != clip)
-                    _audioSource.Stop();
-                else
-                    return;
+                _audioSource.Stop();
+                //if (_audioSource.clip != clip)
+                //    _audioSource.Stop();
+                //else
+                //    return;
             }
 
             _audioSource.pitch = pitch;

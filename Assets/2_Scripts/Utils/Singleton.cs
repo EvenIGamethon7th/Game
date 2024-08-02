@@ -58,10 +58,10 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
 
     }
 
-    protected virtual void OnDestory()
+    private void OnDestroy()
     {
-        instance = null;
-        Destroy(this.gameObject);
+        if (instance == this)
+            instance = null;
     }
 
     protected abstract void ChangeSceneInit(Scene prev, Scene next);

@@ -19,7 +19,7 @@ namespace _2_Scripts.Game.Dialog
             {
                 int temp = count;
                 var button = ObjectPoolManager.Instance.CreatePoolingObject("ChoiceButton", transform.position).GetComponent<UI_ChoiceButton>();
-                button.transform.parent = transform;
+                button.transform.SetParent(transform);
 
                 var rect = button.GetComponent<RectTransform>();
                 rect.localScale = Vector3.one;

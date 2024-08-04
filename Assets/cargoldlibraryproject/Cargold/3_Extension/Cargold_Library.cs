@@ -99,7 +99,6 @@ namespace Cargold
                 if (isIgnoreTimeScale)
                 {
                     var animState = _anim[_clipName];
-                    animState.normalizedTime += (Time.unscaledDeltaTime / animState.length);
 
                     UpdateUnscaled().Forget();
 

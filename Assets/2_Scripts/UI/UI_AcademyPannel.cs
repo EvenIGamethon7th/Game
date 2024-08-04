@@ -3,9 +3,12 @@ using _2_Scripts.Game.Unit;
 using _2_Scripts.UI;
 using _2_Scripts.UI.Ingame;
 using _2_Scripts.Utils;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using TMPro;
 using UniRx;
 using UnityEngine;
@@ -28,6 +31,7 @@ namespace _2_Scripts.UI {
         private UI_AcademyStatus mStatus;
 
         private bool mDoLesson = false;
+        private bool mIsVacation = true;
 
         private int mLessonCount = 0;
 
@@ -46,6 +50,11 @@ namespace _2_Scripts.UI {
         private Image mClassImage;
 
         private UI_AcademyInfo mInfo;
+        [SerializeField]
+        private GameObject mVacation;
+        private readonly float mLessonTime = 3;
+
+        private CancellationTokenSource mCts = new ();
 
         public void Init()
         {
@@ -73,11 +82,16 @@ namespace _2_Scripts.UI {
 
         private void CanLesson(CUnit student)
         {
-            mCanLesson.SetValue(mDoLesson);
+            mCanLesson.SetValue(mDoLesson || mVacation);
             MessageBroker.Default.Publish(mCanLesson);
             if (mDoLesson)
             {
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("이미 수업을 듣는 영웅이 있습니다!", isIgnoreTimeScale: true);
+            }
+
+            else if (mIsVacation)
+            {
+                UI_Toast_Manager.Instance.Activate_WithContent_Func("아카데미 방학 시즌입니다!", isIgnoreTimeScale: true);
             }
 
             else
@@ -101,12 +115,10 @@ namespace _2_Scripts.UI {
             mLesson.SetLesson(student.CharacterDatas);
             mStudentData = student.CharacterDatas;
             mClassImage.gameObject.SetActive(true);
-            mClassImage.sprite = mAtlas.GetSprite(mClassData[0].AcademyClassKey);
-            mLesson.DoLesson(0);
-
-            SetInfoRate();
 
             mStudentData.isAlumni = true;
+
+            DoLessonAsync().Forget();
         }
 
         private void SummonAlumni()
@@ -138,29 +150,47 @@ namespace _2_Scripts.UI {
 
         private void LessonComplete(int waveCount)
         {
-            if (!mDoLesson) return;
-
-            if (mLessonCount < 5)
-            {
-                for (int i = 0; i < 2; ++i)
-                {
-                    if (mLessonCount >= 5) break;
-                    DecideLessonResult();
-                    ++mLessonCount;
-                }
-                
-                if (mLessonCount < 5)
-                {
-                    mLesson.DoLesson(mLessonCount);
-                    mClassImage.sprite = mAtlas.GetSprite(mClassData[mLessonCount].AcademyClassKey);
-                    SetInfoRate();
-                }
+            if (waveCount % 4 == 0 && waveCount != 20) 
+            { 
+                mIsVacation = false;
+                Cargold.UI.UI_Toast_Manager.Instance.Activate_WithContent_Func("아카데미 입학 가능 웨이브입니다!", isIgnoreTimeScale: true);
             }
+            else
+            {
+                mIsVacation = true;
+            }
+            mVacation.SetActive(mIsVacation);
 
             if (mLessonCount >= 5)
             {
                 SummonAlumni();
             }
+        }
+
+        private async UniTask DoLessonAsync()
+        {
+            float time = 0;
+
+            mLesson.DoLesson(mLessonCount);
+            mClassImage.sprite = mAtlas.GetSprite(mClassData[mLessonCount].AcademyClassKey);
+            SetInfoRate();
+
+            while (mLessonCount < 5)
+            {
+                await UniTask.DelayFrame(1, cancellationToken: mCts.Token);
+                time += Time.deltaTime;
+                if (time < mLessonTime) continue;
+
+                mLesson.DoLesson(mLessonCount);
+                mClassImage.sprite = mAtlas.GetSprite(mClassData[mLessonCount].AcademyClassKey);
+                SetInfoRate();
+
+                time -= mLessonTime;
+                DecideLessonResult();
+                mLessonCount++;
+            }
+
+            SummonAlumni();
         }
 
         private void DecideLessonResult()
@@ -175,7 +205,7 @@ namespace _2_Scripts.UI {
             {
                 SoundManager.Instance.Vibrate();
                 SelectStat(mClassData[mLessonCount].Stat_value2);
-                Cargold.UI.UI_Toast_Manager.Instance.Activate_WithContent_Func("아카데미 수업 대성공!");
+                Cargold.UI.UI_Toast_Manager.Instance.Activate_WithContent_Func("아카데미 수업 대성공!", isIgnoreTimeScale: true);
             }
 
             else
@@ -228,6 +258,12 @@ namespace _2_Scripts.UI {
                 mClassRate[2] = mClassData[mLessonCount].Fail_pro * 100;
             }
             mInfo.SetText(mClassRate);
+        }
+
+        private void OnDestroy()
+        {
+            mCts.Cancel();
+            mCts.Dispose();
         }
     }
 }

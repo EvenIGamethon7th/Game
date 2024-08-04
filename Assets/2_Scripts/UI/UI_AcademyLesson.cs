@@ -57,33 +57,28 @@ namespace _2_Scripts.UI
 
         public void DoLesson(int lessonNum)
         {
-            for (int i = 0; i < 2; ++i)
-            {
-                if (lessonNum + i == 5) break;
-                mArrowImages[lessonNum + i].gameObject.SetActive(true);
-                mArrowImages[lessonNum + i].sprite = mSprites[(int)ELessonResults.During];
-            }
+                mArrowImages[lessonNum].gameObject.SetActive(true);
+                mArrowImages[lessonNum].sprite = mSprites[(int)ELessonResults.During];
         }
 
         public void SetResult(int lessonNum, ELessonResults result)
         {
-            if (lessonNum >= 5) return;
             switch (result)
             {
                 case ELessonResults.Fail:
-                    mResultTexts[lessonNum].text = "角菩..";
+                    mResultTexts[lessonNum].text = "鞁ろ尐..";
                     mResultTexts[lessonNum].color = Fail;
                     mArrowImages[lessonNum].sprite = mSprites[(int)ELessonResults.Fail];
                     break;
 
                 case ELessonResults.Success:
-                    mResultTexts[lessonNum].text = "己傍!!";
+                    mResultTexts[lessonNum].text = "靹标车!!";
                     mResultTexts[lessonNum].color = Success;
                     mArrowImages[lessonNum].sprite = mSprites[(int)ELessonResults.Success];
                     break;
 
                 case ELessonResults.Bonanza:
-                    mResultTexts[lessonNum].text = "措己傍!!!";
+                    mResultTexts[lessonNum].text = "雽�靹标车!!!";
                     mResultTexts[lessonNum].color = Bonanza;
                     mArrowImages[lessonNum].sprite = mSprites[(int)ELessonResults.Bonanza];
                     break;

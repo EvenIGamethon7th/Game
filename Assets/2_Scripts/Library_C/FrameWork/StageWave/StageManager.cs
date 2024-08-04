@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -107,8 +107,8 @@ public class StageManager : Singleton<StageManager>
     private async UniTaskVoid StartWave()
     {
         await UniTask.WaitForSeconds(3f);
-        MessageBroker.Default.Publish(mNextStageMessage);
         mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
+        MessageBroker.Default.Publish(mNextStageMessage);
         while (true)
         {
             mCurrentWaveData = mWaveQueue.Dequeue();

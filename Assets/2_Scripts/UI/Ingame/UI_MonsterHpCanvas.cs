@@ -33,7 +33,7 @@ namespace _2_Scripts.UI.Ingame
         private void CreateInterface(GameObject canvas, Monster monster)
         {
             var rect = canvas.GetComponent<RectTransform>();
-            rect.parent = transform;
+            rect.SetParent(transform);
             rect.localScale = Vector3.one;
             rect.sizeDelta = new Vector2(1, 0.25f);
             rect.localPosition = monster.transform.position + Vector3.up * (monster.IsBoss ? 2 : 1);

@@ -27,7 +27,7 @@ namespace _2_Scripts.Utils
        };
 
        public static readonly Dictionary<int, int> MainCharacterEnchantAmountTable =
-           new Dictionary<int, int>() { { 1, 3 }, { 2, 8 }, { 3, 0 } };
+           new Dictionary<int, int>() { { 1, 3 }, { 2, 5 }, { 3, 0 } };
        public const int MAX_LEVEL = 6;
     }
 }

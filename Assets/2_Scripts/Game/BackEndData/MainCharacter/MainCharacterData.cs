@@ -26,6 +26,10 @@ namespace _2_Scripts.Game.BackEndData.MainCharacter
             this.isGetType = isGetType;
             this.amount = 0;
         }
+        public void AddAmount(int amount)
+        {
+            this.amount += amount;
+        }
 
         public void EnchantCharacter()
         {

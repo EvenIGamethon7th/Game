@@ -190,6 +190,8 @@ namespace _2_Scripts.UI {
                 mLessonCount++;
             }
 
+            await UniTask.Delay(TimeSpan.FromSeconds(mLessonTime), cancellationToken: mCts.Token);
+
             SummonAlumni();
         }
 

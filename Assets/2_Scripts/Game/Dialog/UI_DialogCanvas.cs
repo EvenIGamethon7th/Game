@@ -67,7 +67,7 @@ namespace _2_Scripts.Game.Dialog
             mDialog = GetComponentInChildren<UI_DialogPanel>(true);
             mSkipButton.onClick.AddListener(SceneChange);
             mDialog.GetComponent<Button>().onClick.AddListener(SetText);
-            mDialog.GetComponent<Button>().onClick.AddListener(() => mIsAuto = false);
+            mDialog.GetComponent<Button>().onClick.AddListener(() => { mIsAuto = false; mAutoButton.IsAuto(false); });
             mAutoButton.onClick.AddListener(IsAuto);
             SetText();
             AutoText().Forget();

@@ -203,6 +203,8 @@ public class IngameDataManager : Singleton<IngameDataManager>
             HealHp?.Invoke(hp);
 
         mUserHp.Value = mUserHp.Value - hp <= MaxHp ? mUserHp.Value - hp : MaxHp;
+        if (mUserHp.Value < 0)
+            mUserHp.Value = 0;
     }
 
     public void AddExp(int exp)

@@ -1,4 +1,4 @@
-﻿using _2_Scripts.Game.Map.Tile;
+using _2_Scripts.Game.Map.Tile;
 using _2_Scripts.UI;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace _2_Scripts.Game.Unit
 
         private readonly int mMaxUnitCount = 3;
 
-        public float GroupRange;
+        public float GroupRange { get; private set; }
         
         public List<CUnit> Units { get; private set; }
 

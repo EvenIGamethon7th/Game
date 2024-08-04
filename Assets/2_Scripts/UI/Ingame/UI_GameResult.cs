@@ -1,4 +1,8 @@
-﻿using System;
+using System;
+using _2_Scripts.Game.Monster;
+using _2_Scripts.Game.ScriptableObject.Skill;
+using _2_Scripts.Game.Unit;
+using _2_Scripts.Trigger;
 using _2_Scripts.Utils;
 using Cargold.FrameWork.BackEnd;
 using Cysharp.Threading.Tasks;
@@ -15,20 +19,34 @@ namespace _2_Scripts.UI.Ingame
         [SerializeField] private GameObject mDefeat;
         [SerializeField] private Image mBackGroundImage;
         [SerializeField] private GameObject mButtons;
+        [SerializeField] private GameObject mResurrectionButton;
+        [SerializeField] private Ressurection mRessurection;
 
-        private bool isGameOver = false;
+        private int mIsGameOver;
+        private float mPrevTimeScale;
         private void Start()
         {
             IngameDataManager.Instance.Subscribe(this, IngameDataManager.EDataType.Hp, hp =>
             {
-                if (hp <= 0 && isGameOver == false)
+                if (hp <= 0)
                 {
                     /// 0 하면 에러 남 
+                    mPrevTimeScale = Time.timeScale;
                     Time.timeScale = 0.00001f;
-                    isGameOver = true;
+                    ++mIsGameOver;
                     mBackGroundImage.enabled = true;
+
                     mDefeat.SetActive(true);
                     mButtons.SetActive(true);
+
+                    if (mIsGameOver == 1)
+                    {
+                        mResurrectionButton.SetActive(true);
+                    }
+                    else
+                    {
+                        mResurrectionButton.SetActive(false);
+                    }
                 }
             });
 
@@ -45,6 +63,15 @@ namespace _2_Scripts.UI.Ingame
         private void SaveData()
         {
             BackEndManager.Instance.SaveCharacterData();
+        }
+
+        public void OnResurrection()
+        {
+            mRessurection.CastAttack();
+            mDefeat.SetActive(false);
+            mButtons.SetActive(false);
+            mBackGroundImage.enabled = false;
+            Time.timeScale = mPrevTimeScale;
         }
 
         public void OnRetryGame()

@@ -12,19 +12,31 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.MainCharacter
     public class BeyondWall : Skill
     {
         [SerializeField]
-        [Title("���� �ð� ( 1�ʸ� 1)")]
+        [Title("지속 시간 ( 1초당 1)")]
         private float mLifeTime;
 
         [SerializeField]
-        [Title("Ʈ���� ������Ʈ")]
+        [Title("스킬 트리거")]
         private GameObject mPortal;
 
         public override bool CastAttack(Transform ownerTransform, CharacterData ownerData, Action<Monster.Monster[]> beforeDamage = null, Action<Monster.Monster> passive = null)
         {
             var trigger = ObjectPoolManager.Instance.CreatePoolingObject(mPortal, ownerTransform.position).GetComponent<PortalTrigger>();
-            trigger.Init(Range, TargetLayer, mLifeTime);
+            trigger.Init(Range, mLifeTime, SummonWall);
 
             return true;
+        }
+
+        private void SummonWall(Collider2D collision)
+        {
+            int layer = 1 << collision.gameObject.layer;
+
+            if (layer == TargetLayer)
+            {
+                if (!collision.TryGetComponent<Monster.Monster>(out var monster)) return;
+                if (!monster.IsBoss)
+                    monster.TakeDamage(monster.GetMonsterData.MaxHp, Utils.Define.EAttackType.TrueDamage, Utils.Define.EInstantKillType.Transition);
+            }
         }
     }
 }

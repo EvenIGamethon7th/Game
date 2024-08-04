@@ -37,6 +37,7 @@ namespace _2_Scripts.UI.Ingame
         private void Start()
         {
             //TODO: 메인캐릭터를 매니저에서 받아온 후 자식들 초기화
+            mInfoBubble.Init(null, null);
             if (GameManager.Instance.IsTest) return;
             var mainData = GameManager.Instance.CurrentMainCharacter;
             string name = mainData.CharacterEvolutions[1].GetData.characterData;

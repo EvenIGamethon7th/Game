@@ -34,5 +34,7 @@ namespace _2_Scripts.Game.Map
             mDstMark.SetActive(bActive);
             mLine.gameObject.SetActive(bActive);
         }
+
+        public Vector3 GetDestinationPosition => mLine.GetPosition(1);
     }
 }

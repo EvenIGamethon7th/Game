@@ -42,6 +42,7 @@ namespace _2_Scripts.UI
 
         private async UniTask UpdateHealthAsync(float damage, float time = 1, bool isHeal = false)
         {
+            mHpText.text = $"{mSlider.value - damage}/{mMaxHp.Value}";
             damage = Mathf.Abs(damage);
             float waitTime = time / damage;
             while (damage > 0)
@@ -50,7 +51,6 @@ namespace _2_Scripts.UI
                 --damage;
 
                 mSlider.value += isHeal ? 1 : -1;
-                mHpText.text = $"{mSlider.value}/{mMaxHp.Value}";
             }
         }
 

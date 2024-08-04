@@ -176,6 +176,23 @@ public class MapManager : Singleton<MapManager>
         return tileSlot;
     }
 
+    public TileSlot GetNearClickTileSlotDetailOrNull()
+    {
+        var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        return mTileDatas.OrderBy(x => Vector3.Distance(x.transform.position, pos)).FirstOrDefault();
+    }
+
+    public TileSlot GetClickTileSlotDetailOrNull(Vector3 pos)
+    {
+        int outlineLayer = 1 << LayerMask.NameToLayer("Outline");
+        int buffLayer = 1 << LayerMask.NameToLayer("Buff");
+        int layerMask = ~(outlineLayer | buffLayer);
+
+        RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 100, layerMask, 0);
+        TileSlot tileSlot = hit.collider != null ? hit.transform.GetComponent<TileSlot>() : null;
+        return tileSlot;
+    }
+
     protected override void ChangeSceneInit(Scene prev, Scene next)
     {
         for (int i = 0; i < mTileDatas.Count; ++i)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using _2_Scripts.Game.Map;
 using _2_Scripts.Game.Map.Tile;
@@ -41,7 +41,7 @@ namespace _2_Scripts.Game.Controller
                 .Where(_ => mHasUnitTouch)
                 .Subscribe(_ =>
                 {
-                    var dstSlot = MapManager.Instance.GetClickTileSlotDetailOrNull();
+                    var dstSlot = MapManager.Instance.GetNearClickTileSlotDetailOrNull();
 
                     if (mSelectTileSlot == dstSlot)
                     {
@@ -75,7 +75,7 @@ namespace _2_Scripts.Game.Controller
                 .Subscribe(_ =>
                 {
                     //위치 이동 및 자리 변경
-                    TileSlot dstSlot = MapManager.Instance.GetClickTileSlotDetailOrNull();
+                    TileSlot dstSlot = mIndicator.gameObject.activeSelf ? MapManager.Instance.GetClickTileSlotDetailOrNull(mIndicator.GetDestinationPosition) : MapManager.Instance.GetClickTileSlotDetailOrNull();
                     if (dstSlot != null && mHasUnitTouch)
                     {
                         if (dstSlot != mSelectTileSlot)
@@ -110,6 +110,7 @@ namespace _2_Scripts.Game.Controller
                                 mSelectCircle.transform.parent = selectUnitGroup.transform;
                                 mSelectCircle.transform.position = selectUnitGroup.transform.position;
                                 mSelectCircle.SetActive(true);
+                                mSelectCircle.transform.localScale = new Vector3(1, 1, 0) * selectUnitGroup.GroupRange * 2;
                                 selectUnitGroup.IsSelect = true;
                             }
 

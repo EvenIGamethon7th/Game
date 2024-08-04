@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4948a6790b6ab043b7c8912e7beda41, type: 3}
+  m_Name: Ressurection
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 8a822df414561a7469e63091f083dc78, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: NameKey
+      Entry: 6
+      Data: 
+    - Name: DescriptionKey
+      Entry: 6
+      Data: 
+    - Name: Icon
+      Entry: 6
+      Data: 
+    - Name: Range
+      Entry: 4
+      Data: 25
+    - Name: AttackType
+      Entry: 3
+      Data: 0
+    - Name: MaxHitUnit
+      Entry: 3
+      Data: 0
+    - Name: CastEffect
+      Entry: 6
+      Data: 
+    - Name: HitEffect
+      Entry: 6
+      Data: 
+    - Name: TargetLayer
+      Entry: 7
+      Data: UnityEngine.LayerMask, UnityEngine.CoreModule
+    - Name: 
+      Entry: 3
+      Data: 64
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: StatueEffects
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[_2_Scripts.Game.StatusEffect.StatusEffectSO,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  mLifeTime: 0
+  mHealAmountRate: 20

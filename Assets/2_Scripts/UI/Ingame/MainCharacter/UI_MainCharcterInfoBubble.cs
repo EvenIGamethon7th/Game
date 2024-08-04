@@ -34,7 +34,7 @@ namespace _2_Scripts.UI.Ingame
             mRectTransform = GetComponent<RectTransform>();
 
             this.UpdateAsObservable()
-                .Where(_ => Input.GetMouseButtonDown(0) && gameObject.activeSelf)
+                .Where(_ => Input.GetMouseButtonUp(0) && gameObject.activeSelf)
                 .Subscribe(_ =>
                 {
                     if (!global::Utils.IsPosOnUI(mRectTransform, Input.mousePosition, CameraManager.Instance.WorldToScreenPoint(mRectTransform.position, CameraManager.ECameraType.UI)))

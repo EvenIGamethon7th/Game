@@ -123,6 +123,7 @@ namespace _2_Scripts.UI {
                     projectile.gameObject.SetActive(false);
                     var effect = ObjectPoolManager.Instance.CreatePoolingObject(Define.SpawnEffectDictionary[mStudentData.rank], tilePos);
                 });
+                UI_Toast_Manager.Instance.Activate_WithContent_Func("아카데미에서 돌아왔어요!", isIgnoreTimeScale: true);
             });
             mLessonCount = 0;
             if (isCreateUnit)

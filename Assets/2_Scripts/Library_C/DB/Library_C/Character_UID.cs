@@ -52,4 +52,5 @@ public static partial class TableDataKey_C
     public const string Character_Character_48 = "Character_48";
     public const string Character_Character_49 = "Character_49";
     public const string Character_Character_50 = "Character_50";
+    public const string Character_Character_51 = "Character_51";
 }

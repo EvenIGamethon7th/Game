@@ -6,6 +6,7 @@ using _2_Scripts.Game.BackEndData.Enchant;
 using _2_Scripts.Game.BackEndData.MainCharacter;
 using _2_Scripts.Game.BackEndData.Mission;
 using _2_Scripts.Utils;
+using Cargold.Gacha;
 using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
 using PlayFab;
@@ -111,7 +112,15 @@ namespace Cargold.FrameWork.BackEnd
                     UserMission.Add(data.Key,new SpawnMission(data.Key));
                 }
             });
-            return UserMission.Values.ToList();
+            if (UserMission.TryGetValue("Character_51", out var mission))
+            {
+                mission.CharacterKey = "Character_51";
+            }
+            else
+            {
+                UserMission.Add("Character_51",new SpawnMission("Character_51",100,true,true));   
+            }
+            return UserMission.Values.OrderByDescending(m => m.IsEquip).ThenByDescending(m=>m.IsGet).ToList();
         }
 
         protected override void ChangeSceneInit(Scene prev, Scene next)

@@ -14,8 +14,6 @@ namespace _2_Scripts.UI.OutGame.Lobby.StartPopUp
 {
     public class UI_MainCharacterSlot : SerializedMonoBehaviour
     {
-    
-    
         [SerializeField]
         private Image mBorderImage;
         [SerializeField]

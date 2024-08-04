@@ -11,12 +11,12 @@ namespace _2_Scripts.Game.BackEndData.Mission
         public bool IsGet;
         public bool IsEquip;
 
-        public SpawnMission(string characterKey,int spawnCount = 0)
+        public SpawnMission(string characterKey,int spawnCount = 0,bool isGet = false,bool isEquip = false)
         {
             CharacterKey = characterKey;
             SpawnCount = spawnCount;
-            IsGet = false;
-            IsEquip = false;
+            IsGet = isGet;
+            IsEquip = isEquip;
         }
         
         public void AddSpawnCount(int count)

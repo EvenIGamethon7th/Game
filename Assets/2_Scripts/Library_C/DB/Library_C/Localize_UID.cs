@@ -39,6 +39,7 @@ public static partial class TableDataKey_C
     public const string Localize_Lo_Character_33 = "Lo_Character_33";
     public const string Localize_Lo_Character_34 = "Lo_Character_34";
     public const string Localize_Lo_Character_35 = "Lo_Character_35";
+    public const string Localize_Lo_Character_36 = "Lo_Character_36";
     public const string Localize_Lo_MainCharacter_0 = "Lo_MainCharacter_0";
     public const string Localize_Lo_MainCharacter_1 = "Lo_MainCharacter_1";
     public const string Localize_Lo_MainCharacter_2 = "Lo_MainCharacter_2";

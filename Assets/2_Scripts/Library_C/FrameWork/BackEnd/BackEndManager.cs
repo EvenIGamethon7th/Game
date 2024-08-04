@@ -6,6 +6,7 @@ using _2_Scripts.Game.BackEndData.Enchant;
 using _2_Scripts.Game.BackEndData.MainCharacter;
 using _2_Scripts.Game.BackEndData.Mission;
 using _2_Scripts.Utils;
+using Cargold.Gacha;
 using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
 using PlayFab;
@@ -61,15 +62,6 @@ namespace Cargold.FrameWork.BackEnd
             return PlayFabAuthService.NickName;
         }
 
-        private async UniTask ExecuteTaskEveryTenMinutesUserCurrencyUpdate()
-        {
-            while (true)
-            {
-                await UniTask.Delay(600000);
-                ReceiveCurrencyData().Forget();
-            }
-        }
-        
         private bool mbIsLoadData = false;
         public CharacterEnchantData GetEnchantData(EEnchantClassType classType)
         {
@@ -120,7 +112,15 @@ namespace Cargold.FrameWork.BackEnd
                     UserMission.Add(data.Key,new SpawnMission(data.Key));
                 }
             });
-            return UserMission.Values.ToList();
+            if (UserMission.TryGetValue("Character_51", out var mission))
+            {
+                mission.CharacterKey = "Character_51";
+            }
+            else
+            {
+                UserMission.Add("Character_51",new SpawnMission("Character_51",100,true,true));   
+            }
+            return UserMission.Values.OrderByDescending(m => m.IsEquip).ThenByDescending(m=>m.IsGet).ToList();
         }
 
         protected override void ChangeSceneInit(Scene prev, Scene next)
@@ -204,7 +204,6 @@ namespace Cargold.FrameWork.BackEnd
             await FetchCatalogItems();
             mbIsLoadData = true;
             successCallback?.Invoke();
-            ExecuteTaskEveryTenMinutesUserCurrencyUpdate().Forget();
         }
 
         private async UniTask ReceiveEnchantData()
@@ -253,6 +252,36 @@ namespace Cargold.FrameWork.BackEnd
                 { "MainCharacterData", JsonConvert.SerializeObject(UserMainCharacterData) },{"EnchantData",JsonConvert.SerializeObject(UserEnchantData)}});
         }
 
+        public async UniTask GetFeatherTimer(Action<DateTime, bool> callback)
+        {
+            PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest(), (result) =>
+            {
+                DateTime nextFreeTicket = DateTime.MinValue;
+                bool staminaCapped = true;
+
+                if (result.VirtualCurrencyRechargeTimes.TryGetValue("FT", out VirtualCurrencyRechargeTime rechargeDetails))
+                {
+                    if (result.VirtualCurrency.TryGetValue("FT", out int staminaBalance))
+                    {
+                        UserCurrency[ECurrency.Father].Value = staminaBalance;
+                        if (staminaBalance < rechargeDetails.RechargeMax)
+                        {
+                            nextFreeTicket = DateTime.Now.AddSeconds(rechargeDetails.SecondsToRecharge);
+                            staminaCapped = false;
+                        }
+                        else
+                        {
+                            staminaCapped = true;
+                        }
+                    }
+                }
+                callback?.Invoke(nextFreeTicket, staminaCapped);
+            }, (error) =>
+            {
+                Debug.LogError(error.GenerateErrorReport());
+            });
+        }
+        
         private async UniTask LoadChapterData()
         {
             var tcs = new UniTaskCompletionSource();

@@ -79,6 +79,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 98205a9a6caf46e4381ac16b5ecb6322, type: 3}
     - {fileID: 21300000, guid: df7a5272c7404714a88ecd2091facc47, type: 3}
     - {fileID: 21300000, guid: b828149b0ed9f304998c259470ceefbf, type: 3}
+    - {fileID: 21300000, guid: b69eb56e94e822d45984fe5a03d0cc01, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -97,7 +98,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 51
+      Data: 52
     - Name: 
       Entry: 7
       Data: 
@@ -4077,6 +4078,84 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Character_51
+    - Name: $v
+      Entry: 7
+      Data: 53|CharacterData, Assembly-CSharp
+    - Name: isAlumni
+      Entry: 5
+      Data: false
+    - Name: alumniAtk
+      Entry: 4
+      Data: 0
+    - Name: alumniAtkSpeed
+      Entry: 4
+      Data: 0
+    - Name: alumniMatk
+      Entry: 4
+      Data: 0
+    - Name: Key
+      Entry: 1
+      Data: Character_51
+    - Name: Group
+      Entry: 3
+      Data: 18
+    - Name: nameKey
+      Entry: 1
+      Data: Lo_Character_36
+    - Name: atk
+      Entry: 4
+      Data: 0
+    - Name: atkSpeed
+      Entry: 4
+      Data: 0
+    - Name: matk
+      Entry: 4
+      Data: 0
+    - Name: rank
+      Entry: 3
+      Data: 3
+    - Name: characterData
+      Entry: 1
+      Data: 
+    - Name: range
+      Entry: 4
+      Data: 0
+    - Name: cost
+      Entry: 3
+      Data: 0
+    - Name: characterPack
+      Entry: 1
+      Data: 
+    - Name: academyClass
+      Entry: 3
+      Data: 0
+    - Name: Skill1
+      Entry: 1
+      Data: 
+    - Name: Skill2
+      Entry: 1
+      Data: 
+    - Name: ClassType
+      Entry: 1
+      Data: 
+    - Name: Icon
+      Entry: 10
+      Data: 24
+    - Name: illustration
+      Entry: 10
+      Data: 63
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -5154,6 +5233,27 @@ MonoBehaviour:
     ClassType: 
     Icon: {fileID: 21300000, guid: b828149b0ed9f304998c259470ceefbf, type: 3}
     illustration: {fileID: 0}
+  - isAlumni: 0
+    alumniAtk: 0
+    alumniAtkSpeed: 0
+    alumniMatk: 0
+    Key: Character_51
+    Group: 18
+    nameKey: Lo_Character_36
+    atk: 0
+    atkSpeed: 0
+    matk: 0
+    rank: 3
+    characterData: 
+    range: 0
+    cost: 0
+    characterPack: 
+    academyClass: 0
+    Skill1: 
+    Skill2: 
+    ClassType: 
+    Icon: {fileID: 21300000, guid: 2a6372483112fa04eaaef99a699a2e87, type: 3}
+    illustration: {fileID: 21300000, guid: b69eb56e94e822d45984fe5a03d0cc01, type: 3}
   keyArr:
   - Character_0
   - Character_1
@@ -5206,3 +5306,4 @@ MonoBehaviour:
   - Character_48
   - Character_49
   - Character_50
+  - Character_51

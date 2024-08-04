@@ -239,21 +239,19 @@ namespace _2_Scripts.Game.Unit
 
         private void OnDisable()
         {
-            if (mCancleToken != null)
-            {
-                mCancleToken.Cancel();
-                mCancleToken.Dispose();
-            }
+            CancelAndDisposeToken();
         }
 
         private async UniTaskVoid CoolTimeSkill(SkillInfo skill)
         {
+
             await UniTask.WaitForSeconds(skill.CoolTime,cancellationToken:mCancleToken.Token);
             AddReadySkill(skill);
         }
 
         private async UniTaskVoid CoolTimeSkill(float time,SkillInfo skill)
         {
+         
             await UniTask.WaitForSeconds(time,cancellationToken:mCancleToken.Token);
             AddReadySkill(skill);
         }
@@ -290,6 +288,23 @@ namespace _2_Scripts.Game.Unit
             gameObject.SetActive(false);
             transform.parent = mOriginParent;
             mAlumniEffect?.SetActive(false);
+        }
+        
+        private void CancelAndDisposeToken()
+        {
+            if (mCancleToken != null)
+            {
+                if (!mCancleToken.IsCancellationRequested)
+                {
+                    mCancleToken.Cancel();
+                }
+                mCancleToken.Dispose();
+                mCancleToken = null;
+            }
+            else
+            {
+                mCancleToken = new CancellationTokenSource();
+            }
         }
     }
 }

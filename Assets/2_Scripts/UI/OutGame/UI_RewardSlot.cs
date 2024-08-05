@@ -12,10 +12,9 @@ namespace _2_Scripts.UI.OutGame.Enchant
         [SerializeField] private TextMeshProUGUI mCountText;
         public void UpdateSlot(Define.RewardEvent rewardEvent)
         {
-            // dataValue.rewardEvent.Invoke();
             mRewardImage.sprite = rewardEvent.sprite;
             mRewardNameText.text = rewardEvent.name;
-            mCountText.text = $"{rewardEvent.count}";
+            mCountText.text = $"X{rewardEvent.count}";
         }
     }
 }

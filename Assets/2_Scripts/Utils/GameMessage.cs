@@ -18,6 +18,8 @@ namespace _2_Scripts.Utils
         MonsterHp,
         MainCharacterChange,
         EnchantOpenPopUp,
+        RewardOpenPopUp,
+        MainCharacterLevelUp,
     }
     
     public class GameMessage<T>

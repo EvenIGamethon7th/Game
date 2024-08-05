@@ -4,6 +4,7 @@ using _2_Scripts.Utils;
 using Spine;
 using System;
 using TMPro;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,10 +23,12 @@ namespace _2_Scripts.UI.OutGame.Lobby.Enchant
         private MainCharacterData mMainCharacterData;
         private MainCharacterInfo mMainCharacterInfo;
 
+        private GameMessage<MainCharacterData> mMainCharacterLevelUpMessage;
         public void Start()
         {
+            mMainCharacterLevelUpMessage =
+                new GameMessage<MainCharacterData>(EGameMessage.MainCharacterLevelUp, mMainCharacterData);
             mEnchantButton.onClick.AddListener(OnEnchantButton);
-            //Add Liteners
         }
 
         private void OnEnchantButton()
@@ -41,6 +44,13 @@ namespace _2_Scripts.UI.OutGame.Lobby.Enchant
             {
                 mMainCharacterData.EnchantCharacter();
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("강화 성공!!");
+                OnSelectSlot(mMainCharacterInfo.CharacterEvolutions[mMainCharacterData.rank].GetData);
+                MessageBroker.Default.Publish(mMainCharacterLevelUpMessage);
+                OnPopUp(new Define.EnchantMainCharacterEvent
+                {
+                    data = mMainCharacterData,
+                    infoData = mMainCharacterInfo
+                });
             }
             else
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("강화 재료가 부족합니다.");

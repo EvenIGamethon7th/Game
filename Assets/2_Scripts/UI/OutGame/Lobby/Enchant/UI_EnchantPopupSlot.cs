@@ -17,6 +17,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.Enchant
         [SerializeField] private Button mButton;
 
 
+        
         public void UpdateContent(Sprite sprite, MainCharacterData data,CharacterData characterData,Action<CharacterData> callbackData)
         {
             IconInit();

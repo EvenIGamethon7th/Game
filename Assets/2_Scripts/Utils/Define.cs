@@ -1,6 +1,8 @@
 ﻿using _2_Scripts.Game.BackEndData.MainCharacter;
 using _2_Scripts.Game.ScriptableObject.Character;
+using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace _2_Scripts.Utils
 {
@@ -33,9 +35,18 @@ namespace _2_Scripts.Utils
            public MainCharacterData data;
            public MainCharacterInfo infoData;
        }
+
+       public class RewardEvent
+       {
+           public Sprite sprite;
+           public string name;
+           public int count;
+           public Action rewardEvent;
+       }
        
        public static readonly Dictionary<int, int> MainCharacterEnchantAmountTable =
            new Dictionary<int, int>() { { 1, 3 }, { 2, 5 }, { 3, 0 } };
        public const int MAX_LEVEL = 6;
+       
     }
 }

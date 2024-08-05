@@ -1,4 +1,5 @@
 ﻿using _2_Scripts.Game.BackEndData.MainCharacter;
+using _2_Scripts.Game.ScriptableObject.Character;
 using _2_Scripts.Utils;
 using Cargold.FrameWork.BackEnd;
 using System.Collections.Generic;
@@ -59,23 +60,51 @@ namespace _2_Scripts.UI.OutGame.Lobby.Draw
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("다이아가 부족합니다."); 
                 return;
             }
+            if (!RandomDraw())
+            {
+                UI_Toast_Manager.Instance.Activate_WithContent_Func("모든 뽑기를 완료하였습니다!\n 다음 업데이트를 기대해주세요."); 
+                return;
+            }
             BackEndManager.Instance.AddCurrencyData(ECurrency.Diamond,-DRAW_COST_DIA);
-            RandomDraw();
             MessageBroker.Default.Publish(mRewardEventMessage);
         }
 
-        private void RandomDraw()
+        private bool RandomDraw()
         {
-            List<string> rewardList = BackEndManager.Instance.UserMainCharacterData.Keys.ToList();
-            int randomIndex = Random.Range(0, rewardList.Count);
-            var mainCharacterData = BackEndManager.Instance.UserMainCharacterData[rewardList[randomIndex]];
-            var infoData = GameManager.Instance.MainCharacterList.FirstOrDefault(x => x.name == mainCharacterData.key)
-                .CharacterEvolutions[1].GetData;
-            mRewardEvent.name = infoData.GetCharacterName();
-            mRewardEvent.sprite = infoData.Icon;
+            var availableCharacters = BackEndManager.Instance.UserMainCharacterData.Where(x => x.Value.rank != 3)
+                .Select(x => new
+                {
+                    Key = x.Key,
+                    Info = GameManager.Instance.MainCharacterList.FirstOrDefault(m => m.name == x.Key)
+                }).ToList();
+
+            if (!availableCharacters.Any())
+            {
+                return false;
+            }
+
+            float totalWeight = availableCharacters.Sum(x => x.Info.DrawProbability);
+            float randomValue = Random.Range(0, totalWeight);
+            float cumulativeWeight = 0;
+            MainCharacterInfo selectedCharacter = null;
+            foreach (var character in availableCharacters)
+            {
+                cumulativeWeight += character.Info.DrawProbability;
+                if (cumulativeWeight >= randomValue)
+                {
+                    selectedCharacter = character.Info;
+                    break;
+                }
+            }
+
+            var characterData = selectedCharacter.CharacterEvolutions[0].GetData;
+            mRewardEvent.name = characterData.GetCharacterName();
+            mRewardEvent.sprite = characterData.Icon;
+            
+            var mainCharacter = BackEndManager.Instance.UserMainCharacterData[selectedCharacter.name];
+            
             mRewardEvent.rewardEvent = () =>
             {
-                var mainCharacter = BackEndManager.Instance.UserMainCharacterData[mainCharacterData.key];
                 if (mainCharacter.isGetType == EGetType.Lock)
                 {
                     mainCharacter.isGetType = EGetType.Unlock;
@@ -83,6 +112,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.Draw
                 mainCharacter.amount++;
                 BackEndManager.Instance.SaveCharacterData();
             };
+            return true;
         }
     }
 }

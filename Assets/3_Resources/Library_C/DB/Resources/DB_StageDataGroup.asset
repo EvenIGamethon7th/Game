@@ -34,7 +34,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 20
+      Data: 21
     - Name: 
       Entry: 7
       Data: 
@@ -2376,6 +2376,54 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Stage_100
+    - Name: $v
+      Entry: 7
+      Data: 42|StageData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Stage_100
+    - Name: waveList
+      Entry: 7
+      Data: 43|System.String[], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 1
+      Data: Wave_1000
+    - Name: 
+      Entry: 1
+      Data: Wave_1001
+    - Name: 
+      Entry: 1
+      Data: Wave_1002
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Stage_Reward_3star
+      Entry: 3
+      Data: 0
+    - Name: Stage_Reward_2star
+      Entry: 3
+      Data: 0
+    - Name: Stage_Reward_1star
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -3002,6 +3050,14 @@ MonoBehaviour:
     Stage_Reward_3star: 390
     Stage_Reward_2star: 273
     Stage_Reward_1star: 156
+  - Key: Stage_100
+    waveList:
+    - Wave_1000
+    - Wave_1001
+    - Wave_1002
+    Stage_Reward_3star: 0
+    Stage_Reward_2star: 0
+    Stage_Reward_1star: 0
   keyArr:
   - Stage_0
   - Stage_1
@@ -3023,3 +3079,4 @@ MonoBehaviour:
   - Stage_17
   - Stage_18
   - Stage_19
+  - Stage_100

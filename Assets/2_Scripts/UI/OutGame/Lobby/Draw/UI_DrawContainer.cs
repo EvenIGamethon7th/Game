@@ -16,7 +16,10 @@ namespace _2_Scripts.UI.OutGame.Lobby.Draw
         [SerializeField] private TextMeshProUGUI mDrawCountText;
         [SerializeField] private Button mDiaButton;
         [SerializeField] private Button mTicketButton;
+        [SerializeField] private Button mProductDetailButton;
+        [SerializeField] private ProductDetailsKey mProductDetailsKey;
         private GameMessage<List<Define.RewardEvent>> mRewardEventMessage;
+        private GameMessage<ProductDetailsData> mProductDetailOpenMessage;
         private List<Define.RewardEvent> mRewardList = new List<Define.RewardEvent>()
         {
             new Define.RewardEvent()
@@ -26,15 +29,22 @@ namespace _2_Scripts.UI.OutGame.Lobby.Draw
                 sprite = null
             }
         };
-
         private Define.RewardEvent mRewardEvent;
         private const int DRAW_COST_DIA = 850;
+ 
         private void Start()
         {
+            mProductDetailOpenMessage =
+                new GameMessage<ProductDetailsData>(EGameMessage.ProductDetailPopUp, mProductDetailsKey.GetData);
             BackEndManager.Instance.UserCurrency[ECurrency.Ticket].Subscribe(ticket =>
             {
                 mDrawCountText.text = $"{ticket}개 보유";
             });
+            mProductDetailButton.onClick.AddListener(() =>
+            {
+                MessageBroker.Default.Publish(mProductDetailOpenMessage);
+            });
+            
             mRewardEvent = mRewardList[0];
             mRewardEventMessage = new GameMessage<List<Define.RewardEvent>>(EGameMessage.RewardOpenPopUp, mRewardList);
             mDiaButton.onClick.AddListener(OnDiaButton);

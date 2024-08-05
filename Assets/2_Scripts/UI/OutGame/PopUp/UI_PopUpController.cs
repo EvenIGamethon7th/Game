@@ -1,4 +1,5 @@
 ﻿using _2_Scripts.UI.OutGame.Lobby.Enchant;
+using _2_Scripts.UI.OutGame.PopUp;
 using _2_Scripts.Utils;
 using System.Collections.Generic;
 using UniRx;
@@ -11,6 +12,7 @@ namespace _2_Scripts.UI.OutGame.Lobby
         [SerializeField] private GameObject mPopUpBackGround;
         [SerializeField] private UI_EnchantPopUpContainer mEnchantPopUpContainer;
         [SerializeField] private UI_RewardPopUpContainer mRewardPopUpContainer;
+        [SerializeField] private UI_ProductDetailPopUp mProductDetailContainer;
         private void Start()
         {
             MessageBroker.Default.Receive<GameMessage<Define.EnchantMainCharacterEvent>>()
@@ -30,6 +32,14 @@ namespace _2_Scripts.UI.OutGame.Lobby
                         mRewardPopUpContainer.gameObject.SetActive(true);
                         mRewardPopUpContainer.OnPopUp(data.Value);
                     }).AddTo(this);
+            MessageBroker.Default.Receive<GameMessage<ProductDetailsData>>().Where(message => message.Message == EGameMessage.ProductDetailPopUp).Subscribe(
+                data =>
+                {
+                    mPopUpBackGround.SetActive(true);
+                    mProductDetailContainer.gameObject.SetActive(true);
+                    mProductDetailContainer.UpdateContent(data.Value);
+                }).AddTo(this);
+            
         }
     }
 }

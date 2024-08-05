@@ -71,7 +71,7 @@ namespace _2_Scripts.UI.OutGame.Enchant
                 mButton.interactable = false;
             }
 
-            if (mMainCharacterData.amount >= Define.MainCharacterEnchantAmountTable[mMainCharacterData.rank])
+            if (mMainCharacterData.amount >= Define.MainCharacterEnchantAmountTable[mMainCharacterData.rank] && mMainCharacterData.rank < 3)
             {
                 mEnchantIcon.SetActive(true);
             }

@@ -225,7 +225,7 @@ namespace Cargold.FrameWork.BackEnd
             {
                 if (result.Data.TryGetValue("FreeRewardData", out var data))
                 {
-                    UserFreeRewardData = JsonConvert.DeserializeObject<Dictionary<string, FreeRewardData>>(data.Value);
+                   UserFreeRewardData = JsonConvert.DeserializeObject<Dictionary<string,FreeRewardData>>(data.Value);
                 }
                 tcs.TrySetResult();
             }, (error) =>

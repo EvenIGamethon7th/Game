@@ -39,7 +39,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.Draw
             BackEndManager.Instance.UserCurrency[ECurrency.Ticket].Subscribe(ticket =>
             {
                 mDrawCountText.text = $"{ticket}개 보유";
-            });
+            }).AddTo(this);
             mProductDetailButton.onClick.AddListener(() =>
             {
                 MessageBroker.Default.Publish(mProductDetailOpenMessage);

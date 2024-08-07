@@ -31,6 +31,8 @@ namespace _2_Scripts.UI.OutGame.Lobby.Shop
         private GameMessage<ProductDetailsData> mProductDetailMessage = new GameMessage<ProductDetailsData>(EGameMessage.ProductDetailPopUp,null);
         public void Start()
         {
+            mPurchaseCondition = GetComponent<IPurchase>();
+            mItemAcquisition = GetComponent<IItemAcquisition>();
             if (mInfoButton != null && mProductDetailsKey != null)
             {
                 mProductDetailMessage.SetValue(mProductDetailsKey.GetData);

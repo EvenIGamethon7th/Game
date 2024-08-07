@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using _2_Scripts.Utils;
 using Cargold;
 using Cysharp.Threading.Tasks;
@@ -52,6 +52,7 @@ namespace _2_Scripts.UI
         
         private void OnBuyExp()
         {
+            UI_Toast_Manager.Instance.Activate_WithContent_Func("Touch EXP", isIgnoreTimeScale: true);
             if (IngameDataManager.Instance.CurrentGold < mExpPrice || IsMaxLevel )
                 return;
 

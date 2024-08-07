@@ -1,4 +1,4 @@
-﻿
+
 //  HP , 재화 , 씬 이동 등 여러가지 관리 목적
 
 using System;
@@ -27,6 +27,7 @@ public class GameManager : Singleton<GameManager>
     public bool IsFirstConnect { get; private set; } = true;
 
     public _2_Scripts.Game.BackEndData.Stage.StageData CurrentStageData { get; private set; }
+    public int CurrentDialog { get; set; } = -1;
 
     #region Item Manage
     private HashSet<EItemType> mIngameItem = new HashSet<EItemType>();
@@ -101,7 +102,11 @@ public class GameManager : Singleton<GameManager>
         else
         {
             IsFirstConnect = true;
+            CurrentDialog = -1;
         }
+
+        CurrentDialog = IsFirstConnect ? -1 : 5;
+        CurrentDialog = IsTest ? -1 : 5;
     }
 
     private Random mRandom = new Random();

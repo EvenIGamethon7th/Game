@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace _2_Scripts.Utils
 {
@@ -17,6 +17,9 @@ namespace _2_Scripts.Utils
         CharacterCardChange,
         MonsterHp,
         MainCharacterChange,
+        Tutorial,
+        TutorialProgress,
+        TutorialRewind,
         EnchantOpenPopUp,
         RewardOpenPopUp,
         MainCharacterLevelUp,

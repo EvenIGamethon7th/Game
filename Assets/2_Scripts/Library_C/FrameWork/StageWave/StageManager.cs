@@ -8,6 +8,7 @@ using _2_Scripts.Game.Monster;
 using _2_Scripts.Utils;
 using Cargold;
 using Cysharp.Threading.Tasks;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Information;
 using Rito.Attributes;
 using UniRx;
 using Unity.VisualScripting;
@@ -19,7 +20,7 @@ public class StageManager : Singleton<StageManager>
     [GetComponent] private WayPoint mWayPoint;
     
     public StageData mCurrentStageData { get;private set; }
-    private Queue<WaveData> mWaveQueue = new Queue<WaveData>();
+    private List<WaveData> mWaveList = new List<WaveData>();
     private WaveData mCurrentWaveData;
     
     private const float SPAWN_COOL_TIME = 1.5f;
@@ -37,6 +38,7 @@ public class StageManager : Singleton<StageManager>
     private TaskMessage mBossSpawnMessage;
 
     public int MaxStageCount { get; private set; }
+    private bool mIsTutorial = false;
 
     /// <summary>
     ///  테스트용 스테이지 시작 코드
@@ -45,10 +47,22 @@ public class StageManager : Singleton<StageManager>
     public void Start()
     {
         //Time.timeScale = 1.5f;
-        if (GameManager.Instance.IsTest)
+        
+    }
+
+    protected override void AwakeInit()
+    {
+        if (GameManager.Instance.IsTest && GameManager.Instance.CurrentDialog != -1)
         {
             EditInit();
         }
+
+        else if (GameManager.Instance.CurrentDialog == -1)
+        {
+            mIsTutorial = true;
+            TutorialInitAsync().Forget();
+        }
+
         else
         {
             Init();
@@ -91,27 +105,25 @@ public class StageManager : Singleton<StageManager>
         }
         else
         {
-            stageKey = "Stage_0";
+            stageKey = "Stage_100";
         }
         mCurrentStageData = DataBase_Manager.Instance.GetStage.GetData_Func(stageKey);
         foreach (var wave in mCurrentStageData.waveList)
         {
             var waveData = DataBase_Manager.Instance.GetWave.GetData_Func(wave);
-            mWaveQueue.Enqueue(waveData);
+            mWaveList.Add(waveData);
         }
 
-        MaxStageCount = mWaveQueue.Count;
+        MaxStageCount = mWaveList.Count;
         StartWave().Forget();
     }
 
     private async UniTaskVoid StartWave()
     {
         await UniTask.WaitForSeconds(3f);
-        mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
-        MessageBroker.Default.Publish(mNextStageMessage);
         while (true)
         {
-            mCurrentWaveData = mWaveQueue.Dequeue();
+            mCurrentWaveData = mWaveList[mNextStageMessage.Value];
             Debug.Log(mCurrentWaveData.Key);
             SpawnMonsters(mCurrentWaveData).Forget();
             if (mCurrentWaveData.isIceMonster)
@@ -124,30 +136,58 @@ public class StageManager : Singleton<StageManager>
                 MessageBroker.Default.Publish(mBossSpawnMessage);
             }
 
-            if (mWaveQueue.Count == 0)
+            mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
+            if (mWaveList.Count != mNextStageMessage.Value)
+                MessageBroker.Default.Publish(mNextStageMessage);
+
+            if (mWaveList.Count == mNextStageMessage.Value)
             {
-                await UniTask.WaitForSeconds(NEXT_WAVE_TIME,cancellationToken:mCancellationToken.Token);
+                await WaitAsync();
                 break;
             }
-            await UniTask.WaitForSeconds(NEXT_WAVE_TIME,cancellationToken:mCancellationToken.Token);
-            mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
-            MessageBroker.Default.Publish(mNextStageMessage);
+
+            await WaitAsync();
+
+            async UniTask WaitAsync()
+            {
+                float time = mIsTutorial ? 15 : NEXT_WAVE_TIME;
+
+                while (time > 0)
+                {
+                    await UniTask.DelayFrame(1, cancellationToken: mCancellationToken.Token);
+                    if (mIsTutorial)
+                        await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
+
+                    time -= Time.deltaTime;
+                }
+            }
         }
 
     }
 
     private async UniTask SpawnMonsters(WaveData waveData)
     {
+        if (mIsTutorial)
+            await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
+
         for (int spawnCount = 0; spawnCount < waveData.spawnCount; spawnCount++)
         {
             var monster = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_Monster, mWayPoint.GetWayPointPosition(0)).GetComponent<Monster>();;
             WaveStatData waveStateData = DataBase_Manager.Instance.GetWaveStat.GetData_Func(waveData.apply_stat);
-            bool isLastBoss =  monster.IsLastBoss = mWaveQueue.Count == 0;
+            bool isLastBoss =  monster.IsLastBoss = mWaveList.Count == mNextStageMessage.Value;
             monster.SpawnMonster(waveData.monsterKey, mWayPoint, waveData.isBoss, waveStateData,waveData.weight,isLastBoss);
   
             MonsterList.Add(monster);
-            await UniTask.WaitForSeconds(SPAWN_COOL_TIME,cancellationToken:mCancellationToken.Token);
-            
+            float time = SPAWN_COOL_TIME;
+
+            while (time > 0)
+            {
+                await UniTask.DelayFrame(1, cancellationToken: mCancellationToken.Token);
+                if (mIsTutorial)
+                    await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
+
+                time -= Time.deltaTime;
+            }
         }
     }
     
@@ -185,7 +225,7 @@ public class StageManager : Singleton<StageManager>
         var currentStageData = DataBase_Manager.Instance.GetStage.GetData_Func($"Stage_{stage}");
         
         var waveData = DataBase_Manager.Instance.GetWave.GetData_Func(currentStageData.waveList[wave]);
-        mWaveQueue.Enqueue(waveData);
+        mWaveList.Add(waveData);
 
         StartWave().Forget();
     }
@@ -212,5 +252,20 @@ public class StageManager : Singleton<StageManager>
         {
             mCancellationToken = new CancellationTokenSource();
         }
+    }
+
+    private async UniTask TutorialInitAsync()
+    {
+        mNextStageMessage = new GameMessage<int>(EGameMessage.StageChange, 0);
+        mBossSpawnMessage = new TaskMessage(ETaskList.BossSpawn);
+        MessageBroker.Default.Receive<GameMessage<bool>>().
+            Where(message => message.Message == EGameMessage.TutorialRewind)
+            .Subscribe(_ =>
+            {
+                mNextStageMessage?.SetValue(mNextStageMessage.Value - 1);
+            }).AddTo(this);
+        Debug.Log(GameManager.Instance.CurrentDialog);
+        await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
+        StageInit();
     }
 }

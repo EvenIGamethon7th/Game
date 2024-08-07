@@ -1,6 +1,7 @@
+using _2_Scripts.Utils;
 using Cargold;
-using Cysharp.Threading.Tasks;
-using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +9,7 @@ using CharacterInfo = _2_Scripts.Game.ScriptableObject.Character.CharacterInfo;
 
 namespace _2_Scripts.UI
 {
-    public class UI_RerollButton : MonoBehaviour
+    public class Tutorial_Reroll : MonoBehaviour
     {
         [SerializeField]
         private Button mButton;
@@ -16,28 +17,20 @@ namespace _2_Scripts.UI
         [SerializeField]
         private UI_SummonButton[] mSummonButtons;
 
+        [SerializeField]
+        private CharacterInfo[] mInfos;
+
         private const int REROOL_COST = 20;
 
         [SerializeField] private UI_LockButton mLockButton;
-        private void Start()
+
+        void Start()
         {
             mButton.onClick.AddListener(OnClickReRollBtn);
-            IngameDataManager.Instance.Subscribe(this, IngameDataManager.EDataType.Gold, gold =>
-            {
-                if (gold < REROOL_COST)
-                {
-                    mButton.interactable = false;
-                }
-                else
-                {
-                    mButton.interactable = true;
-                }
-            });
         }
 
-        public void OnClickReRollBtn()
+        private void OnClickReRollBtn()
         {
-            UI_Toast_Manager.Instance.Activate_WithContent_Func("Touch Reroll", isIgnoreTimeScale: true);
             if (mLockButton.IsLock)
             {
                 return;
@@ -46,10 +39,11 @@ namespace _2_Scripts.UI
             IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold, -REROOL_COST);
             for (int i = 0; i < mSummonButtons.Length; ++i)
             {
-                mSummonButtons[i].Reroll();
+                if (i == 1) mSummonButtons[i].Reroll(mInfos[i], 3);
+                else mSummonButtons[i].Reroll(mInfos[i], 1);
             }
+
+            MessageBroker.Default.Publish(new GameMessage<bool>(EGameMessage.TutorialProgress, false));
         }
-
-
     }
 }

@@ -155,6 +155,7 @@ namespace AssetKits.ParticleImage {
 
         public void Simulate(float deltaTime)
         {
+            deltaTime = deltaTime == 0 ? 0.000001f : deltaTime;
             _time += deltaTime;
             _normalizedTime = _time.Remap(0f, _lifetime, 0f, 1f);
             

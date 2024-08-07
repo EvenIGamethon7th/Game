@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Cargold;
 using TMPro;
@@ -31,6 +31,7 @@ namespace _2_Scripts.UI
         
         private void OnLockButton()
         {
+            UI_Toast_Manager.Instance.Activate_WithContent_Func("Touch Reroll Lock", isIgnoreTimeScale: true);
             IsLock = !IsLock;
             Tween_C.OnPunch_Func(transform);
             foreach (var button in SummonButtons)

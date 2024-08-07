@@ -24,6 +24,7 @@ namespace _2_Scripts.UI.Ingame
 
         private GameMessage<Vector2> mUseMessage;
         private GameMessage<bool> mPointerUpMessage;
+        private Button mButton;
 
         private void Awake()
         {
@@ -41,6 +42,8 @@ namespace _2_Scripts.UI.Ingame
                 {
                     SetCoolTime(message.Value);
                 }).AddTo(this);
+            if (GameManager.Instance.CurrentDialog == -1)
+                mButton = GetComponent<Button>();
         }
 
         public void Init(Sprite sprite, float coolTime)
@@ -79,6 +82,7 @@ namespace _2_Scripts.UI.Ingame
 
         private bool IsMouseOnImage(Vector2 imagePos, Vector2 mousePos)
         {
+            if (mButton != null && !mButton.interactable) return true;
             if (imagePos.x - mSizeDelta.x > mousePos.x || imagePos.x + mSizeDelta.x < mousePos.x) return false;
             if (imagePos.y - mSizeDelta.y > mousePos.y || imagePos.y + mSizeDelta.y < mousePos.y) return false;
 

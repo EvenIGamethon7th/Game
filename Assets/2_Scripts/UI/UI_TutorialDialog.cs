@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -7,29 +6,47 @@ using System.Threading;
 using TMPro;
 using UnityEngine;
 
-namespace _2_Scripts.Game.Dialog
+namespace _2_Scripts.UI
 {
-    public class UI_DialogPanel : MonoBehaviour
+    public class UI_TutorialDialog : MonoBehaviour
     {
-        [SerializeField]
-        private TextMeshProUGUI mNameText;
+        private float mPrevSpeed;
+        private CancellationTokenSource mCts = new CancellationTokenSource();
 
+        [SerializeField]
+        private RectTransform mRect;
         [SerializeField]
         private TextMeshProUGUI mDescriptionText;
 
-        [SerializeField]
-        private UI_FadeImage mImage;
-
-        private CancellationTokenSource mCts = new CancellationTokenSource();
         private StringBuilder mText = new StringBuilder(100);
 
         private string mCurrentDialog;
 
-        public async UniTask SetTextAsync(string name, string dialog)
+        private void OnEnable()
+        {
+            mPrevSpeed = Time.timeScale;
+            Time.timeScale = 0f;
+        }
+
+        private void OnDisable()
+        {
+            Time.timeScale = mPrevSpeed;
+        }
+
+        private void Awake()
+        {
+            mDescriptionText = GetComponentInChildren<TextMeshProUGUI>();
+        }
+
+        public void SetPosition(Vector2 pos)
+        {
+            mRect.position = pos;
+        }
+
+        public async UniTask SetTextAsync(string dialog)
         {
             mDescriptionText.text = "";
             mCurrentDialog = dialog;
-            mNameText.text = name;
 
             for (int i = 0; i < mCurrentDialog.Length; ++i)
             {

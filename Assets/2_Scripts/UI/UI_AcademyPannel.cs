@@ -52,7 +52,7 @@ namespace _2_Scripts.UI {
         private UI_AcademyInfo mInfo;
         [SerializeField]
         private GameObject mVacation;
-        private readonly float mLessonTime = 3;
+        private readonly float mLessonTime = 2;
 
         private CancellationTokenSource mCts = new ();
 

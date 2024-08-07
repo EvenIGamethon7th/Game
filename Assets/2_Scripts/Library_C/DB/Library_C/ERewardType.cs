@@ -3,6 +3,8 @@ public enum ERewardType
 {
     None = 0,
 
-    Character = 1,
-    Gold = 2,
+    VC = 3,
+    ITEM = 4,
+    Character = 5,
+    Gold = 6,
 }

@@ -99,6 +99,8 @@ public class IngameDataManager : Singleton<IngameDataManager>
                 {
                     TutorialTrigger = val.Value;
                 }).AddTo(this);
+            mUserLevel.Value = 3;
+            mUserExp.Value = 110;
         }
     }
 

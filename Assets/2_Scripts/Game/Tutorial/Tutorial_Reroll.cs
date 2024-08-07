@@ -1,6 +1,8 @@
+using _2_Scripts.Utils;
 using Cargold;
 using System.Collections;
 using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using CharacterInfo = _2_Scripts.Game.ScriptableObject.Character.CharacterInfo;
@@ -40,6 +42,8 @@ namespace _2_Scripts.UI
                 if (i == 1) mSummonButtons[i].Reroll(mInfos[i], 3);
                 else mSummonButtons[i].Reroll(mInfos[i], 1);
             }
+
+            MessageBroker.Default.Publish(new GameMessage<bool>(EGameMessage.TutorialProgress, false));
         }
     }
 }

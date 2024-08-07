@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using _2_Scripts.Game.Map;
@@ -133,7 +133,7 @@ namespace _2_Scripts.Game.Monster
             if (mMonsterData.hp <= 0)
             {
                 CurrentHpCanvas.Active = false;
-                if (IsLastBoss)
+                if (IsLastBoss && GameManager.Instance.CurrentDialog != -1)
                 {
                     MessageBroker.Default.Publish(new TaskMessage(ETaskList.GameOver));
                 }
@@ -167,23 +167,33 @@ namespace _2_Scripts.Game.Monster
 
         private void NextWayPoint()
         {
-            if(++mWayPointIndex == mWayPoint.GetWayPointCount())
+            if(++mWayPointIndex != mWayPoint.GetWayPointCount())
             {
-                if (IsLastBoss)
+                NextWayPointVector = mWayPoint.GetWayPointPosition(mWayPointIndex);
+                return;
+            }
+
+            if (IsLastBoss)
+            {
+                if (GameManager.Instance.CurrentDialog == -1)
                 {
-                    IngameDataManager.Instance.UpdateUserHp(IngameDataManager.Instance.MaxHp);
+                    IngameDataManager.Instance.UpdateUserHp((int)mMonsterData.atk);
+                    MessageBroker.Default.Publish(new GameMessage<bool>(EGameMessage.TutorialRewind, false));
                 }
 
                 else
                 {
-                    IngameDataManager.Instance.UpdateUserHp((int)mMonsterData.atk);
+                    IngameDataManager.Instance.UpdateUserHp(IngameDataManager.Instance.MaxHp);
                 }
-
-                Enabled(false);
-                gameObject.SetActive(false);
-                return;
             }
-            NextWayPointVector = mWayPoint.GetWayPointPosition(mWayPointIndex);
+
+            else
+            {
+                IngameDataManager.Instance.UpdateUserHp((int)mMonsterData.atk);
+            }
+
+            Enabled(false);
+            gameObject.SetActive(false);
         }
 
         /// <summary>

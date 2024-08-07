@@ -27,7 +27,6 @@ namespace _2_Scripts.Game.Dialog
 
         public async UniTask SetTextAsync(string name, string dialog)
         {
-            //mImage.gameObject.SetActive(false);
             mDescriptionText.text = "";
             mCurrentDialog = dialog;
             mNameText.text = name;
@@ -58,8 +57,6 @@ namespace _2_Scripts.Game.Dialog
 
         public void Cancel()
         {
-            //mImage.gameObject.SetActive(true);
-            //mImage.Fade(0.5f, 0);
             mCts.Cancel();
             mCts.Dispose();
             mCts = new CancellationTokenSource();

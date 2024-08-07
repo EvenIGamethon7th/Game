@@ -37,6 +37,7 @@ namespace _2_Scripts.UI
 
         public void OnClickReRollBtn()
         {
+            UI_Toast_Manager.Instance.Activate_WithContent_Func("Touch Reroll", isIgnoreTimeScale: true);
             if (mLockButton.IsLock)
             {
                 return;

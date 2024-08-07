@@ -106,4 +106,6 @@ public static partial class TableDataKey_C
     public const string Story_Script_1021 = "Script_1021";
     public const string Story_Script_1022 = "Script_1022";
     public const string Story_Script_1023 = "Script_1023";
+    public const string Story_Script_1024 = "Script_1024";
+    public const string Story_Script_1025 = "Script_1025";
 }

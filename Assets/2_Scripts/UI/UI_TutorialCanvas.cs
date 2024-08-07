@@ -34,6 +34,7 @@ namespace _2_Scripts.UI
         private int mGroup = 2;
 
         private bool mIsSpeaking;
+        private int mHardClick;
 
         private void Awake()
         {
@@ -142,7 +143,15 @@ namespace _2_Scripts.UI
                 .AddTo(this);
 
             this.ObserveEveryValueChanged(_ => StageManager.Instance.WaveCount)
-                .Where(_ => StageManager.Instance.WaveCount > 1)
+                .Where(_ => StageManager.Instance.WaveCount == 2)
+                .Take(1)
+                .Subscribe(_ => {
+                    StopWorld();
+                })
+                .AddTo(this);
+
+            this.ObserveEveryValueChanged(_ => StageManager.Instance.WaveCount)
+                .Where(_ => StageManager.Instance.WaveCount == 3)
                 .Take(1)
                 .Subscribe(_ => {
                     StopWorld();
@@ -156,7 +165,7 @@ namespace _2_Scripts.UI
                 mTutorialData.Enqueue(data);
             }
 
-            SetTextAsync("안녕 소환사님!\r\n먼저 학생을 소환해주세모!").Forget();
+            SetTextAsync("안녕 소환사님!\n먼저 학생을 소환해주세모!").Forget();
 
             this.UpdateAsObservable()
                 .Where(_ => Input.GetMouseButtonUp(0) && mDialog.gameObject.activeSelf)
@@ -183,8 +192,25 @@ namespace _2_Scripts.UI
             MessageBroker.Default.Receive<GameMessage<bool>>().
                Where(message => message.Message == EGameMessage.TutorialRewind).
                Subscribe(message => {
-                   StopWorld();
+                   if (mGroup == 9)
+                    StopWorld();
+                   else if (mGroup == 10)
+                   {
+                       SetTextAsync(mCurrentData).Forget();
+                   }
                }).AddTo(this);
+
+            mButtons[0].onClick.AddListener(Click);
+
+            void Click()
+            {
+                ++mHardClick;
+                if (mHardClick == 3)
+                {
+                    mButtons[0].onClick.RemoveListener(Click);
+                    StopWorld();
+                }
+            }
 
             void StopWorld()
             {

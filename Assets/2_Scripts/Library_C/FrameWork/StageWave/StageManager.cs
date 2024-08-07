@@ -121,11 +121,9 @@ public class StageManager : Singleton<StageManager>
     private async UniTaskVoid StartWave()
     {
         await UniTask.WaitForSeconds(3f);
-        mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
-        MessageBroker.Default.Publish(mNextStageMessage);
         while (true)
         {
-            mCurrentWaveData = mWaveList[mNextStageMessage.Value - 1];
+            mCurrentWaveData = mWaveList[mNextStageMessage.Value];
             Debug.Log(mCurrentWaveData.Key);
             SpawnMonsters(mCurrentWaveData).Forget();
             if (mCurrentWaveData.isIceMonster)
@@ -137,6 +135,10 @@ public class StageManager : Singleton<StageManager>
             {
                 MessageBroker.Default.Publish(mBossSpawnMessage);
             }
+
+            mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
+            if (mWaveList.Count != mNextStageMessage.Value)
+                MessageBroker.Default.Publish(mNextStageMessage);
 
             if (mWaveList.Count == mNextStageMessage.Value)
             {
@@ -159,15 +161,15 @@ public class StageManager : Singleton<StageManager>
                     time -= Time.deltaTime;
                 }
             }
-
-            mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
-            MessageBroker.Default.Publish(mNextStageMessage);
         }
 
     }
 
     private async UniTask SpawnMonsters(WaveData waveData)
     {
+        if (mIsTutorial)
+            await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
+
         for (int spawnCount = 0; spawnCount < waveData.spawnCount; spawnCount++)
         {
             var monster = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_Monster, mWayPoint.GetWayPointPosition(0)).GetComponent<Monster>();;
@@ -255,6 +257,7 @@ public class StageManager : Singleton<StageManager>
     private async UniTask TutorialInitAsync()
     {
         mNextStageMessage = new GameMessage<int>(EGameMessage.StageChange, 0);
+        mBossSpawnMessage = new TaskMessage(ETaskList.BossSpawn);
         MessageBroker.Default.Receive<GameMessage<bool>>().
             Where(message => message.Message == EGameMessage.TutorialRewind)
             .Subscribe(_ =>

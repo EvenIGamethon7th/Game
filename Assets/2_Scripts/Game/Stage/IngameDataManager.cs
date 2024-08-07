@@ -10,6 +10,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using CharacterInfo = _2_Scripts.Game.ScriptableObject.Character.CharacterInfo;
 
+[DefaultExecutionOrder(-10)]
 public class IngameDataManager : Singleton<IngameDataManager>
 {
     public enum EDataType
@@ -41,6 +42,7 @@ public class IngameDataManager : Singleton<IngameDataManager>
 
     public List<CharacterInfo> UserCharacterList { get; private set; } = new List<CharacterInfo>();
     public MainCharacterInfo CurrentMainCharacter { get; set; }
+    public bool TutorialTrigger { get; private set; } = false;
 
     public readonly Dictionary<int, int> mExpTable = new Dictionary<int, int>
         {
@@ -86,13 +88,22 @@ public class IngameDataManager : Singleton<IngameDataManager>
                 }).AddTo(this);
         }
 
+        MaxHp = GameManager.Instance.IsUseItem(EItemType.HpUp) ? 125 : 100;
         mUserHp = new ReactiveProperty<int>(MaxHp);
+
+        if (GameManager.Instance.CurrentDialog == -1)
+        {
+            MessageBroker.Default.Receive<GameMessage<bool>>().
+                Where(message => message.Message == EGameMessage.Tutorial)
+                .Subscribe(val =>
+                {
+                    TutorialTrigger = val.Value;
+                }).AddTo(this);
+        }
     }
 
     private void Start()
     {
-        MaxHp = GameManager.Instance.IsUseItem(EItemType.HpUp) ? 125 : 100;
-
         MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange)
             .Subscribe(message =>
             {
@@ -236,6 +247,11 @@ public class IngameDataManager : Singleton<IngameDataManager>
     public CharacterData GetRandomCharacterData(CharacterInfo characterInfo)
     {
         int grade = GetGradeBasedOnRates();
+        return characterInfo.CharacterEvolutions[grade].GetData;
+    }
+
+    public CharacterData GetCharacterData(CharacterInfo characterInfo, int grade)
+    {
         return characterInfo.CharacterEvolutions[grade].GetData;
     }
 

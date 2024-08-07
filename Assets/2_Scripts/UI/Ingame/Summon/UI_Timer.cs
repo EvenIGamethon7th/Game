@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using _2_Scripts.Utils;
 using Cargold;
 using Cysharp.Threading.Tasks;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
 using TMPro;
 using UniRx;
 using Unity.VisualScripting;
@@ -25,9 +26,12 @@ namespace _2_Scripts.UI
                 .Where(m => m.Message == EGameMessage.StageChange)
                 .Subscribe(m =>
                 {
-                    StartTimerAsync(20).Forget();
+                    int val = GameManager.Instance.CurrentDialog == -1 ? 15 : 20;
+                    StartTimerAsync(val).Forget();
                 })
                 .AddTo(this);
+            if (GameManager.Instance.CurrentDialog == -1)
+                StartTimerAsync(3).Forget();
         }
 
         private async UniTask StartTimerAsync(int val)
@@ -36,6 +40,12 @@ namespace _2_Scripts.UI
             float temp = val;
             int standard = val - 1;
             text.text = $"00:{val}";
+
+            if (GameManager.Instance.CurrentDialog == -1)
+            {
+                await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
+            }
+
             Tween_C.OnPunch_Func(this);
             while (temp > 0)
             {
@@ -43,6 +53,11 @@ namespace _2_Scripts.UI
                 if (mCount > 1 && temp < 15) break;
 
                 if (text == null) break;
+
+                if (GameManager.Instance.CurrentDialog == -1)
+                {
+                    await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
+                }
 
                 temp -= Time.deltaTime;
                 text.text = $"00:{(int)temp}";

@@ -8,6 +8,7 @@ using _2_Scripts.Game.Monster;
 using _2_Scripts.Utils;
 using Cargold;
 using Cysharp.Threading.Tasks;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Information;
 using Rito.Attributes;
 using UniRx;
 using Unity.VisualScripting;
@@ -37,6 +38,7 @@ public class StageManager : Singleton<StageManager>
     private TaskMessage mBossSpawnMessage;
 
     public int MaxStageCount { get; private set; }
+    private bool mIsTutorial = false;
 
     /// <summary>
     ///  테스트용 스테이지 시작 코드
@@ -45,10 +47,17 @@ public class StageManager : Singleton<StageManager>
     public void Start()
     {
         //Time.timeScale = 1.5f;
-        if (GameManager.Instance.IsTest)
+        if (GameManager.Instance.IsTest && GameManager.Instance.CurrentDialog != -1)
         {
             EditInit();
         }
+
+        else if (GameManager.Instance.CurrentDialog == -1)
+        {
+            mIsTutorial = true;
+            TutorialInitAsync().Forget();
+        }
+
         else
         {
             Init();
@@ -129,7 +138,18 @@ public class StageManager : Singleton<StageManager>
                 await UniTask.WaitForSeconds(NEXT_WAVE_TIME,cancellationToken:mCancellationToken.Token);
                 break;
             }
-            await UniTask.WaitForSeconds(NEXT_WAVE_TIME,cancellationToken:mCancellationToken.Token);
+
+            float time = mIsTutorial ? 15 : NEXT_WAVE_TIME;
+
+            while (time > 0)
+            {
+                await UniTask.DelayFrame(1, cancellationToken: mCancellationToken.Token);
+                if (mIsTutorial)
+                    await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
+
+                time -= Time.deltaTime;
+            }
+
             mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
             MessageBroker.Default.Publish(mNextStageMessage);
         }
@@ -212,5 +232,13 @@ public class StageManager : Singleton<StageManager>
         {
             mCancellationToken = new CancellationTokenSource();
         }
+    }
+
+    private async UniTask TutorialInitAsync()
+    {
+        mNextStageMessage = new GameMessage<int>(EGameMessage.StageChange, 0);
+        Debug.Log(GameManager.Instance.CurrentDialog);
+        await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
+        StageInit();
     }
 }

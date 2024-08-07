@@ -1,8 +1,10 @@
-﻿using Cargold;
+using Cargold;
 using Cysharp.Threading.Tasks;
+using System.Linq;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
+using CharacterInfo = _2_Scripts.Game.ScriptableObject.Character.CharacterInfo;
 
 namespace _2_Scripts.UI
 {
@@ -14,7 +16,6 @@ namespace _2_Scripts.UI
         [SerializeField]
         private UI_SummonButton[] mSummonButtons;
 
-        
         private const int REROOL_COST = 20;
 
         [SerializeField] private UI_LockButton mLockButton;
@@ -36,18 +37,18 @@ namespace _2_Scripts.UI
 
         public void OnClickReRollBtn()
         {
-            if(mLockButton.IsLock)
+            if (mLockButton.IsLock)
             {
                 return;
             }
             Tween_C.OnPunch_Func(transform);
-            IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold,-REROOL_COST);
-            foreach (var btn in mSummonButtons)
+            IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold, -REROOL_COST);
+            for (int i = 0; i < mSummonButtons.Length; ++i)
             {
-                btn.Reroll();
+                mSummonButtons[i].Reroll();
             }
         }
-        
-        
+
+
     }
 }

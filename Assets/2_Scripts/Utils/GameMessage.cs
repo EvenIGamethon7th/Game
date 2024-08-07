@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace _2_Scripts.Utils
 {
@@ -16,7 +16,10 @@ namespace _2_Scripts.Utils
         ChapterChange,
         CharacterCardChange,
         MonsterHp,
-        MainCharacterChange
+        MainCharacterChange,
+        Tutorial,
+        TutorialMove,
+        TutorialFusion
     }
     
     public class GameMessage<T>

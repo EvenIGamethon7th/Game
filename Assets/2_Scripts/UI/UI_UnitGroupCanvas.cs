@@ -88,6 +88,8 @@ namespace _2_Scripts.UI
         private void FusionButton()
         {
             mSelectUnitGroup.Fusion();
+            if (GameManager.Instance.CurrentDialog == -1)
+                MessageBroker.Default.Publish(new GameMessage<bool>(EGameMessage.TutorialFusion, false));
         }
 
         private void SellButton()

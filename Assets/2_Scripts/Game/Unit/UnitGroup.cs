@@ -161,15 +161,15 @@ namespace _2_Scripts.Game.Unit
                 switch (i)
                 {
                     case 0:
-                        Units[i].transform.position = transform.position;
+                        Units[i].transform.position = transform.position - Vector3.up * 0.25f;
                         break;
 
                     case 1:
-                        Units[i].transform.position = transform.position + new Vector3(0.5f, 0.5f, 0.0001f);
+                        Units[i].transform.position = transform.position + new Vector3(0.5f, 0.25f, 0.0001f);
                         break;
 
                     case 2:
-                        Units[i].transform.position = transform.position - new Vector3(0.5f, 0.5f, 0.0001f);
+                        Units[i].transform.position = transform.position - new Vector3(0.5f, 0.75f, 0.0001f);
                         break;
                 }
             }

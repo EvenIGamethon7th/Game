@@ -82,7 +82,7 @@ namespace _2_Scripts.UI {
 
         private void CanLesson(CUnit student)
         {
-            mCanLesson.SetValue(mDoLesson || mVacation);
+            mCanLesson.SetValue(mDoLesson || mIsVacation);
             MessageBroker.Default.Publish(mCanLesson);
             if (mDoLesson)
             {

@@ -15,7 +15,13 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 21300000, guid: 9c2c5ff5f60c5ed4f891563ac43d64fd, type: 3}
+    - {fileID: 21300000, guid: 651e2dba61ca69a43ae2b48786f88ccd, type: 3}
+    - {fileID: 21300000, guid: 2869679b6826451419ffefcb8417cf7a, type: 3}
+    - {fileID: 21300000, guid: 9c96d19effadb1b4bb2c823e45d7c6d4, type: 3}
+    - {fileID: 21300000, guid: ef8065ff8719fe344af6239feb485e3c, type: 3}
+    - {fileID: 21300000, guid: 18c9f30cefeccdb46b82357ca4c2fa14, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -34,7 +40,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 6
     - Name: 
       Entry: 7
       Data: 
@@ -47,33 +53,168 @@ MonoBehaviour:
     - Name: Key
       Entry: 1
       Data: Item_0
-    - Name: sortID
-      Entry: 3
-      Data: 18
-    - Name: nameKey
+    - Name: name
       Entry: 1
-      Data: Lo_Test
-    - Name: descKey
+      Data: "\uAE43\uD138"
+    - Name: code
       Entry: 1
-      Data: Lo_Test
-    - Name: startItem
-      Entry: 5
-      Data: true
-    - Name: tier
+      Data: FT
+    - Name: Icon
+      Entry: 10
+      Data: 0
+    - Name: type
       Entry: 3
-      Data: 1
-    - Name: value
-      Entry: 3
-      Data: 500
-    - Name: skillKey1
-      Entry: 1
+      Data: 3
+    - Name: 
+      Entry: 8
       Data: 
-    - Name: skillKey2
-      Entry: 1
+    - Name: 
+      Entry: 8
       Data: 
-    - Name: testEnum
-      Entry: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Item_1
+    - Name: $v
+      Entry: 7
+      Data: 3|ItemData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Item_1
+    - Name: name
+      Entry: 1
+      Data: "\uB2E4\uC774\uC544"
+    - Name: code
+      Entry: 1
+      Data: DI
+    - Name: Icon
+      Entry: 10
       Data: 1
+    - Name: type
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Item_2
+    - Name: $v
+      Entry: 7
+      Data: 4|ItemData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Item_2
+    - Name: name
+      Entry: 1
+      Data: "\uBF51\uAE30\uAD8C"
+    - Name: code
+      Entry: 1
+      Data: TI
+    - Name: Icon
+      Entry: 10
+      Data: 2
+    - Name: type
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Item_3
+    - Name: $v
+      Entry: 7
+      Data: 5|ItemData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Item_3
+    - Name: name
+      Entry: 1
+      Data: "2\uD0C0 \uAC15\uC758"
+    - Name: code
+      Entry: 1
+      Data: item_2st_instructor
+    - Name: Icon
+      Entry: 10
+      Data: 3
+    - Name: type
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Item_4
+    - Name: $v
+      Entry: 7
+      Data: 6|ItemData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Item_4
+    - Name: name
+      Entry: 1
+      Data: "1\uD0C0 \uAC15\uC758"
+    - Name: code
+      Entry: 1
+      Data: item_1st_instructor
+    - Name: Icon
+      Entry: 10
+      Data: 4
+    - Name: type
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Item_5
+    - Name: $v
+      Entry: 7
+      Data: 7|ItemData, Assembly-CSharp
+    - Name: Key
+      Entry: 1
+      Data: Item_5
+    - Name: name
+      Entry: 1
+      Data: "HP\uBB3C\uC57D"
+    - Name: code
+      Entry: 1
+      Data: item_hp_position
+    - Name: Icon
+      Entry: 10
+      Data: 5
+    - Name: type
+      Entry: 3
+      Data: 4
     - Name: 
       Entry: 8
       Data: 
@@ -88,14 +229,39 @@ MonoBehaviour:
       Data: 
   dataArr:
   - Key: Item_0
-    sortID: 18
-    nameKey: Lo_Test
-    descKey: Lo_Test
-    startItem: 1
-    tier: 1
-    value: 500
-    skillKey1: 
-    skillKey2: 
-    testEnum: 1
+    name: "\uAE43\uD138"
+    code: FT
+    Icon: {fileID: 21300000, guid: 9c2c5ff5f60c5ed4f891563ac43d64fd, type: 3}
+    type: 3
+  - Key: Item_1
+    name: "\uB2E4\uC774\uC544"
+    code: DI
+    Icon: {fileID: 21300000, guid: 651e2dba61ca69a43ae2b48786f88ccd, type: 3}
+    type: 3
+  - Key: Item_2
+    name: "\uBF51\uAE30\uAD8C"
+    code: TI
+    Icon: {fileID: 21300000, guid: 2869679b6826451419ffefcb8417cf7a, type: 3}
+    type: 3
+  - Key: Item_3
+    name: "2\uD0C0 \uAC15\uC758"
+    code: item_2st_instructor
+    Icon: {fileID: 21300000, guid: 9c96d19effadb1b4bb2c823e45d7c6d4, type: 3}
+    type: 4
+  - Key: Item_4
+    name: "1\uD0C0 \uAC15\uC758"
+    code: item_1st_instructor
+    Icon: {fileID: 21300000, guid: ef8065ff8719fe344af6239feb485e3c, type: 3}
+    type: 4
+  - Key: Item_5
+    name: "HP\uBB3C\uC57D"
+    code: item_hp_position
+    Icon: {fileID: 21300000, guid: 18c9f30cefeccdb46b82357ca4c2fa14, type: 3}
+    type: 4
   keyArr:
   - Item_0
+  - Item_1
+  - Item_2
+  - Item_3
+  - Item_4
+  - Item_5

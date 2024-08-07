@@ -27,7 +27,9 @@ namespace Cargold.FrameWork.BackEnd
         [Description("DI")]
         Diamond, // Diamond
         [Description("TI")]
-        Ticket
+        Ticket,
+        [Description("DR")]
+        DailyReward
     }
     
     public enum EEnchantClassType
@@ -48,7 +50,8 @@ namespace Cargold.FrameWork.BackEnd
         {
             {ECurrency.Father,new ReactiveProperty<int>(0)},
             {ECurrency.Diamond,new ReactiveProperty<int>(0)},
-            {ECurrency.Ticket,new ReactiveProperty<int>(0)}
+            {ECurrency.Ticket,new ReactiveProperty<int>(0)},
+            {ECurrency.DailyReward,new ReactiveProperty<int>(0)}
         };
         public Dictionary<string, SpawnMission> UserMission { get; private set; } = new Dictionary<string, SpawnMission>();
         public List<ChapterData> ChapterDataList { get; private set; } = new();
@@ -59,6 +62,7 @@ namespace Cargold.FrameWork.BackEnd
         public List<CatalogItem> CatalogItems { get; private set; } = new List<CatalogItem>();
         public List<StoreItem> PublicStoreItems { get; private set; } = new List<StoreItem>();
         public List<ItemInstance> UserInventory { get; private set; }= new List<ItemInstance>();
+        public int UserDailyReward { get; private set; } = 0;
 
         public string GetUserNickName()
         {
@@ -205,10 +209,29 @@ namespace Cargold.FrameWork.BackEnd
             await ReceiveStoreItems("PublicShop");
             await ReceiveInventory();
             await FetchCatalogItems();
+            await ReceivePlayerData();
             mbIsLoadData = true;
             successCallback?.Invoke();
         }
 
+        private async UniTask ReceivePlayerData()
+        {
+            var tcs = new UniTaskCompletionSource();
+            PlayFabClientAPI.GetUserData(new GetUserDataRequest(), (result) =>
+            {
+                // 양이 많아지면 객체로 빼야할듯 TODO 
+                if(result.Data.TryGetValue("DailyReward",out var data))
+                {
+                    UserDailyReward = int.Parse(data.Value);
+                }
+                tcs.TrySetResult();
+            }, (error) =>
+            {
+                tcs.TrySetException(new Exception(error.GenerateErrorReport()));
+                ErrorLog(error);
+            });
+           await tcs.Task;
+        }
         private async UniTask ReceiveEnchantData()
         {
             var tcs = new UniTaskCompletionSource();
@@ -252,7 +275,8 @@ namespace Cargold.FrameWork.BackEnd
         {
             string jsonData = JsonConvert.SerializeObject(ChapterDataList);
             PublishCharacterData(new Dictionary<string, string> { { "ChapterData", jsonData }, { "MissionData", JsonConvert.SerializeObject(UserMission)}, 
-                { "MainCharacterData", JsonConvert.SerializeObject(UserMainCharacterData) },{"EnchantData",JsonConvert.SerializeObject(UserEnchantData)}});
+                { "MainCharacterData", JsonConvert.SerializeObject(UserMainCharacterData) },{"EnchantData",JsonConvert.SerializeObject(UserEnchantData)},
+                {"DailyReward",UserDailyReward.ToString()}});
         }
 
         public async UniTask GetFeatherTimer(Action<DateTime, bool> callback)
@@ -340,6 +364,24 @@ namespace Cargold.FrameWork.BackEnd
             {
                 ReceiveInventory().Forget();
                 Debug.Log("UseInventoryItem");
+            }, (error) =>
+            {
+                ErrorLog(error);
+            });
+        }
+
+        public void GrantItem(string itemId)
+        {
+            var grantFreeItemRequest = new ExecuteCloudScriptRequest
+            {
+                FunctionName = "GrantFreeItem",
+                FunctionParameter = new {itemId},
+                GeneratePlayStreamEvent = true
+            };
+            PlayFabClientAPI.ExecuteCloudScript(grantFreeItemRequest, (result) =>
+            {
+                ReceiveInventory().Forget();
+                Debug.Log("GrantItem");
             }, (error) =>
             {
                 ErrorLog(error);
@@ -507,6 +549,12 @@ namespace Cargold.FrameWork.BackEnd
                         UserMainCharacterData.Add(mainCharacter.name, new MainCharacterData(mainCharacter.name, 1, false, EGetType.Lock));
                     }
                 }).AddTo(this);
+        }
+
+        public void UpdateDailyReward()
+        {
+            AddCurrencyData(ECurrency.DailyReward,-1);
+            UserDailyReward++;
         }
     }
 }

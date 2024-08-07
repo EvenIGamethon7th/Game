@@ -58,6 +58,11 @@ namespace _2_Scripts.UI.OutGame.Lobby.Draw
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("티켓이 부족합니다.");
                 return;
             }
+            if (!RandomDraw())
+            {
+                UI_Toast_Manager.Instance.Activate_WithContent_Func("모든 뽑기를 완료하였습니다!\n 다음 업데이트를 기대해주세요."); 
+                return;
+            }
             BackEndManager.Instance.AddCurrencyData(ECurrency.Ticket,-1);
             RandomDraw();
             MessageBroker.Default.Publish(mRewardEventMessage);
@@ -76,6 +81,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.Draw
                 return;
             }
             BackEndManager.Instance.AddCurrencyData(ECurrency.Diamond,-DRAW_COST_DIA);
+            RandomDraw();
             MessageBroker.Default.Publish(mRewardEventMessage);
         }
 

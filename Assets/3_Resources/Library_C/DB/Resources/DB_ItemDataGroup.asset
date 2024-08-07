@@ -15,7 +15,13 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 21300000, guid: 9c2c5ff5f60c5ed4f891563ac43d64fd, type: 3}
+    - {fileID: 21300000, guid: 651e2dba61ca69a43ae2b48786f88ccd, type: 3}
+    - {fileID: 21300000, guid: 2869679b6826451419ffefcb8417cf7a, type: 3}
+    - {fileID: 21300000, guid: 9c96d19effadb1b4bb2c823e45d7c6d4, type: 3}
+    - {fileID: 21300000, guid: ef8065ff8719fe344af6239feb485e3c, type: 3}
+    - {fileID: 21300000, guid: 18c9f30cefeccdb46b82357ca4c2fa14, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -54,8 +60,8 @@ MonoBehaviour:
       Entry: 1
       Data: FT
     - Name: Icon
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 0
     - Name: type
       Entry: 3
       Data: 3
@@ -84,8 +90,8 @@ MonoBehaviour:
       Entry: 1
       Data: DI
     - Name: Icon
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 1
     - Name: type
       Entry: 3
       Data: 3
@@ -114,8 +120,8 @@ MonoBehaviour:
       Entry: 1
       Data: TI
     - Name: Icon
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 2
     - Name: type
       Entry: 3
       Data: 3
@@ -144,8 +150,8 @@ MonoBehaviour:
       Entry: 1
       Data: item_2st_instructor
     - Name: Icon
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 3
     - Name: type
       Entry: 3
       Data: 4
@@ -174,8 +180,8 @@ MonoBehaviour:
       Entry: 1
       Data: item_1st_instructor
     - Name: Icon
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 4
     - Name: type
       Entry: 3
       Data: 4
@@ -204,8 +210,8 @@ MonoBehaviour:
       Entry: 1
       Data: item_hp_position
     - Name: Icon
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 5
     - Name: type
       Entry: 3
       Data: 4
@@ -225,32 +231,32 @@ MonoBehaviour:
   - Key: Item_0
     name: "\uAE43\uD138"
     code: FT
-    Icon: {fileID: 0}
+    Icon: {fileID: 21300000, guid: 9c2c5ff5f60c5ed4f891563ac43d64fd, type: 3}
     type: 3
   - Key: Item_1
     name: "\uB2E4\uC774\uC544"
     code: DI
-    Icon: {fileID: 0}
+    Icon: {fileID: 21300000, guid: 651e2dba61ca69a43ae2b48786f88ccd, type: 3}
     type: 3
   - Key: Item_2
     name: "\uBF51\uAE30\uAD8C"
     code: TI
-    Icon: {fileID: 0}
+    Icon: {fileID: 21300000, guid: 2869679b6826451419ffefcb8417cf7a, type: 3}
     type: 3
   - Key: Item_3
     name: "2\uD0C0 \uAC15\uC758"
     code: item_2st_instructor
-    Icon: {fileID: 0}
+    Icon: {fileID: 21300000, guid: 9c96d19effadb1b4bb2c823e45d7c6d4, type: 3}
     type: 4
   - Key: Item_4
     name: "1\uD0C0 \uAC15\uC758"
     code: item_1st_instructor
-    Icon: {fileID: 0}
+    Icon: {fileID: 21300000, guid: ef8065ff8719fe344af6239feb485e3c, type: 3}
     type: 4
   - Key: Item_5
     name: "HP\uBB3C\uC57D"
     code: item_hp_position
-    Icon: {fileID: 0}
+    Icon: {fileID: 21300000, guid: 18c9f30cefeccdb46b82357ca4c2fa14, type: 3}
     type: 4
   keyArr:
   - Item_0

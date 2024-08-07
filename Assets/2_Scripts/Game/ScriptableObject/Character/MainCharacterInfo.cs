@@ -18,5 +18,9 @@ namespace _2_Scripts.Game.ScriptableObject.Character
         [Title("½ºÅ³ ¸®½ºÆ®")]
         [SerializeField]
         public List<SkillInfo> SkillList { get; private set; }
+        
+        [Title("»Ì±â È®·ü")]
+        [SerializeField]
+        public float DrawProbability { get; private set; }
     }
 }

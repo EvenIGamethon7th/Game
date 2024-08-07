@@ -19,7 +19,11 @@ namespace _2_Scripts.Utils
         MainCharacterChange,
         Tutorial,
         TutorialMove,
-        TutorialFusion
+        TutorialFusion,
+        EnchantOpenPopUp,
+        RewardOpenPopUp,
+        MainCharacterLevelUp,
+        ProductDetailPopUp
     }
     
     public class GameMessage<T>

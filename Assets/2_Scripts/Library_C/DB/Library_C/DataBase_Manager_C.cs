@@ -48,6 +48,17 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             return this.item;
         }
     }
+    [InlineEditor, LabelText("ProductDetails"), SerializeField] private DB_ProductDetailsDataGroup productDetails;
+    public DB_ProductDetailsDataGroup GetProductDetails
+    {
+        get
+        {
+            if (this.productDetails == null)
+                this.productDetails = Resources.Load<DB_ProductDetailsDataGroup>(base.dataGroupSobjPath + "DB_ProductDetailsDataGroup");
+
+            return this.productDetails;
+        }
+    }
     [InlineEditor, LabelText("Localize"), SerializeField] private DB_LocalizeDataGroup localize;
     public DB_LocalizeDataGroup GetLocalize
     {
@@ -201,6 +212,7 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             
             this.define.Init_Func();
             this.item.Init_Func();
+            this.productDetails.Init_Func();
             this.localize.Init_Func();
             this.monster.Init_Func();
             this.stage.Init_Func();
@@ -221,6 +233,7 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
     {
         this.GetDefine.CallEdit_OnDataImportDone_Func();
         this.GetItem.CallEdit_OnDataImportDone_Func();
+        this.GetProductDetails.CallEdit_OnDataImportDone_Func();
         this.GetLocalize.CallEdit_OnDataImportDone_Func();
         this.GetMonster.CallEdit_OnDataImportDone_Func();
         this.GetStage.CallEdit_OnDataImportDone_Func();

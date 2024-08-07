@@ -21,4 +21,5 @@ public static partial class TableDataKey_C
     public const string Stage_Stage_17 = "Stage_17";
     public const string Stage_Stage_18 = "Stage_18";
     public const string Stage_Stage_19 = "Stage_19";
+    public const string Stage_Stage_100 = "Stage_100";
 }

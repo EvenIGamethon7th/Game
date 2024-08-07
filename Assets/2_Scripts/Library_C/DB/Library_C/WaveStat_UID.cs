@@ -28,4 +28,7 @@ public static partial class TableDataKey_C
     public const string WaveStat_stat_112 = "stat_112";
     public const string WaveStat_stat_115 = "stat_115";
     public const string WaveStat_stat_118 = "stat_118";
+    public const string WaveStat_stat_1000 = "stat_1000";
+    public const string WaveStat_stat_1001 = "stat_1001";
+    public const string WaveStat_stat_1002 = "stat_1002";
 }

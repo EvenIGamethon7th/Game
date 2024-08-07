@@ -83,4 +83,8 @@ public static partial class TableDataKey_C
     public const string Story_Script_80 = "Script_80";
     public const string Story_Script_81 = "Script_81";
     public const string Story_Script_82 = "Script_82";
+    public const string Story_Script_1000 = "Script_1000";
+    public const string Story_Script_1001 = "Script_1001";
+    public const string Story_Script_1002 = "Script_1002";
+    public const string Story_Script_1003 = "Script_1003";
 }

@@ -26,6 +26,8 @@ namespace Cargold.FrameWork.BackEnd
         Father, // Feather
         [Description("DI")]
         Diamond, // Diamond
+        [Description("TI")]
+        Ticket
     }
     
     public enum EEnchantClassType
@@ -45,7 +47,8 @@ namespace Cargold.FrameWork.BackEnd
         public Dictionary<ECurrency, ReactiveProperty<int>> UserCurrency { get; private set; } =  new Dictionary<ECurrency, ReactiveProperty<int>>
         {
             {ECurrency.Father,new ReactiveProperty<int>(0)},
-            {ECurrency.Diamond,new ReactiveProperty<int>(0)}
+            {ECurrency.Diamond,new ReactiveProperty<int>(0)},
+            {ECurrency.Ticket,new ReactiveProperty<int>(0)}
         };
         public Dictionary<string, SpawnMission> UserMission { get; private set; } = new Dictionary<string, SpawnMission>();
         public List<ChapterData> ChapterDataList { get; private set; } = new();

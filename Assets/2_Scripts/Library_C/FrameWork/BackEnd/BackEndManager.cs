@@ -150,6 +150,7 @@ namespace Cargold.FrameWork.BackEnd
         }
         public void AddCurrencyData(ECurrency currency, int amount)
         {
+            Debug.Log("ImHere");
             UserCurrency[currency].Value += amount;
             PublishCurrencyData(currency,amount);
         }

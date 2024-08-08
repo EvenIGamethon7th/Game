@@ -35,6 +35,7 @@ namespace _2_Scripts.UI.Ingame
             mRewardText.text = $"+{reward}";
             BackEndManager.Instance.AddCurrencyData(ECurrency.Diamond, reward);
             BackEndManager.Instance.IsUserTutorial = true;
+            BackEndManager.Instance.SaveCharacterData();
             for (int i = 0; i < rank; i++)
             {
                 Tween_C.OnPunch_Func(mStarts[i]);

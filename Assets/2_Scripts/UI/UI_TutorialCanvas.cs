@@ -20,6 +20,9 @@ namespace _2_Scripts.UI
         private GameMessage<bool> mTutorialMessage;
 
         [SerializeField]
+        private Tutorial_InfoPanel mInfoPanel;
+
+        [SerializeField]
         private GameObject mCursor;
 
         [SerializeField]
@@ -124,6 +127,7 @@ namespace _2_Scripts.UI
                 mButtons[mCount].onClick.RemoveListener(PublishMessage);
                 mButtons[mCount].onClick.AddListener(PublishMessage);
                 mButtons[mCount].interactable = true;
+                mInfoPanel.CurrentNum = mCount;
             }
         }
 

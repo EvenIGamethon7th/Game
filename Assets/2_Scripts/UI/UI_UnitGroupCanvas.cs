@@ -22,16 +22,19 @@ namespace _2_Scripts.UI
         }
 
         private Button[] mButtons;
-        public UnitGroup SelectUnitGroup { 
-            set {
+        public UnitGroup SelectUnitGroup
+        {
+            set
+            {
                 mSelectUnitGroup = value;
-                if (value == null) {
+                if (value == null)
+                {
                     gameObject.SetActive(false);
-                    return; 
+                    return;
                 }
                 gameObject.SetActive(true);
                 SetFusionButton();
-            } 
+            }
         }
 
         private UnitGroup mSelectUnitGroup;
@@ -101,7 +104,7 @@ namespace _2_Scripts.UI
             unit.Clear();
             if (mSelectUnitGroup != null)
                 SetFusionButton();
-            IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold,(int)(unit.CharacterDatas.cost * mCostRate));
+            IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold, (int)(unit.CharacterDatas.cost * mCostRate));
         }
 
         private void SetFusionButton()
@@ -115,7 +118,7 @@ namespace _2_Scripts.UI
 
         private void OnDestroy()
         {
-            for (int i = 0; i <  mButtons.Length; ++i) 
+            for (int i = 0; i < mButtons.Length; ++i)
             {
                 mButtons[i].onClick.RemoveAllListeners();
             }

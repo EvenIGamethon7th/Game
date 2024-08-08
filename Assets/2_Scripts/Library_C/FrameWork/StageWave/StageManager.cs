@@ -141,7 +141,7 @@ public class StageManager : Singleton<StageManager>
         {
             mCurrentWaveData = mWaveList[mNextStageMessage.Value - 1 + offset];
             Debug.Log(mCurrentWaveData.Key);
-            SpawnMonsters(mCurrentWaveData).Forget();
+            SpawnMonsters(mCurrentWaveData, mWaveList.Count == mNextStageMessage.Value + offset).Forget();
             if (mCurrentWaveData.isIceMonster)
             {
                 ++offset;
@@ -154,7 +154,7 @@ public class StageManager : Singleton<StageManager>
                 mBossWave = mNextStageMessage.Value;
             }
 
-            if (mWaveList.Count == mNextStageMessage.Value)
+            if (mWaveList.Count == mNextStageMessage.Value + offset)
             {
                 await WaitAsync();
                 break;
@@ -190,7 +190,7 @@ public class StageManager : Singleton<StageManager>
         CancelAndDisposeToken();
     }
 
-    private async UniTask SpawnMonsters(WaveData waveData)
+    private async UniTask SpawnMonsters(WaveData waveData, bool isEnd = false)
     {
         if (mIsTutorial)
             await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger, cancellationToken: mCancellationToken.Token);
@@ -199,9 +199,9 @@ public class StageManager : Singleton<StageManager>
 
         for (int spawnCount = 0; spawnCount < waveData.spawnCount; spawnCount++)
         {
-            var monster = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_Monster, mWayPoint.GetWayPointPosition(0)).GetComponent<Monster>();;
+            var monster = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_Monster, mWayPoint.GetWayPointPosition(0)).GetComponent<Monster>();
             WaveStatData waveStateData = DataBase_Manager.Instance.GetWaveStat.GetData_Func(waveData.apply_stat);
-            bool isLastBoss =  monster.IsLastBoss = mWaveList.Count == mNextStageMessage.Value;
+            bool isLastBoss =  monster.IsLastBoss = isEnd;
             monster.SpawnMonster(waveData.monsterKey, mWayPoint, waveData.isBoss, waveStateData,waveData.weight,isLastBoss);
   
             MonsterList.Add(monster);

@@ -183,7 +183,7 @@ public class StageManager : Singleton<StageManager>
                             break;
                     }
 
-                    mWaveTime -= Time.deltaTime;
+                    mWaveTime -= Time.deltaTime * 2;
                 }
             }
         }
@@ -221,7 +221,7 @@ public class StageManager : Singleton<StageManager>
                     await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger || mIsRewind, cancellationToken: mCancellationToken.Token);
                 }
 
-                time -= Time.deltaTime;
+                time -= Time.deltaTime * 2;
             }
 
             if (currentWave != mNextStageMessage.Value)

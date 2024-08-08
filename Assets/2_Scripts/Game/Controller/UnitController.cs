@@ -110,7 +110,7 @@ namespace _2_Scripts.Game.Controller
                                 mSelectCircle.transform.parent = selectUnitGroup.transform;
                                 mSelectCircle.transform.position = selectUnitGroup.transform.position;
                                 mSelectCircle.SetActive(true);
-                                mSelectCircle.transform.localScale = new Vector3(1, 1, 0) * selectUnitGroup.GroupRange * 2;
+                                mSelectCircle.transform.localScale = new Vector3(1, 1, 0) * selectUnitGroup.GroupRange * 0.8f;
                                 selectUnitGroup.IsSelect = true;
                             }
 

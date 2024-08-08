@@ -53,6 +53,7 @@ public class StageManager : Singleton<StageManager>
             SceneLoadManager.Instance.SceneClear += Clear;
             TutorialInitAsync().Forget();
         }
+        
     }
 
     protected override void AwakeInit()

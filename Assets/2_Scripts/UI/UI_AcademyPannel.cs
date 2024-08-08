@@ -54,6 +54,7 @@ namespace _2_Scripts.UI {
         [SerializeField]
         private GameObject mVacation;
         private readonly float mLessonTime = 2;
+        private int mLessonInWaveCount;
 
         private CancellationTokenSource mCts = new ();
 
@@ -95,6 +96,11 @@ namespace _2_Scripts.UI {
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("아카데미 방학 시즌입니다!", isIgnoreTimeScale: true);
             }
 
+            else if (mLessonInWaveCount != 0)
+            {
+                UI_Toast_Manager.Instance.Activate_WithContent_Func("이미 아카데미를 이번 웨이브에 다녀왔습니다!", isIgnoreTimeScale: true);
+            }
+
             else
             {
                 AcademyLesson(student);
@@ -118,7 +124,7 @@ namespace _2_Scripts.UI {
             mClassImage.gameObject.SetActive(true);
 
             mStudentData.isAlumni = true;
-
+            ++mLessonInWaveCount;
             DoLessonAsync().Forget();
         }
 
@@ -153,11 +159,14 @@ namespace _2_Scripts.UI {
 
         private void LessonComplete(int waveCount)
         {
+            mLessonInWaveCount = 0;
             if (waveCount % 4 == 0 && waveCount != 20) 
             { 
                 mIsVacation = false;
                 if (BackEndManager.Instance.IsUserTutorial)
+                {
                     Cargold.UI.UI_Toast_Manager.Instance.Activate_WithContent_Func("아카데미 입학 가능 웨이브입니다!", isIgnoreTimeScale: true);
+                }
             }
             else
             {

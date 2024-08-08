@@ -8,6 +8,11 @@ public static class MemoryPoolManager<T> where T : class, IPoolable, new ()
 {
     private static Dictionary<Type, List<IPoolable>> mMemoryPool = new ();
 
+    public static void ClearMemory()
+    {
+        mMemoryPool.Clear();
+    }
+
     public static T CreatePoolingObject()
     {
         return GetObject();

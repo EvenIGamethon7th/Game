@@ -98,6 +98,7 @@ namespace Cargold
 
                 if (isIgnoreTimeScale)
                 {
+                    _animationState.speed = 0;
                     var animState = _anim[_clipName];
 
                     UpdateUnscaled().Forget();

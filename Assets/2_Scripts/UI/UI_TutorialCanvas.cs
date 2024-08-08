@@ -176,15 +176,26 @@ namespace _2_Scripts.UI
                 .Where(_ => StageManager.Instance.WaveCount == 5)
                 .Take(1)
                 .Subscribe(_ => {
-                    StopWorld(true);
-                    mButtons[mCount].interactable = true;
+
+                    DelayTime().Forget();
+
+                    async UniTask DelayTime()
+                    {
+                        await UniTask.WaitForSeconds(5);
+                        StopWorld(true);
+                        mButtons[mCount].interactable = true;
+                    }
                 })
                 .AddTo(this);
 
             MessageBroker.Default.Receive<TaskMessage>().
                 Where(task => task.Task == ETaskList.BossSpawn).
                 Take(1).
-                Subscribe(_ => { StopWorld(true); }).AddTo(this);
+                Subscribe(_ => {
+                    mTutorialMessage.SetValue(false);
+                    MessageBroker.Default.Publish(mTutorialMessage);
+                    SetText();
+                }).AddTo(this);
 
             for (int i = 1; i < 100; ++i)
             {
@@ -237,7 +248,7 @@ namespace _2_Scripts.UI
                Where(message => message.Message == EGameMessage.TutorialRewind).
                Subscribe(message => {
                    if (mGroup == 10)
-                       StopWorld(true);
+                       SetText();
                    else if (mGroup == 11)
                    {
                        mIsRewind = true;

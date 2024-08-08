@@ -59,7 +59,7 @@ public class MapManager : Singleton<MapManager>
             mMap = mMapTile.UnitTile;
             mMonsterPathMap = mMapTile.MonsterTile;
 
-            Instantiate(ResourceManager.Instance.Load<GameObject>($"{GameManager.Instance.CurrentMainCharacter.CharacterEvolutions[1].GetData.characterData}1"));
+            Instantiate(ResourceManager.Instance.Load<GameObject>($"{GameManager.Instance.CurrentMainCharacter.name}{BackEndManager.Instance.UserMainCharacterData[GameManager.Instance.CurrentMainCharacter.name].rank}"));
             CreateInitialTileSlots();
             CreatePool();
         }

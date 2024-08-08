@@ -42,7 +42,6 @@ public class IngameDataManager : Singleton<IngameDataManager>
     private System.Random mRandom = new System.Random();
 
     public List<CharacterInfo> UserCharacterList { get; private set; } = new List<CharacterInfo>();
-    public MainCharacterInfo CurrentMainCharacter { get; set; }
     public bool TutorialTrigger { get; private set; } = false;
 
     public readonly Dictionary<int, int> mExpTable = new Dictionary<int, int>

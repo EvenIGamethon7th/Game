@@ -41,9 +41,13 @@ namespace _2_Scripts.UI.Ingame
 
         private void Start()
         {
+            int rank = 1;
             if (BackEndManager.Instance.IsUserTutorial)
+            {
                 mCharacterInfo = GameManager.Instance.CurrentMainCharacter;
-            string name = mCharacterInfo.CharacterEvolutions[1].GetData.characterData;
+                rank = BackEndManager.Instance.UserMainCharacterData[mCharacterInfo.name].rank;
+            }
+            string name = mCharacterInfo.CharacterEvolutions[rank].GetData.characterData;
 
             Sprite[] s = new Sprite[mSpriteAtlas.spriteCount];
             mSpriteAtlas.GetSprites(s);
@@ -55,10 +59,10 @@ namespace _2_Scripts.UI.Ingame
                 }
             }
 
-            mButton.Init(mButtonSpriteDict[name], mCharacterInfo.SkillList[0].CoolTime);
+            mButton.Init(mButtonSpriteDict[name], mCharacterInfo.SkillList[rank - 1].CoolTime);
 
             mCoolTime.Init(s.FirstOrDefault(x => x.name == $"{name}(Clone)"));
-            mInfoBubble.Init(mCharacterInfo.CharacterEvolutions[1].GetData, s.FirstOrDefault(x => x.name == $"{name}_Info(Clone)"));
+            mInfoBubble.Init(mCharacterInfo.CharacterEvolutions[rank].GetData, s.FirstOrDefault(x => x.name == $"{name}_Info(Clone)"));
         }
     }
 }

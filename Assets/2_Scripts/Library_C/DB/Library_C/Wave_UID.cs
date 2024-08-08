@@ -526,5 +526,4 @@ public static partial class TableDataKey_C
     public const string Wave_Wave_1002 = "Wave_1002";
     public const string Wave_Wave_1003 = "Wave_1003";
     public const string Wave_Wave_1004 = "Wave_1004";
-    public const string Wave_Wave_1005 = "Wave_1005";
 }

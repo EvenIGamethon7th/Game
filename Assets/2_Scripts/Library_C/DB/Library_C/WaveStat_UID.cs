@@ -33,5 +33,4 @@ public static partial class TableDataKey_C
     public const string WaveStat_stat_1002 = "stat_1002";
     public const string WaveStat_stat_1003 = "stat_1003";
     public const string WaveStat_stat_1004 = "stat_1004";
-    public const string WaveStat_stat_1005 = "stat_1005";
 }

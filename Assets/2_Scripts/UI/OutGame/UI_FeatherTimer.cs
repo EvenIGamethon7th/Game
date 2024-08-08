@@ -43,7 +43,7 @@ namespace _2_Scripts.UI.OutGame.Enchant
                     {
                         mTimerText.text = "";
                         await BackEndManager.Instance.GetFeatherTimer(UpdateFeatherTimer);
-                    }else if (BackEndManager.Instance.UserCurrency[ECurrency.Father].Value < 10)
+                    }else if (BackEndManager.Instance.UserCurrency[ECurrency.Father].Value >= 10)
                     {
                         mTimerText.text = "";
                     }

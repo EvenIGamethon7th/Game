@@ -18,10 +18,16 @@ namespace _2_Scripts.UI.OutGame.Lobby
         {
             foreach (var data in dataValue)
             {
-                data.rewardEvent.Invoke();
+                data.rewardEvent?.Invoke();
             }
             OnPopUpAsync(dataValue).Forget();
         }
+        public void OnPopUp(Define.RewardEvent dataValue)
+        {
+            dataValue?.rewardEvent?.Invoke();
+            OnPopUpAsync(new List<Define.RewardEvent> { dataValue }).Forget();
+        }
+        
         private async UniTask OnPopUpAsync(List<Define.RewardEvent> dataValue)
         {
             for (int i = 0 ; i < dataValue.Count; i++)

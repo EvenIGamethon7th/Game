@@ -1,4 +1,5 @@
 ﻿using _2_Scripts.Utils;
+using _2_Scripts.Utils.Components;
 using Sirenix.OdinInspector;
 using System;
 using TMPro;
@@ -28,12 +29,20 @@ namespace _2_Scripts.UI.OutGame.Lobby.Shop
         [SerializeField]
         private TextMeshProUGUI mPriceText;
         
+        
+        private GameMessage<Define.RewardEvent> mRewardEventMessage;
         private GameMessage<ProductDetailsData> mProductDetailMessage = new GameMessage<ProductDetailsData>(EGameMessage.ProductDetailPopUp,null);
         public void Start()
         {
             mPurchaseCondition = GetComponent<IPurchase>();
             mItemAcquisition = GetComponent<IItemAcquisition>();
-            if (mInfoButton != null && mProductDetailsKey != null)
+            mRewardEventMessage = new GameMessage<Define.RewardEvent>(EGameMessage.RewardOpenPopUp, new Define.RewardEvent()
+            {
+                count = mAmount,
+                name = mItemKey.GetData.name,
+                sprite = mItemKey.GetData.Icon
+            });
+            if (mInfoButton != null && mProductDetailsKey.GetData != null)
             {
                 mProductDetailMessage.SetValue(mProductDetailsKey.GetData);
                 mInfoButton.onClick.AddListener(InfoClick);
@@ -44,10 +53,17 @@ namespace _2_Scripts.UI.OutGame.Lobby.Shop
 
         private void Purchase()
         {
-            if (mPurchaseCondition.Purchase())
+      
+            if (!mPurchaseCondition.Purchase())
             {
-                mItemAcquisition.AcquireItem(mItemKey, mAmount);
+                return;
             }
+            mItemAcquisition.AcquireItem(mItemKey, mAmount);
+            if (mPurchaseCondition is PurchaseFreeReward)
+            {
+                mPriceText.text = mPurchaseCondition.GetPriceOrCount();
+            }
+            MessageBroker.Default.Publish(mRewardEventMessage);
         }
         private void InfoClick()
         {

@@ -8,6 +8,7 @@ namespace _2_Scripts.Utils.Components
         public bool Purchase()
         {
             //TODO 
+            UI_Toast_Manager.Instance.Activate_WithContent_Func("준비중 입니다");
             return false;
         }
 

@@ -13,17 +13,18 @@ namespace _2_Scripts.Game.BackEndData.Shop
         
         public bool RewardCountUp()
         {
+      
+            if (RewardCount + 1 > RewardMaxCount)
+            {
+                return false;
+            }
+            ++RewardCount;
             //TODO : 광고 송출 
             if (isAdReward)
             {
                 //TODO
                 Debug.Log("광고 송출 끝!");
             }
-            if (RewardCount >= RewardMaxCount)
-            {
-                return false;
-            }
-            RewardCount = RewardCount++;
             return true;
         }
     }

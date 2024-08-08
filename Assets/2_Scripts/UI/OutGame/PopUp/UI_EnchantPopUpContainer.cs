@@ -37,6 +37,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.Enchant
                 return;
             if (mMainCharacterData.rank >= 3)
             {
+                UI_Toast_Manager.Instance.Activate_WithContent_Func("이미 모두 강화했습니다");
                 return;
             }
 

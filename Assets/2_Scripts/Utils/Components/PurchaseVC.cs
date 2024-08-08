@@ -16,7 +16,7 @@ namespace _2_Scripts.Utils.Components
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("재화가 부족합니다.");
                 return false;
             }
-
+            BackEndManager.Instance.AddCurrencyData(mCurrency, -mPrice);
             return true;
         }
 

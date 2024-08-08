@@ -20,6 +20,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     private CanvasGroup mToolTipGroup;
 
     public event Action OnSceneLoad;
+    public event Action SceneClear;
 
 
     public void SceneChange(string sceneName)
@@ -51,6 +52,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         mSceneLoadAnimator.SetBool("Fade", false);
         mSceneLoadAnimator.gameObject.SetActive(true);
         mSceneLoadAnimator.Play(0);
+        SceneClear?.Invoke();
 
         await UniTask.WaitUntil(() => mGraphicMaterialOverride.PropertyValue <= 0f);
         ToolTipAnimation();

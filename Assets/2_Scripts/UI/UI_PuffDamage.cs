@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using _2_Scripts.Utils;
 using AssetKits.ParticleImage;
 using DG.Tweening;
@@ -13,6 +13,7 @@ namespace _2_Scripts.UI
         private void Start()
         {
             mPaticleImage = GetComponent<ParticleImage>();
+            SceneLoadManager.Instance.SceneClear += Clear;
             IngameDataManager.Instance.DamageHp += PlayParticle;
         }
 
@@ -22,8 +23,9 @@ namespace _2_Scripts.UI
             CameraManager.Instance.DoShake(CameraManager.ECameraType.Main, isUnscale: true);
         }
 
-        private void OnDestroy()
+        private void Clear()
         {
+            SceneLoadManager.Instance.SceneClear -= Clear;
             IngameDataManager.Instance.DamageHp -= PlayParticle;
         }
     }

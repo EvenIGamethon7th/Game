@@ -1,7 +1,8 @@
-﻿using _2_Scripts.Utils;
+using _2_Scripts.Utils;
 using Cargold;
 using Cargold.FrameWork.BackEnd;
 using Cysharp.Threading.Tasks;
+using System.Threading;
 using TMPro;
 using UniRx;
 using UnityEngine;
@@ -24,8 +25,11 @@ namespace _2_Scripts.UI
 
         private float mWaveTime;
 
+        private CancellationTokenSource mCts = new();
+
         private void Start()
         {
+            SceneLoadManager.Instance.SceneClear += Clear;
             MessageBroker.Default.Receive<TaskMessage>().
                 Where(task => task.Task == ETaskList.BossSpawn).
                 Subscribe(_ => mBossWave = StageManager.Instance.WaveCount).AddTo(this);
@@ -52,6 +56,13 @@ namespace _2_Scripts.UI
                 StartTimerAsync(3).Forget();
         }
 
+        private void Clear()
+        {
+            SceneLoadManager.Instance.SceneClear -= Clear;
+            mCts.Cancel();
+            mCts.Dispose();
+        }
+
         private async UniTask StartTimerAsync(int val)
         {
             ++mCount;
@@ -70,7 +81,7 @@ namespace _2_Scripts.UI
 
                 if (!BackEndManager.Instance.IsUserTutorial)
                 {
-                    await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
+                    await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger, cancellationToken: mCts.Token);
                 }
 
                 mWaveTime -= Time.deltaTime;

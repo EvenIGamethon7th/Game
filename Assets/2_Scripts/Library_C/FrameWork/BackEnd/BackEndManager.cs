@@ -5,6 +5,7 @@ using System.Linq;
 using _2_Scripts.Game.BackEndData.Enchant;
 using _2_Scripts.Game.BackEndData.MainCharacter;
 using _2_Scripts.Game.BackEndData.Mission;
+using _2_Scripts.Game.BackEndData.Shop;
 using _2_Scripts.Utils;
 using Cargold.Gacha;
 using Cysharp.Threading.Tasks;
@@ -62,7 +63,10 @@ namespace Cargold.FrameWork.BackEnd
         public List<CatalogItem> CatalogItems { get; private set; } = new List<CatalogItem>();
         public List<StoreItem> PublicStoreItems { get; private set; } = new List<StoreItem>();
         public List<ItemInstance> UserInventory { get; private set; }= new List<ItemInstance>();
+        public Dictionary<string,FreeRewardData> UserFreeRewardData { get; private set; } = new Dictionary<string, FreeRewardData>();
         public int UserDailyReward { get; private set; } = 0;
+        
+        public bool IsUserTutorial { get; set; } = false;
 
         public string GetUserNickName()
         {
@@ -210,10 +214,29 @@ namespace Cargold.FrameWork.BackEnd
             await ReceiveInventory();
             await FetchCatalogItems();
             await ReceivePlayerData();
+            await ReceiveFreeRewardData();
             mbIsLoadData = true;
             successCallback?.Invoke();
         }
 
+        
+        private async UniTask ReceiveFreeRewardData()
+        {
+            var tcs = new UniTaskCompletionSource();
+            PlayFabClientAPI.GetUserData(new GetUserDataRequest(), (result) =>
+            {
+                if (result.Data.TryGetValue("FreeRewardData", out var data))
+                {
+                   UserFreeRewardData = JsonConvert.DeserializeObject<Dictionary<string,FreeRewardData>>(data.Value);
+                }
+                tcs.TrySetResult();
+            }, (error) =>
+            {
+                tcs.TrySetException(new Exception(error.GenerateErrorReport()));
+                ErrorLog(error);
+            });
+            await tcs.Task;
+        }
         private async UniTask ReceivePlayerData()
         {
             var tcs = new UniTaskCompletionSource();
@@ -223,6 +246,10 @@ namespace Cargold.FrameWork.BackEnd
                 if(result.Data.TryGetValue("DailyReward",out var data))
                 {
                     UserDailyReward = int.Parse(data.Value);
+                }  
+                if(result.Data.TryGetValue("IsUserTutorial",out var tutoData))
+                {
+                    IsUserTutorial = bool.Parse(tutoData.Value);
                 }
                 tcs.TrySetResult();
             }, (error) =>
@@ -276,7 +303,7 @@ namespace Cargold.FrameWork.BackEnd
             string jsonData = JsonConvert.SerializeObject(ChapterDataList);
             PublishCharacterData(new Dictionary<string, string> { { "ChapterData", jsonData }, { "MissionData", JsonConvert.SerializeObject(UserMission)}, 
                 { "MainCharacterData", JsonConvert.SerializeObject(UserMainCharacterData) },{"EnchantData",JsonConvert.SerializeObject(UserEnchantData)},
-                {"DailyReward",UserDailyReward.ToString()}});
+                {"DailyReward",UserDailyReward.ToString()},{"FreeRewardData",JsonConvert.SerializeObject(UserFreeRewardData)},{"IsUserTutorial",IsUserTutorial.ToString()}});
         }
 
         public async UniTask GetFeatherTimer(Action<DateTime, bool> callback)

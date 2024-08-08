@@ -79,8 +79,9 @@ MonoBehaviour:
       Data: "\uAF41\uAF41"
     - Name: Description
       Entry: 1
-      Data: "\uC801\uC744 \uAF41\uAF41 \uC5BC\uB824 \uC774\uB3D9\uC744 \uBC29\uD574\uD569\uB2C8\uB2E4.\n\uC801\uC758
-        <color=#0000FF>\uC774\uB3D9\uC18D\uB3C4</color>\uB97C 30% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+      Data: "\uC801\uC744 \uAF41\uAF41 \uC5BC\uB824 \uB9C8\uBC95 \uACF5\uACA9\uB825\uC758
+        <color=#0000ff>300%</color> \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4.\n\uC801\uC758
+        \uC774\uB3D9\uC18D\uB3C4\uB97C <color=#d10000>30%</color> \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 8
@@ -119,7 +120,8 @@ MonoBehaviour:
       Data: "\uC5BC\uC74C\uAF43"
     - Name: Description
       Entry: 1
-      Data: "\uC0B4\uC5BC\uC74C \uAF43\uC744 \uB0A0\uB824 \uC801\uC744 \uACF5\uACA9\uD569\uB2C8\uB2E4."
+      Data: "\uC0B4\uC5BC\uC74C \uAF43\uC744 \uB0A0\uB824 \uB9C8\uBC95 \uACF5\uACA9\uB825\uC758
+        <color=#0000ff>500%</color> \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 10
@@ -158,7 +160,9 @@ MonoBehaviour:
       Data: "\uC1A1\uACF3\uB2C8"
     - Name: Description
       Entry: 1
-      Data: "\uC801\uC744 \uAE68\uBB3C\uC5B4 \uCD9C\uD608\uC744 \uC77C\uC73C\uD0B5\uB2C8\uB2E4."
+      Data: "\uC801\uC744 \uAE68\uBB3C\uC5B4 \uB9C8\uBC95 \uACF5\uACA9\uB825 <color=#0000ff>500%</color>\uC758
+        \uD53C\uD574\uB97C \uC785\uD788\uACE0\n\uC801 \uCD5C\uB300 \uCCB4\uB825 <color=#d10000>2%</color>\uC758
+        \uCD9C\uD608\uC744 \uC77C\uC73C\uD0B5\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 8
@@ -197,8 +201,9 @@ MonoBehaviour:
       Data: "\uD559\uC0B4"
     - Name: Description
       Entry: 1
-      Data: "\uBD89\uC740 \uD53C\uB85C \uC801\uC744 \uD559\uC0B4\uD569\uB2C8\uB2E4.
-        \n\uC801 \uCC98\uCE58 \uC2DC \uCFE8\uD0C0\uC784\uC774 \uCD08\uAE30\uD654\uB429\uB2C8\uB2E4."
+      Data: "\uBD89\uC740 \uD53C\uB85C \uC801\uC744 \uD559\uC0B4\uD574 \uB9C8\uBC95
+        \uACF5\uACA9\uB825\uC758 <color=#0000ff>800%</color> \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4.\n\uC801
+        \uCC98\uCE58 \uC2DC \uCFE8\uD0C0\uC784\uC774 <color=#d10000>\uCD08\uAE30\uD654</color>\uB429\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 15
@@ -237,8 +242,9 @@ MonoBehaviour:
       Data: "\uBD88\uC880\uAEBC\uC904\uB798"
     - Name: Description
       Entry: 1
-      Data: "\uC801\uC758 \uBC29\uC5B4\uAD6C\uB97C \uD0DC\uC6CC \n\uBC29\uC5B4\uB825\uC744
-        10% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+      Data: "\uC801\uC758 \uBC29\uC5B4\uAD6C\uB97C \uD0DC\uC6CC \uB9C8\uBC95 \uACF5\uACA9\uB825\uC758
+        <color=#0000ff>100%</color> \uD53C\uD574\uB97C \uC785\uD788\uACE0\n\uBC29\uC5B4\uB825\uC744
+        <color=#d10000>10%</color> \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 12
@@ -277,8 +283,8 @@ MonoBehaviour:
       Data: "\uB3C8\uC880\uAFD4\uC904\uB798"
     - Name: Description
       Entry: 1
-      Data: "\uAC81\uBA39\uC740 \uBAAC\uC2A4\uD130\uB4E4\uC774\n0.1% \uD655\uB960\uB85C
-        \uC5F4\uC1E0\uB97C \uB0B4\uBC49\uC2B5\uB2C8\uB2E4."
+      Data: "\uAC81\uBA39\uC740 \uBAAC\uC2A4\uD130\uB4E4\uC774 <color=#d10000>0.1%</color>
+        \uD655\uB960\uB85C \uC5F4\uC1E0\uB97C \uB0B4\uBC49\uC2B5\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 0
@@ -318,7 +324,7 @@ MonoBehaviour:
     - Name: Description
       Entry: 1
       Data: "\uBAA8\uB4E0 \uC544\uAD70\uC758 \uB9C8\uBC95 \uACF5\uACA9\uB825\uC744
-        10% \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
+        <color=#0000ff>10%</color> \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 0
@@ -358,7 +364,8 @@ MonoBehaviour:
     - Name: Description
       Entry: 1
       Data: "\uD544\uB4DC\uC5D0 \uCD9C\uB825\uB41C \uBAA8\uB4E0 \uBAAC\uC2A4\uD130\uC5D0
-        \uC528\uC557\uC744 \uC2EC\uC5B4 \uACF5\uACA9\uD569\uB2C8\uB2E4."
+        \uC528\uC557\uC744 \uC2EC\uC5B4\n\uB9C8\uBC95 \uACF5\uACA9\uB825\uC758 <color=#0000ff>200%</color>
+        \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 20
@@ -397,8 +404,8 @@ MonoBehaviour:
       Data: "\uD604\uC0C1\uAE08"
     - Name: Description
       Entry: 1
-      Data: "\uAE30\uBCF8 \uACF5\uACA9 \uC2DC 2% \uD655\uB960\uB85C 5\uACE8\uB4DC\uB97C
-        \uD68D\uB4DD\uD569\uB2C8\uB2E4."
+      Data: "\uAE30\uBCF8 \uACF5\uACA9 \uC2DC <color=#d10000>2%</color> \uD655\uB960\uB85C
+        5\uACE8\uB4DC\uB97C \uD68D\uB4DD\uD569\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 0
@@ -437,8 +444,9 @@ MonoBehaviour:
       Data: "\uACE8\uB4DC \uC775\uC2A4\uD50C\uB85C\uC804"
     - Name: Description
       Entry: 1
-      Data: "\uB3D9\uC804\uC744 \uB358\uC838 \uC801\uC744 \uACF5\uACA9\uD558\uACE0
-        \uAC00\uC9C4 \uACE8\uB4DC\uB97C \uAC15\uD0C8\uD569\uB2C8\uB2E4."
+      Data: "\uB3D9\uC804\uC744 \uB358\uC838 \uC801\uC5D0\uAC8C \uACF5\uACA9\uB825\uC758
+        <color=#0000ff>700%</color>\uC758 \uD53C\uD574\uB97C \uC785\uD788\uACE0\n<color=#d10000>10\uACE8\uB4DC</color>\uB97C
+        \uAC15\uD0C8\uD569\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 20
@@ -479,7 +487,7 @@ MonoBehaviour:
       Entry: 1
       Data: "\uC751\uC6D0\uAC00\uB97C \uBD88\uB7EC \uC544\uAD70 \uC720\uB2DB\uC758
         \uC0AC\uAE30\uB97C \uB04C\uC5B4\uC62C\uB9BD\uB2C8\uB2E4.\n\uC544\uAD70 \uC720\uB2DB\uC758
-        \uACF5\uACA9\uB825\uC774 10% \uC0C1\uC2B9\uD569\uB2C8\uB2E4."
+        \uACF5\uACA9\uB825\uC774 <color=#0000ff>10%</color> \uC0C1\uC2B9\uD569\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 0
@@ -519,8 +527,10 @@ MonoBehaviour:
     - Name: Description
       Entry: 1
       Data: "\uC801\uC744 \uBA40\uB9AC \uB0A0\uB824 \uC804\uD22C\uC5D0\uC11C \uAC15\uC81C\uB85C
-        \uCD94\uBC29\uD569\uB2C8\uB2E4.\n\uCC98\uCE58 \uBCF4\uC0C1 \uACE8\uB4DC\uB294
-        \uC5BB\uC744 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4."
+        <color=#d10000>\uCD94\uBC29</color>\uD569\uB2C8\uB2E4.\n\uCC98\uCE58 \uBCF4\uC0C1
+        \uACE8\uB4DC\uB294 \uC5BB\uC744 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4. \n\uBCF4\uC2A4\uC5D0
+        \uC801\uC6A9 \uC2DC \uC774\uB3D9\uC18D\uB3C4\uB97C <color=#d10000>30%</color>
+        \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 25
@@ -559,8 +569,8 @@ MonoBehaviour:
       Data: "\uCC98\uD615"
     - Name: Description
       Entry: 1
-      Data: "\uCCB4\uB825\uC774 10% \uBBF8\uB9CC\uC778 \uC801 \uACF5\uACA9 \uC2DC
-        \uC989\uC2DC \uCC98\uD615\uC2DC\uD0B5\uB2C8\uB2E4."
+      Data: "\uCCB4\uB825\uC774 <color=#d10000>10%</color> \uBBF8\uB9CC\uC778 \uC801
+        \uACF5\uACA9 \uC2DC \uC989\uC2DC \uCC98\uD615\uC2DC\uD0B5\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 0
@@ -599,8 +609,8 @@ MonoBehaviour:
       Data: "\uAD11\uBD84"
     - Name: Description
       Entry: 1
-      Data: "\uAC80\uC744 \uBE60\uB974\uAC8C \uD718\uB458\uB7EC \uC801\uC5D0\uAC8C
-        \uB0B4\uC0C1\uC744 \uC785\uD799\uB2C8\uB2E4."
+      Data: "\uAC80\uC744 \uBE60\uB974\uAC8C \uD718\uB458\uB7EC \uACF5\uACA9\uB825\uC758
+        <color=#0000ff>700%</color> \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 10
@@ -639,8 +649,9 @@ MonoBehaviour:
       Data: "\uBB34\uBA85"
     - Name: Description
       Entry: 1
-      Data: "\uC2A4\uD0AC \uC801\uC911 \uC2DC \uC801\uC758 \uC774\uB3D9\uC18D\uB3C4\uB97C
-        30% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+      Data: "\uC801\uC758 \uAE09\uC18C\uB97C \uACF5\uACA9\uD558\uC5EC \uACF5\uACA9\uB825\uC758
+        <color=#0000ff>300%</color> \uD53C\uD574\uB97C \uC785\uD788\uACE0\n\uC774\uB3D9\uC18D\uB3C4\uB97C
+        <color=#d10000>30%</color> \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 7
@@ -679,8 +690,8 @@ MonoBehaviour:
       Data: "\uAC80\uACA9"
     - Name: Description
       Entry: 1
-      Data: "\uAC80\uC5D0 \uB9C8\uBC95\uC744 \uCDA9\uC804\uD558\uC5EC \uAC15\uB825\uD55C
-        \uC77C\uACA9\uC744 \uB0A0\uB9BD\uB2C8\uB2E4."
+      Data: "\uAC15\uB825\uD55C \uC77C\uACA9\uC744 \uB0A0\uB824 \uACF5\uACA9\uB825\uC758
+        <color=#0000ff>700%</color> \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 10
@@ -719,8 +730,9 @@ MonoBehaviour:
       Data: "\uD604\uD639"
     - Name: Description
       Entry: 1
-      Data: "\uC801\uC744 \uD604\uD639\uC2DC\uCF1C \uC774\uB3D9\uC18D\uB3C4\uB97C
-        30% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+      Data: "\uC801\uC744 \uD604\uD639\uC2DC\uCF1C \uACF5\uACA9\uB825\uC758 <color=#0000ff>300%</color>\uC758
+        \uD53C\uD574\uB97C \uC785\uD788\uACE0\n\uC774\uB3D9\uC18D\uB3C4\uB97C <color=#d10000>30%</color>
+        \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 8
@@ -760,7 +772,8 @@ MonoBehaviour:
     - Name: Description
       Entry: 1
       Data: "\uC801\uC744 \uC911\uB3C5\uC2DC\uCF1C 5\uCD08\uAC04 \uC801\uC5D0\uAC8C
-        \uCD5C\uB300 \uCCB4\uB825 \uBE44\uB840 2% \uC758 \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
+        \uCD5C\uB300 \uCCB4\uB825 \uBE44\uB840 <color=#d10000>2%</color> \uC758 \uD53C\uD574\uB97C
+        \uC785\uD799\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 0
@@ -799,7 +812,7 @@ MonoBehaviour:
       Data: "\uBBF8\uCE74\uC5D8"
     - Name: Description
       Entry: 1
-      Data: "\uBAA8\uB4E0 \uC544\uAD70\uC758 \uACF5\uACA9 \uC18D\uB3C4\uB97C 10%
+      Data: "\uBAA8\uB4E0 \uC544\uAD70\uC758 \uACF5\uACA9 \uC18D\uB3C4\uB97C <color=#0000ff>10%</color>
         \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
@@ -840,7 +853,8 @@ MonoBehaviour:
     - Name: Description
       Entry: 1
       Data: "\uD558\uB298\uC5D0\uC11C \uBE5B\uC774 \uC3DF\uC544\uC838 \uC801\uC744
-        \uC2EC\uD310\uD569\uB2C8\uB2E4."
+        \uC2EC\uD310\uD569\uB2C8\uB2E4.\n\uACF5\uACA9\uB825\uC758 <color=#0000ff>300%</color>
+        \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 10
@@ -879,8 +893,8 @@ MonoBehaviour:
       Data: "\uB77C\uC774\uD2B8\uB2DD"
     - Name: Description
       Entry: 1
-      Data: "\uACE0\uC555\uC758 \uC804\uAE30\uB97C \uBC29\uCD9C\uC2DC\uCF1C \uC801\uC744
-        \uAC10\uC804\uC2DC\uD0B5\uB2C8\uB2E4."
+      Data: "\uC801\uC744 \uAC10\uC804\uC2DC\uCF1C \uACF5\uACA9\uB825\uC758 <color=#0000ff>400%</color>
+        \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 8
@@ -919,8 +933,8 @@ MonoBehaviour:
       Data: "\uB77C\uC774\uD2B8\uBCFC"
     - Name: Description
       Entry: 1
-      Data: "\uBC88\uAC1C \uAD6C\uCCB4\uB97C \uC18C\uD658\uD558\uC5EC \uC8FC\uBCC0
-        \uC801\uC744 \uAC10\uC804\uC2DC\uD0B5\uB2C8\uB2E4."
+      Data: "\uC801\uC5D0\uAC8C \uACE0\uC555\uC758 \uC804\uAE30\uB97C \uBC29\uCD9C\uC2DC\uCF1C
+        \uACF5\uACA9\uB825\uC758 <color=#0000ff>700%</color> \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 10
@@ -960,7 +974,8 @@ MonoBehaviour:
     - Name: Description
       Entry: 1
       Data: "\uD654\uC0B4\uC744 \uC5EC\uB7EC \uAC1C \uC5EE\uC5B4 \uAC15\uB825\uD55C
-        \uC77C\uBC18 \uACF5\uACA9\uC744 \uD569\uB2C8\uB2E4."
+        \uACF5\uACA9\uC744 \uAC00\uD569\uB2C8\uB2E4.\n\uACF5\uACA9\uB825\uC758 <color=#0000ff>600%</color>
+        \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 6
@@ -1000,7 +1015,7 @@ MonoBehaviour:
     - Name: Description
       Entry: 1
       Data: "\uAE30\uBCF8 \uACF5\uACA9 \uC2DC \uC801 \uCD5C\uB300 \uCCB4\uB825 \uBE44\uB840
-        0.4%\uC758 \uCD94\uAC00 \uB370\uBBF8\uC9C0\uAC00 \uBC1C\uC0DD\uD569\uB2C8\uB2E4."
+        <color=#d10000>0.4%</color>\uC758 \uCD94\uAC00 \uB370\uBBF8\uC9C0\uAC00 \uBC1C\uC0DD\uD569\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 0
@@ -1040,8 +1055,8 @@ MonoBehaviour:
     - Name: Description
       Entry: 1
       Data: "\uBB3C\uAC10\uC625\uC744 \uC0DD\uC131\uD574 \uACF5\uACA9\uB825\uC758
-        300% \uD53C\uD574\uB97C \uC785\uD788\uACE0\n\uC774\uB3D9\uC18D\uB3C4\uB97C
-        80% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+        <color=#0000ff>300%</color> \uD53C\uD574\uB97C \uC785\uD788\uACE0 \uC774\uB3D9\uC18D\uB3C4\uB97C
+        <color=#d10000>80%</color> \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 40
@@ -1081,8 +1096,8 @@ MonoBehaviour:
     - Name: Description
       Entry: 1
       Data: "\uBB3C\uAC10\uC625\uC744 \uC0DD\uC131\uD574 \uACF5\uACA9\uB825\uC758
-        300% \uD53C\uD574\uB97C \uC785\uD788\uACE0\n\uC774\uB3D9\uC18D\uB3C4\uB97C
-        80% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+        <color=#0000ff>300%</color> \uD53C\uD574\uB97C \uC785\uD788\uACE0 \uC774\uB3D9\uC18D\uB3C4\uB97C
+        <color=#d10000>80%</color> \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 30
@@ -1122,8 +1137,8 @@ MonoBehaviour:
     - Name: Description
       Entry: 1
       Data: "\uBB3C\uAC10\uC625\uC744 \uC0DD\uC131\uD574 \uACF5\uACA9\uB825\uC758
-        300% \uD53C\uD574\uB97C \uC785\uD788\uACE0\n\uC774\uB3D9\uC18D\uB3C4\uB97C
-        80% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+        <color=#0000ff>300%</color> \uD53C\uD574\uB97C \uC785\uD788\uACE0 \uC774\uB3D9\uC18D\uB3C4\uB97C
+        <color=#d10000>80%</color> \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 15
@@ -1163,7 +1178,7 @@ MonoBehaviour:
     - Name: Description
       Entry: 1
       Data: "\uBD84\uB178\uC5D0 \uCC2C \uB808\uBE0C\uAC00 \uAC15\uB825\uD55C \uD654\uC5FC
-        \uACF5\uACA9\uC744 \uBC1C\uC0AC\uD558\uC5EC\n\uACF5\uACA9\uB825\uC758 600%\uC758
+        \uACF5\uACA9\uC744 \uBC1C\uC0AC\uD558\uC5EC \uACF5\uACA9\uB825\uC758 <color=#0000ff>600%</color>\uC758
         \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
@@ -1204,7 +1219,7 @@ MonoBehaviour:
     - Name: Description
       Entry: 1
       Data: "\uBD84\uB178\uC5D0 \uCC2C \uB808\uBE0C\uAC00 \uAC15\uB825\uD55C \uD654\uC5FC
-        \uACF5\uACA9\uC744 \uBC1C\uC0AC\uD558\uC5EC\n\uACF5\uACA9\uB825\uC758 600%\uC758
+        \uACF5\uACA9\uC744 \uBC1C\uC0AC\uD558\uC5EC \uACF5\uACA9\uB825\uC758 <color=#0000ff>600%</color>\uC758
         \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
@@ -1245,7 +1260,7 @@ MonoBehaviour:
     - Name: Description
       Entry: 1
       Data: "\uBD84\uB178\uC5D0 \uCC2C \uB808\uBE0C\uAC00 \uAC15\uB825\uD55C \uD654\uC5FC
-        \uACF5\uACA9\uC744 \uBC1C\uC0AC\uD558\uC5EC\n\uACF5\uACA9\uB825\uC758 600%\uC758
+        \uACF5\uACA9\uC744 \uBC1C\uC0AC\uD558\uC5EC \uACF5\uACA9\uB825\uC758 <color=#0000ff>600%</color>\uC758
         \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
@@ -1287,7 +1302,7 @@ MonoBehaviour:
       Entry: 1
       Data: "\uC138\uACC4\uC218\uB97C \uC18C\uD658\uD574 \uC544\uAD70\uC5D0 \uCD95\uBCF5\uC744
         \uB0B4\uB9BD\uB2C8\uB2E4.\n10\uCD08\uAC04 \uC544\uAD70\uC758 \uACF5\uACA9\uB825
-        \uBC0F \uB9C8\uBC95 \uACF5\uACA9\uB825\uC744 10% \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
+        \uBC0F \uB9C8\uBC95 \uACF5\uACA9\uB825\uC744 <color=#0000ff>10%</color> \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 45
@@ -1328,7 +1343,7 @@ MonoBehaviour:
       Entry: 1
       Data: "\uC138\uACC4\uC218\uB97C \uC18C\uD658\uD574 \uC544\uAD70\uC5D0 \uCD95\uBCF5\uC744
         \uB0B4\uB9BD\uB2C8\uB2E4.\n10\uCD08\uAC04 \uC544\uAD70\uC758 \uACF5\uACA9\uB825
-        \uBC0F \uB9C8\uBC95 \uACF5\uACA9\uB825\uC744 20% \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
+        \uBC0F \uB9C8\uBC95 \uACF5\uACA9\uB825\uC744 <color=#0000ff>20%</color> \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 35
@@ -1369,7 +1384,7 @@ MonoBehaviour:
       Entry: 1
       Data: "\uC138\uACC4\uC218\uB97C \uC18C\uD658\uD574 \uC544\uAD70\uC5D0 \uCD95\uBCF5\uC744
         \uB0B4\uB9BD\uB2C8\uB2E4.\n10\uCD08\uAC04 \uC544\uAD70\uC758 \uACF5\uACA9\uB825
-        \uBC0F \uB9C8\uBC95 \uACF5\uACA9\uB825\uC744 30% \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
+        \uBC0F \uB9C8\uBC95 \uACF5\uACA9\uB825\uC744 <color=#0000ff>30%</color> \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 25
@@ -1409,7 +1424,7 @@ MonoBehaviour:
     - Name: Description
       Entry: 1
       Data: "\uC2E0\uC131\uD55C \uD798\uC744 \uBC1C\uC0B0\uD558\uC5EC \uC131\uBCBD
-        HP\uB97C 10 \uD68C\uBCF5\uC2DC\uD0B5\uB2C8\uB2E4."
+        HP\uB97C <color=#0000ff>10</color> \uD68C\uBCF5\uC2DC\uD0B5\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 60
@@ -1449,7 +1464,7 @@ MonoBehaviour:
     - Name: Description
       Entry: 1
       Data: "\uC2E0\uC131\uD55C \uD798\uC744 \uBC1C\uC0B0\uD558\uC5EC \uC131\uBCBD
-        HP\uB97C 10 \uD68C\uBCF5\uC2DC\uD0B5\uB2C8\uB2E4."
+        HP\uB97C <color=#0000ff>10</color> \uD68C\uBCF5\uC2DC\uD0B5\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 45
@@ -1489,7 +1504,7 @@ MonoBehaviour:
     - Name: Description
       Entry: 1
       Data: "\uC2E0\uC131\uD55C \uD798\uC744 \uBC1C\uC0B0\uD558\uC5EC \uC131\uBCBD
-        HP\uB97C 10 \uD68C\uBCF5\uC2DC\uD0B5\uB2C8\uB2E4."
+        HP\uB97C <color=#0000ff>10</color> \uD68C\uBCF5\uC2DC\uD0B5\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
       Data: 25
@@ -1528,8 +1543,8 @@ MonoBehaviour:
       Data: "\uBCBD \uB108\uBA38\uB85C"
     - Name: Description
       Entry: 1
-      Data: "\uCC28\uC6D0\uC758 \uBB38\uC744 \uC5F4\uC5B4 \uC801\uC744 \uC774\uC138\uACC4\uB85C
-        \uC774\uB3D9\uC2DC\uD0B5\uB2C8\uB2E4.\n\uBCF4\uC2A4 \uBAAC\uC2A4\uD130\uB294
+      Data: "\uCC28\uC6D0\uC758 \uBB38\uC744 \uC5F4\uC5B4 \uC801\uC744 <color=#d10000>\uC774\uC138\uACC4\uB85C
+        \uC774\uB3D9</color>\uC2DC\uD0B5\uB2C8\uB2E4. \uBCF4\uC2A4 \uBAAC\uC2A4\uD130\uB294
         \uC774\uB3D9\uC2DC\uD0A4\uC9C0 \uBABB\uD569\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
@@ -1569,8 +1584,8 @@ MonoBehaviour:
       Data: "\uBCBD \uB108\uBA38\uB85C"
     - Name: Description
       Entry: 1
-      Data: "\uCC28\uC6D0\uC758 \uBB38\uC744 \uC5F4\uC5B4 \uC801\uC744 \uC774\uC138\uACC4\uB85C
-        \uC774\uB3D9\uC2DC\uD0B5\uB2C8\uB2E4.\n\uBCF4\uC2A4 \uBAAC\uC2A4\uD130\uB294
+      Data: "\uCC28\uC6D0\uC758 \uBB38\uC744 \uC5F4\uC5B4 \uC801\uC744 <color=#d10000>\uC774\uC138\uACC4\uB85C
+        \uC774\uB3D9</color>\uC2DC\uD0B5\uB2C8\uB2E4. \uBCF4\uC2A4 \uBAAC\uC2A4\uD130\uB294
         \uC774\uB3D9\uC2DC\uD0A4\uC9C0 \uBABB\uD569\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
@@ -1610,8 +1625,8 @@ MonoBehaviour:
       Data: "\uBCBD \uB108\uBA38\uB85C"
     - Name: Description
       Entry: 1
-      Data: "\uCC28\uC6D0\uC758 \uBB38\uC744 \uC5F4\uC5B4 \uC801\uC744 \uC774\uC138\uACC4\uB85C
-        \uC774\uB3D9\uC2DC\uD0B5\uB2C8\uB2E4.\n\uBCF4\uC2A4 \uBAAC\uC2A4\uD130\uB294
+      Data: "\uCC28\uC6D0\uC758 \uBB38\uC744 \uC5F4\uC5B4 \uC801\uC744 <color=#d10000>\uC774\uC138\uACC4\uB85C
+        \uC774\uB3D9</color>\uC2DC\uD0B5\uB2C8\uB2E4. \uBCF4\uC2A4 \uBAAC\uC2A4\uD130\uB294
         \uC774\uB3D9\uC2DC\uD0A4\uC9C0 \uBABB\uD569\uB2C8\uB2E4."
     - Name: CoolTime
       Entry: 3
@@ -1641,8 +1656,9 @@ MonoBehaviour:
   - Key: Skill_0
     Group: 1
     Name: "\uAF41\uAF41"
-    Description: "\uC801\uC744 \uAF41\uAF41 \uC5BC\uB824 \uC774\uB3D9\uC744 \uBC29\uD574\uD569\uB2C8\uB2E4.\n\uC801\uC758
-      <color=#0000FF>\uC774\uB3D9\uC18D\uB3C4</color>\uB97C 30% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+    Description: "\uC801\uC744 \uAF41\uAF41 \uC5BC\uB824 \uB9C8\uBC95 \uACF5\uACA9\uB825\uC758
+      <color=#0000ff>300%</color> \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4.\n\uC801\uC758
+      \uC774\uB3D9\uC18D\uB3C4\uB97C <color=#d10000>30%</color> \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     CoolTime: 8
     SkillType: 1
     Grade: 2
@@ -1650,7 +1666,8 @@ MonoBehaviour:
   - Key: Skill_1
     Group: 1
     Name: "\uC5BC\uC74C\uAF43"
-    Description: "\uC0B4\uC5BC\uC74C \uAF43\uC744 \uB0A0\uB824 \uC801\uC744 \uACF5\uACA9\uD569\uB2C8\uB2E4."
+    Description: "\uC0B4\uC5BC\uC74C \uAF43\uC744 \uB0A0\uB824 \uB9C8\uBC95 \uACF5\uACA9\uB825\uC758
+      <color=#0000ff>500%</color> \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
     CoolTime: 10
     SkillType: 1
     Grade: 3
@@ -1658,7 +1675,10 @@ MonoBehaviour:
   - Key: Skill_2
     Group: 2
     Name: "\uC1A1\uACF3\uB2C8"
-    Description: "\uC801\uC744 \uAE68\uBB3C\uC5B4 \uCD9C\uD608\uC744 \uC77C\uC73C\uD0B5\uB2C8\uB2E4."
+    Description: "\uC801\uC744 \uAE68\uBB3C\uC5B4 \uB9C8\uBC95 \uACF5\uACA9\uB825
+      <color=#0000ff>500%</color>\uC758 \uD53C\uD574\uB97C \uC785\uD788\uACE0\n\uC801
+      \uCD5C\uB300 \uCCB4\uB825 <color=#d10000>2%</color>\uC758 \uCD9C\uD608\uC744
+      \uC77C\uC73C\uD0B5\uB2C8\uB2E4."
     CoolTime: 8
     SkillType: 1
     Grade: 2
@@ -1666,8 +1686,9 @@ MonoBehaviour:
   - Key: Skill_3
     Group: 2
     Name: "\uD559\uC0B4"
-    Description: "\uBD89\uC740 \uD53C\uB85C \uC801\uC744 \uD559\uC0B4\uD569\uB2C8\uB2E4.
-      \n\uC801 \uCC98\uCE58 \uC2DC \uCFE8\uD0C0\uC784\uC774 \uCD08\uAE30\uD654\uB429\uB2C8\uB2E4."
+    Description: "\uBD89\uC740 \uD53C\uB85C \uC801\uC744 \uD559\uC0B4\uD574 \uB9C8\uBC95
+      \uACF5\uACA9\uB825\uC758 <color=#0000ff>800%</color> \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4.\n\uC801
+      \uCC98\uCE58 \uC2DC \uCFE8\uD0C0\uC784\uC774 <color=#d10000>\uCD08\uAE30\uD654</color>\uB429\uB2C8\uB2E4."
     CoolTime: 15
     SkillType: 1
     Grade: 3
@@ -1675,8 +1696,9 @@ MonoBehaviour:
   - Key: Skill_4
     Group: 3
     Name: "\uBD88\uC880\uAEBC\uC904\uB798"
-    Description: "\uC801\uC758 \uBC29\uC5B4\uAD6C\uB97C \uD0DC\uC6CC \n\uBC29\uC5B4\uB825\uC744
-      10% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+    Description: "\uC801\uC758 \uBC29\uC5B4\uAD6C\uB97C \uD0DC\uC6CC \uB9C8\uBC95
+      \uACF5\uACA9\uB825\uC758 <color=#0000ff>100%</color> \uD53C\uD574\uB97C \uC785\uD788\uACE0\n\uBC29\uC5B4\uB825\uC744
+      <color=#d10000>10%</color> \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     CoolTime: 12
     SkillType: 1
     Grade: 2
@@ -1684,8 +1706,8 @@ MonoBehaviour:
   - Key: Skill_5
     Group: 3
     Name: "\uB3C8\uC880\uAFD4\uC904\uB798"
-    Description: "\uAC81\uBA39\uC740 \uBAAC\uC2A4\uD130\uB4E4\uC774\n0.1% \uD655\uB960\uB85C
-      \uC5F4\uC1E0\uB97C \uB0B4\uBC49\uC2B5\uB2C8\uB2E4."
+    Description: "\uAC81\uBA39\uC740 \uBAAC\uC2A4\uD130\uB4E4\uC774 <color=#d10000>0.1%</color>
+      \uD655\uB960\uB85C \uC5F4\uC1E0\uB97C \uB0B4\uBC49\uC2B5\uB2C8\uB2E4."
     CoolTime: 0
     SkillType: 2
     Grade: 3
@@ -1694,7 +1716,7 @@ MonoBehaviour:
     Group: 4
     Name: "\uBB3C \uC8FC\uAE30"
     Description: "\uBAA8\uB4E0 \uC544\uAD70\uC758 \uB9C8\uBC95 \uACF5\uACA9\uB825\uC744
-      10% \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
+      <color=#0000ff>10%</color> \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
     CoolTime: 0
     SkillType: 2
     Grade: 2
@@ -1703,7 +1725,8 @@ MonoBehaviour:
     Group: 4
     Name: "\uC528\uC557 \uC2EC\uAE30"
     Description: "\uD544\uB4DC\uC5D0 \uCD9C\uB825\uB41C \uBAA8\uB4E0 \uBAAC\uC2A4\uD130\uC5D0
-      \uC528\uC557\uC744 \uC2EC\uC5B4 \uACF5\uACA9\uD569\uB2C8\uB2E4."
+      \uC528\uC557\uC744 \uC2EC\uC5B4\n\uB9C8\uBC95 \uACF5\uACA9\uB825\uC758 <color=#0000ff>200%</color>
+      \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
     CoolTime: 20
     SkillType: 1
     Grade: 3
@@ -1711,8 +1734,8 @@ MonoBehaviour:
   - Key: Skill_8
     Group: 5
     Name: "\uD604\uC0C1\uAE08"
-    Description: "\uAE30\uBCF8 \uACF5\uACA9 \uC2DC 2% \uD655\uB960\uB85C 5\uACE8\uB4DC\uB97C
-      \uD68D\uB4DD\uD569\uB2C8\uB2E4."
+    Description: "\uAE30\uBCF8 \uACF5\uACA9 \uC2DC <color=#d10000>2%</color> \uD655\uB960\uB85C
+      5\uACE8\uB4DC\uB97C \uD68D\uB4DD\uD569\uB2C8\uB2E4."
     CoolTime: 0
     SkillType: 2
     Grade: 2
@@ -1720,8 +1743,9 @@ MonoBehaviour:
   - Key: Skill_9
     Group: 5
     Name: "\uACE8\uB4DC \uC775\uC2A4\uD50C\uB85C\uC804"
-    Description: "\uB3D9\uC804\uC744 \uB358\uC838 \uC801\uC744 \uACF5\uACA9\uD558\uACE0
-      \uAC00\uC9C4 \uACE8\uB4DC\uB97C \uAC15\uD0C8\uD569\uB2C8\uB2E4."
+    Description: "\uB3D9\uC804\uC744 \uB358\uC838 \uC801\uC5D0\uAC8C \uACF5\uACA9\uB825\uC758
+      <color=#0000ff>700%</color>\uC758 \uD53C\uD574\uB97C \uC785\uD788\uACE0\n<color=#d10000>10\uACE8\uB4DC</color>\uB97C
+      \uAC15\uD0C8\uD569\uB2C8\uB2E4."
     CoolTime: 20
     SkillType: 1
     Grade: 3
@@ -1731,7 +1755,7 @@ MonoBehaviour:
     Name: "\uC751\uC6D0\uAC00"
     Description: "\uC751\uC6D0\uAC00\uB97C \uBD88\uB7EC \uC544\uAD70 \uC720\uB2DB\uC758
       \uC0AC\uAE30\uB97C \uB04C\uC5B4\uC62C\uB9BD\uB2C8\uB2E4.\n\uC544\uAD70 \uC720\uB2DB\uC758
-      \uACF5\uACA9\uB825\uC774 10% \uC0C1\uC2B9\uD569\uB2C8\uB2E4."
+      \uACF5\uACA9\uB825\uC774 <color=#0000ff>10%</color> \uC0C1\uC2B9\uD569\uB2C8\uB2E4."
     CoolTime: 0
     SkillType: 2
     Grade: 2
@@ -1740,8 +1764,10 @@ MonoBehaviour:
     Group: 6
     Name: "\uD648\uB7F0"
     Description: "\uC801\uC744 \uBA40\uB9AC \uB0A0\uB824 \uC804\uD22C\uC5D0\uC11C
-      \uAC15\uC81C\uB85C \uCD94\uBC29\uD569\uB2C8\uB2E4.\n\uCC98\uCE58 \uBCF4\uC0C1
-      \uACE8\uB4DC\uB294 \uC5BB\uC744 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4."
+      \uAC15\uC81C\uB85C <color=#d10000>\uCD94\uBC29</color>\uD569\uB2C8\uB2E4.\n\uCC98\uCE58
+      \uBCF4\uC0C1 \uACE8\uB4DC\uB294 \uC5BB\uC744 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.
+      \n\uBCF4\uC2A4\uC5D0 \uC801\uC6A9 \uC2DC \uC774\uB3D9\uC18D\uB3C4\uB97C <color=#d10000>30%</color>
+      \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     CoolTime: 25
     SkillType: 1
     Grade: 3
@@ -1749,8 +1775,8 @@ MonoBehaviour:
   - Key: Skill_12
     Group: 7
     Name: "\uCC98\uD615"
-    Description: "\uCCB4\uB825\uC774 10% \uBBF8\uB9CC\uC778 \uC801 \uACF5\uACA9 \uC2DC
-      \uC989\uC2DC \uCC98\uD615\uC2DC\uD0B5\uB2C8\uB2E4."
+    Description: "\uCCB4\uB825\uC774 <color=#d10000>10%</color> \uBBF8\uB9CC\uC778
+      \uC801 \uACF5\uACA9 \uC2DC \uC989\uC2DC \uCC98\uD615\uC2DC\uD0B5\uB2C8\uB2E4."
     CoolTime: 0
     SkillType: 2
     Grade: 2
@@ -1758,8 +1784,8 @@ MonoBehaviour:
   - Key: Skill_13
     Group: 7
     Name: "\uAD11\uBD84"
-    Description: "\uAC80\uC744 \uBE60\uB974\uAC8C \uD718\uB458\uB7EC \uC801\uC5D0\uAC8C
-      \uB0B4\uC0C1\uC744 \uC785\uD799\uB2C8\uB2E4."
+    Description: "\uAC80\uC744 \uBE60\uB974\uAC8C \uD718\uB458\uB7EC \uACF5\uACA9\uB825\uC758
+      <color=#0000ff>700%</color> \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
     CoolTime: 10
     SkillType: 1
     Grade: 3
@@ -1767,8 +1793,9 @@ MonoBehaviour:
   - Key: Skill_14
     Group: 8
     Name: "\uBB34\uBA85"
-    Description: "\uC2A4\uD0AC \uC801\uC911 \uC2DC \uC801\uC758 \uC774\uB3D9\uC18D\uB3C4\uB97C
-      30% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+    Description: "\uC801\uC758 \uAE09\uC18C\uB97C \uACF5\uACA9\uD558\uC5EC \uACF5\uACA9\uB825\uC758
+      <color=#0000ff>300%</color> \uD53C\uD574\uB97C \uC785\uD788\uACE0\n\uC774\uB3D9\uC18D\uB3C4\uB97C
+      <color=#d10000>30%</color> \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     CoolTime: 7
     SkillType: 1
     Grade: 2
@@ -1776,8 +1803,8 @@ MonoBehaviour:
   - Key: Skill_15
     Group: 8
     Name: "\uAC80\uACA9"
-    Description: "\uAC80\uC5D0 \uB9C8\uBC95\uC744 \uCDA9\uC804\uD558\uC5EC \uAC15\uB825\uD55C
-      \uC77C\uACA9\uC744 \uB0A0\uB9BD\uB2C8\uB2E4."
+    Description: "\uAC15\uB825\uD55C \uC77C\uACA9\uC744 \uB0A0\uB824 \uACF5\uACA9\uB825\uC758
+      <color=#0000ff>700%</color> \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
     CoolTime: 10
     SkillType: 1
     Grade: 3
@@ -1785,8 +1812,9 @@ MonoBehaviour:
   - Key: Skill_16
     Group: 9
     Name: "\uD604\uD639"
-    Description: "\uC801\uC744 \uD604\uD639\uC2DC\uCF1C \uC774\uB3D9\uC18D\uB3C4\uB97C
-      30% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+    Description: "\uC801\uC744 \uD604\uD639\uC2DC\uCF1C \uACF5\uACA9\uB825\uC758
+      <color=#0000ff>300%</color>\uC758 \uD53C\uD574\uB97C \uC785\uD788\uACE0\n\uC774\uB3D9\uC18D\uB3C4\uB97C
+      <color=#d10000>30%</color> \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     CoolTime: 8
     SkillType: 1
     Grade: 2
@@ -1795,7 +1823,8 @@ MonoBehaviour:
     Group: 9
     Name: "\uC911\uB3C5"
     Description: "\uC801\uC744 \uC911\uB3C5\uC2DC\uCF1C 5\uCD08\uAC04 \uC801\uC5D0\uAC8C
-      \uCD5C\uB300 \uCCB4\uB825 \uBE44\uB840 2% \uC758 \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
+      \uCD5C\uB300 \uCCB4\uB825 \uBE44\uB840 <color=#d10000>2%</color> \uC758 \uD53C\uD574\uB97C
+      \uC785\uD799\uB2C8\uB2E4."
     CoolTime: 0
     SkillType: 2
     Grade: 3
@@ -1804,7 +1833,7 @@ MonoBehaviour:
     Group: 10
     Name: "\uBBF8\uCE74\uC5D8"
     Description: "\uBAA8\uB4E0 \uC544\uAD70\uC758 \uACF5\uACA9 \uC18D\uB3C4\uB97C
-      10% \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
+      <color=#0000ff>10%</color> \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
     CoolTime: 0
     SkillType: 2
     Grade: 2
@@ -1813,7 +1842,8 @@ MonoBehaviour:
     Group: 10
     Name: "\uC2EC\uD310"
     Description: "\uD558\uB298\uC5D0\uC11C \uBE5B\uC774 \uC3DF\uC544\uC838 \uC801\uC744
-      \uC2EC\uD310\uD569\uB2C8\uB2E4."
+      \uC2EC\uD310\uD569\uB2C8\uB2E4.\n\uACF5\uACA9\uB825\uC758 <color=#0000ff>300%</color>
+      \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
     CoolTime: 10
     SkillType: 1
     Grade: 3
@@ -1821,8 +1851,8 @@ MonoBehaviour:
   - Key: Skill_20
     Group: 11
     Name: "\uB77C\uC774\uD2B8\uB2DD"
-    Description: "\uACE0\uC555\uC758 \uC804\uAE30\uB97C \uBC29\uCD9C\uC2DC\uCF1C
-      \uC801\uC744 \uAC10\uC804\uC2DC\uD0B5\uB2C8\uB2E4."
+    Description: "\uC801\uC744 \uAC10\uC804\uC2DC\uCF1C \uACF5\uACA9\uB825\uC758
+      <color=#0000ff>400%</color> \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
     CoolTime: 8
     SkillType: 1
     Grade: 2
@@ -1830,8 +1860,8 @@ MonoBehaviour:
   - Key: Skill_21
     Group: 11
     Name: "\uB77C\uC774\uD2B8\uBCFC"
-    Description: "\uBC88\uAC1C \uAD6C\uCCB4\uB97C \uC18C\uD658\uD558\uC5EC \uC8FC\uBCC0
-      \uC801\uC744 \uAC10\uC804\uC2DC\uD0B5\uB2C8\uB2E4."
+    Description: "\uC801\uC5D0\uAC8C \uACE0\uC555\uC758 \uC804\uAE30\uB97C \uBC29\uCD9C\uC2DC\uCF1C
+      \uACF5\uACA9\uB825\uC758 <color=#0000ff>700%</color> \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
     CoolTime: 10
     SkillType: 1
     Grade: 3
@@ -1840,7 +1870,8 @@ MonoBehaviour:
     Group: 12
     Name: "\uC751\uCD95 \uD654\uC0B4"
     Description: "\uD654\uC0B4\uC744 \uC5EC\uB7EC \uAC1C \uC5EE\uC5B4 \uAC15\uB825\uD55C
-      \uC77C\uBC18 \uACF5\uACA9\uC744 \uD569\uB2C8\uB2E4."
+      \uACF5\uACA9\uC744 \uAC00\uD569\uB2C8\uB2E4.\n\uACF5\uACA9\uB825\uC758 <color=#0000ff>600%</color>
+      \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
     CoolTime: 6
     SkillType: 1
     Grade: 2
@@ -1849,7 +1880,8 @@ MonoBehaviour:
     Group: 12
     Name: "\uC57D\uC810 \uAC04\uD30C"
     Description: "\uAE30\uBCF8 \uACF5\uACA9 \uC2DC \uC801 \uCD5C\uB300 \uCCB4\uB825
-      \uBE44\uB840 0.4%\uC758 \uCD94\uAC00 \uB370\uBBF8\uC9C0\uAC00 \uBC1C\uC0DD\uD569\uB2C8\uB2E4."
+      \uBE44\uB840 <color=#d10000>0.4%</color>\uC758 \uCD94\uAC00 \uB370\uBBF8\uC9C0\uAC00
+      \uBC1C\uC0DD\uD569\uB2C8\uB2E4."
     CoolTime: 0
     SkillType: 2
     Grade: 3
@@ -1858,8 +1890,8 @@ MonoBehaviour:
     Group: 100
     Name: "\uC544\uCFE0\uC544\uBE14\uB85D"
     Description: "\uBB3C\uAC10\uC625\uC744 \uC0DD\uC131\uD574 \uACF5\uACA9\uB825\uC758
-      300% \uD53C\uD574\uB97C \uC785\uD788\uACE0\n\uC774\uB3D9\uC18D\uB3C4\uB97C
-      80% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+      <color=#0000ff>300%</color> \uD53C\uD574\uB97C \uC785\uD788\uACE0 \uC774\uB3D9\uC18D\uB3C4\uB97C
+      <color=#d10000>80%</color> \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     CoolTime: 40
     SkillType: 1
     Grade: 1
@@ -1868,8 +1900,8 @@ MonoBehaviour:
     Group: 100
     Name: "\uC544\uCFE0\uC544\uBE14\uB85D"
     Description: "\uBB3C\uAC10\uC625\uC744 \uC0DD\uC131\uD574 \uACF5\uACA9\uB825\uC758
-      300% \uD53C\uD574\uB97C \uC785\uD788\uACE0\n\uC774\uB3D9\uC18D\uB3C4\uB97C
-      80% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+      <color=#0000ff>300%</color> \uD53C\uD574\uB97C \uC785\uD788\uACE0 \uC774\uB3D9\uC18D\uB3C4\uB97C
+      <color=#d10000>80%</color> \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     CoolTime: 30
     SkillType: 1
     Grade: 2
@@ -1878,8 +1910,8 @@ MonoBehaviour:
     Group: 100
     Name: "\uC544\uCFE0\uC544\uBE14\uB85D"
     Description: "\uBB3C\uAC10\uC625\uC744 \uC0DD\uC131\uD574 \uACF5\uACA9\uB825\uC758
-      300% \uD53C\uD574\uB97C \uC785\uD788\uACE0\n\uC774\uB3D9\uC18D\uB3C4\uB97C
-      80% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+      <color=#0000ff>300%</color> \uD53C\uD574\uB97C \uC785\uD788\uACE0 \uC774\uB3D9\uC18D\uB3C4\uB97C
+      <color=#d10000>80%</color> \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     CoolTime: 15
     SkillType: 1
     Grade: 3
@@ -1888,8 +1920,8 @@ MonoBehaviour:
     Group: 101
     Name: "\uBD88\uAF43\uB180\uC774"
     Description: "\uBD84\uB178\uC5D0 \uCC2C \uB808\uBE0C\uAC00 \uAC15\uB825\uD55C
-      \uD654\uC5FC \uACF5\uACA9\uC744 \uBC1C\uC0AC\uD558\uC5EC\n\uACF5\uACA9\uB825\uC758
-      600%\uC758 \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
+      \uD654\uC5FC \uACF5\uACA9\uC744 \uBC1C\uC0AC\uD558\uC5EC \uACF5\uACA9\uB825\uC758
+      <color=#0000ff>600%</color>\uC758 \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
     CoolTime: 35
     SkillType: 1
     Grade: 1
@@ -1898,8 +1930,8 @@ MonoBehaviour:
     Group: 101
     Name: "\uBD88\uAF43\uB180\uC774"
     Description: "\uBD84\uB178\uC5D0 \uCC2C \uB808\uBE0C\uAC00 \uAC15\uB825\uD55C
-      \uD654\uC5FC \uACF5\uACA9\uC744 \uBC1C\uC0AC\uD558\uC5EC\n\uACF5\uACA9\uB825\uC758
-      600%\uC758 \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
+      \uD654\uC5FC \uACF5\uACA9\uC744 \uBC1C\uC0AC\uD558\uC5EC \uACF5\uACA9\uB825\uC758
+      <color=#0000ff>600%</color>\uC758 \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
     CoolTime: 25
     SkillType: 1
     Grade: 2
@@ -1908,8 +1940,8 @@ MonoBehaviour:
     Group: 101
     Name: "\uBD88\uAF43\uB180\uC774"
     Description: "\uBD84\uB178\uC5D0 \uCC2C \uB808\uBE0C\uAC00 \uAC15\uB825\uD55C
-      \uD654\uC5FC \uACF5\uACA9\uC744 \uBC1C\uC0AC\uD558\uC5EC\n\uACF5\uACA9\uB825\uC758
-      600%\uC758 \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
+      \uD654\uC5FC \uACF5\uACA9\uC744 \uBC1C\uC0AC\uD558\uC5EC \uACF5\uACA9\uB825\uC758
+      <color=#0000ff>600%</color>\uC758 \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
     CoolTime: 15
     SkillType: 1
     Grade: 3
@@ -1919,7 +1951,8 @@ MonoBehaviour:
     Name: "\uC232\uC758 \uC218\uD638\uC790"
     Description: "\uC138\uACC4\uC218\uB97C \uC18C\uD658\uD574 \uC544\uAD70\uC5D0
       \uCD95\uBCF5\uC744 \uB0B4\uB9BD\uB2C8\uB2E4.\n10\uCD08\uAC04 \uC544\uAD70\uC758
-      \uACF5\uACA9\uB825 \uBC0F \uB9C8\uBC95 \uACF5\uACA9\uB825\uC744 10% \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
+      \uACF5\uACA9\uB825 \uBC0F \uB9C8\uBC95 \uACF5\uACA9\uB825\uC744 <color=#0000ff>10%</color>
+      \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
     CoolTime: 45
     SkillType: 1
     Grade: 1
@@ -1929,7 +1962,8 @@ MonoBehaviour:
     Name: "\uC232\uC758 \uC218\uD638\uC790"
     Description: "\uC138\uACC4\uC218\uB97C \uC18C\uD658\uD574 \uC544\uAD70\uC5D0
       \uCD95\uBCF5\uC744 \uB0B4\uB9BD\uB2C8\uB2E4.\n10\uCD08\uAC04 \uC544\uAD70\uC758
-      \uACF5\uACA9\uB825 \uBC0F \uB9C8\uBC95 \uACF5\uACA9\uB825\uC744 20% \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
+      \uACF5\uACA9\uB825 \uBC0F \uB9C8\uBC95 \uACF5\uACA9\uB825\uC744 <color=#0000ff>20%</color>
+      \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
     CoolTime: 35
     SkillType: 1
     Grade: 2
@@ -1939,7 +1973,8 @@ MonoBehaviour:
     Name: "\uC232\uC758 \uC218\uD638\uC790"
     Description: "\uC138\uACC4\uC218\uB97C \uC18C\uD658\uD574 \uC544\uAD70\uC5D0
       \uCD95\uBCF5\uC744 \uB0B4\uB9BD\uB2C8\uB2E4.\n10\uCD08\uAC04 \uC544\uAD70\uC758
-      \uACF5\uACA9\uB825 \uBC0F \uB9C8\uBC95 \uACF5\uACA9\uB825\uC744 30% \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
+      \uACF5\uACA9\uB825 \uBC0F \uB9C8\uBC95 \uACF5\uACA9\uB825\uC744 <color=#0000ff>30%</color>
+      \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4."
     CoolTime: 25
     SkillType: 1
     Grade: 3
@@ -1948,7 +1983,7 @@ MonoBehaviour:
     Group: 103
     Name: "\uBE14\uB9AC\uC2A4"
     Description: "\uC2E0\uC131\uD55C \uD798\uC744 \uBC1C\uC0B0\uD558\uC5EC \uC131\uBCBD
-      HP\uB97C 10 \uD68C\uBCF5\uC2DC\uD0B5\uB2C8\uB2E4."
+      HP\uB97C <color=#0000ff>10</color> \uD68C\uBCF5\uC2DC\uD0B5\uB2C8\uB2E4."
     CoolTime: 60
     SkillType: 1
     Grade: 1
@@ -1957,7 +1992,7 @@ MonoBehaviour:
     Group: 103
     Name: "\uBE14\uB9AC\uC2A4"
     Description: "\uC2E0\uC131\uD55C \uD798\uC744 \uBC1C\uC0B0\uD558\uC5EC \uC131\uBCBD
-      HP\uB97C 10 \uD68C\uBCF5\uC2DC\uD0B5\uB2C8\uB2E4."
+      HP\uB97C <color=#0000ff>10</color> \uD68C\uBCF5\uC2DC\uD0B5\uB2C8\uB2E4."
     CoolTime: 45
     SkillType: 1
     Grade: 2
@@ -1966,7 +2001,7 @@ MonoBehaviour:
     Group: 103
     Name: "\uBE14\uB9AC\uC2A4"
     Description: "\uC2E0\uC131\uD55C \uD798\uC744 \uBC1C\uC0B0\uD558\uC5EC \uC131\uBCBD
-      HP\uB97C 10 \uD68C\uBCF5\uC2DC\uD0B5\uB2C8\uB2E4."
+      HP\uB97C <color=#0000ff>10</color> \uD68C\uBCF5\uC2DC\uD0B5\uB2C8\uB2E4."
     CoolTime: 25
     SkillType: 1
     Grade: 3
@@ -1974,8 +2009,8 @@ MonoBehaviour:
   - Key: Skill_112
     Group: 104
     Name: "\uBCBD \uB108\uBA38\uB85C"
-    Description: "\uCC28\uC6D0\uC758 \uBB38\uC744 \uC5F4\uC5B4 \uC801\uC744 \uC774\uC138\uACC4\uB85C
-      \uC774\uB3D9\uC2DC\uD0B5\uB2C8\uB2E4.\n\uBCF4\uC2A4 \uBAAC\uC2A4\uD130\uB294
+    Description: "\uCC28\uC6D0\uC758 \uBB38\uC744 \uC5F4\uC5B4 \uC801\uC744 <color=#d10000>\uC774\uC138\uACC4\uB85C
+      \uC774\uB3D9</color>\uC2DC\uD0B5\uB2C8\uB2E4. \uBCF4\uC2A4 \uBAAC\uC2A4\uD130\uB294
       \uC774\uB3D9\uC2DC\uD0A4\uC9C0 \uBABB\uD569\uB2C8\uB2E4."
     CoolTime: 50
     SkillType: 1
@@ -1984,8 +2019,8 @@ MonoBehaviour:
   - Key: Skill_113
     Group: 104
     Name: "\uBCBD \uB108\uBA38\uB85C"
-    Description: "\uCC28\uC6D0\uC758 \uBB38\uC744 \uC5F4\uC5B4 \uC801\uC744 \uC774\uC138\uACC4\uB85C
-      \uC774\uB3D9\uC2DC\uD0B5\uB2C8\uB2E4.\n\uBCF4\uC2A4 \uBAAC\uC2A4\uD130\uB294
+    Description: "\uCC28\uC6D0\uC758 \uBB38\uC744 \uC5F4\uC5B4 \uC801\uC744 <color=#d10000>\uC774\uC138\uACC4\uB85C
+      \uC774\uB3D9</color>\uC2DC\uD0B5\uB2C8\uB2E4. \uBCF4\uC2A4 \uBAAC\uC2A4\uD130\uB294
       \uC774\uB3D9\uC2DC\uD0A4\uC9C0 \uBABB\uD569\uB2C8\uB2E4."
     CoolTime: 40
     SkillType: 1
@@ -1994,8 +2029,8 @@ MonoBehaviour:
   - Key: Skill_114
     Group: 104
     Name: "\uBCBD \uB108\uBA38\uB85C"
-    Description: "\uCC28\uC6D0\uC758 \uBB38\uC744 \uC5F4\uC5B4 \uC801\uC744 \uC774\uC138\uACC4\uB85C
-      \uC774\uB3D9\uC2DC\uD0B5\uB2C8\uB2E4.\n\uBCF4\uC2A4 \uBAAC\uC2A4\uD130\uB294
+    Description: "\uCC28\uC6D0\uC758 \uBB38\uC744 \uC5F4\uC5B4 \uC801\uC744 <color=#d10000>\uC774\uC138\uACC4\uB85C
+      \uC774\uB3D9</color>\uC2DC\uD0B5\uB2C8\uB2E4. \uBCF4\uC2A4 \uBAAC\uC2A4\uD130\uB294
       \uC774\uB3D9\uC2DC\uD0A4\uC9C0 \uBABB\uD569\uB2C8\uB2E4."
     CoolTime: 25
     SkillType: 1

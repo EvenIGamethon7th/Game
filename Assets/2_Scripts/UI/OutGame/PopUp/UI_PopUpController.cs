@@ -40,6 +40,15 @@ namespace _2_Scripts.UI.OutGame.Lobby
                         mRewardPopUpContainer.gameObject.SetActive(true);
                         mRewardPopUpContainer.OnPopUp(data.Value);
                     }).AddTo(this);
+            MessageBroker.Default.Receive<GameMessage<Define.RewardEvent>>()
+                .Where(message => message.Message == EGameMessage.RewardOpenPopUp).Subscribe(
+                    data =>
+                    {
+                        mPopUpBackGround.SetActive(true);
+                        mRewardPopUpContainer.gameObject.SetActive(true);
+                        mRewardPopUpContainer.OnPopUp(data.Value);
+                    }).AddTo(this);
+            
             MessageBroker.Default.Receive<GameMessage<ProductDetailsData>>().Where(message => message.Message == EGameMessage.ProductDetailPopUp).Subscribe(
                 data =>
                 {

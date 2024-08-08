@@ -127,7 +127,6 @@ namespace _2_Scripts.UI
                 mButtons[mCount].onClick.RemoveListener(PublishMessage);
                 mButtons[mCount].onClick.AddListener(PublishMessage);
                 mButtons[mCount].interactable = true;
-                mInfoPanel.CurrentNum = mCount;
             }
         }
 
@@ -137,6 +136,8 @@ namespace _2_Scripts.UI
             {
                 mButtons[mCount].onClick.RemoveListener(PublishMessage);
                 mButtons[mCount].interactable = false;
+                if (mInfoPanel.gameObject.activeSelf)
+                    mInfoPanel.CurrentNum = mCount;
             }
 
             mTutorialMessage.SetValue(mControllerbool[mCount]);
@@ -185,7 +186,10 @@ namespace _2_Scripts.UI
 
                     async UniTask DelayTime()
                     {
+                        float time = Time.time;
+                        
                         await UniTask.WaitForSeconds(5);
+                        Debug.Log(Time.time - time);
                         StopWorld(true);
                         mButtons[mCount].interactable = true;
                     }
@@ -283,13 +287,28 @@ namespace _2_Scripts.UI
                 }
             }
 
-            void StopWorld(bool isMove = false)
+            void StopWorld(bool isMove = false, float time = 0)
             {
                 mTutorialMessage.SetValue(isMove);
                 MessageBroker.Default.Publish(mTutorialMessage);
                 if (!isMove)
                     SetInteractable();
-                SetText();
+                if (mCount == 11)
+                    time = 3;
+
+                delayTime().Forget();
+
+                async UniTask delayTime()
+                {
+                    while (time > 0)
+                    {
+                        await UniTask.DelayFrame(1);
+                        time -= Time.deltaTime;
+                    }
+                    SetText();
+                    mInfoPanel.CurrentNum = mCount;
+                }
+                
             }
         }
     }

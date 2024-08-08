@@ -172,7 +172,7 @@ public class IngameDataManager : Singleton<IngameDataManager>
 
     private const int ROUND_BONUS_GOLD_STAGE = 10;
 
-    public void Subscribe<T>(T component, EDataType type, Action<int> action) where T : notnull, Component
+    public void Subscribe<T>(T component, EDataType type, Action<int> action, bool isTake1 = false) where T : notnull, Component
     {
         switch (type)
         {

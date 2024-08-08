@@ -61,7 +61,10 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
     private void OnDestroy()
     {
         if (instance == this)
+        {
+            SceneManager.activeSceneChanged -= ChangeSceneInit;
             instance = null;
+        }
     }
 
     protected virtual void ChangeSceneInit(Scene prev, Scene next)

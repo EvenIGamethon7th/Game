@@ -16,8 +16,6 @@ namespace _2_Scripts.UI.Ingame
         [SerializeField] private Image mBackGroundImage;
         [SerializeField] private GameObject mButtons;
 
-        private int mIsGameOver;
-        private float mPrevTimeScale;
         private void Start()
         {
             MessageBroker.Default.Receive<TaskMessage>().Where(message =>

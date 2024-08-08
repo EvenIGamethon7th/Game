@@ -22,31 +22,34 @@ namespace _2_Scripts.UI.Ingame
         [SerializeField] private GameObject mResurrectionButton;
         [SerializeField] private Ressurection mRessurection;
 
-        private int mIsGameOver;
+        private bool mIsGameOver;
+        private int mGameOverCount;
         private float mPrevTimeScale;
         private void Start()
         {
             IngameDataManager.Instance.Subscribe(this, IngameDataManager.EDataType.Hp, hp =>
             {
-                if (hp <= 0)
+                if (hp <= 0 && !mIsGameOver)
                 {
                     /// 0 하면 에러 남 
                     mPrevTimeScale = Time.timeScale;
                     Time.timeScale = 0.00001f;
-                    ++mIsGameOver;
+                    mIsGameOver = true;
+                    ++mGameOverCount;
                     mBackGroundImage.enabled = true;
 
                     mDefeat.SetActive(true);
                     mButtons.SetActive(true);
 
-                    if (mIsGameOver == 1)
-                    {
-                        mResurrectionButton.SetActive(true);
-                    }
-                    else
-                    {
-                        mResurrectionButton.SetActive(false);
-                    }
+                    //if (mGameOverCount == 1)
+                    //{
+                    //    mResurrectionButton.SetActive(true);
+                    //    mIsGameOver = false;
+                    //}
+                    //else
+                    //{
+                    //    mResurrectionButton.SetActive(false);
+                    //}
 
                     mResurrectionButton.SetActive(false);
                 }

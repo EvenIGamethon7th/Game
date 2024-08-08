@@ -58,6 +58,7 @@ public class StageManager : Singleton<StageManager>
 
     protected override void AwakeInit()
     {
+        SceneLoadManager.Instance.SceneClear += Clear;
         MessageBroker.Default.Receive<EGameMessage>().
             Where(message => message == EGameMessage.BossDeath)
             .Subscribe(_ =>
@@ -75,7 +76,6 @@ public class StageManager : Singleton<StageManager>
         else if (!BackEndManager.Instance.IsUserTutorial)
         {
             mIsTutorial = true;
-            SceneLoadManager.Instance.SceneClear += Clear;
             TutorialInitAsync().Forget();
         }
 

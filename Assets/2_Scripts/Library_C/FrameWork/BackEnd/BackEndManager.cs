@@ -65,6 +65,8 @@ namespace Cargold.FrameWork.BackEnd
         public List<ItemInstance> UserInventory { get; private set; }= new List<ItemInstance>();
         public Dictionary<string,FreeRewardData> UserFreeRewardData { get; private set; } = new Dictionary<string, FreeRewardData>();
         public int UserDailyReward { get; private set; } = 0;
+        
+        public bool IsUserTutorial { get; set; } = false;
 
         public string GetUserNickName()
         {
@@ -244,6 +246,10 @@ namespace Cargold.FrameWork.BackEnd
                 if(result.Data.TryGetValue("DailyReward",out var data))
                 {
                     UserDailyReward = int.Parse(data.Value);
+                }  
+                if(result.Data.TryGetValue("IsUserTutorial",out var tutoData))
+                {
+                    IsUserTutorial = bool.Parse(tutoData.Value);
                 }
                 tcs.TrySetResult();
             }, (error) =>
@@ -297,7 +303,7 @@ namespace Cargold.FrameWork.BackEnd
             string jsonData = JsonConvert.SerializeObject(ChapterDataList);
             PublishCharacterData(new Dictionary<string, string> { { "ChapterData", jsonData }, { "MissionData", JsonConvert.SerializeObject(UserMission)}, 
                 { "MainCharacterData", JsonConvert.SerializeObject(UserMainCharacterData) },{"EnchantData",JsonConvert.SerializeObject(UserEnchantData)},
-                {"DailyReward",UserDailyReward.ToString()},{"FreeRewardData",JsonConvert.SerializeObject(UserFreeRewardData)}});
+                {"DailyReward",UserDailyReward.ToString()},{"FreeRewardData",JsonConvert.SerializeObject(UserFreeRewardData)},{"IsUserTutorial",IsUserTutorial.ToString()}});
         }
 
         public async UniTask GetFeatherTimer(Action<DateTime, bool> callback)

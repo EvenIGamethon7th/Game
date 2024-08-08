@@ -3,6 +3,7 @@ using _2_Scripts.Game.ScriptableObject.Skill;
 using _2_Scripts.Game.Unit.Data;
 using _2_Scripts.UI.Ingame;
 using _2_Scripts.Utils;
+using Cargold.FrameWork.BackEnd;
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
@@ -45,7 +46,7 @@ namespace _2_Scripts.Game.Unit.MainCharacter
         private void Start()
         {
             //TODO 나중에 게임매니저에서 받아오기
-            if (!GameManager.Instance.IsTest && GameManager.Instance.CurrentDialog != -1)
+            if (!GameManager.Instance.IsTest && BackEndManager.Instance.IsUserTutorial)
                 mCharacterInfo = GameManager.Instance.CurrentMainCharacter;
             transform.position = mPos;
             mCharacterData = MemoryPoolManager<CharacterData>.CreatePoolingObject();
@@ -125,7 +126,7 @@ namespace _2_Scripts.Game.Unit.MainCharacter
                 mCharacterInfo.SkillList[mCharacterData.rank - 1].Skill.CastAttack(transform, mCharacterData);
             }
 
-            if (GameManager.Instance.CurrentDialog == -1)
+            if (!BackEndManager.Instance.IsUserTutorial)
             {
                 MessageBroker.Default.Publish(new GameMessage<bool>(EGameMessage.TutorialProgress, false));
             }

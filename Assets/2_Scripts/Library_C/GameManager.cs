@@ -105,16 +105,7 @@ public class GameManager : Singleton<GameManager>
             CurrentDialog = -1;
         }
 
-        path = Path.Combine(Application.persistentDataPath, "IsPlayTutorial");
-        bool isPlayTutorial = false;
-        if (File.Exists(path))
-        {
-            string data = File.ReadAllText(path);
-            isPlayTutorial = JsonUtility.FromJson<bool>(data);
-        }
-
-        CurrentDialog = isPlayTutorial ? -1 : 5;
-        CurrentDialog = IsTest ? -1 : 5;
+        CurrentDialog = 0;
     }
 
     private Random mRandom = new Random();

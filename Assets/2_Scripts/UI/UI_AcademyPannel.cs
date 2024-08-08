@@ -3,6 +3,7 @@ using _2_Scripts.Game.Unit;
 using _2_Scripts.UI;
 using _2_Scripts.UI.Ingame;
 using _2_Scripts.Utils;
+using Cargold.FrameWork.BackEnd;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using System;
@@ -135,7 +136,7 @@ namespace _2_Scripts.UI {
                     projectile.gameObject.SetActive(false);
                     var effect = ObjectPoolManager.Instance.CreatePoolingObject(Define.SpawnEffectDictionary[mStudentData.rank], tilePos);
                 });
-                if (GameManager.Instance.CurrentDialog != -1)
+                if (BackEndManager.Instance.IsUserTutorial)
                     UI_Toast_Manager.Instance.Activate_WithContent_Func("아카데미에서 돌아왔어요!", isIgnoreTimeScale: true);
             });
             mLessonCount = 0;
@@ -146,7 +147,7 @@ namespace _2_Scripts.UI {
                 mStatus.Clear();
                 mLesson.Init();
                 mTempAlumniData = null;
-                if (GameManager.Instance.CurrentDialog == -1) MessageBroker.Default.Publish(new GameMessage<bool>(EGameMessage.TutorialProgress, true));
+                if (!BackEndManager.Instance.IsUserTutorial) MessageBroker.Default.Publish(new GameMessage<bool>(EGameMessage.TutorialProgress, true));
             }
         }
 
@@ -155,7 +156,7 @@ namespace _2_Scripts.UI {
             if (waveCount % 4 == 0 && waveCount != 20) 
             { 
                 mIsVacation = false;
-                if (GameManager.Instance.CurrentDialog != -1)
+                if (BackEndManager.Instance.IsUserTutorial)
                     Cargold.UI.UI_Toast_Manager.Instance.Activate_WithContent_Func("아카데미 입학 가능 웨이브입니다!", isIgnoreTimeScale: true);
             }
             else
@@ -178,7 +179,7 @@ namespace _2_Scripts.UI {
             mClassImage.sprite = mAtlas.GetSprite(mClassData[mLessonCount].AcademyClassKey);
             SetInfoRate();
 
-            if (GameManager.Instance.CurrentDialog == -1) await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
+            if (!BackEndManager.Instance.IsUserTutorial) await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
 
             while (mLessonCount < 5)
             {

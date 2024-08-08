@@ -45,7 +45,7 @@ public class MapManager : Singleton<MapManager>
                 }).AddTo(this);
         }
 
-        else if (GameManager.Instance.CurrentDialog == -1)
+        else if (!BackEndManager.Instance.IsUserTutorial)
         {
             mTestCharacter?.SetActive(true);
             CreateInitialTileSlots();

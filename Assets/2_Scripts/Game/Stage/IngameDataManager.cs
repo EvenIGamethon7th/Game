@@ -1,5 +1,6 @@
 using _2_Scripts.Game.ScriptableObject.Character;
 using _2_Scripts.Utils;
+using Cargold.FrameWork.BackEnd;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -91,7 +92,7 @@ public class IngameDataManager : Singleton<IngameDataManager>
         MaxHp = GameManager.Instance.IsUseItem(EItemType.HpUp) ? 125 : 100;
         mUserHp = new ReactiveProperty<int>(MaxHp);
 
-        if (GameManager.Instance.CurrentDialog == -1)
+        if (!BackEndManager.Instance.IsUserTutorial)
         {
             MessageBroker.Default.Receive<GameMessage<bool>>().
                 Where(message => message.Message == EGameMessage.Tutorial)

@@ -7,6 +7,7 @@ using _2_Scripts.Game.Map;
 using _2_Scripts.Game.Monster;
 using _2_Scripts.Utils;
 using Cargold;
+using Cargold.FrameWork.BackEnd;
 using Cysharp.Threading.Tasks;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Information;
 using Rito.Attributes;
@@ -65,12 +66,12 @@ public class StageManager : Singleton<StageManager>
                     mWaveTime = mAfterBossKillRemainTime;
                 }
             }).AddTo(this);
-        if (GameManager.Instance.IsTest && GameManager.Instance.CurrentDialog != -1)
+        if (GameManager.Instance.IsTest && BackEndManager.Instance.IsUserTutorial)
         {
             EditInit();
         }
 
-        else if (GameManager.Instance.CurrentDialog == -1)
+        else if (!BackEndManager.Instance.IsUserTutorial)
         {
             mIsTutorial = true;
             TutorialInitAsync().Forget();

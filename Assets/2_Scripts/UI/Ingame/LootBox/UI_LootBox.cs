@@ -1,5 +1,6 @@
 using System;
 using _2_Scripts.Utils.Components;
+using Cargold.FrameWork.BackEnd;
 using Sirenix.OdinInspector;
 using UniRx;
 using UnityEngine;
@@ -61,7 +62,7 @@ namespace _2_Scripts.UI.Ingame.LootBox
         {
             mImage.sprite = defaultImage;
             mParticleEffect.SetActive(false);
-            if (GameManager.Instance.CurrentDialog != -1)
+            if (BackEndManager.Instance.IsUserTutorial)
                 mButton.interactable = true;
         }
         

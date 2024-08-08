@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using _2_Scripts.Game.Sound;
 using _2_Scripts.Utils;
+using Cargold.FrameWork.BackEnd;
 using UniRx;
 using UnityEngine;
 
@@ -30,7 +31,7 @@ namespace _2_Scripts.UI.Ingame.LootBox
                 Define.SpawnEffectDictionary[characterData.rank], tilePos);
             });
 
-            if (GameManager.Instance.CurrentDialog == -1)
+            if (!BackEndManager.Instance.IsUserTutorial)
             {
                 MessageBroker.Default.Publish(new GameMessage<bool>(EGameMessage.TutorialProgress, true));
             }

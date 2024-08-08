@@ -1,4 +1,5 @@
 using _2_Scripts.Utils;
+using Cargold.FrameWork.BackEnd;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -42,7 +43,7 @@ namespace _2_Scripts.UI.Ingame
                 {
                     SetCoolTime(message.Value);
                 }).AddTo(this);
-            if (GameManager.Instance.CurrentDialog == -1)
+            if (!BackEndManager.Instance.IsUserTutorial)
                 mButton = GetComponent<Button>();
         }
 

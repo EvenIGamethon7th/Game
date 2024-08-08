@@ -61,7 +61,7 @@ namespace _2_Scripts.UI.OutGame.Title
             
             if (GameManager.Instance.IsFirstConnect)
                 SceneLoadManager.Instance.SceneChange("DialogScene");
-            else if (GameManager.Instance.CurrentDialog == -1)
+            else if (!BackEndManager.Instance.IsUserTutorial)
                 SceneLoadManager.Instance.SceneChange("TutorialScene");
             else
                 SceneLoadManager.Instance.SceneChange("LobbyScene");

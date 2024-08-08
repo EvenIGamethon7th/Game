@@ -1,6 +1,7 @@
 using _2_Scripts.Game.ScriptableObject.Character;
 using _2_Scripts.Utils;
 using Cargold;
+using Cargold.FrameWork.BackEnd;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
@@ -40,7 +41,7 @@ namespace _2_Scripts.UI.Ingame
 
         private void Start()
         {
-            if (GameManager.Instance.CurrentDialog != -1)
+            if (BackEndManager.Instance.IsUserTutorial)
                 mCharacterInfo = GameManager.Instance.CurrentMainCharacter;
             string name = mCharacterInfo.CharacterEvolutions[1].GetData.characterData;
 

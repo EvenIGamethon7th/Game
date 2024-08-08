@@ -30,18 +30,9 @@ namespace _2_Scripts.UI.Ingame
                 }).AddTo(this);
         }
 
-        private void SaveData()
-        {
-            GameManager.Instance.CurrentDialog = 0;
-            string data = JsonUtility.ToJson(true);
-            string path = Path.Combine(Application.persistentDataPath, "IsPlayTutorial");
-            File.WriteAllText(path, data);
-        }
-
         public void OnLobby()
         {
             Time.timeScale = 1;
-            SaveData();
             SceneLoadManager.Instance.SceneChange("LobbyScene");
         }
     }

@@ -1,4 +1,5 @@
 using _2_Scripts.Game.Sound;
+using Cargold.FrameWork.BackEnd;
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
@@ -48,7 +49,7 @@ namespace _2_Scripts.Game.Dialog
         {
             base.StartInit();
             GetTexture();
-            int offset = GameManager.Instance.CurrentDialog == -1 ? 0 : GameManager.Instance.CurrentDialog * 100;
+            int offset = !BackEndManager.Instance.IsUserTutorial ? 0 : GameManager.Instance.CurrentDialog * 100;
             for (int i = 1; i < 100; ++i)
             {
                 if (!DataBase_Manager.Instance.GetStory.TryGetData_Func($"Script_{i + offset}", out var data)) break;
@@ -191,7 +192,7 @@ namespace _2_Scripts.Game.Dialog
                 string data = JsonUtility.ToJson(false);
                 string path = Path.Combine(Application.persistentDataPath, "IsFirstConnect");
                 File.WriteAllText(path, data);
-                if (GameManager.Instance.CurrentDialog == -1)
+                if (!BackEndManager.Instance.IsUserTutorial)
                     SceneLoadManager.Instance.SceneChange("TutorialScene");
                 else
                     SceneLoadManager.Instance.SceneChange("LobbyScene");

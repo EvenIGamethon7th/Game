@@ -7,6 +7,7 @@ using _2_Scripts.Game.Unit;
 using _2_Scripts.UI;
 using _2_Scripts.UI.Ingame;
 using _2_Scripts.Utils;
+using Cargold.FrameWork.BackEnd;
 using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
 using Rito.Attributes;
@@ -133,7 +134,7 @@ namespace _2_Scripts.Game.Monster
             if (mMonsterData.hp <= 0)
             {
                 CurrentHpCanvas.Active = false;
-                if (IsLastBoss && GameManager.Instance.CurrentDialog != -1)
+                if (IsLastBoss && BackEndManager.Instance.IsUserTutorial)
                 {
                     MessageBroker.Default.Publish(new TaskMessage(ETaskList.GameOver));
                 }

@@ -1,6 +1,7 @@
 using System;
 using _2_Scripts.Utils;
 using Cargold;
+using Cargold.FrameWork.BackEnd;
 using Cysharp.Threading.Tasks;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
 using TMPro;
@@ -46,11 +47,11 @@ namespace _2_Scripts.UI
                 .Where(m => m.Message == EGameMessage.StageChange)
                 .Subscribe(m =>
                 {
-                    int val = GameManager.Instance.CurrentDialog == -1 ? 15 : 20;
+                    int val = !BackEndManager.Instance.IsUserTutorial ? 15 : 20;
                     StartTimerAsync(val).Forget();
                 })
                 .AddTo(this);
-            if (GameManager.Instance.CurrentDialog == -1)
+            if (!BackEndManager.Instance.IsUserTutorial)
                 StartTimerAsync(3).Forget();
         }
 
@@ -70,7 +71,7 @@ namespace _2_Scripts.UI
 
                 if (text == null) break;
 
-                if (GameManager.Instance.CurrentDialog == -1)
+                if (!BackEndManager.Instance.IsUserTutorial)
                 {
                     await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
                 }

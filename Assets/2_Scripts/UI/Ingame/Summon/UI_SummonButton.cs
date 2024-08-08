@@ -6,6 +6,7 @@ using _2_Scripts.Game.Sound;
 using _2_Scripts.Game.Unit;
 using _2_Scripts.Utils;
 using Cargold;
+using Cargold.FrameWork.BackEnd;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using Spine.Unity;
@@ -89,7 +90,7 @@ namespace _2_Scripts.UI
         private void Start()
         {
             uiRectTransform = GetComponent<RectTransform>();
-            if (GameManager.Instance.CurrentDialog != -1)
+            if (BackEndManager.Instance.IsUserTutorial)
             {
                 UpdateCharacter();
                 MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange && message.Value != 0)

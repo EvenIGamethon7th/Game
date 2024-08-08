@@ -1,6 +1,5 @@
 ﻿using Cargold.FrameWork.BackEnd;
 using Cysharp.Threading.Tasks;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Logical;
 using System;
 using System.Threading;
 using TMPro;

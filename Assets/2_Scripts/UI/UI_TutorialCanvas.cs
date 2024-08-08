@@ -8,10 +8,7 @@ using System.Threading;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
-using UnityEngine.WSA;
-using static Unity.Collections.AllocatorManager;
+
 
 namespace _2_Scripts.UI
 {

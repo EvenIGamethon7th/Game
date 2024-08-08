@@ -545,7 +545,7 @@ public class PlayFabAuthService
             else
             {
                 //make sure the loop completes, callback with null
-                callback.Invoke(null);
+                callback?.Invoke(null);
                 //Output what went wrong to the console.
                 Debug.LogError(error.GenerateErrorReport());
             }

@@ -73,6 +73,7 @@ namespace _2_Scripts.UI
             {
                 if (mTutorialData.Count <= 0)
                 {
+                    mDialog.gameObject.SetActive(false);
                     MessageBroker.Default.Publish(new TaskMessage(ETaskList.GameOver));
                     return;
                 }

@@ -122,6 +122,7 @@ public class GameManager : Singleton<GameManager>
     private string mPrevName = "";
     protected override void ChangeSceneInit(Scene prev, Scene next)
     {
+        Time.timeScale = 1;
         if (mPrevName.CompareTo("Main") == 0)
         {
             mIngameItem.Clear();

@@ -18,15 +18,15 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
             {
 
                 instance = FindObjectOfType<T>();
-                if (instance == null)
-                {
-
-                    GameObject go = GameObject.Find(typeof(T).ToString());
-                    if (go == null)
-                        go = new GameObject { name = typeof(T).ToString() };
-
-                    instance = Utils.GetOrAddComponent<T>(go);
-                }
+                //if (instance == null)
+                //{
+                //
+                //    GameObject go = GameObject.Find(typeof(T).ToString());
+                //    if (go == null)
+                //        go = new GameObject { name = typeof(T).ToString() };
+                //
+                //    instance = Utils.GetOrAddComponent<T>(go);
+                //}
             }
             return instance;
         }

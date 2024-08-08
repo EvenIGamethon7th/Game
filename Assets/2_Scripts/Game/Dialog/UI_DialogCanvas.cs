@@ -49,7 +49,7 @@ namespace _2_Scripts.Game.Dialog
         {
             base.StartInit();
             GetTexture();
-            int offset = !BackEndManager.Instance.IsUserTutorial ? 0 : GameManager.Instance.CurrentDialog * 100;
+            int offset = GameManager.Instance.CurrentDialog == -1 ? 0 : GameManager.Instance.CurrentDialog * 100;
             for (int i = 1; i < 100; ++i)
             {
                 if (!DataBase_Manager.Instance.GetStory.TryGetData_Func($"Script_{i + offset}", out var data)) break;

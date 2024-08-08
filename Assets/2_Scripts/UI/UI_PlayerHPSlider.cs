@@ -26,18 +26,13 @@ namespace _2_Scripts.UI
             mHpText.text = $"{mMaxHp.Value}/{mMaxHp.Value}";
             mSlider.maxValue = mMaxHp.Value;
             mSlider.value = mMaxHp.Value;
+            SceneLoadManager.Instance.SceneClear += Clear;
             IngameDataManager.Instance.HealHp += OnHealthBarUpdate;
         }
 
         public void OnHealthBarUpdate(int value)
         {
-            //float damagePercentage = (float)value / mMaxHp.Value;
-            //float newValue = mSlider.value - damagePercentage;
             UpdateHealthAsync(value, isHeal: value < 0).Forget();
-            //mSlider.DOValue(newValue, 1f).OnUpdate(() =>
-            //{ 
-            //    mHpText.text = $"{Mathf.RoundToInt(mSlider.value * mMaxHp.Value)}/{mMaxHp.Value}";
-            //});
         }
 
         private async UniTask UpdateHealthAsync(float damage, float time = 1, bool isHeal = false)
@@ -54,8 +49,9 @@ namespace _2_Scripts.UI
             }
         }
 
-        private void OnDestroy()
+        private void Clear()
         {
+            SceneLoadManager.Instance.SceneClear -= Clear;
             IngameDataManager.Instance.HealHp -= OnHealthBarUpdate;
         }
     }

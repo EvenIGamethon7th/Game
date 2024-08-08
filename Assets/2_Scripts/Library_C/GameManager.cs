@@ -93,6 +93,7 @@ public class GameManager : Singleton<GameManager>
     protected override void AwakeInit()
     {
         string path = Path.Combine(Application.persistentDataPath, "IsFirstConnect");
+        Debug.Log(path);
         if (File.Exists(path))
         {
             string data = File.ReadAllText(path);
@@ -104,8 +105,6 @@ public class GameManager : Singleton<GameManager>
             IsFirstConnect = true;
             CurrentDialog = -1;
         }
-
-        CurrentDialog = 0;
     }
 
     private Random mRandom = new Random();

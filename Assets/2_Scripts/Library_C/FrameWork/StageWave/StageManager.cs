@@ -29,7 +29,7 @@ public class StageManager : Singleton<StageManager>
     
     private GameMessage<int> mNextStageMessage;
     public List<Monster> MonsterList = new List<Monster>();
-    
+
 
     private CancellationTokenSource mCancellationToken;
     private TaskMessage mBossSpawnMessage;
@@ -45,10 +45,14 @@ public class StageManager : Singleton<StageManager>
     ///  테스트용 스테이지 시작 코드
     /// </summary>
     /// <exception cref="NotImplementedException"></exception>
-    public void Start()
+    private void Start()
     {
-        //Time.timeScale = 1.5f;
-        
+        if (!BackEndManager.Instance.IsUserTutorial)
+        {
+            mIsTutorial = true;
+            SceneLoadManager.Instance.SceneClear += Clear;
+            TutorialInitAsync().Forget();
+        }
     }
 
     protected override void AwakeInit()
@@ -69,8 +73,7 @@ public class StageManager : Singleton<StageManager>
 
         else if (!BackEndManager.Instance.IsUserTutorial)
         {
-            mIsTutorial = true;
-            TutorialInitAsync().Forget();
+            
         }
 
         else
@@ -133,13 +136,15 @@ public class StageManager : Singleton<StageManager>
         await UniTask.WaitForSeconds(3f);
         mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
         MessageBroker.Default.Publish(mNextStageMessage);
+        int offset = 0;
         while (true)
         {
-            mCurrentWaveData = mWaveList[mNextStageMessage.Value - 1];
+            mCurrentWaveData = mWaveList[mNextStageMessage.Value - 1 + offset];
             Debug.Log(mCurrentWaveData.Key);
             SpawnMonsters(mCurrentWaveData).Forget();
             if (mCurrentWaveData.isIceMonster)
             {
+                ++offset;
                 continue;
             }
 
@@ -169,7 +174,7 @@ public class StageManager : Singleton<StageManager>
                     await UniTask.DelayFrame(1, cancellationToken: mCancellationToken.Token);
                     if (mIsTutorial)
                     {
-                        await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
+                        await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger, cancellationToken: mCancellationToken.Token);
                     }
 
                     mWaveTime -= Time.deltaTime;
@@ -179,10 +184,16 @@ public class StageManager : Singleton<StageManager>
 
     }
 
+    private void Clear()
+    {
+        SceneLoadManager.Instance.SceneClear -= Clear;
+        CancelAndDisposeToken();
+    }
+
     private async UniTask SpawnMonsters(WaveData waveData)
     {
         if (mIsTutorial)
-            await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
+            await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger, cancellationToken: mCancellationToken.Token);
 
         int currentWave = mNextStageMessage.Value;
 
@@ -201,7 +212,7 @@ public class StageManager : Singleton<StageManager>
                 await UniTask.DelayFrame(1, cancellationToken: mCancellationToken.Token);
                 if (mIsTutorial)
                 {
-                    await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
+                    await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger, cancellationToken: mCancellationToken.Token);
                 }
 
                 time -= Time.deltaTime;
@@ -286,7 +297,7 @@ public class StageManager : Singleton<StageManager>
                 mNextStageMessage?.SetValue(mNextStageMessage.Value - 1);
             }).AddTo(this);
 
-        await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
+        await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger, cancellationToken: mCancellationToken.Token);
 
         StageInit();
     }

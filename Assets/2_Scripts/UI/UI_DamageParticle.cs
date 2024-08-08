@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using _2_Scripts.Utils;
 using AssetKits.ParticleImage;
@@ -19,7 +19,7 @@ namespace _2_Scripts.UI
         public void Start()
         {
             mPaticleImage = GetComponent<ParticleImage>();
-
+            SceneLoadManager.Instance.SceneClear += Clear;
             IngameDataManager.Instance.DamageHp += UpdateHpBar;
         }
 
@@ -35,8 +35,9 @@ namespace _2_Scripts.UI
             });
         }
 
-        private void OnDestroy()
+        private void Clear()
         {
+            SceneLoadManager.Instance.SceneClear -= Clear;
             IngameDataManager.Instance.DamageHp -= UpdateHpBar;
         }
 

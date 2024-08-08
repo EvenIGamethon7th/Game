@@ -63,10 +63,19 @@ namespace _2_Scripts.UI.OutGame.Lobby.StartPopUp
                 {
                     OnUpdateBorder();
                 }).AddTo(this);
-
             
         }
 
+        private void OnEnable()
+        {
+            if (isInit == false)
+                return;
+            SpriteUpdate();
+            OnUpdateBorder();
+        }
+
+
+        private bool isInit = false;
         public void Init(MainCharacterInfo characterInfo,Action<MainCharacterData> selectAction)
         {
             mGetTypeAction = new Dictionary<EGetType, Action>
@@ -86,9 +95,15 @@ namespace _2_Scripts.UI.OutGame.Lobby.StartPopUp
                 selectAction.Invoke(mMainCharacterData);
                 OnSelectButton();
             });
+            isInit = true;
 
         }
 
+        private void SpriteUpdate()
+        {
+            BackEndManager.Instance.UserMainCharacterData.TryGetValue(mMainCharacterData.key, out mMainCharacterData);
+            mCharacterImage.sprite = mCharacterInfo.CharacterEvolutions[mMainCharacterData.rank].GetData.Icon;
+        }
         private void OnUpdateBorder()
         {
             EGetType borderType = EGetType.Lock;
@@ -98,6 +113,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.StartPopUp
                 borderType = mMainCharacterData.isGetType;
                 mButton.interactable = mMainCharacterData.isGetType != EGetType.Lock;
             }
+            
             mGetTypeAction[borderType].Invoke();
         }
 

@@ -113,7 +113,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.Draw
                 }
             }
 
-            var characterData = selectedCharacter.CharacterEvolutions[0].GetData;
+            var characterData = selectedCharacter.CharacterEvolutions[1].GetData;
             mRewardEvent.name = characterData.GetCharacterName();
             mRewardEvent.sprite = characterData.Icon;
             

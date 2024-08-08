@@ -12,10 +12,11 @@ namespace _2_Scripts.UI.OutGame.Lobby.StartPopUp
         [SerializeField] private GameObject selectImage;
         public bool IsUseItem { get; private set; } = false;
         public StoreItem StoreItem { get; private set; }
-        public void SetItem(StoreItem storeItem,Action<UI_SelectItem> onClick)
+        public void SetItem(StoreItem storeItem,Action<UI_SelectItem> onClick,Sprite iconImage)
         {
             StoreItem = storeItem;
             mSelectButton.onClick.AddListener(() => onClick(this));
+            mItemImage.sprite = iconImage;
         }
         
         public bool SetSelect()

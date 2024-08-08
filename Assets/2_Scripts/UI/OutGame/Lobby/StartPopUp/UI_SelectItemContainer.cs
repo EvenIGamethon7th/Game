@@ -49,7 +49,8 @@ namespace _2_Scripts.UI.OutGame.Lobby.StartPopUp
             foreach (var item in BackEndManager.Instance.PublicStoreItems)
             {
                 var itemObject = Instantiate(mItemPrefab, transform).GetComponent<UI_SelectItem>();
-                itemObject.SetItem(item,OnClickItem);
+                var iconSprite =  DataBase_Manager.Instance.GetItem.GetDataArr.FirstOrDefault(x => x.code == item.ItemId).Icon;
+                itemObject.SetItem(item,OnClickItem,iconSprite);
                 mAllItems.Add(itemObject);
             }
         }

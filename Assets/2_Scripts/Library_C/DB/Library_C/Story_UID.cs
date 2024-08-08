@@ -74,15 +74,6 @@ public static partial class TableDataKey_C
     public const string Story_Script_71 = "Script_71";
     public const string Story_Script_72 = "Script_72";
     public const string Story_Script_73 = "Script_73";
-    public const string Story_Script_74 = "Script_74";
-    public const string Story_Script_75 = "Script_75";
-    public const string Story_Script_76 = "Script_76";
-    public const string Story_Script_77 = "Script_77";
-    public const string Story_Script_78 = "Script_78";
-    public const string Story_Script_79 = "Script_79";
-    public const string Story_Script_80 = "Script_80";
-    public const string Story_Script_81 = "Script_81";
-    public const string Story_Script_82 = "Script_82";
     public const string Story_Script_1001 = "Script_1001";
     public const string Story_Script_1002 = "Script_1002";
     public const string Story_Script_1003 = "Script_1003";

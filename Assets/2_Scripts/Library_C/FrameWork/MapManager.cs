@@ -44,6 +44,14 @@ public class MapManager : Singleton<MapManager>
                     mMonsterPathMap = mMapTile.MonsterTile;
                 }).AddTo(this);
         }
+
+        else if (GameManager.Instance.CurrentDialog == -1)
+        {
+            mTestCharacter?.SetActive(true);
+            CreateInitialTileSlots();
+            CreatePool();
+        }
+
         else
         {
             var go = Instantiate(ResourceManager.Instance.Load<GameObject>(GameManager.Instance.CurrentStageData.ChapterNumber.ToString()));

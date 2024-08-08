@@ -100,7 +100,8 @@ public class IngameDataManager : Singleton<IngameDataManager>
                     TutorialTrigger = val.Value;
                 }).AddTo(this);
             mUserLevel.Value = 3;
-            mUserExp.Value = 110;
+            mUserExp.Value = 90;
+            mUserGold.Value = 200;
         }
     }
 
@@ -110,7 +111,7 @@ public class IngameDataManager : Singleton<IngameDataManager>
             .Subscribe(message =>
             {
                 // 첫 시작은 리턴
-                if (message.Value == 0)
+                if (message.Value <= 1)
                 {
                     return;
                 }

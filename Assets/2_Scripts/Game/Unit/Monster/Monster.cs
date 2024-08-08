@@ -175,20 +175,15 @@ namespace _2_Scripts.Game.Monster
 
             if (IsLastBoss)
             {
-                if (GameManager.Instance.CurrentDialog == -1)
-                {
-                    IngameDataManager.Instance.UpdateUserHp((int)mMonsterData.atk);
-                    MessageBroker.Default.Publish(new GameMessage<bool>(EGameMessage.TutorialRewind, false));
-                }
-
-                else
-                {
-                    IngameDataManager.Instance.UpdateUserHp(IngameDataManager.Instance.MaxHp);
-                }
+                IngameDataManager.Instance.UpdateUserHp(IngameDataManager.Instance.MaxHp);
             }
 
             else
             {
+                if (IsBoss)
+                {
+                    MessageBroker.Default.Publish(new GameMessage<bool>(EGameMessage.TutorialRewind, false));
+                }
                 IngameDataManager.Instance.UpdateUserHp((int)mMonsterData.atk);
             }
 

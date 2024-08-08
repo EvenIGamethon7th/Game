@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using _2_Scripts.Game.Sound;
 using _2_Scripts.Utils;
 using Cargold.FrameWork;
@@ -58,10 +58,13 @@ namespace _2_Scripts.UI.OutGame.Title
         {
             mButton.interactable = false;
             GameManager.Instance.NotTestMode();
-            if (!GameManager.Instance.IsFirstConnect)
-                SceneLoadManager.Instance.SceneChange("LobbyScene");
+            
+            if (GameManager.Instance.IsFirstConnect)
+                SceneLoadManager.Instance.SceneChange("DialogScene");
+            else if (GameManager.Instance.CurrentDialog == -1)
+                SceneLoadManager.Instance.SceneChange("TutorialScene");
             else
-                SceneLoadManager.Instance.SceneChange("PrologueScene");
+                SceneLoadManager.Instance.SceneChange("LobbyScene");
         }
     }
 }

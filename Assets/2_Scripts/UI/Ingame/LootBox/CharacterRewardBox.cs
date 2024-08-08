@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using _2_Scripts.Game.Sound;
 using _2_Scripts.Utils;
+using UniRx;
 using UnityEngine;
 
 namespace _2_Scripts.UI.Ingame.LootBox
@@ -28,6 +29,11 @@ namespace _2_Scripts.UI.Ingame.LootBox
                 ObjectPoolManager.Instance.CreatePoolingObject(
                 Define.SpawnEffectDictionary[characterData.rank], tilePos);
             });
+
+            if (GameManager.Instance.CurrentDialog == -1)
+            {
+                MessageBroker.Default.Publish(new GameMessage<bool>(EGameMessage.TutorialProgress, true));
+            }
         }
 
         public bool CanReward()

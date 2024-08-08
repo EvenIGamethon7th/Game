@@ -39,6 +39,10 @@ public class StageManager : Singleton<StageManager>
 
     public int MaxStageCount { get; private set; }
     private bool mIsTutorial = false;
+    private float mAfterBossKillRemainTime = 3;
+    private int mBossWave;
+
+    private float mWaveTime;
 
     /// <summary>
     ///  테스트용 스테이지 시작 코드
@@ -52,6 +56,15 @@ public class StageManager : Singleton<StageManager>
 
     protected override void AwakeInit()
     {
+        MessageBroker.Default.Receive<EGameMessage>().
+            Where(message => message == EGameMessage.BossDeath)
+            .Subscribe(_ =>
+            {
+                if (mBossWave == mNextStageMessage.Value)
+                {
+                    mWaveTime = mAfterBossKillRemainTime;
+                }
+            }).AddTo(this);
         if (GameManager.Instance.IsTest && GameManager.Instance.CurrentDialog != -1)
         {
             EditInit();
@@ -121,9 +134,11 @@ public class StageManager : Singleton<StageManager>
     private async UniTaskVoid StartWave()
     {
         await UniTask.WaitForSeconds(3f);
+        mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
+        MessageBroker.Default.Publish(mNextStageMessage);
         while (true)
         {
-            mCurrentWaveData = mWaveList[mNextStageMessage.Value];
+            mCurrentWaveData = mWaveList[mNextStageMessage.Value - 1];
             Debug.Log(mCurrentWaveData.Key);
             SpawnMonsters(mCurrentWaveData).Forget();
             if (mCurrentWaveData.isIceMonster)
@@ -134,11 +149,8 @@ public class StageManager : Singleton<StageManager>
             if (mCurrentWaveData.isBoss)
             {
                 MessageBroker.Default.Publish(mBossSpawnMessage);
+                mBossWave = mNextStageMessage.Value;
             }
-
-            mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
-            if (mWaveList.Count != mNextStageMessage.Value)
-                MessageBroker.Default.Publish(mNextStageMessage);
 
             if (mWaveList.Count == mNextStageMessage.Value)
             {
@@ -148,17 +160,22 @@ public class StageManager : Singleton<StageManager>
 
             await WaitAsync();
 
+            mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
+            MessageBroker.Default.Publish(mNextStageMessage);
+
             async UniTask WaitAsync()
             {
-                float time = mIsTutorial ? 15 : NEXT_WAVE_TIME;
+                mWaveTime = mIsTutorial ? 15 : NEXT_WAVE_TIME;
 
-                while (time > 0)
+                while (mWaveTime > 0)
                 {
                     await UniTask.DelayFrame(1, cancellationToken: mCancellationToken.Token);
                     if (mIsTutorial)
+                    {
                         await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
+                    }
 
-                    time -= Time.deltaTime;
+                    mWaveTime -= Time.deltaTime;
                 }
             }
         }
@@ -169,6 +186,8 @@ public class StageManager : Singleton<StageManager>
     {
         if (mIsTutorial)
             await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
+
+        int currentWave = mNextStageMessage.Value;
 
         for (int spawnCount = 0; spawnCount < waveData.spawnCount; spawnCount++)
         {
@@ -184,10 +203,15 @@ public class StageManager : Singleton<StageManager>
             {
                 await UniTask.DelayFrame(1, cancellationToken: mCancellationToken.Token);
                 if (mIsTutorial)
+                {
                     await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
+                }
 
                 time -= Time.deltaTime;
             }
+
+            if (currentWave != mNextStageMessage.Value)
+                break;
         }
     }
     
@@ -264,8 +288,9 @@ public class StageManager : Singleton<StageManager>
             {
                 mNextStageMessage?.SetValue(mNextStageMessage.Value - 1);
             }).AddTo(this);
-        Debug.Log(GameManager.Instance.CurrentDialog);
+
         await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
+
         StageInit();
     }
 }

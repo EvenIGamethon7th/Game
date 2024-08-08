@@ -33,8 +33,8 @@ namespace _2_Scripts.Game.Controller
         private void Start()
         {
             WaitResourceLoad();
-            var mouseDownStream = this.UpdateAsObservable().Where(_ => Input.GetMouseButtonDown(0));
-            var mouseUpStream = this.UpdateAsObservable().Where(_ => Input.GetMouseButtonUp(0));
+            var mouseDownStream = this.UpdateAsObservable().Where(_ => Input.GetMouseButtonDown(0) && Time.timeScale > 0.1f);
+            var mouseUpStream = this.UpdateAsObservable().Where(_ => Input.GetMouseButtonUp(0) && Time.timeScale > 0.1f);
             
             //롱 터치 시 목적지 위치를 프레임마다 받아옴
             this.UpdateAsObservable()

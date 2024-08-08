@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using _2_Scripts.Utils;
 using UniRx;

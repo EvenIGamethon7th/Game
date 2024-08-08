@@ -45,7 +45,7 @@ namespace _2_Scripts.Game.Unit.MainCharacter
         private void Start()
         {
             //TODO 나중에 게임매니저에서 받아오기
-            if (!GameManager.Instance.IsTest)
+            if (!GameManager.Instance.IsTest && GameManager.Instance.CurrentDialog != -1)
                 mCharacterInfo = GameManager.Instance.CurrentMainCharacter;
             transform.position = mPos;
             mCharacterData = MemoryPoolManager<CharacterData>.CreatePoolingObject();
@@ -123,6 +123,11 @@ namespace _2_Scripts.Game.Unit.MainCharacter
             else if (mSkillType == EMainCharacterSkillType.Buff)
             {
                 mCharacterInfo.SkillList[mCharacterData.rank - 1].Skill.CastAttack(transform, mCharacterData);
+            }
+
+            if (GameManager.Instance.CurrentDialog == -1)
+            {
+                MessageBroker.Default.Publish(new GameMessage<bool>(EGameMessage.TutorialProgress, false));
             }
         }
 

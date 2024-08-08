@@ -1,3 +1,4 @@
+using _2_Scripts.Game.ScriptableObject.Character;
 using _2_Scripts.Utils;
 using Cargold;
 using Sirenix.OdinInspector;
@@ -27,6 +28,9 @@ namespace _2_Scripts.UI.Ingame
         [SerializeField]
         private Dictionary<string, Sprite> mButtonSpriteDict = new();
 
+        [SerializeField]
+        private MainCharacterInfo mCharacterInfo;
+
         private void Awake()
         {
             mButton = GetComponentInChildren<UI_MainCharacterButton>(true);
@@ -36,11 +40,9 @@ namespace _2_Scripts.UI.Ingame
 
         private void Start()
         {
-            //TODO: 메인캐릭터를 매니저에서 받아온 후 자식들 초기화
-            mInfoBubble.Init(null, null);
-            if (GameManager.Instance.IsTest) return;
-            var mainData = GameManager.Instance.CurrentMainCharacter;
-            string name = mainData.CharacterEvolutions[1].GetData.characterData;
+            if (GameManager.Instance.CurrentDialog != -1)
+                mCharacterInfo = GameManager.Instance.CurrentMainCharacter;
+            string name = mCharacterInfo.CharacterEvolutions[1].GetData.characterData;
 
             Sprite[] s = new Sprite[mSpriteAtlas.spriteCount];
             mSpriteAtlas.GetSprites(s);
@@ -52,10 +54,10 @@ namespace _2_Scripts.UI.Ingame
                 }
             }
 
-            mButton.Init(mButtonSpriteDict[name], mainData.SkillList[0].CoolTime);
+            mButton.Init(mButtonSpriteDict[name], mCharacterInfo.SkillList[0].CoolTime);
 
             mCoolTime.Init(s.FirstOrDefault(x => x.name == $"{name}(Clone)"));
-            mInfoBubble.Init(mainData.CharacterEvolutions[1].GetData, s.FirstOrDefault(x => x.name == $"{name}_Info(Clone)"));
+            mInfoBubble.Init(mCharacterInfo.CharacterEvolutions[1].GetData, s.FirstOrDefault(x => x.name == $"{name}_Info(Clone)"));
         }
     }
 }

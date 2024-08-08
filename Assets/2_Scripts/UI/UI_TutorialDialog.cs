@@ -33,11 +33,6 @@ namespace _2_Scripts.UI
             Time.timeScale = mPrevSpeed;
         }
 
-        private void Awake()
-        {
-            mDescriptionText = GetComponentInChildren<TextMeshProUGUI>();
-        }
-
         public void SetPosition(Vector2 pos)
         {
             mRect.position = pos;

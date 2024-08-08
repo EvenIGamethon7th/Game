@@ -11,6 +11,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using UnityEngine.WSA;
+using static Unity.Collections.AllocatorManager;
 
 namespace _2_Scripts.UI
 {
@@ -18,6 +19,7 @@ namespace _2_Scripts.UI
     {
         private Queue<StoryData> mTutorialData = new Queue<StoryData>();
         private StoryData mCurrentData;
+        private StoryData mPrevData;
         private GameMessage<bool> mTutorialMessage;
 
         [SerializeField]
@@ -35,6 +37,7 @@ namespace _2_Scripts.UI
 
         private bool mIsSpeaking;
         private int mHardClick;
+        private bool mIsRewind;
 
         private void Awake()
         {
@@ -45,6 +48,8 @@ namespace _2_Scripts.UI
                 if (mButtons[i] != null)
                     mButtons[i].interactable = false;
             }
+            SceneLoadManager.Instance.OnSceneLoad -= Init;
+            SceneLoadManager.Instance.OnSceneLoad += Init;
         }
 
         private void OnEnable()
@@ -53,9 +58,14 @@ namespace _2_Scripts.UI
             SetInteractable();
         }
 
+        protected override void StartInit()
+        {
+            if (GameManager.Instance.IsTest)
+                Init();
+        }
+
         private void SetText()
         {
-            mDialog.gameObject.SetActive(true);
             if (mIsSpeaking)
             {
                 mIsSpeaking = false;
@@ -66,25 +76,30 @@ namespace _2_Scripts.UI
             {
                 if (mTutorialData.Count <= 0)
                 {
+                    MessageBroker.Default.Publish(new TaskMessage(ETaskList.GameOver));
                     return;
                 }
 
-                mCurrentData = mTutorialData.Peek();
+                var data = mTutorialData.Peek();
 
-                if (mCurrentData.Story_Group != mGroup)
+                if (data.Story_Group != mGroup)
                 {
                     mDialog.gameObject.SetActive(false);
-                    mGroup = mCurrentData.Story_Group;
+                    mGroup = data.Story_Group;
                     return;
                 }
 
+                mPrevData = mCurrentData;
+                mCurrentData = data;
                 SetTextAsync(mCurrentData).Forget();
             }
         }
 
         private async UniTask SetTextAsync(StoryData data)
         {
-            mTutorialData.Dequeue();
+            mDialog.gameObject.SetActive(true);
+            if (mPrevData != data)
+                mTutorialData.Dequeue();
             mIsSpeaking = true;
 
             if (!String.IsNullOrEmpty(data.sound))
@@ -131,11 +146,12 @@ namespace _2_Scripts.UI
                 SetInteractable();
         }
 
-        protected override void StartInit()
+        private void Init()
         {
+            SceneLoadManager.Instance.OnSceneLoad -= Init;
             //After Summon
-            this.ObserveEveryValueChanged(_ => IngameDataManager.Instance.CurrentGold)
-                .Where(_ => IngameDataManager.Instance.CurrentGold > 30)
+            this.ObserveEveryValueChanged(_ => StageManager.Instance.WaveCount)
+                .Where(_ => StageManager.Instance.WaveCount == 1)
                 .Take(1)
                 .Subscribe(_ => {
                     StopWorld();
@@ -151,12 +167,26 @@ namespace _2_Scripts.UI
                 .AddTo(this);
 
             this.ObserveEveryValueChanged(_ => StageManager.Instance.WaveCount)
-                .Where(_ => StageManager.Instance.WaveCount == 3)
+                .Where(_ => StageManager.Instance.WaveCount == 4)
                 .Take(1)
                 .Subscribe(_ => {
                     StopWorld();
                 })
                 .AddTo(this);
+
+            this.ObserveEveryValueChanged(_ => StageManager.Instance.WaveCount)
+                .Where(_ => StageManager.Instance.WaveCount == 5)
+                .Take(1)
+                .Subscribe(_ => {
+                    StopWorld(true);
+                    mButtons[mCount].interactable = true;
+                })
+                .AddTo(this);
+
+            MessageBroker.Default.Receive<TaskMessage>().
+                Where(task => task.Task == ETaskList.BossSpawn).
+                Take(1).
+                Subscribe(_ => { StopWorld(true); }).AddTo(this);
 
             for (int i = 1; i < 100; ++i)
             {
@@ -165,12 +195,15 @@ namespace _2_Scripts.UI
                 mTutorialData.Enqueue(data);
             }
 
+            mDialog.gameObject.SetActive(true);
             SetTextAsync("안녕 소환사님!\n먼저 학생을 소환해주세모!").Forget();
 
             this.UpdateAsObservable()
                 .Where(_ => Input.GetMouseButtonUp(0) && mDialog.gameObject.activeSelf)
                 .Subscribe(_ =>
                 {
+                    if (mIsRewind)
+                        --mGroup;
                     SetText();
                 }).AddTo(this);
 
@@ -186,37 +219,63 @@ namespace _2_Scripts.UI
             MessageBroker.Default.Receive<GameMessage<bool>>().
                 Where(message => message.Message == EGameMessage.TutorialProgress).
                 Subscribe(message => {
+                    StopWorld(message.Value);
+                }).AddTo(this);
+
+            MessageBroker.Default.Receive<EGameMessage>().
+                Where(task => task == EGameMessage.BossDeath).
+                Take(1).
+                Subscribe(_ => {
+                    mIsRewind = false;
+                    if (mGroup == 10)
+                    {
+                        mTutorialData.Dequeue();
+                        ++mGroup;
+                    }
                     StopWorld();
                 }).AddTo(this);
 
             MessageBroker.Default.Receive<GameMessage<bool>>().
                Where(message => message.Message == EGameMessage.TutorialRewind).
                Subscribe(message => {
-                   if (mGroup == 9)
-                    StopWorld();
-                   else if (mGroup == 10)
+                   if (mGroup == 10)
+                       StopWorld(true);
+                   else if (mGroup == 11)
                    {
-                       SetTextAsync(mCurrentData).Forget();
+                       mIsRewind = true;
+                       SetTextAsync(mPrevData).Forget();
                    }
                }).AddTo(this);
 
-            mButtons[0].onClick.AddListener(Click);
+            mButtons[0].onClick.AddListener(Click1);
+            mButtons[1].onClick.AddListener(Click2);
 
-            void Click()
+            void Click1()
             {
                 ++mHardClick;
-                if (mHardClick == 3)
+                if (mHardClick == 5)
                 {
-                    mButtons[0].onClick.RemoveListener(Click);
+                    mButtons[0].onClick.RemoveListener(Click1);
                     StopWorld();
                 }
             }
 
-            void StopWorld()
+            void Click2()
             {
-                mTutorialMessage.SetValue(false);
+                ++mHardClick;
+                if (mHardClick == 4)
+                {
+                    mButtons[0].onClick.RemoveListener(Click2);
+                    StopWorld();
+                }
+            }
+
+            void StopWorld(bool isMove = false)
+            {
+                mTutorialMessage.SetValue(isMove);
                 MessageBroker.Default.Publish(mTutorialMessage);
-                SetInteractable();
+                if (!isMove)
+                    SetInteractable();
                 SetText();
             }
         }

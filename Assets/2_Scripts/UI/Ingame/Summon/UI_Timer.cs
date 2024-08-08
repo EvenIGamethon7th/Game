@@ -20,8 +20,28 @@ namespace _2_Scripts.UI
 
         private int mCount;
 
+        private int mBossWave;
+
+        private float mAfterBossKillRemainTime = 3;
+
+        private float mWaveTime;
+
         private void Start()
         {
+            MessageBroker.Default.Receive<TaskMessage>().
+                Where(task => task.Task == ETaskList.BossSpawn).
+                Subscribe(_ => mBossWave = StageManager.Instance.WaveCount).AddTo(this);
+
+            MessageBroker.Default.Receive<EGameMessage>().
+                Where(message => message == EGameMessage.BossDeath)
+                .Subscribe(_ =>
+                {
+                    if (mBossWave == StageManager.Instance.WaveCount)
+                    {
+                        mWaveTime = mAfterBossKillRemainTime;
+                    }
+                }).AddTo(this);
+
             MessageBroker.Default.Receive<GameMessage<int>>()
                 .Where(m => m.Message == EGameMessage.StageChange)
                 .Subscribe(m =>
@@ -37,20 +57,16 @@ namespace _2_Scripts.UI
         private async UniTask StartTimerAsync(int val)
         {
             ++mCount;
-            float temp = val;
+            float count = val;
+            mWaveTime = val;
             int standard = val - 1;
             text.text = $"00:{val}";
 
-            if (GameManager.Instance.CurrentDialog == -1)
-            {
-                await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
-            }
-
             Tween_C.OnPunch_Func(this);
-            while (temp > 0)
+            while (mWaveTime > 0)
             {
                 await UniTask.DelayFrame(1);
-                if (mCount > 1 && temp < 15) break;
+                if (mCount > 1 && count < 15) break;
 
                 if (text == null) break;
 
@@ -59,10 +75,11 @@ namespace _2_Scripts.UI
                     await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
                 }
 
-                temp -= Time.deltaTime;
-                text.text = $"00:{(int)temp}";
+                mWaveTime -= Time.deltaTime;
+                count -= Time.deltaTime;
+                text.text = $"00:{(int)mWaveTime}";
 
-                if (temp < 5)
+                if (mWaveTime < 5)
                 {
                     text.color = Color.red;
                 }
@@ -71,9 +88,9 @@ namespace _2_Scripts.UI
                     text.color = mOriginColor;
                 }
 
-                if ((int)temp != standard)
+                if ((int)mWaveTime != standard)
                 {
-                    standard = (int)temp;
+                    standard = (int)mWaveTime;
                     Tween_C.OnPunch_Func(this);
                 }
             }

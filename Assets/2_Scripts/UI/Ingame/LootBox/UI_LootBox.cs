@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using _2_Scripts.Utils.Components;
 using Sirenix.OdinInspector;
 using UniRx;
@@ -61,7 +61,8 @@ namespace _2_Scripts.UI.Ingame.LootBox
         {
             mImage.sprite = defaultImage;
             mParticleEffect.SetActive(false);
-            mButton.interactable = true;
+            if (GameManager.Instance.CurrentDialog != -1)
+                mButton.interactable = true;
         }
         
     }

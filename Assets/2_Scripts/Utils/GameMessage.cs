@@ -20,6 +20,7 @@ namespace _2_Scripts.Utils
         Tutorial,
         TutorialProgress,
         TutorialRewind,
+        TutorialRoundSkip,
         EnchantOpenPopUp,
         RewardOpenPopUp,
         MainCharacterLevelUp,

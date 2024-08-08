@@ -43,7 +43,7 @@ namespace _2_Scripts.UI
                 else mSummonButtons[i].Reroll(mInfos[i], 1);
             }
 
-            MessageBroker.Default.Publish(new GameMessage<bool>(EGameMessage.TutorialProgress, false));
+            MessageBroker.Default.Publish(new GameMessage<bool>(EGameMessage.TutorialProgress, true));
         }
     }
 }

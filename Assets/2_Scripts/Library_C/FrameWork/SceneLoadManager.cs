@@ -19,7 +19,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     [SerializeField]
     private CanvasGroup mToolTipGroup;
 
-
+    public event Action OnSceneLoad;
 
 
     public void SceneChange(string sceneName)
@@ -71,6 +71,8 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         await UniTask.WaitUntil(() => mGraphicMaterialOverride.PropertyValue >= 0.99);
 
         mSceneLoadAnimator.gameObject.SetActive(false);
+
+        OnSceneLoad?.Invoke();
     }
 
     protected override void ChangeSceneInit(Scene prev, Scene next)

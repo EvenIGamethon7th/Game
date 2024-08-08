@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -46,21 +47,11 @@ namespace _2_Scripts.Game.Dialog
         protected override void StartInit()
         {
             base.StartInit();
-            int num = 1;
-            Texture2D tempTex;
-            Sprite tempSprite;
-            mBackGrounds.Clear();
-            while (true)
-            {
-                tempTex = ResourceManager.Instance.Load<Texture2D>($"-1_{num++}");
-                if (tempTex == null) break;
-                Rect rect = new Rect(0, 0, tempTex.width, tempTex.height);
-                tempSprite = Sprite.Create(tempTex, rect, new Vector2(0.5f, 0.5f));
-                mBackGrounds.Add(tempSprite);
-            }
+            GetTexture();
+            int offset = GameManager.Instance.CurrentDialog == -1 ? 0 : GameManager.Instance.CurrentDialog * 100;
             for (int i = 1; i < 100; ++i)
             {
-                if (!DataBase_Manager.Instance.GetStory.TryGetData_Func($"Script_{i}", out var data)) break;
+                if (!DataBase_Manager.Instance.GetStory.TryGetData_Func($"Script_{i + offset}", out var data)) break;
 
                 mDatas.Enqueue(data);
             }
@@ -71,6 +62,22 @@ namespace _2_Scripts.Game.Dialog
             mAutoButton.onClick.AddListener(IsAuto);
             SetText();
             AutoText().Forget();
+        }
+
+        private void GetTexture()
+        {
+            int num = 1;
+            Texture2D tempTex;
+            Sprite tempSprite;
+            mBackGrounds.Clear();
+            while (true)
+            {
+                tempTex = ResourceManager.Instance.Load<Texture2D>($"{GameManager.Instance.CurrentDialog}_{num++}");
+                if (tempTex == null) break;
+                Rect rect = new Rect(0, 0, tempTex.width, tempTex.height);
+                tempSprite = Sprite.Create(tempTex, rect, new Vector2(0.5f, 0.5f));
+                mBackGrounds.Add(tempSprite);
+            }
         }
 
         private async UniTask AutoText()
@@ -184,7 +191,10 @@ namespace _2_Scripts.Game.Dialog
                 string data = JsonUtility.ToJson(false);
                 string path = Path.Combine(Application.persistentDataPath, "IsFirstConnect");
                 File.WriteAllText(path, data);
-                SceneLoadManager.Instance.SceneChange("LobbyScene");
+                if (GameManager.Instance.CurrentDialog == -1)
+                    SceneLoadManager.Instance.SceneChange("TutorialScene");
+                else
+                    SceneLoadManager.Instance.SceneChange("LobbyScene");
             }
         }
     }

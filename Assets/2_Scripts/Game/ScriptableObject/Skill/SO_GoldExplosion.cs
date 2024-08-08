@@ -24,14 +24,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
             bool isSuccess = base.CastAttack(ownerTransform, ownerData, beforeDamage, afterDamage);
             if (isSuccess)
             {
-                if (StageManager.Instance.WaveCount < mEnhanceWave)
-                {
-                    IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold, mGoldBefore11Wave);
-                }
-                else
-                {
-                    IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold, mGoldAfter10Wave);
-                }
+                IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold, mGoldBefore11Wave);
             }
 
             return isSuccess;
@@ -42,15 +35,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
             var lootingItem = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_LootingItem,
                 pos).GetComponent<LootingItem>();
 
-            if (StageManager.Instance.WaveCount < mEnhanceWave)
-            {
-                lootingItem.CreateItem(EMoneyType.Gold, mGoldBefore11Wave);
-            }
-
-            else
-            {
-                lootingItem.CreateItem(EMoneyType.Gold, mGoldAfter10Wave);
-            }
+            lootingItem.CreateItem(EMoneyType.Gold, mGoldBefore11Wave);
         }
     }
 }

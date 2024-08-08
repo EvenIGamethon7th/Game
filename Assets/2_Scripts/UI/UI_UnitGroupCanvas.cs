@@ -54,6 +54,7 @@ namespace _2_Scripts.UI
                 .Subscribe(data =>
                 {
                     if (data.Value) return;
+                    if (GameManager.Instance.CurrentDialog == -1) MessageBroker.Default.Publish(new GameMessage<bool>(EGameMessage.TutorialProgress, false));
                     mSelectUnitGroup.RemoveUnit(mSelectUnit);
                     mSelectUnit.Clear();
                     mSelectUnit = null;

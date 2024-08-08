@@ -47,6 +47,8 @@ namespace _2_Scripts.UI.Ingame
                     {
                         mResurrectionButton.SetActive(false);
                     }
+
+                    mResurrectionButton.SetActive(false);
                 }
             });
 
@@ -57,6 +59,7 @@ namespace _2_Scripts.UI.Ingame
                     mBackGroundImage.enabled = true;
                     mVictory.SetActive(true);
                     mButtons.SetActive(true);
+                    mResurrectionButton.SetActive(false);
                 }).AddTo(this);
         }
 

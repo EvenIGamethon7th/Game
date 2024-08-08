@@ -31,7 +31,7 @@ public class StageManager : Singleton<StageManager>
     public List<Monster> MonsterList = new List<Monster>();
 
 
-    private CancellationTokenSource mCancellationToken;
+    private CancellationTokenSource mCancellationToken = new CancellationTokenSource();
     private TaskMessage mBossSpawnMessage;
 
     public int MaxStageCount { get; private set; }
@@ -40,6 +40,7 @@ public class StageManager : Singleton<StageManager>
     private int mBossWave;
 
     private float mWaveTime;
+    private bool mIsRewind;
 
     /// <summary>
     ///  테스트용 스테이지 시작 코드
@@ -47,12 +48,12 @@ public class StageManager : Singleton<StageManager>
     /// <exception cref="NotImplementedException"></exception>
     private void Start()
     {
-        if (!BackEndManager.Instance.IsUserTutorial)
-        {
-            mIsTutorial = true;
-            SceneLoadManager.Instance.SceneClear += Clear;
-            TutorialInitAsync().Forget();
-        }
+        //if (!BackEndManager.Instance.IsUserTutorial)
+        //{
+        //    mIsTutorial = true;
+        //    SceneLoadManager.Instance.SceneClear += Clear;
+        //    TutorialInitAsync().Forget();
+        //}
     }
 
     protected override void AwakeInit()
@@ -73,7 +74,9 @@ public class StageManager : Singleton<StageManager>
 
         else if (!BackEndManager.Instance.IsUserTutorial)
         {
-            
+            mIsTutorial = true;
+            SceneLoadManager.Instance.SceneClear += Clear;
+            TutorialInitAsync().Forget();
         }
 
         else
@@ -139,6 +142,7 @@ public class StageManager : Singleton<StageManager>
         int offset = 0;
         while (true)
         {
+            mIsRewind = false;
             mCurrentWaveData = mWaveList[mNextStageMessage.Value - 1 + offset];
             Debug.Log(mCurrentWaveData.Key);
             SpawnMonsters(mCurrentWaveData, mWaveList.Count == mNextStageMessage.Value + offset).Forget();
@@ -167,14 +171,16 @@ public class StageManager : Singleton<StageManager>
 
             async UniTask WaitAsync()
             {
-                mWaveTime = mIsTutorial ? 15 : NEXT_WAVE_TIME;
+                mWaveTime = mIsTutorial ? 10 : NEXT_WAVE_TIME;
 
                 while (mWaveTime > 0)
                 {
                     await UniTask.DelayFrame(1, cancellationToken: mCancellationToken.Token);
                     if (mIsTutorial)
                     {
-                        await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger, cancellationToken: mCancellationToken.Token);
+                        await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger || mIsRewind, cancellationToken: mCancellationToken.Token);
+                        if (mIsRewind)
+                            break;
                     }
 
                     mWaveTime -= Time.deltaTime;
@@ -193,7 +199,7 @@ public class StageManager : Singleton<StageManager>
     private async UniTask SpawnMonsters(WaveData waveData, bool isEnd = false)
     {
         if (mIsTutorial)
-            await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger, cancellationToken: mCancellationToken.Token);
+            await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger || waveData.isBoss, cancellationToken: mCancellationToken.Token);
 
         int currentWave = mNextStageMessage.Value;
 
@@ -212,7 +218,7 @@ public class StageManager : Singleton<StageManager>
                 await UniTask.DelayFrame(1, cancellationToken: mCancellationToken.Token);
                 if (mIsTutorial)
                 {
-                    await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger, cancellationToken: mCancellationToken.Token);
+                    await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger || mIsRewind, cancellationToken: mCancellationToken.Token);
                 }
 
                 time -= Time.deltaTime;
@@ -263,11 +269,6 @@ public class StageManager : Singleton<StageManager>
     }
 
     #endregion
-
-    protected override void ChangeSceneInit(Scene prev, Scene next)
-    {
-        CancelAndDisposeToken();
-    }
     
     private void CancelAndDisposeToken()
     {
@@ -294,6 +295,7 @@ public class StageManager : Singleton<StageManager>
             Where(message => message.Message == EGameMessage.TutorialRewind)
             .Subscribe(_ =>
             {
+                mIsRewind = true;
                 mNextStageMessage?.SetValue(mNextStageMessage.Value - 1);
             }).AddTo(this);
 

@@ -53,13 +53,13 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         mSceneLoadAnimator.gameObject.SetActive(true);
         mSceneLoadAnimator.Play(0);
         SceneClear?.Invoke();
-
         await UniTask.WaitUntil(() => mGraphicMaterialOverride.PropertyValue <= 0f);
         ToolTipAnimation();
 
+        Time.timeScale = 1;
         await UniTask.WaitForSeconds(2f);
         ToolTipAlpha();
-
+       
         SceneManager.LoadScene("TempScene");
 
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);

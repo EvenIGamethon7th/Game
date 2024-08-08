@@ -102,6 +102,14 @@ public class IngameDataManager : Singleton<IngameDataManager>
             mUserLevel.Value = 3;
             mUserExp.Value = 90;
             mUserGold.Value = 200;
+            GameManager.Instance.UseItem(EItemType.Lecturer1st);
+            SceneLoadManager.Instance.SceneClear += Clear;
+
+            void Clear()
+            {
+                SceneLoadManager.Instance.SceneClear -= Clear;
+                GameManager.Instance.RemoveItem(EItemType.Lecturer1st);
+            }
         }
     }
 

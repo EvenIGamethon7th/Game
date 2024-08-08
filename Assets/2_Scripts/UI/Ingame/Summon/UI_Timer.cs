@@ -48,7 +48,7 @@ namespace _2_Scripts.UI
                 .Where(m => m.Message == EGameMessage.StageChange)
                 .Subscribe(m =>
                 {
-                    int val = !BackEndManager.Instance.IsUserTutorial ? 15 : 20;
+                    int val = !BackEndManager.Instance.IsUserTutorial ? 10 : 20;
                     StartTimerAsync(val).Forget();
                 })
                 .AddTo(this);

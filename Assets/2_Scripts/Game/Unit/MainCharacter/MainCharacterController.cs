@@ -5,6 +5,7 @@ using _2_Scripts.UI.Ingame;
 using _2_Scripts.Utils;
 using Cargold.FrameWork.BackEnd;
 using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -51,7 +52,8 @@ namespace _2_Scripts.Game.Unit.MainCharacter
             transform.position = mPos;
             mCharacterData = MemoryPoolManager<CharacterData>.CreatePoolingObject();
             mBuffData = MemoryPoolManager<BuffData>.CreatePoolingObject();
-            mCharacterData.Init(mCharacterInfo.CharacterEvolutions[BackEndManager.Instance.UserMainCharacterData[mCharacterInfo.name].rank].GetData, mBuffData);
+            //BackEndManager.Instance.UserMainCharacterData[mCharacterInfo.name].rank
+            mCharacterData.Init(mCharacterInfo.CharacterEvolutions[1].GetData, mBuffData);
             mCoolTime = mCharacterInfo.SkillList[mCharacterData.rank - 1].CoolTime;
             mCoolTimeMessage = new GameMessage<float>(EGameMessage.MainCharacterCoolTime, 0);
             MessageBroker.Default.Publish(mCoolTimeMessage);
@@ -115,6 +117,16 @@ namespace _2_Scripts.Game.Unit.MainCharacter
             MessageBroker.Default.Publish(mCoolTimeMessage);
             CheckSkillCoolTime().Forget();
 
+            if (!BackEndManager.Instance.IsUserTutorial)
+            {
+                DelayTime().Forget();
+                async UniTask DelayTime()
+                {
+                    await UniTask.Delay(TimeSpan.FromSeconds(3.5f), cancellationToken: mCts.Token);
+                    MessageBroker.Default.Publish(new GameMessage<bool>(EGameMessage.TutorialProgress, false));
+                }
+            }
+
             if (mSkillType == EMainCharacterSkillType.Attack && mSkillTrigger.activeSelf)
             {
                 mCharacterInfo.SkillList[mCharacterData.rank - 1].Skill.CastAttack(mSkillTrigger.transform, mCharacterData);
@@ -124,11 +136,6 @@ namespace _2_Scripts.Game.Unit.MainCharacter
             else if (mSkillType == EMainCharacterSkillType.Buff)
             {
                 mCharacterInfo.SkillList[mCharacterData.rank - 1].Skill.CastAttack(transform, mCharacterData);
-            }
-
-            if (!BackEndManager.Instance.IsUserTutorial)
-            {
-                MessageBroker.Default.Publish(new GameMessage<bool>(EGameMessage.TutorialProgress, false));
             }
         }
 

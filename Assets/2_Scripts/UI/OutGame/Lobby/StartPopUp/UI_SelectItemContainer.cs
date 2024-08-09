@@ -106,7 +106,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.StartPopUp
         {
             bool isUse = mSelectItem.SetSelect();
 
-            mUseText.text = isUse ? "사용해제" : "사용하기";
+            mUseText.text = isUse ? "사용해제" : "<color=#14C0EC>사용하기</color>";
             mUseItems[mSelectItem.StoreItem.ItemId] = isUse;
             if (isUse)
                 RemoveSameClassItem();
@@ -137,7 +137,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.StartPopUp
                 count = item.RemainingUses.Value;
             
             mRemainCountText.text = $"{count} 보유수량";
-            mUseText.text = mSelectItem.IsUseItem ? "사용해제" : "사용하기";
+            mUseText.text = mSelectItem.IsUseItem ? "사용해제" : "<color=#14C0EC>사용하기</color>";
         }
         private void DisPlayBuyContainer()
         {

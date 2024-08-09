@@ -34,7 +34,11 @@ namespace _2_Scripts.UI.OutGame.Lobby.Enchant
         private void OnEnchantButton()
         {
             if (mMainCharacterData == null || mMainCharacterData.isGetType == EGetType.Lock)
+            {
+                UI_Toast_Manager.Instance.Activate_WithContent_Func("캐릭터 미보유!");
                 return;
+            }
+               
             if (mMainCharacterData.rank >= 3)
             {
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("이미 모두 강화했습니다");

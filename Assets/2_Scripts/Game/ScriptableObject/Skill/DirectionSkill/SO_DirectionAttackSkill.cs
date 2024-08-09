@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using _2_Scripts.Game.Unit;
 using _2_Scripts.Utils;
@@ -29,13 +29,21 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.DirectionSkill
             float range = mbFollowDefaultRange ? ownerData.range : this.Range;
             float totalDamage = ownerData.GetTotalDamageToType(AttackType) * (mPercentDamage * 0.01f);
             var detectingTargets = Physics2D.OverlapCircle(ownerTransform.position, range, TargetLayer);
+            if(!ownerTransform.TryGetComponent<CUnit>(out var attacker))
+            {
+                CastEffectPlay(ownerTransform.position);
+            }
+
             if (detectingTargets == null)
             {
                 return false;
             }
-            CastEffectPlay(ownerTransform.position);
-            if (ownerTransform.TryGetComponent<CUnit>(out var attacker))
+
+            if (attacker != null)
+            {
+                CastEffectPlay(ownerTransform.position);
                 attacker.SetFlipUnit(detectingTargets.transform);
+            }
             SpawnCollisionObject(detectingTargets.transform, totalDamage, attacker);
             
             return true;

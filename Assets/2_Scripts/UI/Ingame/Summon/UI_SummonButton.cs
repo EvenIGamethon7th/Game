@@ -91,7 +91,7 @@ namespace _2_Scripts.UI
         private void Start()
         {
             uiRectTransform = GetComponent<RectTransform>();
-            if (BackEndManager.Instance.IsUserTutorial)
+            if (BackEndManager.Instance.IsUserTutorial || GameManager.Instance.IsTest)
             {
                 UpdateCharacter();
                 MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange && message.Value != 0)

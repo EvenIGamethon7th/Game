@@ -15,6 +15,7 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.UI;
+using UnityEngine.WSA;
 
 namespace _2_Scripts.UI {
     public class UI_AcademyPannel : MonoBehaviour
@@ -56,6 +57,12 @@ namespace _2_Scripts.UI {
         private readonly float mLessonTime = 2;
         private int mLessonInWaveCount;
 
+        [SerializeField]
+        private UI_AcademyToast mToast;
+
+        [SerializeField]
+        private TextMeshProUGUI mOverlayText;
+
         private CancellationTokenSource mCts = new ();
 
         public void Init()
@@ -65,6 +72,7 @@ namespace _2_Scripts.UI {
             mInfo = GetComponentInChildren<UI_AcademyInfo>(true);
             mLesson.Init();
             mInfo.Init();
+            mToast?.Init();
             mStatus.Clear();
             mClassImage.gameObject.SetActive(false);
 
@@ -109,6 +117,8 @@ namespace _2_Scripts.UI {
 
         private void AcademyLesson(CUnit student)
         {
+            if (BackEndManager.Instance.IsUserTutorial)
+                mToast.Clear();
             mDoLesson = true;
             mTempAlumniData = MemoryPoolManager<CharacterData>.CreatePoolingObject();
             mStatus.Init(student);
@@ -154,6 +164,7 @@ namespace _2_Scripts.UI {
                 mLesson.Init();
                 mTempAlumniData = null;
                 if (!BackEndManager.Instance.IsUserTutorial) MessageBroker.Default.Publish(new GameMessage<bool>(EGameMessage.TutorialProgress, true));
+                SetOverlay();
             }
         }
 
@@ -165,18 +176,41 @@ namespace _2_Scripts.UI {
                 mIsVacation = false;
                 if (BackEndManager.Instance.IsUserTutorial)
                 {
-                    Cargold.UI.UI_Toast_Manager.Instance.Activate_WithContent_Func("아카데미 입학 가능 웨이브입니다!", isIgnoreTimeScale: true);
+                    mToast.PlayToast();
                 }
             }
             else
             {
+                if (BackEndManager.Instance.IsUserTutorial)
+                    mToast.Clear();
                 mIsVacation = true;
             }
-            mVacation.SetActive(mIsVacation);
+
+            SetOverlay();
 
             if (mLessonCount >= 5)
             {
                 SummonAlumni();
+            }
+        }
+
+        private void SetOverlay()
+        {
+            if (mIsVacation)
+            {
+                mVacation.SetActive(!mDoLesson);
+                mOverlayText.text = "방학입니다!";
+            }
+
+            else if (!mDoLesson && mLessonInWaveCount > 0)
+            {
+                mVacation.SetActive(true);
+                mOverlayText.text = "이미 다녀왔습니다"!;
+            }
+
+            else
+            {
+                mVacation.SetActive(false);
             }
         }
 

@@ -54,6 +54,15 @@ namespace _2_Scripts.UI
                 .AddTo(this);
             if (!BackEndManager.Instance.IsUserTutorial)
                 StartTimerAsync(3).Forget();
+            else
+            {
+                SceneLoadManager.Instance.OnSceneLoad += StartTimer;
+
+                void StartTimer(){
+                    SceneLoadManager.Instance.OnSceneLoad -= StartTimer;
+                    StartTimerAsync(3).Forget();
+                }
+            }
         }
 
         private void Clear()
@@ -82,6 +91,8 @@ namespace _2_Scripts.UI
                 if (!BackEndManager.Instance.IsUserTutorial)
                 {
                     await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger, cancellationToken: mCts.Token);
+                    mWaveTime -= Time.deltaTime;
+                    count -= Time.deltaTime;
                 }
 
                 mWaveTime -= Time.deltaTime;

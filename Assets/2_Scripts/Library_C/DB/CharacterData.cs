@@ -28,6 +28,10 @@ public partial class CharacterData : IPoolable
 
     private EEnchantClassType mEnchant;
     
+    public CharacterData()
+    {
+
+    }
     
     public void Init(CharacterData data, BuffData buff)
     {

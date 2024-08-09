@@ -25,7 +25,6 @@ namespace _2_Scripts.UI
         private void OnEnable()
         {
             mPrevSpeed = Time.timeScale;
-            Debug.Log($"Speed: {Time.timeScale}");
             Time.timeScale = 0f;
         }
 

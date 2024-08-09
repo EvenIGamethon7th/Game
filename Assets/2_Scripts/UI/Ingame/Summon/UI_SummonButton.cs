@@ -12,6 +12,7 @@ using Sirenix.OdinInspector;
 using Spine.Unity;
 using TMPro;
 using UniRx;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using CharacterInfo = _2_Scripts.Game.ScriptableObject.Character.CharacterInfo;

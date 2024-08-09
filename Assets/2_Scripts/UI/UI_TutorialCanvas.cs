@@ -20,7 +20,13 @@ namespace _2_Scripts.UI
         private GameMessage<bool> mTutorialMessage;
 
         [SerializeField]
+        private Tutorial_InfoPanel mInfoPanel;
+
+        [SerializeField]
         private GameObject mCursor;
+
+        [SerializeField]
+        private GameObject mCursor2;
 
         [SerializeField]
         private List<UnityEngine.UI.Button> mButtons;
@@ -74,6 +80,7 @@ namespace _2_Scripts.UI
                 if (mTutorialData.Count <= 0)
                 {
                     mDialog.gameObject.SetActive(false);
+                    mButtons[mCount].interactable = false;
                     MessageBroker.Default.Publish(new TaskMessage(ETaskList.GameOver));
                     return;
                 }
@@ -133,6 +140,11 @@ namespace _2_Scripts.UI
             {
                 mButtons[mCount].onClick.RemoveListener(PublishMessage);
                 mButtons[mCount].interactable = false;
+                if (mInfoPanel.gameObject.activeSelf)
+                {
+                    Debug.Log(mCount);
+                    mInfoPanel.CurrentNum = mCount;
+                }
             }
 
             mTutorialMessage.SetValue(mControllerbool[mCount]);
@@ -151,7 +163,8 @@ namespace _2_Scripts.UI
             this.ObserveEveryValueChanged(_ => StageManager.Instance.WaveCount)
                 .Where(_ => StageManager.Instance.WaveCount == 1)
                 .Take(1)
-                .Subscribe(_ => {
+                .Subscribe(_ =>
+                {
                     StopWorld();
                 })
                 .AddTo(this);
@@ -159,7 +172,8 @@ namespace _2_Scripts.UI
             this.ObserveEveryValueChanged(_ => StageManager.Instance.WaveCount)
                 .Where(_ => StageManager.Instance.WaveCount == 2)
                 .Take(1)
-                .Subscribe(_ => {
+                .Subscribe(_ =>
+                {
                     StopWorld();
                 })
                 .AddTo(this);
@@ -167,7 +181,8 @@ namespace _2_Scripts.UI
             this.ObserveEveryValueChanged(_ => StageManager.Instance.WaveCount)
                 .Where(_ => StageManager.Instance.WaveCount == 4)
                 .Take(1)
-                .Subscribe(_ => {
+                .Subscribe(_ =>
+                {
                     StopWorld();
                 })
                 .AddTo(this);
@@ -175,7 +190,8 @@ namespace _2_Scripts.UI
             this.ObserveEveryValueChanged(_ => StageManager.Instance.WaveCount)
                 .Where(_ => StageManager.Instance.WaveCount == 5)
                 .Take(1)
-                .Subscribe(_ => {
+                .Subscribe(_ =>
+                {
 
                     DelayTime().Forget();
 
@@ -191,7 +207,8 @@ namespace _2_Scripts.UI
             MessageBroker.Default.Receive<TaskMessage>().
                 Where(task => task.Task == ETaskList.BossSpawn).
                 Take(1).
-                Subscribe(_ => {
+                Subscribe(_ =>
+                {
                     mTutorialMessage.SetValue(false);
                     MessageBroker.Default.Publish(mTutorialMessage);
                     SetText();
@@ -217,24 +234,40 @@ namespace _2_Scripts.UI
                 }).AddTo(this);
 
             this.UpdateAsObservable()
-                .Subscribe(_ => {
-                if (mButtons[mCount] != null && Time.timeScale > 0.1f)
+                .Subscribe(_ =>
                 {
-                    mCursor.transform.position = mButtons[mCount].transform.position;
-                    mCursor.SetActive(mButtons[mCount].interactable && mButtons[mCount].gameObject.activeInHierarchy);
-                }
-            }).AddTo(this);
+                    if (mButtons[mCount] != null && Time.timeScale > 0.1f)
+                    {
+                        if (mCount < 13)
+                        {
+                            mCursor.transform.position = mButtons[mCount].transform.position;
+                            mCursor.SetActive(mButtons[mCount].interactable && mButtons[mCount].gameObject.activeInHierarchy);
+                        }
+
+                        else
+                        {
+                            mCursor.SetActive(false);
+                            mCursor2.SetActive(mButtons[mCount].interactable && mButtons[mCount].gameObject.activeInHierarchy);
+                        }
+                    }
+                }).AddTo(this);
 
             MessageBroker.Default.Receive<GameMessage<bool>>().
                 Where(message => message.Message == EGameMessage.TutorialProgress).
-                Subscribe(message => {
-                    StopWorld(message.Value);
+                Subscribe(message =>
+                {
+                    if (mCount == 11)
+                        StopWorld(message.Value, 1.5f, false);
+                       
+                    else
+                        StopWorld(message.Value);
                 }).AddTo(this);
 
             MessageBroker.Default.Receive<EGameMessage>().
                 Where(task => task == EGameMessage.BossDeath).
                 Take(1).
-                Subscribe(_ => {
+                Subscribe(_ =>
+                {
                     mIsRewind = false;
                     if (mGroup == 10)
                     {
@@ -246,7 +279,8 @@ namespace _2_Scripts.UI
 
             MessageBroker.Default.Receive<GameMessage<bool>>().
                Where(message => message.Message == EGameMessage.TutorialRewind).
-               Subscribe(message => {
+               Subscribe(message =>
+               {
                    if (mGroup == 10)
                        SetText();
                    else if (mGroup == 11)
@@ -279,13 +313,28 @@ namespace _2_Scripts.UI
                 }
             }
 
-            void StopWorld(bool isMove = false)
+            void StopWorld(bool isMove = false, float time = 0, bool isInfo = true)
             {
                 mTutorialMessage.SetValue(isMove);
                 MessageBroker.Default.Publish(mTutorialMessage);
                 if (!isMove)
                     SetInteractable();
-                SetText();
+
+                delayTime().Forget();
+
+                async UniTask delayTime()
+                {
+                    while (time > 0)
+                    {
+                        await UniTask.DelayFrame(1);
+                        time -= Time.deltaTime;
+                    }
+                    SetText();
+                    Debug.Log(mCount);
+                    if (isInfo)
+                        mInfoPanel.CurrentNum = mCount;
+                }
+
             }
         }
     }

@@ -18,6 +18,7 @@ namespace _2_Scripts.UI.Ingame
         private GameObject mOpen;
 
         private readonly Color mFade = new Color(1, 1, 1, 0);
+        private readonly Vector3 mStart = new Vector3(0, 1, 1);
 
         private Sequence mSeq;
 
@@ -27,16 +28,20 @@ namespace _2_Scripts.UI.Ingame
                 .AppendCallback(() =>
                 {
                     mToast.gameObject.SetActive(true);
-                    mToast.transform.localScale = Vector3.up;
+                    mToast.transform.localScale = mStart;
                     mToast.color = Color.white;
-                    mToastText.transform.localScale = Vector3.up;
+                    mToastText.transform.localScale = mStart;
                     mToastText.color = Color.white;
                 })
-                .Append(mToast.transform.DOScaleX(1, 1).SetEase(Ease.InOutCubic))
-                .Join(mToastText.transform.DOScaleX(1, 1).SetEase(Ease.InOutCubic))
-                .Append(mToast.DOColor(mFade, 1))
-                .Join(mToast.DOColor(mFade, 1))
-                .AppendCallback(() => mToast.gameObject.SetActive(false))
+                .Append(mToast.transform.DOScaleX(1, 2).SetEase(Ease.InOutCubic))
+                .Join(mToastText.transform.DOScaleX(1, 2).SetEase(Ease.InOutCubic))
+                .Append(mToast.DOColor(mFade, 2))
+                .Join(mToastText.DOColor(mFade, 2))
+                .AppendCallback(() => {
+                    mToast.gameObject.SetActive(false);
+                    mToast.transform.localScale = mStart;
+                    mToastText.transform.localScale = mStart;
+                })
                 .Pause()
                 .SetAutoKill(false);
         }

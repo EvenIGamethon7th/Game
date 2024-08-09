@@ -12,6 +12,7 @@ using Sirenix.OdinInspector;
 using Spine.Unity;
 using TMPro;
 using UniRx;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using CharacterInfo = _2_Scripts.Game.ScriptableObject.Character.CharacterInfo;
@@ -96,6 +97,8 @@ namespace _2_Scripts.UI
                 MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange && message.Value != 0)
                     .Subscribe(message =>
                     {
+                        if (message.Value == 1)
+                            return;
                         Reroll();
                     }).AddTo(this);
             }

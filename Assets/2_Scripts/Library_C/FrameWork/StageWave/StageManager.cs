@@ -90,7 +90,6 @@ public class StageManager : Singleton<StageManager>
         mNextStageMessage = new GameMessage<int>(EGameMessage.StageChange, 0);
         mBossSpawnMessage = new TaskMessage(ETaskList.BossSpawn);
         ObjectPoolManager.Instance.RegisterPoolingObject("Monster", 100);
-        StageInit();
         MessageBroker.Default.Receive<TaskMessage>()
             .Subscribe(message =>
             {
@@ -109,10 +108,13 @@ public class StageManager : Singleton<StageManager>
                         break;
                 }
             }).AddTo(this);
+        SceneLoadManager.Instance.OnSceneLoad -= StageInit;
+        SceneLoadManager.Instance.OnSceneLoad += StageInit;
     }
 
     private void StageInit()
     {
+        SceneLoadManager.Instance.OnSceneLoad -= StageInit;
         var currentStage = GameManager.Instance.CurrentStageData;
         string stageKey;
         if (currentStage != null)
@@ -136,7 +138,7 @@ public class StageManager : Singleton<StageManager>
 
     private async UniTaskVoid StartWave()
     {
-        await UniTask.WaitForSeconds(3f);
+        await UniTask.WaitForSeconds(3f, cancellationToken: mCancellationToken.Token);
         mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
         MessageBroker.Default.Publish(mNextStageMessage);
         int offset = 0;
@@ -181,9 +183,10 @@ public class StageManager : Singleton<StageManager>
                         await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger || mIsRewind, cancellationToken: mCancellationToken.Token);
                         if (mIsRewind)
                             break;
+                        mWaveTime -= Time.deltaTime;
                     }
 
-                    mWaveTime -= Time.deltaTime * 2;
+                    mWaveTime -= Time.deltaTime;
                 }
             }
         }

@@ -80,6 +80,7 @@ namespace _2_Scripts.UI
                 if (mTutorialData.Count <= 0)
                 {
                     mDialog.gameObject.SetActive(false);
+                    mButtons[mCount].interactable = false;
                     MessageBroker.Default.Publish(new TaskMessage(ETaskList.GameOver));
                     return;
                 }
@@ -256,13 +257,10 @@ namespace _2_Scripts.UI
                 Subscribe(message =>
                 {
                     if (mCount == 11)
-                        StopWorld(message.Value, 2.5f, false);
+                        StopWorld(message.Value, 1.5f, false);
                        
                     else
                         StopWorld(message.Value);
-
-                    if (mCount == 13)
-                        ++mCount;
                 }).AddTo(this);
 
             MessageBroker.Default.Receive<EGameMessage>().
@@ -332,6 +330,7 @@ namespace _2_Scripts.UI
                         time -= Time.deltaTime;
                     }
                     SetText();
+                    Debug.Log(mCount);
                     if (isInfo)
                         mInfoPanel.CurrentNum = mCount;
                 }

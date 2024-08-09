@@ -1267,7 +1267,7 @@ MonoBehaviour:
       Data: 1
     - Name: hp
       Entry: 4
-      Data: 30
+      Data: 200
     - Name: def
       Entry: 4
       Data: 10
@@ -1312,13 +1312,13 @@ MonoBehaviour:
       Data: 2
     - Name: hp
       Entry: 4
-      Data: 120
+      Data: 300
     - Name: def
       Entry: 4
       Data: 10
     - Name: speed
       Entry: 4
-      Data: 2.5
+      Data: 3
     - Name: atk
       Entry: 3
       Data: 0
@@ -1357,13 +1357,13 @@ MonoBehaviour:
       Data: 3
     - Name: hp
       Entry: 4
-      Data: 200
+      Data: 500
     - Name: def
       Entry: 4
       Data: 10
     - Name: speed
       Entry: 4
-      Data: 2
+      Data: 2.5
     - Name: atk
       Entry: 3
       Data: 0
@@ -1402,7 +1402,7 @@ MonoBehaviour:
       Data: 4
     - Name: hp
       Entry: 4
-      Data: 200
+      Data: 300
     - Name: def
       Entry: 4
       Data: 10
@@ -1444,7 +1444,7 @@ MonoBehaviour:
       Data: stat_1004
     - Name: wave
       Entry: 3
-      Data: 6
+      Data: 5
     - Name: hp
       Entry: 4
       Data: 1000000
@@ -1754,7 +1754,7 @@ MonoBehaviour:
     reward_count2: 2
   - Key: stat_1000
     wave: 1
-    hp: 30
+    hp: 200
     def: 10
     speed: 2.5
     atk: 0
@@ -1764,9 +1764,9 @@ MonoBehaviour:
     reward_count2: 0
   - Key: stat_1001
     wave: 2
-    hp: 120
+    hp: 300
     def: 10
-    speed: 2.5
+    speed: 3
     atk: 0
     reward_type1: Money_1001
     reward_count1: 20
@@ -1774,9 +1774,9 @@ MonoBehaviour:
     reward_count2: 0
   - Key: stat_1002
     wave: 3
-    hp: 200
+    hp: 500
     def: 10
-    speed: 2
+    speed: 2.5
     atk: 0
     reward_type1: Money_1001
     reward_count1: 100
@@ -1784,7 +1784,7 @@ MonoBehaviour:
     reward_count2: 5
   - Key: stat_1003
     wave: 4
-    hp: 200
+    hp: 300
     def: 10
     speed: 2
     atk: 0
@@ -1793,7 +1793,7 @@ MonoBehaviour:
     reward_type2: -1
     reward_count2: 0
   - Key: stat_1004
-    wave: 6
+    wave: 5
     hp: 1000000
     def: 10
     speed: 3

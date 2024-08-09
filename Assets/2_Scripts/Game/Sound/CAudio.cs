@@ -28,12 +28,12 @@ namespace _2_Scripts.Game.Sound
                 switch (_type)
                 {
                     case ESound.Effect:
-                        //º¼·ý ÃÊ±âÈ­
+                        //ë³¼ë¥¨ ì´ˆê¸°í™”
                         SetVolume(SoundManager.Instance.EffectVolume);
                         break;
 
                     case ESound.Bgm:
-                        //º¼·ý ÃÊ±âÈ­
+                        //ë³¼ë¥¨ ì´ˆê¸°í™”
                         SetVolume(SoundManager.Instance.BGMVolume);
                         break;
                 }
@@ -93,14 +93,12 @@ namespace _2_Scripts.Game.Sound
 
         public void PlaySound(AudioClip clip, ESound type, float pitch = 1f)
         {
-
             if (_audioSource.isPlaying)
             {
-                _audioSource.Stop();
-                //if (_audioSource.clip != clip)
-                //    _audioSource.Stop();
-                //else
-                //    return;
+                if (_audioSource.clip != clip)
+                    _audioSource.Stop();
+                else
+                    return;
             }
 
             _audioSource.pitch = pitch;
@@ -137,6 +135,7 @@ namespace _2_Scripts.Game.Sound
                     _audioSource.volume = Mathf.Lerp(0, tempVolume, temp / time);
                 }
                 --_fadeCount;
+                _prevVolume = SoundManager.Instance.BGMVolume;
             }
         }
 

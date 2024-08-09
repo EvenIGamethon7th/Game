@@ -20,13 +20,18 @@ namespace _2_Scripts.Game.Sound
             Astar,
             Title,
             Prologue,
-            Lobby
+            Lobby,
+            Her,
+            Isobell,
+            Academia,
+            Askout,
+            Enchant
         }
 
         private CAudio mAudio;
 
         private Dictionary<EBGMType, AudioClip> mClipDict = new Dictionary<EBGMType, AudioClip>();
-
+        private EBGMType[] mEnums;
         protected override void ChangeSceneInit(Scene prev, Scene next)
         {
             switch (next.name)
@@ -52,10 +57,10 @@ namespace _2_Scripts.Game.Sound
             .Where(message => message.Task == ETaskList.SoundResourceLoad).Subscribe(
                 _ =>
                 {
-                    EBGMType[] arr = Enum.GetValues(typeof(EBGMType)) as EBGMType[];
-                    for (int i = 0; i < arr.Length; i++)
+                    mEnums = Enum.GetValues(typeof(EBGMType)) as EBGMType[];
+                    for (int i = 0; i < mEnums.Length; i++)
                     {
-                        mClipDict.Add(arr[i], ResourceManager.Instance.Load<AudioClip>(arr[i].ToString()));
+                        mClipDict.Add(mEnums[i], ResourceManager.Instance.Load<AudioClip>(mEnums[i].ToString()));
                     }
                     mAudio.PlaySound(mClipDict[EBGMType.Title]);
                 }).AddTo(this);
@@ -87,8 +92,7 @@ namespace _2_Scripts.Game.Sound
 
         public void PlaySound(string name, bool isFade = false, float time = 1.5f)
         {
-            EBGMType[] arr = Enum.GetValues(typeof(EBGMType)) as EBGMType[];
-            foreach (var item in arr)
+            foreach (var item in mEnums)
             {
                 if (item.ToString().CompareTo(name) == 0)
                 {

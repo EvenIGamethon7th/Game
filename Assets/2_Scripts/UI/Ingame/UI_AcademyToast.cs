@@ -35,6 +35,7 @@ namespace _2_Scripts.UI.Ingame
                 })
                 .Append(mToast.transform.DOScaleX(1, 2).SetEase(Ease.InOutCubic))
                 .Join(mToastText.transform.DOScaleX(1, 2).SetEase(Ease.InOutCubic))
+                .AppendInterval(1)
                 .Append(mToast.DOColor(mFade, 2))
                 .Join(mToastText.DOColor(mFade, 2))
                 .AppendCallback(() => {

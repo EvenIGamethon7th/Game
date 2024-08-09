@@ -82,12 +82,12 @@ namespace _2_Scripts.UI
                 if (!BackEndManager.Instance.IsUserTutorial)
                 {
                     await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger, cancellationToken: mCts.Token);
+                    mWaveTime -= Time.deltaTime;
+                    count -= Time.deltaTime;
                 }
 
-                mWaveTime -= Time.deltaTime * 2;
-                if (StageManager.Instance.WaveCount > 4)
-                    Debug.Log(mWaveTime);
-                count -= Time.deltaTime * 2;
+                mWaveTime -= Time.deltaTime;
+                count -= Time.deltaTime;
                 text.text = $"00:{(int)mWaveTime}";
 
                 if (mWaveTime < 5)

@@ -219,9 +219,10 @@ public class StageManager : Singleton<StageManager>
                 if (mIsTutorial)
                 {
                     await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger || mIsRewind, cancellationToken: mCancellationToken.Token);
+                    time -= Time.deltaTime;
                 }
 
-                time -= Time.deltaTime * 2;
+                time -= Time.deltaTime;
             }
 
             if (currentWave != mNextStageMessage.Value)

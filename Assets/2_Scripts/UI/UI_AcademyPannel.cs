@@ -15,6 +15,7 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.UI;
+using UnityEngine.WSA;
 
 namespace _2_Scripts.UI {
     public class UI_AcademyPannel : MonoBehaviour
@@ -56,6 +57,8 @@ namespace _2_Scripts.UI {
         private readonly float mLessonTime = 2;
         private int mLessonInWaveCount;
 
+        private UI_AcademyToast mToast;
+
         private CancellationTokenSource mCts = new ();
 
         public void Init()
@@ -63,8 +66,10 @@ namespace _2_Scripts.UI {
             mLesson = GetComponentInChildren<UI_AcademyLesson>(true);
             mStatus = GetComponentInChildren<UI_AcademyStatus>(true);
             mInfo = GetComponentInChildren<UI_AcademyInfo>(true);
+            mToast = GetComponentInChildren<UI_AcademyToast>(true);
             mLesson.Init();
             mInfo.Init();
+            mToast.Init();
             mStatus.Clear();
             mClassImage.gameObject.SetActive(false);
 
@@ -109,6 +114,8 @@ namespace _2_Scripts.UI {
 
         private void AcademyLesson(CUnit student)
         {
+            if (BackEndManager.Instance.IsUserTutorial)
+                mToast.Clear();
             mDoLesson = true;
             mTempAlumniData = MemoryPoolManager<CharacterData>.CreatePoolingObject();
             mStatus.Init(student);
@@ -165,11 +172,13 @@ namespace _2_Scripts.UI {
                 mIsVacation = false;
                 if (BackEndManager.Instance.IsUserTutorial)
                 {
-                    Cargold.UI.UI_Toast_Manager.Instance.Activate_WithContent_Func("아카데미 입학 가능 웨이브입니다!", isIgnoreTimeScale: true);
+                    mToast.PlayToast();
                 }
             }
             else
             {
+                if (BackEndManager.Instance.IsUserTutorial)
+                    mToast.Clear();
                 mIsVacation = true;
             }
             mVacation.SetActive(mIsVacation);

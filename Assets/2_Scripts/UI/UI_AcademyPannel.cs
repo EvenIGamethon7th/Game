@@ -196,17 +196,21 @@ namespace _2_Scripts.UI {
 
         private void SetOverlay()
         {
-            mVacation.SetActive(mIsVacation);
-            mVacation.SetActive(!mDoLesson);
-
             if (mIsVacation)
             {
+                mVacation.SetActive(!mDoLesson);
                 mOverlayText.text = "방학입니다!";
             }
 
             else if (!mDoLesson && mLessonInWaveCount > 0)
             {
+                mVacation.SetActive(true);
                 mOverlayText.text = "이미 다녀왔습니다"!;
+            }
+
+            else
+            {
+                mVacation.SetActive(false);
             }
         }
 

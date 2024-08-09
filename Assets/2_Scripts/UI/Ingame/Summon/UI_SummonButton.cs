@@ -97,8 +97,6 @@ namespace _2_Scripts.UI
                 MessageBroker.Default.Receive<GameMessage<int>>().Where(message => message.Message == EGameMessage.StageChange && message.Value != 0)
                     .Subscribe(message =>
                     {
-                        if (message.Value == 1)
-                            return;
                         Reroll();
                     }).AddTo(this);
             }

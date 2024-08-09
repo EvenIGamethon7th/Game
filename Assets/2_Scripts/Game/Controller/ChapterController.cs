@@ -28,11 +28,16 @@ namespace _2_Scripts.Game.Controller
         private UI_StageIndicator mStageIndicator;
         [SerializeField]
         private TextMeshProUGUI mChapterClearStarText;
+
+        [SerializeField] private Button mStoryButton;
+        
         private GameMessage<Chapter> mChapterMessage = new GameMessage<Chapter>(EGameMessage.ChapterChange,null);
+        
         private void Start()
         {
             ChapterDataInit();
             LastChapterEnable();
+            mStoryButton.onClick.AddListener(OnStoryBookClick);
         }
 
         private void ChapterDataInit()
@@ -64,6 +69,24 @@ namespace _2_Scripts.Game.Controller
             MessageBroker.Default.Publish(mChapterMessage);
             mStageIndicator.OnChange(mChapterList[idx]);
             mChapterClearStarText.text = $"{mChapterList[idx].ChapterClearStar}/{mChapterList[idx].ChapterAllStar}";
+            
+            
+        }
+
+        private void OnStoryBookClick()
+        {
+            if (mChapterMessage.Value.ChapterNumber != 1)
+            {
+                UI_Toast_Manager.Instance.Activate_WithContent_Func("준비중 입니다.");
+                return;
+            }else if (mChapterList[mChapterMessage.Value.ChapterNumber].ChapterClearStar != mChapterList[mChapterMessage.Value.ChapterNumber].ChapterAllStar)
+            {
+                UI_Toast_Manager.Instance.Activate_WithContent_Func("별 15개 획득 시 \n 스토리 오픈!");
+                return;
+            }
+
+            GameManager.Instance.CurrentDialog = mChapterMessage.Value.ChapterNumber;
+            SceneLoadManager.Instance.SceneChange("DialogScene");
         }
 
         private void LastChapterEnable()

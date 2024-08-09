@@ -43,10 +43,6 @@ namespace _2_Scripts.Game.Sound
                 case "Main":
                     PlaySound($"Chapter{GameManager.Instance.CurrentStageData.ChapterNumber}");
                     break;
-
-                case "TutorialScene":
-                    PlaySound("Chapter1");
-                    break;
             }
         }
 

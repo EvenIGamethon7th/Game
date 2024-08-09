@@ -192,10 +192,7 @@ namespace _2_Scripts.Game.Dialog
                 string data = JsonUtility.ToJson(false);
                 string path = Path.Combine(Application.persistentDataPath, "IsFirstConnect");
                 File.WriteAllText(path, data);
-                if (!BackEndManager.Instance.IsUserTutorial)
-                    SceneLoadManager.Instance.SceneChange("TutorialScene");
-                else
-                    SceneLoadManager.Instance.SceneChange("LobbyScene");
+                SceneLoadManager.Instance.SceneChange("LobbyScene");
             }
         }
     }

@@ -14,13 +14,32 @@ namespace _2_Scripts.UI.OutGame.Lobby
         // [SerializeField] private Image mRewardImage;
         // [SerializeField] private TextMeshProUGUI mRewardNameText;
         [SerializeField] private UI_RewardSlot[] mRewardSlots;
+        [SerializeField] private Button mCloseButton;
+        [SerializeField] private GameObject mBackPanel;
+
+        public void Start()
+        {
+            mCloseButton.onClick.AddListener(OnTouchClose);
+        }
+
+        private void OnTouchClose()
+        {
+            if (mbRewardDelay == false)
+                return;
+            mBackPanel.SetActive(false);
+            this.gameObject.SetActive(false);
+        }
+
+        private bool mbRewardDelay = false;
         public void OnPopUp(List<Define.RewardEvent> dataValue)
         {
+            mbRewardDelay = false;
             foreach (var data in dataValue)
             {
                 data.rewardEvent?.Invoke();
             }
             OnPopUpAsync(dataValue).Forget();
+      
         }
         public void OnPopUp(Define.RewardEvent dataValue)
         {
@@ -32,10 +51,12 @@ namespace _2_Scripts.UI.OutGame.Lobby
         {
             for (int i = 0 ; i < dataValue.Count; i++)
             {
-                await UniTask.WaitForSeconds(0.5f);
                 mRewardSlots[i].gameObject.SetActive(true);
                 mRewardSlots[i].UpdateSlot(dataValue[i]);
+                await UniTask.WaitForSeconds(0.5f);
             }
+
+            mbRewardDelay = true;
         }
 
         public void OnDisable()

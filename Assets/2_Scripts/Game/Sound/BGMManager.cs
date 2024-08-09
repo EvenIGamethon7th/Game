@@ -39,9 +39,9 @@ namespace _2_Scripts.Game.Sound
                     PlaySound($"Chapter{GameManager.Instance.CurrentStageData.ChapterNumber}");
                     break;
 
-                //case "TutorialScene":
-                //    PlaySound($"Chapter1");
-                //    break;
+                case "TutorialScene":
+                    PlaySound("Chapter1");
+                    break;
             }
         }
 

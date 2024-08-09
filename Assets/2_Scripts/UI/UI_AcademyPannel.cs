@@ -205,7 +205,7 @@ namespace _2_Scripts.UI {
             else if (!mDoLesson && mLessonInWaveCount > 0)
             {
                 mVacation.SetActive(true);
-                mOverlayText.text = "이미 다녀왔습니다"!;
+                mOverlayText.text = "수업 완료!";
             }
 
             else

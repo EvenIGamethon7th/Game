@@ -323,7 +323,7 @@ namespace _2_Scripts.UI {
         {
             SceneLoadManager.Instance.SceneClear -= Clear;
             mStudentData?.Clear();
-            mTempAlumniData.Clear();
+            mTempAlumniData?.Clear();
 
             mCts.Cancel();
             mCts.Dispose();

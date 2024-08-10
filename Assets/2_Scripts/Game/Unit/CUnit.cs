@@ -65,10 +65,10 @@ namespace _2_Scripts.Game.Unit
         private MeshRenderer mMeshRenderer;
         private SkeletonAnimation mAnimation;
         private Transform mOriginParent;
-        
+
         public delegate void FSMAction();
 
-        private Dictionary<EUnitStates, FSMAction> mActions = new ();
+        private Dictionary<EUnitStates, FSMAction> mActions = new();
         public EUnitStates CurrentState { get; private set; } = EUnitStates.None;
         [field: SerializeField]
         public UniqueQueue<SkillInfo> ReadySkillQueue { get; private set; } = new UniqueQueue<SkillInfo>();
@@ -76,7 +76,7 @@ namespace _2_Scripts.Game.Unit
         private Action<Monster[]> mBeforePassive;
         private Action<Monster> mAfterPassive;
 
-        private List<BuffTrigger> mBuffs = new ();
+        private List<BuffTrigger> mBuffs = new();
 
         public bool IsNotCoolTimeSKill = false;
         private GameObject mAlumniEffect;
@@ -117,25 +117,26 @@ namespace _2_Scripts.Game.Unit
         {
             if (ReadySkillQueue.Count != 0)
             {
-              var skill = ReadySkillQueue.Peek();
-              var isRange = skill.Skill.CastAttack(this.transform,CharacterDatas);
-              ReadySkillQueue.Dequeue();
-              if (isRange)
-              {
-                  if (IsNotCoolTimeSKill)
-                  {
-                      IsNotCoolTimeSKill = false;
-                      CoolTimeSkill(1,skill).Forget();
-                  }
-                  else
-                  {
-                      CoolTimeSkill(skill).Forget();
-                  }
-              }
-              else
-              {
-                  AddReadySkill(skill);   
-              }
+                var skill = ReadySkillQueue.Peek();
+                var isRange = skill.Skill.CastAttack(this.transform, CharacterDatas);
+                ReadySkillQueue.Dequeue();
+                if (isRange)
+                {
+                    UpdateState(EUnitStates.Attack);
+                    if (IsNotCoolTimeSKill)
+                    {
+                        IsNotCoolTimeSKill = false;
+                        CoolTimeSkill(1, skill).Forget();
+                    }
+                    else
+                    {
+                        CoolTimeSkill(skill).Forget();
+                    }
+                }
+                else
+                {
+                    AddReadySkill(skill);
+                }
             }
         }
 
@@ -160,7 +161,7 @@ namespace _2_Scripts.Game.Unit
                 mAnimation.state.SetAnimation(0, "Attack_1", false);
             };
         }
-        
+
         private void CharacterDataLoad(CharacterData characterData)
         {
             CharacterDatas = MemoryPoolManager<CharacterData>.CreatePoolingObject();
@@ -168,9 +169,9 @@ namespace _2_Scripts.Game.Unit
             CharacterDatas.Init(characterData, handler.BuffData);
 
             CharacterDataInfo = ResourceManager.Instance.Load<CharacterInfo>(characterData.characterData);
-            
+
             CharacterDataInfo.ActiveSkillList?
-                .Where(skill=> skill.Level <= CharacterDatas.rank)
+                .Where(skill => skill.Level <= CharacterDatas.rank)
                 .ForEach(skill =>
                 CoolTimeSkill(skill).Forget());
             CharacterDataInfo.PassiveSkillList?.
@@ -195,7 +196,7 @@ namespace _2_Scripts.Game.Unit
                         trigger.Init(skill.Skill as PassiveBuff);
                     }
                 });
-            
+
             if (CharacterDatas.isAlumni)
             {
                 mAlumniEffect = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_Magic_Effect_11, transform.position);
@@ -203,7 +204,7 @@ namespace _2_Scripts.Game.Unit
                 mAlumniEffect.SetActive(true);
             }
         }
-        
+
         public void Init(CharacterData characterData)
         {
             CharacterDataLoad(characterData);
@@ -217,7 +218,7 @@ namespace _2_Scripts.Game.Unit
 
             var skins = mAnimation.Skeleton.Data.Skins.ToList();
             mAnimation.Skeleton.SetSkin(skins[1]);
-            
+
             mAnimation.Initialize(true);
 
             mAnimation.skeleton.SetSlotsToSetupPose();
@@ -246,14 +247,14 @@ namespace _2_Scripts.Game.Unit
         private async UniTaskVoid CoolTimeSkill(SkillInfo skill)
         {
 
-            await UniTask.WaitForSeconds(skill.CoolTime,cancellationToken:mCancleToken.Token);
+            await UniTask.WaitForSeconds(skill.CoolTime, cancellationToken: mCancleToken.Token);
             AddReadySkill(skill);
         }
 
-        private async UniTaskVoid CoolTimeSkill(float time,SkillInfo skill)
+        private async UniTaskVoid CoolTimeSkill(float time, SkillInfo skill)
         {
-         
-            await UniTask.WaitForSeconds(time,cancellationToken:mCancleToken.Token);
+
+            await UniTask.WaitForSeconds(time, cancellationToken: mCancleToken.Token);
             AddReadySkill(skill);
         }
 
@@ -290,7 +291,7 @@ namespace _2_Scripts.Game.Unit
             transform.parent = mOriginParent;
             mAlumniEffect?.SetActive(false);
         }
-        
+
         private void CancelAndDisposeToken()
         {
             if (mCancleToken != null)

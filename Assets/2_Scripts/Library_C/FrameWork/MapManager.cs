@@ -205,7 +205,8 @@ public class MapManager : Singleton<MapManager>
     {
         int outlineLayer = 1 << LayerMask.NameToLayer("Outline");
         int buffLayer = 1 << LayerMask.NameToLayer("Buff");
-        int layerMask = ~(outlineLayer | buffLayer);
+        int monsterTile = 1 << LayerMask.NameToLayer("MonsterTile");
+        int layerMask = ~(outlineLayer | buffLayer | monsterTile);
 
         RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 100, layerMask, 0);
         TileSlot tileSlot = hit.collider != null ? hit.transform.GetComponent<TileSlot>() : null;

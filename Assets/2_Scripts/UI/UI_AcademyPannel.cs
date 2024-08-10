@@ -91,7 +91,7 @@ namespace _2_Scripts.UI {
 
         private void CanLesson(CUnit student)
         {
-            mCanLesson.SetValue(mDoLesson || mIsVacation);
+            mCanLesson.SetValue(mDoLesson || mIsVacation || mLessonInWaveCount != 0);
             MessageBroker.Default.Publish(mCanLesson);
             if (mDoLesson)
             {
@@ -170,7 +170,7 @@ namespace _2_Scripts.UI {
         private void LessonComplete(int waveCount)
         {
             mLessonInWaveCount = 0;
-            if (waveCount % 4 == 0 && waveCount != 20) 
+            if (waveCount % 1 == 0 && waveCount != 20) 
             { 
                 mIsVacation = false;
                 if (BackEndManager.Instance.IsUserTutorial)

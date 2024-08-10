@@ -1,26 +1,29 @@
 ﻿using _2_Scripts.Utils;
 using Cargold.FrameWork.BackEnd;
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace _2_Scripts.UI.OutGame.Lobby.Shop
 {
-    public class UI_ShopContainerSlot : MonoBehaviour
+    public class UI_ShopContainerSlot : SerializedMonoBehaviour
     {
         [SerializeField] private string mContainerId;
         [SerializeField] private ProductDetailsKey mProductDetailsKey;
-        [Tooltip("0이면 무제한 구매 가능")]
-        [SerializeField] private int mPurchaseCount;
+        [Tooltip("true면 한 번만 구매")]
+        [SerializeField] private bool mOnePurchase;
         [SerializeField]
         private IPurchase mPurchaseCondition;
         [SerializeField]
         private Button mPurchaseButton;
         [SerializeField]
         private Button mInfoButton;
-        
+
+        [SerializeField] private TextMeshProUGUI mPriceText;
         private GameMessage<ProductDetailsData> mProductDetailMessage = new GameMessage<ProductDetailsData>(EGameMessage.ProductDetailPopUp,null);
         // 현재 슬롯 최대 3개라 제한을 풀던 더 만들던 해야할듯!
         private GameMessage<List<Define.RewardEvent>> mRewardEventMessage;
@@ -28,14 +31,23 @@ namespace _2_Scripts.UI.OutGame.Lobby.Shop
         private List<Define.RewardEvent> mRewardEvents = new List<Define.RewardEvent>();
         public void Start()
         {
+            OnVisible();
             mPurchaseCondition = GetComponent<IPurchase>();
+            mPriceText.text = this.mPurchaseCondition.GetPriceOrCount();
             mRewardEventMessage = new GameMessage<List<Define.RewardEvent>>(EGameMessage.RewardOpenPopUp, mRewardEvents);
             var itemData = BackEndManager.Instance.CatalogItems.Find(x => x.ItemId == mContainerId);
             var items = itemData.Container;
             Dictionary<string, int> itemCountDic = new Dictionary<string, int>();
             foreach (var item in items.ItemContents)
             {
-                itemCountDic[item]++;
+                if (itemCountDic.ContainsKey(item))
+                {
+                    itemCountDic[item]++;
+                }
+                else
+                {
+                    itemCountDic[item] = 1;
+                }
             }
 
             foreach (var vc in items.VirtualCurrencyContents)
@@ -67,6 +79,14 @@ namespace _2_Scripts.UI.OutGame.Lobby.Shop
             mPurchaseButton.onClick.AddListener(Purchase);
         }
 
+        private void OnVisible()
+        {
+            if (mOnePurchase && BackEndManager.Instance.UserInventory.Any(x => x.ItemId == mContainerId))
+            {
+                gameObject.SetActive(false);
+            }
+        }
+
         private void Purchase()
         {
             if (!mPurchaseCondition.Purchase())
@@ -76,6 +96,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.Shop
             BackEndManager.Instance.GrantItem(mContainerId, () =>
             {
                 BackEndManager.Instance.OpenContainerItem(mContainerId);
+                OnVisible();
             });
             MessageBroker.Default.Publish(mRewardEventMessage);
         }

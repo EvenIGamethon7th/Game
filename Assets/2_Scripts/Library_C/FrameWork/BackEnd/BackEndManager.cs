@@ -400,15 +400,17 @@ namespace Cargold.FrameWork.BackEnd
 
         public void OpenContainerItem(string itemCode)
         {
-            var itemKey = CatalogItems.Find(x => x.ItemId == itemCode);
-            if (itemKey.Container != null)
+            var itemKey = UserInventory.Find(x => x.ItemId == itemCode);
+            if (itemKey != null)
             {
                 PlayFabClientAPI.UnlockContainerInstance(
                     new UnlockContainerInstanceRequest
                     {
-                        CatalogVersion = "shop", ContainerItemInstanceId = itemKey.ItemId
+                        CatalogVersion = "shop", 
+                        ContainerItemInstanceId = itemKey.ItemInstanceId
                     }, (result) =>
                     {
+                        ReceiveCurrencyData().Forget();
                         ReceiveInventory().Forget();
                     }, (error) =>
                     {
@@ -416,6 +418,8 @@ namespace Cargold.FrameWork.BackEnd
                     });
             }
         }
+        
+        
         public void GrantItem(string itemId,Action callback = null)
         {
             var grantFreeItemRequest = new ExecuteCloudScriptRequest
@@ -426,8 +430,7 @@ namespace Cargold.FrameWork.BackEnd
             };
             PlayFabClientAPI.ExecuteCloudScript(grantFreeItemRequest, (result) =>
             {
-                ReceiveInventory().Forget();
-                callback?.Invoke();
+                ReceiveInventory(()=>callback?.Invoke()).Forget();
                 Debug.Log("GrantItem");
             }, (error) =>
             {
@@ -470,12 +473,13 @@ namespace Cargold.FrameWork.BackEnd
             });
             await tcs.Task;
         }
-        private async UniTask ReceiveInventory()
+        private async UniTask ReceiveInventory(Action callBack = null)
         {
             var tcs = new UniTaskCompletionSource();
             PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest(), (result) =>
             {
                 UserInventory = result.Inventory;
+                callBack?.Invoke();
                 tcs.TrySetResult();
             }, (error) =>
             {
@@ -581,15 +585,16 @@ namespace Cargold.FrameWork.BackEnd
                 SaveCharacterData();
             }
         }
-
+#if !UNITY_EDITOR
         private void OnApplicationFocus(bool hasFocus)
         {
-            if (mbIsLoadData)
+
+            if (mbIsLoadData && hasFocus == false)
             {
                 SaveCharacterData();
             }
         }
-
+#endif
         public void AddSpawnMission(CharacterData characterData)
         {
             if (UserMission.TryGetValue(characterData.Key, out var mission))

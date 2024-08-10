@@ -35,6 +35,7 @@ namespace _2_Scripts.UI.OutGame.Lobby
             {
                 ClearSlot();
                 OnPopUpAsync().Forget();
+                return;
             }
             
             mBackPanel.SetActive(false);
@@ -45,7 +46,7 @@ namespace _2_Scripts.UI.OutGame.Lobby
         private Queue<Define.RewardEvent> mRewardEvents = new Queue<Define.RewardEvent>();
         public void OnPopUp(List<Define.RewardEvent> dataValue)
         {
-            mbRewardDelay = false;
+          
             mRewardEvents = new Queue<Define.RewardEvent>(dataValue);
             foreach (var data in dataValue)
             {
@@ -63,12 +64,13 @@ namespace _2_Scripts.UI.OutGame.Lobby
         
         private async UniTask OnPopUpAsync()
         {
+            mbRewardDelay = false;
             int count = Mathf.Min(mRewardEvents.Count, mOnceLimitCount);
             for (int i = 0 ; i < count; i++)
             {
                 mRewardSlots[i].gameObject.SetActive(true);
                 mRewardSlots[i].UpdateSlot(mRewardEvents.Dequeue());
-                await UniTask.WaitForSeconds(0.5f);
+                await UniTask.WaitForSeconds(0.25f);
             }
 
             mbRewardDelay = true;

@@ -1,4 +1,4 @@
-﻿using _2_Scripts.UI.OutGame.Enchant;
+using _2_Scripts.UI.OutGame.Enchant;
 using _2_Scripts.Utils;
 using Cysharp.Threading.Tasks;
 using System;
@@ -16,6 +16,8 @@ namespace _2_Scripts.UI.OutGame.Lobby
         [SerializeField] private UI_RewardSlot[] mRewardSlots;
         [SerializeField] private Button mCloseButton;
         [SerializeField] private GameObject mBackPanel;
+
+        private readonly int mOnceLimitCount = 3;
 
         public void Start()
         {
@@ -61,7 +63,8 @@ namespace _2_Scripts.UI.OutGame.Lobby
         
         private async UniTask OnPopUpAsync()
         {
-            for (int i = 0 ; i < mRewardEvents.Count || i < 3; i++)
+            int count = Mathf.Min(mRewardEvents.Count, mOnceLimitCount);
+            for (int i = 0 ; i < count; i++)
             {
                 mRewardSlots[i].gameObject.SetActive(true);
                 mRewardSlots[i].UpdateSlot(mRewardEvents.Dequeue());

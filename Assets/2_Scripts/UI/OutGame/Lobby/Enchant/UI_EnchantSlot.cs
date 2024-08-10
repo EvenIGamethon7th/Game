@@ -51,7 +51,9 @@ namespace _2_Scripts.UI.OutGame.Lobby.Enchant
             if (mEnchantData.isMaxEnchant)
             {
                 mEnchantButton.interactable = false;
-                enchantLevel = DataBase_Manager.Instance.GetUnitEnchant.GetDataArr.Length - 1;
+                // enchantLevel = DataBase_Manager.Instance.GetUnitEnchant.GetDataArr.Length - 1;
+                mEnchantPriceText.text = "MAX";
+                return;
             }
             
             var enchantTableData =DataBase_Manager.Instance.GetUnitEnchant.GetData_Func($"Enchant_{enchantLevel}");

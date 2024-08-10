@@ -24,35 +24,47 @@ namespace _2_Scripts.UI.OutGame.Lobby
 
         private void OnTouchClose()
         {
+       
+            
             if (mbRewardDelay == false)
                 return;
+            
+            if (mRewardEvents.Count != 0)
+            {
+                ClearSlot();
+                OnPopUpAsync().Forget();
+            }
+            
             mBackPanel.SetActive(false);
             this.gameObject.SetActive(false);
         }
 
         private bool mbRewardDelay = false;
+        private Queue<Define.RewardEvent> mRewardEvents = new Queue<Define.RewardEvent>();
         public void OnPopUp(List<Define.RewardEvent> dataValue)
         {
             mbRewardDelay = false;
+            mRewardEvents = new Queue<Define.RewardEvent>(dataValue);
             foreach (var data in dataValue)
             {
                 data.rewardEvent?.Invoke();
             }
-            OnPopUpAsync(dataValue).Forget();
+            OnPopUpAsync().Forget();
       
         }
         public void OnPopUp(Define.RewardEvent dataValue)
         {
             dataValue?.rewardEvent?.Invoke();
-            OnPopUpAsync(new List<Define.RewardEvent> { dataValue }).Forget();
+            mRewardEvents.Enqueue(dataValue);
+            OnPopUpAsync().Forget();
         }
         
-        private async UniTask OnPopUpAsync(List<Define.RewardEvent> dataValue)
+        private async UniTask OnPopUpAsync()
         {
-            for (int i = 0 ; i < dataValue.Count; i++)
+            for (int i = 0 ; i < mRewardEvents.Count || i < 3; i++)
             {
                 mRewardSlots[i].gameObject.SetActive(true);
-                mRewardSlots[i].UpdateSlot(dataValue[i]);
+                mRewardSlots[i].UpdateSlot(mRewardEvents.Dequeue());
                 await UniTask.WaitForSeconds(0.5f);
             }
 
@@ -60,6 +72,11 @@ namespace _2_Scripts.UI.OutGame.Lobby
         }
 
         public void OnDisable()
+        {
+            ClearSlot();
+        }
+
+        private void ClearSlot()
         {
             foreach (var slot in mRewardSlots)
             {

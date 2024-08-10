@@ -23,6 +23,7 @@ namespace _2_Scripts.Game.Monster
     {
         private Animator mAnimator;
         private MatController mMatController;
+        [SerializeField]
         private MonsterData mMonsterData;
         public MonsterData GetMonsterData  => mMonsterData;
 

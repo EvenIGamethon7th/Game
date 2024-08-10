@@ -40,23 +40,11 @@ namespace _2_Scripts.UI
             mClosePos = -mOriginPos;
             mText = mButton.GetComponentInChildren<TextMeshProUGUI>();
             mButton.onClick.AddListener(ChangePos);
-            MessageBroker.Default.Receive<TaskMessage>()
-                .Where(message => message.Task == ETaskList.CharacterDataResourceLoad).Subscribe(
-                    _ =>
-                    {
-                        foreach (var resource in ResourceManager.Instance._resources.Where(x => x.Value is CharacterInfo))
-                        {
-                            mUserCharacterList.Add(resource.Value as CharacterInfo);
-                        }
-                        isInitList = true;
-                    }).AddTo(this);
 
-            MessageBroker.Default.Receive<TaskMessage>()
-                .Where(message => message.Task == ETaskList.DefaultResourceLoad).Subscribe(
-                    _ =>
-                    {
-                        isInitButton = true;
-                    }).AddTo(this);
+            if (GameManager.Instance.IsTest)
+                TestStartInit();
+            else
+                StartInit();
 
             IDisposable dispose = null;
 
@@ -82,6 +70,37 @@ namespace _2_Scripts.UI
                 }).AddTo(this);
 
             this.ObserveEveryValueChanged(_ => mInputField.text).Subscribe(_ => CheckInput());
+        }
+
+        private void StartInit()
+        {
+            foreach (var resource in ResourceManager.Instance._resources.Where(x => x.Value is CharacterInfo))
+            {
+                mUserCharacterList.Add(resource.Value as CharacterInfo);
+            }
+            isInitList = true;
+            isInitButton = true;
+        }
+
+        private void TestStartInit()
+        {
+            MessageBroker.Default.Receive<TaskMessage>()
+                .Where(message => message.Task == ETaskList.CharacterDataResourceLoad).Subscribe(
+                    _ =>
+                    {
+                        foreach (var resource in ResourceManager.Instance._resources.Where(x => x.Value is CharacterInfo))
+                        {
+                            mUserCharacterList.Add(resource.Value as CharacterInfo);
+                        }
+                        isInitList = true;
+                    }).AddTo(this);
+
+            MessageBroker.Default.Receive<TaskMessage>()
+                .Where(message => message.Task == ETaskList.DefaultResourceLoad).Subscribe(
+                    _ =>
+                    {
+                        isInitButton = true;
+                    }).AddTo(this);
         }
 
         private void ChangePos()

@@ -33,6 +33,7 @@ namespace _2_Scripts.UI {
 
         private bool mDoLesson = false;
         private bool mIsVacation = true;
+        private bool mOutAsync = false;
 
         private int mLessonCount = 0;
 
@@ -62,10 +63,14 @@ namespace _2_Scripts.UI {
         [SerializeField]
         private TextMeshProUGUI mOverlayText;
 
+        private bool mTest;
+
         private CancellationTokenSource mCts = new ();
 
         public void Init()
         {
+            SceneLoadManager.Instance.SceneClear += Clear;
+            mTest = GameManager.Instance.IsTest || BackEndManager.Instance.IsUserTutorial;
             mLesson = GetComponentInChildren<UI_AcademyLesson>(true);
             mStatus = GetComponentInChildren<UI_AcademyStatus>(true);
             mInfo = GetComponentInChildren<UI_AcademyInfo>(true);
@@ -116,7 +121,7 @@ namespace _2_Scripts.UI {
 
         private void AcademyLesson(CUnit student)
         {
-            if (BackEndManager.Instance.IsUserTutorial)
+            if (mTest)
                 mToast.Clear();
             mDoLesson = true;
             mTempAlumniData = MemoryPoolManager<CharacterData>.CreatePoolingObject();
@@ -151,18 +156,21 @@ namespace _2_Scripts.UI {
                     projectile.gameObject.SetActive(false);
                     var effect = ObjectPoolManager.Instance.CreatePoolingObject(Define.SpawnEffectDictionary[mStudentData.rank], tilePos);
                 });
-                if (BackEndManager.Instance.IsUserTutorial)
+                if (mTest)
                     UI_Toast_Manager.Instance.Activate_WithContent_Func("아카데미에서 돌아왔어요!", isIgnoreTimeScale: true);
             });
-            mLessonCount = 0;
+
             if (isCreateUnit)
             {
+                mLessonCount = 0;
                 mClassImage.gameObject.SetActive(false);
                 mDoLesson = false;
+                mStudentData.Clear();
+                mStudentData = null;
                 mStatus.Clear();
                 mLesson.Init();
                 mTempAlumniData = null;
-                if (!BackEndManager.Instance.IsUserTutorial) MessageBroker.Default.Publish(new GameMessage<bool>(EGameMessage.TutorialProgress, true));
+                if (!BackEndManager.Instance.IsUserTutorial && !GameManager.Instance.IsTest) MessageBroker.Default.Publish(new GameMessage<bool>(EGameMessage.TutorialProgress, true));
                 SetOverlay();
             }
         }
@@ -170,24 +178,24 @@ namespace _2_Scripts.UI {
         private void LessonComplete(int waveCount)
         {
             mLessonInWaveCount = 0;
-            if (waveCount % 1 == 0 && waveCount != 20) 
+            if (waveCount % 4 == 0 && waveCount != 20) 
             { 
                 mIsVacation = false;
-                if (BackEndManager.Instance.IsUserTutorial)
+                if (mTest && !mDoLesson)
                 {
                     mToast.PlayToast();
                 }
             }
             else
             {
-                if (BackEndManager.Instance.IsUserTutorial)
+                if (mTest)
                     mToast.Clear();
                 mIsVacation = true;
             }
 
             SetOverlay();
 
-            if (mLessonCount >= 5)
+            if (mLessonCount >= 5 && mOutAsync)
             {
                 SummonAlumni();
             }
@@ -215,13 +223,14 @@ namespace _2_Scripts.UI {
 
         private async UniTask DoLessonAsync()
         {
+            mOutAsync = false;
             float time = 0;
 
             mLesson.DoLesson(mLessonCount);
             mClassImage.sprite = mAtlas.GetSprite(mClassData[mLessonCount].AcademyClassKey);
             SetInfoRate();
 
-            if (!BackEndManager.Instance.IsUserTutorial) await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
+            if (!BackEndManager.Instance.IsUserTutorial && !GameManager.Instance.IsTest) await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger);
 
             while (mLessonCount < 5)
             {
@@ -239,7 +248,7 @@ namespace _2_Scripts.UI {
             }
 
             await UniTask.Delay(TimeSpan.FromSeconds(mLessonTime), cancellationToken: mCts.Token);
-
+            mOutAsync = true;
             SummonAlumni();
         }
 
@@ -310,8 +319,12 @@ namespace _2_Scripts.UI {
             mInfo.SetText(mClassRate);
         }
 
-        private void OnDestroy()
+        private void Clear()
         {
+            SceneLoadManager.Instance.SceneClear -= Clear;
+            mStudentData?.Clear();
+            mTempAlumniData.Clear();
+
             mCts.Cancel();
             mCts.Dispose();
         }

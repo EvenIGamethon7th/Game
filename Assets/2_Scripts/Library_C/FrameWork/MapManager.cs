@@ -25,6 +25,17 @@ public class MapManager : Singleton<MapManager>
 
     private void Start()
     {
+        SceneLoadManager.Instance.SceneClear += Clear;
+
+        void Clear()
+        {
+            SceneLoadManager.Instance.SceneClear -= Clear;
+            for (int i = 0; i < mTileDatas.Count; ++i)
+            {
+                mTileDatas[i].Clear();
+            }
+        }
+
         if (GameManager.Instance.IsTest)
         {
             MessageBroker.Default.Receive<TaskMessage>().Where(message => message.Task == ETaskList.DefaultResourceLoad).Subscribe(

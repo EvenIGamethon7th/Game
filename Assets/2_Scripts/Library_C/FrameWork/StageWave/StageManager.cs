@@ -121,6 +121,10 @@ public class StageManager : Singleton<StageManager>
         {
             stageKey = $"Stage_{(currentStage.ChapterNumber - 1) * 5 + (currentStage.StageNumber - 1)}";
         }
+        else if (GameManager.Instance.IsTest)
+        {
+            stageKey = "Stage_0";
+        }
         else
         {
             stageKey = "Stage_100";

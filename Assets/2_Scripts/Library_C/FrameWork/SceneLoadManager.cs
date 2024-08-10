@@ -19,6 +19,9 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     [SerializeField]
     private CanvasGroup mToolTipGroup;
 
+    [SerializeField]
+    private float mSpeed = 3;
+
     public event Action OnSceneLoad;
     public event Action SceneClear;
 
@@ -52,6 +55,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         mSceneLoadAnimator.SetBool("Fade", false);
         mSceneLoadAnimator.gameObject.SetActive(true);
         mSceneLoadAnimator.Play(0);
+        mSceneLoadAnimator.speed = mSpeed;
         SceneClear?.Invoke();
         await UniTask.WaitUntil(() => mGraphicMaterialOverride.PropertyValue <= 0f);
         ToolTipAnimation();

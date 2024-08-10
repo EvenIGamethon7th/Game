@@ -565,7 +565,7 @@ namespace Cargold.FrameWork.BackEnd
 
         private void OnApplicationFocus(bool hasFocus)
         {
-            if (mbIsLoadData)
+            if (mbIsLoadData && !hasFocus)
             {
                 SaveCharacterData();
             }

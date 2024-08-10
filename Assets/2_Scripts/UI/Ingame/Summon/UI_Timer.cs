@@ -27,8 +27,11 @@ namespace _2_Scripts.UI
 
         private CancellationTokenSource mCts = new();
 
+        private bool mTest;
+
         private void Start()
         {
+            mTest = !GameManager.Instance.IsTest && !BackEndManager.Instance.IsUserTutorial;
             SceneLoadManager.Instance.SceneClear += Clear;
             MessageBroker.Default.Receive<TaskMessage>().
                 Where(task => task.Task == ETaskList.BossSpawn).
@@ -48,12 +51,14 @@ namespace _2_Scripts.UI
                 .Where(m => m.Message == EGameMessage.StageChange)
                 .Subscribe(m =>
                 {
-                    int val = !BackEndManager.Instance.IsUserTutorial ? 10 : 20;
+                    int val = mTest ? 10 : 20;
                     StartTimerAsync(val).Forget();
                 })
                 .AddTo(this);
-            if (!BackEndManager.Instance.IsUserTutorial)
+
+            if (mTest)
                 StartTimerAsync(3).Forget();
+
             else
             {
                 SceneLoadManager.Instance.OnSceneLoad += StartTimer;
@@ -88,7 +93,7 @@ namespace _2_Scripts.UI
 
                 if (text == null) break;
 
-                if (!BackEndManager.Instance.IsUserTutorial)
+                if (mTest)
                 {
                     await UniTask.WaitUntil(() => IngameDataManager.Instance.TutorialTrigger, cancellationToken: mCts.Token);
                     mWaveTime -= Time.deltaTime;

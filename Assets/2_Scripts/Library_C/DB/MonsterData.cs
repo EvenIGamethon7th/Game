@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 // 카라리 테이블 임포터에 의해 생성된 스크립트입니다.
 
 public partial class MonsterData : IPoolable
@@ -9,11 +10,15 @@ public partial class MonsterData : IPoolable
     private HashSet<float> mSlowSet = new HashSet<float>();
     private float mCurrentSlow;
 
-
+    [field:SerializeField]
     public float hp { get ; private set;}
+    [field: SerializeField]
     public float def{ get ; private set;}
+    [field: SerializeField]
     public float mdef{ get ; private set;}
+    [field: SerializeField]
     public float speed{ get ; private set;}
+    [field: SerializeField]
     public float atk { get ; private set;}
 
     public Dictionary<string, int> rewardList = new Dictionary<string, int>()

@@ -200,6 +200,7 @@ namespace _2_Scripts.Game.Unit
             {
                 mAlumniEffect = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_Magic_Effect_11, transform.position);
                 mAlumniEffect.transform.parent = transform;
+                mAlumniEffect.SetActive(true);
             }
         }
         

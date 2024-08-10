@@ -18,7 +18,7 @@ MonoBehaviour:
     ReferencedUnityObjects:
     - {fileID: 11400000, guid: fa7bc69f84b39b34e8165a4cab0e7c6a, type: 2}
     - {fileID: 11400000, guid: 5f802e6a45f171b49b6f07b7a7d6eead, type: 2}
-    - {fileID: 11400000, guid: b3dc90ac12e020c4eb8f56896b5aff44, type: 2}
+    - {fileID: 11400000, guid: c569eed74a22f9543af1eca254bceca1, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -107,7 +107,7 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 7
       Data: 6|_2_Scripts.Game.ScriptableObject.Character.SkillInfo, Assembly-CSharp
@@ -124,6 +124,21 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 7|_2_Scripts.Game.ScriptableObject.Character.SkillInfo, Assembly-CSharp
+    - Name: Level
+      Entry: 3
+      Data: 2
+    - Name: CoolTime
+      Entry: 4
+      Data: 7
+    - Name: Skill
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -131,23 +146,11 @@ MonoBehaviour:
       Data: 
     - Name: PassiveSkillList
       Entry: 7
-      Data: 7|System.Collections.Generic.List`1[[_2_Scripts.Game.ScriptableObject.Character.PassiveSkillInfo,
+      Data: 8|System.Collections.Generic.List`1[[_2_Scripts.Game.ScriptableObject.Character.PassiveSkillInfo,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 8|_2_Scripts.Game.ScriptableObject.Character.PassiveSkillInfo, Assembly-CSharp
-    - Name: Level
-      Entry: 3
-      Data: 2
-    - Name: Skill
-      Entry: 10
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
+      Data: 0
     - Name: 
       Entry: 13
       Data: 

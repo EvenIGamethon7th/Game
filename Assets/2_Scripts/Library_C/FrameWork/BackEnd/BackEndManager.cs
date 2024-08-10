@@ -398,7 +398,25 @@ namespace Cargold.FrameWork.BackEnd
             });
         }
 
-        public void GrantItem(string itemId)
+        public void OpenContainerItem(string itemCode)
+        {
+            var itemKey = CatalogItems.Find(x => x.ItemId == itemCode);
+            if (itemKey.Container != null)
+            {
+                PlayFabClientAPI.UnlockContainerInstance(
+                    new UnlockContainerInstanceRequest
+                    {
+                        CatalogVersion = "shop", ContainerItemInstanceId = itemKey.ItemId
+                    }, (result) =>
+                    {
+                        ReceiveInventory().Forget();
+                    }, (error) =>
+                    {
+                        ErrorLog(error);
+                    });
+            }
+        }
+        public void GrantItem(string itemId,Action callback = null)
         {
             var grantFreeItemRequest = new ExecuteCloudScriptRequest
             {
@@ -409,6 +427,7 @@ namespace Cargold.FrameWork.BackEnd
             PlayFabClientAPI.ExecuteCloudScript(grantFreeItemRequest, (result) =>
             {
                 ReceiveInventory().Forget();
+                callback?.Invoke();
                 Debug.Log("GrantItem");
             }, (error) =>
             {

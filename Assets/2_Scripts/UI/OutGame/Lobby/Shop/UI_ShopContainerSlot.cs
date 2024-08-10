@@ -1,5 +1,7 @@
 ﻿using _2_Scripts.Utils;
+using Cargold.FrameWork.BackEnd;
 using System.Collections.Generic;
+using System.Linq;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,6 +30,35 @@ namespace _2_Scripts.UI.OutGame.Lobby.Shop
         {
             mPurchaseCondition = GetComponent<IPurchase>();
             mRewardEventMessage = new GameMessage<List<Define.RewardEvent>>(EGameMessage.RewardOpenPopUp, mRewardEvents);
+            var itemData = BackEndManager.Instance.CatalogItems.Find(x => x.ItemId == mContainerId);
+            var items = itemData.Container;
+            Dictionary<string, int> itemCountDic = new Dictionary<string, int>();
+            foreach (var item in items.ItemContents)
+            {
+                itemCountDic[item]++;
+            }
+
+            foreach (var vc in items.VirtualCurrencyContents)
+            {
+               var data = DataBase_Manager.Instance.GetItem.GetDataArr.FirstOrDefault(x => x.code == vc.Key);
+                mRewardEvents.Add(new Define.RewardEvent
+                {
+                    name = data.name,
+                    sprite = data.Icon,
+                    count = (int)vc.Value,
+                });
+            }
+
+            foreach (var item in itemCountDic)
+            {
+                var data = DataBase_Manager.Instance.GetItem.GetDataArr.FirstOrDefault(x => x.code == item.Key);
+                mRewardEvents.Add(new Define.RewardEvent
+                {
+                    name = data.name,
+                    sprite = data.Icon,
+                    count = item.Value,
+                });
+            }
             if (mInfoButton != null && mProductDetailsKey.GetData != null)
             {
                 mProductDetailMessage.SetValue(mProductDetailsKey.GetData);
@@ -42,6 +73,10 @@ namespace _2_Scripts.UI.OutGame.Lobby.Shop
             {
                 return;
             }
+            BackEndManager.Instance.GrantItem(mContainerId, () =>
+            {
+                BackEndManager.Instance.OpenContainerItem(mContainerId);
+            });
             MessageBroker.Default.Publish(mRewardEventMessage);
         }
 

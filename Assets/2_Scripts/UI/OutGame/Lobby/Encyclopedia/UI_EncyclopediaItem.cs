@@ -21,8 +21,8 @@ namespace _2_Scripts.UI.OutGame.Lobby.Encyclopedia
             mCharacterBorderContainer.sprite = mBorderContainerSprite[classType];
             mCharacterImage.sprite = characterData.Icon;
             mCharacterNameText.text = characterData.GetCharacterName();
-            mSkillTextList[0].text = characterData.Skill1;
-            mSkillTextList[1].text = characterData.Skill2;
+            mSkillTextList[0].text = characterData.GetSkillDataLoc(1);
+            mSkillTextList[1].text = characterData.GetSkillDataLoc(2);
         }
     }
 }

@@ -21,8 +21,13 @@ namespace _2_Scripts.UI.OutGame.Lobby.Encyclopedia
             List<CharacterData> characterDataList = new List<CharacterData>();
             GameManager.Instance.UserCharacterList.ForEach(characterData =>
             {
-                characterDataList.Add(characterData.CharacterEvolutions[3].GetData);
+                var data = characterData.CharacterEvolutions[3].GetData;
+                if (data.GetCharacterClass() == mEnchantClassType)
+                {
+                    characterDataList.Add(characterData.CharacterEvolutions[3].GetData);
+                }
             });
+            mContent.GetComponent<RectTransform>().sizeDelta = new Vector2(0, characterDataList.Count * 440);
             foreach (var characterData in characterDataList)
             {
                 var itemObject = Instantiate(mItemPrefab, mContent.transform).GetComponent<UI_EncyclopediaItem>();

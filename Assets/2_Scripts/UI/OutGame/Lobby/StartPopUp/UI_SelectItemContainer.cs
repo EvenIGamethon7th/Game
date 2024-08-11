@@ -53,6 +53,8 @@ namespace _2_Scripts.UI.OutGame.Lobby.StartPopUp
                 itemObject.SetItem(item,OnClickItem,iconSprite);
                 mAllItems.Add(itemObject);
             }
+            //진입 시 초기 아이템 설정
+            OnClickItem(mAllItems[0]);
         }
 
         public void UseItems()

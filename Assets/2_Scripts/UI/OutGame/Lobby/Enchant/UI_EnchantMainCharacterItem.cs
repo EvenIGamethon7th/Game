@@ -20,7 +20,7 @@ namespace _2_Scripts.UI.OutGame.Enchant
         [SerializeField] private TextMeshProUGUI mButtonText;
         [SerializeField] private GameObject mEnchantIcon;
         [SerializeField] private GameObject mBlindObject;
-
+        [SerializeField] private Button mBorderButton;
         private MainCharacterData mMainCharacterData;
         private MainCharacterInfo mMainCharacterInfo;
         private GameMessage<Define.EnchantMainCharacterEvent> mOpenEnchantPopupMessage;
@@ -28,6 +28,7 @@ namespace _2_Scripts.UI.OutGame.Enchant
         private void Start()
         {
             mButton.onClick.AddListener(OnClickButton);
+            mBorderButton.onClick.AddListener(OnClickButton);
             mOpenEnchantPopupMessage = new GameMessage<Define.EnchantMainCharacterEvent>(EGameMessage.EnchantOpenPopUp,new Define.EnchantMainCharacterEvent
             {
                 data = mMainCharacterData, infoData = mMainCharacterInfo

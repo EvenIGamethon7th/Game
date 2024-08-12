@@ -36,7 +36,7 @@ namespace _2_Scripts.UI.OutGame.Lobby
         private void StarTextChange(int currentStar, int maxStar)
         {
             mSlider.value = currentStar/(float)maxStar;
-            mTexts[ETextType.Star].text = $"{currentStar}/{maxStar}";
+            mTexts[ETextType.Star].text = $"({currentStar}/{maxStar})";
         }
     }
 }

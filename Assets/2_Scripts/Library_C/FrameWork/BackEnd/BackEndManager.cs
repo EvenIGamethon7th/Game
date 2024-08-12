@@ -300,7 +300,7 @@ namespace Cargold.FrameWork.BackEnd
         public void SaveCharacterData()
         {
             string jsonData = JsonConvert.SerializeObject(ChapterDataList);
-            PublishCharacterData(new Dictionary<string, string> { { "ChapterData", jsonData }, { "MissionData", JsonConvert.SerializeObject(UserMission)}, { "PlayMissionData", JsonConvert.SerializeObject(UserMission)},
+            PublishCharacterData(new Dictionary<string, string> { { "ChapterData", jsonData }, { "MissionData", JsonConvert.SerializeObject(UserMission)}, { "PlayMissionData", JsonConvert.SerializeObject(UserPlayMission)},
                 { "MainCharacterData", JsonConvert.SerializeObject(UserMainCharacterData) },{"EnchantData",JsonConvert.SerializeObject(UserEnchantData)},
                 {"DailyReward",UserDailyReward.ToString()},{"FreeRewardData",JsonConvert.SerializeObject(UserFreeRewardData)},{"IsUserTutorial",IsUserTutorial.ToString()}});
         }
@@ -366,7 +366,7 @@ namespace Cargold.FrameWork.BackEnd
 
                 if (result.Data.TryGetValue("PlayMissionData", out var missionData))
                 {
-                    UserPlayMission = JsonConvert.DeserializeObject<Dictionary<string, PlayMission>>(data.Value);
+                    UserPlayMission = JsonConvert.DeserializeObject<Dictionary<string, PlayMission>>(missionData.Value);
                 }
                 tcs.TrySetResult();
             }, (error) =>

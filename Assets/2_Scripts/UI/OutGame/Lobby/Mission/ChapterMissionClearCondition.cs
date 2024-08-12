@@ -22,12 +22,12 @@ namespace _2_Scripts.UI.OutGame.Lobby
 
         public override int GetCurrentProgress()
         {
-          return  BackEndManager.Instance.ChapterDataList[ChapterIndex].StageList.Sum(x => x.Star);
+          return  BackEndManager.Instance.ChapterDataList[ChapterIndex-1].StageList.Sum(x => x.Star);
         }
 
         public override int GetMaxProgress()
         {
-            return BackEndManager.Instance.ChapterDataList[ChapterIndex].StageList.Count * 3;
+            return BackEndManager.Instance.ChapterDataList[ChapterIndex-1].StageList.Count * 3;
         }
     }
 }

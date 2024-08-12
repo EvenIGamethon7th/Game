@@ -54,6 +54,7 @@ SpriteAtlas:
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
+    - ccfcdd208c4ac4bdbb77a5a76a133564: 21300000
     - 8a477530384159b479d1a4559529cefe: 21300000
     - 24a208301690ac84aab760e3da9b5eab: 21300000
     - 92e161603f77baa4ba02b119dd670301: 21300000
@@ -147,9 +148,12 @@ SpriteAtlas:
     - e6675c6f9a5eb234991c34bc67192c10: 21300000
     - 68b2fe9fee41f1d48b56a5319806da0a: 21300000
     - 7ff1c0cfabfb6d14991724855ffba2fe: 21300000
+    - 204659ef23f9049d3982437af7f18e03: 21300000
     - 3af3e3ff7b329934c9fe01e9ed7f3ea8: 21300000
+    - 6d8967ff0c48b4ea8a643f126a4828b2: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: ccfcdd208c4ac4bdbb77a5a76a133564, type: 3}
   - {fileID: 21300000, guid: 8a477530384159b479d1a4559529cefe, type: 3}
   - {fileID: 21300000, guid: 24a208301690ac84aab760e3da9b5eab, type: 3}
   - {fileID: 21300000, guid: 92e161603f77baa4ba02b119dd670301, type: 3}
@@ -243,8 +247,11 @@ SpriteAtlas:
   - {fileID: 21300000, guid: e6675c6f9a5eb234991c34bc67192c10, type: 3}
   - {fileID: 21300000, guid: 68b2fe9fee41f1d48b56a5319806da0a, type: 3}
   - {fileID: 21300000, guid: 7ff1c0cfabfb6d14991724855ffba2fe, type: 3}
+  - {fileID: 21300000, guid: 204659ef23f9049d3982437af7f18e03, type: 3}
   - {fileID: 21300000, guid: 3af3e3ff7b329934c9fe01e9ed7f3ea8, type: 3}
+  - {fileID: 21300000, guid: 6d8967ff0c48b4ea8a643f126a4828b2, type: 3}
   m_PackedSpriteNamesToIndex:
+  - ClassIcon_3
   - keyShadow
   - keybox
   - Bubble
@@ -254,7 +261,7 @@ SpriteAtlas:
   - goldKnight_1
   - frozen_1
   - whiteSlider
-  - rumi
+  - Rumi
   - SlideBG
   - Success Arrow
   - Amos_SkillIcon
@@ -296,9 +303,9 @@ SpriteAtlas:
   - BackGround
   - ember_1
   - Lo_AcademyClass_14
-  - bird
+  - Bird
   - expbar_resized
-  - rev
+  - Rev
   - holy_2
   - paladin_1
   - BoxRate
@@ -338,7 +345,9 @@ SpriteAtlas:
   - Lo_AcademyClass_2
   - recycle
   - Lo_AcademyClass_13
+  - ClassIcon_2
   - GreendArcher_2
+  - ClassIcon_1
   m_RenderDataMap: {}
   m_Tag: UI_Atlas
   m_IsVariant: 0

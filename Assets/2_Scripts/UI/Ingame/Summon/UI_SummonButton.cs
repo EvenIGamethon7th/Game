@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Runtime.Serialization;
 using _2_Scripts.Game.ScriptableObject.Character;
 using _2_Scripts.Game.Sound;
@@ -62,6 +63,17 @@ namespace _2_Scripts.UI
         private Image mCardImage;
 
         private Button mSpawnButton;
+
+        [SerializeField]
+        private Image mColorImage;
+        [SerializeField]
+        private Image mIconImage;
+        [SerializeField]
+        private TextMeshProUGUI mClassText;
+        [SerializeField]
+        private readonly Dictionary<int, Sprite> mClassIcon = new();
+        [SerializeField]
+        private readonly Dictionary<int, UnityEngine.Color> mColor = new();
 
         public void SetInteract(bool canInteract)
         {
@@ -167,6 +179,12 @@ namespace _2_Scripts.UI
             global::Utils.CharacterSkeletonInit(mCharacterGraphic, mCharacterData.characterPack);
             mCharacterName.SetLocalizeKey(mCharacterData.nameKey);
             mCharacterCost.text = $"{mCharacterData.cost}$";
+            UnityEngine.Color col = UnityEngine.Color.white;
+
+            mIconImage.sprite = mClassIcon[mCharacterData.academyClass];
+            mColorImage.color = mColor[mCharacterData.academyClass];
+            mClassText.text = DataBase_Manager.Instance.GetLocalize.GetData_Func(mCharacterData.ClassType).ko;
+
             if (mCharacterData.rank == 3)
             {
                 SoundManager.Instance.Vibrate();

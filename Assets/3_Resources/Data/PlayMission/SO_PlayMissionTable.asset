@@ -1,0 +1,284 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c65c8a004ff40f88d610b9ada3ead8b, type: 3}
+  m_Name: SO_PlayMissionTable
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 64b8fc974e6a4a347b4d54d095e61eff, type: 2}
+    - {fileID: 957653008436003233, guid: 9c707e664e0b5df40ba365e5e5ff7275, type: 3}
+    - {fileID: 11400000, guid: b85f137cc0daaa14bbed5937f783ff35, type: 2}
+    - {fileID: 11400000, guid: 63a9624a646d2fc4cb8fbb171c9d9e2a, type: 2}
+    - {fileID: 11400000, guid: dbd7dab6233591446880d0bf5e786d91, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: PlayMissionTable
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[_2_Scripts.UI.OutGame.Lobby.SO_PlayMission,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Chapter_01
+    - Name: $v
+      Entry: 7
+      Data: 2|_2_Scripts.UI.OutGame.Lobby.SO_PlayMission, Assembly-CSharp
+    - Name: ClearConditions
+      Entry: 7
+      Data: 3|System.Collections.Generic.List`1[[_2_Scripts.UI.OutGame.Lobby.MissionClearCondition,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: ItemKey
+      Entry: 7
+      Data: 4|ItemKey, Assembly-CSharp
+    - Name: key
+      Entry: 1
+      Data: Item_2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Amount
+      Entry: 3
+      Data: 1
+    - Name: ItemAcquisition
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Chapter_02
+    - Name: $v
+      Entry: 7
+      Data: 5|_2_Scripts.UI.OutGame.Lobby.SO_PlayMission, Assembly-CSharp
+    - Name: ClearConditions
+      Entry: 7
+      Data: 6|System.Collections.Generic.List`1[[_2_Scripts.UI.OutGame.Lobby.MissionClearCondition,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: ItemKey
+      Entry: 7
+      Data: 7|ItemKey, Assembly-CSharp
+    - Name: key
+      Entry: 1
+      Data: Item_2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Amount
+      Entry: 3
+      Data: 1
+    - Name: ItemAcquisition
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Chapter_03
+    - Name: $v
+      Entry: 7
+      Data: 8|_2_Scripts.UI.OutGame.Lobby.SO_PlayMission, Assembly-CSharp
+    - Name: ClearConditions
+      Entry: 7
+      Data: 9|System.Collections.Generic.List`1[[_2_Scripts.UI.OutGame.Lobby.MissionClearCondition,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: ItemKey
+      Entry: 7
+      Data: 10|ItemKey, Assembly-CSharp
+    - Name: key
+      Entry: 1
+      Data: Item_2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Amount
+      Entry: 3
+      Data: 1
+    - Name: ItemAcquisition
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: AllChapterClear
+    - Name: $v
+      Entry: 7
+      Data: 11|_2_Scripts.UI.OutGame.Lobby.SO_PlayMission, Assembly-CSharp
+    - Name: ClearConditions
+      Entry: 7
+      Data: 12|System.Collections.Generic.List`1[[_2_Scripts.UI.OutGame.Lobby.MissionClearCondition,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: ItemKey
+      Entry: 7
+      Data: 13|ItemKey, Assembly-CSharp
+    - Name: key
+      Entry: 1
+      Data: Item_1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Amount
+      Entry: 3
+      Data: 1000
+    - Name: ItemAcquisition
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Chapter_04
+    - Name: $v
+      Entry: 7
+      Data: 14|_2_Scripts.UI.OutGame.Lobby.SO_PlayMission, Assembly-CSharp
+    - Name: ClearConditions
+      Entry: 7
+      Data: 15|System.Collections.Generic.List`1[[_2_Scripts.UI.OutGame.Lobby.MissionClearCondition,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: ItemKey
+      Entry: 7
+      Data: 16|ItemKey, Assembly-CSharp
+    - Name: key
+      Entry: 1
+      Data: Item_2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Amount
+      Entry: 3
+      Data: 1
+    - Name: ItemAcquisition
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 

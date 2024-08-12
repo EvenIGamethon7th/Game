@@ -27,6 +27,11 @@ public partial class CharacterData : IPoolable
     public string SkillDesc { get; private set; }
 
     private EEnchantClassType mEnchant;
+
+    public EEnchantClassType GetCharacterClass()
+    {
+        return Utils.GetEnumFromDescription<EEnchantClassType>(ClassType);
+    }
     
     public CharacterData()
     {
@@ -116,9 +121,14 @@ public partial class CharacterData : IPoolable
         return LocalizeSystem_Manager.Instance.GetLcz_Func(ClassType);
     }
 
+    public string GetSkillDataLoc(int rank)
+    {
+        string skillKey = rank == 1 ? Skill1 : Skill2; 
+        return DataBase_Manager.Instance.GetSkill.GetData_Func(skillKey).Description;
+    }
     public void SetSkillDataLoc(int rank)
     {
-        string skillKey = rank == 1 ? skill1Key : skill2Key; 
+        string skillKey = rank == 1 ? Skill1 : Skill2; 
         SkillData skillData = DataBase_Manager.Instance.GetSkill.GetData_Func(skillKey);
         SkillName = skillData.Name;
         SkillDesc = skillData.Description;

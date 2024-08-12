@@ -7,12 +7,10 @@ using _2_Scripts.Game.BackEndData.MainCharacter;
 using _2_Scripts.Game.BackEndData.Mission;
 using _2_Scripts.Game.BackEndData.Shop;
 using _2_Scripts.Utils;
-using Cargold.Gacha;
 using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
 using PlayFab;
 using PlayFab.ClientModels;
-using Sirenix.Utilities;
 using UniRx;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -58,7 +56,7 @@ namespace Cargold.FrameWork.BackEnd
         public List<ChapterData> ChapterDataList { get; private set; } = new();
 
         public Dictionary<string, MainCharacterData> UserMainCharacterData { get; private set; } = new Dictionary<string, MainCharacterData>();
-
+        public Dictionary<string, PlayMission> UserPlayMission { get; private set; } = new Dictionary<string, PlayMission>();
         public Dictionary<EEnchantClassType, CharacterEnchantData> UserEnchantData { get; private set; } = new();
         public List<CatalogItem> CatalogItems { get; private set; } = new List<CatalogItem>();
         public List<StoreItem> PublicStoreItems { get; private set; } = new List<StoreItem>();
@@ -302,7 +300,7 @@ namespace Cargold.FrameWork.BackEnd
         public void SaveCharacterData()
         {
             string jsonData = JsonConvert.SerializeObject(ChapterDataList);
-            PublishCharacterData(new Dictionary<string, string> { { "ChapterData", jsonData }, { "MissionData", JsonConvert.SerializeObject(UserMission)}, 
+            PublishCharacterData(new Dictionary<string, string> { { "ChapterData", jsonData }, { "MissionData", JsonConvert.SerializeObject(UserMission)}, { "PlayMissionData", JsonConvert.SerializeObject(UserMission)},
                 { "MainCharacterData", JsonConvert.SerializeObject(UserMainCharacterData) },{"EnchantData",JsonConvert.SerializeObject(UserEnchantData)},
                 {"DailyReward",UserDailyReward.ToString()},{"FreeRewardData",JsonConvert.SerializeObject(UserFreeRewardData)},{"IsUserTutorial",IsUserTutorial.ToString()}});
         }
@@ -364,6 +362,11 @@ namespace Cargold.FrameWork.BackEnd
                 if (result.Data.TryGetValue("MissionData", out var data))
                 {
                     UserMission = JsonConvert.DeserializeObject<Dictionary<string, SpawnMission>>(data.Value);
+                }
+
+                if (result.Data.TryGetValue("PlayMissionData", out var missionData))
+                {
+                    UserPlayMission = JsonConvert.DeserializeObject<Dictionary<string, PlayMission>>(data.Value);
                 }
                 tcs.TrySetResult();
             }, (error) =>

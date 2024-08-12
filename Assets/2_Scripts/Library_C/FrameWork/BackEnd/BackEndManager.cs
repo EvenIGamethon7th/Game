@@ -221,6 +221,7 @@ namespace Cargold.FrameWork.BackEnd
             {
                 IsUserTutorial = true;
             }
+            AutoSave().Forget();
         }
 
         
@@ -544,11 +545,29 @@ namespace Cargold.FrameWork.BackEnd
         {
             Debug.LogError(error.GenerateErrorReport());
         }
-        
+
+        private async UniTask AutoSave()
+        {
+            await UniTask.WaitUntil(()=>mbIsLoadData);
+            while (true)
+            {
+                await UniTask.Delay(TimeSpan.FromMinutes(10));
+                SaveCharacterData();
+            }
+      
+        } 
         /// <summary>
         /// 유니티 종료 전 서버에 데이터 전송
         /// </summary>
         private void OnApplicationQuit()
+        {
+            if (mbIsLoadData)
+            {
+                SaveCharacterData();
+            }
+        }
+
+        private void OnApplicationFocus(bool hasFocus)
         {
             if (mbIsLoadData)
             {

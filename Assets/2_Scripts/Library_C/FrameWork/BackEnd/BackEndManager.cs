@@ -217,6 +217,10 @@ namespace Cargold.FrameWork.BackEnd
             await ReceiveFreeRewardData();
             mbIsLoadData = true;
             successCallback?.Invoke();
+            if (Application.version.Contains("0.0."))
+            {
+                IsUserTutorial = true;
+            }
         }
 
         

@@ -32,12 +32,21 @@ namespace _2_Scripts.Game.Controller
         [SerializeField] private Button mStoryButton;
         
         private GameMessage<Chapter> mChapterMessage = new GameMessage<Chapter>(EGameMessage.ChapterChange,null);
-        
+
+        [SerializeField] private GameObject mChapterObject;
         private void Start()
         {
             ChapterDataInit();
             LastChapterEnable();
             mStoryButton.onClick.AddListener(OnStoryBookClick);
+            MessageBroker.Default.Receive<GameMessage<int>>()
+                .Where(message => message.Message == EGameMessage.ChapterChange)
+                .Subscribe(
+                    data =>
+                    {
+                        OnDrawMap(data.Value);
+                        mChapterObject.SetActive(true);
+                    }).AddTo(this);
         }
 
         private void ChapterDataInit()

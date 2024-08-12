@@ -11,8 +11,8 @@ namespace _2_Scripts.UI.OutGame.Lobby
         public int ChapterIndex;
         public override bool IsClear()
         {
-           var clearStar = BackEndManager.Instance.ChapterDataList[ChapterIndex].StageList.Sum(x => x.Star);
-           if(clearStar >= BackEndManager.Instance.ChapterDataList[ChapterIndex].StageList.Count * 3)
+           var clearStar = BackEndManager.Instance.ChapterDataList[ChapterIndex -1].StageList.Sum(x => x.Star);
+           if(clearStar >= BackEndManager.Instance.ChapterDataList[ChapterIndex - 1].StageList.Count * 3)
            {
                return true;
            }

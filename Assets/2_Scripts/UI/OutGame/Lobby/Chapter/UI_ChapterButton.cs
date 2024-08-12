@@ -26,6 +26,15 @@ namespace _2_Scripts.UI.OutGame.Lobby
                         var onOff = data.Value.ChapterNumber == mChpaternum;
                         mImage.sprite = onOffSprite[onOff];
                     }).AddTo(this);
+            
+            MessageBroker.Default.Receive<GameMessage<int>>()
+                .Where(message => message.Message == EGameMessage.ChapterChange)
+                .Subscribe(
+                    data =>
+                    {
+                        var onOff = data.Value == mChpaternum;
+                        mImage.sprite = onOffSprite[onOff];
+                    }).AddTo(this);
         }
         
     }

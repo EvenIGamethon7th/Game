@@ -4,6 +4,7 @@ using Cargold.FrameWork.BackEnd;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UniRx;
 using UnityEngine;
 
 namespace _2_Scripts.UI.OutGame.Lobby
@@ -17,6 +18,10 @@ namespace _2_Scripts.UI.OutGame.Lobby
        public ItemKey ItemKey { get; private set; }
        [SerializeField]
        public int Amount { get; private set; }
+
+       [SerializeField]
+       public int SortNum { get; private set; }
+
        [SerializeField]
        public MissionReward ItemAcquisition;
        private PlayMission Mission;
@@ -34,14 +39,28 @@ namespace _2_Scripts.UI.OutGame.Lobby
        {
            Mission = BackEndManager.Instance.UserPlayMission[missionKey];
        }
-       
+
+       public bool IsClearMission()
+       {
+         return ClearConditions.All(x => x.IsClear());
+       }
        public bool ShouldGrantReward()
        {
-           if(Mission.IsClear || ClearConditions.Any(x => x.IsClear() == false))
+           if(Mission.IsClear || !IsClearMission())
            {
                return false;
            }
            Mission.IsClear = true;
+           MessageBroker.Default.Publish(new GameMessage<Define.RewardEvent>(EGameMessage.RewardOpenPopUp,new Define.RewardEvent
+           {
+               count = Amount,
+               name = ItemKey.GetData.name,
+               sprite = ItemKey.GetData.Icon,
+               rewardEvent = () =>
+               {
+                   BackEndManager.Instance.SaveCharacterData();
+               }
+           }));
            ItemAcquisition.ItemAcquisition.AcquireItem(ItemKey,Amount);
            return true;
        } 

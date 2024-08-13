@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Cargold.FrameWork.BackEnd;
@@ -123,7 +123,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.StartPopUp
             {
                 if (nonSelect == mSelectItem) continue;
                 nonSelectItem = BackEndManager.Instance.GetInventoryItem(nonSelect.StoreItem.ItemId);
-                if (nonSelectItem == null) continue;
+                if (nonSelectItem == null || nonSelect == null) continue;
                 if (nonSelectItem.ItemClass.CompareTo(item.ItemClass) != 0 || !nonSelect.IsUseItem) continue;
                 nonSelect.SetSelect();
                 mUseItems[nonSelect.StoreItem.ItemId] = false;

@@ -1,5 +1,6 @@
 ﻿using Sirenix.OdinInspector;
 using System;
+using System.Linq;
 using UnityEngine;
 
 namespace _2_Scripts.UI.OutGame.Lobby
@@ -13,7 +14,8 @@ namespace _2_Scripts.UI.OutGame.Lobby
 
         private void Start()
         {
-            foreach (var soPlayMission in mMissionTable.PlayMissionTable)
+            foreach (var soPlayMission in   mMissionTable.PlayMissionTable.OrderBy(x => x.Value.SortNum)
+                         .ToDictionary(x => x.Key, x => x.Value))
             {
                 soPlayMission.Value.InitMission(soPlayMission.Key);
                 var playMissionItem = Instantiate(mPlayMissionItemPrefab, transform);

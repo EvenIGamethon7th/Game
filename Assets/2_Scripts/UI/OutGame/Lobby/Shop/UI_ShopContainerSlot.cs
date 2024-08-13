@@ -1,4 +1,5 @@
 ﻿using _2_Scripts.Utils;
+using _2_Scripts.Utils.Components;
 using Cargold.FrameWork.BackEnd;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
@@ -93,6 +94,20 @@ namespace _2_Scripts.UI.OutGame.Lobby.Shop
             {
                 return;
             }
+            if (mPurchaseCondition is PurchaseIAP)
+            {
+                PurchaseIAP purchaseIap = (PurchaseIAP) mPurchaseCondition;
+                purchaseIap.PurchaseSuccessCallback(PurchaseItem);
+                return;
+            }
+            else
+            {
+                PurchaseItem();
+            }
+        }
+        
+        private void PurchaseItem()
+        {
             BackEndManager.Instance.GrantItem(mContainerId, () =>
             {
                 BackEndManager.Instance.OpenContainerItem(mContainerId);

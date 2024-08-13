@@ -58,13 +58,24 @@ namespace _2_Scripts.UI.OutGame.Lobby.Shop
             {
                 return;
             }
-            mItemAcquisition.AcquireItem(mItemKey, mAmount);
             if (mPurchaseCondition is PurchaseFreeReward)
             {
                 mPriceText.text = mPurchaseCondition.GetPriceOrCount();
+            }else if (mPurchaseCondition is PurchaseIAP)
+            {
+                PurchaseIAP purchaseIap = (PurchaseIAP) mPurchaseCondition;
+                purchaseIap.PurchaseSuccessCallback(PurchaseItem);
+                return;
             }
+            PurchaseItem();
+        }
+
+        private void PurchaseItem()
+        {
+            mItemAcquisition.AcquireItem(mItemKey, mAmount);
             MessageBroker.Default.Publish(mRewardEventMessage);
         }
+        
         private void InfoClick()
         {
             MessageBroker.Default.Publish(mProductDetailMessage);

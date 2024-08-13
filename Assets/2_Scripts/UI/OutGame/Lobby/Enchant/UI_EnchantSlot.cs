@@ -36,7 +36,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.Enchant
         {
             if (BackEndManager.Instance.UserCurrency[ECurrency.Diamond].Value < mEnchantCost)
             {
-                UI_Toast_Manager.Instance.Activate_WithContent_Func("돈이 부족합니다.");
+                UI_Toast_Manager.Instance.Activate_WithContent_Func("다이아가 부족합니다.");
                 return;
             }
             UI_Toast_Manager.Instance.Activate_WithContent_Func("강화 성공!");

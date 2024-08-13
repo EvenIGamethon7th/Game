@@ -28,6 +28,7 @@ namespace _2_Scripts.UI.OutGame.Lobby
         }
         private void OnError(string text)
         {
+            UI_Toast_Manager.Instance.Activate_WithContent_Func(text);
             mErrorText.text = text;
         }
     }

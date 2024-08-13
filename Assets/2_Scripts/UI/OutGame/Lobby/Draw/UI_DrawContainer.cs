@@ -55,7 +55,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.Draw
         {
             if(BackEndManager.Instance.UserCurrency[ECurrency.Ticket].Value <= 0)
             {
-                UI_Toast_Manager.Instance.Activate_WithContent_Func("티켓이 부족합니다.");
+                UI_Toast_Manager.Instance.Activate_WithContent_Func("뽑기권이 부족합니다.");
                 return;
             }
             if (!RandomDraw())

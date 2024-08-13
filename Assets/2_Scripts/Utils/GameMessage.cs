@@ -24,7 +24,8 @@ namespace _2_Scripts.Utils
         EnchantOpenPopUp,
         RewardOpenPopUp,
         MainCharacterLevelUp,
-        ProductDetailPopUp
+        ProductDetailPopUp,
+        SortPopUp
     }
     
     public class GameMessage<T>

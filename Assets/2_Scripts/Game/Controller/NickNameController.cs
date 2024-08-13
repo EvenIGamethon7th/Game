@@ -1,7 +1,9 @@
 ﻿using System;
 using _2_Scripts.UI.OutGame.Lobby;
+using _2_Scripts.Utils;
 using Cargold.FrameWork.BackEnd;
 using TMPro;
+using UniRx;
 using UnityEngine;
 
 namespace _2_Scripts.Game.Controller
@@ -18,7 +20,7 @@ namespace _2_Scripts.Game.Controller
             string userNickName = BackEndManager.Instance.GetUserNickName();
             if ( userNickName == null)
             {
-                mNickNameBox.gameObject.SetActive(true);
+                MessageBroker.Default.Publish(new GameMessage<ISortPopUp>(EGameMessage.SortPopUp, mNickNameBox.GetComponent<ISortPopUp>()));
             }
             else
             {

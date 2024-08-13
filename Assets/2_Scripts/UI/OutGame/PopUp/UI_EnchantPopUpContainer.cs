@@ -15,6 +15,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.Enchant
         [SerializeField] private TextMeshProUGUI mNameText;
         [SerializeField] private TextMeshProUGUI mSkillNameText;
         [SerializeField] private TextMeshProUGUI mAttackText;
+        [SerializeField] private TextMeshProUGUI mSkillCoolTimeText;
         [SerializeField] private TextMeshProUGUI mDescText;
         [SerializeField] private Button mEnchantButton;
         
@@ -80,6 +81,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.Enchant
             SkillData skillData = DataBase_Manager.Instance.GetSkill.GetData_Func(currentCharacterData.Skill1);
             mSkillNameText.text = $"Lv.{data.rank} {skillData.Name}";
             mAttackText.text = $"공격력: {currentCharacterData.atk}";
+            mSkillCoolTimeText.text = $"쿨타임: {skillData.CoolTime}초";
             mDescText.text = skillData.Description;
         }
     }

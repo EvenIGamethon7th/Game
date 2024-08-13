@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace _2_Scripts.UI.OutGame.Lobby.DailyReward
 {
-    public class UI_DailyContainer : MonoBehaviour
+    public class UI_DailyContainer : MonoBehaviour,ISortPopUp
     {
         [SerializeField]
         private UI_DailyRewardSlot[] mDailyRewardSlots;
@@ -22,8 +22,17 @@ namespace _2_Scripts.UI.OutGame.Lobby.DailyReward
              mAquireButton.onClick.AddListener(()=>
              {
                  mTopSlot.OnClick();
+                 IsPopUpEnd = true;
                  this.gameObject.SetActive(false);
              });
+        }
+
+        public int SortIndex { get; set; } = 3;
+        public bool IsPopUpEnd { get; set; } = false;
+
+        public void OnPopUp()
+        {
+            this.gameObject.SetActive(true);
         }
     }
 }

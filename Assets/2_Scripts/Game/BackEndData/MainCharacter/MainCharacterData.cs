@@ -28,6 +28,10 @@ namespace _2_Scripts.Game.BackEndData.MainCharacter
         }
         public void AddAmount(int amount)
         {
+            if (isGetType == EGetType.Lock)
+            {
+                isGetType = EGetType.Unlock;
+            }
             this.amount += amount;
         }
 

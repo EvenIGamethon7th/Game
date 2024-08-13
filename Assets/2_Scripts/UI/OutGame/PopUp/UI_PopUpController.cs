@@ -16,11 +16,12 @@ namespace _2_Scripts.UI.OutGame.Lobby
         [SerializeField] private UI_RewardPopUpContainer mRewardPopUpContainer;
         [SerializeField] private UI_ProductDetailPopUp mProductDetailContainer;
         [SerializeField] private UI_DailyContainer mDailyContainer;
+        [SerializeField] private UI_MainCharacterSelectPopUp mMainCharacterSelectPopUp;
         private void Start()
         {
             if (BackEndManager.Instance.UserDailyReward < 7 && BackEndManager.Instance.UserCurrency[ECurrency.DailyReward].Value >= 1)
             {
-                mDailyContainer.gameObject.SetActive(true);
+                MessageBroker.Default.Publish(new GameMessage<ISortPopUp>(EGameMessage.SortPopUp, mDailyContainer.GetComponent<ISortPopUp>()));
             }
             
             MessageBroker.Default.Receive<GameMessage<Define.EnchantMainCharacterEvent>>()

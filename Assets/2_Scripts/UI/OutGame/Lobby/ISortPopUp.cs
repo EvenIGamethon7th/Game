@@ -1,9 +1,18 @@
-﻿namespace _2_Scripts.UI.OutGame.Lobby
+﻿using System;
+
+namespace _2_Scripts.UI.OutGame.Lobby
 {
-    public interface ISortPopUp
+    public interface ISortPopUp : IComparable<ISortPopUp>
     {
-        public int SortIndex { get; set; }
-        public void OnPopUp();
-        public void OffPopUp();
+        int SortIndex { get; set; }
+        
+        bool IsPopUpEnd { get; set; }
+
+        void OnPopUp();
+        int IComparable<ISortPopUp>.CompareTo(ISortPopUp other)
+        {
+            if (other == null) return 1;
+            return SortIndex.CompareTo(other.SortIndex);
+        }
     }
 }

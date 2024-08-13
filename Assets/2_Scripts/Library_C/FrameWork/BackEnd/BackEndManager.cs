@@ -194,6 +194,10 @@ namespace Cargold.FrameWork.BackEnd
         
         private async UniTaskVoid LoginAsync(Action successCallback)
         {
+            if (mAuthService == null)
+            {
+                mAuthService = new PlayFabAuthService();
+            }
             mAuthService.Authenticate(Authtypes.Silent);
             await UniTask.WaitUntil(() => mAuthService.SessionTicket != null);
             //맨 마지막에 

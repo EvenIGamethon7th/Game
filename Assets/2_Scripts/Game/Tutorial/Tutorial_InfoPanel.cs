@@ -10,7 +10,7 @@ namespace _2_Scripts.UI
     {
         private TextMeshProUGUI mText;
 
-        private string[] mInfoString = { "<color=#C90F0F>그린 아처</color>를 클릭하고\n유닛 합성을 클릭해서 합성해라모", "<color=#C90F0F>학생을 아무나</color> 선택하고\n오른쪽 아카데미 버튼을 클릭해서\n입학시키라모!" };
+        private string[] mInfoString = { "<color=#C90F0F>엘피</color>를 클릭하고\n유닛 합성을 클릭해서 합성해라모", "<color=#C90F0F>학생을 아무나</color> 선택하고\n오른쪽 아카데미 버튼을 클릭해서\n입학시키라모!" };
 
         private int mCount;
 

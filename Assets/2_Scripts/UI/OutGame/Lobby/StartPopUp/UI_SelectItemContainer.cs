@@ -124,7 +124,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.StartPopUp
                 if (nonSelect == mSelectItem) continue;
                 nonSelectItem = BackEndManager.Instance.GetInventoryItem(nonSelect.StoreItem.ItemId);
                 if (nonSelectItem == null) continue;
-                if (nonSelectItem.ItemClass.CompareTo(item.ItemClass) != 0 || !nonSelect.IsUseItem) continue;
+                if (String.Compare(nonSelectItem.ItemClass, item.ItemClass, StringComparison.Ordinal) != 0 || !nonSelect.IsUseItem) continue;
                 nonSelect.SetSelect();
                 mUseItems[nonSelect.StoreItem.ItemId] = false;
             }

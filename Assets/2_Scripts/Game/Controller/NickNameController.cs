@@ -1,5 +1,4 @@
-﻿using System;
-using _2_Scripts.UI.OutGame.Lobby;
+﻿using _2_Scripts.UI.OutGame.Lobby;
 using _2_Scripts.Utils;
 using Cargold.FrameWork.BackEnd;
 using TMPro;

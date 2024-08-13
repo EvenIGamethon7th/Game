@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UniRx;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -53,7 +54,7 @@ namespace _2_Scripts.UI.OutGame.PopUp
                     key = "Bird";
                     break;
             }
-            BackEndManager.Instance.UserMainCharacterData["key"].AddAmount(1);
+            BackEndManager.Instance.UserMainCharacterData[key].AddAmount(1);
             var mainCharacterInfo = 
                 GameManager.Instance.MainCharacterList.
                     FirstOrDefault(m => m.name == key).CharacterEvolutions[1].GetData;
@@ -63,9 +64,12 @@ namespace _2_Scripts.UI.OutGame.PopUp
                 name = mainCharacterInfo.GetCharacterName(),
                 sprite = mainCharacterInfo.Icon
             }); 
+            MessageBroker.Default.Publish(mRewardEvent);
             IsPopUpEnd = true;
             this.gameObject.SetActive(false);
             mBackPanel.gameObject.SetActive(false);
+            BackEndManager.Instance.IsSelectMainCharacter = true;
+            BackEndManager.Instance.SaveCharacterData();
         }
         
         public int SortIndex { get; set; } = 2;

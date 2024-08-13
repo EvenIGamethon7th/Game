@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UniRx;
+using UnityEngine;
 
 namespace _2_Scripts.UI.OutGame.Lobby
 {
@@ -13,11 +14,15 @@ namespace _2_Scripts.UI.OutGame.Lobby
         private bool mbIsAlready = false;
         private ISortPopUp currentPopUp;
 
-        public void Start()
+        public void Awake()
         {
             MessageBroker.Default.Receive<GameMessage<ISortPopUp>>()
                 .Where(x=>x.Message == EGameMessage.SortPopUp)
-                .Subscribe(x=>sortPopup.Enqueue(x.Value))
+                .Subscribe(x=>
+                {
+                    Debug.Log(x.Value.SortIndex);
+                    sortPopup.Enqueue(x.Value);
+                })
                 .AddTo(this);
         }
 
@@ -30,7 +35,7 @@ namespace _2_Scripts.UI.OutGame.Lobby
                 currentPopUp = sortPopup.Dequeue();
                 currentPopUp.OnPopUp();
             }
-            if(currentPopUp.IsPopUpEnd)
+            if(currentPopUp is { IsPopUpEnd: true })
             {
                 mbIsAlready = false;
             }

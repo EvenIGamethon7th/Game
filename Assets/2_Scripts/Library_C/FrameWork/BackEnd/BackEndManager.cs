@@ -66,8 +66,7 @@ namespace Cargold.FrameWork.BackEnd
         
         public bool IsUserTutorial { get; set; } = false;
 
-        public bool IsSelectMainCharacter { get; private set; } = false;
-
+        public bool IsSelectMainCharacter { get; set; } = false;
         public string GetUserNickName()
         {
             return PlayFabAuthService.NickName;

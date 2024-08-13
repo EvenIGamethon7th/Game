@@ -15,7 +15,7 @@ public partial class CharacterData : Data_C
      [LabelText("이름")] public string nameKey;
      [LabelText("공격력")] public float atk;
      [LabelText("공격속도")] public float atkSpeed;
-     [LabelText("마법공격력")] public float matk;
+     [LabelText("마력")] public float matk;
      [LabelText("랭크")] public int rank;
      [LabelText("캐릭터데이터")] public string characterData;
      [LabelText("공격사거리")] public float range;

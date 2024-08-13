@@ -22,6 +22,8 @@ namespace _2_Scripts.UI.OutGame.PopUp
         
         [SerializeField]
         private Dictionary<EggType,Button> eggButtons;
+        [SerializeField]
+        private GameObject mBackPanel;
         private GameMessage<Define.RewardEvent> mRewardEvent;
         private void Start()
         {
@@ -63,6 +65,7 @@ namespace _2_Scripts.UI.OutGame.PopUp
             }); 
             IsPopUpEnd = true;
             this.gameObject.SetActive(false);
+            mBackPanel.gameObject.SetActive(false);
         }
         
         public int SortIndex { get; set; } = 2;
@@ -70,6 +73,7 @@ namespace _2_Scripts.UI.OutGame.PopUp
 
         public void OnPopUp()
         {
+            mBackPanel.gameObject.SetActive(true);
             this.gameObject.SetActive(true);
         }
     }

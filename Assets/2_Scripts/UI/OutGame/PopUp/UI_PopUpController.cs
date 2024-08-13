@@ -23,6 +23,11 @@ namespace _2_Scripts.UI.OutGame.Lobby
             {
                 MessageBroker.Default.Publish(new GameMessage<ISortPopUp>(EGameMessage.SortPopUp, mDailyContainer.GetComponent<ISortPopUp>()));
             }
+
+            if (BackEndManager.Instance.IsSelectMainCharacter == false)
+            {
+                MessageBroker.Default.Publish(new GameMessage<ISortPopUp>(EGameMessage.SortPopUp, mMainCharacterSelectPopUp.GetComponent<ISortPopUp>()));
+            }
             
             MessageBroker.Default.Receive<GameMessage<Define.EnchantMainCharacterEvent>>()
                 .Where(message => message.Message == EGameMessage.EnchantOpenPopUp).Subscribe(

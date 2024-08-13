@@ -66,6 +66,8 @@ namespace Cargold.FrameWork.BackEnd
         
         public bool IsUserTutorial { get; set; } = false;
 
+        public bool IsSelectMainCharacter { get; private set; } = false;
+
         public string GetUserNickName()
         {
             return PlayFabAuthService.NickName;
@@ -250,6 +252,10 @@ namespace Cargold.FrameWork.BackEnd
                 {
                     IsUserTutorial = bool.Parse(tutoData.Value);
                 }
+                if(result.Data.TryGetValue("IsSelectMainCharacter",out var selectData))
+                {
+                    IsSelectMainCharacter = bool.Parse(selectData.Value);
+                }
                 tcs.TrySetResult();
             }, (error) =>
             {
@@ -302,7 +308,10 @@ namespace Cargold.FrameWork.BackEnd
             string jsonData = JsonConvert.SerializeObject(ChapterDataList);
             PublishCharacterData(new Dictionary<string, string> { { "ChapterData", jsonData }, { "MissionData", JsonConvert.SerializeObject(UserMission)}, { "PlayMissionData", JsonConvert.SerializeObject(UserPlayMission)},
                 { "MainCharacterData", JsonConvert.SerializeObject(UserMainCharacterData) },{"EnchantData",JsonConvert.SerializeObject(UserEnchantData)},
-                {"DailyReward",UserDailyReward.ToString()},{"FreeRewardData",JsonConvert.SerializeObject(UserFreeRewardData)},{"IsUserTutorial",IsUserTutorial.ToString()}});
+                {"DailyReward",UserDailyReward.ToString()},
+                {"FreeRewardData",JsonConvert.SerializeObject(UserFreeRewardData)},
+                {"IsSelectMainCharacter",IsSelectMainCharacter.ToString()},
+                {"IsUserTutorial",IsUserTutorial.ToString()}});
         }
 
         public async UniTask GetFeatherTimer(Action<DateTime, bool> callback)

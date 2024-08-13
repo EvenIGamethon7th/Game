@@ -38,7 +38,7 @@ namespace _2_Scripts.UI.OutGame.PopUp
             for (int i = 0; i < mButtons.Count; ++i)
             {
                 int temp = i + 1;
-                mButtons[temp].onClick.AddListener(() => SetText(temp));
+                mButtons[i].onClick.AddListener(() => SetText(temp));
             }
         }
 

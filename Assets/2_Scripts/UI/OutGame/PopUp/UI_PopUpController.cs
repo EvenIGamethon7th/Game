@@ -71,7 +71,7 @@ namespace _2_Scripts.UI.OutGame.Lobby
                 {
                     mPopUpBackGround.SetActive(true);
                     mEncyclopediaPopUp.gameObject.SetActive(true);
-                    //mEncyclopediaPopUp.OnPopUp(data.Value);
+                    mEncyclopediaPopUp.OnPopUp(data.Value);
                 }).AddTo(this);
         }
     }

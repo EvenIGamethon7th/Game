@@ -135,6 +135,12 @@ public partial class CharacterData : IPoolable
         SkillType = skillData.SkillType == ESkillType.Active ? "액티브" : "패시브";
     }
 
+    public SkillData GetSkillData(int rank)
+    {
+        string skillKey = rank == 1 ? Skill1 : Skill2;
+        return DataBase_Manager.Instance.GetSkill.GetData_Func(skillKey);
+    }
+
     protected override void Init_Project_Func()
     {
         base.Init_Project_Func();

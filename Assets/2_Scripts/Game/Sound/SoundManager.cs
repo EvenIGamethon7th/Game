@@ -7,11 +7,6 @@ using UnityEngine.SceneManagement;
 
 namespace _2_Scripts.Game.Sound
 {
-    public enum ESFX
-    {
-
-    }
-
     public enum ESettingBoolType
     {
         Vibe,
@@ -65,13 +60,13 @@ namespace _2_Scripts.Game.Sound
             
         }
 
-        public Dictionary<ESFX, AudioClip> SFXs { get => _sfxs; }
-        private Dictionary<ESFX, AudioClip> _sfxs = new Dictionary<ESFX, AudioClip>();
+        public Dictionary<string, AudioClip> SFXs { get => _sfxs; }
+        private Dictionary<string, AudioClip> _sfxs = new Dictionary<string, AudioClip>();
 
         public event Action<float> BGMAction;
         public event Action<float> EffectAction;
 
-        public void Play2DSound(ESFX type)
+        public void Play2DSound(string type)
         {
             AudioSource.PlayClipAtPoint(_sfxs[type], Vector3.zero, EffectVolume);
         }

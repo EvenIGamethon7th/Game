@@ -54,7 +54,7 @@ namespace _2_Scripts.UI {
         private UI_AcademyInfo mInfo;
         [SerializeField]
         private GameObject mVacation;
-        private readonly float mLessonTime = 2;
+        private float mLessonTime = 2;
         private int mLessonInWaveCount;
 
         [SerializeField]
@@ -69,6 +69,7 @@ namespace _2_Scripts.UI {
 
         public void Init()
         {
+            mLessonTime = BackEndManager.Instance.IsUserTutorial ? 2 : 1;
             SceneLoadManager.Instance.SceneClear += Clear;
             mTest = GameManager.Instance.IsTest || BackEndManager.Instance.IsUserTutorial;
             mLesson = GetComponentInChildren<UI_AcademyLesson>(true);
@@ -205,7 +206,7 @@ namespace _2_Scripts.UI {
         {
             if (mIsVacation)
             {
-                mVacation.SetActive(!mDoLesson);
+                mVacation?.SetActive(!mDoLesson);
                 mOverlayText.text = "방학입니다!";
             }
 

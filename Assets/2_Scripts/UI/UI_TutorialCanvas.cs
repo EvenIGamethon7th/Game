@@ -319,6 +319,8 @@ namespace _2_Scripts.UI
                 MessageBroker.Default.Publish(mTutorialMessage);
                 if (!isMove)
                     SetInteractable();
+                if (!isMove && mCount == 11)
+                    time = 0;
 
                 delayTime().Forget();
 

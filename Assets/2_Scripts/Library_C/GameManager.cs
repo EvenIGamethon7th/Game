@@ -62,6 +62,14 @@ public class GameManager : Singleton<GameManager>
     public List<MainCharacterInfo> MainCharacterList { get; private set; } = new List<MainCharacterInfo>();
     public MainCharacterInfo CurrentMainCharacter { get; set; }
 
+    private Dictionary<int, CharacterInfo> mCharacterDict = new();
+
+    public CharacterInfo GetCharacterInfo(int group)
+    {
+       mCharacterDict.TryGetValue(group, out var value);
+        return value;
+    }
+
     public void SetCurrentMainCharacter(string key)
     {
         CurrentMainCharacter = MainCharacterList.FirstOrDefault(x => x.name == key);
@@ -73,9 +81,12 @@ public class GameManager : Singleton<GameManager>
             .Where(message => message.Task == ETaskList.CharacterDataResourceLoad).Subscribe(
                 _ =>
                 {
+                    CharacterInfo info;
                     foreach (var resource in ResourceManager.Instance._resources.Where(x => x.Value is CharacterInfo))
                     {
-                        UserCharacterList.Add(resource.Value as CharacterInfo);
+                        info = resource.Value as CharacterInfo;
+                        UserCharacterList.Add(info);
+                        mCharacterDict.TryAdd(info.CharacterEvolutions[1].GetData.Group, info);
                     }
                 }).AddTo(this);
 

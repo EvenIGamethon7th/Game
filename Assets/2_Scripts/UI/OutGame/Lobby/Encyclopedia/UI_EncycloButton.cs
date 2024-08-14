@@ -28,7 +28,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.Encyclopedia
         {
             mButton = GetComponent<Button>();
             mText = GetComponentInChildren<TextMeshProUGUI>();
-            var info = GameManager.Instance.UserCharacterList[mIndex];
+            var info = GameManager.Instance.GetCharacterInfo(mIndex);
             mMessage = new GameMessage<CharacterInfo>(EGameMessage.ProductDetailPopUp, info);
             mImage.sprite = info.CharacterEvolutions[1].GetData.GetCharacterSprite();
             mText.text = info.CharacterEvolutions[1].GetData.GetCharacterName();

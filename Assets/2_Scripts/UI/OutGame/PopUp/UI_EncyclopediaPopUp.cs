@@ -1,10 +1,8 @@
 using CharacterInfo = _2_Scripts.Game.ScriptableObject.Character.CharacterInfo;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
 
 namespace _2_Scripts.UI.OutGame.PopUp
 {

@@ -1,4 +1,4 @@
-﻿using _2_Scripts.Game.Sound;
+using _2_Scripts.Game.Sound;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,8 +9,8 @@ namespace _2_Scripts.UI.Ingame.LootBox
         private Dictionary<int,int> rates = new()
         {
             {10,70},
-            {30,20},
-            {60,10}
+            {20,20},
+            {100,10}
         };
         private string mRewadMessage;
         public string RewardMessage()

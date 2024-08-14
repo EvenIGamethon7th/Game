@@ -15,7 +15,7 @@ namespace _2_Scripts.UI
         private Button mExpButton;
 
         [SerializeField]
-        private int mExpPrice = 10;
+        private int mExpPrice = 40;
 
         private int mPressCount;
 

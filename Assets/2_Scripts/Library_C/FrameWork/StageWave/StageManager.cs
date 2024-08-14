@@ -42,20 +42,6 @@ public class StageManager : Singleton<StageManager>
     private float mWaveTime;
     private bool mIsRewind;
 
-    /// <summary>
-    ///  테스트용 스테이지 시작 코드
-    /// </summary>
-    /// <exception cref="NotImplementedException"></exception>
-    private void Start()
-    {
-        //if (!BackEndManager.Instance.IsUserTutorial)
-        //{
-        //    mIsTutorial = true;
-        //    SceneLoadManager.Instance.SceneClear += Clear;
-        //    TutorialInitAsync().Forget();
-        //}
-    }
-
     protected override void AwakeInit()
     {
         SceneLoadManager.Instance.SceneClear += Clear;

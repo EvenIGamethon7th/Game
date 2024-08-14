@@ -46,22 +46,22 @@ public class IngameDataManager : Singleton<IngameDataManager>
 
     public readonly Dictionary<int, int> mExpTable = new Dictionary<int, int>
         {
-            {1, 20},
+            {1, 60},
             {2, 80},
-            {3, 150},
-            {4, 280},
-            {5, 550},
+            {3, 120},
+            {4, 160},
+            {5, 200},
             {6, 1}
         };
 
     private readonly Dictionary<int, (int nomal, int rare, int epic)> mGradeRates = new Dictionary<int, (int general, int elite, int legendary)>
         {
             { 1, (100, 0, 0) },
-            { 2, (95, 5, 0) },
-            { 3, (90, 10, 0) },
-            { 4, (80, 18, 2) },
-            { 5, (70, 25, 5) },
-            { 6, (60, 30, 10) }
+            { 2, (99, 1, 0) },
+            { 3, (98, 2, 0) },
+            { 4, (95, 5, 0) },
+            { 5, (88, 10, 2) },
+            { 6, (80, 15, 5) }
         };
 
     protected override void AwakeInit()
@@ -99,9 +99,9 @@ public class IngameDataManager : Singleton<IngameDataManager>
                 {
                     TutorialTrigger = val.Value;
                 }).AddTo(this);
-            mUserLevel.Value = 3;
-            mUserExp.Value = 90;
-            mUserGold.Value = 200;
+            mUserLevel.Value = 4;
+            mUserExp.Value = 60;
+            mUserGold.Value = 400;
             GameManager.Instance.UseItem(EItemType.Lecturer1st);
             SceneLoadManager.Instance.SceneClear += Clear;
 
@@ -126,7 +126,7 @@ public class IngameDataManager : Singleton<IngameDataManager>
                 int interest = 0;
                 foreach (var tableValue in mInterestTable)
                 {
-                    if (tableValue.Key < mUserGold.Value)
+                    if (tableValue.Key <= mUserGold.Value)
                     {
                         interest = Mathf.Max(interest, tableValue.Value);
                     }
@@ -166,8 +166,8 @@ public class IngameDataManager : Singleton<IngameDataManager>
 
     private readonly Dictionary<int, int> mInterestTable = new()
     {
-        {100,20},
-        {300,30}
+        {50,10},
+        {100,20}
     };
 
     private const int ROUND_BONUS_GOLD_STAGE = 10;

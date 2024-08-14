@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using TMPro;
 using UniRx;
 using UnityEngine;
@@ -14,7 +14,7 @@ namespace _2_Scripts.UI
         {
             IngameDataManager.Instance.Subscribe(this, IngameDataManager.EDataType.Level, level =>
             {
-                mText.text = $"{level}학년";
+                mText.text = $"{level}레벨";
             });
         }
     }

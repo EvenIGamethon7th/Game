@@ -10,13 +10,13 @@ using UnityEngine.UI;
 
 namespace _2_Scripts.UI
 {
-    public class UI_ExpButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+    public class UI_ExpButton : MonoBehaviour//, IPointerDownHandler, IPointerUpHandler
     {
         [SerializeField]
         private Button mExpButton;
 
         [SerializeField]
-        private int mExpPrice = 10;
+        private int mExpPrice = 40;
 
         [SerializeField] private TextMeshProUGUI mText;
         private IDisposable buttonHoldSubscription;
@@ -52,7 +52,7 @@ namespace _2_Scripts.UI
         
         private void OnBuyExp()
         {
-            UI_Toast_Manager.Instance.Activate_WithContent_Func("Touch EXP", isIgnoreTimeScale: true);
+            //UI_Toast_Manager.Instance.Activate_WithContent_Func("Touch EXP", isIgnoreTimeScale: true);
             if (IngameDataManager.Instance.CurrentGold < mExpPrice || IsMaxLevel )
                 return;
 
@@ -61,30 +61,30 @@ namespace _2_Scripts.UI
             IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold,-mExpPrice);
         }
         
-        private bool mIsButtonPressed = false;
-        private float mRepeatRate = 0.5f; 
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            if (buttonHoldSubscription == null)
-            {
-                mIsButtonPressed = true;
-                buttonHoldSubscription = Observable.EveryUpdate()
-                    .Where(_ => mIsButtonPressed)
-                    .ThrottleFirst(System.TimeSpan.FromSeconds(mRepeatRate))
-                    .Subscribe(_ => OnBuyExp())
-                    .AddTo(this);
-            }
-
-        }
-
-        public void OnPointerUp(PointerEventData eventData)
-        {
-            if (buttonHoldSubscription != null)
-            {
-                mIsButtonPressed = false;
-                buttonHoldSubscription.Dispose();
-                buttonHoldSubscription = null;
-            }
-        }
+        //private bool mIsButtonPressed = false;
+        //private float mRepeatRate = 0.5f; 
+        //public void OnPointerDown(PointerEventData eventData)
+        //{
+        //    if (buttonHoldSubscription == null)
+        //    {
+        //        mIsButtonPressed = true;
+        //        buttonHoldSubscription = Observable.EveryUpdate()
+        //            .Where(_ => mIsButtonPressed)
+        //            .ThrottleFirst(System.TimeSpan.FromSeconds(mRepeatRate))
+        //            .Subscribe(_ => OnBuyExp())
+        //            .AddTo(this);
+        //    }
+        //
+        //}
+        //
+        //public void OnPointerUp(PointerEventData eventData)
+        //{
+        //    if (buttonHoldSubscription != null)
+        //    {
+        //        mIsButtonPressed = false;
+        //        buttonHoldSubscription.Dispose();
+        //        buttonHoldSubscription = null;
+        //    }
+        //}
     }
 }

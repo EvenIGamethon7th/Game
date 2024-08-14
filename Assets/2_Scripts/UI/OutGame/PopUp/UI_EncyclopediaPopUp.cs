@@ -4,9 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
 using Cargold.FrameWork.BackEnd;
-using UnityEngine.Rendering;
 
 namespace _2_Scripts.UI.OutGame.PopUp
 {
@@ -98,6 +96,7 @@ namespace _2_Scripts.UI.OutGame.PopUp
                 }
                 mDescription.text = data.SkillDesc;
             }
+
         }
     }
 }

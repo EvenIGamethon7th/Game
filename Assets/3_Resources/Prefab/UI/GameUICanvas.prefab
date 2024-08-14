@@ -3750,8 +3750,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -283, y: 162}
-  m_SizeDelta: {x: 355.11, y: 286.87}
+  m_AnchoredPosition: {x: -255, y: 119}
+  m_SizeDelta: {x: 298, y: 183}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3109799624341239343
 CanvasRenderer:
@@ -9491,7 +9491,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 11859126231641075, guid: 0075fff663f45e445a4fd9bc3b9a77b3, type: 3}
       propertyPath: mExpPrice
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 719769145798264328, guid: 0075fff663f45e445a4fd9bc3b9a77b3, type: 3}
       propertyPath: serializationData.Prefab
@@ -9509,6 +9509,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1897950583683517921, guid: 0075fff663f45e445a4fd9bc3b9a77b3, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1897950583683517921, guid: 0075fff663f45e445a4fd9bc3b9a77b3, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2702812289215489361, guid: 0075fff663f45e445a4fd9bc3b9a77b3, type: 3}
       propertyPath: serializationData.Prefab
       value: 
@@ -9517,9 +9525,25 @@ PrefabInstance:
       propertyPath: m_text
       value: "1\uB808\uBCA8"
       objectReference: {fileID: 0}
+    - target: {fileID: 3072140135150762023, guid: 0075fff663f45e445a4fd9bc3b9a77b3, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072140135150762023, guid: 0075fff663f45e445a4fd9bc3b9a77b3, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4571453446618210546, guid: 0075fff663f45e445a4fd9bc3b9a77b3, type: 3}
       propertyPath: m_text
-      value: "20\uC6D0\n\uACBD\uD5D8\uCE58 \uC0C1\uC2B9"
+      value: "40\uC6D0\n\uACBD\uD5D8\uCE58 \uC0C1\uC2B9"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571453446618210546, guid: 0075fff663f45e445a4fd9bc3b9a77b3, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571453446618210546, guid: 0075fff663f45e445a4fd9bc3b9a77b3, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6067049265561898774, guid: 0075fff663f45e445a4fd9bc3b9a77b3, type: 3}
       propertyPath: m_IsActive
@@ -9528,6 +9552,14 @@ PrefabInstance:
     - target: {fileID: 7174973324851788359, guid: 0075fff663f45e445a4fd9bc3b9a77b3, type: 3}
       propertyPath: m_text
       value: "20\uC6D0\n\uB2E4\uC2DC \uBF51\uAE30"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7174973324851788359, guid: 0075fff663f45e445a4fd9bc3b9a77b3, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7174973324851788359, guid: 0075fff663f45e445a4fd9bc3b9a77b3, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8613702287677626926, guid: 0075fff663f45e445a4fd9bc3b9a77b3, type: 3}
       propertyPath: m_Pivot.x
@@ -9800,6 +9832,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7438730710740820845}
     m_Modifications:
+    - target: {fileID: 1049385150298603068, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1049385150298603068, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1217973037269393290, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1217973037269393290, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1359495950068141774, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
       propertyPath: serializationData.Prefab
       value: 
@@ -9822,7 +9870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1805539870604477253, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2072457339493689837, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
       propertyPath: mBubble
@@ -9844,22 +9892,70 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2898822513083704613, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2898822513083704613, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3087808275391338514, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3087808275391338514, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3162524183788460613, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3162524183788460613, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3215357671456558629, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 3264132597106726045, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3264132597106726045, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3592510401465826471, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3910847411978199942, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910847411978199942, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4015221782288303651, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4104474150468376367, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 4104474150468376367, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+    - target: {fileID: 4150379816946904053, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150379816946904053, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4267947190924660143, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
       propertyPath: serializationData.Prefab
       value: 
@@ -9882,7 +9978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4521667594595984024, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4687125793473116805, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
       propertyPath: m_AnchorMax.x
@@ -9908,6 +10004,14 @@ PrefabInstance:
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 4908188490274052856, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+    - target: {fileID: 4951902989125621794, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951902989125621794, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5096901519476727668, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
       propertyPath: serializationData.Prefab
       value: 
@@ -9923,6 +10027,14 @@ PrefabInstance:
     - target: {fileID: 5105754737703514774, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -64
+      objectReference: {fileID: 0}
+    - target: {fileID: 5205035168289505169, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5205035168289505169, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5365801264712823128, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
       propertyPath: m_SortingLayer
@@ -9944,9 +10056,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: BottomUI
       objectReference: {fileID: 0}
+    - target: {fileID: 6106596588425929687, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106596588425929687, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151273386416557937, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151273386416557937, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6200068018442441273, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6432215440412309192, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6432215440412309192, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6763864021134343611, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -10123,6 +10259,22 @@ PrefabInstance:
     - target: {fileID: 8702936557301156415, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8803198464992055739, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8803198464992055739, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143969563688813155, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143969563688813155, guid: 0d9aa3ff9aabdb24997882b000c51597, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

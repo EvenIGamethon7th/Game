@@ -1,8 +1,10 @@
 using CharacterInfo = _2_Scripts.Game.ScriptableObject.Character.CharacterInfo;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Cargold.FrameWork.BackEnd;
 
 namespace _2_Scripts.UI.OutGame.PopUp
 {
@@ -53,32 +55,46 @@ namespace _2_Scripts.UI.OutGame.PopUp
 
         private void SetText(int num)
         {
-            mAtk.text = mInfo.CharacterEvolutions[num].GetData.atk.ToString();
-            mAtkSpeed.text = mInfo.CharacterEvolutions[num].GetData.atkSpeed.ToString();
-            mMAtk.text = mInfo.CharacterEvolutions[num].GetData.matk.ToString();
-            mRank.text = $"{num}학년 스킬";
+            EEnchantClassType type = global::Utils.GetEnumFromDescription<EEnchantClassType>(mInfo.CharacterEvolutions[num].GetData.ClassType);
+            float enchant = BackEndManager.Instance.GetEnchantData(type).GetEnchantStat();
+            mAtk.text = $"공격력: {mInfo.CharacterEvolutions[num].GetData.atk * enchant}";
+            mAtkSpeed.text = $"공격속도: {mInfo.CharacterEvolutions[num].GetData.atkSpeed}";
+            mMAtk.text = $"마력: {mInfo.CharacterEvolutions[num].GetData.matk * enchant}";
             
             switch (num)
             {
                 case 1:
-                    mDescription.text = "스킬이 없습니다.";
+                    mRank.text = $"{num}학년 스킬";
+                    mDescription.text = "스킬 잠금";
                     mCoolTime.text = "쿨타임: -";
                     break;
 
-                default:
-                    CharacterData data = mInfo.CharacterEvolutions[num].GetData;
-                    SkillData skillData = mInfo.CharacterEvolutions[num].GetData.GetSkillData(num - 1);
-                    data.SetSkillDataLoc(num - 1);
-                    if (data.SkillType.Contains("패"))
-                    {
-                        mCoolTime.text = "패시브";
-                    }
-
-                    else{
-                        mCoolTime.text = $"쿨타임: {skillData.CoolTime}초";
-                    }
-                    mDescription.text = data.SkillDesc;
+                case 2:
+                    mRank.text = $"<color=#D581FF>{num}학년</color> 스킬";
+                    SetText();
                     break;
+
+                case 3:
+                    mRank.text = $"<color=#FFD54A>{num}학년</color> 스킬";
+                    SetText();
+                    break;
+            }
+
+            void SetText()
+            {
+                CharacterData data = mInfo.CharacterEvolutions[num].GetData;
+                SkillData skillData = mInfo.CharacterEvolutions[num].GetData.GetSkillData(num - 1);
+                data.SetSkillDataLoc(num - 1);
+                if (data.SkillType.Contains("패"))
+                {
+                    mCoolTime.text = "패시브";
+                }
+
+                else
+                {
+                    mCoolTime.text = $"쿨타임: {skillData.CoolTime}초";
+                }
+                mDescription.text = data.SkillDesc;
             }
 
         }

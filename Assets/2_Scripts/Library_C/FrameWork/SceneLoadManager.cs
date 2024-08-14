@@ -25,6 +25,26 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
     public event Action OnSceneLoad;
     public event Action SceneClear;
 
+    private Sequence mFadeInSeq;
+    private Sequence mFadeOutSeq;
+
+    protected override void AwakeInit()
+    {
+        mFadeInSeq = DOTween.Sequence()
+            .AppendCallback(() => { 
+                mToolTipGroup.alpha = 0;
+                mToolTipGroup.gameObject.SetActive(true);
+            })
+            .Append(mToolTipGroup.DOFade(1, 2))
+            .Pause()
+            .SetAutoKill(false);
+
+        mFadeOutSeq = DOTween.Sequence()
+            .Append(mToolTipGroup.DOFade(0, 2))
+            .AppendCallback(() => mToolTipGroup.gameObject.SetActive(false))
+            .Pause()
+            .SetAutoKill(false);
+    }
 
     public void SceneChange(string sceneName)
     {
@@ -34,22 +54,15 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
     private void ToolTipAnimation()
     {
-        mToolTipGroup.alpha = 0;
-        mToolTipGroup.gameObject.SetActive(true);
-        Sequence tooltipSequence = DOTween.Sequence();
-        tooltipSequence.Append(mToolTipGroup.DOFade(1, 2));
-        tooltipSequence.Join(mToolTipGroup.transform.DOMoveX(0, 2));
-        tooltipSequence.SetAutoKill(false);
+        mToolTipGroup.alpha = 1;
+        mFadeInSeq.Restart();
     }
 
     private void ToolTipAlpha()
     {
-        mToolTipGroup.DOFade(0, 2)
-            .OnComplete(() =>
-            {
-                mToolTipGroup.gameObject.SetActive(false);
-            });
+        mFadeOutSeq.Restart();
     }
+
     private async UniTaskVoid LoadSceneAsync(string sceneName)
     {
         mSceneLoadAnimator.SetBool("Fade", false);
@@ -58,17 +71,18 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         mSceneLoadAnimator.speed = mSpeed;
         SceneClear?.Invoke();
         await UniTask.WaitUntil(() => mGraphicMaterialOverride.PropertyValue <= 0f);
-        ToolTipAnimation();
+        mToolTipGroup.gameObject.SetActive(true);
 
         Time.timeScale = 1;
-        await UniTask.WaitForSeconds(2f);
-        ToolTipAlpha();
        
         SceneManager.LoadScene("TempScene");
+
+        await UniTask.WaitForSeconds(2f);
 
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
         asyncOperation.allowSceneActivation = false;
         await UniTask.WaitUntil(() => asyncOperation.progress >= 0.9f);
+        mToolTipGroup.gameObject.SetActive(false);
         mGraphicMaterialOverride.PropertyValue = 0f;
         await UniTask.WaitForSeconds(1f);
         mSceneLoadAnimator.SetBool("Fade", true);

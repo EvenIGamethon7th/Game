@@ -18,6 +18,8 @@ namespace _2_Scripts.UI
         private GraphicPropertyOverrideTexture mTex;
         [SerializeField]
         private TextMeshProUGUI mText;
+        [SerializeField]
+        private Image mImage;
 
         private StringBuilder mTextBuffer = new StringBuilder("Loading...");
 

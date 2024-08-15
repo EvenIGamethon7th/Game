@@ -451,6 +451,10 @@ PrefabInstance:
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 1505956353110326021, guid: 2fa6cb2f581008145916284d58408c00, type: 3}
+    - target: {fileID: 1884891157038637725, guid: 2fa6cb2f581008145916284d58408c00, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2002854297202115373, guid: 2fa6cb2f581008145916284d58408c00, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
@@ -461,7 +465,7 @@ PrefabInstance:
       objectReference: {fileID: 2041881176852209620, guid: 2fa6cb2f581008145916284d58408c00, type: 3}
     - target: {fileID: 2197583759089938225, guid: 2fa6cb2f581008145916284d58408c00, type: 3}
       propertyPath: propertyValue
-      value: 0.59
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2389730039108543547, guid: 2fa6cb2f581008145916284d58408c00, type: 3}
       propertyPath: m_Volume
@@ -539,7 +543,8 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1884891157038637725, guid: 2fa6cb2f581008145916284d58408c00, type: 3}
     m_RemovedGameObjects:
     - {fileID: 1480234602075404928, guid: 2fa6cb2f581008145916284d58408c00, type: 3}
     - {fileID: 4796683959732092009, guid: 2fa6cb2f581008145916284d58408c00, type: 3}
@@ -607,6 +612,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 774fc51bba3aee540bc14ed3e262608c, type: 3}
   mTex: {fileID: 1661553913}
   mText: {fileID: 1849883942}
+  mImage: {fileID: 0}
 --- !u!1 &1849883940
 GameObject:
   m_ObjectHideFlags: 0

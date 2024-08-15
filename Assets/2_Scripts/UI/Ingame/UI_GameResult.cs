@@ -4,6 +4,7 @@ using _2_Scripts.Game.ScriptableObject.Skill;
 using _2_Scripts.Game.Unit;
 using _2_Scripts.Trigger;
 using _2_Scripts.Utils;
+using _2_Scripts.Utils.Components;
 using Cargold.FrameWork.BackEnd;
 using Cysharp.Threading.Tasks;
 using UniRx;
@@ -41,17 +42,15 @@ namespace _2_Scripts.UI.Ingame
                     mDefeat.SetActive(true);
                     mButtons.SetActive(true);
 
-                    //if (mGameOverCount == 1)
-                    //{
-                    //    mResurrectionButton.SetActive(true);
-                    //    mIsGameOver = false;
-                    //}
-                    //else
-                    //{
-                    //    mResurrectionButton.SetActive(false);
-                    //}
-
-                    mResurrectionButton.SetActive(false);
+                    if (mGameOverCount == 1)
+                    {
+                        mResurrectionButton.SetActive(true);
+                        mIsGameOver = false;
+                    }
+                    else
+                    {
+                        mResurrectionButton.SetActive(false);
+                    }
                 }
             });
 
@@ -73,11 +72,16 @@ namespace _2_Scripts.UI.Ingame
 
         public void OnResurrection()
         {
-            mRessurection.CastAttack();
-            mDefeat.SetActive(false);
-            mButtons.SetActive(false);
-            mBackGroundImage.enabled = false;
-            Time.timeScale = mPrevTimeScale;
+            AdmobManager.Instance.ShowRewardedAd(ActionFunc);
+
+            void ActionFunc()
+            {
+                mRessurection.CastAttack();
+                mDefeat.SetActive(false);
+                mButtons.SetActive(false);
+                mBackGroundImage.enabled = false;
+                Time.timeScale = mPrevTimeScale;
+            }
         }
 
         public void OnRetryGame()

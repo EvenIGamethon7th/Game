@@ -290,6 +290,7 @@ namespace _2_Scripts.Game.Unit
             gameObject.SetActive(false);
             transform.parent = mOriginParent;
             mAlumniEffect?.SetActive(false);
+            mAlumniEffect = null;
         }
 
         private void CancelAndDisposeToken()

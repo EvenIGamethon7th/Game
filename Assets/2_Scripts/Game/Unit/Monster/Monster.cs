@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using _2_Scripts.Game.Map;
 using _2_Scripts.Game.StatusEffect;
 using _2_Scripts.Game.Unit;
@@ -53,6 +54,7 @@ namespace _2_Scripts.Game.Monster
         public bool IsDead => mMonsterData.hp <= 0;
 
         private GameMessage<Monster> mMonsterMessage;
+        private CancellationTokenSource mCts = new ();
 
         public void DamageActionAdd(Action<Monster> action,StatusEffectSO so)
         {
@@ -83,6 +85,13 @@ namespace _2_Scripts.Game.Monster
             mDamagebleActions = new List<IDamagebleAction>(GetComponents<IDamagebleAction>());
             mDamagebleActions.ForEach(action => damagebleActions += action.DamageAction());
             mMonsterMessage = new GameMessage<Monster>(EGameMessage.MonsterHp, this);
+            SceneLoadManager.Instance.SceneClear += Clear;
+
+            void Clear(){
+                SceneLoadManager.Instance.SceneClear -= Clear;
+                mCts.Cancel();
+                mCts.Dispose();
+            }
         }
         
         public void SpawnMonster(string key,WayPoint waypoint,bool isBoss,WaveStatData waveStatData,float statWeight,bool isLastBoss)
@@ -116,7 +125,7 @@ namespace _2_Scripts.Game.Monster
         
         private async UniTaskVoid WaitLoadSprite(Action callbackAction)
         {
-            await UniTask.WaitUntil(() => Renderer.sprite != null);
+            await UniTask.WaitUntil(() => Renderer.sprite != null, cancellationToken: mCts.Token);
             callbackAction.Invoke();
         }
 

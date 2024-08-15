@@ -50,7 +50,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
         await UniTask.WaitUntil(() => op.progress >= 0.9f);
         await UniTask.WaitUntil(()=> SceneManager.GetActiveScene().name == "TempScene");
-        mGraphicMaterialOverride.PropertyValue = 0f;
+        mGraphicMaterialOverride.PropertyValue = 0.0001f;
         await UniTask.WaitForSeconds(2f);
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
         asyncOperation.allowSceneActivation = false;

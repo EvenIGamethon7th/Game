@@ -20,8 +20,9 @@ namespace _2_Scripts.UI.Ingame.LootBox
 
         public void Reward()
         {
+            SoundManager.Instance.Play2DSound(AddressableTable.Sound_Chest_Open);
             var reward = GetRandomGoldReward();
-            if (reward == 150)
+            if (reward == 100)
             {
                 SoundManager.Instance.Vibrate();
             }

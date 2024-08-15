@@ -184,6 +184,7 @@ namespace _2_Scripts.UI {
                 mIsVacation = false;
                 if (mTest && !mDoLesson)
                 {
+                    SoundManager.Instance.Play2DSound(AddressableTable.Sound_Academy_Open);
                     mToast.PlayToast();
                 }
             }

@@ -1,7 +1,8 @@
-﻿
+
 using System;
 using System.Threading;
 using _2_Scripts.Game.ScriptableObject.Skill;
+using _2_Scripts.Game.Sound;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -34,9 +35,26 @@ namespace _2_Scripts.Game.Unit
            
                 if(EUnitStates.Move == mUnit.CurrentState)
                     continue;
-                EUnitStates updateState = !mUnit.DefaultAttack()
+                bool isAttack = mUnit.DefaultAttack();
+                EUnitStates updateState = !isAttack
                         ? EUnitStates.Idle : EUnitStates.Attack;
-                    mUnit.UpdateState(updateState);
+
+                mUnit.UpdateState(updateState);
+                if (isAttack)
+                {
+                    if (mUnit.CharacterDatas.academyClass == 1)
+                    {
+                        SoundManager.Instance.Play2DSound(AddressableTable.Sound_Attack_Knight);
+                    }
+                    else if (mUnit.CharacterDatas.academyClass == 2)
+                    {
+                        SoundManager.Instance.Play2DSound(AddressableTable.Sound_Archer_Attack);
+                    }
+                    else
+                    {
+
+                    }
+                }
                 
             }
         }

@@ -1,3 +1,4 @@
+using _2_Scripts.Game.Sound;
 using Cargold;
 using Cysharp.Threading.Tasks;
 using System.Linq;
@@ -48,6 +49,7 @@ namespace _2_Scripts.UI
             {
                 mSummonButtons[i].Reroll();
             }
+            SoundManager.Instance.Play2DSound(AddressableTable.Sound_EXP_Reroll_Touch);
         }
 
 

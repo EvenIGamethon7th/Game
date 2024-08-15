@@ -1,4 +1,5 @@
 using _2_Scripts.Game.ScriptableObject.Character;
+using _2_Scripts.Game.Sound;
 using _2_Scripts.Utils;
 using Cargold.FrameWork.BackEnd;
 using System;
@@ -219,8 +220,11 @@ public class IngameDataManager : Singleton<IngameDataManager>
 
     public void UpdateUserHp(int hp)
     {
-        if (hp >= 0)
+        if (hp > 0)
+        {
+            SoundManager.Instance.Play2DSound(AddressableTable.Sound_Castle_Damage);
             DamageHp?.Invoke(hp);
+        }
         else
             HealHp?.Invoke(hp);
 

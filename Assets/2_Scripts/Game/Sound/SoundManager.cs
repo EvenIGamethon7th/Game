@@ -68,7 +68,7 @@ namespace _2_Scripts.Game.Sound
 
         public void Play2DSound(string type)
         {
-            AudioSource.PlayClipAtPoint(_sfxs[type], Vector3.zero, EffectVolume);
+            AudioSource.PlayClipAtPoint(ResourceManager.Instance.Load<AudioClip>(type), Vector3.zero, EffectVolume);
         }
 
         public void Play2DSound(AudioClip clip)
@@ -180,11 +180,7 @@ namespace _2_Scripts.Game.Sound
             _volume = LoadVolume(Path.Combine(Application.persistentDataPath, "volume"));
             BGMAction?.Invoke(_volume.BGM);
             EffectAction?.Invoke(_volume.Effect);
-            //AudioClip[] sfx = Resources.LoadAll<AudioClip>("Sound/SFX");
-            //var sfxs = Enum.GetValues(typeof(ESFX)) as ESFX[];
             _tempVolume = _volume;
-            //for (int i = 0; i < sfx.Length; ++i)
-            //    _sfxs.Add(sfxs[i], sfx[i]);
         }
     }
 }

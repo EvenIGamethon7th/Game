@@ -1,5 +1,6 @@
-﻿using _2_Scripts.Game.BackEndData.MainCharacter;
+using _2_Scripts.Game.BackEndData.MainCharacter;
 using _2_Scripts.Game.ScriptableObject.Character;
+using _2_Scripts.Game.Sound;
 using _2_Scripts.Utils;
 using Cargold.FrameWork.BackEnd;
 using System;
@@ -82,6 +83,7 @@ namespace _2_Scripts.UI.OutGame.Enchant
             if (mMainCharacterData.amount >= Define.MainCharacterEnchantAmountTable[mMainCharacterData.rank] && mMainCharacterData.rank < 3)
             {
                 mEnchantIcon.SetActive(true);
+                SoundManager.Instance.Play2DSound(AddressableTable.Sound_EggMon_Upgrade);
             }
             mButtonText.text = buttonText;
         }

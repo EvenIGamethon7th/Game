@@ -18,6 +18,7 @@ namespace _2_Scripts.UI.Ingame.LootBox
 
         public void Reward()
         {
+            SoundManager.Instance.Play2DSound(AddressableTable.Sound_Chest_Open);
             var characterData = GetRandomCharacter();
             if (characterData.rank == 3)
             {

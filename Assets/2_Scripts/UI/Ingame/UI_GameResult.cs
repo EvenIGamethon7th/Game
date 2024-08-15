@@ -1,6 +1,7 @@
 using System;
 using _2_Scripts.Game.Monster;
 using _2_Scripts.Game.ScriptableObject.Skill;
+using _2_Scripts.Game.Sound;
 using _2_Scripts.Game.Unit;
 using _2_Scripts.Trigger;
 using _2_Scripts.Utils;
@@ -33,6 +34,7 @@ namespace _2_Scripts.UI.Ingame
                 if (hp <= 0 && !mIsGameOver)
                 {
                     /// 0 하면 에러 남 
+                    SoundManager.Instance.Play2DSound(AddressableTable.Sound_Defeat);
                     mPrevTimeScale = Time.timeScale;
                     Time.timeScale = 0.00001f;
                     mIsGameOver = true;

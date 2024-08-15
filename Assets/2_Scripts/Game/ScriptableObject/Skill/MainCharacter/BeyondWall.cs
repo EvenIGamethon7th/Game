@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace _2_Scripts.Game.ScriptableObject.Skill.MainCharacter
 {
+    using _2_Scripts.Game.Sound;
     using _2_Scripts.Game.Unit;
     using _2_Scripts.Trigger;
     using Sirenix.OdinInspector;
@@ -23,7 +24,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.MainCharacter
         {
             var trigger = ObjectPoolManager.Instance.CreatePoolingObject(mPortal, ownerTransform.position).GetComponent<PortalTrigger>();
             trigger.Init(Range, mLifeTime, SummonWall);
-
+            SoundManager.Instance.Play2DSound(CastSound);
             return true;
         }
 

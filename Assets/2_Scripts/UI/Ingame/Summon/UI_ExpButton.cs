@@ -1,4 +1,5 @@
 using System;
+using _2_Scripts.Game.Sound;
 using _2_Scripts.Utils;
 using Cargold;
 using Cysharp.Threading.Tasks;
@@ -59,6 +60,7 @@ namespace _2_Scripts.UI
             Tween_C.OnPunch_Func(this.transform);
             IngameDataManager.Instance.AddExp(mExpPrice);
             IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold,-mExpPrice);
+            SoundManager.Instance.Play2DSound(AddressableTable.Sound_EXP_Reroll_Touch);
         }
         
         //private bool mIsButtonPressed = false;

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using _2_Scripts.Utils;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -6,6 +6,7 @@ using UnityEngine;
 namespace _2_Scripts.Game.ScriptableObject.Skill
 {
     using _2_Scripts.Game.Monster;
+    using _2_Scripts.Game.Sound;
     using _2_Scripts.Utils.Components;
     using StatusEffect;
     using System;
@@ -44,11 +45,18 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
         [Title("버프 또는 디버프 효과")]
         [SerializeField]
         public List<StatusEffectSO> StatueEffects { get; private set; }
+
+        [Title("시전 사운드")]
+        [SerializeField]
+        public AudioClip CastSound { get; private set; }
         
         public abstract bool CastAttack(Transform ownerTransform, CharacterData ownerData, Action<Monster[]> beforeDamage = null, Action <Monster> afterDamage = null);
 
         protected virtual void CastEffectPlay(Vector2 position)
         {
+            if (CastSound != null)
+                SoundManager.Instance.Play2DSound(CastSound);
+
             if (CastEffect == null)
             {
                 return;

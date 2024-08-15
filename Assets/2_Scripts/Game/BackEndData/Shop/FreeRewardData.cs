@@ -19,12 +19,7 @@ namespace _2_Scripts.Game.BackEndData.Shop
                 return false;
             }
             ++RewardCount;
-            //TODO : 광고 송출 
-            if (isAdReward)
-            {
-                //TODO
-                Debug.Log("광고 송출 끝!");
-            }
+
             return true;
         }
     }

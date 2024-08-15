@@ -53,20 +53,26 @@ namespace _2_Scripts.UI.OutGame.Lobby.Shop
 
         private void Purchase()
         {
-      
+            if (mPurchaseCondition is PurchaseFreeReward)
+            {
+                mPriceText.text = mPurchaseCondition.GetPriceOrCount();
+                PurchaseFreeReward purchaseIap = (PurchaseFreeReward) mPurchaseCondition;
+                purchaseIap.SetOnPurchaseSuccess(PurchaseItem);
+                mPurchaseCondition.Purchase();
+                return;
+            }
+            
             if (!mPurchaseCondition.Purchase())
             {
                 return;
             }
-            if (mPurchaseCondition is PurchaseFreeReward)
-            {
-                mPriceText.text = mPurchaseCondition.GetPriceOrCount();
-            }else if (mPurchaseCondition is PurchaseIAP)
+            if (mPurchaseCondition is PurchaseIAP)
             {
                 PurchaseIAP purchaseIap = (PurchaseIAP) mPurchaseCondition;
                 purchaseIap.PurchaseSuccessCallback(PurchaseItem);
                 return;
             }
+            
             PurchaseItem();
         }
 

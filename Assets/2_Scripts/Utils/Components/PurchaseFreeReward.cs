@@ -1,4 +1,6 @@
 ﻿using Cargold.FrameWork.BackEnd;
+using System;
+using System.Linq;
 using UnityEngine;
 
 namespace _2_Scripts.Utils.Components
@@ -7,14 +9,29 @@ namespace _2_Scripts.Utils.Components
     {
         [SerializeField]
         private string mRewardKey;
+        
+        private Action mOnPurchaseSuccess;
+        public void SetOnPurchaseSuccess(Action action)
+        {
+            mOnPurchaseSuccess = action;
+        }
         public bool Purchase()
         {
-            bool isPurchased = BackEndManager.Instance.UserFreeRewardData[mRewardKey].RewardCountUp();
+            var freeRewardData = BackEndManager.Instance.UserFreeRewardData[mRewardKey];
+            bool isPurchased = freeRewardData.RewardCountUp();
             if (!isPurchased)
             {
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("오늘은 모두 시청하셨습니다");
             }
-
+            //TODO : 광고 송출 
+            if (freeRewardData.isAdReward && BackEndManager.Instance.UserInventory.All(x => x.ItemId != "Ad_Remover"))
+            {
+                //TODO
+                AdmobManager.Instance.ShowRewardedAd(mOnPurchaseSuccess);
+                Debug.Log("광고 송출 끝!");
+                return isPurchased;
+            }
+            mOnPurchaseSuccess?.Invoke();
             return isPurchased;
         }
 

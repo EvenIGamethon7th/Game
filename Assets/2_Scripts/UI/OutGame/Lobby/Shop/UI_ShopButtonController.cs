@@ -28,7 +28,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.Shop
 
         public void OpenTopOpenUI(EShopTab tab){
             mShopUI.SetActive(true);
-            mTabButtons[(int)tab].OnSelectButton();
+           OnSelectButton( mTabButtons[(int)tab]);
         }
         
         private void OnSelectButton(UI_TabButton tabButton)

@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Plugins.Animate_UI_Materials;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -11,10 +12,10 @@ namespace _2_Scripts.UI
     public class UI_ToolTipImage : MonoBehaviour
     {
         [SerializeField]
-        private List<Sprite> mCharacterImages;
+        private List<Texture2D> mCharacterImages;
 
         [SerializeField]
-        private Image mImage;
+        private GraphicPropertyOverrideTexture mTex;
         [SerializeField]
         private TextMeshProUGUI mText;
 
@@ -22,7 +23,7 @@ namespace _2_Scripts.UI
 
         private void OnEnable()
         {
-            mImage.sprite = mCharacterImages[Random.Range(0, mCharacterImages.Count)];
+            mTex.PropertyValue = mCharacterImages[Random.Range(0, mCharacterImages.Count)];
             TextAsync().Forget();
         }
 
@@ -36,6 +37,7 @@ namespace _2_Scripts.UI
                 await UniTask.DelayFrame(12);
                 count = (count + 1) % mTextBuffer.Length;
             }
+            mText.gameObject.SetActive(false);
         }
     }
 }

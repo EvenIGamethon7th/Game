@@ -31,7 +31,7 @@ namespace _2_Scripts.UI
         {
             int count = 1;
 
-            while (gameObject.activeSelf)
+            while (gameObject.activeInHierarchy)
             {
                 mText.text = mTextBuffer.ToString(0, count);
                 await UniTask.DelayFrame(12);

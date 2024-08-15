@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,8 +42,13 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
     
     private Dictionary<string, GameObject> _folderList = new();
     private Dictionary<string, List<GameObject>> _poolList = new();
-    
-    
+
+    protected override void AwakeInit()
+    {
+        SceneLoadManager.Instance.SceneClear += Clear;
+    }
+
+
     public GameObject CreatePoolingObject(string assetName, Vector2 pos,bool isUIObject = false)
     {
         // 이미 poolList에 등록은 되어있고 재활용 가능한 오브젝트가 있는지 찾고 없다면 새로 만듬.
@@ -266,18 +271,12 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         _poolList[go.name].Add(inst);
 
         return inst;
-    
-        
     }
+
     public void Clear()
     {
         _folderList.Clear();
         _poolList.Clear();
-    }
-
-    protected override void ChangeSceneInit(Scene prev, Scene next)
-    {
-        Clear();
     }
 }
 

@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections;
+using _2_Scripts.Game.Sound;
 using Cargold;
 using Cargold.FrameWork.BackEnd;
 using Coffee.UIExtensions;
@@ -24,12 +25,14 @@ namespace _2_Scripts.UI.Ingame
         {
             Vector2 originPos = mVictoryPanel.anchoredPosition;
             mVictoryPanel.DOAnchorPosY(originPos.y + 10,1f).SetEase(Ease.InOutQuad).SetLoops(-1,LoopType.Yoyo);
+            SoundManager.Instance.Play2DSound(AddressableTable.Sound_Win);
             StartCoroutine(StartAnimationCoroutine());
             
         }
 
         IEnumerator StartAnimationCoroutine()
         {
+            Time.timeScale = 1;
             int rank = RankCalculator(IngameDataManager.Instance.CurrentHp);
             var stageData = GameManager.Instance.CurrentStageData;
             stageData.Star = Math.Max(stageData.Star,rank);
@@ -39,6 +42,7 @@ namespace _2_Scripts.UI.Ingame
             BackEndManager.Instance.AddCurrencyData(ECurrency.Diamond,reward);
             for (int i = 0; i < rank; i++)
             {
+                SoundManager.Instance.Play2DSound(AddressableTable.Sound_Win_Star);
                 Tween_C.OnPunch_Func(mStarts[i]);
                 yield return new WaitForSeconds(0.5f);
                 mParticle.rectTransform.position = mStarts[i].transform.position;

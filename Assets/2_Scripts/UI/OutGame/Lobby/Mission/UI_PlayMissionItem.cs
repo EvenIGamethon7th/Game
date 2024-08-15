@@ -1,4 +1,5 @@
-﻿using _2_Scripts.Game.Chapter;
+using _2_Scripts.Game.Chapter;
+using _2_Scripts.Game.Sound;
 using _2_Scripts.Utils;
 using Cargold.FrameWork.BackEnd;
 using Sirenix.OdinInspector;
@@ -73,6 +74,7 @@ namespace _2_Scripts.UI.OutGame.Lobby
                 {
                     if (playMission.ShouldGrantReward())
                     {
+                        SoundManager.Instance.Play2DSound(AddressableTable.Sound_Get_Item);
                         UI_Toast_Manager.Instance.Activate_WithContent_Func("미션 보상을 획득했습니다!");
                         mTexts[ETextType.ButtonText].text = "획득완료";
                         mButton.image.sprite = mButtonSprites[EButtonType.AlreadyAcquired];

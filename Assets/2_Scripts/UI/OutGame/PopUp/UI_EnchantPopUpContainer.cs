@@ -1,5 +1,6 @@
-﻿using _2_Scripts.Game.BackEndData.MainCharacter;
+using _2_Scripts.Game.BackEndData.MainCharacter;
 using _2_Scripts.Game.ScriptableObject.Character;
+using _2_Scripts.Game.Sound;
 using _2_Scripts.Utils;
 using Spine;
 using System;
@@ -48,6 +49,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.Enchant
 
             if (mMainCharacterData.amount >= Define.MainCharacterEnchantAmountTable[mMainCharacterData.rank])
             {
+                SoundManager.Instance.Play2DSound(AddressableTable.Sound_EggMon_Upgrade);
                 mMainCharacterData.EnchantCharacter();
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("강화 성공!!");
                 OnSelectSlot(mMainCharacterInfo.CharacterEvolutions[mMainCharacterData.rank].GetData);

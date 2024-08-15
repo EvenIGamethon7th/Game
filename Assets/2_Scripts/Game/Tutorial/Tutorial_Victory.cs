@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using _2_Scripts.Game.Sound;
 
 namespace _2_Scripts.UI.Ingame
 {
@@ -25,11 +26,12 @@ namespace _2_Scripts.UI.Ingame
             Vector2 originPos = mVictoryPanel.anchoredPosition;
             mVictoryPanel.DOAnchorPosY(originPos.y + 10, 1f).SetEase(Ease.InOutQuad).SetLoops(-1, LoopType.Yoyo);
             StartCoroutine(StartAnimationCoroutine());
-
+            SoundManager.Instance.Play2DSound(AddressableTable.Sound_Win);
         }
 
         IEnumerator StartAnimationCoroutine()
         {
+            Time.timeScale = 1;
             int rank = 3;
             var reward = 100;
             mRewardText.text = $"+{reward}";
@@ -40,6 +42,7 @@ namespace _2_Scripts.UI.Ingame
             {
                 Tween_C.OnPunch_Func(mStarts[i]);
                 yield return new WaitForSecondsRealtime(0.5f);
+                SoundManager.Instance.Play2DSound(AddressableTable.Sound_Win_Star);
                 mParticle.rectTransform.position = mStarts[i].transform.position;
                 mParticle.Play();
                 foreach (Transform child in mStarts[i].transform)

@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using _2_Scripts.Game.BackEndData.MainCharacter;
 using _2_Scripts.Game.ScriptableObject.Character;
+using _2_Scripts.Game.Sound;
 using _2_Scripts.Utils;
 using Cargold.FrameWork.BackEnd;
 using Sirenix.OdinInspector;
@@ -119,6 +120,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.StartPopUp
 
         private void OnSelectButton()
         {
+            SoundManager.Instance.Play2DSound(AddressableTable.Sound_Button);
             if (mMainCharacterData.isEquip)
                 return;
             BackEndManager.Instance.UserMainCharacterData[mCharacterInfo.name].isEquip = true;

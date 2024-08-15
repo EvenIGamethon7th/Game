@@ -1,3 +1,4 @@
+using _2_Scripts.Game.Sound;
 using _2_Scripts.Utils;
 using Cargold;
 using System.Collections;
@@ -35,6 +36,7 @@ namespace _2_Scripts.UI
             {
                 return;
             }
+            SoundManager.Instance.Play2DSound(AddressableTable.Sound_EXP_Reroll_Touch);
             Tween_C.OnPunch_Func(transform);
             IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold, -REROOL_COST);
             for (int i = 0; i < mSummonButtons.Length; ++i)

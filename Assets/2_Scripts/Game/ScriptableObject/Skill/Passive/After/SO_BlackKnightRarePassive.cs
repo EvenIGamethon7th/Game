@@ -1,4 +1,5 @@
-﻿using _2_Scripts.Utils;
+using _2_Scripts.Game.Sound;
+using _2_Scripts.Utils;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -9,6 +10,10 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.Passive
         [Title("처형 체력 비율")] 
         [SerializeField] 
         private float mPercent;
+        [Title("사운드")]
+        [SerializeField]
+        private AudioClip mClip;
+
         public override void AfterDamage(Monster.Monster monsters)
         {
             if (monsters.GetMonsterData.hp <= monsters.GetMonsterData.MaxHp * (mPercent* 0.01f))
@@ -17,6 +22,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.Passive
                 // 그렇게 해서 받아도 진화, 아카데미 보낼 시 사라질 가능성이 매우 농후함
                 monsters.TakeDamage(monsters.GetMonsterData.MaxHp * (mPercent * 0.01f), Define.EAttackType.TrueDamage, Define.EInstantKillType.Execution);
                 HitEffectPlay(monsters.transform.position);
+                SoundManager.Instance.Play2DSound(mClip);
             }
         }
     }

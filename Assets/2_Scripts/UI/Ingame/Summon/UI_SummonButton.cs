@@ -124,6 +124,7 @@ namespace _2_Scripts.UI
             if (IngameDataManager.Instance.CurrentGold < mCharacterData.cost)
             {
                 // 차후 Localize로 변경
+                SoundManager.Instance.Play2DSound(AddressableTable.Sound_NotEnough_Money);
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("돈이 부족합니다");
                 return;
             }

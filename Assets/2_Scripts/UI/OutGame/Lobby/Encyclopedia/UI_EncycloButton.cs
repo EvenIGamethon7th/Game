@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
 using TMPro;
+using _2_Scripts.Game.Sound;
 
 namespace _2_Scripts.UI.OutGame.Lobby.Encyclopedia
 {
@@ -37,6 +38,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.Encyclopedia
 
         private void Click()
         {
+            SoundManager.Instance.Play2DSound(AddressableTable.Sound_Button);
             MessageBroker.Default.Publish(mMessage);
         }
 

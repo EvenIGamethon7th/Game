@@ -83,7 +83,6 @@ namespace _2_Scripts.UI.OutGame.Enchant
             if (mMainCharacterData.amount >= Define.MainCharacterEnchantAmountTable[mMainCharacterData.rank] && mMainCharacterData.rank < 3)
             {
                 mEnchantIcon.SetActive(true);
-                SoundManager.Instance.Play2DSound(AddressableTable.Sound_EggMon_Upgrade);
             }
             mButtonText.text = buttonText;
         }

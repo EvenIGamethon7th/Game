@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using _2_Scripts.Game.Sound;
+using _2_Scripts.UI;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Plugins.Animate_UI_Materials;
@@ -11,12 +12,7 @@ using AsyncOperation = UnityEngine.AsyncOperation;
 public class SceneLoadManager : Singleton<SceneLoadManager>
 {
     [SerializeField]
-    private GameObject mSceneLoadAnimator;
-    [SerializeField]
-    private GameObject mText;
-
-    [SerializeField]
-    private GraphicPropertyOverrideFloat mGraphicMaterialOverride;
+    private UI_ToolTipImage mToolTip;
 
     [SerializeField]
     private float mSpeed = 3;
@@ -32,17 +28,9 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
     private async UniTaskVoid LoadSceneAsync(string sceneName)
     {
-        mSceneLoadAnimator.SetActive(true);
-        mGraphicMaterialOverride.PropertyValue = 1;
-
-        while (mGraphicMaterialOverride.PropertyValue > 0)
-        {
-            await UniTask.DelayFrame(1);
-            mGraphicMaterialOverride.PropertyValue -= Time.unscaledDeltaTime;
-        }
+        await mToolTip.ActiveAsync();
 
         SceneClear?.Invoke();
-        mText.SetActive(true);
         Time.timeScale = 1;
         AsyncOperation op = SceneManager.LoadSceneAsync("TempScene");
         op.allowSceneActivation = true;
@@ -53,17 +41,12 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         await UniTask.WaitUntil(() => asyncOperation.progress >= 0.9f);
         
         await UniTask.WaitForSeconds(1f);
-        mText.SetActive(false);
 
         asyncOperation.allowSceneActivation = true;
 
-        while (mGraphicMaterialOverride.PropertyValue < 1)
-        {
-            await UniTask.DelayFrame(1);
-            mGraphicMaterialOverride.PropertyValue += Time.unscaledDeltaTime;
-        }
+        await mToolTip.DisactiveAsync();
 
-        mSceneLoadAnimator.SetActive(false);
+        await UniTask.WaitUntil(() => SceneManager.GetActiveScene().name.Equals(sceneName));
 
         OnSceneLoad?.Invoke();
     }

@@ -52,7 +52,7 @@ namespace _2_Scripts.Game.Unit
                     }
                     else
                     {
-
+                        SoundManager.Instance.Play2DSound(AddressableTable.Sound_Attack_Magician);
                     }
                 }
                 

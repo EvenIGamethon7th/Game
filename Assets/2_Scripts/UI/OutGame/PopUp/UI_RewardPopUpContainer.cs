@@ -1,3 +1,4 @@
+using _2_Scripts.Game.Sound;
 using _2_Scripts.UI.OutGame.Enchant;
 using _2_Scripts.Utils;
 using Cysharp.Threading.Tasks;
@@ -46,7 +47,7 @@ namespace _2_Scripts.UI.OutGame.Lobby
         private Queue<Define.RewardEvent> mRewardEvents = new Queue<Define.RewardEvent>();
         public void OnPopUp(List<Define.RewardEvent> dataValue)
         {
-          
+            SoundManager.Instance.Play2DSound(AddressableTable.Sound_Button);
             mRewardEvents = new Queue<Define.RewardEvent>(dataValue);
             foreach (var data in dataValue)
             {

@@ -1,3 +1,4 @@
+using _2_Scripts.Game.Sound;
 using _2_Scripts.Utils;
 using Cargold;
 using System.Collections;
@@ -36,6 +37,7 @@ namespace _2_Scripts.UI
 
             Tween_C.OnPunch_Func(this.transform);
             IngameDataManager.Instance.AddExp(mExpPrice);
+            SoundManager.Instance.Play2DSound(AddressableTable.Sound_EXP_Reroll_Touch);
             IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold, -mExpPrice);
             ++mPressCount;
             if (mPressCount == 2)

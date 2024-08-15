@@ -24,6 +24,7 @@ namespace _2_Scripts.UI.Ingame.LootBox
             var reward = GetRandomGoldReward();
             if (reward == 100)
             {
+                SoundManager.Instance.Play2DSound(AddressableTable.Sound_Get_Best);
                 SoundManager.Instance.Vibrate();
             }
             mRewadMessage = reward != 0  ? $"짜잔! {reward} 골드 획득!" : "ㅜㅜ 꽝!";

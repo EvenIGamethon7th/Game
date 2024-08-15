@@ -17,6 +17,7 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 4124999916983397026, guid: 259daec0192144340a3c742e7178ba1a, type: 3}
+    - {fileID: 8300000, guid: 7a1afc3b746a2e8488a5f15857f68b83, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -70,6 +71,9 @@ MonoBehaviour:
     - Name: StatueEffects
       Entry: 6
       Data: 
+    - Name: CastSound
+      Entry: 10
+      Data: 1
   mDirectionPos: {x: 3, y: 2}
   mSpawnCollisionGo: {fileID: 0}
   mLifeTime: 1

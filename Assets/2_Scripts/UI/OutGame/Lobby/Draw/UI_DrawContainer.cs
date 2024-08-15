@@ -1,5 +1,6 @@
-﻿using _2_Scripts.Game.BackEndData.MainCharacter;
+using _2_Scripts.Game.BackEndData.MainCharacter;
 using _2_Scripts.Game.ScriptableObject.Character;
+using _2_Scripts.Game.Sound;
 using _2_Scripts.Utils;
 using Cargold.FrameWork.BackEnd;
 using System.Collections.Generic;
@@ -63,6 +64,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.Draw
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("모든 뽑기를 완료하였습니다!\n 다음 업데이트를 기대해주세요."); 
                 return;
             }
+            SoundManager.Instance.Play2DSound(AddressableTable.Sound_Get_Item);
             BackEndManager.Instance.AddCurrencyData(ECurrency.Ticket,-1);
             RandomDraw();
             MessageBroker.Default.Publish(mRewardEventMessage);
@@ -80,6 +82,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.Draw
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("모든 뽑기를 완료하였습니다!\n 다음 업데이트를 기대해주세요."); 
                 return;
             }
+            SoundManager.Instance.Play2DSound(AddressableTable.Sound_Get_Item);
             BackEndManager.Instance.AddCurrencyData(ECurrency.Diamond,-DRAW_COST_DIA);
             RandomDraw();
             MessageBroker.Default.Publish(mRewardEventMessage);

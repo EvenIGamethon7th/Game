@@ -1,4 +1,5 @@
-﻿using _2_Scripts.UI.OutGame.Enchant;
+using _2_Scripts.Game.Sound;
+using _2_Scripts.UI.OutGame.Enchant;
 using Cargold.FrameWork.BackEnd;
 using System;
 using UnityEngine;

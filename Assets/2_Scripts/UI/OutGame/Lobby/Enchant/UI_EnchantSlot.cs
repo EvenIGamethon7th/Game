@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using _2_Scripts.Game.BackEndData.Enchant;
+using _2_Scripts.Game.Sound;
 using Cargold.FrameWork.BackEnd;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -11,8 +12,6 @@ namespace _2_Scripts.UI.OutGame.Lobby.Enchant
 {
     public class UI_EnchantSlot : SerializedMonoBehaviour 
     {
-
-        
         [SerializeField]
         private TextMeshProUGUI mEnchantLevelText;
         [SerializeField]
@@ -39,6 +38,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.Enchant
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("다이아가 부족합니다.");
                 return;
             }
+            SoundManager.Instance.Play2DSound(AddressableTable.Sound_Upgrade_Character);
             UI_Toast_Manager.Instance.Activate_WithContent_Func("강화 성공!");
             BackEndManager.Instance.AddCurrencyData(ECurrency.Diamond,-mEnchantCost);
             mEnchantData.Enchant();

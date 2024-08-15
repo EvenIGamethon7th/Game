@@ -1,4 +1,5 @@
-﻿using _2_Scripts.Utils;
+using _2_Scripts.Game.Sound;
+using _2_Scripts.Utils;
 using _2_Scripts.Utils.Components;
 using Sirenix.OdinInspector;
 using System;
@@ -80,6 +81,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.Shop
         {
             mItemAcquisition.AcquireItem(mItemKey, mAmount);
             MessageBroker.Default.Publish(mRewardEventMessage);
+            SoundManager.Instance.Play2DSound(AddressableTable.Sound_Get_Item);
         }
         
         private void InfoClick()

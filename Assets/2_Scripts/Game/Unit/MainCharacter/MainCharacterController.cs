@@ -53,7 +53,7 @@ namespace _2_Scripts.Game.Unit.MainCharacter
             mCharacterData = MemoryPoolManager<CharacterData>.CreatePoolingObject();
             mBuffData = MemoryPoolManager<BuffData>.CreatePoolingObject();
             //BackEndManager.Instance.UserMainCharacterData[mCharacterInfo.name].rank
-            mCharacterData.Init(mCharacterInfo.CharacterEvolutions[1].GetData, mBuffData);
+            mCharacterData.Init(mCharacterInfo.CharacterEvolutions[BackEndManager.Instance.UserMainCharacterData[mCharacterInfo.name].rank].GetData, mBuffData);
             mCoolTime = mCharacterInfo.SkillList[mCharacterData.rank - 1].CoolTime;
             mCoolTimeMessage = new GameMessage<float>(EGameMessage.MainCharacterCoolTime, 0);
             MessageBroker.Default.Publish(mCoolTimeMessage);

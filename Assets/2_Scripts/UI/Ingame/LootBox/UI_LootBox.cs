@@ -1,4 +1,5 @@
 using System;
+using _2_Scripts.Game.Sound;
 using _2_Scripts.Utils.Components;
 using Cargold.FrameWork.BackEnd;
 using Sirenix.OdinInspector;
@@ -35,6 +36,7 @@ namespace _2_Scripts.UI.Ingame.LootBox
         {
             if (IngameDataManager.Instance.CurrentLuckyCoin <= 0)
             {
+                SoundManager.Instance.Play2DSound(AddressableTable.Sound_NotEnough_Money);
                 Cargold.UI.UI_Toast_Manager.Instance.Activate_WithContent_Func("열쇠가 부족합니다.");
                 return;
             }
@@ -44,6 +46,7 @@ namespace _2_Scripts.UI.Ingame.LootBox
                 Cargold.UI.UI_Toast_Manager.Instance.Activate_WithContent_Func(mIReward.RewardMessage());
                 return;
             }
+            SoundManager.Instance.Play2DSound(AddressableTable.Sound_Box_Button);
             IngameDataManager.Instance.UpdateMoney(EMoneyType.GoldKey,-1);
             mImageAnimation.PlayAnimation("open",0.1f,OpenLootBoxAnimation);
             mButton.interactable = false;

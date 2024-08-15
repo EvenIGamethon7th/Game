@@ -1,4 +1,5 @@
-﻿using Cargold.FrameWork.BackEnd;
+using _2_Scripts.Game.Sound;
+using Cargold.FrameWork.BackEnd;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -21,6 +22,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.DailyReward
              mTopSlot.UpdateSlot();
              mAquireButton.onClick.AddListener(()=>
              {
+                 SoundManager.Instance.Play2DSound(AddressableTable.Sound_Button);
                  mTopSlot.OnClick();
                  IsPopUpEnd = true;
                  this.gameObject.SetActive(false);

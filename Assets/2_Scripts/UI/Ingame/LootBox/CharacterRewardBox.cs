@@ -22,6 +22,7 @@ namespace _2_Scripts.UI.Ingame.LootBox
             var characterData = GetRandomCharacter();
             if (characterData.rank == 3)
             {
+                SoundManager.Instance.Play2DSound(AddressableTable.Sound_Get_Best);
                 SoundManager.Instance.Vibrate();
             }
             string characterName = DataBase_Manager.Instance.GetLocalize.GetData_Func(characterData.nameKey).ko;

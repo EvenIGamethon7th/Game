@@ -11,7 +11,7 @@ using AsyncOperation = UnityEngine.AsyncOperation;
 public class SceneLoadManager : Singleton<SceneLoadManager>
 {
     [SerializeField]
-    private Animator mSceneLoadAnimator;
+    private GameObject mSceneLoadAnimator;
     [SerializeField]
     private GameObject mText;
 
@@ -32,7 +32,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
     private async UniTaskVoid LoadSceneAsync(string sceneName)
     {
-        mSceneLoadAnimator.gameObject.SetActive(true);
+        mSceneLoadAnimator.SetActive(true);
         mGraphicMaterialOverride.PropertyValue = 1;
 
         while (mGraphicMaterialOverride.PropertyValue > 0)
@@ -66,7 +66,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
             mGraphicMaterialOverride.PropertyValue += Time.unscaledDeltaTime;
         }
 
-        mSceneLoadAnimator.gameObject.SetActive(false);
+        mSceneLoadAnimator.SetActive(false);
 
         OnSceneLoad?.Invoke();
     }

@@ -136,7 +136,6 @@ public class StageManager : Singleton<StageManager>
         {
             mIsRewind = false;
             mCurrentWaveData = mWaveList[mNextStageMessage.Value - 1 + offset];
-            Debug.Log(mCurrentWaveData.Key);
             SpawnMonsters(mCurrentWaveData, mWaveList.Count == mNextStageMessage.Value + offset).Forget();
             if (mCurrentWaveData.isIceMonster)
             {

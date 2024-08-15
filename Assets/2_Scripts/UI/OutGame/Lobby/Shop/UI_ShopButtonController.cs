@@ -3,11 +3,20 @@ using UnityEngine;
 
 namespace _2_Scripts.UI.OutGame.Lobby.Shop
 {
+    public enum EShopTab
+    {
+        Feather = 0,
+        Stuff,
+        Dia,
+        Package
+    }
     public class UI_ShopButtonController : MonoBehaviour
     {
         [SerializeField]
         private UI_TabButton[] mTabButtons;
         private UI_TabButton mSelectedTabButton;
+        [SerializeField]
+        private GameObject mShopUI;
         public void Start()
         {
             foreach(var btn in mTabButtons)
@@ -17,6 +26,11 @@ namespace _2_Scripts.UI.OutGame.Lobby.Shop
             mTabButtons[0].OnSelectButton();
         }
 
+        public void OpenTopOpenUI(EShopTab tab){
+            mShopUI.SetActive(true);
+            mTabButtons[(int)tab].OnSelectButton();
+        }
+        
         private void OnSelectButton(UI_TabButton tabButton)
         {
             if (mSelectedTabButton != null && mSelectedTabButton == tabButton)

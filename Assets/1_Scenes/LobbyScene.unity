@@ -8730,6 +8730,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1457231297}
     m_Modifications:
+    - target: {fileID: 4366496786460632092, guid: d2c9febb402f9b04c9bdc3f279153882, type: 3}
+      propertyPath: tab
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4366496786460632092, guid: d2c9febb402f9b04c9bdc3f279153882, type: 3}
+      propertyPath: mShopButtonController
+      value: 
+      objectReference: {fileID: 1223212383}
     - target: {fileID: 5368973122618326530, guid: d2c9febb402f9b04c9bdc3f279153882, type: 3}
       propertyPath: m_text
       value: 0000
@@ -16467,6 +16475,7 @@ MonoBehaviour:
   - {fileID: 1082547716}
   - {fileID: 268175345}
   - {fileID: 1058974738}
+  mShopUI: {fileID: 177597773957226695}
 --- !u!1001 &1247613479
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30007,6 +30016,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1457231297}
     m_Modifications:
+    - target: {fileID: 4366496786460632092, guid: d2c9febb402f9b04c9bdc3f279153882, type: 3}
+      propertyPath: mShopButtonController
+      value: 
+      objectReference: {fileID: 1223212383}
     - target: {fileID: 6684136991727977435, guid: d2c9febb402f9b04c9bdc3f279153882, type: 3}
       propertyPath: m_Name
       value: Borders_Feather

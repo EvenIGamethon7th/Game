@@ -15,6 +15,7 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.UI;
+using UnityEngine.WSA;
 
 namespace _2_Scripts.UI {
     public class UI_AcademyPannel : MonoBehaviour
@@ -116,6 +117,7 @@ namespace _2_Scripts.UI {
 
             else
             {
+                mToast.PlayToast("아카데미 다녀올게요!", false);
                 AcademyLesson(student);
             }
         }
@@ -157,12 +159,11 @@ namespace _2_Scripts.UI {
                     projectile.gameObject.SetActive(false);
                     var effect = ObjectPoolManager.Instance.CreatePoolingObject(Define.SpawnEffectDictionary[mStudentData.rank], tilePos);
                 });
-                if (mTest)
-                    UI_Toast_Manager.Instance.Activate_WithContent_Func("아카데미에서 돌아왔어요!", isIgnoreTimeScale: true);
             });
 
             if (isCreateUnit)
             {
+                mToast.PlayToast("아카데미에서 돌아왔어요!", false);
                 mLessonCount = 0;
                 mClassImage.gameObject.SetActive(false);
                 mDoLesson = false;
@@ -185,7 +186,7 @@ namespace _2_Scripts.UI {
                 if (mTest && !mDoLesson)
                 {
                     SoundManager.Instance.Play2DSound(AddressableTable.Sound_Academy_Open);
-                    mToast.PlayToast();
+                    mToast.PlayToast("아카데미 오픈");
                 }
             }
             else

@@ -18,6 +18,16 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
             mMaterial = mLine.material;
 
             gameObject.SetActive(false);
+
+            SceneLoadManager.Instance.SceneClear += Destroy;
+
+            void Destroy()
+            {
+                SceneLoadManager.Instance.SceneClear -= Destroy;
+                mCts.Cancel();
+                mCts.Dispose();
+                mCts = null;
+            }
         }
 
         public async UniTask LightingTransition(Vector3 start, Vector3 end, float time)

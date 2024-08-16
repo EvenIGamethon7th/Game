@@ -84,11 +84,7 @@ namespace _2_Scripts.Game.Controller
 
         private void OnStoryBookClick()
         {
-            if (mChapterMessage.Value.ChapterNumber != 1)
-            {
-                UI_Toast_Manager.Instance.Activate_WithContent_Func("준비중 입니다.");
-                return;
-            }else if (mChapterList[mChapterMessage.Value.ChapterNumber].ChapterClearStar != mChapterList[mChapterMessage.Value.ChapterNumber].ChapterAllStar)
+            if (mChapterList[mChapterMessage.Value.ChapterNumber].ChapterClearStar != mChapterList[mChapterMessage.Value.ChapterNumber].ChapterAllStar)
             {
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("별 15개 획득 시 \n 스토리 오픈!");
                 return;

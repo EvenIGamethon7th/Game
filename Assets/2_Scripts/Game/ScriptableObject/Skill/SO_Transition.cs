@@ -65,7 +65,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
 
             await UniTask.Delay(TimeSpan.FromSeconds(time));
 
-            if (!monster.IsDead)
+            if (monster != null && !monster.IsDead)
                 monster.TakeDamage(totalDamage, AttackType);
             
             var detectingTargets = Physics2D.OverlapCircleAll(monster.transform.position, Range, TargetLayer);
@@ -91,9 +91,9 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
 
             for (int i = 0; i < count; ++i)
             {
-                if (!transitionMonsterArray[i].IsDead)
+                if (transitionMonsterArray[i] != null && !transitionMonsterArray[i].IsDead)
                 {
-                    transitionMonsterArray[i].TakeDamage(totalDamage, AttackType);
+                    transitionMonsterArray[i]?.TakeDamage(totalDamage, AttackType);
                 }
             }
         }

@@ -10,11 +10,11 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 [CreateAssetMenu(menuName = "ScriptableObject/PassiveSkill/Gold")]
 public class SO_GoldKnightRarePassive : AfterPassive
 {
-    [Title("°ñµå È¹µæ È®·ü(0 ~ 100)")]
+    [Title("ê³¨ë“œ íšë“ í™•ë¥ (0 ~ 100)")]
     [SerializeField]
     private float mPercentage;
 
-    [Title("°ñµå È¹µæ·®")]
+    [Title("ê³¨ë“œ íšë“ëŸ‰")]
     [SerializeField]
     private int mGold;
 
@@ -26,7 +26,6 @@ public class SO_GoldKnightRarePassive : AfterPassive
                 monsters.transform.position).GetComponent<LootingItem>();
             lootingItem.CreateItem(EMoneyType.Gold, mGold);
             IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold, mGold);
-            Debug.Log($"GetGold {mGold}");
         }
     }
 

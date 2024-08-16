@@ -93,6 +93,13 @@ namespace _2_Scripts.Game.Unit
 
             InitActionAnimation();
             mOriginParent = transform.parent;
+            SceneLoadManager.Instance.SceneClear += SceneClear;
+        }
+
+        private void SceneClear()
+        {
+            SceneLoadManager.Instance.SceneClear -= Clear;
+            CharacterDatas.Clear();
         }
 
         public void SetFlipUnit(Transform target)

@@ -30,8 +30,9 @@ namespace _2_Scripts.Game.Dialog
 
         [SerializeField]
         private Image mBackGround;
-        [SerializeField]
-        private List<Sprite> mBackGrounds;
+        //[SerializeField]
+        //private List<Sprite> mBackGrounds;
+        //private Dictionary<string, Sprite> mBackGroundDict = new();
         [SerializeField]
         private Button mSkipButton;
         [SerializeField]
@@ -41,14 +42,12 @@ namespace _2_Scripts.Game.Dialog
         private bool mIsSpeaking = false;
         private bool mIsAuto = false;
 
-        private int mGroup = 0;
-
         private CancellationTokenSource mCts = new CancellationTokenSource();
 
         protected override void StartInit()
         {
             base.StartInit();
-            GetTexture();
+            //GetTexture();
             int offset = GameManager.Instance.CurrentDialog == -1 ? 0 : GameManager.Instance.CurrentDialog * 100;
             for (int i = 1; i < 100; ++i)
             {
@@ -65,21 +64,24 @@ namespace _2_Scripts.Game.Dialog
             AutoText().Forget();
         }
 
-        private void GetTexture()
-        {
-            int num = 1;
-            Texture2D tempTex;
-            Sprite tempSprite;
-            mBackGrounds.Clear();
-            while (true)
-            {
-                tempTex = ResourceManager.Instance.Load<Texture2D>($"{GameManager.Instance.CurrentDialog}_{num++}");
-                if (tempTex == null) break;
-                Rect rect = new Rect(0, 0, tempTex.width, tempTex.height);
-                tempSprite = Sprite.Create(tempTex, rect, new Vector2(0.5f, 0.5f));
-                mBackGrounds.Add(tempSprite);
-            }
-        }
+        //private void GetTexture()
+        //{
+        //    int num = 1;
+        //    Texture2D tempTex;
+        //    Sprite tempSprite;
+        //    mBackGrounds.Clear();
+        //    string temp;
+        //    while (true)
+        //    {
+        //        temp = $"{GameManager.Instance.CurrentDialog}_{num++}";
+        //        tempTex = ResourceManager.Instance.Load<Texture2D>(temp);
+        //        if (tempTex == null) break;
+        //        Rect rect = new Rect(0, 0, tempTex.width, tempTex.height);
+        //        tempSprite = Sprite.Create(tempTex, rect, new Vector2(0.5f, 0.5f));
+        //        mBackGrounds.Add(tempSprite);
+        //        mBackGroundDict.Add(temp, tempSprite);
+        //    }
+        //}
 
         private async UniTask AutoText()
         {
@@ -156,11 +158,9 @@ namespace _2_Scripts.Game.Dialog
         {
             mIsSpeaking = true;
 
-            if (mGroup != data.Story_Group)
-            {
-                mBackGround.sprite = mBackGrounds[mGroup];
-                mGroup = data.Story_Group;
-            }
+            var tempTex = ResourceManager.Instance.Load<Texture2D>(data.Image);
+            Rect rect = new Rect(0, 0, tempTex.width, tempTex.height);
+            mBackGround.sprite = Sprite.Create(tempTex, rect, new Vector2(0.5f, 0.5f));
 
             if (!String.IsNullOrEmpty(data.sound))
             {

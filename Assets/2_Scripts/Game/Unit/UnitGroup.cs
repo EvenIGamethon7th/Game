@@ -1,6 +1,7 @@
 using _2_Scripts.Game.Map.Tile;
 using _2_Scripts.UI;
 using Cysharp.Threading.Tasks;
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -18,7 +19,8 @@ namespace _2_Scripts.Game.Unit
         private readonly int mMaxUnitCount = 3;
 
         public float GroupRange { get; private set; }
-        
+
+        [field: SerializeField]
         public List<CUnit> Units { get; private set; }
 
         private EUnitStates mCurrentState;
@@ -27,7 +29,6 @@ namespace _2_Scripts.Game.Unit
         [SerializeField]
         private float mSpeed = 10f;
         
-
         private void Awake()
         {
             Units = new List<CUnit>(mMaxUnitCount);
@@ -72,6 +73,12 @@ namespace _2_Scripts.Game.Unit
 
         public void AddUnit(CUnit newUnit)
         {
+            if (Units.Count > 0
+               && Units[0].CharacterDatas.nameKey.CompareTo(newUnit.CharacterDatas.nameKey) != 0)
+            {
+                Debug.LogError("DifferentUnit Add");
+                return;
+            }
             if (Units.Count >= mMaxUnitCount) return;
 
             newUnit.transform.parent = transform;

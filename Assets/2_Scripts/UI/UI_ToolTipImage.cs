@@ -32,7 +32,6 @@ namespace _2_Scripts.UI
                 await UniTask.DelayFrame(1);
                 time -= Time.deltaTime;
                 temp = time / originTime;
-                Debug.Log(temp);
                 mMaterial.SetFloat("_Transtion", temp);
             }
             mText.gameObject.SetActive(true);

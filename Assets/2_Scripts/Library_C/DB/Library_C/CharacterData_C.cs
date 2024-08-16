@@ -27,6 +27,7 @@ public partial class CharacterData : Data_C
      [LabelText("클래스타입")] public string ClassType;
      [LabelText("아이콘")] public Sprite Icon;
      [LabelText("일러스트")] public Sprite illustration;
+     [LabelText("졸업대사")] public string speech;
 
     
 
@@ -50,6 +51,7 @@ public partial class CharacterData : Data_C
         ClassType = _cellDataArr[14];
         Icon = Editor_C.GetLoadAssetAtPath_Func<Sprite>(_cellDataArr[15]);
         illustration = Editor_C.GetLoadAssetAtPath_Func<Sprite>(_cellDataArr[16]);
+        speech = _cellDataArr[17];
     }
 #endif
 }

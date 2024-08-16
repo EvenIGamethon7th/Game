@@ -104,7 +104,7 @@ public class MapManager : Singleton<MapManager>
     {
         var tileSlot = mTileDatas
             .Where(x => x.OccupantUnit != null)
-            .Where(x => x.CurrentUnitData.nameKey == unitGroup.GetCharacterData().nameKey && unitGroup != x.OccupantUnit && x.OccupantUnit.CanAddUnit()).FirstOrDefault();
+            .Where(x => x.OccupantUnit.GetCharacterData() != null && x.OccupantUnit.GetCharacterData().nameKey == unitGroup.GetCharacterData().nameKey && unitGroup != x.OccupantUnit && x.OccupantUnit.CanAddUnit()).FirstOrDefault();
         return tileSlot?.OccupantUnit;
     }
 
@@ -131,7 +131,7 @@ public class MapManager : Singleton<MapManager>
     public bool CreateUnit(CharacterData characterData, bool isAlumni = false, Action<Vector3> spawnAction = null, TileSlot assignSlot = null)
     {
         //먼저 같은 유닛 그룹과 그 그룹에 공간이 있는지 확인
-        var tileSlot = mTileDatas.Where(x => x.CurrentUnitData?.nameKey == characterData.nameKey && x.CanAddUnit()).FirstOrDefault();
+        var tileSlot = mTileDatas.Where(x => x.OccupantUnit != null && x.OccupantUnit.GetCharacterData().nameKey == characterData.nameKey && x.CanAddUnit()).FirstOrDefault();
 
         //없다면 빈 타일 슬롯 확인
         if (tileSlot == null)

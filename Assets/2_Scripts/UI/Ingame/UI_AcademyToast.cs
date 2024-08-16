@@ -47,10 +47,11 @@ namespace _2_Scripts.UI.Ingame
                 .SetAutoKill(false);
         }
 
-        public void PlayToast()
+        public void PlayToast(string text, bool isOpen = true)
         {
+            mToastText.text = text;
             mSeq.Restart();
-            mOpen.SetActive(true);
+            mOpen.SetActive(isOpen);
         }
 
         public void Clear()

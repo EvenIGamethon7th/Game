@@ -100,8 +100,8 @@ public class IngameDataManager : Singleton<IngameDataManager>
                 {
                     TutorialTrigger = val.Value;
                 }).AddTo(this);
-            mUserLevel.Value = 4;
-            mUserExp.Value = 60;
+            mUserLevel.Value = 3;
+            mUserExp.Value = 20;
             mUserGold.Value = 400;
             GameManager.Instance.UseItem(EItemType.Lecturer1st);
             SceneLoadManager.Instance.SceneClear += Clear;

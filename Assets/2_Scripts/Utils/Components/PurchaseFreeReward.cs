@@ -22,6 +22,7 @@ namespace _2_Scripts.Utils.Components
             if (!isPurchased)
             {
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("오늘은 모두 시청하셨습니다");
+                return false;
             }
             //TODO : 광고 송출 
             if (freeRewardData.isAdReward && BackEndManager.Instance.UserInventory.All(x => x.ItemId != "Ad_Remover"))
@@ -29,10 +30,10 @@ namespace _2_Scripts.Utils.Components
                 //TODO
                 AdmobManager.Instance.ShowRewardedAd(mOnPurchaseSuccess);
                 Debug.Log("광고 송출 끝!");
-                return isPurchased;
+                return true;
             }
             mOnPurchaseSuccess?.Invoke();
-            return isPurchased;
+            return true;
         }
 
         public string GetPriceOrCount()

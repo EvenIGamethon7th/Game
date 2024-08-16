@@ -1,4 +1,5 @@
-﻿using GoogleMobileAds.Api;
+﻿using Cysharp.Threading.Tasks;
+using GoogleMobileAds.Api;
 using System;
 using UnityEngine;
 
@@ -41,6 +42,12 @@ namespace _2_Scripts.Utils.Components
             });
         }
 
+        async UniTaskVoid WaitTask(Action callback )
+        {
+            await UniTask.WaitForSeconds(0.2f);
+            callback?.Invoke();
+        } 
+        
         public void ShowRewardedAd(Action rewardCallback)
         {
             if (_rewardedAd != null && _rewardedAd.CanShowAd())
@@ -49,7 +56,7 @@ namespace _2_Scripts.Utils.Components
                 {
                     Debug.Log($"User earned reward of {reward.Amount} {reward.Type}");
                     // 여기서 유저에게 보상을 지급하는 로직을 추가하세요.
-                    rewardCallback.Invoke();
+                     WaitTask(() => rewardCallback?.Invoke()).Forget();
                 });
             }
             else
@@ -63,13 +70,13 @@ namespace _2_Scripts.Utils.Components
             _rewardedAd.OnAdFullScreenContentClosed += () =>
             {
                 Debug.Log("Rewarded ad closed.");
-                LoadRewardedAd(); // 광고가 닫힌 후 새로운 광고를 로드합니다.
+                WaitTask(LoadRewardedAd).Forget();
             };
 
             _rewardedAd.OnAdFullScreenContentFailed += (AdError error) =>
             {
                 Debug.LogError("Rewarded ad failed to show: " + error);
-                LoadRewardedAd(); // 실패 시 새로운 광고를 로드합니다.
+                WaitTask(LoadRewardedAd).Forget();
             };
 
             _rewardedAd.OnAdFullScreenContentOpened += () =>

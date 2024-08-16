@@ -1,8 +1,10 @@
 using _2_Scripts.Game.Sound;
 using _2_Scripts.Utils;
 using _2_Scripts.Utils.Components;
+using Cargold.FrameWork.BackEnd;
 using Sirenix.OdinInspector;
 using System;
+using System.Linq;
 using TMPro;
 using UniRx;
 using UnityEngine;
@@ -33,8 +35,15 @@ namespace _2_Scripts.UI.OutGame.Lobby.Shop
         
         private GameMessage<Define.RewardEvent> mRewardEventMessage;
         private GameMessage<ProductDetailsData> mProductDetailMessage = new GameMessage<ProductDetailsData>(EGameMessage.ProductDetailPopUp,null);
+        [SerializeField]
+        private bool isOneTimePurchase = false;
         public void Start()
         {
+            if (isOneTimePurchase && BackEndManager.Instance.UserInventory.Any(x=>x.ItemId == mItemKey.GetData.code))
+            {
+                gameObject.SetActive(false);
+                return;
+            }
             mPurchaseCondition = GetComponent<IPurchase>();
             mItemAcquisition = GetComponent<IItemAcquisition>();
             mRewardEventMessage = new GameMessage<Define.RewardEvent>(EGameMessage.RewardOpenPopUp, new Define.RewardEvent()
@@ -82,6 +91,10 @@ namespace _2_Scripts.UI.OutGame.Lobby.Shop
             mItemAcquisition.AcquireItem(mItemKey, mAmount);
             MessageBroker.Default.Publish(mRewardEventMessage);
             SoundManager.Instance.Play2DSound(AddressableTable.Sound_Get_Item);
+            if (isOneTimePurchase)
+            {
+                this.gameObject.SetActive(false);
+            }
         }
         
         private void InfoClick()

@@ -65,10 +65,10 @@ namespace _2_Scripts.UI.OutGame.Lobby.Shop
         {
             if (mPurchaseCondition is PurchaseFreeReward)
             {
-                mPriceText.text = mPurchaseCondition.GetPriceOrCount();
                 PurchaseFreeReward purchaseIap = (PurchaseFreeReward) mPurchaseCondition;
                 purchaseIap.SetOnPurchaseSuccess(PurchaseItem);
                 mPurchaseCondition.Purchase();
+                mPriceText.text = mPurchaseCondition.GetPriceOrCount();
                 return;
             }
             

@@ -23,6 +23,8 @@ namespace _2_Scripts.UI.OutGame.Lobby
                 .Where(message => message.Message == EGameMessage.ChapterChange).Subscribe(
                     data =>
                     {
+                        if(mImage == null)
+                            return;
                         var onOff = data.Value.ChapterNumber == mChpaternum;
                         mImage.sprite = onOffSprite[onOff];
                     }).AddTo(this);

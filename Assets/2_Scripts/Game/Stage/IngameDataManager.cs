@@ -50,19 +50,19 @@ public class IngameDataManager : Singleton<IngameDataManager>
             {1, 60},
             {2, 80},
             {3, 120},
-            {4, 160},
-            {5, 200},
+            {4, 200},
+            {5, 300},
             {6, 1}
         };
 
     private readonly Dictionary<int, (int nomal, int rare, int epic)> mGradeRates = new Dictionary<int, (int general, int elite, int legendary)>
         {
             { 1, (100, 0, 0) },
-            { 2, (99, 1, 0) },
-            { 3, (98, 2, 0) },
-            { 4, (95, 5, 0) },
-            { 5, (88, 10, 2) },
-            { 6, (80, 15, 5) }
+            { 2, (95, 5, 0) },
+            { 3, (90, 10, 0) },
+            { 4, (85, 13, 2) },
+            { 5, (80, 15, 5) },
+            { 6, (70, 20, 10) }
         };
 
     protected override void AwakeInit()

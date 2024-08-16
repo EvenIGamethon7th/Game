@@ -21714,13 +21714,17 @@ PrefabInstance:
       value: Item_6
       objectReference: {fileID: 0}
     - target: {fileID: 3446362953379892522, guid: 14299b8321318a349bf465bea6409db8, type: 3}
+      propertyPath: isOneTimePurchase
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3446362953379892522, guid: 14299b8321318a349bf465bea6409db8, type: 3}
       propertyPath: mProductDetailsKey.key
       value: ProductDetail_06
       objectReference: {fileID: 0}
     - target: {fileID: 3446362953379892522, guid: 14299b8321318a349bf465bea6409db8, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 3446362953379892522, guid: 14299b8321318a349bf465bea6409db8, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 3446362953379892522, guid: 14299b8321318a349bf465bea6409db8, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
       value: 0

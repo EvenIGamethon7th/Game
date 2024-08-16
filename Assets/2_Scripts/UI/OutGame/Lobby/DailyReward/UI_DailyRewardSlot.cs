@@ -35,7 +35,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.DailyReward
         
         public void UpdateSlot()
         {
-            if(ItemKey == null)
+            if(ItemKey.GetData == null)
             {
                 return;
             }

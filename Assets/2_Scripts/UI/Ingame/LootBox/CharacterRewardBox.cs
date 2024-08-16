@@ -26,7 +26,7 @@ namespace _2_Scripts.UI.Ingame.LootBox
                 SoundManager.Instance.Vibrate();
             }
             string characterName = DataBase_Manager.Instance.GetLocalize.GetData_Func(characterData.nameKey).ko;
-            mRewadMessage = $"짜잔! {characterData.rank}등급 '{characterName}' 소환!";
+            mRewadMessage = $"짜잔! {characterData.rank}학년 '{characterName}' 소환!";
             MapManager.Instance.CreateUnit(characterData, spawnAction: (tilePos) =>
             {
                 ObjectPoolManager.Instance.CreatePoolingObject(

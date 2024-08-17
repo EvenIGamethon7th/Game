@@ -15,7 +15,6 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.UI;
-using UnityEngine.WSA;
 
 namespace _2_Scripts.UI {
     public class UI_AcademyPannel : MonoBehaviour

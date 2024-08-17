@@ -273,9 +273,13 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         return inst;
     }
 
-    public void Clear()
+    private void Clear()
     {
         _folderList.Clear();
+        foreach(var poolList in _poolList)
+        {
+            poolList.Value.Clear();
+        }
         _poolList.Clear();
     }
 }

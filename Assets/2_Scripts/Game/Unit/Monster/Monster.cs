@@ -91,6 +91,7 @@ namespace _2_Scripts.Game.Monster
                 SceneLoadManager.Instance.SceneClear -= Clear;
                 mCts.Cancel();
                 mCts.Dispose();
+                mMonsterData.Clear();
             }
         }
         

@@ -54,12 +54,8 @@ public class StageManager : Singleton<StageManager>
                     mWaveTime = mAfterBossKillRemainTime;
                 }
             }).AddTo(this);
-        if (GameManager.Instance.IsTest)
-        {
-            EditInit();
-        }
 
-        else if (!BackEndManager.Instance.IsUserTutorial)
+        if (!BackEndManager.Instance.IsUserTutorial)
         {
             mIsTutorial = true;
             TutorialInitAsync().Forget();

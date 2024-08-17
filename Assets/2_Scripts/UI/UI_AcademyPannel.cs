@@ -117,7 +117,7 @@ namespace _2_Scripts.UI {
 
             else
             {
-                mToast.PlayToast("아카데미 다녀올게요!", false);
+                mToast?.PlayToast("아카데미 다녀올게요!", false);
                 AcademyLesson(student);
             }
         }
@@ -125,7 +125,7 @@ namespace _2_Scripts.UI {
         private void AcademyLesson(CUnit student)
         {
             if (mTest)
-                mToast.Clear();
+                mToast?.Clear();
             mDoLesson = true;
             mTempAlumniData = MemoryPoolManager<CharacterData>.CreatePoolingObject();
             mStatus.Init(student);
@@ -163,7 +163,7 @@ namespace _2_Scripts.UI {
 
             if (isCreateUnit)
             {
-                mToast.PlayToast("아카데미에서 돌아왔어요!", false);
+                mToast?.PlayToast("아카데미에서 돌아왔어요!", false);
                 mLessonCount = 0;
                 mClassImage.gameObject.SetActive(false);
                 mDoLesson = false;
@@ -186,13 +186,13 @@ namespace _2_Scripts.UI {
                 if (mTest && !mDoLesson)
                 {
                     SoundManager.Instance.Play2DSound(AddressableTable.Sound_Academy_Open);
-                    mToast.PlayToast("아카데미 오픈");
+                    mToast?.PlayToast("아카데미 오픈");
                 }
             }
             else
             {
                 if (mTest)
-                    mToast.Clear();
+                    mToast?.Clear();
                 mIsVacation = true;
             }
 

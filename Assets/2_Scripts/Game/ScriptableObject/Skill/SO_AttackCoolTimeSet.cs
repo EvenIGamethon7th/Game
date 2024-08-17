@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace _2_Scripts.Game.ScriptableObject.Skill
 {
@@ -6,7 +6,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
     using System;
     using System.Linq;
     using _2_Scripts.Game.Unit;
-    [CreateAssetMenu(menuName = "ScriptableObject/Skill/MeleeCoolTimeSet",fileName = "MeleeC_")]
+    [CreateAssetMenu(menuName = "ScriptableObject/Skill/MeleeCoolTimeSet", fileName = "MeleeC_")]
     public class SO_AttackCoolTimeSet : SO_MeelAttackSkill
     {
         public override bool CastAttack(Transform ownerTransform, CharacterData ownerData, Action<Monster[]> beforeDamage = null, Action<Monster> passive = null)
@@ -25,23 +25,23 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
                 .Select(collider => collider.GetComponent<Monster>())
                 .Where(monster => monster != null)
                 .ToArray();
-            
+
             CastEffectPlay(ownerTransform.position);
             var attackerUnit = ownerTransform.GetComponent<CUnit>();
             attackerUnit.SetFlipUnit(detectingTargets[0].transform);
             for (int i = 0; i < targetCount; i++)
-            { 
+            {
                 var TargetMonster = monsterArray[i];
 
                 if (TargetMonster.TakeDamage(totalDamage, AttackType))
                 {
                     var statusEffectHandler = TargetMonster.gameObject.GetComponent<StatusEffectHandler>();
-                    if (TargetMonster.GetMonsterData.hp <= 0)
+                    if (TargetMonster.IsDead)
                     {
-                            attackerUnit.IsNotCoolTimeSKill = true;
+                        attackerUnit.IsNotCoolTimeSKill = true;
                     }
 
-                    StatueEffects?.ForEach(effect =>statusEffectHandler.AddStatusEffect(effect,attackerUnit));
+                    StatueEffects?.ForEach(effect => statusEffectHandler.AddStatusEffect(effect, attackerUnit));
                     HitEffectPlay(TargetMonster.transform.position);
                 }
             }

@@ -1,4 +1,4 @@
-﻿using Sirenix.OdinInspector;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace _2_Scripts.Game.ScriptableObject.Skill.Passive
@@ -9,8 +9,9 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.Passive
         [Title("차감할 마법 방어력 퍼센트")] [SerializeField] private float mPercent; 
         public override void AfterDamage(Monster.Monster monsters)
         {
-            if(monsters.DefenceFlag)
+            if(monsters.DefenceFlag || monsters.IsDead)
                 return;
+
             monsters.GetMonsterData.AddMagicDefenceStat(-monsters.GetMonsterData.mdef * (mPercent * 0.01f));
             monsters.DefenceFlag = true;
         }

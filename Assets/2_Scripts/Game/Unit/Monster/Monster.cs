@@ -51,7 +51,15 @@ namespace _2_Scripts.Game.Monster
         public bool IsLastBoss = false;
         // Monster 방깍 한 번만 받기 위한 플래그
         public  bool DefenceFlag = false;
-        public bool IsDead => mMonsterData.hp <= 0;
+        public bool IsDead { get {
+                if (mMonsterData != null)
+                {
+                    return mMonsterData.hp <= 0;
+                }
+
+                return true;
+            } 
+        }
 
         private GameMessage<Monster> mMonsterMessage;
         private CancellationTokenSource mCts = new ();
@@ -91,7 +99,7 @@ namespace _2_Scripts.Game.Monster
                 SceneLoadManager.Instance.SceneClear -= Clear;
                 mCts.Cancel();
                 mCts.Dispose();
-                mMonsterData.Clear();
+                mMonsterData?.Clear();
             }
         }
         
@@ -116,6 +124,10 @@ namespace _2_Scripts.Game.Monster
             {
                 mMatController.RunDissolve(true, () => {
                     IsBoss = isBoss;
+                    if (mMonsterData.MaxHp == 0)
+                    {
+                        Debug.LogError("Something Wrong In Data");
+                    }
                     MessageBroker.Default.Publish(mMonsterMessage);
                     CurrentHpCanvas.InitHpUI(mMonsterData.MaxHp);
                     Enabled(true);
@@ -132,17 +144,17 @@ namespace _2_Scripts.Game.Monster
 
         public bool TakeDamage(float damage, Define.EAttackType attackType, EInstantKillType instant = EInstantKillType.None)
         {
-            if (mMonsterData.hp <= 0) 
+            if (IsDead) 
                 return false;
             
             if (instant == EInstantKillType.None)
                 ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_DamageCanvas, transform.position + Vector3.up).GetComponent<UI_DamageCanvas>().SetDamage(damage);
-            mMonsterData.DamageHp(DefenceCalculator.CalculateDamage(damage, mMonsterData, attackType));
+            mMonsterData?.DamageHp(DefenceCalculator.CalculateDamage(damage, mMonsterData, attackType));
             DamageActionCallback?.Invoke(this);
             damagebleActions?.Invoke();
             CurrentHpCanvas.SetHpUI(mMonsterData.hp);
 
-            if (mMonsterData.hp <= 0)
+            if (IsDead)
             {
                 CurrentHpCanvas.Active = false;
                 if (IsLastBoss && BackEndManager.Instance.IsUserTutorial)
@@ -171,6 +183,7 @@ namespace _2_Scripts.Game.Monster
                 }
                 StageManager.Instance.RemoveMonster(this);
                 Enabled(false);
+                CurrentHpCanvas = null;
                 ClearData();
             }
 
@@ -200,6 +213,7 @@ namespace _2_Scripts.Game.Monster
             }
 
             Enabled(false);
+            CurrentHpCanvas = null;
             gameObject.SetActive(false);
         }
 
@@ -229,7 +243,12 @@ namespace _2_Scripts.Game.Monster
 
         private void ClearData()
         {
-            mMonsterData.Clear();
+            mMonsterData?.Clear();
+            if (mMonsterData == null)
+            {
+                Debug.LogError("Why Multiple Clear?");
+            }
+            mMonsterData = null;
         }
 
         private void Enabled(bool bEnable)

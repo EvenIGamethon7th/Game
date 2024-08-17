@@ -26,6 +26,7 @@ public partial class MonsterData : IPoolable
         { "Money_1001", 0 },
         { "Money_1002", 0 },
     };
+    [SerializeField]
     private bool mIsActive;
     public bool IsActive { get => mIsActive; set => mIsActive = value; }
     public void Clear()

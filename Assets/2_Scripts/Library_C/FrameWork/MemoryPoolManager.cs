@@ -10,6 +10,10 @@ public static class MemoryPoolManager<T> where T : class, IPoolable, new ()
 
     public static void ClearMemory()
     {
+        foreach (var pool in mMemoryPool.Values)
+        {
+            pool.Clear();
+        }
         mMemoryPool.Clear();
     }
 

@@ -41,5 +41,11 @@ namespace _2_Scripts.Game.BackEndData.MainCharacter
                 return;
             amount -= Define.MainCharacterEnchantAmountTable[rank++];
         }
+
+        public void EquipMainCharacter()
+        {
+            isGetType = EGetType.Select;
+            isEquip = true;
+        }
     }
 }

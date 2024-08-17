@@ -43,16 +43,16 @@ namespace _2_Scripts.UI.Ingame
 
                     mDefeat.SetActive(true);
                     mButtons.SetActive(true);
-
-                    if (mGameOverCount == 1)
-                    {
-                        mResurrectionButton.SetActive(true);
-                        mIsGameOver = false;
-                    }
-                    else
-                    {
-                        mResurrectionButton.SetActive(false);
-                    }
+                    mResurrectionButton.SetActive(false);
+                    // if (mGameOverCount == 1)
+                    // {
+                    //     mResurrectionButton.SetActive(true);
+                    //     mIsGameOver = false;
+                    // }
+                    // else
+                    // {
+                    //     mResurrectionButton.SetActive(false);
+                    // }
                 }
             });
 
@@ -74,16 +74,15 @@ namespace _2_Scripts.UI.Ingame
 
         public void OnResurrection()
         {
-            AdmobManager.Instance.ShowRewardedAd(ActionFunc);
-
-            void ActionFunc()
+            AdmobManager.Instance.ShowRewardedAd(() =>
             {
                 mRessurection.CastAttack();
                 mDefeat.SetActive(false);
                 mButtons.SetActive(false);
                 mBackGroundImage.enabled = false;
                 Time.timeScale = mPrevTimeScale;
-            }
+
+            });
         }
 
         public void OnRetryGame()

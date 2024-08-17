@@ -54,7 +54,10 @@ namespace _2_Scripts.UI.OutGame.PopUp
                     key = "Bird";
                     break;
             }
-            BackEndManager.Instance.UserMainCharacterData[key].AddAmount(1);
+
+            var data = BackEndManager.Instance.UserMainCharacterData[key];
+            data.AddAmount(1);
+            data.EquipMainCharacter();
             var mainCharacterInfo = 
                 GameManager.Instance.MainCharacterList.
                     FirstOrDefault(m => m.name == key).CharacterEvolutions[1].GetData;
@@ -66,7 +69,7 @@ namespace _2_Scripts.UI.OutGame.PopUp
             }); 
             MessageBroker.Default.Publish(mRewardEvent);
             IsPopUpEnd = true;
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
             mBackPanel.gameObject.SetActive(false);
             BackEndManager.Instance.IsSelectMainCharacter = true;
             BackEndManager.Instance.SaveCharacterData();

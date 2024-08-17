@@ -22,19 +22,29 @@ namespace _2_Scripts.UI.OutGame.Lobby
         private TextMeshProUGUI mCharacterName;
 
         [SerializeField] private GameObject mMainCharacterSlot;
+        
         private void Awake()
         {
+            
+            MainCharacterData data = BackEndManager.Instance.UserMainCharacterData.Values.FirstOrDefault(data => data.isEquip);
+            if (data != null)
+            {
+                SelectButton(data);
+            }
+            else
+            {
+                var unlockData =
+                    BackEndManager.Instance.UserMainCharacterData.Values.FirstOrDefault(data =>
+                        data.isGetType == EGetType.Unlock);
+                unlockData.EquipMainCharacter();
+                SelectButton(unlockData);
+            }
+            
             foreach (var mainCharacter in GameManager.Instance.MainCharacterList)
             {
                 var slot = Instantiate(mMainCharacterSlot, transform).GetComponent<UI_MainCharacterSlot>();
                 slot.Init(mainCharacter,SelectButton);
             }
-
-           var data = BackEndManager.Instance.UserMainCharacterData.Values.FirstOrDefault(data => data.isEquip);
-           if (data != null)
-           {
-               SelectButton(data);
-           }
         }
 
         private void SelectButton(MainCharacterData data)

@@ -8,12 +8,13 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.Passive
     [CreateAssetMenu(menuName = "ScriptableObject/PassiveSkill/HealthRateDamage")]
     public class SO_DetectWeakness : AfterPassive
     {
-        [Title("Ã¼·Â ºñÀ²")]
+        [Title("ì²´ë ¥ ë¹„ìœ¨")]
         [SerializeField]
         private float mPercent;
 
         public override void AfterDamage(Monster.Monster monsters)
         {
+            if (monsters.IsDead) return;
             monsters.TakeDamage(monsters.GetMonsterData.MaxHp * mPercent * 0.01f, Utils.Define.EAttackType.TrueDamage);
         }
     }

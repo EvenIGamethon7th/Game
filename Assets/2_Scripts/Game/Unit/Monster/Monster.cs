@@ -233,7 +233,7 @@ namespace _2_Scripts.Game.Monster
             // 위치 이동
             position = Vector3.MoveTowards(position, NextWayPointVector, mMonsterData.speed * Time.deltaTime);
             transform.position = position;
-            CurrentHpCanvas.UpdatePos(position);
+            CurrentHpCanvas?.UpdatePos(position);
         }
         
         private void FlipSprite(Vector3 direction)

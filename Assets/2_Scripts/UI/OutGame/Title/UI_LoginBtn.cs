@@ -20,6 +20,10 @@ namespace _2_Scripts.UI.OutGame.Title
         [SerializeField]
         private TextMeshProUGUI mTapToStartText;
 
+        
+        [SerializeField] private GameObject mVersionCheckPopUp;
+        [SerializeField] private Button mVersionCheckPopUpBtn;
+
         private int mLoadCount;
         private void Start()
         {
@@ -32,9 +36,21 @@ namespace _2_Scripts.UI.OutGame.Title
                 SetCount();
             }).AddTo(this);
 
+           OnLogin();
+        }
+
+        private void OnLogin()
+        {
             BackEndManager.Instance.OnLogin(() =>
             {
-                SetCount();
+                BackEndManager.Instance.CheckVersion(SetCount, () =>
+                {
+                    mVersionCheckPopUp.SetActive(true);
+                    mVersionCheckPopUpBtn.onClick.AddListener(() =>
+                    {
+                        Application.OpenURL("market://details?id=com.gamethon7.heroacademy");
+                    });
+                });
             });
         }
 

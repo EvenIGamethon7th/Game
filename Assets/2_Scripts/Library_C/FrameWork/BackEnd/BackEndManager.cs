@@ -152,7 +152,28 @@ namespace Cargold.FrameWork.BackEnd
             UserCurrency[currency].Value += amount;
             PublishCurrencyData(currency,amount);
         }
-        
+
+        public void CheckVersion(Action successCallback,Action failCallback)
+        {
+            var request = new ExecuteCloudScriptRequest
+            {
+                FunctionName = "VersionCheck",
+                FunctionParameter = new {version = Application.version},
+                GeneratePlayStreamEvent = true
+            };
+            PlayFabClientAPI.ExecuteCloudScript(request, (result) =>
+            {
+                var functionResult = result.FunctionResult as IDictionary<string, object>;
+                if ((bool)functionResult["success"])
+                {
+                    successCallback?.Invoke();
+                }
+                else
+                {
+                    failCallback?.Invoke();
+                }
+            },ErrorLog);
+        }
         public void ChangeDisplayName(string nickName,Action successCallback,Action<string> failCallback)
         {
             var request = new ExecuteCloudScriptRequest

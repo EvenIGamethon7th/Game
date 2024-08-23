@@ -15,7 +15,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.Passive
         public override void AfterDamage(Monster.Monster monsters)
         {
             if (monsters.IsDead) return;
-            monsters.TakeDamage(monsters.GetMonsterData.MaxHp * mPercent * 0.01f, Utils.Define.EAttackType.TrueDamage);
+            monsters.TakeDamage(monsters.GetMonsterData.MaxHp * mPercent * 0.01f, Utils.Define.EAttackType.Physical);
         }
     }
 }

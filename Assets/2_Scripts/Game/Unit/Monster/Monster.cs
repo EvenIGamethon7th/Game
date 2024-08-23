@@ -147,9 +147,10 @@ namespace _2_Scripts.Game.Monster
             if (IsDead) 
                 return false;
             
+            damage = DefenceCalculator.CalculateDamage(damage, mMonsterData, attackType);
+            mMonsterData?.DamageHp(damage);
             if (instant == EInstantKillType.None)
                 ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_DamageCanvas, transform.position + Vector3.up).GetComponent<UI_DamageCanvas>().SetDamage(damage);
-            mMonsterData?.DamageHp(DefenceCalculator.CalculateDamage(damage, mMonsterData, attackType));
             DamageActionCallback?.Invoke(this);
             damagebleActions?.Invoke();
             CurrentHpCanvas.SetHpUI(mMonsterData.hp);
@@ -233,7 +234,7 @@ namespace _2_Scripts.Game.Monster
             // 위치 이동
             position = Vector3.MoveTowards(position, NextWayPointVector, mMonsterData.speed * Time.deltaTime);
             transform.position = position;
-            CurrentHpCanvas.UpdatePos(position);
+            CurrentHpCanvas?.UpdatePos(position);
         }
         
         private void FlipSprite(Vector3 direction)

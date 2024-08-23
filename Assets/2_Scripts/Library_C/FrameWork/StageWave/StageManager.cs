@@ -54,7 +54,9 @@ public class StageManager : Singleton<StageManager>
                     mWaveTime = mAfterBossKillRemainTime;
                 }
             }).AddTo(this);
-
+#if UNITY_EDITOR
+        EditInit();
+#else
         if (!BackEndManager.Instance.IsUserTutorial)
         {
             mIsTutorial = true;
@@ -65,6 +67,7 @@ public class StageManager : Singleton<StageManager>
         {
             Init();
         }
+#endif
     }
 
     private void Init()
@@ -231,7 +234,8 @@ public class StageManager : Singleton<StageManager>
 
     private void EditInit()
     {
-        //Time.timeScale = 2.5f;
+        mNextStageMessage = new GameMessage<int>(EGameMessage.StageChange, 0);
+        mBossSpawnMessage = new TaskMessage(ETaskList.BossSpawn);
         MessageBroker.Default.Receive<TaskMessage>()
             .Where(message => message.Task == ETaskList.DefaultResourceLoad)
             .Subscribe(message =>
@@ -239,7 +243,6 @@ public class StageManager : Singleton<StageManager>
                 mNextStageMessage = new GameMessage<int>(EGameMessage.StageChange, 0);
                 mBossSpawnMessage = new TaskMessage(ETaskList.BossSpawn);
                 ObjectPoolManager.Instance.RegisterPoolingObject("Monster", 100);
-                StageInit();
             }).AddTo(this);
         MessageBroker.Default.Receive<EditMessage<int, int>>().Subscribe(message =>
         {
@@ -249,10 +252,23 @@ public class StageManager : Singleton<StageManager>
 
     private void GetStageAndWaveData(int stage, int wave)
     {
-        var currentStageData = DataBase_Manager.Instance.GetStage.GetData_Func($"Stage_{stage}");
-        
-        var waveData = DataBase_Manager.Instance.GetWave.GetData_Func(currentStageData.waveList[wave]);
-        mWaveList.Add(waveData);
+        mCurrentStageData = DataBase_Manager.Instance.GetStage.GetData_Func($"Stage_{stage}");
+
+        WaveData waveData;
+        if (wave != -1)
+        {
+            waveData = DataBase_Manager.Instance.GetWave.GetData_Func(mCurrentStageData.waveList[wave]);
+            mWaveList.Add(waveData);
+        }
+
+        else
+        {
+            foreach (var waveDatas in mCurrentStageData.waveList)
+            {
+                waveData = DataBase_Manager.Instance.GetWave.GetData_Func(waveDatas);
+                mWaveList.Add(waveData);
+            }
+        }
 
         StartWave().Forget();
     }

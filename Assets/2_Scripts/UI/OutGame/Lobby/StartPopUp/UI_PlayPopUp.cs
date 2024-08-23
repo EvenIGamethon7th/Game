@@ -19,8 +19,11 @@ namespace _2_Scripts.UI.OutGame.Lobby
         private StageData mStageData;
         [SerializeField]
         private UI_SelectItemContainer mSelectItemContainer;
+
+        private bool mbIsStart = false;
         public void Start()
         {
+            mbIsStart = false;
             mPlayButton.onClick.AddListener(OnClickPlay);
             MessageBroker.Default.Receive<GameMessage<StageData>>()
                 .Where(message => message.Message == EGameMessage.GameStartPopUpOpen).Subscribe(
@@ -33,6 +36,8 @@ namespace _2_Scripts.UI.OutGame.Lobby
 
         private void OnClickPlay()
         {
+            if (mbIsStart)
+                return;
             #if !UNITY_EDITOR
             if (BackEndManager.Instance.UserCurrency[ECurrency.Father].Value <= 0)
             {
@@ -41,6 +46,7 @@ namespace _2_Scripts.UI.OutGame.Lobby
             }
             BackEndManager.Instance.AddCurrencyData(ECurrency.Father,-1);
             #endif
+            mbIsStart = true;
             mSelectItemContainer.UseItems();
             GameManager.Instance.SetCurrentStageData(mStageData);
             SceneLoadManager.Instance.SceneChange("Main");

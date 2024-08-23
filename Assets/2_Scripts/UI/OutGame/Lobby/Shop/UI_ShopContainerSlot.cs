@@ -65,6 +65,10 @@ namespace _2_Scripts.UI.OutGame.Lobby.Shop
             foreach (var item in itemCountDic)
             {
                 var data = DataBase_Manager.Instance.GetItem.GetDataArr.FirstOrDefault(x => x.code == item.Key);
+                if (data == null)
+                {
+                    continue;
+                }
                 mRewardEvents.Add(new Define.RewardEvent
                 {
                     name = data.name,
@@ -82,7 +86,7 @@ namespace _2_Scripts.UI.OutGame.Lobby.Shop
 
         private void OnVisible()
         {
-            if (mOnePurchase && BackEndManager.Instance.UserInventory.Any(x => x.ItemId == mContainerId))
+            if (mOnePurchase && BackEndManager.Instance.UserInventory.Any(x => x.ItemId == $"{mContainerId}_Lock"))
             {
                 gameObject.SetActive(false);
             }

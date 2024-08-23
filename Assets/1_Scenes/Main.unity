@@ -9906,8 +9906,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 482833718}
-  - component: {fileID: 482833717}
   - component: {fileID: 482833716}
+  - component: {fileID: 482833719}
   m_Layer: 0
   m_Name: StageManager
   m_TagString: Untagged
@@ -9933,20 +9933,6 @@ MonoBehaviour:
   - {x: 8.5, y: 5, z: 0}
   - {x: 8.5, y: -8, z: 0}
   - {x: -3, y: -8, z: 0}
---- !u!114 &482833717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 482833715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca5f902811aa41a195a012bb624ab728, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDontDestroy: 0
-  MonsterList: []
 --- !u!4 &482833718
 Transform:
   m_ObjectHideFlags: 0
@@ -9962,6 +9948,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &482833719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482833715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 637a1d5fdc764e70ac82b366efa53b58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDontDestroy: 0
+  MonsterList: []
 --- !u!1001 &607546849
 PrefabInstance:
   m_ObjectHideFlags: 0

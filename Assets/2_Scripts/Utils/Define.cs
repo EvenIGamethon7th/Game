@@ -48,6 +48,7 @@ namespace _2_Scripts.Utils
            new Dictionary<int, int>() { { 1, 3 }, { 2, 5 }, { 3, 0 } };
        
        public const int MAX_LEVEL = 6;
-       
+       public const float SPAWN_COOL_TIME = 1.5f;
+       public const float NEXT_WAVE_TIME = 20.0f;
     }
 }

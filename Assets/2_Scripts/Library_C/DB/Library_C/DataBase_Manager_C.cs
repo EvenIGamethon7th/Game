@@ -92,17 +92,6 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             return this.stage;
         }
     }
-    [InlineEditor, LabelText("Wave"), SerializeField] private DB_WaveDataGroup wave;
-    public DB_WaveDataGroup GetWave
-    {
-        get
-        {
-            if (this.wave == null)
-                this.wave = Resources.Load<DB_WaveDataGroup>(base.dataGroupSobjPath + "DB_WaveDataGroup");
-
-            return this.wave;
-        }
-    }
     [InlineEditor, LabelText("WaveStat"), SerializeField] private DB_WaveStatDataGroup waveStat;
     public DB_WaveStatDataGroup GetWaveStat
     {
@@ -112,6 +101,17 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
                 this.waveStat = Resources.Load<DB_WaveStatDataGroup>(base.dataGroupSobjPath + "DB_WaveStatDataGroup");
 
             return this.waveStat;
+        }
+    }
+    [InlineEditor, LabelText("Wave"), SerializeField] private DB_WaveDataGroup wave;
+    public DB_WaveDataGroup GetWave
+    {
+        get
+        {
+            if (this.wave == null)
+                this.wave = Resources.Load<DB_WaveDataGroup>(base.dataGroupSobjPath + "DB_WaveDataGroup");
+
+            return this.wave;
         }
     }
     [InlineEditor, LabelText("Money"), SerializeField] private DB_MoneyDataGroup money;
@@ -125,17 +125,6 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             return this.money;
         }
     }
-    [InlineEditor, LabelText("AcademyClass"), SerializeField] private DB_AcademyClassDataGroup academyClass;
-    public DB_AcademyClassDataGroup GetAcademyClass
-    {
-        get
-        {
-            if (this.academyClass == null)
-                this.academyClass = Resources.Load<DB_AcademyClassDataGroup>(base.dataGroupSobjPath + "DB_AcademyClassDataGroup");
-
-            return this.academyClass;
-        }
-    }
     [InlineEditor, LabelText("Character"), SerializeField] private DB_CharacterDataGroup character;
     public DB_CharacterDataGroup GetCharacter
     {
@@ -145,6 +134,17 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
                 this.character = Resources.Load<DB_CharacterDataGroup>(base.dataGroupSobjPath + "DB_CharacterDataGroup");
 
             return this.character;
+        }
+    }
+    [InlineEditor, LabelText("AcademyClass"), SerializeField] private DB_AcademyClassDataGroup academyClass;
+    public DB_AcademyClassDataGroup GetAcademyClass
+    {
+        get
+        {
+            if (this.academyClass == null)
+                this.academyClass = Resources.Load<DB_AcademyClassDataGroup>(base.dataGroupSobjPath + "DB_AcademyClassDataGroup");
+
+            return this.academyClass;
         }
     }
     [InlineEditor, LabelText("UnitEnchant"), SerializeField] private DB_UnitEnchantDataGroup unitEnchant;
@@ -216,11 +216,11 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             this.localize.Init_Func();
             this.monster.Init_Func();
             this.stage.Init_Func();
-            this.wave.Init_Func();
             this.waveStat.Init_Func();
+            this.wave.Init_Func();
             this.money.Init_Func();
-            this.academyClass.Init_Func();
             this.character.Init_Func();
+            this.academyClass.Init_Func();
             this.unitEnchant.Init_Func();
             this.story.Init_Func();
             this.skill.Init_Func();
@@ -237,11 +237,11 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
         this.GetLocalize.CallEdit_OnDataImportDone_Func();
         this.GetMonster.CallEdit_OnDataImportDone_Func();
         this.GetStage.CallEdit_OnDataImportDone_Func();
-        this.GetWave.CallEdit_OnDataImportDone_Func();
         this.GetWaveStat.CallEdit_OnDataImportDone_Func();
+        this.GetWave.CallEdit_OnDataImportDone_Func();
         this.GetMoney.CallEdit_OnDataImportDone_Func();
-        this.GetAcademyClass.CallEdit_OnDataImportDone_Func();
         this.GetCharacter.CallEdit_OnDataImportDone_Func();
+        this.GetAcademyClass.CallEdit_OnDataImportDone_Func();
         this.GetUnitEnchant.CallEdit_OnDataImportDone_Func();
         this.GetStory.CallEdit_OnDataImportDone_Func();
         this.GetSkill.CallEdit_OnDataImportDone_Func();

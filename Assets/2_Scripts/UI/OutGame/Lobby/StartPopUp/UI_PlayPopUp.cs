@@ -1,4 +1,4 @@
-﻿using _2_Scripts.Game.BackEndData.Stage;
+using _2_Scripts.Game.BackEndData.Stage;
 using System;
 using _2_Scripts.UI.OutGame.Lobby.StartPopUp;
 using _2_Scripts.Utils;
@@ -7,6 +7,7 @@ using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace _2_Scripts.UI.OutGame.Lobby
 {
@@ -20,6 +21,8 @@ namespace _2_Scripts.UI.OutGame.Lobby
         private StageData mStageData;
         [SerializeField]
         private UI_SelectItemContainer mSelectItemContainer;
+        [SerializeField]
+        private TextMeshProUGUI mFeatherCountText;
 
         private bool mbIsStart = false;
         public void Start()
@@ -39,15 +42,16 @@ namespace _2_Scripts.UI.OutGame.Lobby
         {
             if (mbIsStart)
                 return;
-            #if !UNITY_EDITOR
+#if !UNITY_EDITOR
             int featherConsum = mStageData.StageType == StageType.Survive ? 3 : 1;
+            mFeatherCountText.text = featherConsum;
             if (BackEndManager.Instance.UserCurrency[ECurrency.Father].Value <= featherConsum)
             {
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("깃털이 부족합니다.");
                 return;
             }
             BackEndManager.Instance.AddCurrencyData(ECurrency.Father,-featherConsum);
-             #endif
+#endif
             mbIsStart = true;
             mSelectItemContainer.UseItems();
             GameManager.Instance.SetCurrentStageData(mStageData);

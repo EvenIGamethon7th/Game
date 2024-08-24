@@ -30,6 +30,7 @@ namespace _2_Scripts.Game.Controller
         private TextMeshProUGUI mChapterClearStarText;
 
         [SerializeField] private Button mStoryButton;
+        [SerializeField] private Button mChallengeButton;
         
         private GameMessage<Chapter> mChapterMessage = new GameMessage<Chapter>(EGameMessage.ChapterChange,null);
 
@@ -39,6 +40,7 @@ namespace _2_Scripts.Game.Controller
             ChapterDataInit();
             LastChapterEnable();
             mStoryButton.onClick.AddListener(OnStoryBookClick);
+            mChallengeButton.onClick.AddListener(OnChallengeClick);
             MessageBroker.Default.Receive<GameMessage<int>>()
                 .Where(message => message.Message == EGameMessage.ChapterChange)
                 .Subscribe(
@@ -78,8 +80,6 @@ namespace _2_Scripts.Game.Controller
             MessageBroker.Default.Publish(mChapterMessage);
             mStageIndicator.OnChange(mChapterList[idx]);
             mChapterClearStarText.text = $"{mChapterList[idx].ChapterClearStar}/{mChapterList[idx].ChapterAllStar}";
-            
-            
         }
 
         private void OnStoryBookClick()
@@ -92,6 +92,11 @@ namespace _2_Scripts.Game.Controller
 
             GameManager.Instance.CurrentDialog = mChapterMessage.Value.ChapterNumber;
             SceneLoadManager.Instance.SceneChange("DialogScene");
+        }
+
+        private void OnChallengeClick()
+        {
+
         }
 
         private void LastChapterEnable()

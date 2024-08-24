@@ -406,7 +406,7 @@ namespace Cargold.FrameWork.BackEnd
                     UserPlayMission = JsonConvert.DeserializeObject<Dictionary<string, PlayMission>>(missionData.Value);
                 }
                 
-                if(result.Data.TryGetValue("ServiceMission",out var serviceMission))
+                if(result.Data.TryGetValue("SurviveMission",out var serviceMission))
                 {
                     UserServiceMission = JsonConvert.DeserializeObject<SurviveMission>(serviceMission.Value);
                 }

@@ -2,6 +2,11 @@
 
 namespace _2_Scripts.Game.BackEndData.Stage
 {
+    public enum StageType
+    {
+        Normal,
+        Survive
+    }
     [Serializable]
     public class StageData
     {
@@ -10,5 +15,6 @@ namespace _2_Scripts.Game.BackEndData.Stage
         public int Star;
         public bool IsClear;
         public bool IsLastStage;
+        public StageType StageType { get; set; } = StageType.Normal;
     }
 }

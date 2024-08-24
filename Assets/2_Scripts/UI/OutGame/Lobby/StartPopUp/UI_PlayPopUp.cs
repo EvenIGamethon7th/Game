@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _2_Scripts.Game.BackEndData.Stage;
+using System;
 using _2_Scripts.UI.OutGame.Lobby.StartPopUp;
 using _2_Scripts.Utils;
 using Cargold.FrameWork.BackEnd;
@@ -39,13 +40,14 @@ namespace _2_Scripts.UI.OutGame.Lobby
             if (mbIsStart)
                 return;
             #if !UNITY_EDITOR
-            if (BackEndManager.Instance.UserCurrency[ECurrency.Father].Value <= 0)
+            int featherConsum = mStageData.StageType == StageType.Survive ? 3 : 1;
+            if (BackEndManager.Instance.UserCurrency[ECurrency.Father].Value <= featherConsum)
             {
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("깃털이 부족합니다.");
                 return;
             }
-            BackEndManager.Instance.AddCurrencyData(ECurrency.Father,-1);
-            #endif
+            BackEndManager.Instance.AddCurrencyData(ECurrency.Father,-featherConsum);
+             #endif
             mbIsStart = true;
             mSelectItemContainer.UseItems();
             GameManager.Instance.SetCurrentStageData(mStageData);

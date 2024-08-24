@@ -62,6 +62,9 @@ namespace Cargold.FrameWork.BackEnd
         public List<StoreItem> PublicStoreItems { get; private set; } = new List<StoreItem>();
         public List<ItemInstance> UserInventory { get; private set; }= new List<ItemInstance>();
         public Dictionary<string,FreeRewardData> UserFreeRewardData { get; private set; } = new Dictionary<string, FreeRewardData>();
+        
+        public SurviveMission UserServiceMission { get; private set; } = new SurviveMission();
+        
         public int UserDailyReward { get; private set; } = 0;
         
         public bool IsUserTutorial { get; set; } = false;
@@ -335,6 +338,7 @@ namespace Cargold.FrameWork.BackEnd
                 {"DailyReward",UserDailyReward.ToString()},
                 {"FreeRewardData",JsonConvert.SerializeObject(UserFreeRewardData)},
                 {"IsSelectMainCharacter",IsSelectMainCharacter.ToString()},
+                {"ServiceMission",JsonConvert.SerializeObject(UserServiceMission)},
                 {"IsUserTutorial",IsUserTutorial.ToString()}});
         }
 
@@ -400,6 +404,11 @@ namespace Cargold.FrameWork.BackEnd
                 if (result.Data.TryGetValue("PlayMissionData", out var missionData))
                 {
                     UserPlayMission = JsonConvert.DeserializeObject<Dictionary<string, PlayMission>>(missionData.Value);
+                }
+                
+                if(result.Data.TryGetValue("ServiceMission",out var serviceMission))
+                {
+                    UserServiceMission = JsonConvert.DeserializeObject<SurviveMission>(serviceMission.Value);
                 }
                 tcs.TrySetResult();
             }, (error) =>

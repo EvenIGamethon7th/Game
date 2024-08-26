@@ -32,7 +32,7 @@ namespace _2_Scripts.UI.OutGame.Lobby
         {
             mSeq.Restart();
             mWaveCountText.text = BackEndManager.Instance.UserServiceMission.maxWaveCount.ToString();
-            mRewardCountText.text = $"<color=#FCCA23>{BackEndManager.Instance.UserServiceMission.surviveCount}</color>/{SurviveMission.MAX_SURVIVE_COUNT}";
+            mRewardCountText.text = $"<color=#FCCA23>{Mathf.Min(BackEndManager.Instance.UserServiceMission.surviveCount, SurviveMission.MAX_SURVIVE_COUNT)}</color>/{SurviveMission.MAX_SURVIVE_COUNT}";
         }
 
         private void OnDisable()

@@ -38,6 +38,8 @@ namespace _2_Scripts.Game.Controller
         private GameMessage<Chapter> mChapterMessage = new GameMessage<Chapter>(EGameMessage.ChapterChange,null);
 
         [SerializeField] private GameObject mChapterObject;
+
+        string temp = "일일 보상을 모두 획득하셨습니다!\n<color=#FCCA23>입장 시 보상 획득 불가</color>";
         private void Start()
         {
             ChapterDataInit();
@@ -120,7 +122,7 @@ namespace _2_Scripts.Game.Controller
 
             if (BackEndManager.Instance.UserServiceMission.surviveCount >= SurviveMission.MAX_SURVIVE_COUNT)
             {
-                UI_Toast_Manager.Instance.Activate_WithContent_Func("일일 보상을 모두 획득하셨습니다! \n <color=#FCA223>입장 시 보상 획득 불가</color>");
+                UI_Toast_Manager.Instance.Activate_WithContent_Func(temp);
             }
 
             MessageBroker.Default.Publish(new GameMessage<StageData>(EGameMessage.GameStartPopUpOpen, challenge.StageList[0]));

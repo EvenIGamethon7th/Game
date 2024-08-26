@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using _2_Scripts.Game.BackEndData.Stage;
 using _2_Scripts.Game.Handler;
 using _2_Scripts.UI.OutGame.Lobby;
 using _2_Scripts.Utils;
+using Cargold.FrameWork.BackEnd;
 using Sirenix.OdinInspector;
 using TMPro;
 using UniRx;
@@ -13,6 +15,7 @@ using UnityEngine.UI;
 namespace _2_Scripts.Game.Controller
 {
     using Chapter = Chapter.Chapter;
+    using StageData = BackEndData.Stage.StageData;
     public class ChapterController : SerializedMonoBehaviour
     {
         ChapterHandler mChapterHandler = new ChapterHandler();
@@ -96,7 +99,31 @@ namespace _2_Scripts.Game.Controller
 
         private void OnChallengeClick()
         {
+            var challenge = mChapterHandler.ChapterDataLoad(1000);
+            if (challenge.StageList == null)
+            {
+                challenge.StageList = new List<BackEndData.Stage.StageData>();
+            }
+            if (challenge.StageList.Count == 0)
+            {
+                StageData stageData = new StageData
+                {
+                    ChapterNumber = challenge.ChapterNumber,
+                    StageNumber = 1,
+                    Star = 0,
+                    IsClear = false,
+                    IsLastStage = true,
+                    StageType = StageType.Survive
+                };
+                challenge.StageList.Add(stageData);
+            }
 
+            if (BackEndManager.Instance.UserServiceMission.surviveCount >= SurviveMission.MAX_SURVIVE_COUNT)
+            {
+                UI_Toast_Manager.Instance.Activate_WithContent_Func("일일 보상을 모두 획득하셨습니다! \n <color=#FCA223>입장 시 보상 획득 불가</color>");
+            }
+
+            MessageBroker.Default.Publish(new GameMessage<StageData>(EGameMessage.GameStartPopUpOpen, challenge.StageList[0]));
         }
 
         private void LastChapterEnable()

@@ -20,6 +20,7 @@ public partial class WaveStatData : Data_C
      [LabelText("보상개수1")] public int reward_count1;
      [LabelText("보상재화2")] public string reward_type2;
      [LabelText("보상개수2")] public int reward_count2;
+     [LabelText("마법방어력")] public int mdef;
 
     
 
@@ -36,6 +37,7 @@ public partial class WaveStatData : Data_C
         reward_count1 = _cellDataArr[7].ToInt();
         reward_type2 = _cellDataArr[8];
         reward_count2 = _cellDataArr[9].ToInt();
+        mdef = _cellDataArr[10].ToInt();
     }
 #endif
 }

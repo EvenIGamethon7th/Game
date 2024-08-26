@@ -92,17 +92,6 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             return this.stage;
         }
     }
-    [InlineEditor, LabelText("WaveStat"), SerializeField] private DB_WaveStatDataGroup waveStat;
-    public DB_WaveStatDataGroup GetWaveStat
-    {
-        get
-        {
-            if (this.waveStat == null)
-                this.waveStat = Resources.Load<DB_WaveStatDataGroup>(base.dataGroupSobjPath + "DB_WaveStatDataGroup");
-
-            return this.waveStat;
-        }
-    }
     [InlineEditor, LabelText("Wave"), SerializeField] private DB_WaveDataGroup wave;
     public DB_WaveDataGroup GetWave
     {
@@ -114,6 +103,17 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             return this.wave;
         }
     }
+    [InlineEditor, LabelText("WaveStat"), SerializeField] private DB_WaveStatDataGroup waveStat;
+    public DB_WaveStatDataGroup GetWaveStat
+    {
+        get
+        {
+            if (this.waveStat == null)
+                this.waveStat = Resources.Load<DB_WaveStatDataGroup>(base.dataGroupSobjPath + "DB_WaveStatDataGroup");
+
+            return this.waveStat;
+        }
+    }
     [InlineEditor, LabelText("Money"), SerializeField] private DB_MoneyDataGroup money;
     public DB_MoneyDataGroup GetMoney
     {
@@ -123,6 +123,17 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
                 this.money = Resources.Load<DB_MoneyDataGroup>(base.dataGroupSobjPath + "DB_MoneyDataGroup");
 
             return this.money;
+        }
+    }
+    [InlineEditor, LabelText("Reward_CH"), SerializeField] private DB_Reward_CHDataGroup reward_CH;
+    public DB_Reward_CHDataGroup GetReward_CH
+    {
+        get
+        {
+            if (this.reward_CH == null)
+                this.reward_CH = Resources.Load<DB_Reward_CHDataGroup>(base.dataGroupSobjPath + "DB_Reward_CHDataGroup");
+
+            return this.reward_CH;
         }
     }
     [InlineEditor, LabelText("Character"), SerializeField] private DB_CharacterDataGroup character;
@@ -216,9 +227,10 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             this.localize.Init_Func();
             this.monster.Init_Func();
             this.stage.Init_Func();
-            this.waveStat.Init_Func();
             this.wave.Init_Func();
+            this.waveStat.Init_Func();
             this.money.Init_Func();
+            this.reward_CH.Init_Func();
             this.character.Init_Func();
             this.academyClass.Init_Func();
             this.unitEnchant.Init_Func();
@@ -237,9 +249,10 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
         this.GetLocalize.CallEdit_OnDataImportDone_Func();
         this.GetMonster.CallEdit_OnDataImportDone_Func();
         this.GetStage.CallEdit_OnDataImportDone_Func();
-        this.GetWaveStat.CallEdit_OnDataImportDone_Func();
         this.GetWave.CallEdit_OnDataImportDone_Func();
+        this.GetWaveStat.CallEdit_OnDataImportDone_Func();
         this.GetMoney.CallEdit_OnDataImportDone_Func();
+        this.GetReward_CH.CallEdit_OnDataImportDone_Func();
         this.GetCharacter.CallEdit_OnDataImportDone_Func();
         this.GetAcademyClass.CallEdit_OnDataImportDone_Func();
         this.GetUnitEnchant.CallEdit_OnDataImportDone_Func();

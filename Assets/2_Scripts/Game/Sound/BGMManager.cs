@@ -47,6 +47,10 @@ namespace _2_Scripts.Game.Sound
                 case "TutorialScene":
                     PlaySound("Chapter1");
                     break;
+
+                case "Challenge":
+                    PlaySound("Chapter1000");
+                    break;
             }
         }
 

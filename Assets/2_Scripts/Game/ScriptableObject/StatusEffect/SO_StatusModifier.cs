@@ -11,12 +11,12 @@ namespace _2_Scripts.Game.StatusEffect
         private float mPercentDef;
         public override void OnApply(MonsterData monsterData, Monster.Monster monster)
         {
-            monsterData?.AddDefenceStat((monsterData.def * (mPercentDef * 0.01f)));
+            monsterData?.AddDefenceStat(mPercentDef);
         }
 
         public override void OnRemove(MonsterData monsterData, Action endCallback = null)
         {
-            monsterData?.AddDefenceStat(-(monsterData.def * (mPercentDef * 0.01f)));
+            monsterData?.AddDefenceStat(-mPercentDef);
             endCallback?.Invoke();
         }
     }

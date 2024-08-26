@@ -18,6 +18,8 @@ namespace _2_Scripts.UI.OutGame.Lobby
         private Button mPlayButton;
         [SerializeField]
         private GameObject mPopUpGo;
+        [SerializeField]
+        private GameObject mChallengeGo;
         private StageData mStageData;
         [SerializeField]
         private UI_SelectItemContainer mSelectItemContainer;
@@ -35,16 +37,31 @@ namespace _2_Scripts.UI.OutGame.Lobby
                     {
                         mStageData = data.Value;
                         mPopUpGo.gameObject.SetActive(true);
+                        EnablePopUp();
                     }).AddTo(this);
+        }
+
+        private void EnablePopUp()
+        {
+            if (mStageData.StageType == StageType.Survive)
+            {
+                mChallengeGo.SetActive(true);
+            }
+            else
+            {
+                mChallengeGo.SetActive(false);
+            }
+
+            int featherConsum = mStageData.StageType == StageType.Survive ? 3 : 1;
+            mFeatherCountText.text = featherConsum.ToString();
         }
 
         private void OnClickPlay()
         {
             if (mbIsStart)
                 return;
-#if !UNITY_EDITOR
             int featherConsum = mStageData.StageType == StageType.Survive ? 3 : 1;
-            mFeatherCountText.text = featherConsum;
+#if !UNITY_EDITOR
             if (BackEndManager.Instance.UserCurrency[ECurrency.Father].Value <= featherConsum)
             {
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("깃털이 부족합니다.");
@@ -55,7 +72,16 @@ namespace _2_Scripts.UI.OutGame.Lobby
             mbIsStart = true;
             mSelectItemContainer.UseItems();
             GameManager.Instance.SetCurrentStageData(mStageData);
-            SceneLoadManager.Instance.SceneChange("Main");
+
+            if (featherConsum == 1)
+            {
+                SceneLoadManager.Instance.SceneChange("Main");
+            }
+
+            else if (featherConsum == 3)
+            {
+                SceneLoadManager.Instance.SceneChange("Challenge");
+            }
         }
     }
 }

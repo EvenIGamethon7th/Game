@@ -56,7 +56,6 @@ public class NormalStageMode : StageManager
         int offset = 0;
         while (true)
         {
-            mIsRewind = false;
             mCurrentWaveData = mWaveList[mNextStageMessage.Value - 1 + offset];
             SpawnMonsters(mCurrentWaveData, mWaveList.Count == mNextStageMessage.Value + offset).Forget();
             if (mCurrentWaveData.isIceMonster)
@@ -99,11 +98,11 @@ public class NormalStageMode : StageManager
     protected override async UniTask SpawnMonsters(WaveData waveData, bool isEnd = false)
     {
         int currentWave = mNextStageMessage.Value;
+        WaveStatData waveStateData = DataBase_Manager.Instance.GetWaveStat.GetData_Func(waveData.apply_stat);
 
         for (int spawnCount = 0; spawnCount < waveData.spawnCount; spawnCount++)
         {
             var monster = ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_Monster, mWayPoint.GetWayPointPosition(0)).GetComponent<Monster>();
-            WaveStatData waveStateData = DataBase_Manager.Instance.GetWaveStat.GetData_Func(waveData.apply_stat);
             bool isLastBoss = monster.IsLastBoss = isEnd;
             monster.SpawnMonster(waveData.monsterKey, mWayPoint, waveData.isBoss, waveStateData, waveData.weight, isLastBoss);
 

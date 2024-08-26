@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using _2_Scripts.Game.BackEndData.Stage;
 using Cargold.FrameWork.BackEnd;
@@ -11,7 +11,9 @@ namespace _2_Scripts.Game.Handler
         public int GetLastChapter()
         {
             var chapterData = BackEndManager.Instance.ChapterDataList
-                .DefaultIfEmpty(null).FirstOrDefault(data => data.isClear == false);
+                .DefaultIfEmpty(null)
+                .Where(data => data.ChapterNumber < 100)
+                .FirstOrDefault(data => data.isClear == false);
             if (chapterData == null)
             {
                 return 1;

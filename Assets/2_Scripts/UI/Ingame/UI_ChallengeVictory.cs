@@ -24,14 +24,13 @@ namespace _2_Scripts.UI.Ingame
         private void Start()
         {
             Vector2 originPos = mVictoryPanel.anchoredPosition;
-            mVictoryPanel.DOAnchorPosY(originPos.y + 10, 1f).SetEase(Ease.InOutQuad).SetLoops(-1, LoopType.Yoyo);
+            mVictoryPanel.DOAnchorPosY(originPos.y + 10, 1f).SetEase(Ease.InOutQuad).SetLoops(-1, LoopType.Yoyo).SetUpdate(true);
             SoundManager.Instance.Play2DSound(AddressableTable.Sound_Win);
             SetResult();
         }
 
         private void SetResult()
         {
-            Time.timeScale = 1;
             BackEndManager.Instance.UserServiceMission.SetMaxWaveCount(StageManager.Instance.WaveCount);
             mWaveCountText.text = StageManager.Instance.WaveCount.ToString();
 

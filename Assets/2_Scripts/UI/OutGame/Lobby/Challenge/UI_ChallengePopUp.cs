@@ -1,8 +1,5 @@
 using Cargold.FrameWork.BackEnd;
 using DG.Tweening;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 

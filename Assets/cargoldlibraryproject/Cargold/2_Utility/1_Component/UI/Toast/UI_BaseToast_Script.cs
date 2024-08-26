@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 using Cargold.PoolingSystem;
 using TMPro;
 using System;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
 
 namespace Cargold.UI
 {
@@ -26,11 +27,11 @@ namespace Cargold.UI
             string _str = FrameWork.LocalizeSystem_Manager.Instance.GetLcz_Func(_lczKey);
             this.Activate_Func(_str, _endCallbackDel, isIgnoreTimeScale);
         }
-        public void Activate_WithContent_Func(string _contentStr, Action _endCallbackDel = null, bool isIgnoreTimeScale = false)
+        public void Activate_WithContent_Func(string _contentStr, Action _endCallbackDel = null, bool isIgnoreTimeScale = false, float time = 1f)
         {
-            this.Activate_Func(_contentStr, _endCallbackDel, isIgnoreTimeScale);
+            this.Activate_Func(_contentStr, _endCallbackDel, isIgnoreTimeScale, time);
         }
-        protected virtual void Activate_Func(string _contentStr, Action _endCallbackDel = null, bool isIgnoreTimeScale = false)
+        protected virtual void Activate_Func(string _contentStr, Action _endCallbackDel = null, bool isIgnoreTimeScale = false, float time = 1f)
         {
             this.groupObj.SetActive(true);
 
@@ -38,7 +39,7 @@ namespace Cargold.UI
 
             this.transform.SetAsLastSibling();
 
-            this.anim.Play_Func(isIgnoreTimeScale: isIgnoreTimeScale);
+            this.anim.Play_Func(isIgnoreTimeScale: isIgnoreTimeScale, _speed: time);
 
             this.endCallbackDel = _endCallbackDel;
         }

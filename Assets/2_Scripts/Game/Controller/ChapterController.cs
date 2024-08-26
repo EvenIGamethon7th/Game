@@ -122,7 +122,7 @@ namespace _2_Scripts.Game.Controller
 
             if (BackEndManager.Instance.UserServiceMission.surviveCount >= SurviveMission.MAX_SURVIVE_COUNT)
             {
-                UI_Toast_Manager.Instance.Activate_WithContent_Func(temp);
+                UI_Toast_Manager.Instance.Activate_WithContent_Func(temp, time: 0.67f);
             }
 
             MessageBroker.Default.Publish(new GameMessage<StageData>(EGameMessage.GameStartPopUpOpen, challenge.StageList[0]));

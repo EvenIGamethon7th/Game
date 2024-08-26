@@ -37,7 +37,8 @@ namespace _2_Scripts.UI.Ingame
 
             if (!BackEndManager.Instance.UserServiceMission.IsAdmissionSurviveMission())
             {
-                int reward = (StageManager.Instance.WaveCount / 10) * 100;
+                var temp = DataBase_Manager.Instance.GetReward_CH.GetData_Func(Mathf.Max((StageManager.Instance.WaveCount - 1) / 10, 0));
+                int reward = temp.Reward_Count;
                 mRewardText.text = $"+{reward}";
                 BackEndManager.Instance.AddCurrencyData(ECurrency.Diamond, reward);
                 mRewardGo.SetActive(true);

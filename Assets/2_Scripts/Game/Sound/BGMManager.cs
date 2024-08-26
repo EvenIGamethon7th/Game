@@ -16,6 +16,7 @@ namespace _2_Scripts.Game.Sound
             Chapter2,
             Chapter3,
             Chapter4,
+            Chapter1000,
             God,
             Astar,
             Title,

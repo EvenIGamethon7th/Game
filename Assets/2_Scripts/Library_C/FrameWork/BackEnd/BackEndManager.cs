@@ -338,7 +338,7 @@ namespace Cargold.FrameWork.BackEnd
                 {"DailyReward",UserDailyReward.ToString()},
                 {"FreeRewardData",JsonConvert.SerializeObject(UserFreeRewardData)},
                 {"IsSelectMainCharacter",IsSelectMainCharacter.ToString()},
-                {"ServiceMission",JsonConvert.SerializeObject(UserServiceMission)},
+                {"SurviveMission",JsonConvert.SerializeObject(UserServiceMission)},
                 {"IsUserTutorial",IsUserTutorial.ToString()}});
         }
 

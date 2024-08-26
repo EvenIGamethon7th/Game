@@ -129,7 +129,7 @@ public class ChallengeStageMode : StageManager
         mTempStat.reward_type1 = tempStat.reward_type1;
         mTempStat.reward_type2 = tempStat.reward_type2;
         mTempStat.reward_count2 = tempStat.reward_count2;
-        mTempStat.hp = waveData.weight;
+        mTempStat.hp = tempStat.hp * waveData.weight;
         mTempStat.def = 10 * Mathf.FloorToInt(mNextStageMessage.Value / 40);
         mTempStat.mdef = 10 * (Mathf.FloorToInt(mNextStageMessage.Value / 40) - 1);
         mTempStat.speed = tempStat.speed;

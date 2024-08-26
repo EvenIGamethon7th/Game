@@ -153,7 +153,7 @@ namespace _2_Scripts.Game.Monster
                 ObjectPoolManager.Instance.CreatePoolingObject(AddressableTable.Default_DamageCanvas, transform.position + Vector3.up).GetComponent<UI_DamageCanvas>().SetDamage(damage);
             DamageActionCallback?.Invoke(this);
             damagebleActions?.Invoke();
-            CurrentHpCanvas.SetHpUI(mMonsterData.hp);
+            CurrentHpCanvas?.SetHpUI(mMonsterData.hp);
 
             if (IsDead)
             {

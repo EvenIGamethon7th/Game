@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using _2_Scripts.Game.Unit;
@@ -41,7 +41,7 @@ namespace _2_Scripts.Game.ScriptableObject.Skill.AllAttack
             
             await UniTask.Delay(TimeSpan.FromSeconds(waitAnim));
             
-            monsterList.Where(m => m.gameObject.activeSelf).ToList().ForEach(monster =>
+            monsterList.Where(m => m.enabled).ToList().ForEach(monster =>
             {
                 if (monster.TakeDamage(totalDamage, attackType))
                 {     

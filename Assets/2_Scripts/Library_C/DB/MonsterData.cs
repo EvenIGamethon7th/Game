@@ -50,6 +50,7 @@ public partial class MonsterData : IPoolable
         hp = waveStatData.hp * weight;
         atk = waveStatData.atk;
         def = waveStatData.def;
+        mdef = waveStatData.mdef;
         speed = waveStatData.speed;
         atk = waveStatData.atk;
         rewardList["Money_1001"] = waveStatData.reward_count1;

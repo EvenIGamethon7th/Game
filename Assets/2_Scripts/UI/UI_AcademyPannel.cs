@@ -98,7 +98,7 @@ namespace _2_Scripts.UI {
         private void CanLesson(CUnit student)
         {
             mCanLesson.SetValue(mDoLesson || mIsVacation || mLessonInWaveCount != 0);
-            MessageBroker.Default.Publish(mCanLesson);
+            
             if (mDoLesson)
             {
                 UI_Toast_Manager.Instance.Activate_WithContent_Func("이미 수업을 듣는 영웅이 있습니다!", isIgnoreTimeScale: true);
@@ -119,6 +119,8 @@ namespace _2_Scripts.UI {
                 mToast?.PlayToast("아카데미 다녀올게요!", false);
                 AcademyLesson(student);
             }
+
+            MessageBroker.Default.Publish(mCanLesson);
         }
 
         private void AcademyLesson(CUnit student)
@@ -127,6 +129,8 @@ namespace _2_Scripts.UI {
                 mToast?.Clear();
             mDoLesson = true;
             mTempAlumniData = MemoryPoolManager<CharacterData>.CreatePoolingObject();
+            mStudentData = MemoryPoolManager<CharacterData>.CreatePoolingObject();
+            mStudentData.Init(student.CharacterDatas, null);
             mStatus.Init(student);
 
             for (int i = 0; i < mClassData.Length; ++i)
@@ -136,7 +140,6 @@ namespace _2_Scripts.UI {
             }
 
             mLesson.SetLesson(student.CharacterDatas);
-            mStudentData = student.CharacterDatas;
             mClassImage.gameObject.SetActive(true);
 
             mStudentData.isAlumni = true;

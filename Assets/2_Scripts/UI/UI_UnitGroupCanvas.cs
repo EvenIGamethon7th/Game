@@ -101,10 +101,10 @@ namespace _2_Scripts.UI
                 .FirstOrDefault();
 
             mSelectUnitGroup.RemoveUnit(unit);
-            unit.Clear();
             if (mSelectUnitGroup != null)
                 SetFusionButton();
             IngameDataManager.Instance.UpdateMoney(EMoneyType.Gold, (int)(unit.CharacterDatas.cost * mCostRate));
+            unit.Clear();
         }
 
         private void SetFusionButton()

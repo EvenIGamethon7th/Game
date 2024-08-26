@@ -1,12 +1,9 @@
 using _2_Scripts.Game.BackEndData.Stage;
 using _2_Scripts.Game.Sound;
 using Cargold;
-using Cysharp.Threading.Tasks;
-using System.Linq;
-using UniRx;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using CharacterInfo = _2_Scripts.Game.ScriptableObject.Character.CharacterInfo;
 
 namespace _2_Scripts.UI
 {
@@ -21,6 +18,9 @@ namespace _2_Scripts.UI
         private int mRerollCost = 20;
 
         [SerializeField] private UI_LockButton mLockButton;
+
+        [SerializeField] private TextMeshProUGUI mText;
+        
         private void Start()
         {
             
@@ -56,6 +56,7 @@ namespace _2_Scripts.UI
                 mSummonButtons[i].Reroll();
             }
             SoundManager.Instance.Play2DSound(AddressableTable.Sound_EXP_Reroll_Touch);
+            mText.text = $"{mRerollCost}¿ø\n ´Ù½Ã »Ì±â";
         }
 
 

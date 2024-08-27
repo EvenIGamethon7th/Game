@@ -144,7 +144,7 @@ namespace _2_Scripts.Game.Monster
 
         public bool TakeDamage(float damage, Define.EAttackType attackType, EInstantKillType instant = EInstantKillType.None)
         {
-            if (IsDead) 
+            if (IsDead && this.gameObject.activeSelf == false) 
                 return false;
             
             damage = DefenceCalculator.CalculateDamage(damage, mMonsterData, attackType);

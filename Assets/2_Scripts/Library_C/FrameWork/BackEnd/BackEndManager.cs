@@ -425,7 +425,10 @@ namespace Cargold.FrameWork.BackEnd
             Dictionary<string, int> itemKey = new();
             foreach (var item in ItemsToConsume)
             {
-                itemKey.Add(GetInventoryItem(item.Key).ItemInstanceId,item.Value);
+                var findItem = GetInventoryItem(item.Key);
+                if(findItem == null)
+                    continue;
+                itemKey.Add(findItem.ItemInstanceId,item.Value);
             }
             
             PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest

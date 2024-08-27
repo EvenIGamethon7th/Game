@@ -134,7 +134,7 @@ public class GameManager : Singleton<GameManager>
     protected override void ChangeSceneInit(Scene prev, Scene next)
     {
         Time.timeScale = 1;
-        if (mPrevName.CompareTo("Main") == 0)
+        if (mPrevName.CompareTo("Main") == 0 || mPrevName.CompareTo("Challenge") == 0)
         {
             mIngameItem.Clear();
         }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Cargold.FrameWork.BackEnd;
+using Cysharp.Threading.Tasks;
 using PlayFab.ClientModels;
 using TMPro;
 using UnityEngine;
@@ -111,12 +112,18 @@ namespace _2_Scripts.UI.OutGame.Lobby.StartPopUp
             mUseText.text = isUse ? "사용해제" : "<color=#14C0EC>사용하기</color>";
             mUseItems[mSelectItem.StoreItem.ItemId] = isUse;
             if (isUse)
-                RemoveSameClassItem();
+                RemoveSameClassItem().Forget();
         }
 
-        private void RemoveSameClassItem()
+        private async UniTaskVoid RemoveSameClassItem()
         {
-            var item = BackEndManager.Instance.GetInventoryItem(mSelectItem.StoreItem.ItemId);
+            ItemInstance item = null;
+            while (item == null)
+            {
+                item = BackEndManager.Instance.GetInventoryItem(mSelectItem.StoreItem.ItemId);
+                await UniTask.Delay(1);
+            }
+
             ItemInstance nonSelectItem = null;
 
             foreach (var nonSelect in mAllItems)
@@ -125,7 +132,8 @@ namespace _2_Scripts.UI.OutGame.Lobby.StartPopUp
                 nonSelectItem = BackEndManager.Instance.GetInventoryItem(nonSelect.StoreItem.ItemId);
 
                 if (nonSelectItem == null) continue;
-                if (String.Compare(nonSelectItem.ItemClass, item.ItemClass, StringComparison.Ordinal) != 0 || !nonSelect.IsUseItem) continue;
+                if (String.Compare(nonSelectItem.ItemClass, item.ItemClass, StringComparison.Ordinal) != 0 || !nonSelect.IsUseItem) 
+                    continue;
                 nonSelect.SetSelect();
                 mUseItems[nonSelect.StoreItem.ItemId] = false;
             }

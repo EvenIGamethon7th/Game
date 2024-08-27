@@ -182,7 +182,7 @@ namespace _2_Scripts.UI {
         private void LessonComplete(int waveCount)
         {
             mLessonInWaveCount = 0;
-            if (waveCount % 4 == 0 && waveCount != 20) 
+            if (waveCount % 4 == 0 && (waveCount %= 10) != 0) 
             { 
                 mIsVacation = false;
                 if (mTest && !mDoLesson)

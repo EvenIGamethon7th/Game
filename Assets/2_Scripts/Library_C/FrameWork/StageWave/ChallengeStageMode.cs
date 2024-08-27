@@ -3,6 +3,7 @@ using _2_Scripts.Game.Monster;
 using _2_Scripts.Utils;
 using Cargold.FrameWork.StageWave;
 using Cysharp.Threading.Tasks;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.RefAndLookup;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -11,13 +12,11 @@ using UnityEngine;
 
 public class ChallengeStageMode : StageManager
 {
-    private WaveStatData mTempStat;
+    private WaveStatData mTempStat = new();
     protected override void Init()
     {
-        mTempStat = new();
         mNextStageMessage = new GameMessage<int>(EGameMessage.StageChange, 0);
         mBossSpawnMessage = new TaskMessage(ETaskList.BossSpawn);
-        ObjectPoolManager.Instance.RegisterPoolingObject("Monster", 100);
         MessageBroker.Default.Receive<TaskMessage>()
             .Subscribe(message =>
             {
@@ -46,19 +45,20 @@ public class ChallengeStageMode : StageManager
         StageInit("Stage_1000");
     }
 
+    
+
     protected override async UniTaskVoid StartWave()
     {
         await UniTask.WaitForSeconds(3f, cancellationToken: mCancellationToken.Token);
         mNextStageMessage?.SetValue(mNextStageMessage.Value + 1);
         MessageBroker.Default.Publish(mNextStageMessage);
-        int offset = 0;
         while (true)
         {
-            mCurrentWaveData = mWaveList[mNextStageMessage.Value - 1 + offset];
-            SpawnMonsters(mCurrentWaveData, mWaveList.Count == mNextStageMessage.Value + offset).Forget();
+            mCurrentWaveData = mWaveList[mNextStageMessage.Value - 1 + mOffset];
+            SpawnMonsters(mCurrentWaveData, mWaveList.Count == mNextStageMessage.Value + mOffset).Forget();
             if (mCurrentWaveData.isIceMonster)
             {
-                ++offset;
+                ++mOffset;
                 continue;
             }
 
@@ -68,7 +68,7 @@ public class ChallengeStageMode : StageManager
                 mBossWave = mNextStageMessage.Value;
             }
 
-            if (mWaveList.Count == mNextStageMessage.Value + offset)
+            if (mWaveList.Count <= mNextStageMessage.Value + mOffset)
             {
                 await WaitAsync();
                 break;

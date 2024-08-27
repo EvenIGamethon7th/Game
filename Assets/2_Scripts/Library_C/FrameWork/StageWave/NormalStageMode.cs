@@ -70,7 +70,7 @@ public class NormalStageMode : StageManager
                 mBossWave = mNextStageMessage.Value;
             }
 
-            if (mWaveList.Count == mNextStageMessage.Value + offset)
+            if (mWaveList.Count <= mNextStageMessage.Value + offset)
             {
                 await WaitAsync();
                 break;

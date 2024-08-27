@@ -126,7 +126,7 @@ namespace _2_Scripts.Game.Monster
                     IsBoss = isBoss;
                     if (mMonsterData.MaxHp == 0)
                     {
-                        Debug.LogError("Something Wrong In Data");
+                        mMonsterData.Init(waveStatData, statWeight);
                     }
                     MessageBroker.Default.Publish(mMonsterMessage);
                     CurrentHpCanvas.InitHpUI(mMonsterData.MaxHp);

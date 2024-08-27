@@ -60,15 +60,15 @@ namespace _2_Scripts.Game.ScriptableObject.Skill
 
             var monster = monsterArray.Where(monster => !monster.IsDead).FirstOrDefault();
             if (monster == null) return;
-
-            float time = HitEffectPlayAndGetLength(monster.transform.position);
+            Vector3 tempPos = monster.transform.position;
+            float time = HitEffectPlayAndGetLength(tempPos);
 
             await UniTask.Delay(TimeSpan.FromSeconds(time));
 
             if (monster != null && !monster.IsDead)
                 monster.TakeDamage(totalDamage, AttackType);
             
-            var detectingTargets = Physics2D.OverlapCircleAll(monster.transform.position, Range, TargetLayer);
+            var detectingTargets = Physics2D.OverlapCircleAll(tempPos, Range, TargetLayer);
 
             if (detectingTargets.Length == 0) return;
 

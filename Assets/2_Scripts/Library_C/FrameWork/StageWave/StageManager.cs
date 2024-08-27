@@ -9,6 +9,7 @@ using Cargold.FrameWork.BackEnd;
 using Cysharp.Threading.Tasks;
 using Rito.Attributes;
 using UniRx;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -41,6 +42,10 @@ public abstract class StageManager : Singleton<StageManager>
     protected float mWaveTime;
     protected bool mIsRewind;
 
+    protected int mOffset;
+
+    private bool mTestWave = false;
+
     protected override sealed void AwakeInit()
     {
         SceneLoadManager.Instance.SceneClear += Clear;
@@ -54,7 +59,19 @@ public abstract class StageManager : Singleton<StageManager>
                 }
             }).AddTo(this);
 
+#if UNITY_EDITOR
+        if (GameManager.Instance.IsTest)
+        {
+            EditInit();
+        }
+
+        else
+        {
+            Init();
+        }
+#else
         Init();
+#endif
     }
 
     protected abstract void Init();
@@ -94,46 +111,71 @@ public abstract class StageManager : Singleton<StageManager>
     }
 
     #region Edit
-    //private void EditInit()
-    //{
-    //    mNextStageMessage = new GameMessage<int>(EGameMessage.StageChange, 0);
-    //    mBossSpawnMessage = new TaskMessage(ETaskList.BossSpawn);
-    //    MessageBroker.Default.Receive<TaskMessage>()
-    //        .Where(message => message.Task == ETaskList.DefaultResourceLoad)
-    //        .Subscribe(message =>
-    //        {
-    //            mNextStageMessage = new GameMessage<int>(EGameMessage.StageChange, 0);
-    //            mBossSpawnMessage = new TaskMessage(ETaskList.BossSpawn);
-    //            ObjectPoolManager.Instance.RegisterPoolingObject("Monster", 100);
-    //        }).AddTo(this);
-    //    MessageBroker.Default.Receive<EditMessage<int, int>>().Subscribe(message =>
-    //    {
-    //        GetStageAndWaveData(message.Value1, message.Value2);
-    //    }).AddTo(this);
-    //}
+    private void EditInit()
+    {
+        mNextStageMessage = new GameMessage<int>(EGameMessage.StageChange, 0);
+        mBossSpawnMessage = new TaskMessage(ETaskList.BossSpawn);
+        MessageBroker.Default.Receive<TaskMessage>()
+            .Where(message => message.Task == ETaskList.DefaultResourceLoad)
+            .Subscribe(message =>
+            {
+                mNextStageMessage = new GameMessage<int>(EGameMessage.StageChange, 0);
+                mBossSpawnMessage = new TaskMessage(ETaskList.BossSpawn);
+                ObjectPoolManager.Instance.RegisterPoolingObject("Monster", 100);
+            }).AddTo(this);
+        MessageBroker.Default.Receive<EditMessage<int, int>>().Subscribe(message =>
+        {
+            if (message.Value2 < 0)
+                return;
+            if (!mTestWave)
+            {
+                GetStageAndWaveData(message.Value1, message.Value2);
+            }
+        }).AddTo(this);
+    }
 
-    //private void GetStageAndWaveData(int stage, int wave)
-    //{
-    //    mCurrentStageData = DataBase_Manager.Instance.GetStage.GetData_Func($"Stage_{stage}");
-    //
-    //    WaveData waveData;
-    //    if (wave != -1)
-    //    {
-    //        waveData = DataBase_Manager.Instance.GetWave.GetData_Func(mCurrentStageData.waveList[wave]);
-    //        mWaveList.Add(waveData);
-    //    }
-    //
-    //    else
-    //    {
-    //        foreach (var waveDatas in mCurrentStageData.waveList)
-    //        {
-    //            waveData = DataBase_Manager.Instance.GetWave.GetData_Func(waveDatas);
-    //            mWaveList.Add(waveData);
-    //        }
-    //    }
-    //
-    //    StartWave().Forget();
-    //}
+    private void GetStageAndWaveData(int stage, int wave)
+    {
+        mTestWave = true;
+        mCurrentStageData = DataBase_Manager.Instance.GetStage.GetData_Func($"Stage_{stage}");
+    
+        WaveData waveData;
+        int tempWaveCount = wave;
+
+        for (int i = 0; i < wave; ++i)
+        {
+            waveData = DataBase_Manager.Instance.GetWave.GetData_Func(mCurrentStageData.waveList[i]);
+            if (waveData.isIceMonster)
+            {
+                ++mOffset;
+                ++wave;
+            }
+            mWaveList.Add(waveData);
+        }
+
+        for (int i = wave; i < mCurrentStageData.waveList.Length; ++i)
+        {
+            waveData = DataBase_Manager.Instance.GetWave.GetData_Func(mCurrentStageData.waveList[i]);
+            mWaveList.Add(waveData);
+        }
+        mNextStageMessage.SetValue(tempWaveCount);
+        //if (wave != -1)
+        //{
+        //    waveData = DataBase_Manager.Instance.GetWave.GetData_Func(mCurrentStageData.waveList[wave]);
+        //    mWaveList.Add(waveData);
+        //}
+        //
+        //else
+        //{
+        //    foreach (var waveDatas in mCurrentStageData.waveList)
+        //    {
+        //        waveData = DataBase_Manager.Instance.GetWave.GetData_Func(waveDatas);
+        //        mWaveList.Add(waveData);
+        //    }
+        //}
+    
+        StartWave().Forget();
+    }
 
     #endregion
 

@@ -158,6 +158,17 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             return this.academyClass;
         }
     }
+    [InlineEditor, LabelText("Skill"), SerializeField] private DB_SkillDataGroup skill;
+    public DB_SkillDataGroup GetSkill
+    {
+        get
+        {
+            if (this.skill == null)
+                this.skill = Resources.Load<DB_SkillDataGroup>(base.dataGroupSobjPath + "DB_SkillDataGroup");
+
+            return this.skill;
+        }
+    }
     [InlineEditor, LabelText("UnitEnchant"), SerializeField] private DB_UnitEnchantDataGroup unitEnchant;
     public DB_UnitEnchantDataGroup GetUnitEnchant
     {
@@ -178,17 +189,6 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
                 this.story = Resources.Load<DB_StoryDataGroup>(base.dataGroupSobjPath + "DB_StoryDataGroup");
 
             return this.story;
-        }
-    }
-    [InlineEditor, LabelText("Skill"), SerializeField] private DB_SkillDataGroup skill;
-    public DB_SkillDataGroup GetSkill
-    {
-        get
-        {
-            if (this.skill == null)
-                this.skill = Resources.Load<DB_SkillDataGroup>(base.dataGroupSobjPath + "DB_SkillDataGroup");
-
-            return this.skill;
         }
     }
     [InlineEditor, LabelText("TreasureBox"), SerializeField] private DB_TreasureBoxDataGroup treasureBox;
@@ -233,9 +233,9 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
             this.reward_CH.Init_Func();
             this.character.Init_Func();
             this.academyClass.Init_Func();
+            this.skill.Init_Func();
             this.unitEnchant.Init_Func();
             this.story.Init_Func();
-            this.skill.Init_Func();
             this.treasureBox.Init_Func();
         }
     }
@@ -255,9 +255,9 @@ public partial class DataBase_Manager : Cargold.FrameWork.DataBase_Manager
         this.GetReward_CH.CallEdit_OnDataImportDone_Func();
         this.GetCharacter.CallEdit_OnDataImportDone_Func();
         this.GetAcademyClass.CallEdit_OnDataImportDone_Func();
+        this.GetSkill.CallEdit_OnDataImportDone_Func();
         this.GetUnitEnchant.CallEdit_OnDataImportDone_Func();
         this.GetStory.CallEdit_OnDataImportDone_Func();
-        this.GetSkill.CallEdit_OnDataImportDone_Func();
         this.GetTreasureBox.CallEdit_OnDataImportDone_Func();
         
         base.CallEdit_OnDataImport_Func();
